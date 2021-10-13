@@ -40,10 +40,7 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'doctor' => [
-            'driver' => 'session',
-            'provider' => 'hashes',
-        ],
+
     ],
 
     /*
@@ -68,10 +65,7 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-        'hashes' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Hashe::class,
-        ],
+
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',

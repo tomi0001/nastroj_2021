@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->bigInteger("id_users")->unsigned()->nullable();
             $table->foreign("id_users")->references("id")->on("users");
             $table->string('name')->unique();
-            $table->string('email')->unique();
+            $table->string('email')->nullable();
             $table->tinyInteger('if_true')->nullable();
             $table->string("type",8)->default("user");
             $table->timestamp('email_verified_at')->nullable();

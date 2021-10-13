@@ -1,0 +1,85 @@
+
+
+	<table  align=center class='kalendar'>
+	  <tr>
+	    <td colspan=7><div align=center><span class="kalendar">{{$text_month}} {{$year}}</span></div></td>
+	  </tr>
+	  <tr>
+	    <td><div align=center><span class="kalendar">Pon</span></div></td>
+	    <td><div align=center><span class="kalendar">Wto</span></div></td>
+	    <td><div align=center><span class="kalendar">śro</span></div></td>
+	    <td><div align=center><span class="kalendar">Czwa</span></div></td>
+	    <td><div align=center><span class="kalendar">Pią</span></div></td>
+	    <td><div align=center><span class="kalendar">Sob</span></div></td>
+	    <td><div align=center><span class="kalendar">Nie</span></div></td>
+	  </tr>
+	  <tbody>
+
+
+  @while ( $day2 <= $how_day_month) 
+
+    <tr class='trCalendar'>
+    
+    @for ($cols=0;$cols < 7;$cols++) 
+    <td class='tdCalendar'>
+      @if ($day2 <= $how_day_month ) 
+
+	
+	
+        @if ($day1 >= $day_week )
+
+            @if ( $day2 == $day3 ) 
+                <div  align=center id='day_{{$day2}}' class="cell_active"><span class="active">{{$day2}}</span></div>
+
+
+            @else
+     
+                <div  align=center id='day_{{$day2}}' class="cell{{$color[$day2-1]}}" onclick="LoadPage('{{route('users.main')}}/{{$year}}/{{$month}}/{{$day2}}')"><a  class="no_active" href="{{route('users.main')}}/{{$year}}/{{$month}}/{{$day2}}  ">{{$day2}}</a></div>
+                
+            @endif
+            </td>
+            @php
+                
+                $day2++;
+            @endphp
+            
+       
+        
+        
+       
+        @endif
+	@php 
+        $day1++;
+	@endphp
+	
+      @endif
+        
+    @endfor
+    </tr>
+
+  @endwhile
+  <tr>
+
+</table>
+<div class="row center">
+  <div class="col-md-2 col-xs-2"></div>
+  <div class="col-md-2 col-xs-2">
+      <button class="btn btn-success calendar" onclick=location.href="{{ route('users.main')}}/{{$back[0]}}/{{$back[1]}}/1/wstecz">Miesiąc Wstecz</button>
+  </div>
+  <div class="col-md-2 col-xs-2">
+          <button class="btn btn-success calendar" onclick=location.href="{{ route('users.main')}}/{{$back_year[0]}}/{{$back_year[1]}}/1/wstecz">Rok Wstecz</button>
+  </div>
+  <div class="col-md-2 col-xs-2">
+      <button class="btn btn-success calendar" onclick=location.href="{{ route('users.main')}}/{{$next_year[0]}}/{{$next_year[1]}}/1/wstecz">Rok Dalej</button>
+      
+  </div>
+  <div class="col-md-2 col-xs-2">
+      <button class="btn btn-success calendar" onclick=location.href="{{ route('users.main')}}/{{$next[0]}}/{{$next[1]}}/1/wstecz">miesiąc Dalej</button>
+      
+      
+  </div>
+  
+</div>
+
+
+    
