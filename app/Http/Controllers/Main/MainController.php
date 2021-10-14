@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\User as MUser;
 use Hash;
 use App\Http\Services\Calendar;
-class Main {
+class MainController {
     public function index($year = "",$month  ="",$day = "",$action = "") {   
         $Calendar = new Calendar($year, $month, $day, $action);
         return View("Users.Main.main")->with("text_month",$Calendar->text_month)

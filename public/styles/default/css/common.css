@@ -1,6 +1,7 @@
 
 body {
     background-image: url('../tlo.png'); /* from http://subtlepatterns.com */
+    height: 100%;
 }
 
 @media (min-width: 1310px) {

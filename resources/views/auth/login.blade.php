@@ -4,7 +4,9 @@
 @section ('title') 
  Logowanie
 @endsection
+@include('auth.main')
 
+<br><Br>
 <div id="PageLogin">
     <div class="titleUser">LOGOWANIE UŻYTKOWNIKA</div>
     <div class="tableUser">

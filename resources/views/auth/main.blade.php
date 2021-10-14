@@ -1,9 +1,6 @@
-@extends('Layout.User')
-@section('content')
+
 <br>
-    @section('title') 
-        Strona główna
-    @endsection
+
     <div id="PageMenu">
     <div style="height: 25%;"></div>
     <div class="row">
@@ -25,4 +22,3 @@
         </div>
     </div>
  </div>
-@endsection

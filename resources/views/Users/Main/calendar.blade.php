@@ -2,7 +2,7 @@
 
 	<table  align=center class='kalendar'>
 	  <tr>
-	    <td colspan=7><div align=center><span class="kalendar">{{$text_month}} {{$year}}</span></div></td>
+	    <td colspan=7><div align=center><span class="kalendarBig">{{$text_month}} {{$year}}</span></div></td>
 	  </tr>
 	  <tr>
 	    <td><div align=center><span class="kalendar">Pon</span></div></td>
@@ -34,7 +34,7 @@
 
             @else
      
-                <div  align=center id='day_{{$day2}}' class="cell{{$color[$day2-1]}}" onclick="LoadPage('{{route('users.main')}}/{{$year}}/{{$month}}/{{$day2}}')"><a  class="no_active" href="{{route('users.main')}}/{{$year}}/{{$month}}/{{$day2}}  ">{{$day2}}</a></div>
+                <div onmouseover='calendarOn("day_{{$day2}}")' onmouseout='calendarOff("day_{{$day2}}")' align=center id='day_{{$day2}}' class="cell{{$color[$day2-1]}}" onclick="LoadPage('{{route('users.main')}}/{{$year}}/{{$month}}/{{$day2}}')"><a  class="no_active" href="{{route('users.main')}}/{{$year}}/{{$month}}/{{$day2}}  ">{{$day2}}</a></div>
                 
             @endif
             </td>
@@ -62,18 +62,18 @@
 
 </table>
 <div class="row center">
-  <div class="col-md-2 col-xs-2"></div>
-  <div class="col-md-2 col-xs-2">
+  <div class="col-md-0 col-lg-2 "></div>
+  <div class="col-md-3 col-xs-3 col-lg-2">
       <button class="btn btn-success calendar" onclick=location.href="{{ route('users.main')}}/{{$back[0]}}/{{$back[1]}}/1/wstecz">Miesiąc Wstecz</button>
   </div>
-  <div class="col-md-2 col-xs-2">
+  <div class="col-md-3 col-xs-3 col-lg-2 ">
           <button class="btn btn-success calendar" onclick=location.href="{{ route('users.main')}}/{{$back_year[0]}}/{{$back_year[1]}}/1/wstecz">Rok Wstecz</button>
   </div>
-  <div class="col-md-2 col-xs-2">
+  <div class="col-md-3 col-xs-3 col-lg-2 ">
       <button class="btn btn-success calendar" onclick=location.href="{{ route('users.main')}}/{{$next_year[0]}}/{{$next_year[1]}}/1/wstecz">Rok Dalej</button>
       
   </div>
-  <div class="col-md-2 col-xs-2">
+  <div class="col-md-3 col-xs-3 col-lg-2">
       <button class="btn btn-success calendar" onclick=location.href="{{ route('users.main')}}/{{$next[0]}}/{{$next[1]}}/1/wstecz">miesiąc Dalej</button>
       
       

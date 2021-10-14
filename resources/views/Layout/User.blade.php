@@ -2,8 +2,8 @@
     <head>
         <title>Dzienniczek nastrojów - @yield('title')</title>
         
-        <link href="{{ asset('./styles/default/css/pageMainNotLogin.css') }}" rel="stylesheet">
-        
+        <link href="{{ asset('./styles/' . config('view.styles') . '/css/pageMainNotLogin.css') }}" rel="stylesheet">
+        <link href="{{ asset('./styles/' . config('view.styles') . '/css/common.css') }}" rel="stylesheet">
 
       
         <link rel="stylesheet"  href="{{asset('./bootstrap-5.1.3-dist/css/bootstrap.css')}}"  >
@@ -16,9 +16,7 @@
         
         
         
-        
-        <script src="{{ asset('./js/app.js')}}"></script>
-        <script src="{{ asset('./js/java.js')}}"></script>
+        <script src="{{ asset('./styles/'. config('view.styles') . '/js/pageMain.js')}}"></script>
 
        <script data-ad-client="ca-pub-9009102811248163" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     </head>
