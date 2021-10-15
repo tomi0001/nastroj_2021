@@ -1,5 +1,7 @@
 <?php
-
+/*
+ * copyright 2021 Tomasz Leszczyński tomi0001@gmail.com
+ */
 namespace App\Http\Services;
 
 use Illuminate\Http\Request;

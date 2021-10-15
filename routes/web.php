@@ -23,9 +23,20 @@ Route::get('/loginUser', [App\Http\Controllers\HomeController::class, 'loginUser
 Auth::routes();
 //Route::middleware(['webe'],function(){
             Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('main');
+            
+            
             Route::get('/users/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\Main\MainController::class, 'index'])->name('users.main')->middleware('auth')->middleware('can:users');
-            Route::get('/users1/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\Search\SearchController::class, 'index2'])->name('users.search')->middleware('auth')->middleware('can:users');
+            Route::get('/users/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\Main\MainController::class, 'index'])->name('users.main')->middleware('auth')->middleware('can:users');
+            
+            
+            Route::get('/users1/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\Search\SearchController::class, 'index2'])->name('users.moodAdd')->middleware('auth')->middleware('can:users');
+            
+            
+            Route::get('/users4/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\Search\SearchController::class, 'index2'])->name('users.search')->middleware('auth')->middleware('can:users');
+            
             Route::get('/users2/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\User\UserController::class, 'index4'])->name('users.setting')->middleware('auth')->middleware('can:users');
+            
+            
             Route::get('/doctor', [App\Http\Controllers\HomeController::class, 'index2'])->name('doctor.main')->middleware('auth')->middleware('can:doctor');
             Route::get('/logout', [App\Http\Controllers\HomeController::class, 'logout'])->name('logout')->middleware('auth');
             //Route::get('/', [App\Http\Controllers\HomeController::class, 'index2'])->name('home')->middleware('web');
