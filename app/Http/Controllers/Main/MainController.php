@@ -8,13 +8,13 @@ use Illuminate\Http\Request;
 use App\Models\User as MUser;
 use Hash;
 use App\Http\Services\Calendar;
-use App\Http\Services\Mood;
+use App\Http\Services\Main;
 use App\Models\Action;
 use Auth;
 class MainController {
     public function index($year = "",$month  ="",$day = "",$action = "") {   
         $Calendar = new Calendar($year, $month, $day, $action);
-        $Mood = new Mood;
+        $Mood = new Main;
         $listMood = $Mood->downloadMood($Calendar->year, $Calendar->month, $Calendar->day);
         $listAction = Action::selectAction(Auth::User()->id);
         $Mood->createDayColorMood($Calendar->year, $Calendar->month, $Calendar->day);

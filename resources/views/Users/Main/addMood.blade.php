@@ -9,13 +9,13 @@
                     DODAJ NOWY NASTRÓJ
                 </div>
                 <div class='row'>
-                    <div class='col-lg-2 col-md-1 col-xs-0 col-sm-0'>
+                    <div class='col-lg-1 col-md-1 col-xs-0 col-sm-0'>
                     </div>    
-                    <div class='col-lg-8 col-md-10 col-xs-10 col-sm-10'>
+                    <div class='col-lg-10 col-md-10 col-xs-10 col-sm-10'>
                         <form method='get' id="formAddMood">
                             <table class='table '>
                                 <tr>
-                                    <td rowspan='2' style='padding-top: 35px; ' class='moodadd'>
+                                    <td rowspan='2' style='padding-top: 35px; ' class='moodadd  widthMoodAdd'>
                                         Godzina zaczęcia
                                     </td>
                                     <td class='borderless'>
@@ -45,7 +45,7 @@
                                         Poziom nastroju
                                     </td>
                                     <td>
-                                        <input type='text' name='moodLevel' class='form-control'  onkeypress="return runScript(event,'{{ route('users.moodAdd')}}')">
+                                        <input type='number' step="0.01" min='-20' max='20' name='moodLevel' class='form-control'  onkeypress="return runScript(event,'{{ route('users.moodAdd')}}')" value="0">
                                     </td>
                                 </tr>
                                 <tr>
@@ -53,7 +53,7 @@
                                         Poziom lęku
                                     </td>
                                     <td>
-                                        <input type='text' name='anxietyLevel' class='form-control' onkeypress="return runScript(event,'{{ route('users.moodAdd')}}')">
+                                        <input type='number' step="0.01" min='-20' max='20' name='anxietyLevel' class='form-control' onkeypress="return runScript(event,'{{ route('users.moodAdd')}}')" value="0">
                                     </td>
                                 </tr>
                                 <tr>
@@ -61,7 +61,7 @@
                                         Poziom napięcia
                                     </td>
                                     <td>
-                                        <input type='text' name='voltageLevel' class='form-control' onkeypress="return runScript(event,'{{ route('users.moodAdd')}}')">
+                                        <input type='number' step="0.01" min='-20' max='20' name='voltageLevel' class='form-control' onkeypress="return runScript(event,'{{ route('users.moodAdd')}}')" value="0">
                                     </td>
                                 </tr>
                                 <tr>
@@ -69,7 +69,7 @@
                                         Poziom pobudzenia
                                     </td>
                                     <td>
-                                        <input type='text' name='stimulationLevel' class='form-control' onkeypress="return runScript(event,'{{ route('users.moodAdd')}}')">
+                                        <input type='number' step="0.01" min='-20' max='20' name='stimulationLevel' class='form-control' onkeypress="return runScript(event,'{{ route('users.moodAdd')}}')" value="0">
                                     </td>
                                 </tr>
                                 <tr>
@@ -77,7 +77,7 @@
                                         Ilośc epizodów psychotycznych
                                     </td>
                                     <td>
-                                        <input type='number' name='epizodesPsychotic' class='form-control' value='0' min='0' onkeypress="return runScript(event,'{{ route('users.moodAdd')}}')">
+                                        <input type='number'  name='epizodesPsychotic' class='form-control' value='0' min='0' max='10000' onkeypress="return runScript(event,'{{ route('users.moodAdd')}}')">
                                     </td>
                                 </tr>
                                 <tr>
@@ -100,7 +100,13 @@
                                                 </div>
                                             
                                                  @foreach ($listAction as $list)
-                                                    <div class='actionMain' id='divAction_{{$list->id}}' onclick='selectedActionMain({{$list->id}})'>{{$list->name}}</div>
+                                                 <div class="rowPercent">
+                                                    <div class='actionMain'  id='divAction_{{$list->id}}' onclick='selectedActionMain({{$list->id}})'>{{$list->name}}</div>
+                                                    <div class="hiddenPercentExecuting centerPercent" id='divActionPercent_{{$list->id}}'>
+                                                        <div style="display: inline-block; width: 40%;"><input type="number" class="percentExecuting form-control form-control-lg " title="procent wykonania" placeholder="procent wyk" name="percentExe[]" min="1" max="100"></div>
+                                                        <input type="hidden"  name="idAction[]" value='NULL'">
+                                                    </div>
+                                                 </div>
                                                  @endforeach
                                             </div>
                                         </div>
@@ -114,7 +120,7 @@
                                 </tr>    
                                 <tr>
                                     <td colspan="2" class="center">
-                                        <div class="ajax" id="form"></div>
+                                        <div  id="formResult"></div>
                                     </td>
                                 </tr>
                             </table>

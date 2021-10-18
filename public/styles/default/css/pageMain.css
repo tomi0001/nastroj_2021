@@ -1,5 +1,7 @@
 @media (min-width: 1310px) {
-
+        td.widthMoodAdd {
+            width: 35%;
+        }
         table.kalendar {
 
             opacity: none;
@@ -14,7 +16,7 @@
         div.scroll {
             overflow-y: scroll; 
             height:280; 
-            max-width: 380px;
+
         }
         div.titleMood {
                 border-radius: 17px 17px 0px 0px;
@@ -33,7 +35,7 @@
             border-radius: 17px 17px 17px 17px;
         }
         
-        tr:nth-child(6){ /* tr:nth-child(5):last-of-type */
+        table.kalendar  tr:nth-child(6){ /* tr:nth-child(5):last-of-type */
             height: 100px;
         }
         span.kalendar {
@@ -90,6 +92,7 @@
         .tdCalendar {
             height: 100px;
             width: 12%;
+            cursor:pointer;
         }
             #MainPage {
                 width: 75%;
@@ -305,6 +308,7 @@ div.actionMain {
     font-size: 19px;
     font-weight: bold;
     border-radius: 20px;
+    cursor:pointer;
 }
 div.actionMainselected {
     background-color: rgb(231, 37, 3);
@@ -315,6 +319,7 @@ div.actionMainselected {
     font-size: 19px;
     font-weight: bold;
     border-radius: 20px;
+    cursor:pointer;
 }
 
     div.bodyDiv {
@@ -327,3 +332,30 @@ div.actionMainselected {
     .center {
         text-align: center;
     }
+    
+div.rowPercent {
+    
+    
+}
+input.percentExecuting {
+
+   
+}
+div.centerPercent {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    float: center;
+    padding-bottom: 10px;
+
+     
+    
+    
+}
+div.hiddenPercentExecuting {
+     display: none;
+     
+ 
+
+}

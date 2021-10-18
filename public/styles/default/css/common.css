@@ -5,7 +5,32 @@ body {
 }
 
 @media (min-width: 1310px) {
-    
+    div.ajax {
 
+    }
+
+}
+
+div.ajaxError {
+    
+            background-color: red;
+            border-radius: 20px 20px 20px 20px;
+            width: 70%;
+            margin-left: auto;
+            margin-right: auto;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+}
+div.ajaxSucces {
+
+            background-color: #5BAC0B;
+            border-radius: 20px 20px 20px 20px;
+            width: 70%;
+            margin-left: auto;
+            margin-right: auto;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
 }
 

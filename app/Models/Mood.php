@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use DB;
+use Auth;
 class Mood extends Model
 {
     use HasFactory;
@@ -18,5 +19,11 @@ class Mood extends Model
     }
     public static function sumAll() {
         
+    }
+    public static function selectLastMoods() {
+        return Mood::selectRaw("SUBSTRING((date_end),1,16) as date_end")->where("id_users",Auth::User()->id)->orderBy("date_end","DESC")->first();
+    }
+    public static function checkTimeExist($dateStart,$dateEnd) {
+        return self::where("date_start","<=",$dateEnd)->where("date_end",">",$dateStart)->where("id_users",Auth::User()->id)->first();
     }
 }
