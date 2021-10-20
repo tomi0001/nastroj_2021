@@ -15,6 +15,8 @@ class MoodController {
     public function add(Request $request) {
             
             $Mood = new Mood;
+            var_dump($request->get("idActions"));
+            print ("<br><br>");
             var_dump($request->get("idAction"));
             if ($request->get("timeStart") == "" or  empty(MoodModel::selectLastMoods()) ) {
                 $timeStart = MoodModel::selectLastMoods()->date_end;
@@ -49,12 +51,12 @@ class MoodController {
                 return View("ajax.error")->with("error",$Mood->errors);
             }
             else {
-                $id = $Mood->saveMood($request,$timeStart,$timeEnd);
+                //$id = $Mood->saveMood($request,$timeStart,$timeEnd);
             }
              
 
             if (!empty($request->get("idAction"))) {
-                    $Mood->saveAction($request,$id);
+                  //  $Mood->saveAction($request,$id);
             }
     }
 

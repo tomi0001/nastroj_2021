@@ -97,25 +97,24 @@ class Mood {
     
     public function saveAction(Request $request,int $idMood) :void {
         for ($i = 0;$i < count($request->get("idAction"));$i++) {
-            if ($request->get("idAction")[$i] != "" and $request->get("idAction")[$i] != "NULL") {
+            if ($request->get("idAction")[$i] != "" and $request->get("idActions")[$i] != "NULL"  ) {
                 //$result = $this->calculatePerentingMoods($request->get("idAction")[$i],$idMood);
                 $Moods_action = new MoodAction;
                 $Moods_action->id_moods = $idMood;
                 $Moods_action->id_actions = $request->get("idAction")[$i];
-                $Moods_action->percent_executing = $request->get("percentExe")[$i];
-                /*
-                if (!empty($request->get("int_")[$i]) ) {
-                    $Moods_action->percent_executing2 = $request->get("int_")[$i];
-                }
-                 * 
-                 */
+                
+                
+                //if () {
+                    $Moods_action->percent_executing = $request->get("idActions")[$i];
+                //}
+                
                 $Moods_action->save();
             }
         }
     }
     public function checkErrorAction(Request $request) {
-        for ($i = 0;$i < count($request->get("percentExe"));$i++) {
-            if ($request->get("percentExe")[$i] != "" and $request->get("percentExe")[$i] != "NULL" and ($request->get("percentExe")[$i] < 1 or $request->get("percentExe")[$i] > 100)) {
+        for ($i = 0;$i < count($request->get("idActions"));$i++) {
+            if ($request->get("idActions")[$i] != "" and $request->get("idActions")[$i] != "NULL" and ($request->get("idActions")[$i] < 1 or $request->get("idActions")[$i] > 100)) {
                 array_push($this->errors,"Procent musi być w zakresie od 1 do 100 lub pole ma być puste");
             }
             

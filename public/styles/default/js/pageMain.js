@@ -17,19 +17,20 @@ function LoadPage(url) {
 
 var arrayAction = [];
 
-function selectedActionMain(id) {
-    //alert($(this).val());
+function selectedActionMain(id,index) {
+
     if ($("#divAction_" + id + ":first").hasClass("actionMain")) {
         $("#divAction_" + id).removeClass("actionMain").addClass("actionMainselected");
-        $("#divActionPercent_" + id).removeClass("hiddenPercentExecuting");
-        $("#idAction[" + $(this) + "]").val(id);
+        $("#divActionPercent_" + id).removeClass("hiddenPercentExecuting").addClass('active');
+        //$("#idAction").eq(index).val(id);
         arrayAction.push(id);
+        //alert(index);
     }
     else {
         var i = arrayAction.indexOf(id);
         arrayAction.splice(i,1);
-        $("#idAction[" + $(this) + "]").val('NULL');
-        $("#divActionPercent_" + id).addClass("hiddenPercentExecuting");
+        //$("#idAction").eq(index).val('NULL');
+        $("#divActionPercent_" + id).addClass("hiddenPercentExecuting").removeClass('active');
         $("#divAction_" + id).removeClass("actionMainselected").addClass("actionMain");
 
     }
@@ -55,15 +56,39 @@ $(document).ready(function(){
 
 
 function changeArrayAtHiddenAddMood() {
+    var i = 0;
+    var JSON = [];
+        $('input[name^="percentExe"]').each(function() {
+                    //alert($("input[name='percentExe[" + i + "]']").val());
+                //if ((arrayAction[i]) != "") {
+                    //alert('f');
+                    //alert($(this).parents().parents().attr('class') );
+                    if ($(this).parents().parents().hasClass("active")) {
+                        //JSON["idAction"][i]  = arrayAction[i];
+                        //JSON["percent"][i]  = $(this).val();
+                        $("#formAddMood").append("<input type=\'hidden\' name=\'idAction[]\' value='" + arrayAction[i] + "' class=\'form-control typeMood\'>");
+                        $("#formAddMood").append("<input type=\'hidden\' name=\'idActions[]\' value='" + $(this).val() + "' class=\'form-control typeMood\'>");
+                    //    alert('dd');
+                    i++;
+                    }
+                //}
+            //alert($(this).val());
+            
 
+        });
+/*
     for (i=0;i < arrayAction.length;i++) {
+        alert($("input[name='percentExe[" + i + "]']").val());
         if ((arrayAction[i]) != "") {
             //alert('f');
-            //$("#formAddMood").append("<input type=\'hidden\' name=\'idAction[]\' value='" + arrayAction[i] + "' class=\'form-control typeMood\'>");
+            $("#formAddMood").append("<input type=\'hidden\' name=\'idAction[]\' value='" + arrayAction[i] + "' class=\'form-control typeMood\'>");
+            $("#formAddMood").append("<input type=\'hidden\' name=\'idActions[]\' value='" + $("#percentExe").val() + "' class=\'form-control typeMood\'>");
         }
     }
+     * 
+ */
 }
-
+var deleted = true;
 function addMood(url) {
 
 
@@ -83,12 +108,14 @@ function addMood(url) {
             setInterval("reload();",10000);
             $("#formResult").html("<div class='ajaxSucces'>Pomyślnie dodano</div>");
         }
+    
 
     })
     .fail(function() {
         $("#formResult").html( "<div class='ajaxError'>Wystąpił błąd</div>" );
     })
-
-    //$("#formAddMood").find(":hidden").filter("[name!='idAction']").remove();
+    
+     $("#formAddMood").find(":hidden").filter(".typeMood").remove();
+     $("#formAddMood").find(":hidden").filter(".typeMood").remove();
     //$("#formAddMood").find(":disabled").remove();
 }
