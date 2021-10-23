@@ -14,6 +14,7 @@ class HomeController extends Controller
      *
      * @return void
      */
+    
     public function __construct()
     {
         $this->middleware('auth');
@@ -51,27 +52,7 @@ class HomeController extends Controller
 
         return redirect('/');
     }
-    public function registerSubmit(Request $request) {
-        $validator = Validator::make(
-            $request->all(),
-            ['name' => 'required|unique:users|min:4|max:25',
-             'email' => 'required|unique:users|min:4|max:25',
-             'password' => 'required',
-             'password' => 'min:6|max:20',
-             'password_confirm' => 'required_with:password|same:password|min:6',
-             'start_day' => 'integer|min:0|integer|max:23',
-             ]
-    
-        );
-        if ($validator->fails()) {
-            return redirect()->back()->withInput()->withErrors($validator->messages());
-        }
-        else {
-            $User = new ServiceUser;
-            $User->saveUser($request);
-            return redirect()->route('login')->withSuccess("Rejestracja zakończona możesz się zalogować");
-        }
-    }
+
     
     
 }

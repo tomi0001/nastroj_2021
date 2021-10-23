@@ -14,8 +14,27 @@
     
     
     
-    
-    @include('Users.Main.addMood')
-    
-    
+    <div class="menuSelectAddMain">
+
+        
+        <div class="menuMood mood moodSelected" id='moodSelected' style="padding-top: 16px;" onclick="SwitchMenuMoodAdd('mood')">
+            DODAJ NASTRÓJ
+        </div>
+        <div class="menuMood sleep" id='sleepSelected' style="padding-top: 16px;" onclick="SwitchMenuMoodAdd('sleep')">
+            DODAJ SEN
+        </div>
+        <div class="menuMood drugs" id='drugsSelected' style="padding-top: 16px;" onclick="SwitchMenuMoodAdd('drugs')">
+            DODAJ LEK
+        </div>
+       <div class="menuMood action" id='actionSelected' onclick="SwitchMenuMoodAdd('action')">
+            DODAJ AKCJE CAŁODNIOWĄ
+        </div>
+
+    </div>
+           
+          @include('Users.Main.addMood')
+        @include('Users.Main.addSleep')
+      
+      <body onload='loadMenuSession()'>
+     
 @endsection

@@ -33,5 +33,9 @@ return [
     'longMood' => 72000,
     //maxymalna krótkośc nastroju
     'shortMood' => 300,
-
+    
+    //maxymalna długośc snu
+    'longSleep' => 72000,
+    //maxymalna krótkośc snu
+    'shortSleep' => 500,
 ];

@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/loginDr', [App\Http\Controllers\HomeController::class, 'loginDr'])->name('doctorlogin');
 Route::get('/register', [App\Http\Controllers\HomeController::class, 'register'])->name('register');
-Route::post('/registerSubmit', [App\Http\Controllers\HomeController::class, 'registerSubmit'])->name('registerSubmit');
+Route::post('/registerSubmit', [App\Http\Controllers\RegisterController::class, 'registerSubmit'])->name('registerSubmits');
 Route::get('/loginUser', [App\Http\Controllers\HomeController::class, 'loginUser'])->name('userlogin');
 Auth::routes();
 //Route::middleware(['webe'],function(){
@@ -30,6 +30,7 @@ Auth::routes();
             
             
             Route::get('/users.moodAdd', [App\Http\Controllers\Mood\MoodController::class, 'add'])->name('users.moodAdd')->middleware('auth')->middleware('can:users');
+            Route::get('/users.sleepAdd', [App\Http\Controllers\Sleep\SleepController::class, 'add'])->name('users.sleepAdd')->middleware('auth')->middleware('can:users');
             //Route::get('/users/mo2odAdd', [App\Http\Controllers\Mood\MoodController::class, 'add'])->name('users.moodAdd')->middleware('auth')->middleware('can:users');
             
             

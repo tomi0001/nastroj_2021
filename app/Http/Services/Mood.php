@@ -44,8 +44,7 @@ class Mood {
         $Mood->save();
         return $Mood->id;
     }
-    public function checkError(string $dateStart,string $dateEnd) {
-        //print $dateStart;
+    public function checkError( $dateStart, $dateEnd) {
             if ($dateStart == "") {
                     array_push($this->errors,"Uzupełnij datę zaczęcia");                   
             }
@@ -91,23 +90,19 @@ class Mood {
             array_push($this->errors,"Liczba Epizodów psychotycznych musi być wieksza lub równa 0");
         }
 
-        //array_push($this->errors,  (int) $request->get("epizodesPsychotic"));
     }
 
     
     public function saveAction(Request $request,int $idMood) :void {
         for ($i = 0;$i < count($request->get("idAction"));$i++) {
-            if ($request->get("idAction")[$i] != "" and $request->get("idActions")[$i] != "NULL"  ) {
-                //$result = $this->calculatePerentingMoods($request->get("idAction")[$i],$idMood);
+            if ($request->get("idAction")[$i] != ""  ) {
                 $Moods_action = new MoodAction;
                 $Moods_action->id_moods = $idMood;
                 $Moods_action->id_actions = $request->get("idAction")[$i];
-                
-                
-                //if () {
+
+                if ($request->get("idActions")[$i] != "NULL" ) {
                     $Moods_action->percent_executing = $request->get("idActions")[$i];
-                //}
-                
+                }
                 $Moods_action->save();
             }
         }

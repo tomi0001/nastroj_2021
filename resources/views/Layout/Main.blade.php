@@ -26,7 +26,7 @@
 
 
             <div id="MainPage">
-                <div id="menuMain">
+                <div id="menuMain" class="mood">
               
                     <div class="empty_menu">
                         &nbsp;

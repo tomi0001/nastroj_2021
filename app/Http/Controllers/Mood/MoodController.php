@@ -15,11 +15,15 @@ class MoodController {
     public function add(Request $request) {
             
             $Mood = new Mood;
-            var_dump($request->get("idActions"));
-            print ("<br><br>");
-            var_dump($request->get("idAction"));
-            if ($request->get("timeStart") == "" or  empty(MoodModel::selectLastMoods()) ) {
-                $timeStart = MoodModel::selectLastMoods()->date_end;
+            if ($request->get("timeStart") == ""  ) {
+                $timeStart = MoodModel::selectLastMoods();
+                if (empty($timeStart)) {
+                   return View("ajax.error")->with("error",["uzupełnij czas zaczęcia"]);
+                }
+                else {
+                    $timeStart = $timeStart->date_end;
+                    
+                }
             }
             else {
                 $timeStart = $request->get("dateStart") . " " .  $request->get("timeStart");
@@ -30,33 +34,22 @@ class MoodController {
             else {
                 $timeEnd = $request->get("dateEnd") . " " .  $request->get("timeEnd");
             }
-            //print $timeEnd;
             
             $Mood->checkError($timeStart,$timeEnd);
             $Mood->checkAddMood($request);
-            $Mood->checkErrorAction($request);
-            //$Mood->checkAddMoodDate($request,$timeStart,$timeEnd);
-            //$Mood->checkAddMood($request);
-            /*
-            if (!empty($request->get("int_"))) {
-                $Mood->checkPercentMoodAction($request);
+            if (!empty($request->get("idActions")) ) {
+                $Mood->checkErrorAction($request);
             }
             if (count($Mood->errors) != 0) {
                 return View("ajax.error")->with("error",$Mood->errors);
             }
             else {
-             * 
-             */
-            if (count($Mood->errors) != 0) {
-                return View("ajax.error")->with("error",$Mood->errors);
-            }
-            else {
-                //$id = $Mood->saveMood($request,$timeStart,$timeEnd);
+                $id = $Mood->saveMood($request,$timeStart,$timeEnd);
             }
              
 
             if (!empty($request->get("idAction"))) {
-                  //  $Mood->saveAction($request,$id);
+                    $Mood->saveAction($request,$id);
             }
     }
 

@@ -7,7 +7,7 @@
     <div id="PageRegister">
     <div class="titleRegister">REJESTRACJA UŻYTKOWNIKA</div>
     <div class="tableUser">
-        <form action="{{route('registerSubmit')}}" method="post">
+        <form action="{{route('registerSubmits')}}" method="post">
             <table class="table">
                 <tr>
                     <td class="tableRegister">

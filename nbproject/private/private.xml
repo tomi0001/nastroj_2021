@@ -7,6 +7,7 @@
             <file>file:/var/www/html/nastroj_2021/resources/lang/en/pagination.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/auth/verify.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/config/app.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/addSleep.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/welcome.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/database/migrations/2014_10_12_100000_create_password_resets_table.php</file>
             <file>file:/var/www/html/nastroj_2021/database/migrations/2021_01_12_1111116_create_descriptions_table.php</file>
@@ -37,6 +38,7 @@
             <file>file:/var/www/html/nastroj_2021/database/migrations/2015_10_12_000000_create_actions_table.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/User/UserController.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Controller.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/addDrugs.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Main/MainController.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/HomeController.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/auth/login.blade.php</file>
@@ -79,6 +81,7 @@
             <file>file:/var/www/html/nastroj_2021/database/migrations/2016_12_12_000000_create_moods_actions_table.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Middleware/TrustHosts.php</file>
             <file>file:/var/www/html/nastroj_2021/database/migrations/2021_01_12_1111113_create_substances_table.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/RegisterController.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Search/SearchController.php</file>
             <file>file:/var/www/html/nastroj_2021/database/migrations/2021_01_12_1111111_create_groups_table.php</file>
             <file>file:/var/www/html/nastroj_2021/database/migrations/2019_12_14_000001_create_personal_access_tokens_table.php</file>
