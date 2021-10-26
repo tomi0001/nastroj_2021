@@ -1,128 +1,91 @@
-<div class='row'>
+ @include('Layout.SelectSearch')
+<div class=" centerMood" id="drugs" style="display: none;">
+    <div class="row">
     <div class='col-md-0 col-lg-2 col-sm-0 col-xs-0'>
         
     </div>
     <div class='col-md-12 col-lg-8 col-sm-12 col-xs-12 '>
         <div class='bodyDiv'>
             <div class='formAddMood'>
-                <div class='titleMood'>
-                    DODAJ NOWY NASTRÓJ
+                <div class='titleMood drugs'>
+                    DODAJ NOWY SEN
                 </div>
                 <div class='row'>
                     <div class='col-lg-1 col-md-1 col-xs-0 col-sm-0'>
                     </div>    
                     <div class='col-lg-10 col-md-10 col-xs-10 col-sm-10'>
-                        <form method='get' id="formAddMood">
+                        <form method='get' id="formAddSleep">
                             <table class='table '>
                                 <tr>
+                                    <td  class='moodadd  widthMoodAdd'>
+                                        Nazwa produktu
+                                    </td>
+                                    <td class='borderless'>
+                                        <select name='nameProduct' class="form-control" id="select-state" >
+                                            <option value="" class="form-control"></option>
+                                            @foreach (\App\Models\Product::selectProduct() as $listProduct)
+                                                <option value="{{$listProduct->id}}" class="form-control">{{$listProduct->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td   class='moodadd  widthMoodAdd'>
+                                        Nazwa zaplanowanej dawki
+                                    </td>
+                                    <td class='borderless'>
+                                         <select name='nameDose' class="form-control" id="select-state">
+                                            <option value="" class="form-control"></option>
+                                            @foreach (\App\Models\Planned_drug::selectDose() as $listDose)
+                                                <option value="{{$listDose->id}}" class="form-control">{{$listDose->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td rowspan='2' style='padding-top: 35px; ' class='moodadd  widthMoodAdd'>
-                                        Godzina zaczęcia
+                                        Godzina wzięcia
                                     </td>
                                     <td class='borderless'>
-                                        <input type='date' name='dateStart' class='form-control' value='{{ date("Y-m-d")}}'>
+                                        <input type='date' name='date' class='form-control'>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class='borderless'>
-                                         <input type='time' name='timeStart' class='form-control'>
+                                         <input type='time' name='time' class='form-control'>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td rowspan='2' style='padding-top: 35px; ' class='moodadd'>
-                                        Godzina zakończenia
-                                    </td>
-                                    <td>
-                                        <input type='date' name='dateEnd' class='form-control' value='{{ date("Y-m-d")}}'>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <input type='time' name='timeEnd' class='form-control' >
-                                    </td>
-                                </tr>
+                                
+                                
                                 <tr>
                                     <td class='moodadd'>
-                                        Poziom nastroju
+                                        Dawka
                                     </td>
                                     <td>
-                                        <input type='number' step="0.01" min='-20' max='20' name='moodLevel' class='form-control'  onkeypress="return runScript(event,'{{ route('users.moodAdd')}}')" value="0">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class='moodadd'>
-                                        Poziom lęku
-                                    </td>
-                                    <td>
-                                        <input type='number' step="0.01" min='-20' max='20' name='anxietyLevel' class='form-control' onkeypress="return runScript(event,'{{ route('users.moodAdd')}}')" value="0">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class='moodadd'>
-                                        Poziom napięcia
-                                    </td>
-                                    <td>
-                                        <input type='number' step="0.01" min='-20' max='20' name='voltageLevel' class='form-control' onkeypress="return runScript(event,'{{ route('users.moodAdd')}}')" value="0">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class='moodadd'>
-                                        Poziom pobudzenia
-                                    </td>
-                                    <td>
-                                        <input type='number' step="0.01" min='-20' max='20' name='stimulationLevel' class='form-control' onkeypress="return runScript(event,'{{ route('users.moodAdd')}}')" value="0">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class='moodadd'>
-                                        Ilośc epizodów psychotycznych
-                                    </td>
-                                    <td>
-                                        <input type='number'  name='epizodesPsychotic' class='form-control' value='0' min='0' max='10000' onkeypress="return runScript(event,'{{ route('users.moodAdd')}}')">
+                                        <input type='number' step="0.01"  name='dose' class='form-control' value='0' min='0' max='1000000' onkeypress="return runScript(event,'{{ route('users.moodAdd')}}')">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class='moodadd'  style='padding-top: 13%; ' >
-                                        Co robiłem
+                                        opis spożycia
                                     </td>
                                     <td>
-                                        <textarea name='whatWork' class='form-control' rows='7'></textarea>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class='moodadd'  style='padding-top: 18%; ' >
-                                        Akcje
-                                    </td>
-                                    <td>
-                                        <div class='scroll' >
-                                            <div id="parentsAction">
-                                                <div >
-                                                    <input type="text" id="hideActions" class='form-control'  >
-                                                </div>
-                                            
-                                                 @foreach ($listAction as $list)
-                                                 <div class="rowPercent">
-                                                    <div class='actionMain'  id='divAction_{{$list->id}}' onclick='selectedActionMain({{$list->id}},{{$loop->index}})'>{{$list->name}}</div>
-                                                    <div class="hiddenPercentExecuting centerPercent" id='divActionPercent_{{$list->id}}'>
-                                                        <div style="display: inline-block; width: 40%;"><input type="number" class="percentExecuting form-control form-control-lg " title="procent wykonania" placeholder="procent wyk" name="percentExe[]" min="1" max="100"></div>
-                                                        <input type="hidden"  id='idAction' name="idActionss[]" value='NULL'>
-                                                    </div>
-                                                 </div>
-                                                 @endforeach
-                                            </div>
-                                        </div>
+                                        <textarea name='whatSleep' class='form-control' rows='7'></textarea>
                                     </td>
                                 </tr>
 
+
                                 <tr>
                                     <td colspan="2" class="center">
-                                        <input type="button" onclick="addMood('{{ route('users.moodAdd')}}')" class="btn btn-success btn-lg" value="Dodaj nastrój" >
+                                        <input type="button" onclick="addSleep('{{ route('users.sleepAdd')}}')" class="btn-drugs " value="Dodaj lek" >
                                     </td>
                                 </tr>    
                                 <tr>
                                     <td colspan="2" class="center">
-                                        <div  id="formResult"></div>
+                                        <div  id="formResultSleep"></div>
                                     </td>
                                 </tr>
+
                             </table>
                         </form>
                     </div>
@@ -133,5 +96,6 @@
     </div>
     <div class='col-md-1 col-lg-2'>
         
+    </div>
     </div>
 </div>

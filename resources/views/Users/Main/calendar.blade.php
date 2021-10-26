@@ -64,17 +64,17 @@
 <div class="row center">
   <div class="col-md-0 col-lg-2 "></div>
   <div class="col-md-3 col-xs-3 col-lg-2">
-      <button class="btn btn-success calendar" onclick=location.href="{{ route('users.main')}}/{{$back[0]}}/{{$back[1]}}/1/wstecz">Miesiąc Wstecz</button>
+      <button class="calendar" onclick=location.href="{{ route('users.main')}}/{{$back[0]}}/{{$back[1]}}/1/wstecz">Miesiąc Wstecz</button>
   </div>
   <div class="col-md-3 col-xs-3 col-lg-2 ">
-          <button class="btn btn-success calendar" onclick=location.href="{{ route('users.main')}}/{{$back_year[0]}}/{{$back_year[1]}}/1/wstecz">Rok Wstecz</button>
+          <button class="calendar" onclick=location.href="{{ route('users.main')}}/{{$back_year[0]}}/{{$back_year[1]}}/1/wstecz">Rok Wstecz</button>
   </div>
   <div class="col-md-3 col-xs-3 col-lg-2 ">
-      <button class="btn btn-success calendar" onclick=location.href="{{ route('users.main')}}/{{$next_year[0]}}/{{$next_year[1]}}/1/wstecz">Rok Dalej</button>
+      <button class="calendar" onclick=location.href="{{ route('users.main')}}/{{$next_year[0]}}/{{$next_year[1]}}/1/wstecz">Rok Dalej</button>
       
   </div>
   <div class="col-md-3 col-xs-3 col-lg-2">
-      <button class="btn btn-success calendar" onclick=location.href="{{ route('users.main')}}/{{$next[0]}}/{{$next[1]}}/1/wstecz">miesiąc Dalej</button>
+      <button class="calendar" onclick=location.href="{{ route('users.main')}}/{{$next[0]}}/{{$next[1]}}/1/wstecz">miesiąc Dalej</button>
       
       
   </div>

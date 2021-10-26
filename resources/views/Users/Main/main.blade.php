@@ -33,7 +33,8 @@
     </div>
            
           @include('Users.Main.addMood')
-        @include('Users.Main.addSleep')
+          @include('Users.Main.addSleep')
+          @include('Users.Main.addDrugs')
       
       <body onload='loadMenuSession()'>
      

@@ -23,6 +23,7 @@ class CreateSubstancesProductsTable extends Migration {
             $table->foreign("id_substances")->references("id")->on("substances");
             $table->bigInteger('id_products')->unsigned();
             $table->foreign("id_products")->references("id")->on("products");
+            $table->float('doseProduct')->unsigned()->nullable();
             $table->timestamps();
         });
     }

@@ -15,6 +15,7 @@ class MainController {
     public function index($year = "",$month  ="",$day = "",$action = "") {   
         $Calendar = new Calendar($year, $month, $day, $action);
         $Mood = new Main;
+        //print Auth::User()->id;
         $listMood = $Mood->downloadMood($Calendar->year, $Calendar->month, $Calendar->day);
         $listAction = Action::selectAction(Auth::User()->id);
         $Mood->createDayColorMood($Calendar->year, $Calendar->month, $Calendar->day);

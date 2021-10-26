@@ -70,23 +70,23 @@ class Mood {
        
     }
     public function checkAddMood(Request $request) {
-        if ($request->get("moodLevel") != "" and $request->get("moodLevel") < -20 or $request->get("moodLevel") > 20) {
+        if (($request->get("moodLevel") != "" and $request->get("moodLevel") < -20 or $request->get("moodLevel") > 20) or (string)(float) $request->get("moodLevel") !== $request->get("moodLevel") ) {
             array_push($this->errors,"Nastroj musi mieścić się w zakresie od -20 do +20");
         }
         
-        if ($request->get("anxietyLevel") != "" and $request->get("anxietyLevel") < -20 or $request->get("anxietyLevel") > 20) {
+        if ($request->get("anxietyLevel") != "" and $request->get("anxietyLevel") < -20 or $request->get("anxietyLevel") > 20  or (string)(float) $request->get("anxietyLevel") !== $request->get("anxietyLevel") ) {
             array_push($this->errors,"Lęk musi mieścić się w zakresie od -20 do +20");
         }
         
-        if ($request->get("voltageLevel") != "" and $request->get("voltageLevel") < -20 or $request->get("voltageLevel") > 20) {
+        if ($request->get("voltageLevel") != "" and $request->get("voltageLevel") < -20 or $request->get("voltageLevel") > 20  or (string)(float) $request->get("voltageLevel") !== $request->get("voltageLevel") ) {
             array_push($this->errors,"Napięcie musi mieścić się w zakresie od -20 do +20");
         }
         
-        if ($request->get("stimulationLevel") != "" and $request->get("stimulationLevel") < -20 or $request->get("stimulationLevel") > 20) {
+        if (($request->get("stimulationLevel") != "" and $request->get("stimulationLevel") < -20 or $request->get("stimulationLevel") > 20) or (string)(float) $request->get("stimulationLevel") !== $request->get("stimulationLevel") ) {
             array_push($this->errors,"Pobudzenie musi mieścić się w zakresie od -20 do +20");
         }
         
-        if (($request->get("epizodesPsychotic") != "" and $request->get("epizodesPsychotic") < 0)  ) {
+        if (($request->get("epizodesPsychotic") != "" and $request->get("epizodesPsychotic") < 0)  or (string)(int) $request->get("epizodesPsychotic") !== $request->get("epizodesPsychotic") ) {
             array_push($this->errors,"Liczba Epizodów psychotycznych musi być wieksza lub równa 0");
         }
 

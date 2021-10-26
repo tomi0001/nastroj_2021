@@ -25,18 +25,25 @@ Auth::routes();
             Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('main');
             
             
-            Route::get('/users/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\Main\MainController::class, 'index'])->name('users.main')->middleware('auth')->middleware('can:users');
-            Route::get('/users/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\Main\MainController::class, 'index'])->name('users.main')->middleware('auth')->middleware('can:users');
+         //   Route::get('/users/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\Main\MainController::class, 'index'])->name('users.main')
+         //           ->where("year","[0-9]")->middleware('auth')->middleware('can:users');
+            Route::get('/users/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\Main\MainController::class, 'index'])->name('users.main')
+                    ->where("year","^[0-9]?[0-9]?[0-9]?[0-9]$")
+                    ->where("month","^(1[0-2]|[1-9])$")->where("day","^(3[01]|[12][0-9]|[1-9])$")->middleware('auth')->middleware('can:users');
             
             
-            Route::get('/users.moodAdd', [App\Http\Controllers\Mood\MoodController::class, 'add'])->name('users.moodAdd')->middleware('auth')->middleware('can:users');
-            Route::get('/users.sleepAdd', [App\Http\Controllers\Sleep\SleepController::class, 'add'])->name('users.sleepAdd')->middleware('auth')->middleware('can:users');
+            Route::get('/users.moodAdd', [App\Http\Controllers\Mood\MoodController::class, 'add'])->name('users.moodAdd')
+                    ->middleware('auth')->middleware('can:users');
+            Route::get('/users.sleepAdd', [App\Http\Controllers\Sleep\SleepController::class, 'add'])->name('users.sleepAdd')
+                    ->middleware('auth')->middleware('can:users');
             //Route::get('/users/mo2odAdd', [App\Http\Controllers\Mood\MoodController::class, 'add'])->name('users.moodAdd')->middleware('auth')->middleware('can:users');
             
             
-            Route::get('/users4/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\Search\SearchController::class, 'index2'])->name('users.search')->middleware('auth')->middleware('can:users');
+            Route::get('/users4/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\Search\SearchController::class, 'index2'])->name('users.search')
+                    ->middleware('auth')->middleware('can:users');
             
-            Route::get('/users2/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\User\UserController::class, 'index4'])->name('users.setting')->middleware('auth')->middleware('can:users');
+            Route::get('/users2/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\User\UserController::class, 'index4'])->name('users.setting')
+                    ->middleware('auth')->middleware('can:users');
             
             
             Route::get('/doctor', [App\Http\Controllers\HomeController::class, 'index2'])->name('doctor.main')->middleware('auth')->middleware('can:doctor');

@@ -71,6 +71,92 @@
                 font-size: 19px !important;
                 font-weight: bold !important;
         }
+        
+        
+        
+        .btn-mood {
+                background-color: #B87A0D; 
+                border: solid 1px transparent;
+                border-color: #6E791A;
+                padding-top: 13px;
+                padding-left: 25px;
+                padding-right: 25px;
+                padding-bottom: 13px;
+                color: white;
+                border-radius: 12px;
+                height: 65px;
+                text-align: center;
+                display: inline-block;
+                font-size: 24px;
+                font-weight: bold;
+                box-shadow: 6px 6px 6px #F4E375;
+
+        }
+        .btn-mood:hover  {
+                background-color: yellow; 
+                color: white;
+                border-color: #C29713;
+                border-radius: 12px;
+                text-align: center;
+                display: inline-block;
+                font-size: 24px;
+                font-weight: bold;
+        }
+        .btn-sleep {
+                background-color: #9D1AD5; 
+                border: solid 1px transparent;
+                border-color: #6E791A;
+                padding-top: 13px;
+                padding-left: 25px;
+                padding-right: 25px;
+                padding-bottom: 13px;
+                color: white;
+                border-radius: 12px;
+                height: 65px;
+                text-align: center;
+                display: inline-block;
+                font-size: 24px;
+                font-weight: bold;
+                box-shadow: 6px 6px 6px #F4E375;
+        }
+        .btn-sleep:hover  {
+                background-color: #5A047F; 
+                color: white;
+                border-color: #C29713;
+                border-radius: 12px;
+                text-align: center;
+                display: inline-block;
+                font-size: 24px;
+                font-weight: bold;
+        }
+        .btn-drugs {
+                background-color: #1FDA28; 
+                border: solid 1px transparent;
+                border-color: #A7D416;
+                padding-top: 13px;
+                padding-left: 25px;
+                padding-right: 25px;
+                padding-bottom: 13px;
+                color: white;
+                border-radius: 12px;
+                height: 65px;
+                text-align: center;
+                display: inline-block;
+                font-size: 24px;
+                font-weight: bold;
+                box-shadow: 6px 6px 6px #F4E375;
+
+        }
+        .btn-drugs:hover  {
+                background-color: #19FF24; 
+                color: white;
+                border-color: yellow;
+                border-radius: 12px;
+                text-align: center;
+                display: inline-block;
+                font-size: 24px;
+                font-weight: bold;
+        }
         div.cell_active {
 
             background-color: #E97705;
@@ -156,8 +242,32 @@
             float: left;
         }
         button.calendar {
-               width: 80% !important;
-                height: 60px !important;
+                background-color: #B87A0D; 
+                border: solid 1px transparent;
+                border-color: #6E791A;
+                padding-top: 13px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-bottom: 13px;
+                width: 230px;
+                color: white;
+                border-radius: 12px;
+                height: 65px;
+                text-align: center;
+                display: inline-block;
+                font-size: 24px;
+                font-weight: bold;
+                box-shadow: 6px 6px 6px #F4E375;
+        }
+        button.calendar:hover {
+                background-color: yellow; 
+                color: white;
+                border-color: #C29713;
+                border-radius: 12px;
+                text-align: center;
+                display: inline-block;
+                font-size: 24px;
+                font-weight: bold;
         }
         .nounderline {
           text-decoration: none !important
