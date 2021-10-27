@@ -15,4 +15,10 @@ class Planned_drug extends Model
                 ->selectRaw("id")
                 ->where("id_users", Auth::User()->id)->orderBy("name")->get();
     }
+    public static function showPlaned(string $name) {
+        return self::where("id_users",Auth::User()->id)->where("name",$name)->get();
+    }
+    public static function showName(int $id) {
+        return self::select("name")->where("id_users",Auth::User()->id)->where("id",$id)->first();
+    }
 }

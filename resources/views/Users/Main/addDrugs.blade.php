@@ -6,15 +6,16 @@
     </div>
     <div class='col-md-12 col-lg-8 col-sm-12 col-xs-12 '>
         <div class='bodyDiv'>
-            <div class='formAddMood'>
+            <div class='formAddMood borderDrugs '>
                 <div class='titleMood drugs'>
                     DODAJ NOWY SEN
                 </div>
-                <div class='row'>
-                    <div class='col-lg-1 col-md-1 col-xs-0 col-sm-0'>
+                <div class='row '>
+                    
+                    <div class='col-lg-1 col-md-1 col-xs-0 col-sm-0 '>
                     </div>    
                     <div class='col-lg-10 col-md-10 col-xs-10 col-sm-10'>
-                        <form method='get' id="formAddSleep">
+                        <form method='get' id="formAddDrugs">
                             <table class='table '>
                                 <tr>
                                     <td  class='moodadd  widthMoodAdd'>
@@ -34,7 +35,7 @@
                                         Nazwa zaplanowanej dawki
                                     </td>
                                     <td class='borderless'>
-                                         <select name='nameDose' class="form-control" id="select-state">
+                                         <select name='namePlaned' class="form-control" id="select-state">
                                             <option value="" class="form-control"></option>
                                             @foreach (\App\Models\Planned_drug::selectDose() as $listDose)
                                                 <option value="{{$listDose->id}}" class="form-control">{{$listDose->name}}</option>
@@ -62,7 +63,7 @@
                                         Dawka
                                     </td>
                                     <td>
-                                        <input type='number' step="0.01"  name='dose' class='form-control' value='0' min='0' max='1000000' onkeypress="return runScript(event,'{{ route('users.moodAdd')}}')">
+                                        <input type='number' step="0.01"  name='dose' class='form-control'   min='0' max='1000000' onkeypress="return runScript(event,'{{ route('users.moodAdd')}}')">
                                     </td>
                                 </tr>
                                 <tr>
@@ -77,18 +78,19 @@
 
                                 <tr>
                                     <td colspan="2" class="center">
-                                        <input type="button" onclick="addSleep('{{ route('users.sleepAdd')}}')" class="btn-drugs " value="Dodaj lek" >
+                                        <input type="button" onclick="addDrugs('{{ route('users.drugsAdd')}}')" class="btn-drugs " value="Dodaj lek" >
                                     </td>
                                 </tr>    
                                 <tr>
                                     <td colspan="2" class="center">
-                                        <div  id="formResultSleep"></div>
+                                        <div  id="formResultDrugs"></div>
                                     </td>
                                 </tr>
 
                             </table>
                         </form>
                     </div>
+                
                 </div>
 
             </div>

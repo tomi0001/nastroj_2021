@@ -307,7 +307,57 @@
         
 }
 @media (min-width: 700px) and (max-width: 1310px) { 
-    
+        div.menuMood {
+           width: 25%;
+           margin-left: 1px;
+           margin-right: 1px;
+           text-align: center;
+           font-size: 22px;
+
+           border-radius: 25px 25px 0px 0px;
+           cursor:pointer;
+
+           
+
+        }
+            div.menuSelectAddMain {
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            display:flex;
+            padding-left: 2%;
+            padding-right: 2%;
+            
+                
+        }
+            button.calendar {
+                background-color: #B87A0D; 
+                border: solid 1px transparent;
+                border-color: #6E791A;
+                padding-top: 13px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-bottom: 13px;
+                width: 230px;
+                color: white;
+                border-radius: 12px;
+                height: 65px;
+                text-align: center;
+                display: inline-block;
+                font-size: 19px;
+                font-weight: bold;
+                box-shadow: 6px 6px 6px #F4E375;
+        }
+        button.calendar:hover {
+                background-color: yellow; 
+                color: white;
+                border-color: #C29713;
+                border-radius: 12px;
+                text-align: center;
+                display: inline-block;
+                font-size: 19px;
+                font-weight: bold;
+        }
             div.scroll {
             overflow-y: scroll; 
             height:280; 

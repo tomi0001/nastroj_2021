@@ -5,7 +5,7 @@
     </div>
     <div class='col-md-12 col-lg-8 col-sm-12 col-xs-12 '>
         <div class='bodyDiv'>
-            <div class='formAddMood'>
+            <div class='formAddMood borderSleep'>
                 <div class='titleMood sleep'>
                     DODAJ NOWY SEN
                 </div>

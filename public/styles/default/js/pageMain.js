@@ -46,7 +46,7 @@ $(document).ready(function(){
       }
         $('.actionMain').hide();
         var val = $.trim($("#hideActions").val());
-        val = "div:contains("+val+")";
+        val = ".actionMain:contains("+val+")";
         $( val ).show();
       
     });
@@ -105,7 +105,7 @@ function addMood(url) {
     .done(function(response) {
         $("#formResult").html(response);
         if (response == "") {
-            setInterval("reload();",10000);
+            setInterval("reload();",20000);
             $("#formResult").html("<div class='ajaxSucces'>Pomyślnie dodano</div>");
         }
     
@@ -199,7 +199,7 @@ function addSleep(url) {
     .done(function(response) {
         $("#formResultSleep").html(response);
         if (response == "") {
-            setInterval("reload();",10000);
+            setInterval("reload();",20000);
             $("#formResultSleep").html("<div class='ajaxSucces'>Pomyślnie dodano</div>");
         }
     
@@ -208,6 +208,36 @@ function addSleep(url) {
     .fail(function() {
         $("#formResultSleep").html( "<div class='ajaxError'>Wystąpił błąd</div>" );
     })
+}
+
+
+
+function addDrugs(url) {
+    $.ajax({
+    url : url,
+        method : "get",
+        data : 
+          $("#formAddDrugs").serialize()
+        ,
+        dataType : "html",
+        })
+        .done(function(response) {
+            $("#formResultDrugs").html(response);
+            if (response == "") {
+                setInterval("reload();",20000);
+                $("#formResultDrugs").html("<div class='ajaxSucces'>Pomyślnie dodano</div>");
+            }
+
+        })
+        .fail(function() {
+            $("#formResultDrugs").html( "<div class='ajaxError'>Wystąpił błąd</div>" );
+        })
+}
+
+
+function reload() {
+    location.reload();
+    //deleteArray();
 }
 
 function sessionSet(type) {

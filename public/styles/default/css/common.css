@@ -10,7 +10,24 @@ body {
     }
 
 }
+    div.borderDrugs {
+         border: 2px solid rgba(10, 183, 45, 0.84);
+         box-shadow: 0 30px  30px 15px rgba(217, 171, 6, 0.72);
 
+        border-radius: 20px 20px 20px 20px;
+    }
+    div.borderMood {
+         border: 2px solid rgba(226, 124, 8, 0.85);
+         box-shadow: 0 30px  30px 15px rgba(217, 171, 6, 0.72);
+
+        border-radius: 20px 20px 20px 20px;
+    }
+    div.borderSleep {
+         border: 2px solid rgba(158, 66, 224, 0.84);
+         box-shadow: 0 30px  30px 15px rgba(217, 171, 6, 0.72);
+
+        border-radius: 20px 20px 20px 20px;
+    }
 div.ajaxError {
     
             background-color: red;
