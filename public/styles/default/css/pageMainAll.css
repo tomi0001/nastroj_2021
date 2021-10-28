@@ -1,0 +1,71 @@
+
+
+
+div.actionMain {
+    background-color: rgba(222, 56, 27, 0.63);
+    margin: 10px;
+    padding: 7px;
+    color: #C8C055;
+    text-align: center;
+    font-size: 19px;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor:pointer;
+}
+div.actionMainselected {
+    background-color: rgb(231, 37, 3);
+    margin: 10px;
+    padding: 7px;
+    color: #C8C055;
+    text-align: center;
+    font-size: 19px;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor:pointer;
+}
+
+    div.bodyDiv {
+        border-radius: 17px 17px 17px 17px;
+        background-image: url('../tlo.png'); /* from http://subtlepatterns.com */
+    }
+    td.moodadd {
+        color: #84440F;
+    }
+    .center {
+        text-align: center;
+    }
+    
+div.rowPercent {
+    
+    
+}
+input.percentExecuting {
+
+   
+}
+div.centerPercent {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    float: center;
+    padding-bottom: 10px;
+
+     
+    
+    
+}
+div.hiddenPercentExecuting {
+     display: none;
+     
+ 
+
+}
+
+div.moodSelected {
+               border-top: 3px solid #D6E109;
+           border-left: 3px solid #D6E109;
+           border-right: 3px solid #D6E109;
+           width: 28%;
+           color: #E6F20C;
+}

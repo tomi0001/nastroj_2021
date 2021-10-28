@@ -18,7 +18,15 @@ class Planned_drug extends Model
     public static function showPlaned(string $name) {
         return self::where("id_users",Auth::User()->id)->where("name",$name)->get();
     }
+    public static function showPlanedOne(string $name) {
+        return self::selectRaw("id_products")->where("id_users",Auth::User()->id)->where("name",$name)->first();
+    }
     public static function showName(int $id) {
         return self::select("name")->where("id_users",Auth::User()->id)->where("id",$id)->first();
     }
+    public static function selectidProductPlaned(int $idPlaned) {
+        return self::selectRaw("name")->where("id_users",Auth::User()->id)->where("id",$id)->first();
+    }
+
+    
 }
