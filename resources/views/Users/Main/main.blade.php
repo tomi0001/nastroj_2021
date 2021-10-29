@@ -35,6 +35,7 @@
           @include('Users.Main.addMood')
           @include('Users.Main.addSleep')
           @include('Users.Main.addDrugs')
+          @include('Users.Main.addAction')
           <br><br><br><br>
       <body onload='loadMenuSession()'>
      

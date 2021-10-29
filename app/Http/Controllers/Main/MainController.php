@@ -17,7 +17,7 @@ class MainController {
         $Mood = new Main;
         //print Auth::User()->id;
         $listMood = $Mood->downloadMood($Calendar->year, $Calendar->month, $Calendar->day);
-        $listAction = Action::selectAction(Auth::User()->id);
+        //$listAction = Action::selectAction(Auth::User()->id);
         $Mood->createDayColorMood($Calendar->year, $Calendar->month, $Calendar->day);
         return View("Users.Main.main")->with("text_month",$Calendar->text_month)
                                 ->with("year",$Calendar->year)
@@ -31,8 +31,8 @@ class MainController {
                                 ->with("back",$Calendar->back_month)
                                 ->with("next",$Calendar->next_month)
                                 ->with("back_year",$Calendar->back_year)
-                                ->with("next_year",$Calendar->next_year)
-                                ->with("listAction",$listAction);
+                                ->with("next_year",$Calendar->next_year);
+                                //->with("listAction",$listAction);
         
     }
 }

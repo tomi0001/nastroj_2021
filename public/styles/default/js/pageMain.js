@@ -89,6 +89,31 @@ function changeArrayAtHiddenAddMood() {
  */
 }
 
+
+
+function addActionDay(url) {
+        $.ajax({
+        url : url,
+        method : "get",
+        data : 
+          $("#formAddAction").serialize()
+        ,
+        dataType : "html",
+        })
+        .done(function(response) {
+            $("#formResultAction").html(response);
+            if (response == "") {
+                setInterval("reload();",20000);
+                $("#formResultAction").html("<div class='ajaxSucces'>Pomyślnie dodano</div>");
+            }
+
+        })
+        .fail(function() {
+            $("#formResultAction").html( "<div class='ajaxError'>Wystąpił błąd</div>" );
+        })
+}
+
+
 function addMood(url) {
 
 

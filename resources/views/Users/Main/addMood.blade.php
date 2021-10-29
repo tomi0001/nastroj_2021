@@ -100,7 +100,7 @@
                                                     <input type="text" id="hideActions" class='form-control'  >
                                                 </div>
                                             
-                                                 @foreach ($listAction as $list)
+                                                 @foreach (\App\Models\Action::selectAction(Auth::User()->id)  as $list)
                                                  <div class="rowPercent">
                                                     <div class='actionMain'  id='divAction_{{$list->id}}' onclick='selectedActionMain({{$list->id}},{{$loop->index}})'>{{$list->name}}</div>
                                                     <div class="hiddenPercentExecuting centerPercent" id='divActionPercent_{{$list->id}}'>

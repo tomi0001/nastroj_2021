@@ -12,6 +12,38 @@
            
 
         }
+          input {
+        height: 42px;
+        
+    }
+div.actionMain {
+    background-color: rgba(222, 56, 27, 0.63);
+    margin: 10px;
+    padding: 7px;
+    color: #C8C055;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor:pointer;
+}
+div.actionMainselected {
+    background-color: rgb(231, 37, 3);
+    margin: 10px;
+    padding: 7px;
+    color: #C8C055;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor:pointer;
+}
+     td.moodadd {
+                   
+        color: #84440F;
+    
+        font-size: 26px;
+    }
             div.menuSelectAddMain {
             width: 90%;
             margin-left: auto;
