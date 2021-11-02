@@ -7,7 +7,6 @@
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/addSleep.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/config/filesystems.php</file>
             <file>file:/var/www/html/nastroj_2021/database/migrations/2014_12_12_000000_create_moods_table.php</file>
-            <file>file:/var/www/html/nastroj_2021/app/Models/Action_day.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Action_plan.php</file>
             <file>file:/var/www/html/nastroj_2021/database/migrations/2021_01_12_1111114_create_products_table.php</file>
             <file>file:/var/www/html/nastroj_2021/routes/web.php</file>
@@ -27,6 +26,7 @@
             <file>file:/var/www/html/nastroj_2021/resources/lang/en/validation.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Middleware/Authenticate.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Auth/RegisterController.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Models/Actions_day.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Providers/BroadcastServiceProvider.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Providers/RouteServiceProvider.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Providers/AuthServiceProvider.php</file>
@@ -69,6 +69,7 @@
             <file>file:/var/www/html/nastroj_2021/database/migrations/2022_01_12_0111132_create_planned_drugs_table.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/addMood.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Layout/Main.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Services/Action.php</file>
             <file>file:/var/www/html/nastroj_2021/database/migrations/2021_01_12_1111115_create_usees_table.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/main.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Auth/ResetPasswordController.php</file>
@@ -88,6 +89,7 @@
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Mood/MoodController.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Main.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Sleep.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/addAction.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Middleware/TrustProxies.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Middleware/RedirectIfAuthenticated.php</file>
             <file>file:/var/www/html/nastroj_2021/config/database.php</file>
@@ -108,6 +110,7 @@
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Search/SearchController.php</file>
             <file>file:/var/www/html/nastroj_2021/database/migrations/2021_01_12_1111111_create_groups_table.php</file>
             <file>file:/var/www/html/nastroj_2021/database/migrations/2014_12_12_000000_create_hashes_table.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Action/ActionController.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Auth/VerificationController.php</file>
         </group>
     </open-files>

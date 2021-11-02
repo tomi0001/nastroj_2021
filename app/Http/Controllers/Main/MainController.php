@@ -10,13 +10,16 @@ use Hash;
 use App\Http\Services\Calendar;
 use App\Http\Services\Main;
 use App\Models\Action;
+use App\Models\Mood;
 use Auth;
 class MainController {
     public function index($year = "",$month  ="",$day = "",$action = "") {   
         $Calendar = new Calendar($year, $month, $day, $action);
         $Mood = new Main;
-        //print Auth::User()->id;
+        //print Auth::User()->start_day;
         $listMood = $Mood->downloadMood($Calendar->year, $Calendar->month, $Calendar->day);
+        $percent =  Mood::sortMood($Calendar->year . "-" . $Calendar->month . "-" .  $Calendar->day,Auth::User()->start_day,Auth::User()->id);
+        $percent = $Mood->setPercent($percent);
         //$listAction = Action::selectAction(Auth::User()->id);
         $Mood->createDayColorMood($Calendar->year, $Calendar->month, $Calendar->day);
         return View("Users.Main.main")->with("text_month",$Calendar->text_month)
@@ -31,7 +34,8 @@ class MainController {
                                 ->with("back",$Calendar->back_month)
                                 ->with("next",$Calendar->next_month)
                                 ->with("back_year",$Calendar->back_year)
-                                ->with("next_year",$Calendar->next_year);
+                                ->with("next_year",$Calendar->next_year)
+                                ->with("listMood",$listMood);
                                 //->with("listAction",$listAction);
         
     }

@@ -21,6 +21,13 @@ Route::get('/register', [App\Http\Controllers\HomeController::class, 'register']
 Route::post('/registerSubmit', [App\Http\Controllers\RegisterController::class, 'registerSubmit'])->name('registerSubmits');
 Route::get('/loginUser', [App\Http\Controllers\HomeController::class, 'loginUser'])->name('userlogin');
 Auth::routes();
+
+
+
+Route::get('/users.addMood', [App\Http\Controllers\Mood\MoodController::class, 'addTestMood'])->name('users.addMood')
+                    ->middleware('auth')->middleware('can:users');
+
+
 //Route::middleware(['webe'],function(){
             Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('main');
             

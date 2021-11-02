@@ -54,4 +54,15 @@ class MoodController {
     }
 
     
+    
+    
+    public function addTestMood() {
+        $longMood = rand(5,600);
+        $longSleep = rand(260,750);
+        $j = strtotime("2021-07-01 10:00:00");
+        for($i = $j;$i < $j;) {
+            $newTime = rand($i,$i+600);
+        }
+    }
+    
 }

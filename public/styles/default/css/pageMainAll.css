@@ -46,3 +46,27 @@ div.moodSelected {
            width: 28%;
            color: #E6F20C;
 }
+td.start {
+    width: 30%;
+    padding-left: 15px;
+}
+td.end {
+    text-align: right;
+    padding-right: 15px;
+}
+td.sizeTableMood {
+    width: 8%;
+    text-align: center;
+}
+table.moodShow {
+    margin: 10px;
+    background-color: rgba(245, 193, 60, 0.74);
+    color: #775807;
+}
+table.moodShow, td.showMood {
+   border: 1px solid #A77906;
+   border-collapse: collapse;
+}
+tr.bold {
+    font-weight: bold;
+}

@@ -11,7 +11,7 @@
     
     @include('Users.Main.calendar')<br>
     @include('Users.Main.showMood')
-    
+    <br><br><br>
     
     
     <div class="menuSelectAddMain">
