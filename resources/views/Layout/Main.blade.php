@@ -16,7 +16,7 @@
         <link href='http://fonts.googleapis.com/css?family=Amita&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script> 
         
-        
+        <link rel="shortcut icon" href="{{ asset('./image/icon.png')}}">
         
 
         

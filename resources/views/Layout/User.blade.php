@@ -13,7 +13,7 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script> 
         
         
-        
+        <link rel="shortcut icon" href="{{ asset('./image/icon.png')}}">
         
         
         <script src="{{ asset('./styles/'. config('view.styles') . '/js/pageMain.js')}}"></script>

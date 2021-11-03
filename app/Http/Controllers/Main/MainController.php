@@ -35,7 +35,8 @@ class MainController {
                                 ->with("next",$Calendar->next_month)
                                 ->with("back_year",$Calendar->back_year)
                                 ->with("next_year",$Calendar->next_year)
-                                ->with("listMood",$listMood);
+                                ->with("listMood",$listMood)
+                                ->with("percent",$percent);
                                 //->with("listAction",$listAction);
         
     }

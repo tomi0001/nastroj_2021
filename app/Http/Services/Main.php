@@ -61,7 +61,8 @@ class Main {
                 ->selectRaw("moods.level_nervousness as level_nervousness")
                 ->selectRaw("moods.level_stimulation  as level_stimulation")
                 ->selectRaw("moods.epizodes_psychotik as epizodes_psychotik")
-                ->selectRaw("(unix_timestamp(date_end)  - unix_timestamp(date_start)) as division")
+                ->selectRaw("moods.type as type")
+                //->selectRaw("(unix_timestamp(date_end)  - unix_timestamp(date_start)) as division")
                 ->selectRaw(" ((unix_timestamp(date_end)  - unix_timestamp(date_start)) * level_mood) as average_mood")
                 ->selectRaw("((unix_timestamp(date_end)  - unix_timestamp(date_start)) * level_anxiety) as average_anxiety")
                 ->selectRaw("((unix_timestamp(date_end)  - unix_timestamp(date_start)) * level_nervousness) as average_nervousness")
@@ -149,20 +150,20 @@ class Main {
         $i = 0;
         foreach ($list as $array) {
             if ($i == 0) {
-                $percent["percent"][$i] = 100;
+                $percent[$i]["percent"] = 100;
                 $percentOne = $array->second;
-                $percent["id"][$i] =  $array->id;
+                $percent[$i]["id"] =  $array->id;
             }
             else {
                 $sum =  ($array->second / $percentOne ) * 100;
                 if ($sum < 1) {
-                    $percent["percent"][$i] = 1;
+                    $percent[$i]["percent"] = 1;
                 }
                 else {
-                    $percent["percent"][$i] = round($sum);
+                    $percent[$i]["percent"] = round($sum);
                 }
                 
-                $percent["id"][$i] =  $array->id;
+                $percent[$i]["id"] =  $array->id;
             }
             $i++;
         }
