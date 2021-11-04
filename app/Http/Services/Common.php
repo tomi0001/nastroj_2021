@@ -8,6 +8,7 @@
 
 namespace App\Http\Services;
 use Storage;
+use DateTime;
 /**
  * Description of Common
  *
@@ -82,5 +83,38 @@ class Common {
             return 10;
         }
 
-    }  
+    }
+    public static function calculateHour($dateOne,$dateTwo) {
+        $dateStart = new \DateTime($dateOne);
+        $dateEnd = new \DateTime($dateTwo);
+        $diff = $dateEnd->diff($dateStart);
+        //$bool = false;
+        //$year = "";
+        //$month = "";
+        //$day = "";
+        //$hour = "";
+        //$minute = "";
+        $string = "";
+        if ($diff->y != 0) {
+            //$bool = true;
+            $string .=  $diff->y .  " Lat, ";
+        }
+        if ($diff->m != 0) {
+            //$bool = true;
+            $string .=  $diff->m . " Miesięcy, ";
+        }
+        if ($diff->d != 0) {
+            //$bool = true;
+            $string .=  $diff->d . " Dni, ";
+        }
+        if ($diff->h != 0) {
+            //$bool = true;
+            $string .=  $diff->h . " Godzin, ";
+        }
+        if ($diff->i != 0) {
+            //$bool = true;
+            $string .=  $diff->i . " Minut, ";
+        }        
+        return substr($string,0,-2);
+    }
 }

@@ -91,6 +91,11 @@ div.actionMainselected {
             font-size: 25px;
             color: #404803;
         }
+        span.HourMood {
+            font-size: 20px;
+
+           
+        }
         .btn-success {
                 background-color: #B87A0D !important;
                 border-color: #6E791A !important;
@@ -340,6 +345,108 @@ div.actionMainselected {
                 display: inline-block;
                 font-size: 24px;
                 font-weight: bold;
+        }
+        button.main {
+                
+                border: solid 1px transparent;
+                
+                padding-top: 10px;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-bottom: 10px;
+                width: 150px;
+                color: white;
+                border-radius: 12px;
+                height: 55px;
+                text-align: center;
+                display: inline-block;
+                font-size: 18px;
+                font-weight: bold;
+                box-shadow: 6px 6px 6px #F4E375;
+        }
+        button.main:hover {
+                
+                color: white;
+                border-color: #C29713;
+                border-radius: 12px;
+                text-align: center;
+                display: inline-block;
+                font-size: 18px;
+                font-weight: bold;
+        }
+        button.main-long {
+                     border: solid 1px transparent;
+                
+                padding-top: 10px;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-bottom: 10px;
+                width: 150px;
+                color: white;
+                border-radius: 12px;
+                height: 55px;
+                text-align: center;
+                display: inline-block;
+                font-size: 15px;
+                font-weight: bold;
+                box-shadow: 6px 6px 6px #F4E375;
+        }
+        button.main-long:hover {
+                
+                color: white;
+                border-color: #C29713;
+                border-radius: 12px;
+                text-align: center;
+                display: inline-block;
+                font-size: 15px;
+                font-weight: bold;
+        }
+        button.danger {
+                border: solid 1px transparent;
+                background-color: red;
+                padding-top: 5px;
+                padding-left: 5px;
+                padding-right: 10px;
+                padding-bottom: 10px;
+                width: 150px;
+                color: white;
+                border-radius: 12px;
+                height: 55px;
+                text-align: center;
+                display: inline-block;
+                font-size: 18px;
+                font-weight: bold;
+                box-shadow: 6px 6px 6px #F4E375;
+        }
+        button.danger:hover {
+                background-color: #F92900;
+                color: white;
+                border-color: #C29713;
+                border-radius: 12px;
+                text-align: center;
+                display: inline-block;
+                font-size: 18px;
+                font-weight: bold;
+        }
+        button:disabled, button.disable {
+                            background-color: #D92A2A; 
+                border: solid 1px transparent;
+                border-color: #6E791A;
+                padding-top: 5px;
+                padding-left: 5px;
+                padding-right: 10px;
+                padding-bottom: 10px;
+                width: 150px;
+                color: white;
+                border-radius: 12px;
+                height: 55px;
+                text-align: center;
+                cursor: default;
+                display: inline-block;
+                font-size: 18px;
+                font-weight: bold;
+                box-shadow: 6px 6px 6px #F4E375;
+                display:block;
         }
         .nounderline {
           text-decoration: none !important

@@ -35,4 +35,7 @@ class Mood extends Model
                 ->orWhereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) = '$date'" ))                
                 ->where("id_users",Auth::User()->id)->orderByRaw("unix_timestamp(date_end) - unix_timestamp(date_start)  DESC")->get();
     }
+    public static function showDescription(int $idMood) {
+        return self::select("what_work")->where("id",$idMood)->first();
+    }
 }

@@ -16,4 +16,8 @@ class Usee extends Model
         return self::selectRaw("date")->where("id_users",Auth::User()->id)->where("id_products",$idProduct)
                 ->where("date",">=",date("Y-m-d H:i:s", strtotime($date )- 80))->where("date","<=",$date)->first();        
     }
+    public static function ifExistUsee(string $dateStart, string $dateEnd, int $idUsers) {
+        return self::selectRaw("date")->where("id_users",$idUsers)
+                ->where("date",">=",$dateStart)->where("date","<=",$dateEnd)->first();    
+    }
 }
