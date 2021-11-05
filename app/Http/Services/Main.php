@@ -41,10 +41,18 @@ class Main {
      */
     public function createDayColorMood($year,$month,$day) {
         $listMood = [];
-        $dayMonth = calendar::checkMonth($year,$month);
-        for ($i=0;$i <= $dayMonth;$i++) {
-            $this->listMood[$i] = \App\Models\Mood::sumMood($year . "-" . $month . "-" . $day, Auth::User()->start_day,$this->IdUsers);
-            $this->listColor[$i] = $this->setColor($this->listMood[$i]);
+        //print $month;
+        $dayMonth = calendar::checkMonth($month,$year);
+        //print $dayMonth;
+        for ($i=0;$i < $dayMonth;$i++) {
+            $this->listMood[$i] = \App\Models\Mood::sumMood($year . "-" . $month . "-" . ($i+1), Auth::User()->start_day,$this->IdUsers);
+            if (empty($this->listMood[$i])) {
+                $this->listColor[$i] = 10000;
+            }
+            else {
+
+                $this->listColor[$i] = $this->setColor($this->listMood[$i]->sum_mood);
+            }
         }
         //return $listMood;
     }

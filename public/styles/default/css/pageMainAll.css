@@ -82,6 +82,7 @@ div.level {
     margin: 9px;
         box-shadow: 0 0 8px 2px #5C5B04;
     border-radius: 15px;
+    text-align: center;
 }
 div.level-10 {
     
@@ -228,7 +229,7 @@ div.level9 {
 }
 div.level10 {
     
-    background-color: #4c7701;
+    background-color: #08F608;
 
 
     color: black;

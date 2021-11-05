@@ -1,4 +1,10 @@
-        <div id="showMood" class="formAddMood borderMood">
+@if (count($listMood) ==0) 
+
+
+
+@else
+
+<div id="showMood" class="formAddMood borderMood">
             
               <div class='titleMoodShow mood'>
                             NASTROJE
@@ -149,3 +155,5 @@
                 @endforeach
             </table>
         </div>
+
+@endif

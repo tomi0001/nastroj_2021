@@ -10,6 +10,12 @@
 
     
     @include('Users.Main.calendar')<br>
+    
+    
+    
+    @include('Users.Main.showAll')
+    
+    
     @include('Users.Main.showMood')
     <br><br><br>
     
@@ -32,6 +38,7 @@
 
     </div>
            
+    
           @include('Users.Main.addMood')
           @include('Users.Main.addSleep')
           @include('Users.Main.addDrugs')

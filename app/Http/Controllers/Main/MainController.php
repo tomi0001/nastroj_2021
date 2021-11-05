@@ -20,6 +20,7 @@ class MainController {
         $listMood = $Mood->downloadMood($Calendar->year, $Calendar->month, $Calendar->day);
         $percent =  Mood::sortMood($Calendar->year . "-" . $Calendar->month . "-" .  $Calendar->day,Auth::User()->start_day,Auth::User()->id);
         $percent = $Mood->setPercent($percent);
+        $sumAll = \App\Models\Mood::sumAll($Calendar->year . "-" . $Calendar->month . "-" . $Calendar->day, Auth::User()->start_day,Auth::User()->id);
         //$listAction = Action::selectAction(Auth::User()->id);
         $Mood->createDayColorMood($Calendar->year, $Calendar->month, $Calendar->day);
         return View("Users.Main.main")->with("text_month",$Calendar->text_month)
@@ -36,7 +37,9 @@ class MainController {
                                 ->with("back_year",$Calendar->back_year)
                                 ->with("next_year",$Calendar->next_year)
                                 ->with("listMood",$listMood)
-                                ->with("percent",$percent);
+                                ->with("percent",$percent)
+                                ->with("sumAll",$sumAll);
+                                //->with("date",$Calendar->year . "-" .  $Calendar->month . "-" .  $Calendar->day);
                                 //->with("listAction",$listAction);
         
     }

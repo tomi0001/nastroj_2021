@@ -315,4 +315,18 @@ div.actionMainselected {
         .nounderline {
           text-decoration: none !important
         }
+        
+        
+        div.sumMood {
+            width: 400px;
+            height: 200px;
+            background-color: rgba(223, 223, 20, 0.59);
+            border-radius: 20px;
+            padding: 22px;
+            margin: 9px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        
 }
