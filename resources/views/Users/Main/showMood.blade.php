@@ -1,10 +1,6 @@
-@if (count($listMood) ==0) 
 
 
-
-@else
-
-<div id="showMood" class="formAddMood borderMood">
+<div id="showmood" class="formAddMood borderMood">
             
               <div class='titleMoodShow mood'>
                             NASTROJE
@@ -156,4 +152,3 @@
             </table>
         </div>
 
-@endif

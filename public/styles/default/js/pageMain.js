@@ -204,6 +204,37 @@ function SwitchMenuMoodAdd(type) {
     }
 }
 
+
+function SwitchMenuMoodShow(type) {
+    switch(type) {
+        case 'mood': 
+            $("#showmood").css("display","block");
+            $("#moodShowSelected").addClass("linkSelected");
+            schitchMenuMoodShowDezactived(['drugs',"action"]);
+            sessionSet("mood");
+            
+            break;
+        case 'drugs':
+            $("#showdrugs").css("display","block");
+            $("#drugsShowSelected").addClass("linkSelected");
+            schitchMenuMoodShowDezactived(['mood',"action"]);
+            sessionSet("drugs");
+            break;
+        case 'action':
+            $("#showaction").css("display","block");
+            $("#actionShowSelected").addClass("linkSelected");
+            schitchMenuMoodShowDezactived(['mood',"drugs"]);
+            sessionSet("action");
+            break;
+    }    
+}
+
+function schitchMenuMoodShowDezactived(type) {
+    for (var i = 0;i < type.length;i++) {
+        $("#show" + type[i]).css("display","none");
+        $("#" + type[i] + "ShowSelected").removeClass("linkSelected");
+    }    
+}
 function schitchMenuMoodDezactived(type) {
     for (var i = 0;i < type.length;i++) {
         $("#" + type[i]).css("display","none");

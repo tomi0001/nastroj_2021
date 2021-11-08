@@ -15,9 +15,17 @@
     
     @include('Users.Main.showAll')
     
-    
-    @include('Users.Main.showMood')
+    @include ('Users.Main.showMenu')
+
+    @if (!empty($sumAll) )
+        @include('Users.Main.showMood')
+    @else
+        sdsdfd
+    @endif
     <br><br><br>
+    
+    
+
     
     
     <div class="menuSelectAddMain">
