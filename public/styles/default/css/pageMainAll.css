@@ -1,5 +1,11 @@
 
-
+#calendar {
+    
+    box-shadow: 0px 31px 17px -6px rgba(64,66,29,0.7);
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 25px;
+}
 
 
 
@@ -234,6 +240,160 @@ div.level10 {
 
     color: black;
 }
+
+
+div.cellBorder {
+    border-radius: 20px;
+    box-shadow: 0px 0px 4px 3px rgba(64,66,29,0.47);
+}
+div.cell100 {
+
+    background-color: #A55188;
+    
+    
+    
+}
+div.cell-10 {
+    
+    background-color: #15190f;
+   
+   
+   
+}
+div.cell-9 {
+    
+    background-color: #242423;
+   
+   
+}
+div.cell-8 {
+    
+    background-color: #41403F;
+   
+   
+   
+}
+div.cell-7 {
+    
+    background-color: #5C5B59;
+   
+    
+    
+}
+div.cell-6 {
+    
+    background-color: #72716F;
+    
+    
+    
+}
+
+div.cell-5 {
+    
+    background-color: #868273;
+    
+    
+    
+}
+div.cell-4 {
+    
+    background-color: #979F87;
+    
+    
+}
+
+div.cell-3 {
+    
+    background-color: #A8B298;
+    
+    
+}
+div.cell-2 {
+    
+    background-color: #C3CCB5;
+    
+    
+    
+}
+div.cell-1 {
+    
+    background-color: #E2E3C3;
+    
+    
+    
+}
+div.cell0 {
+    
+    background-color: white;
+    
+    
+    
+}
+div.cell1 {
+    
+    background-color: #F4F7B4;
+   
+    
+    
+}
+div.cell2 {
+    
+    background-color: #EEF395;
+   
+    
+    
+}
+div.cell3 {
+    
+    background-color: #F0F589;
+   
+   
+   
+}
+div.cell4 {
+    
+    background-color: #EFF66E;
+    
+    
+   
+}
+div.cell5 {
+    
+    background-color: #F2FA50;
+    
+    
+    
+}
+div.cell6 {
+    
+    background-color: #F4FF23;
+    
+    
+    
+}
+div.cell7 {
+    
+    background-color: #CAFB26;
+    
+}
+div.cell8 {
+    
+    background-color: #A8EB2D;
+
+}
+div.cell9 {
+    
+    background-color: #A7F400;
+  
+    
+}
+div.cell10 {
+    
+    background-color: #39F400;
+
+}
+
+
 div.levelSleep {
         background-color: #AD15CF;
 

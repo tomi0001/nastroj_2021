@@ -1,13 +1,13 @@
 /*
  * copyright 2021 Tomasz Leszczyński tomi0001@gmail.com
  */
-
+var nameClass=  "";
 function calendarOn(id) {
-    
-    $("#" + id).removeClass("cell10000").addClass("cell_selected");
+    nameClass = $("#" + id).attr('class');
+    $("#" + id).removeClass(nameClass).addClass("cell_selected");
 }
 function calendarOff(id) {
-    $("#" + id).removeClass("cell_selected").addClass("cell10000");
+    $("#" + id).removeClass("cell_selected").addClass(nameClass);
 }
 function LoadPage(url) {
     window.location.replace(url);

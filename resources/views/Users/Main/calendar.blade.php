@@ -1,4 +1,4 @@
-
+<div id="calendar">
 
 	<table  align=center class='kalendar'>
 	  <tr>
@@ -15,7 +15,9 @@
 	  </tr>
 	  <tbody>
 
-
+@php
+$tmp = -10;
+@endphp
   @while ( $day2 <= $how_day_month) 
 
     <tr class='trCalendar'>
@@ -34,7 +36,7 @@
 
             @else
      
-                <div onmouseover='calendarOn("day_{{$day2}}")' onmouseout='calendarOff("day_{{$day2}}")' align=center id='day_{{$day2}}' class="cell{{$color[$day2-1]}}" onclick="LoadPage('{{route('users.main')}}/{{$year}}/{{$month}}/{{$day2}}')"><a  class="no_active" href="{{route('users.main')}}/{{$year}}/{{$month}}/{{$day2}}  ">{{$day2}}</a></div>
+                <div onmouseover='calendarOn("day_{{$day2}}")' onmouseout='calendarOff("day_{{$day2}}")' align=center id='day_{{$day2}}' class="cell{{$color[$day2-1]}} cell cellBorder" onclick="LoadPage('{{route('users.main')}}/{{$year}}/{{$month}}/{{$day2}}')"><a  class="no_active" href="{{route('users.main')}}/{{$year}}/{{$month}}/{{$day2}}  ">{{$day2}}</a></div>
                 
             @endif
             </td>
@@ -61,6 +63,8 @@
   <tr>
 
 </table>
+</div>
+<br>
 <div class="row center">
   <div class="col-md-0 col-lg-2 "></div>
   <div class="col-md-3 col-xs-3 col-lg-2">

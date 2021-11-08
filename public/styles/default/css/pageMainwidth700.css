@@ -1,4 +1,7 @@
 @media (min-width: 700px) and (max-width: 1210px) { 
+        #calendar {
+        width: 100%;
+    }
         div.menuMood {
            width: 25%;
            margin-left: 1px;
