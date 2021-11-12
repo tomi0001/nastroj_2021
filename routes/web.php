@@ -53,6 +53,9 @@ Route::get('/users.addMood', [App\Http\Controllers\Mood\MoodController::class, '
                     
                     
             
+            Route::get("/ajax/showAllSubstance", [App\Http\Controllers\Main\MainController::class, 'showAllSubstance'])
+                    ->name("ajax.showAllSubctance")->middleware('auth')->middleware('can:users');
+            
             
             Route::get('/users4/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\Search\SearchController::class, 'index2'])->name('users.search')
                     ->middleware('auth')->middleware('can:users');

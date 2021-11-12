@@ -11,13 +11,17 @@ use App\Http\Services\Calendar;
 use App\Http\Services\Main;
 use App\Models\Action;
 use App\Models\Mood;
+use App\Models\Usee;
+use App\Http\Services\Product;
 use Auth;
 class MainController {
     public function index($year = "",$month  ="",$day = "",$action = "") {   
         $Calendar = new Calendar($year, $month, $day, $action);
         $Mood = new Main;
+        $Drugs = new Product;
         //print Auth::User()->start_day;
         $listMood = $Mood->downloadMood($Calendar->year, $Calendar->month, $Calendar->day);
+        $listDrugs = Usee::selectUsee($Calendar->year . "-" . $Calendar->month . "-" . $Calendar->day, Auth::User()->id, Auth::User()->start_day);
         $percent =  Mood::sortMood($Calendar->year . "-" . $Calendar->month . "-" .  $Calendar->day,Auth::User()->start_day,Auth::User()->id);
         $percent = $Mood->setPercent($percent);
         $sumAll = \App\Models\Mood::sumAll($Calendar->year . "-" . $Calendar->month . "-" . $Calendar->day, Auth::User()->start_day,Auth::User()->id);
@@ -38,7 +42,8 @@ class MainController {
                                 ->with("next_year",$Calendar->next_year)
                                 ->with("listMood",$listMood)
                                 ->with("percent",$percent)
-                                ->with("sumAll",$sumAll);
+                                ->with("sumAll",$sumAll)
+                                ->with("listDrugs",$listDrugs);
                                 //->with("date",$Calendar->year . "-" .  $Calendar->month . "-" .  $Calendar->day);
                                 //->with("listAction",$listAction);
         

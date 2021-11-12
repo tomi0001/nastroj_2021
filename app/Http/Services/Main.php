@@ -57,30 +57,9 @@ class Main {
         //return $listMood;
     }
     public function downloadMood($year,$month,$day) {
-        $Moods = new MoodModel;
+         ;
         //print Auth::User()->start_day;
-        $listMood = $Moods
-                ->selectRaw("moods.id as id")
-                //->selectRaw(DB::Raw("(DATE(IF(HOUR(moods.date_start) >= '" . Auth::User()->start_day . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) as dat"))
-                ->selectRaw("moods.date_start as date_start")
-                ->selectRaw("moods.date_end as date_end")
-                ->selectRaw("moods.level_mood as level_mood")
-                ->selectRaw("moods.level_anxiety as level_anxiety")
-                ->selectRaw("moods.level_nervousness as level_nervousness")
-                ->selectRaw("moods.level_stimulation  as level_stimulation")
-                ->selectRaw("moods.epizodes_psychotik as epizodes_psychotik")
-                ->selectRaw("moods.type as type")
-                //->selectRaw("(unix_timestamp(date_end)  - unix_timestamp(date_start)) as division")
-                ->selectRaw(" ((unix_timestamp(date_end)  - unix_timestamp(date_start)) * level_mood) as average_mood")
-                ->selectRaw("((unix_timestamp(date_end)  - unix_timestamp(date_start)) * level_anxiety) as average_anxiety")
-                ->selectRaw("((unix_timestamp(date_end)  - unix_timestamp(date_start)) * level_nervousness) as average_nervousness")
-                ->selectRaw("((unix_timestamp(date_end)  - unix_timestamp(date_start)) * level_stimulation) as average_stimulation")
-                ->selectRaw("moods.what_work  as what_work ")
-                ->where("moods.id_users",$this->IdUsers)
-                ->whereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_start) >= '" . Auth::User()->start_day . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) = '" . $year . "-" . $month . "-" . $day . "'" ))
-                ->orWhereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . Auth::User()->start_day . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) = '" . $year . "-" . $month . "-" . $day . "'" ))
-                ->orderBy("moods.date_start")
-                ->get();
+        $listMood = MoodModel::downloadMood($year . "-" . $month . "-" . $day, Auth::User()->start_day, $this->IdUsers);
         return $listMood;
    
     }

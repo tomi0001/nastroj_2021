@@ -94,6 +94,7 @@
                 </tr>
                 <tr>
                     <td colspan="7" class="moodButton">
+                        @if ($list->type == "mood")
                         <table  class="tableCenter"  >
                             <tr>
                                 <td style="padding-right: 7px;">
@@ -144,6 +145,41 @@
                                 </td>  
                             </tr>
                         </table>
+                        @else
+                        <table  class="tableCenter"  >
+                            <tr>
+
+
+    
+                                
+                                <td style="padding-right: 7px;">
+                                    
+                                    @if ((\App\Models\Mood::showDescription($list->id)->what_work != "" ))
+                                        <button class="btn-sleep main" onclick="showDrugs("")">pokaż  opis</button>
+                                    @else
+                                        <button type="button" class="disable "  disabled>nie było opisu</button>
+                                    @endif
+                                </td>    
+                                <td style="padding-right: 7px;">
+                                    
+                                        <button class="btn-sleep main-long" onclick="showDrugs("")">Edytuj Sen</button>
+                                
+                                </td>    
+
+                                <td style="padding-right: 7px;">
+                                    
+                                        <button class="btn-sleep main-long" onclick="showDrugs("")">Edytuj Dodaj opis</button>
+                                
+                                </td> 
+
+                                <td style="padding-right: 7px;">
+                                    
+                                        <button class="danger" onclick="showDrugs("")">Usuń sen</button>
+                                
+                                </td>  
+                            </tr>
+                        </table>
+                        @endif
                     </td>
                 </tr>
                 

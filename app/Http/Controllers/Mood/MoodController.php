@@ -34,9 +34,9 @@ class MoodController {
             else {
                 $timeEnd = $request->get("dateEnd") . " " .  $request->get("timeEnd");
             }
-            
+            $Mood->setVariableMood($request);
             $Mood->checkError($timeStart,$timeEnd);
-            $Mood->checkAddMood($request);
+            $Mood->checkAddMood($Mood->moodsVariable);
             if (!empty($request->get("idActions")) ) {
                 $Mood->checkErrorAction($request);
             }
@@ -44,7 +44,7 @@ class MoodController {
                 return View("ajax.error")->with("error",$Mood->errors);
             }
             else {
-                $id = $Mood->saveMood($request,$timeStart,$timeEnd);
+                $id = $Mood->saveMood($request,$timeStart,$timeEnd,$Mood->moodsVariable);
             }
              
 

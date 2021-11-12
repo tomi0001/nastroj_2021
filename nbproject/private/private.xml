@@ -95,10 +95,12 @@
             <file>file:/var/www/html/nastroj_2021/app/Http/Middleware/RedirectIfAuthenticated.php</file>
             <file>file:/var/www/html/nastroj_2021/config/database.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Mood.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showDrugs.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/database/migrations/2021_01_12_1111116_create_substances_groups_table.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showMood.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/config/services.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Sleep/SleepController.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showMenu.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Providers/AppServiceProvider.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/auth/register.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/calendar.blade.php</file>

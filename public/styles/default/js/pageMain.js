@@ -126,6 +126,9 @@ function addMood(url) {
               $("#formAddMood").serialize()
             ,
             dataType : "html",
+            beforeSend: function() { $('#buttonMoodAdd').addClass("spinner-border"); },
+
+        complete: function() { $('#buttonMoodAdd').removeClass("spinner-border"); }
     })
     .done(function(response) {
         $("#formResult").html(response);
@@ -136,6 +139,7 @@ function addMood(url) {
     
 
     })
+
     .fail(function() {
         $("#formResult").html( "<div class='ajaxError'>Wystąpił błąd</div>" );
     })
@@ -206,25 +210,26 @@ function SwitchMenuMoodAdd(type) {
 
 
 function SwitchMenuMoodShow(type) {
+    
     switch(type) {
         case 'mood': 
             $("#showmood").css("display","block");
             $("#moodShowSelected").addClass("linkSelected");
             schitchMenuMoodShowDezactived(['drugs',"action"]);
-            sessionSet("mood");
+            sessionSet("moodShow");
             
             break;
         case 'drugs':
             $("#showdrugs").css("display","block");
             $("#drugsShowSelected").addClass("linkSelected");
             schitchMenuMoodShowDezactived(['mood',"action"]);
-            sessionSet("drugs");
+            sessionSet("drugsShow");
             break;
         case 'action':
             $("#showaction").css("display","block");
             $("#actionShowSelected").addClass("linkSelected");
             schitchMenuMoodShowDezactived(['mood',"drugs"]);
-            sessionSet("action");
+            sessionSet("actionShow");
             break;
     }    
 }

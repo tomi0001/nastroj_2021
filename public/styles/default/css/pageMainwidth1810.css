@@ -474,8 +474,16 @@ div.actionMainselected {
                 
         }
         
-        #showMood {
+        #showmood {
             width: 93%;
+            background-color: rgba(210, 210, 44, 0.61);
+            min-height: 350px;
+            border-radius: 25px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #showdrugs {
+            width: 80%;
             background-color: rgba(210, 210, 44, 0.61);
             min-height: 350px;
             border-radius: 25px;

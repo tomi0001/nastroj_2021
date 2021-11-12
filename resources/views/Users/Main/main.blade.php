@@ -16,11 +16,12 @@
     @include('Users.Main.showAll')
     
     @include ('Users.Main.showMenu')
-
+    @include('Users.Main.showMood')
+    @include('Users.Main.showDrugs')
     @if (!empty($sumAll) )
-        @include('Users.Main.showMood')
+        <body onload="SwitchMenuMoodShow('mood')">
     @else
-        sdsdfd
+        <body onload="SwitchMenuMoodShow('drugs')">
     @endif
     <br><br><br>
     

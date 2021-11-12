@@ -11,17 +11,20 @@ class Mood extends Model
     use HasFactory;
     public static function sumMood(string $date,  $startDay,int $idUsers) {
         return self::selectRaw(DB::Raw("(DATE(IF(HOUR(moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) as dat"))
+                ->selectRaw(DB::Raw("(DATE(IF(HOUR(moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) as dat2"))
                 ->selectRaw(" (sum( ( unix_timestamp(date_end) - unix_timestamp(date_start) ) * level_mood)  / sum( unix_timestamp(date_end) - unix_timestamp(date_start) ) ) as sum_mood ")
                 ->whereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) = '$date'" ))
                 ->orWhereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) = '$date'" ))                
                 ->where("id_users",$idUsers)
                 ->where("type","mood")
                 ->groupBy("dat")
+                ->groupBy("dat2")
                 ->first();
     }
     public static function sumAll(string $date,  $startDay,int $idUsers) {
         //print $date;
         return self::selectRaw(DB::Raw("(DATE(IF(HOUR(moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) as dat"))
+                ->selectRaw(DB::Raw("(DATE(IF(HOUR(moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) as dat2"))
                 ->selectRaw(" (sum( ( unix_timestamp(date_end) - unix_timestamp(date_start) ) * level_mood)  / sum( unix_timestamp(date_end) - unix_timestamp(date_start) ) ) as sum_mood ")
                 ->selectRaw(" (sum( ( unix_timestamp(date_end) - unix_timestamp(date_start) ) * level_anxiety)  / sum( unix_timestamp(date_end) - unix_timestamp(date_start) ) ) as sum_anxiety ")
                 ->selectRaw(" (sum( ( unix_timestamp(date_end) - unix_timestamp(date_start) ) * level_nervousness )  / sum( unix_timestamp(date_end) - unix_timestamp(date_start) ) ) as sum_nervousness ")
@@ -31,6 +34,7 @@ class Mood extends Model
                 ->where("type","mood")
                 ->where("id_users",$idUsers)
                 ->groupBy("dat")
+                ->groupBy("dat2")
                 ->first();
     }
 
@@ -51,5 +55,28 @@ class Mood extends Model
     }
     public static function showDescription(int $idMood) {
         return self::select("what_work")->where("id",$idMood)->first();
+    }
+    public static function downloadMood(string $date,int $startDay,int $IdUsers) {
+        return self::selectRaw("moods.id as id")
+                //->selectRaw(DB::Raw("(DATE(IF(HOUR(moods.date_start) >= '" . Auth::User()->start_day . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) as dat"))
+                ->selectRaw("moods.date_start as date_start")
+                ->selectRaw("moods.date_end as date_end")
+                ->selectRaw("moods.level_mood as level_mood")
+                ->selectRaw("moods.level_anxiety as level_anxiety")
+                ->selectRaw("moods.level_nervousness as level_nervousness")
+                ->selectRaw("moods.level_stimulation  as level_stimulation")
+                ->selectRaw("moods.epizodes_psychotik as epizodes_psychotik")
+                ->selectRaw("moods.type as type")
+                //->selectRaw("(unix_timestamp(date_end)  - unix_timestamp(date_start)) as division")
+                ->selectRaw(" ((unix_timestamp(date_end)  - unix_timestamp(date_start)) * level_mood) as average_mood")
+                ->selectRaw("((unix_timestamp(date_end)  - unix_timestamp(date_start)) * level_anxiety) as average_anxiety")
+                ->selectRaw("((unix_timestamp(date_end)  - unix_timestamp(date_start)) * level_nervousness) as average_nervousness")
+                ->selectRaw("((unix_timestamp(date_end)  - unix_timestamp(date_start)) * level_stimulation) as average_stimulation")
+                ->selectRaw("moods.what_work  as what_work ")
+                ->where("moods.id_users",$IdUsers)
+                ->whereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) = '" . $date . "'" ))
+                ->orWhereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) = '" . $date . "'" ))
+                ->orderBy("moods.date_start")
+                ->get();
     }
 }

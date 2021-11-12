@@ -9,9 +9,7 @@
            <div class="linkShow  action" id='actionShowSelected' onclick="SwitchMenuMoodShow('action')">
             POKAŻ AKCJE
            </div>
-        @php
-            $typMood = 'mood';
-        @endphp
+
         @else
             <div class="linkShow   disable" id='moodShowSelected' >
                 NIE BYŁO NASTROJI
@@ -22,9 +20,7 @@
            <div class="linkShow  action" id='actionShowSelected' onclick="SwitchMenuMoodShow('action')">
             POKAŻ AKCJE
            </div>
-        @php
-            $typMood = 'drugs';
-        @endphp
+
         @endif
 
     </div>

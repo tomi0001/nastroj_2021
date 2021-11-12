@@ -20,29 +20,62 @@ class Mood {
     public $dateStart;
     public $dateEnd;
     public $errors = [];
-    public function saveMood(Request $request,string $dateStart,string $dateEnd) {
+    public $moodsVariable = [];
+    public function saveMood(Request $request,string $dateStart,string $dateEnd,array $arrayMood) {
         $Mood = new MoodModel;
         $Mood->date_start = $dateStart . ":00";
         $Mood->date_end = $dateEnd . ":00";
-        if ($request->get("moodLevel") != "") {
-            $Mood->level_mood = $request->get("moodLevel");
-        }
-        if ($request->get("anxietyLevel") != "") {
-            $Mood->level_anxiety = $request->get("anxietyLevel");
-        }
-        if ($request->get("voltageLevel") != "") {
-            $Mood->level_nervousness = $request->get("voltageLevel");
-        }
-        if ($request->get("stimulationLevel") != "") {
-            $Mood->level_stimulation = $request->get("stimulationLevel");
-        }
-        if ($request->get("epizodesPsychotic") != "") {
-            $Mood->epizodes_psychotik = $request->get("epizodesPsychotic");
-        }
+
+            $Mood->level_mood = $arrayMood["mood"];
+
+
+            $Mood->level_anxiety = $arrayMood["anxiety"];
+
+
+            $Mood->level_nervousness = $arrayMood["voltage"];
+
+
+            $Mood->level_stimulation = $arrayMood["stimulation"];
+
+
+            $Mood->epizodes_psychotik = $arrayMood["epizodesPsychotic"];
+
         $Mood->what_work = str_replace("\n", "<br>", $request->get("whatWork"));
         $Mood->id_users = Auth::User()->id;
         $Mood->save();
         return $Mood->id;
+    }
+    public function setVariableMood(Request $request) {
+        if ($request->get("moodLevel") != "") {
+            $this->moodsVariable["mood"] = $request->get("moodLevel");
+        }
+        else {
+            $this->moodsVariable["mood"] = 0;
+        }
+        if ($request->get("anxietyLevel") != "") {
+            $this->moodsVariable["anxiety"] = $request->get("anxietyLevel");
+        }
+        else {
+            $this->moodsVariable["anxiety"] = 0;
+        }
+        if ($request->get("voltageLevel") != "") {
+            $this->moodsVariable["voltage"] = $request->get("voltageLevel");
+        }
+        else {
+            $this->moodsVariable["voltage"] = 0;
+        }
+        if ($request->get("stimulationLevel") != "") {
+            $this->moodsVariable["stimulation"] = $request->get("stimulationLevel");
+        }
+        else {
+            $this->moodsVariable["stimulation"] = 0;
+        }
+        if ($request->get("epizodesPsychotic") != "") {
+            $this->moodsVariable["epizodesPsychotic"] = $request->get("epizodesPsychotic");
+        }
+        else {
+            $this->moodsVariable["epizodesPsychotic"] = 0;
+        }
     }
     public function checkError( $dateStart, $dateEnd) {
             if ($dateStart == "") {
@@ -69,24 +102,24 @@ class Mood {
         }
        
     }
-    public function checkAddMood(Request $request) {
-        if (($request->get("moodLevel") != "" and $request->get("moodLevel") < -20 or $request->get("moodLevel") > 20) or (string)(float) $request->get("moodLevel") !== $request->get("moodLevel") ) {
+    public function checkAddMood(array $mood) {
+        if (( $mood["mood"] < -20 or $mood["mood"] > 20) or ( (string)(float) $mood["mood"] !== $mood["mood"]  and ($mood["mood"] != "") ) ) {
             array_push($this->errors,"Nastroj musi mieścić się w zakresie od -20 do +20");
         }
         
-        if ($request->get("anxietyLevel") != "" and $request->get("anxietyLevel") < -20 or $request->get("anxietyLevel") > 20  or (string)(float) $request->get("anxietyLevel") !== $request->get("anxietyLevel") ) {
+        if ($mood["anxiety"] < -20 or $mood["anxiety"] > 20  or  ( (string)(float) $mood["anxiety"] !== $mood["anxiety"]  and ($mood["anxiety"] != "") ) )   {
             array_push($this->errors,"Lęk musi mieścić się w zakresie od -20 do +20");
         }
         
-        if ($request->get("voltageLevel") != "" and $request->get("voltageLevel") < -20 or $request->get("voltageLevel") > 20  or (string)(float) $request->get("voltageLevel") !== $request->get("voltageLevel") ) {
+        if ($mood["voltage"] < -20 or $mood["voltage"] > 20  or  ( (string)(float) $mood["voltage"] !== $mood["voltage"] ) and ($mood["voltage"] != "") ) {
             array_push($this->errors,"Napięcie musi mieścić się w zakresie od -20 do +20");
         }
         
-        if (($request->get("stimulationLevel") != "" and $request->get("stimulationLevel") < -20 or $request->get("stimulationLevel") > 20) or (string)(float) $request->get("stimulationLevel") !== $request->get("stimulationLevel") ) {
+        if (($mood["stimulation"] < -20 or $mood["stimulation"] > 20) or  ( (string)(float) $mood["stimulation"] !== $mood["stimulation"]  and ($mood["stimulation"] != "") ) ) {
             array_push($this->errors,"Pobudzenie musi mieścić się w zakresie od -20 do +20");
         }
         
-        if (($request->get("epizodesPsychotic") != "" and $request->get("epizodesPsychotic") < 0)  or (string)(int) $request->get("epizodesPsychotic") !== $request->get("epizodesPsychotic") ) {
+        if (( $mood["epizodesPsychotic"] < 0)  or ( (string)(int) $mood["epizodesPsychotic"] !== $mood["epizodesPsychotic"] ) and ($mood["epizodesPsychotic"] != "")) {
             array_push($this->errors,"Liczba Epizodów psychotycznych musi być wieksza lub równa 0");
         }
 
