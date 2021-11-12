@@ -24,19 +24,18 @@
                 </div>
             </div>
             <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
-                                <div class="sumMood">
-                    <div class="level level9" style="height: 20%; padding-top: 3px;">
-                                Poziom nastroju 1
-                    </div>
-                    <div class="level3 level " style="height: 20%; padding-top: 3px;">
-                                Poziom lęku 1
-                    </div>
-                    <div class="level-3 level " style="height: 20%; padding-top: 3px;">
-                                Poziom lę 1
-                    </div>
-                    <div class="level-4 level" style="height: 20%; padding-top: 3px;">
-                                Poziom lęku 1
-                    </div>
+                <div class="sumDrugs">
+                    @if (count($listDrugs) > 0 )
+                        <div class='sumDrugsAt'>
+                            @foreach ($listSubstance as $list)
+                                <div class='positionDrugs'>{{$list->name}}</div>
+                            @endforeach
+                        </div>
+                    @else
+                        <div class="errorMainMessage">
+                            Nie było żadnych leków dla tego dnia
+                        </div>
+                    @endif
                 </div>
             </div>
             <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">

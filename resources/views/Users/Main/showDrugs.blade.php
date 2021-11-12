@@ -68,14 +68,14 @@
                             <tr>
                                 <td style="padding-right: 7px;">
                                    
-                                        <button class="btn-mood main" onclick="showDrugs("")">pokaż opis</button>
+                                        <button class="btn-drugs main" onclick="showDrugs("")">pokaż opis</button>
                                     
                                      
                                     
                                 </td>
                                 <td style="padding-right: 7px;">
                                    
-                                        <button class="btn-mood main" onclick="showDrugs("")">dodaj opis</button>
+                                        <button class="btn-drugs main" onclick="showDrugs("")">dodaj opis</button>
                                     
                                      
                                     
@@ -96,7 +96,7 @@
                                 </td>
                                 <td style="padding-right: 7px;">
                                    
-                                        <button class="btn-mood main" onclick="showDrugs("")">edytuj wpis</button>
+                                        <button class="btn-drugs main" onclick="showDrugs("")">edytuj wpis</button>
                                     
                                      
                                     

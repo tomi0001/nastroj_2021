@@ -34,4 +34,14 @@ class Usee extends Model
                 ->get();
                 
     }
+    public static function listSubstnace(string $date, int $idUsers,int $startDay) {
+        return self::join("products","products.id","usees.id_products")
+                ->join("substances_products","substances_products.id_products","products.id")
+                ->join("substances","substances.id","substances_products.id_substances")
+                ->selectRaw("substances.name as name")
+                ->where("usees.id_users",$idUsers)
+                ->whereRaw(DB::Raw("(DATE(IF(HOUR(    usees.date) >= '" . $startDay . "', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ) = '" . $date . "' "))
+                ->groupBy("substances.id")
+                ->get();     
+    }
 }

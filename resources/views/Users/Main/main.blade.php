@@ -20,8 +20,10 @@
     @include('Users.Main.showDrugs')
     @if (!empty($sumAll) )
         <body onload="SwitchMenuMoodShow('mood')">
-    @else
+    @elseif (count($listDrugs) > 0)
         <body onload="SwitchMenuMoodShow('drugs')">
+    @else
+        <body onload="SwitchMenuMoodShow('action')">
     @endif
     <br><br><br>
     

@@ -28,10 +28,12 @@
             <file>file:/var/www/html/nastroj_2021/app/Http/Middleware/Authenticate.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Auth/RegisterController.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Actions_day.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Models/Substance.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Providers/BroadcastServiceProvider.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Providers/RouteServiceProvider.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Providers/AuthServiceProvider.php</file>
             <file>file:/var/www/html/nastroj_2021/config/view.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Models/Substances_product.php</file>
             <file>file:/var/www/html/nastroj_2021/database/migrations/2016_12_13_000000_create_actions_plans_table.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/User.php</file>
             <file>file:/var/www/html/nastroj_2021/config/session.php</file>

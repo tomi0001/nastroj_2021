@@ -78,7 +78,7 @@ table.moodShow {
 }
 table.drugsShow {
     margin: 10px;
-    background-color: rgba(97, 235, 70, 0.7);
+    background-color: rgba(135, 241, 28, 0.4);
     color: #775807;
     width: 97%;
 }
@@ -88,7 +88,7 @@ table.moodShow, td.showMood, td.moodButton {
 
 }
 table.drugsShow, td.drugsShow, td.drugsButton {
-   border: 2px solid #134F06;
+   border: 2px solid #0C5204;
    border-collapse: collapse;
 
 }
@@ -97,7 +97,7 @@ td.showMood {
 
 }
 td.showdrugs {
-    border-top: 5px solid #316E25;
+    border-top: 5px solid #0C5204;
 }
 tr.bold {
     font-weight: bold;
@@ -441,13 +441,14 @@ thead.titleTheadDrugs {
     position: sticky;
     top: 0;
     z-index: 2;
-    background-color: #43DF24;
+    background-color: #4FD240;
 }
 td.moodButton {
     padding: 7px;
     padding-bottom: 30px;
-     border-left: 2px solid #A77906;
-   border-right: 2px solid #A77906;
+     border-left: 2px solid #0C5204;
+   border-right: 2px solid #0C5204;
+   border-bottom: 2px solid #0C5204;
     
 }
 
