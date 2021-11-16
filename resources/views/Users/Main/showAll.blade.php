@@ -39,19 +39,35 @@
                 </div>
             </div>
             <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
-                             <div class="sumMood">
-                    <div class="level level9" style="height: 20%; padding-top: 3px;">
-                                Poziom nastroju 1
-                    </div>
-                    <div class="level3 level " style="height: 20%; padding-top: 3px;">
-                                Poziom lęku 1
-                    </div>
-                    <div class="level-3 level " style="height: 20%; padding-top: 3px;">
-                                Poziom lę 1
-                    </div>
-                    <div class="level-4 level" style="height: 20%; padding-top: 3px;">
-                                Poziom lęku 1
-                    </div>
+                <div class="sumAction">
+                    @if (strTotime($date) <= strToTime(date("Y-m-d") ) )
+                        @if (count($actionForDay) > 0)
+                            <div class='sumDrugsAt'>
+                                @foreach ($actionForDay as $list)
+                                    <div class='positionAction leveAction{{\App\Http\Services\Common::setColorPleasure($list->level_pleasure)}}'>{{$list->name}}</div>
+                                    
+                                <div class='positionAction leveAction0'>{{$list->name}}</div>
+                                <div class='positionAction leveAction2'>{{$list->name}}</div>
+                                <div class='positionAction leveAction3'>{{$list->name}}</div>
+                                <div class='positionAction leveAction4'>{{$list->name}}</div>
+                                <div class='positionAction leveAction5'>{{$list->name}}</div>
+                                <div class='positionAction leveAction6'>{{$list->name}}</div>
+                                <div class='positionAction leveAction7'>{{$list->name}}</div>
+                                <div class='positionAction leveAction8'>{{$list->name}}</div>
+                                <div class='positionAction leveAction9'>{{$list->name}}</div>
+                                <div class='positionAction leveAction10'>{{$list->name}}</div>
+                                @endforeach
+                            </div>
+                        @else
+                            <div class="errorMainMessagesmall">
+                                Nie ma żadnych akcji całodniowych dla tego dnia
+                            </div>
+                        @endif
+                    @else
+                        <div class="errorMainMessage">
+                            
+                        </div>
+                    @endif
                 </div>
             </div>
  

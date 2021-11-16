@@ -31,6 +31,41 @@ input.percentExecuting {
 
    
 }
+div.leveAction0 {
+    background-color:  #282D2E;
+}
+div.leveAction1 {
+    background-color: #405C5E;
+}
+div.leveAction2 {
+    background-color: #347E83;
+}
+div.leveAction3 {
+    background-color: #3F959B;
+}
+div.leveAction4 {
+    background-color: #67B0B6;
+}
+div.leveAction5 {
+    background-color: #87ACAF;
+}
+div.leveAction6 {
+    background-color: #A1C1C3;
+}
+div.leveAction7 {
+    background-color: #ACBCBD;
+}
+div.leveAction8 {
+    background-color: #C9D7D8;
+}
+div.leveAction9 {
+    background-color: #E3ECED;
+}
+div.leveAction10 {
+    background-color: #F7F7F7;
+}
+
+
 div.centerPercent {
     text-align: center;
     margin-left: auto;

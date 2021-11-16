@@ -117,4 +117,39 @@ class Common {
         }        
         return substr($string,0,-2);
     }
+    public  static function setColorPleasure($color) {
+        if ($color <= -16) {
+            return 0;
+        }
+        else if ($color <= -12) {
+            return 1;
+        }
+        else if ($color <= -7) {
+            return 2;
+        }
+        else if ($color <= -4) {
+            return 3;
+        }
+        else if ($color <= -1) {
+            return 4;
+        }
+        else if ($color <= 1) {
+            return 5;
+        }
+        else if ($color <= 5) {
+            return 6;
+        }
+        else if ($color <= 8) {
+            return 7;
+        }
+        else if ($color <= 12) {
+            return 8;
+        }
+        else if ($color <= 16) {
+            return 9;
+        }
+        else if ($color <= 20) {
+            return 10;
+        }
+    }
 }

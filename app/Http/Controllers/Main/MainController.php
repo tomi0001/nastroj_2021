@@ -10,6 +10,7 @@ use Hash;
 use App\Http\Services\Calendar;
 use App\Http\Services\Main;
 use App\Models\Action;
+use App\Models\Actions_day;
 use App\Models\Mood;
 use App\Models\Usee;
 use App\Http\Services\Product;
@@ -19,6 +20,7 @@ class MainController {
         $Calendar = new Calendar($year, $month, $day, $action);
         $Mood = new Main;
         $Drugs = new Product;
+
         //print Auth::User()->start_day;
         $listMood = $Mood->downloadMood($Calendar->year, $Calendar->month, $Calendar->day);
         $listDrugs = Usee::selectUsee($Calendar->year . "-" . $Calendar->month . "-" . $Calendar->day, Auth::User()->id, Auth::User()->start_day);
@@ -28,6 +30,7 @@ class MainController {
         $sumAll = \App\Models\Mood::sumAll($Calendar->year . "-" . $Calendar->month . "-" . $Calendar->day, Auth::User()->start_day,Auth::User()->id);
         //$listAction = Action::selectAction(Auth::User()->id);
         $Mood->createDayColorMood($Calendar->year, $Calendar->month, $Calendar->day);
+        $actionForDay = Actions_day::showActionForAllDay($Calendar->year . "-" . $Calendar->month . "-" .  $Calendar->day,Auth::User()->id);
         return View("Users.Main.main")->with("text_month",$Calendar->text_month)
                                 ->with("year",$Calendar->year)
                                 ->with("day2",1)
@@ -45,7 +48,9 @@ class MainController {
                                 ->with("percent",$percent)
                                 ->with("sumAll",$sumAll)
                                 ->with("listDrugs",$listDrugs)
-                                ->with("listSubstance",$listSubstance);
+                                ->with("listSubstance",$listSubstance)
+                                ->with("actionForDay",$actionForDay)
+                                ->with("date",$Calendar->year . "-" . $Calendar->month . "-" .  $Calendar->day);
                                 //->with("date",$Calendar->year . "-" .  $Calendar->month . "-" .  $Calendar->day);
                                 //->with("listAction",$listAction);
         

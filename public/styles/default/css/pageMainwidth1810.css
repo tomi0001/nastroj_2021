@@ -530,6 +530,15 @@ div.actionMainselected {
             margin-right: auto;    
            
         }
+        div.sumAction {
+           width: 400px;
+            height: 200px;
+            background-color: rgba(64, 190, 215, 0.85);
+            border-radius: 20px;
+            padding: 22px;
+            margin-left: auto;
+            margin-right: auto;       
+        }
         div.sumDrugsAt {
              overflow-y: scroll; 
              width: 98%;
@@ -542,6 +551,20 @@ div.actionMainselected {
             text-align: center;
             padding-top: 18px;
             font-size: 30px;
+            background-color: red;
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 10px;
+            height: 90%;
+            box-shadow: 6px 0  20px 8px rgba(127, 15, 15, 0.8);
+            border-radius: 30px;
+        }
+        div.errorMainMessagesmall {
+            color: white;
+            text-align: center;
+            padding-top: 18px;
+            font-size: 25px;
             background-color: red;
             width: 90%;
             margin-left: auto;
@@ -570,6 +593,17 @@ div.actionMainselected {
             font-weight: bold;
             border-radius: 20px;
             text-align: center;
+        }
+        div.positionAction {
+            width: 100%;
+ 
+            margin-bottom: 6px;
+            height: 30px;
+            color: #CFF5CA;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 20px;
+            text-align: center;     
         }
         div.linkShow {
            
