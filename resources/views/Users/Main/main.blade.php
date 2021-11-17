@@ -19,11 +19,24 @@
     @include('Users.Main.showMood')
     @include('Users.Main.showDrugs')
     @if (!empty($sumAll) )
-        <body onload="SwitchMenuMoodShow('mood')">
+              <script>
+                window.onload=SwitchMenuMoodShow('mood');
+                
+
+            </script>
+        
     @elseif (count($listDrugs) > 0)
-        <body onload="SwitchMenuMoodShow('drugs')">
+            <script>
+                window.onload=SwitchMenuMoodShow('drugs');
+                
+
+            </script>
     @else
-        <body onload="SwitchMenuMoodShow('action')">
+            <script>
+                window.onload=SwitchMenuMoodShow('action');
+                
+
+            </script>
     @endif
     <br><br><br>
     
@@ -56,6 +69,10 @@
           @include('Users.Main.addDrugs')
           @include('Users.Main.addAction')
           <br><br><br><br>
-      <body onload='loadMenuSession()'>
+      
+          <script>
+                    window.onload=loadMenuSession();
+
+            </script>
      
 @endsection

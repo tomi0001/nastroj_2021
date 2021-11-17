@@ -44,18 +44,11 @@
                         @if (count($actionForDay) > 0)
                             <div class='sumDrugsAt'>
                                 @foreach ($actionForDay as $list)
-                                    <div class='positionAction leveAction{{\App\Http\Services\Common::setColorPleasure($list->level_pleasure)}}'>{{$list->name}}</div>
                                     
-                                <div class='positionAction leveAction0'>{{$list->name}}</div>
-                                <div class='positionAction leveAction2'>{{$list->name}}</div>
-                                <div class='positionAction leveAction3'>{{$list->name}}</div>
-                                <div class='positionAction leveAction4'>{{$list->name}}</div>
-                                <div class='positionAction leveAction5'>{{$list->name}}</div>
-                                <div class='positionAction leveAction6'>{{$list->name}}</div>
-                                <div class='positionAction leveAction7'>{{$list->name}}</div>
-                                <div class='positionAction leveAction8'>{{$list->name}}</div>
-                                <div class='positionAction leveAction9'>{{$list->name}}</div>
-                                <div class='positionAction leveAction10'>{{$list->name}}</div>
+                                    
+                                <div class='positionAction leveAction{{$list->level_pleasure}}'>{{$list->name}}</div>
+                                
+
                                 @endforeach
                             </div>
                         @else

@@ -60,6 +60,7 @@
             <file>file:/var/www/html/nastroj_2021/resources/lang/en/pagination.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Common.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/auth/verify.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/auth/passwords/email.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/welcome.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainwidth1810.css</file>
             <file>file:/var/www/html/nastroj_2021/database/migrations/2014_10_12_100000_create_password_resets_table.php</file>

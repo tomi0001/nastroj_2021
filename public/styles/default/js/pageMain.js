@@ -154,8 +154,10 @@ function addMood(url) {
 }
 
 function loadMenuSession() {
+
     switch (sessionStorage.getItem('main')) {
         case 'mood': 
+            
             $("#mood").css("display","block");
             $("#moodSelected").addClass("moodSelected");
             schitchMenuMoodDezactived(['drugs',"action","sleep"]);
@@ -214,26 +216,25 @@ function SwitchMenuMoodAdd(type) {
 
 
 function SwitchMenuMoodShow(type) {
-    
     switch(type) {
         case 'mood': 
             $("#showmood").css("display","block");
             $("#moodShowSelected").addClass("linkSelected");
             schitchMenuMoodShowDezactived(['drugs',"action"]);
-            sessionSet("moodShow");
+            //sessionSet("moodShow");
             
             break;
         case 'drugs':
             $("#showdrugs").css("display","block");
             $("#drugsShowSelected").addClass("linkSelected");
             schitchMenuMoodShowDezactived(['mood',"action"]);
-            sessionSet("drugsShow");
+            //sessionSet("drugsShow");
             break;
         case 'action':
             $("#showaction").css("display","block");
             $("#actionShowSelected").addClass("linkSelected");
             schitchMenuMoodShowDezactived(['mood',"drugs"]);
-            sessionSet("actionShow");
+            //sessionSet("actionShow");
             break;
     }    
 }
