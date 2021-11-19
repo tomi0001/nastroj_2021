@@ -117,6 +117,39 @@ class Common {
         }        
         return substr($string,0,-2);
     }
+    public static function calculateHourOne(int $time) {
+        $dateStart = new \DateTime("1970-01-01 00:00:00");
+        $dateEnd = new \DateTime(date("Y-m-d H:i:s", strtotime("1970-01-01 00:00:00") + $time));
+        $diff = $dateEnd->diff($dateStart);
+        //$bool = false;
+        //$year = "";
+        //$month = "";
+        //$day = "";
+        //$hour = "";
+        //$minute = "";
+        $string = "";
+        if ($diff->y != 0) {
+            //$bool = true;
+            $string .=  $diff->y .  " Lat, ";
+        }
+        if ($diff->m != 0) {
+            //$bool = true;
+            $string .=  $diff->m . " Miesięcy, ";
+        }
+        if ($diff->d != 0) {
+            //$bool = true;
+            $string .=  $diff->d . " Dni, ";
+        }
+        if ($diff->h != 0) {
+            //$bool = true;
+            $string .=  $diff->h . " Godzin, ";
+        }
+        if ($diff->i != 0) {
+            //$bool = true;
+            $string .=  $diff->i . " Minut, ";
+        }        
+        return substr($string,0,-2);
+    }
     public  static function setColorPleasure($color) {
         if ($color <= -16) {
             return 0;

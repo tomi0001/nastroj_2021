@@ -18,6 +18,7 @@
     @include ('Users.Main.showMenu')
     @include('Users.Main.showMood')
     @include('Users.Main.showDrugs')
+    @include('Users.Main.showAction')
     @if (!empty($sumAll) )
               <script>
                 window.onload=SwitchMenuMoodShow('mood');
@@ -31,7 +32,7 @@
                 
 
             </script>
-    @else
+    @elseif (count($actionPlan) > 0 or count($actionForDay) > 0)
             <script>
                 window.onload=SwitchMenuMoodShow('action');
                 

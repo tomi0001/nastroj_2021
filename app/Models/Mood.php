@@ -79,4 +79,16 @@ class Mood extends Model
                 ->orderBy("moods.date_start")
                 ->get();
     }
+    public static function sumAction(string $date, int $idUsers, int $startDay) {
+        return self::join("moods_actions","moods_actions.id_moods","moods.id")
+                ->join("actions","actions.id","moods_actions.id_actions")
+                ->selectRaw("actions.name as name")
+                ->selectRaw("actions.level_pleasure as level_pleasure")
+                ->selectRaw("(round(( sum((   if (moods_actions.percent_executing is NULL, (     (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end))  ), (   (moods_actions.percent_executing / 100) * (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end)) ))     ) ) ))   ) as sum  ")
+                ->whereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) = '" . $date . "'" ))
+                ->orWhereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) = '" . $date . "'" ))
+                ->where("moods.id_users",$idUsers)
+                ->groupBy("actions.id")
+                ->get();
+    }
 }

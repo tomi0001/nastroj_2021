@@ -12,7 +12,9 @@ class Actions_day extends Model
         return self::join("actions","actions.id","actions_days.id_actions")
                 ->selectRaw("actions.name as name")
                 ->selectRaw("actions.level_pleasure as level_pleasure")
+                ->selectRaw("actions_days.created_at as date")
                 ->where("actions_days.id_users",$idUsers)
-                ->where("actions_days.date",$date)->get();
+                ->where("actions_days.date",$date)
+                ->orderBy("actions_days.created_at")->get();
     }
 }

@@ -46,7 +46,7 @@
                                 @foreach ($actionForDay as $list)
                                     
                                     
-                                <div class='positionAction leveAction{{$list->level_pleasure}}'>{{$list->name}}</div>
+                                     <div class='positionAction leveAction{{$list->level_pleasure}}'>{{$list->name}}</div>
                                 
 
                                 @endforeach
@@ -57,9 +57,22 @@
                             </div>
                         @endif
                     @else
-                        <div class="errorMainMessage">
-                            
-                        </div>
+                        @if (count($actionPlan) > 0)
+                            <div class='sumDrugsAt'>
+                                @foreach ($actionPlan as $list)
+                                    
+                                    
+                                     <div class='positionAction leveAction{{$list->level_pleasure}}'>{{$list->name}}</div>
+                                     <div class="hourPlan">Godzina <b>{{substr($list->date,11,-3)}}</b></div>
+                                
+
+                                @endforeach
+                            </div>
+                        @else
+                            <div class="errorMainMessagesmall">
+                                Nic nie jest zaplanowane na ten dzień
+                            </div>
+                        @endif
                     @endif
                 </div>
             </div>

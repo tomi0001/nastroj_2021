@@ -277,6 +277,27 @@ function addSleep(url) {
 }
 
 
+function atHourActonPlan(url,id) {
+    $.ajax({
+        url : url,
+            method : "get",
+            data : 
+              "id=" + id
+            ,
+            dataType : "html",
+    })
+    .done(function(response) {
+        $("#actionPlan" + id).html(response);
+        
+    
+
+    })
+    .fail(function() {
+        $("#actionPlan" + id).html( "<div class='ajaxError'>Wystąpił błąd</div>" );
+    })    
+}
+
+
 
 function addDrugs(url) {
     $.ajax({

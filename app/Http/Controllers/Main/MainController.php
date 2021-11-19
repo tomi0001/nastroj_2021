@@ -11,6 +11,7 @@ use App\Http\Services\Calendar;
 use App\Http\Services\Main;
 use App\Models\Action;
 use App\Models\Actions_day;
+use App\Models\Action_plan;
 use App\Models\Mood;
 use App\Models\Usee;
 use App\Http\Services\Product;
@@ -31,6 +32,8 @@ class MainController {
         //$listAction = Action::selectAction(Auth::User()->id);
         $Mood->createDayColorMood($Calendar->year, $Calendar->month, $Calendar->day);
         $actionForDay = Actions_day::showActionForAllDay($Calendar->year . "-" . $Calendar->month . "-" .  $Calendar->day,Auth::User()->id);
+        $actionPlan = Action_plan::showActionPlan($Calendar->year . "-" . $Calendar->month . "-" .  $Calendar->day,Auth::User()->id,Auth::User()->start_day);
+        $actionSum = Mood::sumAction($Calendar->year . "-" . $Calendar->month . "-" .  $Calendar->day,Auth::User()->id,Auth::User()->start_day);
         return View("Users.Main.main")->with("text_month",$Calendar->text_month)
                                 ->with("year",$Calendar->year)
                                 ->with("day2",1)
@@ -50,9 +53,22 @@ class MainController {
                                 ->with("listDrugs",$listDrugs)
                                 ->with("listSubstance",$listSubstance)
                                 ->with("actionForDay",$actionForDay)
+                                ->with("actionPlan",$actionPlan)
+                                ->with("actionSum",$actionSum)
                                 ->with("date",$Calendar->year . "-" . $Calendar->month . "-" .  $Calendar->day);
                                 //->with("date",$Calendar->year . "-" .  $Calendar->month . "-" .  $Calendar->day);
                                 //->with("listAction",$listAction);
+        
+    }
+    public function atHourActonPlan(Request $request) {
+        $hour = Action_plan::selectHourId($request->get("id"),Auth::User()->id);
+        if (strtotime(date("Y-m-d H:i:s")) > strtotime($hour->date)) {
+            print "Już się odbyło";
+        }
+        else {
+            
+            print "Za " . \App\Http\Services\Common::calculateHour(date("Y-m-d H:i:s"),$hour->date);
+        }
         
     }
 }

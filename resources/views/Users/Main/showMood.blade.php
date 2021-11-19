@@ -1,6 +1,6 @@
 
 
-<div id="showmood" class="formAddMood borderMood">
+<div id="showmood" class="formAddMood borderMood" style="display: none;">
             
               <div class='titleMoodShow mood'>
                             NASTROJE

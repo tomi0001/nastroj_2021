@@ -117,6 +117,19 @@ table.drugsShow {
     color: #775807;
     width: 97%;
 }
+table.actionShow {
+    margin: 10px;
+    background-color: #09B6EB;
+    color: #034053;
+    width: 97%;
+    border: 2px solid #0E5970;
+}
+td.boldTitle {
+    font-weight: bold;
+    color: #020F3A;
+    font-size: 20px;
+    background-color: #2048C9;
+}
 table.moodShow, td.showMood, td.moodButton {
    border: 2px solid #A77906;
    border-collapse: collapse;
@@ -127,8 +140,16 @@ table.drugsShow, td.drugsShow, td.drugsButton {
    border-collapse: collapse;
 
 }
+table.showAction, td.showAction, td.showAction {
+    border-top: 5px solid #012936;
+
+}
 td.showMood {
     border-top: 5px solid #626222;
+
+}
+td.showAction {
+    border-top: 5px solid #012936;
 
 }
 td.showdrugs {
@@ -470,6 +491,13 @@ thead.titleTheadMood {
     z-index: 2;
     background-color: rgb(218, 240, 106);
     
+}
+thead.titleTheadAction {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background-color: #7BDBF8; 
 }
 thead.titleTheadDrugs {
         position: -webkit-sticky;
