@@ -19,7 +19,7 @@
     @include('Users.Main.showMood')
     @include('Users.Main.showDrugs')
     @include('Users.Main.showAction')
-    @if (!empty($sumAll) )
+    @if (!empty($sumAll) or (count($listMood)) > 0 )
               <script>
                 window.onload=SwitchMenuMoodShow('mood');
                 

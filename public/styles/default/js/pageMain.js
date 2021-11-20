@@ -322,6 +322,16 @@ function addDrugs(url) {
 }
 
 
+function editMood(id) {
+    //alert('dd');
+    $(".showMenuMood" + id).css("display","none");
+    $(".showMenuEditMood" + id).css("display","block");
+}
+
+function cancel(id) {
+    $(".showMenuMood" + id).css("display","block");
+    $(".showMenuEditMood" + id).css("display","none");
+}
 function reload() {
     location.reload();
     //deleteArray();

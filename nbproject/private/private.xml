@@ -17,14 +17,19 @@
             <file>file:/var/www/html/nastroj_2021/app/Models/Moods_action.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Action_plan.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/common.css</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Sleep/SleepController.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showMenu.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/routes/web.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Product.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/main.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showActionPlaned.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Action.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Description.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/User/UserController.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainAll.css</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Main/MainController.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Product/ProductController.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Mood/MoodController.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showAction.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/js/pageMain.js</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Actions_day.php</file>

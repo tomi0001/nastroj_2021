@@ -59,92 +59,139 @@
                     </td>
                     @if ($list->type == "mood")
                     <td class="sizeTableMood showMood ">
-                        <span class="fontMood">{{$list->level_mood}}</span>
+                        <div  class="showMenuMood{{$list->id}}">
+                            <span class="fontMood" >{{$list->level_mood}}</span>
+                        </div>
+                        <div class="showMenuEditMood{{$list->id}}" style="display: none; width: 70%; margin-left: auto; margin-right: auto; ">
+                            <input class="form-control" type="text" id="levelMoodEdit{{$list->id}}" value="{{$list->level_mood}}" style="width:85%;">
+                        </div>
                     </td>
                     <td class="sizeTableMood showMood">
-                        <span class="fontMood">{{$list->level_anxiety}}</span>
+                        <div  class="showMenuMood{{$list->id}}">
+                            <span class="fontMood" >{{$list->level_anxiety}}</span>
+                        </div>
+                        <div class="showMenuEditMood{{$list->id}}" style="display: none; width: 70%; margin-left: auto; margin-right: auto; ">
+                            <input class="form-control" type="text" id="levelAnxietyEdit{{$list->id}}" value="{{$list->level_anxiety}}" style="width:85%;">
+                        </div>
                     </td>
                     <td class="sizeTableMood showMood">
-                        <span class="fontMood">{{$list->level_nervousness}}</span>
+                        <div  class="showMenuMood{{$list->id}}">
+                            <span class="fontMood" >{{$list->level_nervousness}}</span>
+                        </div>
+                        <div class="showMenuEditMood{{$list->id}}" style="display: none; width: 70%; margin-left: auto; margin-right: auto; ">
+                            <input class="form-control" type="text" id="levelNervousnessEdit{{$list->id}}" value="{{$list->level_nervousness}}" style="width:85%;">
+                        </div>
                     </td>
                     <td class="sizeTableMood showMood">
-                        <span class="fontMood">{{$list->level_stimulation}}</span>
+                        <div  class="showMenuMood{{$list->id}}" >
+                            <span class="fontMood" >{{$list->level_stimulation}}</span>
+                        </div>
+                        <div class="showMenuEditMood{{$list->id}}" style="display: none; width: 70%; margin-left: auto; margin-right: auto; ">
+                            <input class="form-control" type="text" id="levelStimulationEdit{{$list->id}}" value="{{$list->level_stimulation}}" style="width:85%;">
+                        </div>
                     </td>
                     @else
                     <td class="sizeTableMood  " colspan="4">
-                        <span class="fontMoodNot">Nie dotyczy</span>
+                        <span class="fontMoodNot" >Nie dotyczy</span>
                     </td>
                     @endif
                     <td class="center showMood">
                         @if ($list->type == "mood")
-                            @if ($list->epizodes_psychotik != 0)
-                                <span class="MessageError">{{$list->epizodes_psychotik}} epizodów psychotycznych</span>
-                            @else
-                                Brak
-                            @endif
+                            <div  class="showMenuMood{{$list->id}}">
+                                @if ($list->epizodes_psychotik != 0)
+                                    <span class="MessageError" >{{$list->epizodes_psychotik}} epizodów psychotycznych</span>
+                                @else
+                                    Brak
+                                @endif
+                            </div>
+                            <div class=" showMenuEditMood{{$list->id}} " style="display: none; width: 40%; margin-left: auto; margin-right: auto; ">
+                               
+                                    <input class="form-control" type="text" id="levelEpizodesEdit{{$list->id}}" value="{{$list->epizodes_psychotik}}" >
+                                
+                            </div>
+                        <div class="showMenuEditMood{{$list->id}}" style="display: none;">
                         @else
-                            @if ($list->epizodes_psychotik != 0)
-                                <span class="MessageError">{{$list->epizodes_psychotik}} wybudzeń</span>
-                            @else
-                                Brak
-                            @endif
-                            
+                                @if ($list->epizodes_psychotik != 0)
+                                    <span class="MessageError" >{{$list->epizodes_psychotik}}  wybudzeń</span>
+                                @else
+                                    Brak
+                                @endif
+
                         @endif
+                        </div>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="7" class="moodButton">
                         @if ($list->type == "mood")
-                        <table  class="tableCenter"  >
-                            <tr>
-                                <td style="padding-right: 7px;">
-                                    @if (!empty(\App\Models\Usee::ifExistUsee($list->date_start,$list->date_end,Auth::User()->id) ))
-                                        <button class="btn-drugs main" onclick="showDrugs("")">pokaż leki</button>
-                                    @else
-                                        <button type="button" class="disable "  disabled>nie było leków</button>
-                                    @endif
-                                </td>
+                        <div class="showMenuMood{{$list->id}}">
+                            <table  class="tableCenter"  >
+                                <tr>
+                                    <td style="padding-right: 7px;">
+                                        @if (!empty(\App\Models\Usee::ifExistUsee($list->date_start,$list->date_end,Auth::User()->id) ))
+                                            <button class="btn-drugs main" onclick="showDrugs("")">pokaż leki</button>
+                                        @else
+                                            <button type="button" class="disable "  disabled>nie było leków</button>
+                                        @endif
+                                    </td>
 
-                                <td style="padding-right: 7px;">
-                                    @if (!empty(\App\Models\Moods_action::ifExistAction($list->id) ))
-                                        <button class="btn-action main" onclick="showDrugs("")">pokaż akcje</button>
-                                    @else
-                                        <button type="button" class="disable "  disabled>nie było akcji</button>
-                                    @endif
-                                </td>      
-                                
-                                <td style="padding-right: 7px;">
-                                    
-                                    @if ((\App\Models\Mood::showDescription($list->id)->what_work != "" ))
-                                        <button class="btn-mood main" onclick="showDrugs("")">pokaż  opis</button>
-                                    @else
-                                        <button type="button" class="disable "  disabled>nie było opisu</button>
-                                    @endif
-                                </td>    
-                                <td style="padding-right: 7px;">
-                                    
-                                        <button class="btn-mood main-long" onclick="showDrugs("")">Edytuj nastrój</button>
-                                
-                                </td>    
+                                    <td style="padding-right: 7px;">
+                                        @if (!empty(\App\Models\Moods_action::ifExistAction($list->id) ))
+                                            <button class="btn-action main" onclick="showDrugs("")">pokaż akcje</button>
+                                        @else
+                                            <button type="button" class="disable "  disabled>nie było akcji</button>
+                                        @endif
+                                    </td>      
 
-                                <td style="padding-right: 7px;">
-                                    
-                                        <button class="btn-mood main-long" onclick="showDrugs("")">Edytuj Dodaj opis</button>
-                                
-                                </td> 
+                                    <td style="padding-right: 7px;">
 
-                                <td style="padding-right: 7px;">
-                                    
-                                        <button class="danger" onclick="showDrugs("")">Usuń nastrój</button>
-                                
-                                </td>  
-                                <td style="padding-right: 7px;">
-                                    
-                                        <button class="btn-mood main-long" onclick="showDrugs("")">Dodaj usuń akcje</button>
-                                
-                                </td>  
-                            </tr>
-                        </table>
+                                        @if ((\App\Models\Mood::showDescription($list->id)->what_work != "" ))
+                                            <button class="btn-mood main" onclick="showDrugs("")">pokaż  opis</button>
+                                        @else
+                                            <button type="button" class="disable "  disabled>nie było opisu</button>
+                                        @endif
+                                    </td>    
+                                    <td style="padding-right: 7px;">
+
+                                            <button class="btn-mood main-long" onclick="editMood({{$list->id}})">Edytuj nastrój</button>
+
+                                    </td>    
+
+                                    <td style="padding-right: 7px;">
+
+                                            <button class="btn-mood main-long" onclick="showDrugs("")">Edytuj Dodaj opis</button>
+
+                                    </td> 
+
+                                    <td style="padding-right: 7px;">
+
+                                            <button class="danger" onclick="showDrugs("")">Usuń nastrój</button>
+
+                                    </td>  
+                                    <td style="padding-right: 7px;">
+
+                                            <button class="btn-mood main-long" onclick="showDrugs("")">Dodaj usuń akcje</button>
+
+                                    </td>  
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="showMenuEditMood{{$list->id}}" style="display: none;">
+                            <table  class="tableCenter"  >
+                                <tr>
+                                    <td style="padding-right: 7px;">
+                                        
+                                            <button class="btn-mood main" onclick="updateMood({{$list->id}})">Uaktualnij</button>
+                                       
+                                    </td>
+                                    <td style="padding-right: 7px;">
+                                        
+                                            <button class="btn-mood main" onclick="cancel({{$list->id}})">Anuluj</button>
+                                       
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
                         @else
                         <table  class="tableCenter"  >
                             <tr>

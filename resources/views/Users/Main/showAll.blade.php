@@ -3,7 +3,7 @@
 
             <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
                 <div class="sumMood">
-                    @if (!empty($sumAll) )
+                    @if (!empty($sumAll)  )
                     <div class="level level{{\App\Http\Services\Common::setColor($sumAll->sum_mood)}}" style="height: 20%; padding-top: 3px;">
                                 Poziom nastroju {{round($sumAll->sum_mood,2)}} dla całego dnia
                     </div>

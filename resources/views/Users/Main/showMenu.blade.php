@@ -1,5 +1,5 @@
     <div class="showLink">
-        @if (!empty($sumAll) )
+        @if (!empty($sumAll) or (count($listMood)) > 0 )
             <div class="linkShow  mood linkSelected" id='moodShowSelected' onclick="SwitchMenuMoodShow('mood')">
                 POKAŻ NASTROJE
             </div>
