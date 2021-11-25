@@ -216,6 +216,8 @@ div.actionMainselected {
                 font-size: 24px;
                 font-weight: bold;
         }
+
+        
         .btn-action {
                 background-color: #4293E5; 
                 border: solid 1px transparent;
@@ -445,22 +447,39 @@ div.actionMainselected {
                 font-size: 15px;
                 font-weight: bold;
         }
-        button.danger {
-                border: solid 1px transparent;
-                background-color: red;
-                padding-top: 5px;
-                padding-left: 5px;
-                padding-right: 10px;
-                padding-bottom: 10px;
-                width: 150px;
+        button.small {
+            height: 40px;
+            width: 100px;
+            font-size: 14px;
+            padding-top: 8px;
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-bottom: 10px;
+        }
+
+        button.small:hover {
+                
                 color: white;
+                
                 border-radius: 12px;
-                height: 55px;
                 text-align: center;
                 display: inline-block;
-                font-size: 18px;
+                font-size: 14px;
                 font-weight: bold;
-                box-shadow: 6px 6px 6px #F4E375;
+        }
+        button.main {
+                border: solid 1px transparent;
+                
+                
+                
+                
+                border-radius: 12px;
+                
+                text-align: center;
+                display: inline-block;
+                
+                font-weight: bold;
+                
         }
         button.danger:hover {
                 background-color: #F92900;
@@ -469,8 +488,7 @@ div.actionMainselected {
                 border-radius: 12px;
                 text-align: center;
                 display: inline-block;
-                font-size: 18px;
-                font-weight: bold;
+             
         }
         button:disabled, button.disable {
                             background-color: #D92A2A; 

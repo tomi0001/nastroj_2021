@@ -11,5 +11,8 @@ class Action extends Model
     public static function selectAction(int $idUsers = 0) {
         return self::where("id_users",$idUsers)->orwhere("id_users",0)->orderBy("id_users")->orderBy("name")->get();
     }
+    public static function returnNameAction(int $id,int $idUsers) {
+        return self::selectRaw("name as name")->where("id_users",$idUsers)->orwhere("id_users",0)->where("id",$id)->first();
+    }
 
 }

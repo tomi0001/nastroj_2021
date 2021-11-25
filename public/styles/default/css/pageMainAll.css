@@ -22,7 +22,38 @@ div.rowPercent {
     
     
 }
-
+        button.danger {
+            box-shadow: 6px 6px 6px #F4E375;
+            background-color: red;
+            color: white;
+        }
+        
+        
+        
+        button.updateAction {
+            box-shadow: 6px 6px 6px #057EA3;
+            background-color: #34C6F3;
+            color: white;
+        }
+        
+                        button.danger:hover {
+     box-shadow: 6px 6px 6px #F4E375;
+            background-color: red;
+            color: white;
+            border-color: #7E0705;
+            
+        }
+                button.btn-actionDay {
+            box-shadow: 6px 6px 6px #124F9B;
+            background-color: #1679F2;
+            color: white;
+        }
+                button.btn-actionDay:hover {
+            box-shadow: 6px 6px 6px #124F9B;
+            background-color: #1679F2;
+            border-color: #103869;
+            color: white;
+        }
 span.warning {
     color: #CA0606;
     font-size: 18px;

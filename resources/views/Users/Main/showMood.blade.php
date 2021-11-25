@@ -165,7 +165,7 @@
 
                                     <td style="padding-right: 7px;">
 
-                                            <button class="danger" onclick="showDrugs("")">Usuń nastrój</button>
+                                            <button class="danger main" onclick="showDrugs("")">Usuń nastrój</button>
 
                                     </td>  
                                     <td style="padding-right: 7px;">

@@ -36,7 +36,7 @@
                         &nbsp;
                     </div>
                     <div class="menu">
-                        <a class="menu" href="{{route('users.main')}}">GŁÓWNA STRONA</a>
+                        <a class="menu mainHref" href="{{route('users.main')}}" >GŁÓWNA STRONA</a>
                     </div>
                     <div class="menu">
                         <a class="menu" href="{{route('users.search')}}">WYSZUKAJ</a>

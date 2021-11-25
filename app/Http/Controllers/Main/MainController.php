@@ -9,6 +9,7 @@ use App\Models\User as MUser;
 use Hash;
 use App\Http\Services\Calendar;
 use App\Http\Services\Main;
+use App\Http\Services\Action as ActionServices;
 use App\Models\Action;
 use App\Models\Actions_day;
 use App\Models\Action_plan;
@@ -18,6 +19,7 @@ use App\Http\Services\Product;
 use Auth;
 class MainController {
     public function index($year = "",$month  ="",$day = "",$action = "") {   
+
         $Calendar = new Calendar($year, $month, $day, $action);
         $Mood = new Main;
         $Drugs = new Product;
@@ -70,5 +72,23 @@ class MainController {
             print "Za " . \App\Http\Services\Common::calculateHour(date("Y-m-d H:i:s"),$hour->date);
         }
         
+    }
+    public function deleteActionDay(Request $request) {
+        $Action = new ActionServices;
+        $Action->removeActionDay($request->get("id"));
+    }
+    public function editActionDay(Request $request) {
+        $listAction = Actions_day::showActionDay(Auth::User()->id);
+        print json_encode($listAction);
+    }
+    public function cancelActionDay(Request $request) {
+        $listAction = Actions_day::returnNameAction(Auth::User()->id,$request->get("id"));
+        print json_encode($listAction);
+    }
+    public function updateActionDay(Request $request) {
+        $Action = new ActionServices;
+        $Action->updateActionDay($request);
+        $listAction = Action::returnNameAction($request->get("idAction"),Auth::User()->id);
+        print $listAction->name;
     }
 }

@@ -28,4 +28,13 @@ class Action {
         $ActionDay->date = $request->get("date");
         $ActionDay->save();
     }
+    public function removeActionDay(int $id) {
+        $ActionsDay = new Actions_day;
+        $ActionsDay->where("id",$id)->where("id_users",Auth::User()->id)->delete();
+    }
+    public function updateActionDay(Request $request)  {
+        $ActionDay = new Actions_day;
+        $ActionDay->where("id_users",Auth::User()->id)->where("id",$request->get("id"))->update(["id_actions"=> $request->get("idAction")]);
+        
+    }
 }

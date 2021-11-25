@@ -45,8 +45,16 @@ Route::get('/users.actionDayAdd', [App\Http\Controllers\Action\ActionController:
 Route::get("/ajax/atHourActonPlan",[App\Http\Controllers\Main\MainController::class, 'atHourActonPlan'])
                     ->name("ajax.atHourActonPlan")->middleware('auth')->middleware('can:users');     
 Route::get("/ajax/showAllSubstance", [App\Http\Controllers\Main\MainController::class, 'showAllSubstance'])
-                    ->name("ajax.showAllSubctance")->middleware('auth')->middleware('can:users');
-            
+                    ->name("ajax.showAllSubctance")->middleware('auth')->middleware('can:users');            
+Route::get("/ajax/deleteActionDay",[App\Http\Controllers\Main\MainController::class, 'deleteActionDay'])
+        ->name("ajax.deleteActionDay")->middleware('auth')->middleware('can:users');
+Route::get("/ajax/editActionDay",[App\Http\Controllers\Main\MainController::class, 'editActionDay'])
+        ->name("ajax.editActionDay")->middleware('auth')->middleware('can:users');
+Route::get("/ajax/cancelActionDay",[App\Http\Controllers\Main\MainController::class, 'cancelActionDay'])
+        ->name("ajax.cancelActionDay")->middleware('auth')->middleware('can:users');
+Route::get("/ajax/updateActionDay",[App\Http\Controllers\Main\MainController::class, 'updateActionDay'])
+        ->name("ajax.updateActionDay")->middleware('auth')->middleware('can:users');
+
             
             Route::get('/users4/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\Search\SearchController::class, 'index2'])->name('users.search')
                     ->middleware('auth')->middleware('can:users');

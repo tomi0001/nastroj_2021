@@ -37,8 +37,17 @@ function selectedActionMain(id,index) {
     
 }
 
+$(document).ready(function(){
+
+        $(".mainHref").click( function() {
+        
+            resetSession();
+        });
+
+});
 
 $(document).ready(function(){
+
      jQuery.expr[':'].contains = function(a, i, m) {
   return jQuery(a).text().toUpperCase()
       .indexOf(m[3].toUpperCase()) >= 0;
@@ -337,6 +346,155 @@ function reload() {
     //deleteArray();
 }
 
+
+function resetSession() {
+    sessionStorage.removeItem('main');
+}
+
+
+
+function deleteActionDay(url,id) {
+    var bool = confirm("Czy na pewno");
+    if (bool == true) {
+        
+
+            $.ajax({
+           url : url,
+               method : "get",
+               data : 
+                 "id=" + id
+               ,
+               dataType : "html",
+       })
+       .done(function(response) {
+           
+           $("#tractionId" + id).remove();
+
+
+       })
+       .fail(function() {
+           alert("Wystąpił błąd");
+       })    
+    }
+}
+
+
+
+function editActionDay(url,id,idAction) {
+        $.ajax({
+           url : url,
+               method : "get",
+               data : 
+                 "id=" + id
+               ,
+               dataType : "json",
+       })
+       .done(function(response) {
+
+
+
+           var arrayFormStart = "<select name='formActionEditDay" + id + "' class='form-control' id='select-state'>";
+           var arrayForm = "";
+           for (var i=0;i < response.length;i++) {
+               
+               
+
+               
+               
+               if (response[i]["id"] == idAction) {
+                   //alert(id);
+                   //arrayForm.push("<option value='" + response[i]["id"] + "' selected >'" + response[i]["name"] + "</option>");
+                   arrayForm += "<option value='" + response[i]["id"] + "' selected >" + response[i]["name"] + "</option>";
+                   //$("#editActionDay" + id).append("<option value='" + response[i]["id"] + "' selected >'" + response[i]["name"] + "</option>");
+                   //alert(id);
+               }
+               else {
+                   arrayForm += "<option value='" + response[i]["id"] + "'  >" + response[i]["name"] + "</option>";
+                   //arrayForm += "<option value='0'  >gfhfhgfh</option>";
+                   //$("#editActionDays" + id ).append(new Option("respon","rsddespon"));
+               }
+             
+           //     alert('ff');
+           }
+             arrayFormEnd = "</select>";
+             $("#cancelActionDayButton"+id).css("display","block");
+             $("#updateActionDayButton"+id).css("display","block");
+             $("#editActionDayButton"+id).css("display","none");
+             $("#deleteActionDayButton"+id).css("display","none");
+             
+            $("#editActionDay" + id).html(arrayFormStart + arrayForm + arrayFormEnd);
+           
+
+
+       })
+       .fail(function() {
+           alert("Wystąpił błąd");
+       })    
+}
+
+function cancelActionDay(url,id) {
+    
+    
+    
+     $.ajax({
+           url : url,
+               method : "get",
+               data : 
+                 "id=" + id
+               ,
+               dataType : "json",
+       })
+       .done(function(response) {
+
+
+
+             $("#cancelActionDayButton"+id).css("display","none");
+             $("#updateActionDayButton"+id).css("display","none");
+             $("#editActionDayButton"+id).css("display","block");
+             $("#deleteActionDayButton"+id).css("display","block");
+             
+            $("#editActionDay" + id).html(response["name"]);
+           
+
+
+       })
+       .fail(function() {
+           alert("Wystąpił błąd");
+       })    
+    
+    
+             
+}
+function updateActionDay(url,id) {
+    //alert($("[name='formActionEditDay" + id + "'").val());
+    //return;
+         $.ajax({
+           url : url,
+               method : "get",
+               data : 
+                 "id=" +   id + "&idAction=" + $("[name='formActionEditDay" + id + "'").val() 
+                 
+               ,
+               dataType : "html",
+       })
+       .done(function(response) {
+
+
+
+             $("#cancelActionDayButton"+id).css("display","none");
+             $("#updateActionDayButton"+id).css("display","none");
+             $("#editActionDayButton"+id).css("display","block");
+             $("#deleteActionDayButton"+id).css("display","block");
+             
+            $("#editActionDay" + id).html(response);
+           
+
+
+       })
+       .fail(function() {
+           alert("Wystąpił błąd");
+       })    
+}
 function sessionSet(type) {
     
     
