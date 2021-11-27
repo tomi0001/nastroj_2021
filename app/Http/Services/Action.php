@@ -37,4 +37,8 @@ class Action {
         $ActionDay->where("id_users",Auth::User()->id)->where("id",$request->get("id"))->update(["id_actions"=> $request->get("idAction")]);
         
     }
+    public function removeActionMoods(int $id) {
+        $MoodAction = new MoodAction;
+        $MoodAction->where("id_moods",$id)->delete();
+    }
 }

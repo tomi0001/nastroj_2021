@@ -91,4 +91,14 @@ class Mood extends Model
                 ->groupBy("actions.id")
                 ->get();
     }
+    public static function selectValueMood(int $id,int $idUsers) {
+        return self::selectRaw("round(moods.level_mood,2) as level_mood")
+                ->selectRaw("round(moods.level_anxiety,2) as level_anxiety")
+                ->selectRaw("round(moods.level_nervousness,2) as level_nervousness")
+                ->selectRaw("round(moods.level_stimulation ,2) as level_stimulation")
+                ->selectRaw("moods.epizodes_psychotik as epizodes_psychotik")
+                ->where("moods.id_users",$idUsers)
+                ->where("moods.id",$id)
+                ->first();
+    }
 }

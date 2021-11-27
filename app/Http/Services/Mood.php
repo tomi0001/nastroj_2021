@@ -149,6 +149,15 @@ class Mood {
         }
     }
     
-
+    public function updateMood(Request $request) {
+        $Mood = new MoodModel;
+        $Mood->where("id",$request->get("id"))->where("id_users",Auth::User()->id)
+                ->update(["level_mood"=> $request->get("levelMood"),"level_anxiety"=> $request->get("levelAnxienty"),"level_nervousness"=> $request->get("levelNervousness"),"level_stimulation"=> $request->get("levelStimulation"),"epizodes_psychotik"=> $request->get("levelEpizodes")]);
+    }
+    
+    public function deleteMood(int $id) {
+        $Mood = new MoodModel;
+        $Mood->where("id",$id)->where("id_users",Auth::User()->id)->delete();
+    }
     
 }

@@ -27,8 +27,12 @@
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/main.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showActionPlaned.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Action.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default/tlo.png</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/calendar.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainwidth1410.css</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Description.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Services/Mood.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Services/Calendar.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/User/UserController.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/addDrugs.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainAll.css</file>
@@ -40,6 +44,7 @@
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Action/ActionController.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/js/pageMain.js</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Actions_day.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/addAction.blade.php</file>
         </group>
     </open-files>
 </project-private>

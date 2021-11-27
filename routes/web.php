@@ -54,6 +54,10 @@ Route::get("/ajax/cancelActionDay",[App\Http\Controllers\Main\MainController::cl
         ->name("ajax.cancelActionDay")->middleware('auth')->middleware('can:users');
 Route::get("/ajax/updateActionDay",[App\Http\Controllers\Main\MainController::class, 'updateActionDay'])
         ->name("ajax.updateActionDay")->middleware('auth')->middleware('can:users');
+Route::get("/ajax/updateMood",[App\Http\Controllers\Main\MainController::class, 'updateMood'])
+        ->name("ajax.updateMood")->middleware('auth')->middleware('can:users');
+Route::get("/ajax/deleteMood",[App\Http\Controllers\Main\MainController::class, 'deleteMood'])
+        ->name("ajax.deleteMood")->middleware('auth')->middleware('can:users');
 
             
             Route::get('/users4/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\Search\SearchController::class, 'index2'])->name('users.search')

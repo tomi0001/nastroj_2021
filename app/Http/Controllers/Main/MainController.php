@@ -10,6 +10,7 @@ use Hash;
 use App\Http\Services\Calendar;
 use App\Http\Services\Main;
 use App\Http\Services\Action as ActionServices;
+use App\Http\Services\Mood as MoodServices;
 use App\Models\Action;
 use App\Models\Actions_day;
 use App\Models\Action_plan;
@@ -90,5 +91,18 @@ class MainController {
         $Action->updateActionDay($request);
         $listAction = Action::returnNameAction($request->get("idAction"),Auth::User()->id);
         print $listAction->name;
+    }
+    public function updateMood(Request $request) {
+        $Mood = new MoodServices;
+        $Mood->updateMood($request);
+        $valueMood = Mood::selectValueMood($request->get("id"),Auth::User()->id);
+        print json_encode($valueMood);
+    }
+    public function deleteMood(Request $request) {
+        $Mood = new MoodServices;
+        $Action = new ActionServices;
+        $Action->removeActionMoods($request->get("id"));
+        $Mood->deleteMood($request->get("id"));
+        
     }
 }

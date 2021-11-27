@@ -40,7 +40,7 @@
                 @foreach ($listMood as $list)
                 
                 
-                <tr>
+                <tr class='moodClass{{$list->id}}'>
                     <td  class="start showMood" colspan="2">
                         <span class="left"> {{substr($list->date_start,11,-3)}}</span>
                    
@@ -60,7 +60,7 @@
                     @if ($list->type == "mood")
                     <td class="sizeTableMood showMood ">
                         <div  class="showMenuMood{{$list->id}}">
-                            <span class="fontMood" >{{$list->level_mood}}</span>
+                            <span class="fontMood" id="levelMood{{$list->id}}" >{{$list->level_mood}}</span>
                         </div>
                         <div class="showMenuEditMood{{$list->id}}" style="display: none; width: 70%; margin-left: auto; margin-right: auto; ">
                             <input class="form-control" type="text" id="levelMoodEdit{{$list->id}}" value="{{$list->level_mood}}" style="width:85%;">
@@ -68,7 +68,7 @@
                     </td>
                     <td class="sizeTableMood showMood">
                         <div  class="showMenuMood{{$list->id}}">
-                            <span class="fontMood" >{{$list->level_anxiety}}</span>
+                            <span class="fontMood" id="levelAnxiety{{$list->id}}">{{$list->level_anxiety}}</span>
                         </div>
                         <div class="showMenuEditMood{{$list->id}}" style="display: none; width: 70%; margin-left: auto; margin-right: auto; ">
                             <input class="form-control" type="text" id="levelAnxietyEdit{{$list->id}}" value="{{$list->level_anxiety}}" style="width:85%;">
@@ -76,7 +76,7 @@
                     </td>
                     <td class="sizeTableMood showMood">
                         <div  class="showMenuMood{{$list->id}}">
-                            <span class="fontMood" >{{$list->level_nervousness}}</span>
+                            <span class="fontMood" id="levelNervousness{{$list->id}}">{{$list->level_nervousness}}</span>
                         </div>
                         <div class="showMenuEditMood{{$list->id}}" style="display: none; width: 70%; margin-left: auto; margin-right: auto; ">
                             <input class="form-control" type="text" id="levelNervousnessEdit{{$list->id}}" value="{{$list->level_nervousness}}" style="width:85%;">
@@ -84,14 +84,14 @@
                     </td>
                     <td class="sizeTableMood showMood">
                         <div  class="showMenuMood{{$list->id}}" >
-                            <span class="fontMood" >{{$list->level_stimulation}}</span>
+                            <span class="fontMood" id="levelStimulation{{$list->id}}">{{$list->level_stimulation}}</span>
                         </div>
                         <div class="showMenuEditMood{{$list->id}}" style="display: none; width: 70%; margin-left: auto; margin-right: auto; ">
                             <input class="form-control" type="text" id="levelStimulationEdit{{$list->id}}" value="{{$list->level_stimulation}}" style="width:85%;">
                         </div>
                     </td>
                     @else
-                    <td class="sizeTableMood  " colspan="4">
+                    <td class="sizeTableMood  showMood" colspan="4">
                         <span class="fontMoodNot" >Nie dotyczy</span>
                     </td>
                     @endif
@@ -99,9 +99,9 @@
                         @if ($list->type == "mood")
                             <div  class="showMenuMood{{$list->id}}">
                                 @if ($list->epizodes_psychotik != 0)
-                                    <span class="MessageError" >{{$list->epizodes_psychotik}} epizodów psychotycznych</span>
+                                    <span class="MessageError" id="levelEpizodes{{$list->id}}">{{$list->epizodes_psychotik}} epizodów psychotycznych</span>
                                 @else
-                                    Brak
+                                   <span  id="levelEpizodes{{$list->id}}"> Brak </span>
                                 @endif
                             </div>
                             <div class=" showMenuEditMood{{$list->id}} " style="display: none; width: 40%; margin-left: auto; margin-right: auto; ">
@@ -121,7 +121,7 @@
                         </div>
                     </td>
                 </tr>
-                <tr>
+                <tr class='moodClass{{$list->id}}'>
                     <td colspan="7" class="moodButton">
                         @if ($list->type == "mood")
                         <div class="showMenuMood{{$list->id}}">
@@ -165,7 +165,7 @@
 
                                     <td style="padding-right: 7px;">
 
-                                            <button class="danger main" onclick="showDrugs("")">Usuń nastrój</button>
+                                            <button class="danger main" onclick="deleteMood('{{route("ajax.deleteMood")}}',{{$list->id}})">Usuń nastrój</button>
 
                                     </td>  
                                     <td style="padding-right: 7px;">
@@ -181,7 +181,7 @@
                                 <tr>
                                     <td style="padding-right: 7px;">
                                         
-                                            <button class="btn-mood main" onclick="updateMood({{$list->id}})">Uaktualnij</button>
+                                            <button class="btn-mood main" onclick="updateMood('{{route('ajax.updateMood')}}',{{$list->id}})">Uaktualnij</button>
                                        
                                     </td>
                                     <td style="padding-right: 7px;">
@@ -221,7 +221,7 @@
 
                                 <td style="padding-right: 7px;">
                                     
-                                        <button class="danger" onclick="showDrugs("")">Usuń sen</button>
+                                        <button class="danger main" onclick="showDrugs("")">Usuń sen</button>
                                 
                                 </td>  
                             </tr>

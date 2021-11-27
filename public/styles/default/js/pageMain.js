@@ -37,6 +37,36 @@ function selectedActionMain(id,index) {
     
 }
 
+
+
+
+function deleteMood(url,id) {
+    var bool = confirm("Czy na pewno");
+    if (bool == true) {
+        
+        $.ajax({
+           url : url,
+               method : "get",
+               data : 
+                 "id=" + id
+               ,
+               dataType : "html",
+       })
+       .done(function(response) {
+          
+           $(".moodClass" + id).remove();
+
+
+       })
+       .fail(function() {
+           alert("Wystąpił błąd");
+       })    
+        
+    }
+}
+
+
+
 $(document).ready(function(){
 
         $(".mainHref").click( function() {
@@ -353,6 +383,73 @@ function resetSession() {
 
 
 
+function updateMood(url,id) {
+     
+        if ($("#levelMoodEdit"+id).val() == "" || ($("#levelMoodEdit"+id).val() > 20 || $("#levelMoodEdit"+id).val() < -20) || isNaN($("#levelMoodEdit"+id).val()) ) {
+            alert("Zła wartość nastroju musi być od -20 do +20");
+            return;
+        }
+        if ($("#levelAnxietyEdit"+id).val() == "" || ($("#levelAnxietyEdit"+id).val() > 20 || $("#levelAnxietyEdit"+id).val() < -20) || isNaN($("#levelAnxietyEdit"+id).val()) ) {
+            alert("Zła wartość lęku musi być od -20 do +20");
+            return;
+        }
+        if ($("#levelNervousnessEdit"+id).val() == "" || ($("#levelNervousnessEdit"+id).val() > 20 || $("#levelNervousnessEdit"+id).val() < -20) || isNaN($("#levelNervousnessEdit"+id).val()) ) {
+            alert("Zła wartość rozdrażnienia musi być od -20 do +20");
+            return;
+        }
+        if ($("#levelStimulationEdit"+id).val() == "" || ($("#levelStimulationEdit"+id).val() > 20 || $("#levelStimulationEdit"+id).val() < -20) || isNaN($("#levelStimulationEdit"+id).val()) ) {
+            alert("Zła wartość pobudzenia musi być od -20 do +20");
+            return;
+        }
+        if ( !isInt($("#levelEpizodesEdit"+id).val())  || ($("#levelEpizodesEdit"+id).val()) < 0 ) {
+            alert("Liczba epizodów psychotycznych musi być dodatnią liczbą całkowitą");
+            return;
+        }
+
+            $.ajax({
+           url : url,
+               method : "get",
+               data : 
+                 "id=" + id + "&levelMood=" + $("#levelMoodEdit"+id).val() + "&levelAnxienty="  + $("#levelAnxietyEdit"+id).val() + "&levelNervousness="  + $("#levelNervousnessEdit"+id).val() + "&levelStimulation="  + $("#levelStimulationEdit"+id).val() + "&levelEpizodes="  + $("#levelEpizodesEdit"+id).val()
+               ,
+               dataType : "json",
+       })
+       .done(function(response) {
+           //levelNervousness
+           $("#levelMood"+id).text(response["level_mood"]);
+           $("#levelAnxiety"+id).text(response["level_anxiety"]);
+           $("#levelNervousness"+id).text(response["level_nervousness"]);
+           $("#levelStimulation"+id).text(response["level_stimulation"]);
+           
+           if (response["epizodes_psychotik"] > 0 ) {
+               $("#levelEpizodes"+id).addClass("MessageError");
+               $("#levelEpizodes"+id).text(response["epizodes_psychotik"] + " epizodów psychotycznych");
+           }
+           else {
+               //alert('dd');
+               $("#levelEpizodes"+id).removeClass("MessageError");
+               $("#levelEpizodes"+id).text(" Brak");
+           }
+           
+           //$("#levelEpizodes"+id).text(response["epizodes_psychotik"]);
+           
+           
+           $(".showMenuMood" + id).css("display","block");
+           $(".showMenuEditMood" + id).css("display","none");
+
+
+       })
+       .fail(function() {
+           alert("Wystąpił błąd");
+       })    
+    
+}
+
+function isInt(value) {
+  return !isNaN(value) && 
+         parseInt(Number(value)) == value && 
+         !isNaN(parseInt(value, 10));
+}
 function deleteActionDay(url,id) {
     var bool = confirm("Czy na pewno");
     if (bool == true) {
