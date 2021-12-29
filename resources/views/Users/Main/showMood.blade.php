@@ -137,7 +137,7 @@
 
                                     <td style="padding-right: 7px;">
                                         @if (!empty(\App\Models\Moods_action::ifExistAction($list->id) ))
-                                            <button class="btn-action main" onclick="showDrugs("")">pokaż akcje</button>
+                                            <button class="btn-action main" onclick="showAction('{{ route('ajax.showAction')}}',{{$list->id}})">pokaż akcje</button>
                                         @else
                                             <button type="button" class="disable "  disabled>nie było akcji</button>
                                         @endif
@@ -146,7 +146,7 @@
                                     <td style="padding-right: 7px;">
 
                                         @if ((\App\Models\Mood::showDescription($list->id)->what_work != "" ))
-                                            <button class="btn-mood main" onclick="showDrugs("")">pokaż  opis</button>
+                                            <button class="btn-mood main" onclick="showDescrition('{{route("ajax.showMoodDescription")}}',{{$list->id}})">pokaż  opis</button>
                                         @else
                                             <button type="button" class="disable "  disabled>nie było opisu</button>
                                         @endif
@@ -159,7 +159,7 @@
 
                                     <td style="padding-right: 7px;">
 
-                                            <button class="btn-mood main-long" onclick="showDrugs("")">Edytuj Dodaj opis</button>
+                                            <button class="btn-mood main-long" onclick="editMoodDescription('{{route("ajax.editMoodDescription")}}',{{$list->id}})">Edytuj Dodaj opis</button>
 
                                     </td> 
 
@@ -229,8 +229,34 @@
                         @endif
                     </td>
                 </tr>
+                <tr class='moodClass{{$list->id}}'>
+                    <td  colspan="7">
+                        <div  class="hiddenMoodEdit description{{$list->id}}" style="display: none;">
+                            <textarea  rows='6' class="description{{$list->id}} form-control " id="description{{$list->id}}" style="display: none; " ></textarea>
+                            <button class="btn-mood main" onclick="updateDescription('{{route('ajax.updateDescription')}}',{{$list->id}})">Modyfikuj opis</button>
+                            <div id="messageDescription{{$list->id}}"></div>
+                        </div>
+                    </td>
                 
+                </tr>
+                <tr class='moodClass{{$list->id}}'>
+                    <td  colspan="7">
+                        <div  class="hiddenMood descriptionShow{{$list->id}}" style="display: none;">
+                            
+                            <div id="messageDescriptionshow{{$list->id}}" class="descriptionModShow"></div>
+                        </div>
+                    </td>
                 
+                </tr>
+                <tr class='moodClass{{$list->id}}'>
+                    <td  colspan="7">
+                        <div  class="hiddenMood actionShow{{$list->id}}" style="display: none;">
+                            
+                            <div id="messageactionShow{{$list->id}}" class="actionShowModShow"></div>
+                        </div>
+                    </td>
+                
+                </tr>                
                 @endforeach
             </table>
         </div>

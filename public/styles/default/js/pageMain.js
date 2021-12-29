@@ -367,6 +367,125 @@ function editMood(id) {
     $(".showMenuEditMood" + id).css("display","block");
 }
 
+
+function editMoodDescription(url,id) {
+    if ($(".description" + id).css("display") == "none" ) {
+        
+        $.ajax({
+                url : url,
+                    method : "get",
+                    data : 
+                      "id=" + id
+                    ,
+                    dataType : "json",
+            })
+            .done(function(response) {
+
+
+
+
+                  $(".description" + id).css("display","block");
+                  $("#description" + id).html(response["what_work"]);
+
+                  //$("#cancelActionDayButton"+id).css("display","none");
+                  //$("#updateActionDayButton"+id).css("display","none");
+                  //$("#editActionDayButton"+id).css("display","block");
+                  //$("#deleteActionDayButton"+id).css("display","block");
+
+                 //$("#editActionDay" + id).html(response["name"]);
+
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })    
+    }
+    else {
+        
+        $(".description" + id).css("display","none");
+    }
+}
+function nl2br (str, replaceMode, isXhtml) {
+
+  var breakTag = (isXhtml) ? '<br>' : '<br>';
+  var replaceStr = (replaceMode) ? '$1'+ breakTag : '$1'+ breakTag +'$2';
+  return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, replaceStr);
+}
+
+
+function showDescrition(url,id) {
+    if ($(".descriptionShow" + id).css("display") == "none" ) {
+            $.ajax({
+                url : url,
+                    method : "get",
+                    data : 
+                      "id=" + id 
+                    ,
+                    dataType : "html",
+            })
+            .done(function(response) {
+                //alert(response);
+                $(".descriptionShow" + id).css("display","block");
+                $("#messageDescriptionshow"+id).html(response);
+
+                 
+
+                  //$("#cancelActionDayButton"+id).css("display","none");
+                  //$("#updateActionDayButton"+id).css("display","none");
+                  //$("#editActionDayButton"+id).css("display","block");
+                  //$("#deleteActionDayButton"+id).css("display","block");
+
+                 //$("#editActionDay" + id).html(response["name"]);
+
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })       
+    }
+    else {
+        
+        $(".descriptionShow" + id).css("display","none");
+    }
+}
+
+function updateDescription(url,id) {
+            $.ajax({
+                url : url,
+                    method : "get",
+                    data : 
+                      "id=" + id + "&description=" + nl2br($("#description"+id).val(),"<br>","\n")
+                    ,
+                    dataType : "html",
+            })
+            .done(function(response) {
+
+
+                //$("#messageDescription"+id).text(response);
+        if (response == "") {
+            //setInterval("reload();",20000);
+            $("#messageDescription"+id).html("<div class='ajaxSucces'>Pomyślnie dodano</div>");
+        }
+                 
+
+                  //$("#cancelActionDayButton"+id).css("display","none");
+                  //$("#updateActionDayButton"+id).css("display","none");
+                  //$("#editActionDayButton"+id).css("display","block");
+                  //$("#deleteActionDayButton"+id).css("display","block");
+
+                 //$("#editActionDay" + id).html(response["name"]);
+
+
+
+            })
+            .fail(function() {
+                $("#messageDescription"+id).html( "<div class='ajaxError'>Wystąpił błąd</div>" );
+            })    
+}
+
+
 function cancel(id) {
     $(".showMenuMood" + id).css("display","block");
     $(".showMenuEditMood" + id).css("display","none");
@@ -591,6 +710,43 @@ function updateActionDay(url,id) {
        .fail(function() {
            alert("Wystąpił błąd");
        })    
+}
+
+function showAction(url,id) {
+        if ($(".actionShow" + id).css("display") == "none" ) {
+            $.ajax({
+                url : url,
+                    method : "get",
+                    data : 
+                      "id=" + id 
+                    ,
+                    dataType : "html",
+            })
+            .done(function(response) {
+                //alert(response);
+                $(".actionShow" + id).css("display","block");
+                $("#messageactionShow"+id).html(response);
+
+                 
+
+                  //$("#cancelActionDayButton"+id).css("display","none");
+                  //$("#updateActionDayButton"+id).css("display","none");
+                  //$("#editActionDayButton"+id).css("display","block");
+                  //$("#deleteActionDayButton"+id).css("display","block");
+
+                 //$("#editActionDay" + id).html(response["name"]);
+
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })       
+    }
+    else {
+        
+        $(".actionShow" + id).css("display","none");
+    }
 }
 function sessionSet(type) {
     

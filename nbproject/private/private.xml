@@ -34,6 +34,7 @@
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Mood.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Calendar.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/User/UserController.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/ajax/error.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/addDrugs.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainAll.css</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Main/MainController.php</file>

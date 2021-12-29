@@ -175,6 +175,17 @@ table.showAction, td.showAction, td.showAction {
     border-top: 5px solid #012936;
 
 }
+table.actionShowIdMood {
+    
+   text-align: center;
+    color: white;;
+    width: 97%;
+    border-collapse: separate;
+    border-spacing: 3px;
+    padding: 20px;
+
+    
+}
 td.showMood {
     border-top: 5px solid #626222;
 
@@ -552,4 +563,19 @@ table.tableCenter {
 }
 td.drugsTd {
     color: #115E02;
+}
+
+.actionShowModShow {
+    background-color: #308EED;
+    padding: 10px;
+    border-radius: 21px;
+    
+}
+
+td.titleAction {
+        background-color: #084071;
+        height: 35px;
+        font-weight: bold;
+   
+        
 }

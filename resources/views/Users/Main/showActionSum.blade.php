@@ -33,7 +33,11 @@
                             <div class='positionAction leveAction{{$list->level_pleasure}}'>{{$list->name}}</div>
                         </td>
                         <td  class=" showAction center tdAction ">
+                            @if ($list->sum == 0)
+                            <span class="warning">Mniej niż minuta</span>
+                            @else
                             {{\App\Http\Services\Common::calculateHourOne($list->sum * 60)}}
+                            @endif
                         </td>
                         <td class="sizeTableMood showAction center">
                             {{$list->level_pleasure}}

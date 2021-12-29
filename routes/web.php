@@ -58,6 +58,14 @@ Route::get("/ajax/updateMood",[App\Http\Controllers\Main\MainController::class, 
         ->name("ajax.updateMood")->middleware('auth')->middleware('can:users');
 Route::get("/ajax/deleteMood",[App\Http\Controllers\Main\MainController::class, 'deleteMood'])
         ->name("ajax.deleteMood")->middleware('auth')->middleware('can:users');
+Route::get("/ajax/editMoodDescription",[App\Http\Controllers\Main\MainController::class, 'editMoodDescription'])
+        ->name("ajax.editMoodDescription")->middleware('auth')->middleware('can:users');
+Route::get("/ajax/updateDescription",[App\Http\Controllers\Main\MainController::class, 'updateDescription'])
+        ->name("ajax.updateDescription")->middleware('auth')->middleware('can:users');
+Route::get("/ajax/showMoodDescription",[App\Http\Controllers\Main\MainController::class, 'showMoodDescription'])
+        ->name("ajax.showMoodDescription")->middleware('auth')->middleware('can:users');
+Route::get("/ajax/showAction",[App\Http\Controllers\Main\MainController::class, 'showAction'])
+        ->name("ajax.showAction")->middleware('auth')->middleware('can:users');
 
             
             Route::get('/users4/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\Search\SearchController::class, 'index2'])->name('users.search')

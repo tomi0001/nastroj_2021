@@ -101,4 +101,16 @@ class Mood extends Model
                 ->where("moods.id",$id)
                 ->first();
     }
+    public static function selectDescription(int $id,int $idUsers) {
+        return self::selectRaw("REPLACE(what_work,'<br>','\n') as what_work")
+                ->where("moods.id_users",$idUsers)
+                ->where("moods.id",$id)
+                ->first();
+    }
+    public static function selectDescriptionShow(int $id,int $idUsers) {
+        return self::selectRaw("what_work as what_work")
+                ->where("moods.id_users",$idUsers)
+                ->where("moods.id",$id)
+                ->first();
+    }
 }

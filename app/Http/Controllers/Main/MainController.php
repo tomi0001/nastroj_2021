@@ -15,6 +15,7 @@ use App\Models\Action;
 use App\Models\Actions_day;
 use App\Models\Action_plan;
 use App\Models\Mood;
+use App\Models\Moods_action;
 use App\Models\Usee;
 use App\Http\Services\Product;
 use Auth;
@@ -105,4 +106,26 @@ class MainController {
         $Mood->deleteMood($request->get("id"));
         
     }
+    public function editMoodDescription(Request $request) {
+        //$Mood = new Mood;
+        $description = Mood::selectDescription($request->get("id"),Auth::User()->id);
+        print json_encode($description);
+    }
+    public function updateDescription(Request $request) {
+        $Mood = new MoodServices;
+        $Mood->updateDescription($request,Auth::User()->id);
+    }
+    public function showMoodDescription(Request $request) {
+        $description = Mood::selectDescriptionShow($request->get("id"),Auth::User()->id);
+        print $description->what_work;
+    }
+    
+    
+    
+    public function showAction(Request $request) {
+        $listAction = Moods_action::selectlistAction($request->get("id"),Auth::User()->id);
+        return View("ajax.showAction")->with("listAction",$listAction);
+        
+    }
+    
 }
