@@ -748,6 +748,46 @@ function showAction(url,id) {
         $(".actionShow" + id).css("display","none");
     }
 }
+
+
+function showDrugs(url,id) {
+        if ($(".drugsShow" + id).css("display") == "none" ) {
+            $.ajax({
+                url : url,
+                    method : "get",
+                    data : 
+                      "id=" + id 
+                    ,
+                    dataType : "html",
+            })
+            .done(function(response) {
+                //alert(response);
+                $(".drugsShow" + id).css("display","block");
+                $("#messagedrugsShow"+id).html(response);
+
+                 
+
+                  //$("#cancelActionDayButton"+id).css("display","none");
+                  //$("#updateActionDayButton"+id).css("display","none");
+                  //$("#editActionDayButton"+id).css("display","block");
+                  //$("#deleteActionDayButton"+id).css("display","block");
+
+                 //$("#editActionDay" + id).html(response["name"]);
+
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })       
+    }
+    else {
+        
+        $(".drugsShow" + id).css("display","none");
+    }  
+}
+
+
 function sessionSet(type) {
     
     

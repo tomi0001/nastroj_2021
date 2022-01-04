@@ -127,5 +127,11 @@ class MainController {
         return View("ajax.showAction")->with("listAction",$listAction);
         
     }
+    public function showDrugs(Request $request) {
+        $listDate = Mood::selectDateMoods($request->get("id"),Auth::User()->id);
+        $listDrugs = Usee::selectlistDrugs($listDate->date_start,$listDate->date_end,Auth::User()->id);
+        //var_dump($listDrugs);
+        return View("ajax.showDrugs")->with("listDrugs",$listDrugs);
+    }
     
 }

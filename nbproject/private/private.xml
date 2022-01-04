@@ -5,11 +5,13 @@
         <group>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showActionDays.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Planned_drug.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/ajax/showAction.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Common.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showAll.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/layouts/app.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/config/database.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Mood.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Models/Substances_product.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showDrugs.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainwidth1810.css</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showActionSum.blade.php</file>
@@ -35,10 +37,12 @@
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Calendar.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/User/UserController.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/ajax/error.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/ajax/showDrugs.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/addDrugs.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainAll.css</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Main/MainController.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Product/ProductController.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainNotLogin.css</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Mood/MoodController.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showAction.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Main.php</file>
@@ -46,6 +50,7 @@
             <file>file:/var/www/html/nastroj_2021/public/styles/default/js/pageMain.js</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Actions_day.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/addAction.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Models/Substance.php</file>
         </group>
     </open-files>
 </project-private>

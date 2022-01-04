@@ -27,7 +27,7 @@ div.hiddenMood {
     margin-left: auto;
     margin-right: auto;
     width: 50%;
-    min-height: 160px;
+
     text-align: center;
 }
 div.hiddenMoodEdit {
@@ -111,6 +111,17 @@ div.actionMainselected {
                 font-size: 26px;
    
                 text-align: center;  
+        }
+        div.titleActionShowAjax {
+            background-color: #294898;
+            border-radius: 17px 17px 0px 0px;
+            min-height: 22px;
+
+        }
+        div.titleDrugsShowAjax {
+            background-color: #3A9900;
+            border-radius: 17px 17px 0px 0px;
+            min-height: 22px;
         }
         td.tdAction {
             padding-top: 20px;

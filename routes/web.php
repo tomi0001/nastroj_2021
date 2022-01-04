@@ -66,6 +66,8 @@ Route::get("/ajax/showMoodDescription",[App\Http\Controllers\Main\MainController
         ->name("ajax.showMoodDescription")->middleware('auth')->middleware('can:users');
 Route::get("/ajax/showAction",[App\Http\Controllers\Main\MainController::class, 'showAction'])
         ->name("ajax.showAction")->middleware('auth')->middleware('can:users');
+Route::get("/ajax/showDrugs",[App\Http\Controllers\Main\MainController::class, 'showDrugs'])
+        ->name("ajax.showDrugs")->middleware('auth')->middleware('can:users');
 
             
             Route::get('/users4/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\Search\SearchController::class, 'index2'])->name('users.search')

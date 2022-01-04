@@ -185,4 +185,25 @@ class Common {
             return 10;
         }
     }
+    public static function showDoseProduct(int $type) {
+        switch ($type) {
+            
+            case 1 : 
+                return "Mg";
+                break;
+            case 2:
+                return "militry";
+                break;
+            case 3:
+                return "ilości";
+                break;
+            case 4:
+                return "waga ciała";
+                break;
+            default:
+                return "Mg";
+                break;
+            
+        }
+    }
 }

@@ -129,7 +129,7 @@
                                 <tr>
                                     <td style="padding-right: 7px;">
                                         @if (!empty(\App\Models\Usee::ifExistUsee($list->date_start,$list->date_end,Auth::User()->id) ))
-                                            <button class="btn-drugs main" onclick="showDrugs("")">pokaż leki</button>
+                                            <button class="btn-drugs main" onclick="showDrugs('{{ route('ajax.showDrugs')}}',{{$list->id}})">pokaż leki</button>
                                         @else
                                             <button type="button" class="disable "  disabled>nie było leków</button>
                                         @endif
@@ -252,12 +252,30 @@
                     <td  colspan="7">
                         <div  class="hiddenMood actionShow{{$list->id}}" style="display: none;">
                             
-                            <div id="messageactionShow{{$list->id}}" class="actionShowModShow"></div>
+                            <div id="messageactionShow{{$list->id}}" class="actionShowModShow">
+                                
+                                
+                            </div>
+                            <br>
                         </div>
                     </td>
                 
-                </tr>                
+                </tr>      
+                <tr class='moodClass{{$list->id}}'>
+                    <td  colspan="7">
+                        <div  class="hiddenMood drugsShow{{$list->id}}" style="display: none;">
+                            
+                            <div id="messagedrugsShow{{$list->id}}" class="drugssShowModShow">
+                                
+                                
+                            </div>
+                            <br>
+                        </div>
+                    </td>
+                
+                </tr>    
                 @endforeach
             </table>
         </div>
+
 

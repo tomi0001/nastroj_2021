@@ -1,3 +1,6 @@
+<div class="titleActionShowAjax">
+    &nbsp;
+</div>
 <table class="actionShowIdMood">
     <thead>
         <tr>
@@ -16,7 +19,7 @@
         @if ($list->sum == 0 )
         <span class="warning">Mniej niż minuta</span>
         @else
-        {{$list->sum}}  
+        {{\App\Http\Services\Common::calculateHourOne($list->sum * 60)}}  
         @endif
     </td>
     

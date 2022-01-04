@@ -24,12 +24,30 @@ class Usee extends Model
     public static function selectUsee(string $date, int $idUsers,int $startDay) {
         return self::join("products","products.id","usees.id_products")
                 ->selectRaw("products.id as products_id")
+                ->selectRaw("products.type_of_portion as type")
                 ->selectRaw("usees.date as date")
                 ->selectRaw("usees.price as price")
                 ->selectRaw("usees.portion as portion")
                 ->selectRaw("products.name as name")
                 ->where("usees.id_users",$idUsers)
                 ->whereRaw(DB::Raw("(DATE(IF(HOUR(    usees.date) >= '" . $startDay . "', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ) = '" . $date . "' "))
+                ->orderBy("usees.date")
+                ->get();
+                
+    }
+    public static function selectlistDrugs(string $dateOne, string $dateTwo, int $idUsers) {
+        return self::join("products","products.id","usees.id_products")
+                ->selectRaw("products.id as products_id")
+                ->selectRaw("products.type_of_portion as type")
+                ->selectRaw("usees.date as date")
+                ->selectRaw("usees.id as id")
+                ->selectRaw("usees.price as price")
+                ->selectRaw("usees.portion as portion")
+                ->selectRaw("products.name as name")
+                ->where("usees.id_users",$idUsers)
+                ->where("usees.date",">=",$dateOne)
+                ->where("usees.date","<",$dateTwo)
+                //->whereRaw(DB::Raw("(DATE(IF(HOUR(    usees.date) >= '" . $startDay . "', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ) = '" . $date . "' "))
                 ->orderBy("usees.date")
                 ->get();
                 

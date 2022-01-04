@@ -113,4 +113,10 @@ class Mood extends Model
                 ->where("moods.id",$id)
                 ->first();
     }
+    public static function selectDateMoods(int $id,int $idUsers) {
+        return self::selectRaw("date_start as date_start")
+                ->selectRaw("date_end as date_end")
+                ->where("id_users",$idUsers)
+                ->where("id",$id)->first();
+    }
 }
