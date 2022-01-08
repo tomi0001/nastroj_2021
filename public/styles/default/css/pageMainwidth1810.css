@@ -443,6 +443,40 @@ div.actionMainselected {
                 font-weight: bold;
                 box-shadow: 6px 6px 6px #F4E375;
         }
+        button.MainEdit {
+            border: solid 1px transparent;
+                
+                padding-top: 10px;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-bottom: 10px;
+                width: 200px;
+                color: white;
+                border-radius: 12px;
+                height: 55px;
+                text-align: center;
+                display: inline-block;
+                font-size: 18px;
+                font-weight: bold;
+                box-shadow: 6px 6px 6px #F4E375;
+        }
+        button.MainEdit:hover {
+            border: solid 1px transparent;
+                
+                padding-top: 10px;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-bottom: 10px;
+                width: 200px;
+                color: white;
+                border-radius: 12px;
+                height: 55px;
+                text-align: center;
+                display: inline-block;
+                font-size: 18px;
+                font-weight: bold;
+                box-shadow: 6px 6px 6px #F4E375;
+        }
         button.main:hover {
                 
                 color: white;
@@ -732,6 +766,10 @@ div.actionMainselected {
             box-shadow: 1px 6px 8px 2px rgba(28,33,77,0.76);
             margin-bottom: 15px;
         }
-
+        hr.drugs {
+height: 1.0em; width: 80%; border: 1px solid #942314;
+margin-left: auto;
+margin-right: auto;
+        }
        
 }

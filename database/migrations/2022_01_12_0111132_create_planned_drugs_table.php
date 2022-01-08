@@ -24,7 +24,7 @@ class CreatePlannedDrugsTable extends Migration {
             $table->string('name');
             $table->bigInteger('id_products')->unsigned();
             $table->foreign("id_products")->references("id")->on("products");
-            $table->float('portion');
+            $table->float('portion')->unsigned();
             $table->timestamps();
         });
     }

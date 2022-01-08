@@ -19,14 +19,14 @@ class CreateUseesTable extends Migration {
         Schema::create('usees', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->id()->unsigned();
-            $table->float('portion');
+            $table->float('portion')->unsigned();
             $table->bigInteger('id_users')->unsigned();
             $table->foreign("id_users")->references("id")->on("users");
             $table->bigInteger('id_products')->unsigned();
             $table->foreign("id_products")->references("id")->on("products");
             $table->datetime("date");
             //$table->integer("type_of_portion")->unsigned();
-            $table->float("price");
+            $table->float("price")->unsigned();
             $table->timestamps();
         });
     }

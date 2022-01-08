@@ -22,7 +22,7 @@ class CreateSubstancesTable extends Migration {
             $table->string('name');
             $table->bigInteger('id_users')->unsigned();
             $table->foreign("id_users")->references("id")->on("users");
-            $table->float("equivalent")->nullable();
+            $table->float("equivalent")->unsigned()->nullable();
             $table->timestamps();
         });
 

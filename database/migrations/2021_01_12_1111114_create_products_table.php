@@ -22,9 +22,9 @@ class CreateProductsTable extends Migration {
             $table->string('name');
             $table->bigInteger('id_users')->unsigned();
             $table->foreign("id_users")->references("id")->on("users");
-            $table->float("how_percent")->nullable();
-            $table->integer("type_of_portion")->unsigned();
-            $table->float("price")->nullable();
+            $table->float("how_percent")->unsigned()->nullable();
+            $table->SmallInteger("type_of_portion")->unsigned();
+            $table->float("price")->unsigned()->nullable();
             $table->integer("how_much")->unsigned()->nullable();
             $table->timestamps();
         });

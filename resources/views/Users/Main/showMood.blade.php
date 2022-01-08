@@ -170,7 +170,7 @@
                                     </td>  
                                     <td style="padding-right: 7px;">
 
-                                            <button class="btn-mood main-long" onclick="showDrugs("")">Dodaj usuń akcje</button>
+                                            <button class="btn-mood main-long" onclick="editActionMood('{{route("ajax.editActionMood")}}',{{$list->id}})">Dodaj usuń akcje</button>
 
                                     </td>  
                                 </tr>
@@ -274,6 +274,22 @@
                     </td>
                 
                 </tr>    
+                <tr class='moodClass{{$list->id}}'>
+                    <td  colspan="7">
+                        <div  class="hiddenMood actionMoodShow{{$list->id}}" style="display: none;">
+                            
+                            <div id="messageactionMoodShow{{$list->id}}" class="actionMoodShowModShow">
+                                
+                                
+                            </div>
+                            <button class="btn-action MainEdit " onclick="updateActionForMood('{{ route('ajax.updateAction')}}',{{$list->id}})">Modyfikój akcje</button>
+                            <br><br>
+                            
+                        </div>
+                        
+                    </td>
+                
+                </tr>   
                 @endforeach
             </table>
         </div>

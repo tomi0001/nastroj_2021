@@ -102,7 +102,7 @@
                                             
                                                  @foreach (\App\Models\Action::selectAction(Auth::User()->id)  as $list)
                                                  <div class="rowPercent">
-                                                    <div class='actionMain'  id='divAction_{{$list->id}}' onclick='selectedActionMain({{$list->id}},{{$loop->index}})'>{{$list->name}}</div>
+                                                    <div class='actionMain actionMainAll'  id='divAction_{{$list->id}}' onclick='selectedActionMain({{$list->id}},{{$loop->index}})'>{{$list->name}}</div>
                                                     <div class="hiddenPercentExecuting centerPercent" id='divActionPercent_{{$list->id}}'>
                                                         <div style="display: inline-block; width: 40%;"><input type="number" class="percentExecuting form-control form-control-lg " title="procent wykonania" placeholder="procent wyk" name="percentExe[]" min="1" max="100"></div>
                                                         <input type="hidden"  id='idAction' name="idActionss[]" value='NULL'>

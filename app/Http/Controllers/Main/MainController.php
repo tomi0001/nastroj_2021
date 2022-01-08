@@ -129,9 +129,18 @@ class MainController {
     }
     public function showDrugs(Request $request) {
         $listDate = Mood::selectDateMoods($request->get("id"),Auth::User()->id);
+        $listDrugsAt = Usee::selectlistDrugs(date("Y-m-d H:i:s", strtotime($listDate->date_start) - 3600),date("Y-m-d H:i:s", strtotime($listDate->date_start)-1),Auth::User()->id);
         $listDrugs = Usee::selectlistDrugs($listDate->date_start,$listDate->date_end,Auth::User()->id);
-        //var_dump($listDrugs);
-        return View("ajax.showDrugs")->with("listDrugs",$listDrugs);
+        return View("ajax.showDrugs")->with("listDrugs",$listDrugs)->with("listDrugsAt",$listDrugsAt);
+    }
+    public function editActionMood(Request $request) {
+        //$listValueAction = Moods_action::selectValueActionForMood($request->get("id"),Auth::User()->id);
+        return View("ajax.editActionMood")->with("idMood",$request->get("id"));
+        
+    }
+    public function updateAction(Request $request) {
+        //var_dump($request->get("idActions"));
+        print "dd";
     }
     
 }

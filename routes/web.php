@@ -28,8 +28,9 @@ Route::get('/users.addMood', [App\Http\Controllers\Mood\MoodController::class, '
                     ->middleware('auth')->middleware('can:users');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('main');
 Route::get('/users/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\Main\MainController::class, 'index'])->name('users.main')
-                    ->where("year","[0-9]?[0-9]?[0-9]?[0-9]$")
-                    ->where("month","^(1[0-2]|[1-9])$")->where("day","^(3[01]|[12][0-9]|[1-9])$")->middleware('auth')->middleware('can:users');            
+          //          ->where("year","[0-9]?[0-9]?[0-9]?[0-9]$")
+        //            ->where("month","^(1[0-2]|[1-9])$")->where("day","^(3[01]|[12][0-9]|[1-9])$")
+        ->middleware('auth')->middleware('can:users');            
 Route::get('/users.drugsAdd', [App\Http\Controllers\Product\ProductController::class, 'add'])->name('users.drugsAdd')
                     ->middleware('auth')->middleware('can:users');
             
@@ -68,6 +69,11 @@ Route::get("/ajax/showAction",[App\Http\Controllers\Main\MainController::class, 
         ->name("ajax.showAction")->middleware('auth')->middleware('can:users');
 Route::get("/ajax/showDrugs",[App\Http\Controllers\Main\MainController::class, 'showDrugs'])
         ->name("ajax.showDrugs")->middleware('auth')->middleware('can:users');
+Route::get("/ajax/editActionMood",[App\Http\Controllers\Main\MainController::class, 'editActionMood'])
+        ->name("ajax.editActionMood")->middleware('auth')->middleware('can:users');
+Route::get("/ajax/updateAction",[App\Http\Controllers\Main\MainController::class, 'updateAction'])
+        ->name("ajax.updateAction")->middleware('auth')->middleware('can:users');
+
 
             
             Route::get('/users4/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\Search\SearchController::class, 'index2'])->name('users.search')
