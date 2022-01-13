@@ -45,12 +45,17 @@ function selectedActionMainValue(id,index,idMood) {
         //$("#idAction").eq(index).val(id);
         //arrayActionMulti["idMood"].push(idMood);
         //arrayActionMulti["id"].push(id);
-        arrayActionMulti.push([id,idMood]);
+        arrayActionMulti.push(id  + ',' + idMood);
         
         //alert(index);
     }
     else {
-        var i = arrayActionMulti.indexOf(id);
+        
+        //arrayActionMulti.indexOf([]);
+        
+        
+        var i = arrayActionMulti.indexOf(id+ ',' + idMood);
+
         arrayActionMulti.splice(i,1);
         //$("#idAction").eq(index).val('NULL');
         $("#divActionPercent_" + id + "_" + idMood).addClass("hiddenPercentExecuting").removeClass('active');
@@ -100,15 +105,16 @@ function updateActionForMood(url,id) {
 function selectedActionMainSetValue(data,lenght) {
 
     for (var i = 0;i < lenght;i++) {
-
-        $("#divAction_" + data.idList[i] + "_" + data.idMood[i]).removeClass("actionMain" + data.idMood[i]).addClass("actionMainselected");
-        $("#divActionPercent_" + data.idList[i] + "_" + data.idMood[i]).removeClass("hiddenPercentExecuting").addClass('active');
-        //$("#idAction").eq(index).val(id);
-        //eval(arrayActionMulti + idMood)
-        //arrayActionMulti["id"].push(id);
-        //arrayActionMulti["idMood"].push(idMood);
-        arrayActionMulti.push([data.idList[i],data.idMood[i]]);
-        $("#percentExe_" + data.index[i]).val(data.percent[i]);
+        if ($("#divAction_" + data.idList[i] + "_" + data.idMood[i]).length==1) {
+            $("#divAction_" + data.idList[i] + "_" + data.idMood[i]).removeClass("actionMain" + data.idMood[i]).addClass("actionMainselected");
+            $("#divActionPercent_" + data.idList[i] + "_" + data.idMood[i]).removeClass("hiddenPercentExecuting").addClass('active');
+            //$("#idAction").eq(index).val(id);
+            //eval(arrayActionMulti + idMood)
+            //arrayActionMulti["id"].push(id);
+            //arrayActionMulti["idMood"].push(idMood);
+            arrayActionMulti.push(data.idList[i] + ',' + data.idMood[i]);
+            $("#percentExe_" + data.index[i]).val(data.percent[i]);
+        }
     }
  
 }
@@ -224,11 +230,9 @@ function changeArrayAtHiddenAddMoodId(id) {
                     //alert($(this).parents().parents().attr('class') );
                     //alert(arrayActionMulti[id][i]);
                     if ($(this).parents().parents().hasClass("active")) {
-                        //JSON["idAction"][i]  = arrayAction[i];
-                        //JSON["percent"][i]  = $(this).val();
-                        //alert(id);
-                        //alert('dd');
-                        $("#formUpdateAction" + id).append("<input type=\'hidden\' name=\'idAction[]\' value='" + arrayActionMulti[id,i] + "' class=\'form-control typeMood\'>");
+                        
+                        var j = arrayActionMulti.indexOf(id + ',' + i);
+                        $("#formUpdateAction" + id).append("<input type=\'hidden\' name=\'idAction[]\' value='" + arrayActionMulti[i] + "' class=\'form-control typeMood\'>");
                         $("#formUpdateAction" + id).append("<input type=\'hidden\' name=\'idActions[]\' value='" + $(this).val() + "' class=\'form-control typeMood\'>");
                     //    alert('dd');
                     i++;
