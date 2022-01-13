@@ -139,8 +139,12 @@ class MainController {
         
     }
     public function updateAction(Request $request) {
-        //var_dump($request->get("idActions"));
-        print "dd";
+        
+        if (Mood::ifIdUsersExist($request->get("idMood"),Auth::User()->id) != NULL ) {
+            $MoodServices = new MoodServices;
+            $MoodServices->deleteMoodAction($request->get("idMood"));
+            $MoodServices->saveActionUpdate($request,$request->get("idMood"));
+        }
     }
     
 }

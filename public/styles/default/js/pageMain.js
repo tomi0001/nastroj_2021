@@ -43,12 +43,14 @@ function selectedActionMainValue(id,index,idMood) {
         $("#divAction_" + id + "_" + idMood).removeClass("actionMain"+ idMood).addClass("actionMainselected");
         $("#divActionPercent_" + id + "_" + idMood).removeClass("hiddenPercentExecuting").addClass('active');
         //$("#idAction").eq(index).val(id);
-        arrayActionMulti.push([idMood,id]);
+        //arrayActionMulti["idMood"].push(idMood);
+        //arrayActionMulti["id"].push(id);
+        arrayActionMulti.push([id,idMood]);
         
         //alert(index);
     }
     else {
-        var i = arrayActionMulti.indexOf([idMood,id]);
+        var i = arrayActionMulti.indexOf(id);
         arrayActionMulti.splice(i,1);
         //$("#idAction").eq(index).val('NULL');
         $("#divActionPercent_" + id + "_" + idMood).addClass("hiddenPercentExecuting").removeClass('active');
@@ -60,15 +62,17 @@ function selectedActionMainValue(id,index,idMood) {
 
 
 function updateActionForMood(url,id) {
-    //alert(url);
+
+    
      changeArrayAtHiddenAddMoodId(id);
+     
      //alert(arrayActionMulti.length);
     //$("#formAddMood").find(":disabled").remove();
     $.ajax({
         url : url,
             method : "get",
             data : 
-              "ss=" + 12
+              $("#formUpdateAction" + id).serialize() + "&idMood=" + id
             ,
             dataType : "html",
             beforeSend: function() { $('#buttonMoodAdd').addClass("spinner-border"); },
@@ -81,7 +85,7 @@ function updateActionForMood(url,id) {
             setInterval("reload();",20000);
             $("#formResult").html("<div class='ajaxSucces'>Pomyślnie dodano</div>");
         }
-    
+        $("#formUpdateAction" + id).find(":hidden").filter(".typeMood").remove();
 
     })
 
@@ -93,14 +97,19 @@ function updateActionForMood(url,id) {
 }
 
 
-function selectedActionMainSetValue(id,index,value,idMood) {
-        
-        $("#divAction_" + id + "_" + idMood).removeClass("actionMain" + idMood).addClass("actionMainselected");
-        $("#divActionPercent_" + id + "_" + idMood).removeClass("hiddenPercentExecuting").addClass('active');
+function selectedActionMainSetValue(data,lenght) {
+
+    for (var i = 0;i < lenght;i++) {
+
+        $("#divAction_" + data.idList[i] + "_" + data.idMood[i]).removeClass("actionMain" + data.idMood[i]).addClass("actionMainselected");
+        $("#divActionPercent_" + data.idList[i] + "_" + data.idMood[i]).removeClass("hiddenPercentExecuting").addClass('active');
         //$("#idAction").eq(index).val(id);
         //eval(arrayActionMulti + idMood)
-        arrayActionMulti.push([idMood,id]);
-        $("#percentExe_" + index).val(value);
+        //arrayActionMulti["id"].push(id);
+        //arrayActionMulti["idMood"].push(idMood);
+        arrayActionMulti.push([data.idList[i],data.idMood[i]]);
+        $("#percentExe_" + data.index[i]).val(data.percent[i]);
+    }
  
 }
 
@@ -205,18 +214,21 @@ function changeArrayAtHiddenAddMood() {
 function changeArrayAtHiddenAddMoodId(id) {
     var i = 0;
     var JSON = [];
-     
-        $("input[name^='percentExe150']").each(function() {
+    //alert(id);
+     //alert(arrayActionMulti[id][i]);
+        $("input[name^='percentExe" + id +  "']").each(function() {
            
                     //alert($("input[name='percentExe[" + i + "]']").val());
                 //if ((arrayAction[i]) != "") {
                     //alert('f');
                     //alert($(this).parents().parents().attr('class') );
+                    //alert(arrayActionMulti[id][i]);
                     if ($(this).parents().parents().hasClass("active")) {
                         //JSON["idAction"][i]  = arrayAction[i];
                         //JSON["percent"][i]  = $(this).val();
                         //alert(id);
-                        $("#formUpdateAction" + id).append("<input type=\'hidden\' name=\'idAction[]\' value='" + arrayActionMulti[id][i] + "' class=\'form-control typeMood\'>");
+                        //alert('dd');
+                        $("#formUpdateAction" + id).append("<input type=\'hidden\' name=\'idAction[]\' value='" + arrayActionMulti[id,i] + "' class=\'form-control typeMood\'>");
                         $("#formUpdateAction" + id).append("<input type=\'hidden\' name=\'idActions[]\' value='" + $(this).val() + "' class=\'form-control typeMood\'>");
                     //    alert('dd');
                     i++;

@@ -119,4 +119,7 @@ class Mood extends Model
                 ->where("id_users",$idUsers)
                 ->where("id",$id)->first();
     }
+    public static function ifIdUsersExist(int $idMood, int $idUsers) {
+        return self::where("id",$idMood)->where("id_users",$idUsers)->first();
+    }
 }

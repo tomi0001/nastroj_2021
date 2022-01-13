@@ -140,6 +140,22 @@ class Mood {
             }
         }
     }
+    public function saveActionUpdate(Request $request,int $idMood) :void {
+        for ($i = 0;$i < count($request->get("idAction"));$i++) {
+            if ($request->get("idAction")[$i] != ""  ) {
+                $tmp = explode(",",$request->get("idAction")[$i]);
+                $Moods_action = new MoodAction;
+                $Moods_action->id_moods = $idMood;
+                $Moods_action->id_actions = $tmp[0];
+
+                if ($request->get("idActions")[$i] != "" ) {
+                    $Moods_action->percent_executing = (int) $request->get("idActions")[$i];
+                }
+                
+                $Moods_action->save();
+            }
+        }
+    }
     public function checkErrorAction(Request $request) {
         for ($i = 0;$i < count($request->get("idActions"));$i++) {
             if ($request->get("idActions")[$i] != "" and $request->get("idActions")[$i] != "NULL" and ($request->get("idActions")[$i] < 1 or $request->get("idActions")[$i] > 100)) {
@@ -163,5 +179,9 @@ class Mood {
         $Mood = new MoodModel;
         $Mood->where("id",$request->get("id"))->where("id_users",Auth::User()->id)
                 ->update(["what_work"=>  ($request->get("description"))]);
+    }
+    public function deleteMoodAction(int  $idMood) {
+        $MoodAction = new MoodAction;
+        $MoodAction->where("id_moods",$idMood)->delete();
     }
 }

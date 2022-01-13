@@ -4,25 +4,33 @@
                                                 <div >
                                                     <input type="text" id="hideActions{{$idMood}}" class='form-control'  >
                                                 </div>
-                                            
+                                                @php
+                                                           $arrayJson = []; 
+                                                           $i = 0;
+                                                            
+                                                @endphp
                                                  @foreach (\App\Models\Action::selectAction(Auth::User()->id)  as $list)
                                                  <div class="rowPercent">
+                                                     
                                                      @if ($val = \App\Models\Moods_action::selectValueActionForMood($idMood,Auth::User()->id,$list->id) )
-                                                        @if ($val->percent_executing == NULL)
-                                                        <script>
+                                                        
+                               
+                                                          @php
+                                                          
+                                                            $arrayJson["idMood"][$i] = $idMood;
+                                                            $arrayJson["idList"][$i] = $list->id;
+                                                            $arrayJson["index"][$i] = $loop->index;
+                                                            $arrayJson["percent"][$i] = $val->percent_executing;
+                                                            $i++;
+                                                          @endphp
+                                                                
 
-                                                               window.onload=selectedActionMainSetValue({{$list->id}},{{$loop->index}},null,{{$idMood}});
 
-
-                                                       </script>
-                                                        @else
-                                                        <script>
-
-                                                               window.onload=selectedActionMainSetValue({{$list->id}},{{$loop->index}},{{$val->percent_executing}},{{$idMood}});
-
-
-                                                        </script>
-                                                        @endif
+                                                       
+                                                        
+                                                        
+                                                      
+                                                        
                                                          
                                                      @endif
                                                     <div class='actionMain actionMain{{$idMood}}'  id='divAction_{{$list->id}}_{{$idMood}}' onclick='selectedActionMainValue({{$list->id}},{{$loop->index}},{{$idMood}})'>{{$list->name}}</div>
@@ -32,22 +40,37 @@
                                                     </div>
                                                  </div>
                                                  @endforeach
+
                                             </div>
 
-                                            <div id="formResult"></div>
-                                                dddsff
-                                            </div>
+                                            <div id="formResult"></div></div>
                                       </form>
-<script>
+
+   <script type="application/json" id="json">
+  <?php 
+  if (count($arrayJson) > 0) {
+  echo json_encode($arrayJson); 
+  }
+  
+  ?>
+</script>
+    <script type="application/json" id="jsonLenght">
+  <?php
+  if (count($arrayJson) > 0) {
+  echo count($arrayJson["idMood"]) ;
+  }
+  ?>
+</script>  
+   <script>
    
-   
-   
-   
-   
+    
    
     $(document).ready(function(){
     
-        
+        const myData = JSON.parse(document.getElementById("json").innerText);
+        const myDataLenght = JSON.parse(document.getElementById("jsonLenght").innerText);
+        //alert(myDataLenght);
+        selectedActionMainSetValue(myData,myDataLenght);
         
      jQuery.expr[':'].contains = function(a, i, m) {
   return jQuery(a).text().toUpperCase()

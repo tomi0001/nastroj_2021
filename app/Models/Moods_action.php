@@ -26,4 +26,5 @@ class Moods_action extends Model
                 ->where("id_moods",$idMood)
                 ->where("id_actions",$idAction)->first();        
     }
+
 }
