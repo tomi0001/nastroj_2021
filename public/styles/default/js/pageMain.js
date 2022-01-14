@@ -148,6 +148,30 @@ function deleteMood(url,id) {
 }
 
 
+function deleteSleep(url,id) {
+    var bool = confirm("Czy na pewno");
+    if (bool == true) {
+        
+        $.ajax({
+           url : url,
+               method : "get",
+               data : 
+                 "id=" + id
+               ,
+               dataType : "html",
+       })
+       .done(function(response) {
+          
+           $(".moodClass" + id).remove();
+
+
+       })
+       .fail(function() {
+           alert("Wystąpił błąd");
+       })    
+        
+    }
+}
 
 $(document).ready(function(){
 
@@ -490,9 +514,50 @@ function editMood(id) {
     $(".showMenuMood" + id).css("display","none");
     $(".showMenuEditMood" + id).css("display","block");
 }
-
+function editMoodSleep(id) {
+    $(".showMenuMood" + id).css("display","none");
+    $(".showMenuEditMood" + id).css("display","block");
+}
 
 function editMoodDescription(url,id) {
+    if ($(".description" + id).css("display") == "none" ) {
+        
+        $.ajax({
+                url : url,
+                    method : "get",
+                    data : 
+                      "id=" + id
+                    ,
+                    dataType : "json",
+            })
+            .done(function(response) {
+
+
+
+
+                  $(".description" + id).css("display","block");
+                  $("#description" + id).html(response["what_work"]);
+
+                  //$("#cancelActionDayButton"+id).css("display","none");
+                  //$("#updateActionDayButton"+id).css("display","none");
+                  //$("#editActionDayButton"+id).css("display","block");
+                  //$("#deleteActionDayButton"+id).css("display","block");
+
+                 //$("#editActionDay" + id).html(response["name"]);
+
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })    
+    }
+    else {
+        
+        $(".description" + id).css("display","none");
+    }
+}
+function editSleepDescription(url,id) {
     if ($(".description" + id).css("display") == "none" ) {
         
         $.ajax({
@@ -686,6 +751,48 @@ function updateMood(url,id) {
            alert("Wystąpił błąd");
        })    
     
+}
+
+function updateSleep(url,id) {
+
+        if ( !isInt($("#levelEpizodesEdit"+id).val())  || ($("#levelEpizodesEdit"+id).val()) < 0 ) {
+            alert("Liczba epizodów psychotycznych musi być dodatnią liczbą całkowitą");
+            return;
+        }
+
+            $.ajax({
+           url : url,
+               method : "get",
+               data : 
+                 "id=" + id +  "&levelEpizodes="  + $("#levelEpizodesEdit"+id).val()
+               ,
+               dataType : "json",
+       })
+       .done(function(response) {
+           //levelNervousness
+
+           
+           if (response["epizodes_psychotik"] > 0 ) {
+               $("#levelEpizodes"+id).addClass("MessageError");
+               $("#levelEpizodes"+id).text(response["epizodes_psychotik"] + " epizodów psychotycznych");
+           }
+           else {
+               //alert('dd');
+               $("#levelEpizodes"+id).removeClass("MessageError");
+               $("#levelEpizodes"+id).text(" Brak");
+           }
+           
+           //$("#levelEpizodes"+id).text(response["epizodes_psychotik"]);
+           
+           
+           $(".showMenuMood" + id).css("display","block");
+           $(".showMenuEditMood" + id).css("display","none");
+
+
+       })
+       .fail(function() {
+           alert("Wystąpił błąd");
+       })    
 }
 
 function isInt(value) {

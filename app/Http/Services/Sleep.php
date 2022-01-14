@@ -56,7 +56,7 @@ class Sleep {
         if ($request->get("howWorking") != "") {
             $Sleep->epizodes_psychotik = $request->get("howWorking");
         }
-        $Sleep->what_work = str_replace("\n", "<br>", $request->get("whatWork"));
+        $Sleep->what_work = str_replace("\n", "<br>", $request->get("whatSleep"));
         $Sleep->id_users = Auth::User()->id;
         $Sleep->type = "sleep";
         $Sleep->save();

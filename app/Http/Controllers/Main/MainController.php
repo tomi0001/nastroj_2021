@@ -106,7 +106,16 @@ class MainController {
         $Mood->deleteMood($request->get("id"));
         
     }
+    public function deleteSleep(Request $request) {
+        $Mood = new MoodServices;
+        $Mood->deleteMood($request->get("id"));
+    }
     public function editMoodDescription(Request $request) {
+        //$Mood = new Mood;
+        $description = Mood::selectDescription($request->get("id"),Auth::User()->id);
+        print json_encode($description);
+    }
+    public function editSleepDescription(Request $request) {
         //$Mood = new Mood;
         $description = Mood::selectDescription($request->get("id"),Auth::User()->id);
         print json_encode($description);
@@ -119,7 +128,10 @@ class MainController {
         $description = Mood::selectDescriptionShow($request->get("id"),Auth::User()->id);
         print $description->what_work;
     }
-    
+    public function showMoodDescriptionSleep(Request $request) {
+        $description = Mood::selectDescriptionShow($request->get("id"),Auth::User()->id);
+        print $description->what_work;
+    }
     
     
     public function showAction(Request $request) {
@@ -145,6 +157,12 @@ class MainController {
             $MoodServices->deleteMoodAction($request->get("idMood"));
             $MoodServices->saveActionUpdate($request,$request->get("idMood"));
         }
+    }
+    public function updateSleep(Request $request) {
+        $Mood = new MoodServices;
+        $Mood->updateSleep($request);
+        $valueSleep = Mood::selectValueSleep($request->get("id"),Auth::User()->id);
+        print json_encode($valueSleep);
     }
     
 }

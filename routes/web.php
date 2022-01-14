@@ -73,7 +73,14 @@ Route::get("/ajax/editActionMood",[App\Http\Controllers\Main\MainController::cla
         ->name("ajax.editActionMood")->middleware('auth')->middleware('can:users');
 Route::get("/ajax/updateAction",[App\Http\Controllers\Main\MainController::class, 'updateAction'])
         ->name("ajax.updateAction")->middleware('auth')->middleware('can:users');
-
+Route::get("/ajax/showMoodDescriptionSleep",[App\Http\Controllers\Main\MainController::class, 'showMoodDescriptionSleep'])
+        ->name("ajax.showMoodDescriptionSleep")->middleware('auth')->middleware('can:users');
+Route::get("/ajax/updateSleep",[App\Http\Controllers\Main\MainController::class, 'updateSleep'])
+        ->name("ajax.updateSleep")->middleware('auth')->middleware('can:users');
+Route::get("/ajax/editSleepDescription",[App\Http\Controllers\Main\MainController::class, 'editSleepDescription'])
+        ->name("ajax.editSleepDescription")->middleware('auth')->middleware('can:users');
+Route::get("/ajax/deleteSleep",[App\Http\Controllers\Main\MainController::class, 'deleteSleep'])
+        ->name("ajax.deleteSleep")->middleware('auth')->middleware('can:users');
 
             
             Route::get('/users4/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\Search\SearchController::class, 'index2'])->name('users.search')

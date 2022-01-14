@@ -141,6 +141,9 @@ class Mood {
         }
     }
     public function saveActionUpdate(Request $request,int $idMood) :void {
+        if (empty($request->get("idAction")  )) {
+            return;
+        }
         for ($i = 0;$i < count($request->get("idAction"));$i++) {
             if ($request->get("idAction")[$i] != ""  ) {
                 $tmp = explode(",",$request->get("idAction")[$i]);
@@ -170,7 +173,12 @@ class Mood {
         $Mood->where("id",$request->get("id"))->where("id_users",Auth::User()->id)
                 ->update(["level_mood"=> $request->get("levelMood"),"level_anxiety"=> $request->get("levelAnxienty"),"level_nervousness"=> $request->get("levelNervousness"),"level_stimulation"=> $request->get("levelStimulation"),"epizodes_psychotik"=> $request->get("levelEpizodes")]);
     }
+    public function updateSleep(Request $request) {
+        $Mood = new MoodModel;
+        $Mood->where("id",$request->get("id"))->where("id_users",Auth::User()->id)
+                ->update(["epizodes_psychotik"=> $request->get("levelEpizodes")]);
     
+    }
     public function deleteMood(int $id) {
         $Mood = new MoodModel;
         $Mood->where("id",$id)->where("id_users",Auth::User()->id)->delete();

@@ -111,11 +111,18 @@
                             </div>
                         <div class="showMenuEditMood{{$list->id}}" style="display: none;">
                         @else
+                               <div  class="showMenuMood{{$list->id}}">
                                 @if ($list->epizodes_psychotik != 0)
-                                    <span class="MessageError" >{{$list->epizodes_psychotik}}  wybudzeń</span>
+                                    <span class="MessageError" id="levelEpizodes{{$list->id}}">{{$list->epizodes_psychotik}} wybudzeń</span>
                                 @else
-                                    Brak
+                                   <span  id="levelEpizodes{{$list->id}}"> Brak </span>
                                 @endif
+                            </div>
+                            <div class=" showMenuEditMood{{$list->id}} " style="display: none; width: 40%; margin-left: auto; margin-right: auto; ">
+                               
+                                    <input class="form-control" type="text" id="levelEpizodesEdit{{$list->id}}" value="{{$list->epizodes_psychotik}}" >
+                                
+                            </div>
 
                         @endif
                         </div>
@@ -193,39 +200,57 @@
                             </table>
                         </div>
                         @else
-                        <table  class="tableCenter"  >
-                            <tr>
+                        <div class="showMenuMood{{$list->id}}">
+                            <table  class="tableCenter"  >
+                                <tr>
 
 
-    
-                                
-                                <td style="padding-right: 7px;">
-                                    
-                                    @if ((\App\Models\Mood::showDescription($list->id)->what_work != "" ))
-                                        <button class="btn-sleep main" onclick="showDrugs("")">pokaż  opis</button>
-                                    @else
-                                        <button type="button" class="disable "  disabled>nie było opisu</button>
-                                    @endif
-                                </td>    
-                                <td style="padding-right: 7px;">
-                                    
-                                        <button class="btn-sleep main-long" onclick="showDrugs("")">Edytuj Sen</button>
-                                
-                                </td>    
 
-                                <td style="padding-right: 7px;">
-                                    
-                                        <button class="btn-sleep main-long" onclick="showDrugs("")">Edytuj Dodaj opis</button>
-                                
-                                </td> 
 
-                                <td style="padding-right: 7px;">
-                                    
-                                        <button class="danger main" onclick="showDrugs("")">Usuń sen</button>
-                                
-                                </td>  
-                            </tr>
-                        </table>
+                                    <td style="padding-right: 7px;">
+
+                                        @if ((\App\Models\Mood::showDescription($list->id)->what_work != "" ))
+                                            <button class="btn-sleep main" onclick="showDescrition('{{route("ajax.showMoodDescriptionSleep")}}',{{$list->id}})">pokaż  opis</button>
+                                        @else
+                                            <button type="button" class="disable "  disabled>nie było opisu</button>
+                                        @endif
+                                    </td>    
+                                    <td style="padding-right: 7px;">
+
+                                            <button class="btn-sleep main-long" onclick="editMoodSleep({{$list->id}})">Edytuj Sen</button>
+
+                                    </td>    
+
+                                    <td style="padding-right: 7px;">
+
+                                            <button class="btn-sleep main-long" onclick="editSleepDescription('{{route("ajax.editSleepDescription")}}',{{$list->id}})">Edytuj Dodaj opis</button>
+
+                                    </td> 
+
+                                    <td style="padding-right: 7px;">
+
+                                            <button class="danger main" onclick="deleteSleep('{{route("ajax.deleteSleep")}}',{{$list->id}})">Usuń sen</button>
+
+                                    </td>  
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="showMenuEditMood{{$list->id}}" style="display: none;">
+                            <table  class="tableCenter"  >
+                                <tr>
+                                    <td style="padding-right: 7px;">
+                                        
+                                            <button class="btn-sleep main" onclick="updateSleep('{{route('ajax.updateSleep')}}',{{$list->id}})">Uaktualnij</button>
+                                       
+                                    </td>
+                                    <td style="padding-right: 7px;">
+                                        
+                                            <button class="btn-sleep main" onclick="cancel({{$list->id}})">Anuluj</button>
+                                       
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
                         @endif
                     </td>
                 </tr>
@@ -243,7 +268,7 @@
                     <td  colspan="7">
                         <div  class="hiddenMood descriptionShow{{$list->id}}" style="display: none;">
                             
-                            <div id="messageDescriptionshow{{$list->id}}" class="descriptionModShow"></div>
+                            <div id="messageDescriptionshow{{$list->id}}" class="descriptionModShowSleep"></div>
                         </div>
                     </td>
                 
