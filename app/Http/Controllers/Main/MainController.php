@@ -110,6 +110,11 @@ class MainController {
         $Mood = new MoodServices;
         $Mood->deleteMood($request->get("id"));
     }
+    public function deleteDrugs(Request $request) {
+        $Product = new Product;
+        $Product->removeDescriptionDrugs($request->get("id"));
+        $Product->deleteDrugs($request->get("id"));
+    }
     public function editMoodDescription(Request $request) {
         //$Mood = new Mood;
         $description = Mood::selectDescription($request->get("id"),Auth::User()->id);

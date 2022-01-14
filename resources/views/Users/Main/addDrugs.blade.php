@@ -71,7 +71,7 @@
                                         opis spożycia
                                     </td>
                                     <td>
-                                        <textarea name='whatSleep' class='form-control' rows='7'></textarea>
+                                        <textarea name='description' class='form-control' rows='7'></textarea>
                                     </td>
                                 </tr>
 

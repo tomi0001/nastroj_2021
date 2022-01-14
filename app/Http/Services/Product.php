@@ -9,10 +9,13 @@ use Illuminate\Http\Request;
 use App\Models\User as MUser;
 use App\Models\Mood as MoodModel;
 use App\Models\Moods_action as MoodAction;
+//use App\Models\description as description;
 use App\Http\Services\Calendar;
 use App\Models\Planned_drug;
 use App\Models\Usee;
 use App\Models\Product as appProduct;
+use App\Models\Users_description;
+use App\Models\Description;
 use Hash;
 use Auth;
 use DB;
@@ -31,6 +34,17 @@ class Product {
             $this->addDescription($request,$use->id,$date);
         }
         
+    }
+    private function addDescription(Request $request,$id,$date) {
+        $Description = new description;
+        $Description->description = str_replace("\n", "<br>", $request->get("description"));
+        $Description->date = $date;
+        $Description->id_users = Auth::User()->id;
+        $Description->save();
+        $Users_description = new users_description;
+        $Users_description->id_usees = $id;
+        $Users_description->id_descriptions = $Description->id;
+        $Users_description->save();
     }
     public function setDate(Request $request)  :bool {
         if ($request->get("date") == "" and $request->get("time") == "") {
@@ -83,5 +97,17 @@ class Product {
    
         
     }
-
+    public function deleteDrugs(int $id) {
+        $Drugs = new Usee;
+        $Drugs->where("id",$id)->where("id_users",Auth::User()->id)->delete();
+    }
+    public function removeDescriptionDrugs(int $id) {
+        $Users_descriptionSelect = new Users_description;
+        $Users_descriptionSelect->selectRaw("id_descriptions as id_descriptions")->where("id_usees",$id)->first();
+        $idDescription = $Users_descriptionSelect->id_descriptions;
+        $Users_description = new Users_description;
+        $Users_description->where("id_usees",$id)->delete();
+        $Description = new Description;
+        $Description->where("id",$idDescription)->delete();
+    }
 }

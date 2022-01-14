@@ -31,7 +31,7 @@
                     </td>
                 </tr>
                 @foreach ($listDrugs as $list)
-                                    <tr>
+                                    <tr class='drugsClass{{$list->id}}'>
                     <td class=" drugsShow drugsTd showdrugs"  >
                         {{$list->name}}
                     </td>
@@ -62,7 +62,7 @@
 
                     
                 </tr>
-                <tr>
+                <tr class='drugsClass{{$list->id}}'>
                     <td colspan="7" class="moodButton">
                         <table  class="tableCenter"  >
                             <tr>
@@ -89,7 +89,7 @@
                                 </td>
                                 <td style="padding-right: 7px;">
                                    
-                                        <button class="danger" onclick="showDrugs("")">usuń wpis</button>
+                                        <button class="danger main" onclick="deleteDrugs('{{route("ajax.deleteDrugs")}}',{{$list->id}})">usuń produkt</button>
                                     
                                      
                                     

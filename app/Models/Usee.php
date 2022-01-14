@@ -27,6 +27,7 @@ class Usee extends Model
                 ->selectRaw("products.type_of_portion as type")
                 ->selectRaw("usees.date as date")
                 ->selectRaw("usees.price as price")
+                ->selectRaw("usees.id as id")
                 ->selectRaw("usees.portion as portion")
                 ->selectRaw("products.name as name")
                 ->where("usees.id_users",$idUsers)

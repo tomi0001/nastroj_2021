@@ -173,6 +173,31 @@ function deleteSleep(url,id) {
     }
 }
 
+function deleteDrugs(url,id) {
+    var bool = confirm("Czy na pewno");
+    if (bool == true) {
+        
+        $.ajax({
+           url : url,
+               method : "get",
+               data : 
+                 "id=" + id
+               ,
+               dataType : "html",
+       })
+       .done(function(response) {
+          
+           $(".drugsClass" + id).remove();
+
+
+       })
+       .fail(function() {
+           alert("Wystąpił błąd");
+       })    
+        
+    }  
+}
+
 $(document).ready(function(){
 
         $(".mainHref").click( function() {
