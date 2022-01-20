@@ -38,8 +38,15 @@ div.hiddenMoodEdit {
     text-align: center;
   
 }
-div.descriptionModShow {
+div.descriptionModShowMood {
     background-color: #6D6D21;
+    border-radius: 25px;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+div.descriptionDrugsShow {
+    background-color: #609300;
     border-radius: 25px;
     color: white;
     padding-top: 10px;

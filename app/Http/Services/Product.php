@@ -35,7 +35,13 @@ class Product {
         }
         
     }
-    private function addDescription(Request $request,$id,$date) {
+    public function updateProduct(Request $request,$price) {
+        $Usee = new Usee;
+        $date = $request->get("date") . " " . $request->get("time") . ":00";
+        $Usee->where("id",$request->get("id"))->where("id_users",Auth::User()->id)
+                ->update(["portion"=> $request->get("doseEdit"),"id_products"=> $request->get("idProduct"),"date" => $date,"price"=> $price]);
+    }
+    public function addDescription(Request $request,$id,$date) {
         $Description = new description;
         $Description->description = str_replace("\n", "<br>", $request->get("description"));
         $Description->date = $date;
@@ -103,11 +109,16 @@ class Product {
     }
     public function removeDescriptionDrugs(int $id) {
         $Users_descriptionSelect = new Users_description;
-        $Users_descriptionSelect->selectRaw("id_descriptions as id_descriptions")->where("id_usees",$id)->first();
-        $idDescription = $Users_descriptionSelect->id_descriptions;
+        $idDescription = $Users_descriptionSelect->selectRaw("id_descriptions as id_descriptions")->where("id_usees",$id)->get();
         $Users_description = new Users_description;
         $Users_description->where("id_usees",$id)->delete();
-        $Description = new Description;
-        $Description->where("id",$idDescription)->delete();
+        foreach ($idDescription as $list) {
+            $Description = new Description;
+            $Description->where("id",$list->id_descriptions)->delete();
+        }
+    }
+    public function showDescriptions(int $id) {
+        $Users_description = Users_description::showDescriptions($id);
+        return $Users_description;
     }
 }

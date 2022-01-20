@@ -83,8 +83,17 @@ Route::get("/ajax/deleteSleep",[App\Http\Controllers\Main\MainController::class,
         ->name("ajax.deleteSleep")->middleware('auth')->middleware('can:users');
 Route::get("/ajax/deleteDrugs",[App\Http\Controllers\Main\MainController::class, 'deleteDrugs'])
         ->name("ajax.deleteDrugs")->middleware('auth')->middleware('can:users');
+Route::get("/ajax/showDescriptionDrugs",[App\Http\Controllers\Main\MainController::class, 'showDescriptionDrugs'])
+        ->name("ajax.showDescriptionDrugs")->middleware('auth')->middleware('can:users');
+Route::get("/ajax/addDescriptionDrugs",[App\Http\Controllers\Main\MainController::class, 'addDescriptionDrugs'])
+        ->name("ajax.addDescriptionDrugs")->middleware('auth')->middleware('can:users');
+Route::get("/ajax/editDrugs",[App\Http\Controllers\Main\MainController::class, 'editDrugs'])
+        ->name("ajax.editDrugs")->middleware('auth')->middleware('can:users');
+Route::get("/ajax/updateDrugs",[App\Http\Controllers\Main\MainController::class, 'updateDrugs'])
+        ->name("ajax.updateDrugs")->middleware('auth')->middleware('can:users');
+          
 
-            
+
             Route::get('/users4/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\Search\SearchController::class, 'index2'])->name('users.search')
                     ->middleware('auth')->middleware('can:users');
             

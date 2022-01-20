@@ -169,5 +169,28 @@ class MainController {
         $valueSleep = Mood::selectValueSleep($request->get("id"),Auth::User()->id);
         print json_encode($valueSleep);
     }
-    
+    public function showDescriptionDrugs(Request $request) {
+        if (Usee::ifIdUsersExist($request->get("id"),Auth::User()->id) > 0 ) {
+            $description = new Product;
+            $desctptionList = $description->showDescriptions($request->get("id"));
+            return View("ajax.showDescriptionDrugs")->with("list",$desctptionList);
+        }
+    }
+    public function addDescriptionDrugs(Request $request) {
+        if ($request->get("description") == "") {
+            return View("ajax.error")->with("error",["Uzupełnij nazwe, nazwa nie może być pusta."]);
+        }
+        else {
+            $description = new Product;
+            $description->addDescription($request, $request->get("id"), date("Y-m-d H:i:s"));
+            return View("ajax.succes")->with("succes","Pomyślnie dodano");
+        }
+    }
+    public function updateDrugs(Request $request) {
+        $Product = new Product;
+        $price = $Product->sumPrice($request->get("portion"),$request->get("idProduct"));
+        $Product->updateProduct($request,$price);
+        $valueDrugs = Usee::selectValueDrugs($request->get("id"),Auth::User()->id);
+        print json_encode($valueDrugs);
+    }
 }

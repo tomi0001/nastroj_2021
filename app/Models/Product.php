@@ -15,4 +15,9 @@ class Product extends Model
                 ->selectRaw("id")
                 ->where("id_users", Auth::User()->id)->orderBy("name")->get();
     }
+    public static function selectNameProduct(int $idProduct) {
+        return self::selectRaw("name")
+                ->where("id_users", Auth::User()->id)
+                ->where("id",$idProduct)->first();
+    }
 }

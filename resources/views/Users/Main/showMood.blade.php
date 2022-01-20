@@ -153,7 +153,7 @@
                                     <td style="padding-right: 7px;">
 
                                         @if ((\App\Models\Mood::showDescription($list->id)->what_work != "" ))
-                                            <button class="btn-mood main" onclick="showDescrition('{{route("ajax.showMoodDescription")}}',{{$list->id}})">pokaż  opis</button>
+                                            <button class="btn-mood main" onclick="showDescritionMood('{{route("ajax.showMoodDescription")}}',{{$list->id}})">pokaż  opis</button>
                                         @else
                                             <button type="button" class="disable "  disabled>nie było opisu</button>
                                         @endif
@@ -210,7 +210,7 @@
                                     <td style="padding-right: 7px;">
 
                                         @if ((\App\Models\Mood::showDescription($list->id)->what_work != "" ))
-                                            <button class="btn-sleep main" onclick="showDescrition('{{route("ajax.showMoodDescriptionSleep")}}',{{$list->id}})">pokaż  opis</button>
+                                            <button class="btn-sleep main" onclick="showDescritionSleep('{{route("ajax.showMoodDescriptionSleep")}}',{{$list->id}})">pokaż  opis</button>
                                         @else
                                             <button type="button" class="disable "  disabled>nie było opisu</button>
                                         @endif
@@ -251,6 +251,7 @@
                                 </tr>
                             </table>
                         </div>
+
                         @endif
                     </td>
                 </tr>
@@ -266,9 +267,18 @@
                 </tr>
                 <tr class='moodClass{{$list->id}}'>
                     <td  colspan="7">
-                        <div  class="hiddenMood descriptionShow{{$list->id}}" style="display: none;">
+                        <div  class="hiddenMood descriptionShowSleep{{$list->id}}" style="display: none;">
                             
-                            <div id="messageDescriptionshow{{$list->id}}" class="descriptionModShowSleep"></div>
+                            <div id="messageDescriptionshowSleep{{$list->id}}" class="descriptionModShowSleep"></div>
+                        </div>
+                    </td>
+                
+                </tr>
+                <tr class='moodClass{{$list->id}}'>
+                    <td  colspan="7">
+                        <div  class="hiddenMood descriptionShowMood{{$list->id}}" style="display: none;">
+                            
+                            <div id="messageDescriptionshowMood{{$list->id}}" class="descriptionModShowMood"></div>
                         </div>
                     </td>
                 
@@ -299,6 +309,7 @@
                     </td>
                 
                 </tr>    
+
                 <tr class='moodClass{{$list->id}}'>
                     <td  colspan="7">
                         <div  class="hiddenMood actionMoodShow{{$list->id}}" style="display: none;">

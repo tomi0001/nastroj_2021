@@ -63,4 +63,24 @@ class Usee extends Model
                 ->groupBy("substances.id")
                 ->get();     
     }
+    public static function ifDescriptionDrugs(int $idUsee, int $idUsers) {
+        return self::join("users_descriptions","users_descriptions.id_usees","usees.id")
+                //->selectRaw("count(users_descriptions.id) as count")
+                ->where("users_descriptions.id_usees",$idUsee)
+                ->count();
+    }
+    public static function ifIdUsersExist(int $id,int $idUsers) {
+        return self::where("id",$id)->where("id_users",$idUsers)->count();
+    }
+    public static function selectValueDrugs(int $id,int $idUsers) {
+        return self::join("products","products.id","usees.id_products")
+                ->selectRaw("products.name  as name")
+                ->selectRaw("products.type_of_portion as type")
+                ->selectRaw("usees.portion as portion")
+                ->selectRaw("SUBSTRING((usees.date),1,16) as date")
+                ->selectRaw("usees.price as price")
+                ->where("usees.id_users",$idUsers)
+                ->where("usees.id",$id)
+                ->first(); 
+    }
 }

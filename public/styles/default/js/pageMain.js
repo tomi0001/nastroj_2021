@@ -186,7 +186,7 @@ function deleteDrugs(url,id) {
                dataType : "html",
        })
        .done(function(response) {
-          
+          //$("#showdrugs").html(response);
            $(".drugsClass" + id).remove();
 
 
@@ -539,6 +539,10 @@ function editMood(id) {
     $(".showMenuMood" + id).css("display","none");
     $(".showMenuEditMood" + id).css("display","block");
 }
+function editDrugs(id) {
+    $(".showMenuDrugs" + id).css("display","none");
+    $(".showMenuEditDrugs" + id).css("display","block");
+}
 function editMoodSleep(id) {
     $(".showMenuMood" + id).css("display","none");
     $(".showMenuEditMood" + id).css("display","block");
@@ -628,8 +632,8 @@ function nl2br (str, replaceMode, isXhtml) {
 }
 
 
-function showDescrition(url,id) {
-    if ($(".descriptionShow" + id).css("display") == "none" ) {
+function showDescritionMood(url,id) {
+    if ($(".descriptionShowMood" + id).css("display") == "none" ) {
             $.ajax({
                 url : url,
                     method : "get",
@@ -640,8 +644,8 @@ function showDescrition(url,id) {
             })
             .done(function(response) {
                 //alert(response);
-                $(".descriptionShow" + id).css("display","block");
-                $("#messageDescriptionshow"+id).html(response);
+                $(".descriptionShowMood" + id).css("display","block");
+                $("#messageDescriptionshowMood"+id).html(response);
 
                  
 
@@ -661,9 +665,47 @@ function showDescrition(url,id) {
     }
     else {
         
-        $(".descriptionShow" + id).css("display","none");
+        $(".descriptionShowMood" + id).css("display","none");
     }
 }
+
+function showDescritionSleep(url,id) {
+    if ($(".descriptionShowSleep" + id).css("display") == "none" ) {
+            $.ajax({
+                url : url,
+                    method : "get",
+                    data : 
+                      "id=" + id 
+                    ,
+                    dataType : "html",
+            })
+            .done(function(response) {
+                //alert(response);
+                $(".descriptionShowSleep" + id).css("display","block");
+                $("#messageDescriptionshowSleep"+id).html(response);
+
+                 
+
+                  //$("#cancelActionDayButton"+id).css("display","none");
+                  //$("#updateActionDayButton"+id).css("display","none");
+                  //$("#editActionDayButton"+id).css("display","block");
+                  //$("#deleteActionDayButton"+id).css("display","block");
+
+                 //$("#editActionDay" + id).html(response["name"]);
+
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })       
+    }
+    else {
+        
+        $(".descriptionShowSleep" + id).css("display","none");
+    }    
+}
+
 
 function updateDescription(url,id) {
             $.ajax({
@@ -703,6 +745,10 @@ function updateDescription(url,id) {
 function cancel(id) {
     $(".showMenuMood" + id).css("display","block");
     $(".showMenuEditMood" + id).css("display","none");
+}
+function cancelDrugs(id) {
+    $(".showMenuDrugs" + id).css("display","block");
+    $(".showMenuEditDrugs" + id).css("display","none");
 }
 function reload() {
     location.reload();
@@ -777,7 +823,47 @@ function updateMood(url,id) {
        })    
     
 }
+function updateDrugs(url,id) {
+ 
+        if ($("#doseEdit"+id).val() == "" || isNaN($("#doseEdit"+id).val()) || ($("#doseEdit"+id).val()) < 0  ) {
+            alert("Dawka musi być dodatnią liczbą");
+            return;
+        }
+        
 
+
+
+            $.ajax({
+           url : url,
+               method : "get",
+               data : 
+                 "id=" + id + "&doseEdit=" + $("#doseEdit"+id).val() + "&idProduct="  + $("#nameProductEdit"+id).val() + "&date="  + $("#dateDrugsEdit"+id).val() + "&time="  + $("#timeDrugsEdit"+id).val() 
+               ,
+               dataType : "json",
+       })
+       .done(function(response) {
+           //levelNervousness
+           $("#nameDrugs"+id).text(response["name"]);
+           $("#substanceDrugs"+id).text(response["type"]);
+           $("#doseDrugs"+id).text(response["portion"]);
+           $("#dateDrugs"+id).text(response["date"]);
+           $("#percentDrugs"+id).text(response["price"]);
+
+
+           
+           //$("#levelEpizodes"+id).text(response["epizodes_psychotik"]);
+           
+           
+           $(".showMenuDrugs" + id).css("display","block");
+           $(".showMenuEditDrugs" + id).css("display","none");
+
+
+       })
+       .fail(function() {
+           alert("Wystąpił błąd");
+       })    
+ 
+}
 function updateSleep(url,id) {
 
         if ( !isInt($("#levelEpizodesEdit"+id).val())  || ($("#levelEpizodesEdit"+id).val()) < 0 ) {
@@ -1006,6 +1092,46 @@ function showAction(url,id) {
 }
 
 
+
+function showDescriptionDrugs(url,id) {
+
+        if ($(".descriptionShowDrugs" + id).css("display") == "none" ) {
+            $.ajax({
+                url : url,
+                    method : "get",
+                    data : 
+                      "id=" + id 
+                    ,
+                    dataType : "html",
+            })
+            .done(function(response) {
+                //alert(response);
+                $(".descriptionShowDrugs" + id).css("display","block");
+                $("#messageDescriptionshowDrugs"+id).html(response);
+
+                 
+
+                  //$("#cancelActionDayButton"+id).css("display","none");
+                  //$("#updateActionDayButton"+id).css("display","none");
+                  //$("#editActionDayButton"+id).css("display","block");
+                  //$("#deleteActionDayButton"+id).css("display","block");
+
+                 //$("#editActionDay" + id).html(response["name"]);
+
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })       
+    }
+    else {
+        
+        $(".descriptionShowDrugs" + id).css("display","none");
+    }      
+}
+
+
 function showDrugs(url,id) {
         if ($(".drugsShow" + id).css("display") == "none" ) {
             $.ajax({
@@ -1081,6 +1207,53 @@ function editActionMood(url,id) {
     }  
 }
 
+function addDescriptionDrugsSubmit(url,id) {
+
+            $.ajax({
+                url : url,
+                    method : "get",
+                    data : 
+                      $("#descriptionDrugsForm"+id).serialize()
+                    ,
+                    dataType : "html",
+            })
+            .done(function(response) {
+                //alert(response);
+                //$(".actionMoodShow" + id).css("display","block");
+                $("#messageDescriptionAddDrugs"+id).html(response);
+
+                 
+   
+    
+
+            });      
+}
+
+function addDescriptionDrugs(id) {
+    
+         if ($(".descriptionDrugs" + id).css("display") == "none" ) {
+
+                //alert(response);
+                $(".descriptionDrugs" + id).css("display","block");
+                //$("#messageDescriptionAddDrugs"+id).html(response);
+
+                 
+
+                  //$("#cancelActionDayButton"+id).css("display","none");
+                  //$("#updateActionDayButton"+id).css("display","none");
+                  //$("#editActionDayButton"+id).css("display","block");
+                  //$("#deleteActionDayButton"+id).css("display","block");
+
+                 //$("#editActionDay" + id).html(response["name"]);
+
+
+ 
+    }
+    else {
+        
+        $(".descriptionDrugs" + id).css("display","none");
+    }    
+}
 
 function sessionSet(type) {
     
