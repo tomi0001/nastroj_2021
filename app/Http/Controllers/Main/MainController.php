@@ -18,6 +18,7 @@ use App\Models\Mood;
 use App\Models\Moods_action;
 use App\Models\Usee;
 use App\Http\Services\Product;
+use App\Http\Services\Common;
 use Auth;
 class MainController {
     public function index($year = "",$month  ="",$day = "",$action = "") {   
@@ -180,6 +181,9 @@ class MainController {
         if ($request->get("description") == "") {
             return View("ajax.error")->with("error",["Uzupełnij nazwe, nazwa nie może być pusta."]);
         }
+        else if (!empty(Usee::selectLastDescription($request->get("id"),date("Y-m-d H:i:s"),str_replace("\n", "<br>", $request->get("description"))))) {
+            return View("ajax.error")->with("error",["Już wpisałeś ten opis."]);
+        }
         else {
             $description = new Product;
             $description->addDescription($request, $request->get("id"), date("Y-m-d H:i:s"));
@@ -188,9 +192,17 @@ class MainController {
     }
     public function updateDrugs(Request $request) {
         $Product = new Product;
-        $price = $Product->sumPrice($request->get("portion"),$request->get("idProduct"));
-        $Product->updateProduct($request,$price);
-        $valueDrugs = Usee::selectValueDrugs($request->get("id"),Auth::User()->id);
-        print json_encode($valueDrugs);
+        $error = Common::ifDateTrue($request->get("date") . " " . $request->get("time") . ":00");
+        if (!Common::ifDateTrue($request->get("date") . " " . $request->get("time") . ":00")) {
+            print json_encode(["errorDate" =>true]);
+        }
+        else {
+            $price = $Product->sumPrice($request->get("doseEdit"),$request->get("idProduct"));
+            $Product->updateProduct($request,$price);
+            $valueDrugs = Usee::selectValueDrugs($request->get("id"),Auth::User()->id);
+            $valueDrugs->type = Common::showDoseProduct($valueDrugs->type);
+            print json_encode($valueDrugs);
+        }
+         
     }
 }

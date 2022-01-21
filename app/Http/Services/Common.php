@@ -206,4 +206,12 @@ class Common {
             
         }
     }
+    public static function ifDateTrue(string $date) :bool  {
+        if (strlen($date) == 19) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }

@@ -13,6 +13,11 @@ class Usee extends Model
         return self::selectRaw("date")->where("id_users",Auth::User()->id)->where("id_products",$idProduct)->where("portion",$dose)
                 ->where("date",">=",date("Y-m-d H:i:s", strtotime($date )- 80))->where("date","<=",$date)->first();
     }
+    public static function selectLastDescription(int $idUsee,string $date, $description) {
+        return self::join("users_descriptions","users_descriptions.id_usees","usees.id")->join("descriptions","descriptions.id","users_descriptions.id_descriptions")
+                ->selectRaw("usees.date")->where("usees.id_users",Auth::User()->id)->where("usees.id",$idUsee)->where("descriptions.description",$description)
+                ->where("descriptions.date",">=",date("Y-m-d H:i:s", strtotime($date )- 80))->first();
+    }
     public static function selectLastDrugsPlaned(int $idProduct,string $date) {
         return self::selectRaw("date")->where("id_users",Auth::User()->id)->where("id_products",$idProduct)
                 ->where("date",">=",date("Y-m-d H:i:s", strtotime($date )- 80))->where("date","<=",$date)->first();        
@@ -77,8 +82,9 @@ class Usee extends Model
                 ->selectRaw("products.name  as name")
                 ->selectRaw("products.type_of_portion as type")
                 ->selectRaw("usees.portion as portion")
-                ->selectRaw("SUBSTRING((usees.date),1,16) as date")
+                ->selectRaw("SUBSTRING((usees.date),11,6) as date")
                 ->selectRaw("usees.price as price")
+                ->selectRaw("products.type_of_portion as type")
                 ->where("usees.id_users",$idUsers)
                 ->where("usees.id",$id)
                 ->first(); 

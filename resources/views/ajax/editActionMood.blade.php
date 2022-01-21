@@ -36,7 +36,7 @@
                                                     <div class='actionMain actionMain{{$idMood}}'  id='divAction_{{$list->id}}_{{$idMood}}' onclick='selectedActionMainValue({{$list->id}},{{$loop->index}},{{$idMood}})'>{{$list->name}}</div>
                                                     <div class="hiddenPercentExecuting centerPercent" id='divActionPercent_{{$list->id}}_{{$idMood}}'>
                                                         <div style="display: inline-block; width: 40%;"><input type="number" class="percentExecuting form-control form-control-lg " title="procent wykonania" placeholder="procent wyk" id="percentExe_{{$loop->index}}" name="percentExe{{$idMood}}[]" min="1" max="100"></div>
-                                                        <input type="hidden"  id='idAction' name="idActionss[]" value='NULL'>
+                                                        <input type="hidden"  id='idAction' name="idActionss{{$idMood}}[]" value='{{$list->id}},{{$idMood}}'>
                                                     </div>
                                                  </div>
                                                  @endforeach

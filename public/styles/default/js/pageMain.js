@@ -24,11 +24,13 @@ function selectedActionMain(id,index) {
         $("#divActionPercent_" + id).removeClass("hiddenPercentExecuting").addClass('active');
         //$("#idAction").eq(index).val(id);
         arrayAction.push(id);
+        //$("#idActio" + id).val(id);
         //alert(index);
     }
     else {
         var i = arrayAction.indexOf(id);
         arrayAction.splice(i,1);
+        //$("#idActio" + id).val('');
         //$("#idAction").eq(index).val('NULL');
         $("#divActionPercent_" + id).addClass("hiddenPercentExecuting").removeClass('active');
         $("#divAction_" + id).removeClass("actionMainselected").addClass("actionMainAll");
@@ -45,7 +47,7 @@ function selectedActionMainValue(id,index,idMood) {
         //$("#idAction").eq(index).val(id);
         //arrayActionMulti["idMood"].push(idMood);
         //arrayActionMulti["id"].push(id);
-        arrayActionMulti.push(id  + ',' + idMood);
+        arrayActionMulti.push(id+ ',' + idMood);
         
         //alert(index);
     }
@@ -228,28 +230,49 @@ $(document).ready(function(){
 });
 
 
+function ifExistArrayIdMood(id) {
+    return id == 1;
+}
+
 
 function changeArrayAtHiddenAddMood() {
-    var i = 0;
-    var JSON = [];
-        $('input[name^="percentExe"]').each(function() {
+    //var i = 0;
+
+    let array = document.querySelectorAll('input[name^="percentExe"]');
+    //alert(u.length);
+    
+    for (var i=0;i < array.length;i++) {
+        //alert($('input[name^="idActionss"]').eq(i).val());
+        var id = $('input[name^="idActionss"]').eq(i).val();
+        if (arrayAction.find(element => element == id )) {
+
+          $("#formAddMood").append("<input type=\'hidden\' name=\'idAction[]\' value='" +  $('input[name^="idActionss"]').eq(i).val()  + "' class=\'form-control typeMood\'>");
+          $("#formAddMood").append("<input type=\'hidden\' name=\'idActions[]\' value='" + $('input[name^="percentExe"]').eq(i).val() + "' class=\'form-control typeMood\'>");
+        }
+        //alert($('input[name^="percentExe"]').eq(i).val());
+        //alert($('input[name^="idActionss"]').eq(i).val());
+        //alert($(this).val() );
+        //$('input[name^="percentExe"]').each(function() {
                     //alert($("input[name='percentExe[" + i + "]']").val());
                 //if ((arrayAction[i]) != "") {
                     //alert('f');
                     //alert($(this).parents().parents().attr('class') );
+                    /*
                     if ($(this).parents().parents().hasClass("active")) {
                         //JSON["idAction"][i]  = arrayAction[i];
                         //JSON["percent"][i]  = $(this).val();
-                        $("#formAddMood").append("<input type=\'hidden\' name=\'idAction[]\' value='" + arrayAction[i] + "' class=\'form-control typeMood\'>");
-                        $("#formAddMood").append("<input type=\'hidden\' name=\'idActions[]\' value='" + $(this).val() + "' class=\'form-control typeMood\'>");
+                        
+                        //$("#formAddMood").append("<input type=\'hidden\' name=\'idAction[]\' value='" + arrayAction[i] + "' class=\'form-control typeMood\'>");
+                      
                     //    alert('dd');
                     i++;
                     }
                 //}
             //alert($(this).val());
             
-
-        });
+            */
+            }
+        //});
 /*
     for (i=0;i < arrayAction.length;i++) {
         alert($("input[name='percentExe[" + i + "]']").val());
@@ -267,10 +290,22 @@ function changeArrayAtHiddenAddMood() {
 
 
 function changeArrayAtHiddenAddMoodId(id) {
-    var i = 0;
-    var JSON = [];
+    //var i = 0;
+    let array = document.querySelectorAll("input[name^='percentExe" + id +  "']");
+    //alert(u.length);
+    
+    for (var i=0;i < array.length;i++) {
+        //alert($('input[name^="idActionss"]').eq(i).val());
+        var idindex = $("input[name^='idActionss" + id + "']").eq(i).val();
+        
+        if (arrayActionMulti.find(element => element == idindex )) {
+
+          $("#formUpdateAction" + id).append("<input type=\'hidden\' name=\'idAction[]\' value='" +  $("input[name^='idActionss" + id + "']").eq(i).val()  + "' class=\'form-control typeMood\'>");
+          $("#formUpdateAction" + id).append("<input type=\'hidden\' name=\'idActions[]\' value='" + $("input[name^='percentExe" + id + "']").eq(i).val() + "' class=\'form-control typeMood\'>");
+        }
     //alert(id);
      //alert(arrayActionMulti[id][i]);
+     /*
         $("input[name^='percentExe" + id +  "']").each(function() {
            
                     //alert($("input[name='percentExe[" + i + "]']").val());
@@ -303,6 +338,7 @@ function changeArrayAtHiddenAddMoodId(id) {
     }
      * 
  */
+}
 }
 
 
@@ -843,11 +879,14 @@ function updateDrugs(url,id) {
        })
        .done(function(response) {
            //levelNervousness
+           if (response["errorDate"] == true) {
+                alert("Błędna data");
+           }
            $("#nameDrugs"+id).text(response["name"]);
-           $("#substanceDrugs"+id).text(response["type"]);
-           $("#doseDrugs"+id).text(response["portion"]);
+           //$("#substanceDrugs"+id).text(response["type"]);
+           $("#doseDrugs"+id).text(response["portion"] + " " + response["type"]);
            $("#dateDrugs"+id).text(response["date"]);
-           $("#percentDrugs"+id).text(response["price"]);
+           $("#percentDrugs"+id).text(response["price"] + " zł");
 
 
            
