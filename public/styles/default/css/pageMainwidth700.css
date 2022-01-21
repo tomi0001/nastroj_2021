@@ -19,6 +19,51 @@
         height: 42px;
         
     }
+            div.linkShow {
+           
+            width: 550px;
+            text-align: center;
+            height: 65px;
+            margin: 7px;
+            padding-top: 13px;
+            font-size: 22px;
+            border-radius: 20px;
+            color: white;
+            font-weight: bold;
+            float: left;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        div.showLink {
+            width: 550px;
+            height: 250px;
+            margin-left: auto;
+            margin-right: auto;
+            clear: both;
+            
+            
+        }
+        div.sumDrugs {
+            margin: 10px;
+           width: 700px;
+            height: 200px;
+            background-color: rgba(99, 231, 84, 0.81);
+            border-radius: 20px;
+            padding: 22px;
+            margin-left: auto;
+            margin-right: auto;    
+           
+        }
+                div.sumAction {
+                    margin: 10px;
+           width: 700px;
+            height: 200px;
+            background-color: rgba(64, 190, 215, 0.85);
+            border-radius: 20px;
+            padding: 22px;
+            margin-left: auto;
+            margin-right: auto;       
+        }
 div.actionMain {
     background-color: rgba(222, 56, 27, 0.63);
     margin: 10px;
@@ -139,24 +184,57 @@ div.actionMainselected {
                 font-size: 19px !important;
                 font-weight: bold !important;
         }
-        
+div.hiddenMood {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    font-size: 30px;
+    text-align: center;
+}
         .btn-mood {
                 background-color: #B87A0D; 
                 border: solid 1px transparent;
                 border-color: #6E791A;
-                padding-top: 13px;
-                padding-left: 25px;
-                padding-right: 25px;
-                padding-bottom: 13px;
+                padding-top: 10px;
+                padding-left: 15px;
+                padding-right: 15px;
+                padding-bottom: 10px;
                 color: white;
                 border-radius: 12px;
                 height: 65px;
                 text-align: center;
                 display: inline-block;
-                font-size: 24px;
+                font-size: 20px;
                 font-weight: bold;
                 box-shadow: 6px 6px 6px #F4E375;
 
+        }
+        button.main-long {
+                     border: solid 1px transparent;
+                
+                padding-top: 10px;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-bottom: 10px;
+                width: 150px;
+                color: white;
+                border-radius: 12px;
+                height: 55px;
+                text-align: center;
+                display: inline-block;
+                font-size: 15px;
+                font-weight: bold;
+                box-shadow: 6px 6px 6px #F4E375;
+        }
+        button.main-long:hover {
+                
+                color: white;
+                border-color: #C29713;
+                border-radius: 12px;
+                text-align: center;
+                display: inline-block;
+                font-size: 15px;
+                font-weight: bold;
         }
         .btn-mood:hover  {
                 background-color: yellow; 
@@ -187,6 +265,72 @@ div.actionMainselected {
         }
         .btn-sleep:hover  {
                 background-color: #5A047F; 
+                color: white;
+                border-color: #C29713;
+                border-radius: 12px;
+                text-align: center;
+                display: inline-block;
+                font-size: 24px;
+                font-weight: bold;
+        }
+        .btn-action {
+                background-color: #4293E5; 
+                border: solid 1px transparent;
+                border-color: #6E791A;
+                padding-top: 13px;
+                padding-left: 25px;
+                padding-right: 25px;
+                padding-bottom: 13px;
+                color: white;
+                border-radius: 12px;
+                height: 65px;
+                text-align: center;
+                display: inline-block;
+                font-size: 24px;
+                font-weight: bold;
+                box-shadow: 6px 6px 6px #F4E375;
+
+        }
+        button:disabled, button.disable {
+                            background-color: #D92A2A; 
+                border: solid 1px transparent;
+                border-color: #6E791A;
+                padding-top: 5px;
+                padding-left: 5px;
+                padding-right: 10px;
+                padding-bottom: 10px;
+                width: 150px;
+                color: white;
+                border-radius: 12px;
+                height: 55px;
+                text-align: center;
+                cursor: default;
+                display: inline-block;
+                font-size: 18px;
+                font-weight: bold;
+                box-shadow: 6px 6px 6px #F4E375;
+                display:block;
+        }
+        button.main {
+                
+                border: solid 1px transparent;
+                
+                padding-top: 10px;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-bottom: 10px;
+                width: 150px;
+                color: white;
+                border-radius: 12px;
+                height: 55px;
+                text-align: center;
+                display: inline-block;
+                font-size: 18px;
+                font-weight: bold;
+                box-shadow: 6px 6px 6px #F4E375;
+        }
+        .btn-action:hover  {
+                background-color: #4293E5; 
                 color: white;
                 border-color: #C29713;
                 border-radius: 12px;
@@ -321,7 +465,7 @@ div.actionMainselected {
         
         
         div.sumMood {
-            width: 400px;
+            width: 700px;
             height: 200px;
             background-color: rgba(223, 223, 20, 0.59);
             border-radius: 20px;

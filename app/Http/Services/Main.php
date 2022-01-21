@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\User as MUser;
 use App\Models\Mood as MoodModel;
 use App\Http\Services\Calendar;
+use App\Http\Services\Common;
 use Hash;
 use Auth;
 use DB;
@@ -51,7 +52,7 @@ class Main {
             }
             else {
 
-                $this->listColor[$i] = $this->setColor($this->listMood[$i]->sum_mood);
+                $this->listColor[$i] = Common::setColor($this->listMood[$i]->sum_mood);
             }
         }
         //return $listMood;
@@ -63,6 +64,7 @@ class Main {
         return $listMood;
    
     }
+    /*
     private function setColor( $mood) {
         if (empty($mood)) {
             return 10000;
@@ -132,6 +134,8 @@ class Main {
         }
 
     }    
+     * 
+     */
     public function setPercent($list) {
         $percent = [];
         $i = 0;
