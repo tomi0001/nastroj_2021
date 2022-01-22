@@ -14,6 +14,7 @@
             <file>file:/var/www/html/nastroj_2021/app/Models/Moods_action.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Product.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Action_plan.php</file>
+            <file>file:/var/www/html/nastroj_2021/database/migrations/2014_12_12_000000_create_moods_table.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/common.css</file>
             <file>file:/var/www/html/nastroj_2021/database/migrations/2021_01_12_1111114_create_products_table.php</file>
             <file>file:/var/www/html/nastroj_2021/database/migrations/2022_01_12_0111132_create_planned_drugs_table.php</file>
@@ -39,6 +40,7 @@
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainNotLogin.css</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Mood/MoodController.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/ajax/succes.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/ajax/showTypyPortion.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Main.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Sleep.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Actions_day.php</file>
@@ -64,7 +66,9 @@
             <file>file:/var/www/html/nastroj_2021/resources/views/ajax/error.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/ajax/showDrugs.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/ajax/editActionMood.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/database/seeders/DatabaseSeeder.php</file>
             <file>file:/var/www/html/nastroj_2021/database/migrations/2023_05_06_1300501_actions_days.php</file>
+            <file>file:/var/www/html/nastroj_2021/database/migrations/2016_12_12_000000_create_moods_actions_table.php</file>
             <file>file:/var/www/html/nastroj_2021/database/migrations/2021_01_12_1111113_create_substances_table.php</file>
             <file>file:/var/www/html/nastroj_2021/database/migrations/2021_01_12_1111111_create_groups_table.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Users_description.php</file>

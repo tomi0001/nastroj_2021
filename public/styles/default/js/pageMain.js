@@ -13,7 +13,31 @@ function LoadPage(url) {
     window.location.replace(url);
 }
 
+function submitEnter(e,url,nameFunction) {
+    if (e.keyCode == 13) {
+        //eval('nameFunction(url)');
+        translateFunction(nameFunction,url);
+        //var obj = nameFunctions['je'];
+        //eval(tb.value);
+        return false;
+    }
+}
 
+
+
+function translateFunction(string,url) {
+    switch (string) {
+        case 'addMood': addMood(url);
+            break;
+        case 'addDrugs': addDrugs(url);
+            break;
+        case 'addActionDay': addActionDay(url);
+            break;
+        case 'addSleep': addSleep(url);
+            break;
+    }
+    return;
+}
 
 var arrayAction = [];
 
@@ -966,7 +990,7 @@ function updateSleep(url,id) {
            
            if (response["epizodes_psychotik"] > 0 ) {
                $("#levelEpizodes"+id).addClass("MessageError");
-               $("#levelEpizodes"+id).text(response["epizodes_psychotik"] + " epizodów psychotycznych");
+               $("#levelEpizodes"+id).text(response["epizodes_psychotik"] + " wybudzeń");
            }
            else {
                //alert('dd');

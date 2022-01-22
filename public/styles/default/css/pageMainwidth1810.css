@@ -40,13 +40,7 @@ div.hiddenMoodEdit {
 }
 
 
-div.descriptionModShowSleep {
-    background-color: #7A26C9;
-    border-radius: 25px;
-    color: white;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
+
 div.actionMainselected {
     background-color: rgb(0, 57, 122);
     margin: 10px;

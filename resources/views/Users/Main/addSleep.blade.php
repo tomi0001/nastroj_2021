@@ -47,7 +47,7 @@
                                         Ilośc wybudzeń
                                     </td>
                                     <td>
-                                        <input type='number'  name='howWorking' class='form-control' value='0' min='0' max='10000' onkeypress="return runScript(event,'{{ route('users.moodAdd')}}')">
+                                        <input type='number'  name='howWorking' class='form-control' value='0' min='0' max='10000'  onkeypress="return submitEnter(event,'{{ route('users.sleepAdd')}}','addSleep')">
                                     </td>
                                 </tr>
                                 <tr>

@@ -28,7 +28,7 @@
                                         Nazwa akcji
                                     </td>
                                     <td class='borderless'>
-                                        <select name="actionDay" class="form-control">
+                                        <select name="actionDay" class="form-control" >
                                             @foreach (\App\Models\Action::selectAction(Auth::User()->id) as $listDay)
                                                 <option value="{{$listDay->id}}">{{$listDay->name}}</option>
                                             @endforeach

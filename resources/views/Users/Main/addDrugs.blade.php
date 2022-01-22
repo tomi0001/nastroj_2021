@@ -64,7 +64,7 @@
                                     </td>
                                     <td>
                                         <div style='float: left; width: 65%;'>
-                                        <input type='number' step="0.01"    name='dose' class='form-control'   min='0' max='1000000' onkeypress="return runScript(event,'{{ route('users.moodAdd')}}')">
+                                        <input type='number' step="0.01"    name='dose' class='form-control'   min='0' max='1000000'  onkeypress="return submitEnter(event,'{{ route('users.drugsAdd')}}','addDrugs')">
                                         </div>
                                         <div id='typePortion' style='float: left; padding-left: 6%; padding-top: 1%;'></div>
                                     </td>

@@ -156,6 +156,13 @@ input.percentExecuting {
    
                 text-align: center;  
         }
+div.descriptionModShowSleep {
+    background-color: #7A26C9;
+    border-radius: 25px;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
 div.leveAction0 {
     background-color:  #969682;
 }

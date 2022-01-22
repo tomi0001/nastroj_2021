@@ -46,7 +46,7 @@
                                         Poziom nastroju
                                     </td>
                                     <td>
-                                        <input type='text'  name='moodLevel' class='form-control'  onkeypress="return runScript(event,'{{ route('users.moodAdd')}}')" >
+                                        <input type='text'  name='moodLevel' class='form-control'  onkeypress="return submitEnter(event,'{{ route('users.moodAdd')}}','addMood')" >
                                     </td>
                                 </tr>
                                 <tr>
@@ -54,7 +54,7 @@
                                         Poziom lęku
                                     </td>
                                     <td>
-                                        <input type='text' name='anxietyLevel' class='form-control' onkeypress="return runScript(event,'{{ route('users.moodAdd')}}')">
+                                        <input type='text' name='anxietyLevel' class='form-control'  onkeypress="return submitEnter(event,'{{ route('users.moodAdd')}}','addMood')">
                                     </td>
                                 </tr>
                                 <tr>
@@ -62,7 +62,7 @@
                                         Poziom napięcia
                                     </td>
                                     <td>
-                                        <input type='text' name='voltageLevel' class='form-control' onkeypress="return runScript(event,'{{ route('users.moodAdd')}}')" >
+                                        <input type='text' name='voltageLevel' class='form-control'  onkeypress="return submitEnter(event,'{{ route('users.moodAdd')}}','addMood')">
                                     </td>
                                 </tr>
                                 <tr>
@@ -70,7 +70,7 @@
                                         Poziom pobudzenia
                                     </td>
                                     <td>
-                                        <input type='text' name='stimulationLevel' class='form-control' onkeypress="return runScript(event,'{{ route('users.moodAdd')}}')" >
+                                        <input type='text' name='stimulationLevel' class='form-control'  onkeypress="return submitEnter(event,'{{ route('users.moodAdd')}}','addMood')" >
                                     </td>
                                 </tr>
                                 <tr>
@@ -78,7 +78,7 @@
                                         Ilośc epizodów psychotycznych
                                     </td>
                                     <td>
-                                        <input type='number'  name='epizodesPsychotic' class='form-control'  min='0' max='10000' onkeypress="return runScript(event,'{{ route('users.moodAdd')}}')">
+                                        <input type='number'  name='epizodesPsychotic' class='form-control'  min='0' max='10000'  onkeypress="return submitEnter(event,'{{ route('users.moodAdd')}}','addMood')">
                                     </td>
                                 </tr>
                                 <tr>
