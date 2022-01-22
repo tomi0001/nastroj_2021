@@ -17,6 +17,7 @@ use App\Models\Action_plan;
 use App\Models\Mood;
 use App\Models\Moods_action;
 use App\Models\Usee;
+use App\Models\Product as ModelProduct;
 use App\Http\Services\Product;
 use App\Http\Services\Common;
 use Auth;
@@ -205,4 +206,12 @@ class MainController {
         }
          
     }
+    
+    
+    public function loadTypePortion(Request $request) {
+        $type = ModelProduct::selectTypeProduct($request->get("nameProduct"));
+        $typeText = Common::showDoseProduct($type->type_of_portion);
+        return View("ajax.showTypyPortion")->with("type",$typeText);
+    }
+    
 }

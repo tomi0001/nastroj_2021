@@ -131,57 +131,48 @@
                 <tr class='moodClass{{$list->id}}'>
                     <td colspan="7" class="moodButton">
                         @if ($list->type == "mood")
-                        <div class="showMenuMood{{$list->id}}">
-                            <table  class="tableCenter"  >
-                                <tr>
-                                    <td style="padding-right: 7px;">
+                        <div class="showMenuMood{{$list->id}} ">
+                           
+                                   <div class="divButton">
                                         @if (!empty(\App\Models\Usee::ifExistUsee($list->date_start,$list->date_end,Auth::User()->id) ))
                                             <button class="btn-drugs main" onclick="showDrugs('{{ route('ajax.showDrugs')}}',{{$list->id}})">pokaż leki</button>
                                         @else
                                             <button type="button" class="disable "  disabled>nie było leków</button>
                                         @endif
-                                    </td>
+                                   </div>
 
-                                    <td style="padding-right: 7px;">
+                                   <div class="divButton">
                                         @if (!empty(\App\Models\Moods_action::ifExistAction($list->id) ))
                                             <button class="btn-action main" onclick="showAction('{{ route('ajax.showAction')}}',{{$list->id}})">pokaż akcje</button>
                                         @else
                                             <button type="button" class="disable "  disabled>nie było akcji</button>
                                         @endif
-                                    </td>      
-
-                                    <td style="padding-right: 7px;">
+                                   </div>
+                                   <div class="divButton">
 
                                         @if ((\App\Models\Mood::showDescription($list->id)->what_work != "" ))
                                             <button class="btn-mood main" onclick="showDescritionMood('{{route("ajax.showMoodDescription")}}',{{$list->id}})">pokaż  opis</button>
                                         @else
                                             <button type="button" class="disable "  disabled>nie było opisu</button>
                                         @endif
-                                    </td>    
-                                    <td style="padding-right: 7px;">
+                                    </div>
+                                    <div class="divButton ">
 
                                             <button class="btn-mood main-long" onclick="editMood({{$list->id}})">Edytuj nastrój</button>
-
-                                    </td>    
-
-                                    <td style="padding-right: 7px;">
+                                     </div>           
+                                    <div class="divButton divButtonBr">
 
                                             <button class="btn-mood main-long" onclick="editMoodDescription('{{route("ajax.editMoodDescription")}}',{{$list->id}})">Edytuj Dodaj opis</button>
-
-                                    </td> 
-
-                                    <td style="padding-right: 7px;">
+                                     </div>           
+                                   <div class="divButton">
 
                                             <button class="danger main" onclick="deleteMood('{{route("ajax.deleteMood")}}',{{$list->id}})">Usuń nastrój</button>
-
-                                    </td>  
-                                    <td style="padding-right: 7px;">
+                                    </div>        
+                                    <div class="divButton">
 
                                             <button class="btn-mood main-long" onclick="editActionMood('{{route("ajax.editActionMood")}}',{{$list->id}})">Dodaj usuń akcje</button>
-
-                                    </td>  
-                                </tr>
-                            </table>
+                                     </div>       
+                                
                         </div>
                         <div class="showMenuEditMood{{$list->id}}" style="display: none;">
                             <table  class="tableCenter"  >

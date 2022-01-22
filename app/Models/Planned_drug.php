@@ -13,7 +13,8 @@ class Planned_drug extends Model
         
         return self::selectRaw("name")
                 ->selectRaw("id")
-                ->where("id_users", Auth::User()->id)->orderBy("name")->get();
+                ->where("id_users", Auth::User()->id)->groupBy("name")
+                ->orderBy("name")->get();
     }
     public static function showPlaned(string $name) {
         return self::where("id_users",Auth::User()->id)->where("name",$name)->get();

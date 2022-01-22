@@ -487,6 +487,48 @@ function SwitchMenuMoodShow(type) {
     }    
 }
 
+
+
+function DisableDose() {
+    if ($("select[name='namePlaned']").val() != "") {
+        $("input[name='dose']").prop('disabled',true);
+    }
+    else {
+        $("input[name='dose']").prop('disabled',false);
+    }
+}
+
+function loadTypePortion(url) {
+      //$("#typePortion").load(url + "?" + $("#form8").serialize());
+      //alert('dsd');
+      
+      if ($("select[name='nameProduct']").val() == "")  {
+          $("#typePortion").html('');
+          return;
+      }
+      
+      
+        $.ajax({
+           url : url,
+               method : "get",
+               data : 
+                 $("select[name='nameProduct']").serialize(),
+               
+               dataType : "html",
+       })
+       .done(function(response) {
+          //$("#showdrugs").html(response);
+           $("#typePortion").html(response);
+
+
+       })
+       .fail(function() {
+           alert("Wystąpił błąd");
+       })    
+        
+    
+}
+
 function schitchMenuMoodShowDezactived(type) {
     for (var i = 0;i < type.length;i++) {
         $("#show" + type[i]).css("display","none");

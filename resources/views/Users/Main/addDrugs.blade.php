@@ -22,7 +22,7 @@
                                         Nazwa produktu
                                     </td>
                                     <td class='borderless'>
-                                        <select name='nameProduct' class="form-control" id="select-state" >
+                                        <select name='nameProduct' class="form-control" id="select-state" onchange="loadTypePortion('{{route('ajax.loadTypePortion')}}')">
                                             <option value="" class="form-control"></option>
                                             @foreach (\App\Models\Product::selectProduct() as $listProduct)
                                                 <option value="{{$listProduct->id}}" class="form-control">{{$listProduct->name}}</option>
@@ -35,7 +35,7 @@
                                         Nazwa zaplanowanej dawki
                                     </td>
                                     <td class='borderless'>
-                                         <select name='namePlaned' class="form-control" id="select-state">
+                                         <select name='namePlaned' class="form-control" id="select-state" onchange="DisableDose()">
                                             <option value="" class="form-control"></option>
                                             @foreach (\App\Models\Planned_drug::selectDose() as $listDose)
                                                 <option value="{{$listDose->id}}" class="form-control">{{$listDose->name}}</option>
@@ -63,7 +63,10 @@
                                         Dawka
                                     </td>
                                     <td>
-                                        <input type='number' step="0.01"  name='dose' class='form-control'   min='0' max='1000000' onkeypress="return runScript(event,'{{ route('users.moodAdd')}}')">
+                                        <div style='float: left; width: 65%;'>
+                                        <input type='number' step="0.01"    name='dose' class='form-control'   min='0' max='1000000' onkeypress="return runScript(event,'{{ route('users.moodAdd')}}')">
+                                        </div>
+                                        <div id='typePortion' style='float: left; padding-left: 6%; padding-top: 1%;'></div>
                                     </td>
                                 </tr>
                                 <tr>

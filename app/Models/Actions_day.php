@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Auth;
 class Actions_day extends Model
 {
     use HasFactory;
@@ -38,6 +38,10 @@ class Actions_day extends Model
                 ->where("actions_days.id_users",$idUsers)
                 ->where("actions_days.id",$id)
                 ->first();
+    }
+    public static function selectLastAction(int $idAction) {
+        return self::selectRaw("date")->where("id_users",Auth::User()->id)->where("id_actions",$idAction)
+                ->where("created_at",">=",date("Y-m-d H:i:s", strtotime(date("Y-m-d H:i:s") )- 80))->first();
     }
 
 }

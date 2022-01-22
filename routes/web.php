@@ -91,7 +91,9 @@ Route::get("/ajax/editDrugs",[App\Http\Controllers\Main\MainController::class, '
         ->name("ajax.editDrugs")->middleware('auth')->middleware('can:users');
 Route::get("/ajax/updateDrugs",[App\Http\Controllers\Main\MainController::class, 'updateDrugs'])
         ->name("ajax.updateDrugs")->middleware('auth')->middleware('can:users');
-          
+Route::get("/ajax/loadTypePortion",[App\Http\Controllers\Main\MainController::class, 'loadTypePortion'])
+        ->name("ajax.loadTypePortion")->middleware('auth')->middleware('can:users');
+         
 
 
             Route::get('/users4/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\Search\SearchController::class, 'index2'])->name('users.search')

@@ -64,28 +64,51 @@
             margin-left: auto;
             margin-right: auto;       
         }
+div.hiddenMoodEdit {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    min-height: 220px;;
+    text-align: center;
+  
+}
 div.actionMain {
-    background-color: rgba(222, 56, 27, 0.63);
+    background-color: rgb(17, 118, 206);
     margin: 10px;
     padding: 7px;
-    color: #C8C055;
+    color: #CDE1F3;
     text-align: center;
     font-size: 25px;
     font-weight: bold;
     border-radius: 20px;
     cursor:pointer;
 }
+        div.NotShow {
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            height: 70px;
+            font-size: 27px;
+            text-align: center;
+            padding-top: 14px;
+            margin-top: 10px;
+            border-radius: 20px;
+            box-shadow: 5px 5px 4px 1px #5B7235;
+            color: white;
+            background-color: #FB2A17;
+        }
 div.actionMainselected {
-    background-color: rgb(231, 37, 3);
+    background-color: rgb(0, 57, 122);
     margin: 10px;
     padding: 7px;
-    color: #C8C055;
+    color: #CDE1F3;
     text-align: center;
     font-size: 25px;
     font-weight: bold;
     border-radius: 20px;
     cursor:pointer;
 }
+
      td.moodadd {
                    
         color: #84440F;
@@ -388,13 +411,27 @@ div.hiddenMood {
             
         }
         div.cell10000 {
-            height: 100%;
-            padding-top: 25%;
+          
             background-color: #F3FBA1;
-            opacity: 0.7;
-            border-radius: 5px;
-            
+            border-radius: 0 !important;
+            box-shadow: 0 0 0 0 !important;
 
+
+        }
+        div.divButton {
+            float: left;
+            padding: 10px;
+        }
+        div.divButtonBr {
+            clear: both;
+        }        
+        #showmood {
+            width: 93%;
+            background-color: rgba(210, 210, 44, 0.61);
+            min-height: 350px;
+            border-radius: 25px;
+            margin-left: auto;
+            margin-right: auto;
         }
         a.no_active {
             color: #6A720C;

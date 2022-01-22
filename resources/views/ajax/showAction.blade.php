@@ -14,7 +14,7 @@
     </thead>
 @foreach ($listAction as $list)
 <tr>
-    <td> <div class='positionAction leveAction{{$list->level_pleasure}}'>{{$list->name}}</div> </td>
+    <td> <div class='positionAction leveAction{{\App\Http\Services\Common::setColorPleasure($list->level_pleasure)}}'>{{$list->name}}</div> </td>
     <td> 
         @if ($list->sum == 0 )
         <span class="warning">Mniej niż minuta</span>

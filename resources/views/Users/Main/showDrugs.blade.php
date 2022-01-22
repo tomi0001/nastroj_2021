@@ -67,7 +67,7 @@
                     
                     <td class=" drugsShow drugsTd showdrugs">
                         <div  class="showMenuDrugs{{$list->id}}"  id="doseDrugs{{$list->id}}">
-                        {{$list->portion}} mg
+                        {{$list->portion}} {{\App\Http\Services\Common::showDoseProduct($list->type)}}
                         </div>
                         <div class="showMenuEditDrugs{{$list->id}}" style="display: none; width: 70%; margin-left: auto; margin-right: auto; ">
                             <input type="text" id='doseEdit{{$list->id}}' class="form-control" size="2" value="{{$list->portion}}">

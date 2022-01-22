@@ -46,7 +46,7 @@
                                 @foreach ($actionForDay as $list)
                                     
                                     
-                                     <div class='positionAction leveAction{{$list->level_pleasure}}'>{{$list->name}}</div>
+                                     <div class='positionAction leveAction{{\App\Http\Services\Common::setColorPleasure($list->level_pleasure)}}'>{{$list->name}}</div>
                                 
 
                                 @endforeach

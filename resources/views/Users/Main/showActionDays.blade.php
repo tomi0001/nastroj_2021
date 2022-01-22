@@ -33,7 +33,7 @@
                 @foreach ($actionForDay as $list)
                     <tr id="tractionId{{$list->id}}">
                         <td  class=" showAction tdAction center">
-                            <div class='positionAction leveAction{{$list->level_pleasure}}' id="editActionDay{{$list->id}}">{{$list->name}}
+                            <div class='positionAction leveAction{{\App\Http\Services\Common::setColorPleasure($list->level_pleasure)}}' id="editActionDay{{$list->id}}">{{$list->name}}
                        
                             </div>
                         </td>

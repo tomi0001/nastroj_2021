@@ -20,4 +20,9 @@ class Product extends Model
                 ->where("id_users", Auth::User()->id)
                 ->where("id",$idProduct)->first();
     }
+    public static function selectTypeProduct(int $idProduct) {
+        return self::selectRaw("type_of_portion as type_of_portion")
+                ->where("id_users", Auth::User()->id)
+                ->where("id",$idProduct)->first();
+    }
 }

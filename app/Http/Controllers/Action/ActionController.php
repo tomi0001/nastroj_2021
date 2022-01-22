@@ -10,6 +10,7 @@ use Hash;
 use App\Http\Services\Calendar;
 use App\Http\Services\Main;
 use App\Http\Services\Action;
+
 use Auth;
 class ActionController {
     public function add(Request $request) {

@@ -30,7 +30,7 @@
                 @foreach ($actionSum as $list)
                     <tr >
                         <td  class=" showAction tdAction center">
-                            <div class='positionAction leveAction{{$list->level_pleasure}}'>{{$list->name}}</div>
+                            <div class='positionAction leveAction{{\App\Http\Services\Common::setColorPleasure($list->level_pleasure)}}'>{{$list->name}}</div>
                         </td>
                         <td  class=" showAction center tdAction ">
                             @if ($list->sum == 0)
