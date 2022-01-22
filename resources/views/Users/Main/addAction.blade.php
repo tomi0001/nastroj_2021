@@ -39,7 +39,7 @@
 
                                 <tr>
                                     <td colspan="2" class="center">
-                                        <input type="button" onclick="addActionDay('{{ route('users.actionDaypAdd')}}')" class=" btn-action" value="Dodaj akcje" >
+                                        <input type="button" id="buttonActionAdd" onclick="addActionDay('{{ route('users.actionDaypAdd')}}')" class=" btn-action" value="Dodaj akcje" >
                                     </td>
                                 </tr>    
                                 <tr>

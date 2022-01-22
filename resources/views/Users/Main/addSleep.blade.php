@@ -62,7 +62,7 @@
 
                                 <tr>
                                     <td colspan="2" class="center">
-                                        <input type="button" onclick="addSleep('{{ route('users.sleepAdd')}}')" class=" btn-sleep" value="Dodaj sen" >
+                                        <input type="button" onclick="addSleep('{{ route('users.sleepAdd')}}')" id="buttonSleepAdd" class=" btn-sleep" value="Dodaj sen" >
                                     </td>
                                 </tr>    
                                 <tr>

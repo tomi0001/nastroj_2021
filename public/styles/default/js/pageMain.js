@@ -106,9 +106,7 @@ function updateActionForMood(url,id) {
               $("#formUpdateAction" + id).serialize() + "&idMood=" + id
             ,
             dataType : "html",
-            beforeSend: function() { $('#buttonMoodAdd').addClass("spinner-border"); },
 
-        complete: function() { $('#buttonMoodAdd').removeClass("spinner-border"); }
     })
     .done(function(response) {
         $("#formResult").html(response);
@@ -375,6 +373,9 @@ function addActionDay(url) {
           $("#formAddAction").serialize()
         ,
         dataType : "html",
+               beforeSend: function() { $('#buttonActionAdd').addClass("spinner-border"); },
+
+        complete: function() { $('#buttonActionAdd').removeClass("spinner-border"); }
         })
         .done(function(response) {
             $("#formResultAction").html(response);
@@ -575,6 +576,9 @@ function addSleep(url) {
               $("#formAddSleep").serialize()
             ,
             dataType : "html",
+                           beforeSend: function() { $('#buttonSleepAdd').addClass("spinner-border"); },
+
+        complete: function() { $('#buttonSleepAdd').removeClass("spinner-border"); }
     })
     .done(function(response) {
         $("#formResultSleep").html(response);
@@ -621,6 +625,9 @@ function addDrugs(url) {
           $("#formAddDrugs").serialize()
         ,
         dataType : "html",
+                       beforeSend: function() { $('#buttonDrugsAdd').addClass("spinner-border"); },
+
+        complete: function() { $('#buttonDrugsAdd').removeClass("spinner-border"); }
         })
         .done(function(response) {
             $("#formResultDrugs").html(response);
@@ -1246,6 +1253,7 @@ function showDrugs(url,id) {
                       "id=" + id 
                     ,
                     dataType : "html",
+
             })
             .done(function(response) {
                 //alert(response);

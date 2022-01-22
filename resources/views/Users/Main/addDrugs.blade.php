@@ -81,7 +81,7 @@
 
                                 <tr>
                                     <td colspan="2" class="center">
-                                        <input type="button" onclick="addDrugs('{{ route('users.drugsAdd')}}')" class="btn-drugs " value="Dodaj lek" >
+                                        <input type="button" id="buttonDrugsAdd" onclick="addDrugs('{{ route('users.drugsAdd')}}')" class="btn-drugs " value="Dodaj lek" >
                                     </td>
                                 </tr>    
                                 <tr>
