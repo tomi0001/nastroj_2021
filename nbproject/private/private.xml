@@ -31,6 +31,7 @@
             <file>file:/var/www/html/nastroj_2021/app/Models/Description.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Mood.php</file>
             <file>file:/var/www/html/nastroj_2021/database/migrations/2021_01_12_1111132_create_users_descriptions_table.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Layout/User.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/User/UserController.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Layout/SelectSearch.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/addDrugs.blade.php</file>

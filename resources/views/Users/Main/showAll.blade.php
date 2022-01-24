@@ -62,7 +62,7 @@
                                 @foreach ($actionPlan as $list)
                                     
                                     
-                                     <div class='positionAction leveAction{{$list->level_pleasure}}'>{{$list->name}}</div>
+                                     <div class='positionAction leveAction{{\App\Http\Services\Common::setColorPleasure($list->level_pleasure)}}'>{{$list->name}}</div>
                                      <div class="hourPlan">Godzina <b>{{substr($list->date,11,-3)}}</b></div>
                                 
 

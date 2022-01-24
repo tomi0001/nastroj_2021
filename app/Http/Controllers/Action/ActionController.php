@@ -13,15 +13,6 @@ use App\Http\Services\Action;
 
 use Auth;
 class ActionController {
-    public function add(Request $request) {
-        $Action = new Action;
-        $Action->checkError($request);
-        if (count($Action->error) > 0 ) {
-            return View("ajax.error")->with("error",$Action->error);
-        }
-        else {
-            $Action->saveAction($request);
-        }
-    }
+
  
 }

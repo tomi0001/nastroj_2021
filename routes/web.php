@@ -31,14 +31,14 @@ Route::get('/users/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\Mai
           //          ->where("year","[0-9]?[0-9]?[0-9]?[0-9]$")
         //            ->where("month","^(1[0-2]|[1-9])$")->where("day","^(3[01]|[12][0-9]|[1-9])$")
         ->middleware('auth')->middleware('can:users');            
-Route::get('/users.drugsAdd', [App\Http\Controllers\Product\ProductController::class, 'add'])->name('users.drugsAdd')
+Route::get('/users.drugsAdd', [App\Http\Controllers\Main\MainController::class, 'addProduct'])->name('users.drugsAdd')
                     ->middleware('auth')->middleware('can:users');
             
-Route::get('/users.moodAdd',  [App\Http\Controllers\Mood\MoodController::class, 'add'])->name('users.moodAdd')
+Route::get('/users.moodAdd',  [App\Http\Controllers\Main\MainController::class, 'addMood'])->name('users.moodAdd')
                     ->middleware('auth')->middleware('can:users');
-Route::get('/users.sleepAdd', [App\Http\Controllers\Sleep\SleepController::class, 'add'])->name('users.sleepAdd')
+Route::get('/users.sleepAdd', [App\Http\Controllers\Main\MainController::class, 'addSleep'])->name('users.sleepAdd')
                     ->middleware('auth')->middleware('can:users');
-Route::get('/users.actionDayAdd', [App\Http\Controllers\Action\ActionController::class, 'add'])->name('users.actionDaypAdd')
+Route::get('/users.actionDayAdd', [App\Http\Controllers\Main\MainController::class, 'addActionDay'])->name('users.actionDaypAdd')
                     ->middleware('auth')->middleware('can:users');
                     
                     

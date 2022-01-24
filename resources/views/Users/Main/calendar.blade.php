@@ -36,7 +36,7 @@ $tmp = -10;
 
             @else
      
-                <div onmouseover='calendarOn("day_{{$day2}}")' onmouseout='calendarOff("day_{{$day2}}")' align=center id='day_{{$day2}}' class="cell{{$color[$day2-1]}} cell cellBorder mainHref" onclick="LoadPage('{{route('users.main')}}/{{$year}}/{{$month}}/{{$day2}}')"><a  class="no_active " href="{{route('users.main')}}/{{$year}}/{{$month}}/{{$day2}}  ">{{$day2}}</a></div>
+                <div onmouseover='calendarOn("day_{{$day2}}")' onmouseout='calendarOff("day_{{$day2}}")' align=center id='day_{{$day2}}' class="cell{{$color[$day2-1]}} cell cellBorder mainHref" onclick="LoadPage('{{route('users.main')}}/{{$year}}/{{$month}}/{{$day2}}')"><a  class="no_active " href="{{route('users.main')}}/{{$year}}/{{$month}}/{{$day2}}  ">{{$day2}} <div class='howAction'> {{empty($listPlanedAction[$day2-1])? '' :  $listPlanedAction[$day2-1]->how  }}</div></a></div>
                 
             @endif
             </td>

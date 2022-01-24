@@ -21,20 +21,20 @@
     @include('Users.Main.showAction')
     @if (!empty($sumAll) or (count($listMood)) > 0 )
               <script>
-                window.onload=SwitchMenuMoodShow('mood');
+                window.onload=SwitchMenuMoodShow('mood',false);
                 
 
             </script>
         
     @elseif (count($listDrugs) > 0)
             <script>
-                window.onload=SwitchMenuMoodShow('drugs');
+                window.onload=SwitchMenuMoodShow('drugs',false);
                 
 
             </script>
     @elseif (count($actionPlan) > 0 or count($actionForDay) > 0)
             <script>
-                window.onload=SwitchMenuMoodShow('action');
+                window.onload=SwitchMenuMoodShow('action',false);
                 
 
             </script>
@@ -72,8 +72,8 @@
           <br><br><br><br>
       
           <script>
-                    window.onload=loadMenuSession();
+              window.onload=loadSesson();
+          </script>
 
-            </script>
      
 @endsection

@@ -27,4 +27,12 @@ class Action_plan extends Model
                 ->where("actions_plans.id",$id)
                 ->first();        
     }
+    public static function selectDayPlaned(string $date,int $startDay,int $idUsers) {
+        return self::selectRaw("count(*) as how")
+                ->selectRaw(DB::Raw("(DATE(IF(HOUR(    actions_plans.date ) >= '" . $startDay . "', actions_plans.date ,Date_add(actions_plans.date , INTERVAL - 1 DAY) ))  ) as dat"))
+                ->where("actions_plans.id_users",$idUsers)
+                ->whereRaw(DB::Raw("(DATE(IF(HOUR(    actions_plans.date ) >= '" . $startDay . "', actions_plans.date ,Date_add(actions_plans.date , INTERVAL - 1 DAY) )) ) = '" . $date . "'" ))
+                ->groupBy("dat")
+                ->first();         
+    }
 }

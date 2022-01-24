@@ -17,6 +17,7 @@ class Main {
     public $listMood = [];
     public $listColor = [];
     private $IdUsers;
+    public $listPlanedAction = [];
     function __construct(bool $typeUser = true) {
         if ($typeUser == true) {
             $this->IdUsers = Auth::User()->id;
@@ -48,7 +49,13 @@ class Main {
         for ($i=0;$i < $dayMonth;$i++) {
             $this->listMood[$i] = \App\Models\Mood::sumMood($year . "-" . $month . "-" . ($i+1), Auth::User()->start_day,$this->IdUsers);
             if (empty($this->listMood[$i])) {
-                $this->listColor[$i] = 10000;
+                $this->listPlanedAction[$i] = \App\Models\Action_plan::selectDayPlaned($year . "-" . $month . "-" . ($i+1), Auth::User()->start_day,$this->IdUsers);
+                if (empty($this->listPlanedAction[$i])) {
+                    $this->listColor[$i] = 10000;
+                }
+                else {
+                    $this->listColor[$i] = 100000;
+                }
             }
             else {
 

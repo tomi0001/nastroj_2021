@@ -32,14 +32,18 @@
                 @foreach ($actionPlan as $list)
                     <tr >
                         <td  class=" showAction tdAction center">
-                            <div class='positionAction leveAction{{$list->level_pleasure}}'>{{$list->name}}</div>
+                            <div class='positionAction leveAction{{\App\Http\Services\Common::setColorPleasure($list->level_pleasure)}}'>{{$list->name}}</div>
                         </td>
                         <td  class=" showAction center tdAction ">
                             <a onclick="atHourActonPlan('{{ route('ajax.atHourActonPlan')}}',{{$list->id}})" style='cursor:pointer;'>{{substr($list->date,11,-3)}}</a>
                             <div id='actionPlan{{$list->id}}'></div>
                         </td>
                         <td  class=" showAction center tdAction ">
+                            @if ($list->longer == "")
+                                0 minut
+                            @else
                             {{$list->longer}} minut
+                            @endif
                         </td>
                         <td  class=" showAction center">
                             {{$list->level_pleasure}}

@@ -15,13 +15,17 @@ use App\Models\Action;
 use App\Models\Actions_day;
 use App\Models\Action_plan;
 use App\Models\Mood;
+use App\Http\Services\Mood as serviceMood; 
 use App\Models\Moods_action;
 use App\Models\Usee;
+use App\Http\Services\Sleep;
 use App\Models\Product as ModelProduct;
 use App\Http\Services\Product;
 use App\Http\Services\Common;
+use App\Http\Services\Action as serviceAction;
 use Auth;
 class MainController {
+    public $error = [];
     public function index($year = "",$month  ="",$day = "",$action = "") {   
 
         $Calendar = new Calendar($year, $month, $day, $action);
@@ -60,12 +64,121 @@ class MainController {
                                 ->with("listSubstance",$listSubstance)
                                 ->with("actionForDay",$actionForDay)
                                 ->with("actionPlan",$actionPlan)
+                                ->with("listPlanedAction",$Mood->listPlanedAction)
                                 ->with("actionSum",$actionSum)
                                 ->with("date",$Calendar->year . "-" . $Calendar->month . "-" .  $Calendar->day);
                                 //->with("date",$Calendar->year . "-" .  $Calendar->month . "-" .  $Calendar->day);
                                 //->with("listAction",$listAction);
         
     }
+    public function addActionDay(Request $request) {
+        $Action = new serviceAction;
+        $Action->checkError($request);
+        if (count($Action->error) > 0 ) {
+            return View("ajax.error")->with("error",$Action->error);
+        }
+        else {
+            $Action->saveAction($request);
+        }
+    }
+    public function addSleep(Request $request) {
+        $Sleep = new Sleep;
+        $Sleep->checkError($request);
+        if (count($Sleep->errors) != 0) {
+                return View("ajax.error")->with("error",$Sleep->errors);
+        }
+        else {
+            $Sleep->addSleep($request);
+        }
+    }
+    public function addProduct(Request $request) {
+            
+            $Drugs = new Product;
+            //$date = $Drugs->setkDate($request->get("date"),$request->get("time"));
+            $error = $Drugs->setDate($request);
+            if ($error == false) {
+                array_push($this->error, "Błędna data");
+            }
+            else if (StrToTime( date("Y-m-d H:i:s") ) < strtotime($Drugs->date)) {
+                array_push($this->error,"Data wzięcia jest wieksza od teraźniejszej daty");
+            }
+            if ($request->get("nameProduct") == "" and $request->get("namePlaned") == "") {
+                array_push($this->error, "Wpisz nazwę");
+            }
+            if ($request->get("dose") == "" and $request->get("namePlaned") == "") {
+                array_push($this->error, "Uzupełnij pole dawka");
+            }
+            else if (!is_numeric($request->get("dose")) and $request->get("namePlaned") == "") {
+                array_push($this->error, "Pole dawka musi być numeryczne");
+            }
+            else if ( $request->get("nameProduct") != "" and    !empty(Usee::selectLastDrugs($request->get("nameProduct"),$Drugs->date,$request->get("dose")) )) {
+                array_push($this->error, "Już wpisałeś ten lek");
+            }
+            else if ($request->get("nameProduct") == "") {
+                $namePlaned = Planned_drug::showName($request->get("namePlaned"));
+                $showPlaned = Planned_drug::showPlanedOne($namePlaned->name);
+                if (!empty(Usee::selectLastDrugsPlaned($showPlaned->id_products,$Drugs->date) )) {
+                    array_push($this->error, "Już wpisałeś tą dawkę zaplanowaną");
+                }
+            }
+            if (count($this->error) != 0) {
+                return View("ajax.error")->with("error",$this->error);
+            }
+           
+            else {
+                if ($request->get("nameProduct") != "") {
+                    $price = $Drugs->sumPrice($request->get("dose"),$request->get("nameProduct"));
+                    $Drugs->addDrugs($request,$Drugs->date,$price);
+                }
+                else  {
+                    $Drugs->addPlanedDose($request,$Drugs->date);
+                }
+      
+                
+            }
+            
+    }
+    public function addMood(Request $request) {
+            
+            $Mood = new serviceMood;
+            if ($request->get("timeStart") == ""  ) {
+                $timeStart = Mood::selectLastMoods();
+                if (empty($timeStart)) {
+                   return View("ajax.error")->with("error",["uzupełnij czas zaczęcia"]);
+                }
+                else {
+                    $timeStart = $timeStart->date_end;
+                    
+                }
+            }
+            else {
+                $timeStart = $request->get("dateStart") . " " .  $request->get("timeStart");
+            }
+            if ($request->get("timeEnd") == "") {
+                $timeEnd = date("Y-m-d H:i");
+            }
+            else {
+                $timeEnd = $request->get("dateEnd") . " " .  $request->get("timeEnd");
+            }
+            $Mood->setVariableMood($request);
+            $Mood->checkError($timeStart,$timeEnd);
+            $Mood->checkAddMood($Mood->moodsVariable);
+            if (!empty($request->get("idActions")) ) {
+                $Mood->checkErrorAction($request);
+            }
+            if (count($Mood->errors) != 0) {
+                return View("ajax.error")->with("error",$Mood->errors);
+            }
+            else {
+                $id = $Mood->saveMood($request,$timeStart,$timeEnd,$Mood->moodsVariable);
+            }
+             
+
+            if (!empty($request->get("idAction"))) {
+                    $Mood->saveAction($request,$id);
+            }
+    }
+
     public function atHourActonPlan(Request $request) {
         $hour = Action_plan::selectHourId($request->get("id"),Auth::User()->id);
         if (strtotime(date("Y-m-d H:i:s")) > strtotime($hour->date)) {

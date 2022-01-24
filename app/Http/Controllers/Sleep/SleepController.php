@@ -13,14 +13,5 @@ use Hash;
 class SleepController {
     
 
-    public function add(Request $request) {
-        $Sleep = new Sleep;
-        $Sleep->checkError($request);
-        if (count($Sleep->errors) != 0) {
-                return View("ajax.error")->with("error",$Sleep->errors);
-        }
-        else {
-            $Sleep->addSleep($request);
-        }
-    }
+
 }

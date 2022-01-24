@@ -425,9 +425,44 @@ function addMood(url) {
      $("#formAddMood").find(":hidden").filter(".typeMood").remove();
     //$("#formAddMood").find(":disabled").remove();
 }
-
+function loadSesson() {
+    loadMenuSession();
+    loadMenuSessionShow();
+}
+function loadMenuSessionShow() {
+//alert(sessionStorage.getItem('mainShow'));
+    switch (sessionStorage.getItem('mainShow')) {
+        case 'moodShow': 
+            
+            $("#showmood").css("display","block");
+            $("#moodShowSelected").addClass("linkSelected");
+            schitchMenuMoodShowDezactiveShow(['drugs',"action"]);
+            sessionSetShow("moodShow");
+            
+            break;
+        case 'drugsShow':
+            $("#showdrugs").css("display","block");
+            $("#drugsShowSelected").addClass("linkSelected");
+            schitchMenuMoodShowDezactivedShow(['mood',"action"]);
+            sessionSetShow("drugsShow");
+            break;
+        case 'actionShow':
+            $("#showaction").css("display","block");
+            $("#actionShowSelected").addClass("linkSelected");
+            schitchMenuMoodShowDezactivedShow(['mood',"drugs"]);
+            sessionSetShow("actionShow");
+            break;
+        
+    }
+}
+function schitchMenuMoodShowDezactivedShow(type) {
+    for (var i = 0;i < type.length;i++) {
+        $("#show" + type[i]).css("display","none");
+        $("#" + type[i] + "ShowSelected").removeClass("linkSelected");
+    }  
+}
 function loadMenuSession() {
-
+//alert(sessionStorage.getItem('main'));
     switch (sessionStorage.getItem('main')) {
         case 'mood': 
             
@@ -488,26 +523,33 @@ function SwitchMenuMoodAdd(type) {
 }
 
 
-function SwitchMenuMoodShow(type) {
+function SwitchMenuMoodShow(type,bool = true) {
+    //alert(type);
     switch(type) {
         case 'mood': 
             $("#showmood").css("display","block");
             $("#moodShowSelected").addClass("linkSelected");
             schitchMenuMoodShowDezactived(['drugs',"action"]);
-            //sessionSet("moodShow");
+            if (bool == true) {
+                sessionSetShow("moodShow");
+            }
             
             break;
         case 'drugs':
             $("#showdrugs").css("display","block");
             $("#drugsShowSelected").addClass("linkSelected");
             schitchMenuMoodShowDezactived(['mood',"action"]);
-            //sessionSet("drugsShow");
+            if (bool == true) {
+                sessionSetShow("drugsShow");
+            }
             break;
         case 'action':
             $("#showaction").css("display","block");
             $("#actionShowSelected").addClass("linkSelected");
             schitchMenuMoodShowDezactived(['mood',"drugs"]);
-            //sessionSet("actionShow");
+            if (bool == true) {
+                sessionSetShow("actionShow");
+            }
             break;
     }    
 }
@@ -867,6 +909,7 @@ function reload() {
 
 function resetSession() {
     sessionStorage.removeItem('main');
+    sessionStorage.removeItem('mainShow');
 }
 
 
@@ -1373,4 +1416,9 @@ function sessionSet(type) {
     
     
     sessionStorage.setItem('main', type);
+}
+function sessionSetShow(type) {
+    //type = 'drugsShow';
+    //alert(type);
+    sessionStorage.setItem('mainShow', type);
 }

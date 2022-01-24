@@ -298,6 +298,7 @@ div.actionMainselected {
             padding-top: 25%;
             cursor: pointer;
         }
+
         div.cell10000 {
           
             background-color: #F3FBA1;
@@ -306,7 +307,11 @@ div.actionMainselected {
 
 
         }
-
+        div.howAction {
+            margin: 8px 0px 0 80px;
+            font-size: 20px;
+            color: #0B3693;
+        }
         a.no_active {
             color: #6A720C;
         }
