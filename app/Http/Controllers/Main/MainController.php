@@ -195,7 +195,7 @@ class MainController {
         $Action->removeActionDay($request->get("id"));
     }
     public function editActionDay(Request $request) {
-        $listAction = Actions_day::showActionDay(Auth::User()->id);
+        $listAction = Action::showActionDay(Auth::User()->id);
         print json_encode($listAction);
     }
     public function cancelActionDay(Request $request) {

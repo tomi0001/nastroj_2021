@@ -151,18 +151,18 @@
                                    <div class="divButton">
 
                                         @if ((\App\Models\Mood::showDescription($list->id)->what_work != "" ))
-                                            <button class="btn-mood main" onclick="showDescritionMood('{{route("ajax.showMoodDescription")}}',{{$list->id}})">pokaż  opis</button>
+                                            <button class="btn-mood main mood" onclick="showDescritionMood('{{route("ajax.showMoodDescription")}}',{{$list->id}})">pokaż  opis</button>
                                         @else
                                             <button type="button" class="disable "  disabled>nie było opisu</button>
                                         @endif
                                     </div>
                                     <div class="divButton ">
 
-                                            <button class="btn-mood main-long" onclick="editMood({{$list->id}})">Edytuj nastrój</button>
+                                            <button class="btn-mood main-long mood" onclick="editMood({{$list->id}})">Edytuj nastrój</button>
                                      </div>           
                                     <div class="divButton divButtonBr">
 
-                                            <button class="btn-mood main-long" onclick="editMoodDescription('{{route("ajax.editMoodDescription")}}',{{$list->id}})">Edytuj Dodaj opis</button>
+                                            <button class="btn-mood main-long mood" onclick="editMoodDescription('{{route("ajax.editMoodDescription")}}',{{$list->id}})">Edytuj Dodaj opis</button>
                                      </div>           
                                    <div class="divButton">
 
@@ -170,7 +170,7 @@
                                     </div>        
                                     <div class="divButton">
 
-                                            <button class="btn-mood main-long" onclick="editActionMood('{{route("ajax.editActionMood")}}',{{$list->id}})">Dodaj usuń akcje</button>
+                                            <button class="btn-mood main-long mood" onclick="editActionMood('{{route("ajax.editActionMood")}}',{{$list->id}})">Dodaj usuń akcje</button>
                                      </div>       
                                 
                         </div>
@@ -179,12 +179,12 @@
                                 <tr>
                                     <td style="padding-right: 7px;">
                                         
-                                            <button class="btn-mood main" onclick="updateMood('{{route('ajax.updateMood')}}',{{$list->id}})">Uaktualnij</button>
+                                            <button class="btn-mood main mood" onclick="updateMood('{{route('ajax.updateMood')}}',{{$list->id}})">Uaktualnij</button>
                                        
                                     </td>
                                     <td style="padding-right: 7px;">
                                         
-                                            <button class="btn-mood main" onclick="cancel({{$list->id}})">Anuluj</button>
+                                            <button class="btn-mood main mood" onclick="cancel({{$list->id}})">Anuluj</button>
                                        
                                     </td>
                                 </tr>
@@ -250,7 +250,7 @@
                     <td  colspan="7">
                         <div  class="hiddenMoodEdit description{{$list->id}}" style="display: none;">
                             <textarea  rows='6' class="description{{$list->id}} form-control " id="description{{$list->id}}" style="display: none; " ></textarea>
-                            <button class="btn-mood main" onclick="updateDescription('{{route('ajax.updateDescription')}}',{{$list->id}})">Modyfikuj opis</button>
+                            <button class="btn-mood main sleep" onclick="updateDescription('{{route('ajax.updateDescription')}}',{{$list->id}})">Modyfikuj opis</button>
                             <div id="messageDescription{{$list->id}}"></div>
                         </div>
                     </td>

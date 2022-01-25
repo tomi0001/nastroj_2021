@@ -1,0 +1,1001 @@
+body {
+    background-image: url('../tlo.png'); /* from http://subtlepatterns.com */
+   
+}
+     td.moodadd {
+                   
+        color: #84440F;
+    
+      
+    }
+
+div.actionMain {
+    background-color: rgb(17, 118, 206);
+ 
+    color: #CDE1F3;
+ 
+}
+
+
+
+
+div.actionMainselected {
+    background-color: rgb(0, 57, 122);
+  
+    color: #CDE1F3;
+
+}
+
+
+
+
+    div.borderDrugs {
+         border: 2px solid rgba(10, 183, 45, 0.84);
+         box-shadow: 0 30px  30px 15px rgba(217, 171, 6, 0.72);
+
+
+    }
+    div.borderMood {
+         border: 2px solid rgba(226, 124, 8, 0.85);
+         box-shadow: 0 30px  30px 15px rgba(217, 171, 6, 0.72);
+
+
+    }
+
+    div.borderSleep {
+         border: 2px solid rgba(158, 66, 224, 0.84);
+         box-shadow: 0 30px  30px 15px rgba(217, 171, 6, 0.72);
+
+
+    }
+    div.borderAction {
+         border: 2px solid rgba(16, 200, 213, 0.84);
+         box-shadow: 0 30px  30px 15px rgba(217, 171, 6, 0.72);
+
+ 
+    }
+
+
+        .mood {
+            background-color: rgba(226, 124, 8, 0.85);
+            color: white;
+
+             
+        }
+        .sleep {
+            background-color: rgba(158, 66, 224, 0.84);
+            color: white;
+ 
+        }
+        .drugs {
+            background-color: rgba(10, 183, 45, 0.84);
+            color: white;
+     
+        }
+
+        .action {
+            background-color: rgba(16, 200, 213, 0.84);
+            color: white;
+
+            
+        }
+        
+
+
+
+        div.titleActionShowAjax {
+            background-color: #294898;
+        
+
+        }
+        div.titleDrugsShowAjax {
+            background-color: #3A9900;
+        
+        }
+        td.tdAction {
+         
+            border-right: 2px solid #0E5970;
+            
+            
+        }
+        div.NotShow {
+         
+            box-shadow: 5px 5px 4px 1px #5B7235;
+            color: white;
+            background-color: #FB2A17;
+        }
+        div.formAddMood {
+     
+           background-color: rgba(208, 205, 10, 0.73);
+        }
+        
+    
+        span.kalendar {
+           
+            color: #404803;
+        }
+        span.kalendarBig {
+            
+            color: #404803;
+        }
+ 
+        .btn-success {
+                background-color: #B87A0D !important;
+                border-color: #6E791A !important;
+                
+        }
+        .btn-success:hover {
+                background-color: yellow !important;
+                border-color: #C29713 !important;
+                
+        }
+        .btn-primary {
+                background-color: #9D1AD5 !important;
+                border-color: #6E791A !important;
+                
+        }
+        .btn-primary:hover {
+                background-color: #5A047F !important;
+                border-color: #C29713 !important;
+               
+        }
+        
+        
+        
+        .btn-mood {
+                
+               
+                border-color: #6E791A;
+            
+                color: white;
+          
+                box-shadow: 6px 6px 6px #F4E375;
+
+        }
+        .btn-mood:hover  {
+                background-color: yellow; 
+                color: white;
+                border-color: #C29713;
+             
+        }
+        .btn-sleep {
+                background-color: #9D1AD5; 
+                
+                border-color: #6E791A;
+            
+                color: white;
+            
+                box-shadow: 6px 6px 6px #F4E375;
+        }
+        .btn-sleep:hover  {
+                background-color: #5A047F; 
+                color: white;
+                border-color: #C29713;
+             
+        }
+
+        
+        .btn-action {
+                background-color: #4293E5; 
+                
+                border-color: #6E791A;
+            
+                color: white;
+           
+                box-shadow: 6px 6px 6px #F4E375;            
+        }
+        .btn-action:hover  {
+                background-color: #1177DD; 
+                color: white;
+                border-color: #C29713;
+           
+        }
+
+        .btn-drugs {
+                background-color: #1FDA28; 
+               
+                border-color: #A7D416;
+               
+                color: white;
+          
+                box-shadow: 6px 6px 6px #F4E375;
+
+        }
+        .btn-drugs:hover  {
+                background-color: #19FF24; 
+                color: white;
+                border-color: yellow;
+            
+        }
+        div.cell_active {
+
+            background-color: #E97705;
+         
+            color: #524504;
+          
+
+        }
+        div.cell_selected {
+
+            background-color: yellow;
+           
+        }
+
+        div.cell10000 {
+          
+            background-color: #F3FBA1;
+           
+
+
+        }
+        div.howAction {
+        
+            color: #0B3693;
+        }
+        a.no_active {
+            color: #6A720C;
+        }
+
+            #MainPage {
+                
+                background-color: rgba(210, 197, 13, 0.6);
+               
+
+            }
+            div.menu {
+          
+            color: white;
+         
+
+        }
+        a.menu {
+            color: white;
+           
+        }
+        a.menu:hover {
+            text-decoration: underline;
+            color: #E9BA10;
+        }
+
+        button.calendar {
+                background-color: #B87A0D; 
+               
+                border-color: #6E791A;
+            
+                color: white;
+         
+                box-shadow: 6px 6px 6px #F4E375;
+        }
+        button.calendar:hover {
+                background-color: yellow; 
+                color: white;
+                border-color: #C29713;
+            
+        }
+        button.main {
+                
+          
+                color: white;
+           
+                box-shadow: 6px 6px 6px #F4E375;
+        }
+        button.MainEdit {
+         
+                color: white;
+     
+                box-shadow: 6px 6px 6px #F4E375;
+        }
+        button.MainEdit:hover {
+         
+                color: white;
+          
+                box-shadow: 6px 6px 6px #F4E375;
+        }
+        button.main:hover {
+                
+                color: white;
+                border-color: #C29713;
+        
+        }
+        button.main-long {
+         
+                color: white;
+        
+                box-shadow: 6px 6px 6px #F4E375;
+        }
+        button.main-long:hover {
+                
+                color: white;
+                border-color: #C29713;
+       
+        }
+ 
+
+        button.small:hover {
+                
+                color: white;
+                
+         
+        }
+
+        button.danger:hover {
+                background-color: #F92900;
+                color: white;
+                border-color: #C29713;
+          
+             
+        }
+        button:disabled, button.disable {
+                            background-color: #D92A2A; 
+               
+                border-color: #6E791A;
+               
+                color: white;
+             
+                box-shadow: 6px 6px 6px #F4E375;
+              
+        }
+     
+        
+        
+        
+     
+   
+   
+        #showmood {
+            
+            background-color: rgba(210, 210, 44, 0.61);
+       
+        }
+        #showdrugs {
+           
+            background-color: rgba(210, 210, 44, 0.61);
+      
+        }
+        #showaction {
+           
+            background-color: rgba(210, 210, 44, 0.61);
+
+        }
+       
+
+        div.sumMood {
+            
+            background-color: rgba(223, 223, 20, 0.59);
+         
+        }
+        div.sumDrugs {
+          
+            background-color: rgba(99, 231, 84, 0.81);
+   
+           
+        }
+        div.sumAction {
+     
+            background-color: rgba(64, 190, 215, 0.85);
+     
+        }
+
+
+
+
+
+
+        div.linkShow {
+           
+
+            color: white;
+     
+        }
+
+
+
+        hr.drugs {
+height: 1.0em; width: 80%; border: 1px solid #942314;
+
+        }
+        div.positionAction {
+          
+            color: #3F5B0B;
+             
+        }
+        div.hourPlan {
+            
+            background-color: #6C54E2;
+          
+            color: #D4EC1C;
+            box-shadow: 1px 6px 8px 2px rgba(28,33,77,0.76);
+           
+        }
+        div.positionDrugs {
+          
+            background-color: #1BBC09;
+          
+            color: #CFF5CA;
+         
+        }
+                div.errorMainMessagesmall {
+            color: white;
+     
+            background-color: red;
+      
+            box-shadow: 6px 0  20px 8px rgba(127, 15, 15, 0.8);
+            
+        }
+                div.disable {
+            background-color: #D92A2A;
+        
+        }
+        div.errorMainMessage {
+            color: white;
+
+            background-color: red;
+  
+            box-shadow: 6px 0  20px 8px rgba(127, 15, 15, 0.8);
+        
+        }
+#calendar {
+    
+    box-shadow: 0px 31px 17px -6px rgba(64,66,29,0.7);
+
+}
+
+
+
+    div.bodyDiv {
+        
+        background-image: url('../tlo.png'); /* from http://subtlepatterns.com */
+    }
+
+
+
+        button.danger {
+            box-shadow: 6px 6px 6px #F4E375;
+            background-color: red;
+            color: white;
+        }
+        
+        
+        
+        button.updateAction {
+            box-shadow: 6px 6px 6px #057EA3;
+            background-color: #34C6F3;
+            color: white;
+        }
+        
+                        button.danger:hover {
+     box-shadow: 6px 6px 6px #F4E375;
+            background-color: red;
+            color: white;
+            border-color: #7E0705;
+            
+        }
+                button.btn-actionDay {
+            box-shadow: 6px 6px 6px #124F9B;
+            background-color: #1679F2;
+            color: white;
+        }
+                button.btn-actionDay:hover {
+            box-shadow: 6px 6px 6px #124F9B;
+            background-color: #1679F2;
+            border-color: #103869;
+            color: white;
+        }
+span.warning {
+    color: #CA0606;
+ 
+}
+
+
+div.descriptionModShowSleep {
+    background-color: #7A26C9;
+
+    color: white;
+
+}
+div.leveAction0 {
+    background-color:  #969682;
+}
+div.leveAction1 {
+    background-color: #BBBCA9;
+}
+div.leveAction2 {
+    background-color: #BCBCBC;
+}
+div.leveAction3 {
+    background-color: #CCCBB7;
+}
+div.leveAction4 {
+    background-color: #EAEAE3;
+}
+div.leveAction5 {
+    background-color: #E9EAD7;
+}
+div.leveAction6 {
+    background-color: #F7F7EA;
+}
+div.leveAction7 {
+    background-color: #F4F2BA;
+}
+div.leveAction8 {
+    background-color: #F2EF9D;
+}
+div.leveAction9 {
+    background-color: #F7F981;
+}
+div.leveAction10 {
+    background-color: #F9DE54;
+}
+
+
+
+
+
+div.moodSelected {
+               border-top: 3px solid #D6E109;
+           border-left: 3px solid #D6E109;
+           border-right: 3px solid #D6E109;
+
+           color: #E6F20C;
+}
+
+div.descriptionModShowMood {
+    background-color: #6D6D21;
+
+    color: white;
+
+}
+
+div.typeOfPortion {
+    background-color: #56B392;
+    color: white;
+}
+table.moodShow {
+
+    background-color: rgba(255, 235, 56, 0.6);
+    color: #775807;
+
+}
+table.drugsShow {
+
+    background-color: rgba(135, 241, 28, 0.4);
+    color: #775807;
+
+}
+table.actionShow {
+
+    background-color: #09B6EB;
+    color: #034053;
+
+    border: 2px solid #0E5970;
+}
+td.boldTitle {
+
+    color: #020F3A;
+
+    background-color: #2048C9;
+}
+table.moodShow, td.showMood, td.moodButton {
+   border: 2px solid #A77906;
+
+
+}
+table.drugsShow, td.drugsShow, td.drugsButton {
+   border: 2px solid #0C5204;
+
+
+}
+table.showAction, td.showAction, td.showAction {
+    border-top: 5px solid #012936;
+
+}
+table.actionShowIdMood {
+    
+
+    color: white;;
+
+
+    
+}
+td.showMood {
+    border-top: 5px solid #626222;
+
+}
+td.showAction {
+    border-top: 5px solid #012936;
+
+}
+td.showdrugs {
+    border-top: 5px solid #0C5204;
+}
+
+div.level {
+
+        box-shadow: 0 0 8px 2px #5C5B04;
+
+}
+div.level-10 {
+    
+    background-color: #15190f;
+
+    color: black;
+    
+
+}
+div.level-9 {
+    
+    background-color: #242423;
+
+    
+
+    color: black;
+}
+div.level-8 {
+    
+    background-color: #41403F;
+
+
+    color: black;
+}
+div.level-7 {
+    
+    background-color: #5C5B59;
+
+
+    color: black;
+}
+div.level-6 {
+    
+    background-color: #72716F;
+
+
+    color: black;
+}
+
+div.level-5 {
+    
+    background-color: #868273;
+
+
+    color: black;
+}
+div.level-4 {
+    
+    background-color: #979F87;
+
+
+    color: black;
+}
+
+div.level-3 {
+    
+    background-color: #A8B298;
+
+    
+    color: black;
+}
+div.level-2 {
+    
+    background-color: #C3CCB5;
+
+
+    color: black;
+}
+div.level-1 {
+    
+    background-color: #CFCBB5;
+
+
+    color: black;
+}
+div.level0 {
+    
+    background-color: white;
+
+
+    color: black;
+}
+div.level1 {
+    
+    background-color: #f6f9ac;
+
+    color: black;
+}
+div.level2 {
+    
+    background-color: #f5f988;
+
+    color: black;
+}
+div.level3 {
+    
+    background-color: #dfe365;
+
+
+    color: black;
+
+}
+div.level4 {
+    
+    background-color: #e5ea50;
+
+
+    color: black;
+}
+div.level5 {
+    
+    background-color: #d8de3b;
+
+
+    color: black;
+}
+div.level6 {
+    
+    background-color: #cdd410;
+
+
+    color: black;
+}
+div.level7 {
+    
+    background-color: #999f00;
+
+
+    color: black;
+}
+div.level8 {
+    
+    background-color: #9ae021;
+
+
+    color: black;
+}
+div.level9 {
+    
+    background-color: #84c80f;
+
+
+    color: black;
+}
+div.level10 {
+    
+    background-color: #08F608;
+
+
+    color: black;
+}
+
+div.descriptionDrugsShow {
+    background-color: #609300;
+
+    color: white;
+
+}
+        div.linkSelected {
+           color: yellow;
+           border:  2px solid yellow;
+          
+        }
+div.cellBorder {
+    
+    box-shadow: 0px 0px 4px 3px rgba(64,66,29,0.47);
+}
+div.cell100 {
+
+    background-color: #A55188;
+    
+    
+    
+}
+div.cell-10 {
+    
+    background-color: #15190f;
+   
+   
+   
+}
+        div.cell100000 {
+          
+            background-color: #6AC5E0;
+
+
+        }
+div.cell-9 {
+    
+    background-color: #242423;
+   
+   
+}
+div.cell-8 {
+    
+    background-color: #41403F;
+   
+   
+   
+}
+div.cell-7 {
+    
+    background-color: #5C5B59;
+   
+    
+    
+}
+div.cell-6 {
+    
+    background-color: #72716F;
+    
+    
+    
+}
+
+div.cell-5 {
+    
+    background-color: #868273;
+    
+    
+    
+}
+div.cell-4 {
+    
+    background-color: #979F87;
+    
+    
+}
+
+div.cell-3 {
+    
+    background-color: #A8B298;
+    
+    
+}
+div.cell-2 {
+    
+    background-color: #C3CCB5;
+    
+    
+    
+}
+div.cell-1 {
+    
+    background-color: #E2E3C3;
+    
+    
+    
+}
+div.cell0 {
+    
+    background-color: white;
+    
+    
+    
+}
+div.cell1 {
+    
+    background-color: #F4F7B4;
+   
+    
+    
+}
+div.cell2 {
+    
+    background-color: #EEF395;
+   
+    
+    
+}
+div.cell3 {
+    
+    background-color: #F0F589;
+   
+   
+   
+}
+div.cell4 {
+    
+    background-color: #EFF66E;
+    
+    
+   
+}
+div.cell5 {
+    
+    background-color: #F2FA50;
+    
+    
+    
+}
+div.cell6 {
+    
+    background-color: #F4FF23;
+    
+    
+    
+}
+div.cell7 {
+    
+    background-color: #CAFB26;
+    
+}
+div.cell8 {
+    
+    background-color: #A8EB2D;
+
+}
+div.cell9 {
+    
+    background-color: #A7F400;
+  
+    
+}
+div.cell10 {
+    
+    background-color: #39F400;
+
+}
+
+
+div.levelSleep {
+        background-color: #AD15CF;
+
+
+    color: black;
+}
+
+
+span.fontMoodNot {
+  
+    color: #350244;
+}
+
+thead.titleTheadMood {
+
+    background-color: rgb(218, 240, 106);
+    
+}
+thead.titleTheadAction {
+
+    background-color: #7BDBF8; 
+}
+thead.titleTheadDrugs {
+
+    background-color: #4FD240;
+}
+td.moodButton {
+   
+     border-left: 2px solid #0C5204;
+   border-right: 2px solid #0C5204;
+   border-bottom: 2px solid #0C5204;
+    
+}
+
+
+td.drugsTd {
+    color: #115E02;
+}
+
+.actionShowModShow {
+    background-color: #308EED;
+ 
+-webkit-box-shadow: 0px 0px 18px 1px rgba(10, 44, 105, 1);
+-moz-box-shadow: 0px 0px 18px 1px rgba(10, 44, 105, 1);
+box-shadow: 0px 0px 18px 1px rgba(10, 44, 105, 1);
+}
+.drugssShowModShow {
+        background-color: #54CD08;
+
+-webkit-box-shadow: 0px 0px 18px 1px #235902;
+-moz-box-shadow: 0px 0px 18px 1px #235902;
+box-shadow: 0px 0px 18px 1px #235902;
+}
+td.titleAction {
+        background-color: #084071;
+        
+   
+        
+}
+td.titleDrugs {
+        background-color: #3A7F0F;
+      
+   
+        
+}

@@ -12,7 +12,13 @@ class Action extends Model
         return self::where("id_users",$idUsers)->orwhere("id_users",0)->orderBy("id_users")->orderBy("name")->get();
     }
     public static function returnNameAction(int $id,int $idUsers) {
-        return self::selectRaw("name as name")->where("id_users",$idUsers)->orwhere("id_users",0)->where("id",$id)->first();
+        return self::selectRaw("name as name")->where("id_users",$idUsers)->where("id",$id)->first();
     }
-
+    public static function showActionDay(int $idUsers) {
+              return self::selectRaw("actions.name as name")
+                ->selectRaw("actions.id as id")
+                
+                ->where("actions.id_users",$idUsers)
+                ->get();
+    }
 }

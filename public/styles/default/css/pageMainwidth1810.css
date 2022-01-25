@@ -2,21 +2,16 @@
     #calendar {
         width: 80%;
     }
-     td.moodadd {
-                   
-        color: #84440F;
-    
-      
-    }
+
     input {
         height: 40px;
         
     }
 div.actionMain {
-    background-color: rgb(17, 118, 206);
+
     margin: 10px;
     padding: 7px;
-    color: #CDE1F3;
+
     text-align: center;
     font-size: 19px;
     font-weight: bold;
@@ -42,10 +37,10 @@ div.hiddenMoodEdit {
 
 
 div.actionMainselected {
-    background-color: rgb(0, 57, 122);
+
     margin: 10px;
     padding: 7px;
-    color: #CDE1F3;
+
     text-align: center;
     font-size: 19px;
     font-weight: bold;
@@ -87,13 +82,13 @@ div.actionMainselected {
 
 
         div.titleActionShowAjax {
-            background-color: #294898;
+
             border-radius: 17px 17px 0px 0px;
             min-height: 22px;
 
         }
         div.titleDrugsShowAjax {
-            background-color: #3A9900;
+
             border-radius: 17px 17px 0px 0px;
             min-height: 22px;
         }
@@ -102,7 +97,7 @@ div.actionMainselected {
             padding-bottom: 20px;
             padding-left: 10px;
             padding-right: 10px;
-            border-right: 2px solid #0E5970;
+
             
             
         }
@@ -116,12 +111,10 @@ div.actionMainselected {
             padding-top: 14px;
             margin-top: 10px;
             border-radius: 20px;
-            box-shadow: 5px 5px 4px 1px #5B7235;
-            color: white;
-            background-color: #FB2A17;
+
         }
         div.formAddMood {
-            background-color: rgba(208, 205, 10, 0.73);
+
             border-radius: 17px 17px 17px 17px;
         }
         
@@ -130,11 +123,11 @@ div.actionMainselected {
         }
         span.kalendar {
             font-size: 20px;
-            color: #404803;
+
         }
         span.kalendarBig {
             font-size: 25px;
-            color: #404803;
+
         }
         span.HourMood {
             font-size: 20px;
@@ -142,26 +135,22 @@ div.actionMainselected {
            
         }
         .btn-success {
-                background-color: #B87A0D !important;
-                border-color: #6E791A !important;
+
                 font-size: 19px !important;
                 font-weight: bold !important;
         }
         .btn-success:hover {
-                background-color: yellow !important;
-                border-color: #C29713 !important;
+
                 font-size: 19px !important;
                 font-weight: bold !important;
         }
         .btn-primary {
-                background-color: #9D1AD5 !important;
-                border-color: #6E791A !important;
+    
                 font-size: 19px !important;
                 font-weight: bold !important;
         }
         .btn-primary:hover {
-                background-color: #5A047F !important;
-                border-color: #C29713 !important;
+            
                 font-size: 19px !important;
                 font-weight: bold !important;
         }
@@ -169,27 +158,25 @@ div.actionMainselected {
         
         
         .btn-mood {
-                background-color: #B87A0D; 
+       
                 border: solid 1px transparent;
-                border-color: #6E791A;
+
                 padding-top: 13px;
                 padding-left: 25px;
                 padding-right: 25px;
                 padding-bottom: 13px;
-                color: white;
+    
                 border-radius: 12px;
                 height: 65px;
                 text-align: center;
                 display: inline-block;
                 font-size: 24px;
                 font-weight: bold;
-                box-shadow: 6px 6px 6px #F4E375;
+   
 
         }
         .btn-mood:hover  {
-                background-color: yellow; 
-                color: white;
-                border-color: #C29713;
+       
                 border-radius: 12px;
                 text-align: center;
                 display: inline-block;
@@ -197,26 +184,24 @@ div.actionMainselected {
                 font-weight: bold;
         }
         .btn-sleep {
-                background-color: #9D1AD5; 
+  
                 border: solid 1px transparent;
-                border-color: #6E791A;
+    
                 padding-top: 13px;
                 padding-left: 25px;
                 padding-right: 25px;
                 padding-bottom: 13px;
-                color: white;
+       
                 border-radius: 12px;
                 height: 65px;
                 text-align: center;
                 display: inline-block;
                 font-size: 24px;
                 font-weight: bold;
-                box-shadow: 6px 6px 6px #F4E375;
+            
         }
         .btn-sleep:hover  {
-                background-color: #5A047F; 
-                color: white;
-                border-color: #C29713;
+               
                 border-radius: 12px;
                 text-align: center;
                 display: inline-block;
@@ -226,26 +211,24 @@ div.actionMainselected {
 
         
         .btn-action {
-                background-color: #4293E5; 
+             
                 border: solid 1px transparent;
-                border-color: #6E791A;
+     
                 padding-top: 13px;
                 padding-left: 25px;
                 padding-right: 25px;
                 padding-bottom: 13px;
-                color: white;
+       
                 border-radius: 12px;
                 height: 65px;
                 text-align: center;
                 display: inline-block;
                 font-size: 24px;
                 font-weight: bold;
-                box-shadow: 6px 6px 6px #F4E375;            
+                   
         }
         .btn-action:hover  {
-                background-color: #1177DD; 
-                color: white;
-                border-color: #C29713;
+             
                 border-radius: 12px;
                 text-align: center;
                 display: inline-block;
@@ -254,27 +237,25 @@ div.actionMainselected {
         }
 
         .btn-drugs {
-                background-color: #1FDA28; 
+        
                 border: solid 1px transparent;
-                border-color: #A7D416;
+       
                 padding-top: 13px;
                 padding-left: 25px;
                 padding-right: 25px;
                 padding-bottom: 13px;
-                color: white;
+
                 border-radius: 12px;
                 height: 65px;
                 text-align: center;
                 display: inline-block;
                 font-size: 24px;
                 font-weight: bold;
-                box-shadow: 6px 6px 6px #F4E375;
+             
 
         }
         .btn-drugs:hover  {
-                background-color: #19FF24; 
-                color: white;
-                border-color: yellow;
+          
                 border-radius: 12px;
                 text-align: center;
                 display: inline-block;
@@ -283,16 +264,15 @@ div.actionMainselected {
         }
         div.cell_active {
 
-            background-color: #E97705;
             border-radius: 15px;
             height: 100%;
-            color: #524504;
+        
             padding-top: 25%;
 
         }
         div.cell_selected {
 
-            background-color: yellow;
+           
             border-radius: 20px;
             height: 100%;
             padding-top: 25%;
@@ -301,7 +281,7 @@ div.actionMainselected {
 
         div.cell10000 {
           
-            background-color: #F3FBA1;
+         
             border-radius: 0 !important;
             box-shadow: 0 0 0 0 !important;
 
@@ -310,11 +290,9 @@ div.actionMainselected {
         div.howAction {
             margin: 8px 0px 0 80px;
             font-size: 20px;
-            color: #0B3693;
+         
         }
-        a.no_active {
-            color: #6A720C;
-        }
+  
         .trCalendar {
             height: 100px;
 
@@ -326,7 +304,7 @@ div.actionMainselected {
         }
             #MainPage {
                 width: 75%;
-                background-color: rgba(210, 197, 13, 0.6);
+               
                 border: 20px;
                 border-radius: 25px 25px 25px 25px;
                 margin-left: auto;
@@ -349,7 +327,7 @@ div.actionMainselected {
             }
             div.menu {
             width: 20%;
-            color: white;
+         
             text-align: center;
             font-weight: bold;
             padding: 2px;
@@ -358,40 +336,38 @@ div.actionMainselected {
 
         }
         a.menu {
-            color: white;
+      
             text-decoration: none;
             font-size: 17px;
         }
         a.menu:hover {
             text-decoration: underline;
-            color: #E9BA10;
+            
         }
         div.empty_menu {
             width: 10%;
             float: left;
         }
         button.calendar {
-                background-color: #B87A0D; 
+                
                 border: solid 1px transparent;
-                border-color: #6E791A;
+                
                 padding-top: 13px;
                 padding-left: 10px;
                 padding-right: 10px;
                 padding-bottom: 13px;
                 width: 230px;
-                color: white;
+                
                 border-radius: 12px;
                 height: 65px;
                 text-align: center;
                 display: inline-block;
                 font-size: 24px;
                 font-weight: bold;
-                box-shadow: 6px 6px 6px #F4E375;
+               
         }
         button.calendar:hover {
-                background-color: yellow; 
-                color: white;
-                border-color: #C29713;
+              
                 border-radius: 12px;
                 text-align: center;
                 display: inline-block;
@@ -407,14 +383,14 @@ div.actionMainselected {
                 padding-right: 5px;
                 padding-bottom: 10px;
                 width: 150px;
-                color: white;
+             
                 border-radius: 12px;
                 height: 55px;
                 text-align: center;
                 display: inline-block;
                 font-size: 18px;
                 font-weight: bold;
-                box-shadow: 6px 6px 6px #F4E375;
+              
         }
         button.MainEdit {
             border: solid 1px transparent;
@@ -424,14 +400,14 @@ div.actionMainselected {
                 padding-right: 5px;
                 padding-bottom: 10px;
                 width: 200px;
-                color: white;
+            
                 border-radius: 12px;
                 height: 55px;
                 text-align: center;
                 display: inline-block;
                 font-size: 18px;
                 font-weight: bold;
-                box-shadow: 6px 6px 6px #F4E375;
+          
         }
         button.MainEdit:hover {
             border: solid 1px transparent;
@@ -448,12 +424,11 @@ div.actionMainselected {
                 display: inline-block;
                 font-size: 18px;
                 font-weight: bold;
-                box-shadow: 6px 6px 6px #F4E375;
+            
         }
         button.main:hover {
                 
-                color: white;
-                border-color: #C29713;
+                
                 border-radius: 12px;
                 text-align: center;
                 display: inline-block;
@@ -468,19 +443,17 @@ div.actionMainselected {
                 padding-right: 5px;
                 padding-bottom: 10px;
                 width: 150px;
-                color: white;
+      
                 border-radius: 12px;
                 height: 55px;
                 text-align: center;
                 display: inline-block;
                 font-size: 15px;
                 font-weight: bold;
-                box-shadow: 6px 6px 6px #F4E375;
+             
         }
         button.main-long:hover {
-                
-                color: white;
-                border-color: #C29713;
+         
                 border-radius: 12px;
                 text-align: center;
                 display: inline-block;
@@ -499,7 +472,6 @@ div.actionMainselected {
 
         button.small:hover {
                 
-                color: white;
                 
                 border-radius: 12px;
                 text-align: center;
@@ -522,24 +494,22 @@ div.actionMainselected {
                 
         }
         button.danger:hover {
-                background-color: #F92900;
-                color: white;
-                border-color: #C29713;
+
                 border-radius: 12px;
                 text-align: center;
                 display: inline-block;
              
         }
         button:disabled, button.disable {
-                            background-color: #D92A2A; 
+                  
                 border: solid 1px transparent;
-                border-color: #6E791A;
+
                 padding-top: 5px;
                 padding-left: 5px;
                 padding-right: 10px;
                 padding-bottom: 10px;
                 width: 150px;
-                color: white;
+
                 border-radius: 12px;
                 height: 55px;
                 text-align: center;
@@ -570,12 +540,10 @@ div.actionMainselected {
             float: left;
             padding: 10px;
         }
-        div.divButtonBr {
-            
-        }
+
         #showmood {
             width: 93%;
-            background-color: rgba(210, 210, 44, 0.61);
+
             min-height: 350px;
             border-radius: 25px;
             margin-left: auto;
@@ -583,7 +551,7 @@ div.actionMainselected {
         }
         #showdrugs {
             width: 80%;
-            background-color: rgba(210, 210, 44, 0.61);
+
             min-height: 350px;
             border-radius: 25px;
             margin-left: auto;
@@ -591,7 +559,7 @@ div.actionMainselected {
         }
         #showaction {
             width: 70%;
-            background-color: rgba(210, 210, 44, 0.61);
+
             min-height: 350px;
             border-radius: 25px;
             margin-left: auto;
@@ -610,14 +578,12 @@ div.actionMainselected {
            
 
         }
-        div.linkShowMood {
 
-        }
 
         div.sumMood {
             width: 400px;
             height: 200px;
-            background-color: rgba(223, 223, 20, 0.59);
+
             border-radius: 20px;
             padding: 22px;
             margin-left: auto;
@@ -626,7 +592,7 @@ div.actionMainselected {
         div.sumDrugs {
            width: 400px;
             height: 200px;
-            background-color: rgba(99, 231, 84, 0.81);
+
             border-radius: 20px;
             padding: 22px;
             margin-left: auto;
@@ -636,7 +602,7 @@ div.actionMainselected {
         div.sumAction {
            width: 400px;
             height: 200px;
-            background-color: rgba(64, 190, 215, 0.85);
+
             border-radius: 20px;
             padding: 22px;
             margin-left: auto;
@@ -664,7 +630,7 @@ div.actionMainselected {
             padding-top: 13px;
             font-size: 22px;
             border-radius: 20px;
-            color: white;
+
             font-weight: bold;
             float: left;
             margin-left: 10px;
@@ -674,7 +640,7 @@ div.actionMainselected {
 
 
         hr.drugs {
-height: 1.0em; width: 80%; border: 1px solid #942314;
+
 margin-left: auto;
 margin-right: auto;
         }

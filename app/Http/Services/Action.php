@@ -31,6 +31,7 @@ class Action {
         $ActionDay->date = $request->get("date");
         $ActionDay->save();
     }
+
     public function removeActionDay(int $id) {
         $ActionsDay = new Actions_day;
         $ActionsDay->where("id",$id)->where("id_users",Auth::User()->id)->delete();
