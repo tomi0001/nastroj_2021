@@ -24,6 +24,14 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td   class='moodadd  widthMoodAdd'>
+                                        czas
+                                    </td>
+                                    <td class='borderless'>
+                                        <input type='time' name='time' class='form-control'>
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td  class='moodadd  widthMoodAdd' >
                                         Nazwa akcji
                                     </td>

@@ -28,7 +28,12 @@ class Action {
         $ActionDay = new Actions_day;
         $ActionDay->id_users = Auth::User()->id;
         $ActionDay->id_actions = $request->get("actionDay");
-        $ActionDay->date = $request->get("date");
+        if ($request->get("time") != "") {
+            $ActionDay->date = $request->get("date") . " " . $request->get("time");
+        }
+        else {
+            $ActionDay->date = $request->get("date") . " " . date("H:i:s");
+        }
         $ActionDay->save();
     }
 

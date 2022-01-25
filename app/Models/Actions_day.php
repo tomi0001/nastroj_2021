@@ -5,19 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Auth;
+use DB;
 class Actions_day extends Model
 {
     use HasFactory;
-    public static function showActionForAllDay(string $date, int $idUsers) {
+    public static function showActionForAllDay(string $date, int $idUsers,int $startDay) {
         return self::join("actions","actions.id","actions_days.id_actions")
                 ->selectRaw("actions.name as name")
                 ->selectRaw("actions_days.id as id")
                 ->selectRaw("actions.id as idAction")
                 ->selectRaw("actions.level_pleasure as level_pleasure")
-                ->selectRaw("actions_days.created_at as date")
+                ->selectRaw("actions_days.date as date")
                 ->where("actions_days.id_users",$idUsers)
-                ->where("actions_days.date",$date)
-                ->orderBy("actions_days.created_at")->get();
+                ->whereRaw(DB::Raw("(DATE(IF(HOUR(    actions_days.date) >= '" . $startDay . "', actions_days.date,Date_add(actions_days.date, INTERVAL - 1 DAY) )) ) = '$date'" ))
+                ->orderBy("actions_days.date")->get();
     }
 
     public static function returnNameAction(int $idUsers,int $id) {

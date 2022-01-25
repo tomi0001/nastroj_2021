@@ -19,7 +19,7 @@ class ActionsDays extends Migration
             $table->bigInteger('id_users')->unsigned()->index();
             $table->bigInteger('id_actions')->unsigned();
             $table->foreign("id_actions")->references("id")->on("actions");
-            $table->date('date');
+            $table->datetime('date');
             $table->timestamps();
         });
     }
