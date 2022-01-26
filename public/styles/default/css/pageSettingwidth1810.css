@@ -27,4 +27,38 @@
         width: 100%;
 
     }
+    div.pagepage {
+        
+        
+        padding: 20px;
+        padding-left: 50px;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 25px;
+        clear: both;
+        
+    }
+    div.pageMood {
+        min-height: 110px;
+        width: 900px;
+    }
+    div.pageDrugs {
+        width: 1400px;
+        min-height: 200px;
+    }
+    div.hrefMood {
+        float: left;
+        margin: 15px;
+        padding: 10px;
+        border-radius: 20px;
+    }
+    div.hrefDrugs {
+        float: left;
+        margin: 15px;
+        padding: 10px;
+        border-radius: 20px;
+    }
+    div.downPage {
+        clear: both;
+    }
 }

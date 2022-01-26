@@ -9,7 +9,7 @@
     div.titleSettingsAll {
         float: left;
     }
-    a.hrefSettingCursor {
+    .hrefSettingCursor {
         cursor: pointer;
     }
     div.selectedMenu {
