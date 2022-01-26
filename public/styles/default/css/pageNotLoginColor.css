@@ -1,0 +1,76 @@
+body {
+    background-image: url('../tlo.png'); /* from http://subtlepatterns.com */
+   
+}
+
+
+#MainPage {
+          
+            background-color: rgba(210, 197, 13, 0.6);
+
+        }
+        #PageMenu {
+        
+            background-color: rgba(166, 127, 27, 0.54);
+
+    
+        }
+
+
+        div.register {
+            background-color: rgba(72, 228, 10, 0.89);
+            color: white;
+        }
+        div.loginUser {
+            background-color: rgba(226, 124, 8, 0.96);
+            color: white;
+        }
+        div.loginDoctor {
+            background-color: rgba(94, 15, 228, 0.96);
+            color: white;
+        }
+
+        .btn-primary {
+            background-color: green !important;
+            border-color: green !important;
+          
+        }
+
+        div.titleRegister {
+     
+            background-color: rgba(72, 228, 10, 0.89);
+            color: white;
+    
+        }
+        div.titleUser {
+           
+            background-color: rgba(226, 124, 8, 0.96);
+            color: white;
+
+        }
+        div.titleDoctor {
+           
+            background-color: rgba(94, 15, 228, 0.96);
+            color: white;
+
+        }
+        td.tableRegister {
+         
+            color: white;
+        }
+        #PageRegister {
+  
+            background-color: rgba(166, 127, 27, 0.54);
+
+
+        }
+        #PageLogin {
+     
+            background-color: rgba(166, 127, 27, 0.54);
+     
+        }
+        #error {
+            color: red;
+     
+        }
+

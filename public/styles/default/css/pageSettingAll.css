@@ -1,0 +1,17 @@
+    div.titleAllSettings {
+        clear: both;
+        margin-left: auto;
+        margin-right: auto;
+        
+    }
+
+ 
+    div.titleSettingsAll {
+        float: left;
+    }
+    a.hrefSettingCursor {
+        cursor: pointer;
+    }
+    div.selectedMenu {
+        background-color: red;
+    }

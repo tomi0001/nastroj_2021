@@ -2,8 +2,14 @@
     <head>
         <title>Dzienniczek nastrojów - @yield('title')</title>
         
-        <link href="{{ asset('./styles/' . config('view.styles') . '/css/pageMainNotLogin.css') }}" rel="stylesheet">
-        <link href="{{ asset('./styles/' . config('view.styles') . '/css/common.css') }}" rel="stylesheet">
+        <link href="{{ asset('./styles/' . config('view.styles') . '/css/pageNotLoginwidth1810.css') }}" rel="stylesheet">
+        <link href="{{ asset('./styles/' . config('view.styles') . '/css/pageNotLoginwidth1410.css') }}" rel="stylesheet">
+        <link href="{{ asset('./styles/' . config('view.styles') . '/css/pageNotLoginwidth1210.css') }}" rel="stylesheet">
+        <link href="{{ asset('./styles/' . config('view.styles') . '/css/pageNotLoginwidth700.css') }}" rel="stylesheet">
+        <link href="{{ asset('./styles/' . config('view.styles') . '/css/pageNotLoginAll.css') }}" rel="stylesheet">
+        <link href="{{ asset('./styles/' . config('view.styles') . '/css/pageNotLoginColor.css') }}" rel="stylesheet">
+        <link href="{{ asset('./styles/' . config('view.styles') . '/css/pageNotLoginwidth700.css') }}" rel="stylesheet">
+
 
       
         <link rel="stylesheet"  href="{{asset('./bootstrap-5.1.3-dist/css/bootstrap.css')}}"  >

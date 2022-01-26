@@ -18,6 +18,9 @@ use Auth;
  */
 class doctorController  extends Controller {
    public function loginDr(Request $request) {
+       //print "dd";
+       //return;
+       return View("auth.loginDoctor");
         $User = array(
             "email" => $request->get("email"),
             "password" => $request->get("password")

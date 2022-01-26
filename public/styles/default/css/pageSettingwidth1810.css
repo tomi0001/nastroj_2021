@@ -1,0 +1,30 @@
+@media (min-width: 1810px) {
+    div.titleSettings {
+
+        width: 55%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        font-size: 35px;
+        min-height: 100px;
+        padding-top: 20px;
+        border-radius: 25px;
+
+    }
+    
+    
+
+    div.titleSettingsAll {
+        margin: 20px;
+        width: 30%;
+        text-align: center;
+        min-height: 50px;
+        padding-top: 11px;
+        border-radius: 15px;
+        background-color: red;
+    }
+    div.titleAllSettings {
+        width: 100%;
+
+    }
+}

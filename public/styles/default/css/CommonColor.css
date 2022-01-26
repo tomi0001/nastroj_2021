@@ -1,0 +1,43 @@
+body {
+    background-image: url('../tlo.png'); /* from http://subtlepatterns.com */
+   
+}
+
+            #MainPage {
+                
+                background-color: rgba(210, 197, 13, 0.6);
+               
+
+            }
+            
+                    .mood {
+            background-color: rgba(226, 124, 8, 0.85);
+            color: white;
+
+             
+        }
+        .sleep {
+            background-color: rgba(158, 66, 224, 0.84);
+            color: white;
+ 
+        }
+        .drugs {
+            background-color: rgba(10, 183, 45, 0.84);
+            color: white;
+     
+        }
+
+        .action {
+            background-color: rgba(16, 200, 213, 0.84);
+            color: white;
+
+            
+        }
+                a.menu {
+            color: white;
+           
+        }
+        a.menu:hover {
+            text-decoration: underline;
+            color: #E9BA10;
+        }

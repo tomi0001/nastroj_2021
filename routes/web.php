@@ -16,10 +16,11 @@ use Illuminate\Support\Facades\Route;
 //Route::get('/h', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::get('/loginDr', [App\Http\Controllers\HomeController::class, 'loginDr'])->name('doctorlogin');
+Route::get('/loginDr', [App\Http\Controllers\doctorController::class, 'loginDr'])->name('doctorlogin');
 Route::get('/register', [App\Http\Controllers\HomeController::class, 'register'])->name('register');
 Route::post('/registerSubmit', [App\Http\Controllers\RegisterController::class, 'registerSubmit'])->name('registerSubmits');
 Route::get('/loginUser', [App\Http\Controllers\HomeController::class, 'loginUser'])->name('userlogin');
+Route::post("/loginDr",[App\Http\Controllers\doctorController::class, 'loginDoctor'])->name("loginDoctor");
 Auth::routes();
 
 
@@ -99,7 +100,7 @@ Route::get("/ajax/loadTypePortion",[App\Http\Controllers\Main\MainController::cl
             Route::get('/users4/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\Search\SearchController::class, 'index2'])->name('users.search')
                     ->middleware('auth')->middleware('can:users');
             
-            Route::get('/users2/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\User\UserController::class, 'index4'])->name('users.setting')
+            Route::get('/users.settings', [App\Http\Controllers\Settings\SettingsController::class, 'index'])->name('users.setting')
                     ->middleware('auth')->middleware('can:users');
             
             

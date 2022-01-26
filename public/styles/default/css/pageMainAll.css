@@ -389,3 +389,40 @@ td.titleDrugs {
             
         }
         
+
+div.ajaxError {
+
+            border-radius: 20px 20px 20px 20px;
+            width: 70%;
+            margin-left: auto;
+            margin-right: auto;
+
+            font-size: 18px;
+            font-weight: bold;
+}
+div.ajaxSucces {
+
+
+            border-radius: 20px 20px 20px 20px;
+            width: 70%;
+            margin-left: auto;
+            margin-right: auto;
+
+            font-size: 18px;
+            font-weight: bold;
+}
+
+
+        
+        span.MessageError {
+         
+            font-weight: bold;
+        }
+        
+        span.left {
+            float:left;
+        }
+        span.right {
+             float:right;
+             margin-right: 5px;
+        }
