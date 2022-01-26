@@ -250,6 +250,16 @@
                     <td  colspan="7">
                         <div  class="hiddenMoodEdit description{{$list->id}}" style="display: none;">
                             <textarea  rows='6' class="description{{$list->id}} form-control " id="description{{$list->id}}" style="display: none; " ></textarea>
+                            <button class="btn-mood main mood" onclick="updateDescription('{{route('ajax.updateDescription')}}',{{$list->id}})">Modyfikuj opis</button>
+                            <div id="messageDescription{{$list->id}}"></div>
+                        </div>
+                    </td>
+                
+                </tr>
+                <tr class='moodClass{{$list->id}}'>
+                    <td  colspan="7">
+                        <div  class="hiddenMoodEdit descriptionSleep{{$list->id}}" style="display: none;">
+                            <textarea  rows='6' class="descriptionSleep{{$list->id}} form-control " id="descriptionSleep{{$list->id}}" style="display: none; " ></textarea>
                             <button class="btn-mood main sleep" onclick="updateDescription('{{route('ajax.updateDescription')}}',{{$list->id}})">Modyfikuj opis</button>
                             <div id="messageDescription{{$list->id}}"></div>
                         </div>

@@ -738,7 +738,7 @@ function editMoodDescription(url,id) {
     }
 }
 function editSleepDescription(url,id) {
-    if ($(".description" + id).css("display") == "none" ) {
+    if ($(".descriptionSleep" + id).css("display") == "none" ) {
         
         $.ajax({
                 url : url,
@@ -753,8 +753,8 @@ function editSleepDescription(url,id) {
 
 
 
-                  $(".description" + id).css("display","block");
-                  $("#description" + id).html(response["what_work"]);
+                  $(".descriptionSleep" + id).css("display","block");
+                  $("#descriptionSleep" + id).html(response["what_work"]);
 
                   //$("#cancelActionDayButton"+id).css("display","none");
                   //$("#updateActionDayButton"+id).css("display","none");
@@ -772,7 +772,7 @@ function editSleepDescription(url,id) {
     }
     else {
         
-        $(".description" + id).css("display","none");
+        $(".descriptionSleep" + id).css("display","none");
     }
 }
 function nl2br (str, replaceMode, isXhtml) {
