@@ -41,3 +41,106 @@ body {
             text-decoration: underline;
             color: #E9BA10;
         }
+         
+        .btn-success {
+                background-color: #B87A0D !important;
+                border-color: #6E791A !important;
+                
+        }
+        .btn-success:hover {
+                background-color: yellow !important;
+                border-color: #C29713 !important;
+                
+        }
+        .btn-primary {
+                background-color: #9D1AD5 !important;
+                border-color: #6E791A !important;
+                
+        }
+        .btn-primary:hover {
+                background-color: #5A047F !important;
+                border-color: #C29713 !important;
+               
+        }
+        
+        
+        
+        .btn-mood {
+                
+               
+                border-color: #6E791A;
+            
+                color: white;
+          
+                box-shadow: 6px 6px 6px #F4E375;
+
+        }
+        .btn-mood:hover  {
+                background-color: yellow; 
+                color: white;
+                border-color: #C29713;
+             
+        }
+        .btn-sleep {
+                background-color: #9D1AD5; 
+                
+                border-color: #6E791A;
+            
+                color: white;
+            
+                box-shadow: 6px 6px 6px #F4E375;
+        }
+        .btn-sleep:hover  {
+                background-color: #5A047F; 
+                color: white;
+                border-color: #C29713;
+             
+        }
+
+        
+        .btn-action {
+                background-color: #4293E5; 
+                
+                border-color: #6E791A;
+            
+                color: white;
+           
+                box-shadow: 6px 6px 6px #F4E375;            
+        }
+        .btn-action:hover  {
+                background-color: #1177DD; 
+                color: white;
+                border-color: #C29713;
+           
+        }
+
+        .btn-drugs {
+                background-color: #1FDA28; 
+               
+                border-color: #A7D416;
+               
+                color: white;
+          
+                box-shadow: 6px 6px 6px #F4E375;
+
+        }
+        .btn-drugs:hover  {
+                background-color: #19FF24; 
+                color: white;
+                border-color: yellow;
+            
+        }
+        
+        div.ajaxError {
+    
+            background-color: red;
+            color: white;
+
+}
+div.ajaxSucces {
+
+            background-color: #5BAC0B;
+
+            color: white;
+
+}

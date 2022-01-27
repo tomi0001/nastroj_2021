@@ -27,16 +27,39 @@
         width: 100%;
 
     }
+    
     div.pagepage {
         
         
-        padding: 20px;
-        padding-left: 50px;
+    
         margin-left: auto;
         margin-right: auto;
         border-radius: 25px;
         clear: both;
         
+    }
+    div.pagepagepage {
+        padding: 20px;
+        padding-left: 45px;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 25px;
+        clear: both;
+    }
+    #addNewAction {
+        min-height: 200px;
+        width: 900px;
+        margin-top: 15px;
+        
+        
+    }
+    .titleMoodSettings {
+
+        border-radius: 20px 20px 0px 0px;
+        text-align: center;
+        min-height: 30px;
+        font-weight: bold;
+        font-size: 20px;
     }
     div.pageMood {
         min-height: 110px;
@@ -60,5 +83,10 @@
     }
     div.downPage {
         clear: both;
+    }
+    div.bodyPage {
+        padding: 25px;
+        padding-left: 40px;
+        padding-right: 40px;
     }
 }

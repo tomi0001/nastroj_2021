@@ -1,3 +1,13 @@
 body {
      height: 100%;
 }
+    .center {
+        text-align: center;
+    }
+    .ajaxMessage {
+        border-radius: 20px;
+        font-size: 21px;
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+    }

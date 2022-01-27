@@ -10,12 +10,14 @@ use App\Models\User as MUser;
 use App\Models\Mood as MoodModel;
 use App\Models\Moods_action as MoodAction;
 use App\Models\Actions_day;
+use App\Models\Action as actionModels;
 use App\Http\Services\Calendar;
 use Hash;
 use Auth;
 use DB;
 class Action {
     public $error = [];
+
     public function checkError(Request $request) {
         if (strtotime($request->get("date")) > strtotime(date("Y-m-d"))) {
             array_push($this->error,"Data akcji jest wieksza niż teraźniejsza data");
@@ -49,5 +51,12 @@ class Action {
     public function removeActionMoods(int $id) {
         $MoodAction = new MoodAction;
         $MoodAction->where("id_moods",$id)->delete();
+    }
+    public function addNewAction(Request $request) {
+        $Action = new actionModels;
+        $Action->name  = $request->get("nameAction");
+        $Action->level_pleasure  = $request->get("levelPleasure");
+        $Action->id_users  = Auth::User()->id;
+        $Action->save();
     }
 }

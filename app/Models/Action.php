@@ -21,4 +21,7 @@ class Action extends Model
                 ->where("actions.id_users",$idUsers)
                 ->get();
     }
+    public static function ifExist(string $name,int $idUsers) {
+        return self::selectRaw("name as name")->where("id_users",$idUsers)->where("name",$name)->first();
+    }
 }

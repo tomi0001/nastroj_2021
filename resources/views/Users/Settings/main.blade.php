@@ -16,10 +16,10 @@
     <a class="hrefSettingCursor" onclick="loadPageUser()"><div class="titleSettingsUser titleSettingsAll">USTAWIENIA UŻYTKOWNIKA</DIV></a>
 </div>
 <div class="downPage">
-    <div id="MenuPageMood" class="pagepage pageMood" style="display: none;">
+    <div class="MenuPageMood pagepagepage pageMood" style="display: none;">
        
            
-            <div id="addAction" class="hrefMood hrefSettingCursor" onmouseover="selectMenuMood('addAction')" onmouseout="unSelectMenuMood('addAction')">
+            <div id="addAction" class="hrefMood hrefSettingCursor" onmouseover="selectMenuMood('addAction')" onmouseout="unSelectMenuMood('addAction')" onclick="addActionNew('{{route('settings.addNewAction')}}')">
                DODAJ NOWĄ AKCJE
             </div>
            
@@ -33,8 +33,10 @@
                 ZMIEŃ DATY AKCJI
             </div>
         
+        
+        
     </div>
-    <div id="MenuPageDrugs" class="pagepage pageDrugs" style="display: none;">
+    <div  class="MenuPageDrugs pagepagepage pageDrugs" style="display: none;">
             <div id="newGroup" class="hrefDrugs hrefSettingCursor" onmouseover="selectMenuMood('newGroup')" onmouseout="unSelectMenuMood('newGroup')">
                DODAJ NOWĄ GRUPĘ
             </div>
@@ -61,5 +63,8 @@
     <div id="MenuPageUser" style="display: none;">
 
     </div>
+    <div class="pagePageMood pagepage" id="addNewAction" style="display: none;">
+
+        </div>
 </div>
 @endsection

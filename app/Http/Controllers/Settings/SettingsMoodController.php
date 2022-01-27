@@ -26,5 +26,20 @@ use App\Http\Services\Common;
 use App\Http\Services\Action as serviceAction;
 use Auth;
 class SettingsMoodController {
-    //put your code here
+    public function addNewAction() {
+        return view("Users.Settings.Mood.addNewAction");
+    }
+    public function addNewActionSubmit(Request $request) {
+        
+        $ifExist = Action::ifExist($request->get("nameAction"),Auth::User()->id);
+        if (!empty($ifExist) ) {
+            print json_encode(["error"=>"Już jest taka akcja"]);
+        }
+        else {
+            $Action = new serviceAction;
+            $Action->addNewAction($request);
+            
+            print json_encode(["error"=>0,"succes"=>"Pomyślnie dodano akcję"]);
+        }
+    }
 }

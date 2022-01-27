@@ -94,7 +94,13 @@ Route::get("/ajax/updateDrugs",[App\Http\Controllers\Main\MainController::class,
         ->name("ajax.updateDrugs")->middleware('auth')->middleware('can:users');
 Route::get("/ajax/loadTypePortion",[App\Http\Controllers\Main\MainController::class, 'loadTypePortion'])
         ->name("ajax.loadTypePortion")->middleware('auth')->middleware('can:users');
-         
+
+
+Route::get("/settings/addNewAction",[App\Http\Controllers\Settings\SettingsMoodController::class, 'addNewAction'])
+        ->name("settings.addNewAction")->middleware('auth')->middleware('can:users');
+Route::get("/settings/addNewActionSubmit",[App\Http\Controllers\Settings\SettingsMoodController::class, 'addNewActionSubmit'])
+        ->name("settings.addNewActionSubmit")->middleware('auth')->middleware('can:users');
+
 
 
             Route::get('/users4/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\Search\SearchController::class, 'index2'])->name('users.search')
