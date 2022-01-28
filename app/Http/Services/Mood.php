@@ -50,7 +50,7 @@ class Mood {
     public function checkErrorLevelMood(Request $request) {
         
         for ($i = -10;$i <= 10;$i++) {
-            if ($i == -10 or $i == 10) {
+            if ($i == -10 ) {
                 //$i++;
                 continue;
             }
