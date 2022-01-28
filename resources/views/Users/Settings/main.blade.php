@@ -19,11 +19,11 @@
     <div class="MenuPageMood pagepagepage pageMood" style="display: none;">
        
            
-            <div id="addAction" class="hrefMood hrefSettingCursor" onmouseover="selectMenuMood('addAction')" onmouseout="unSelectMenuMood('addAction')" onclick="addActionNew('{{route('settings.addNewAction')}}')">
+            <div id="addAction" class="hrefMood hrefSettingCursor" onmouseover="selectMenuMood('addAction')" onmouseout="unSelectMenuMood('addAction')" onclick="addActionNew()">
                DODAJ NOWĄ AKCJE
             </div>
            
-            <div id="levelMood"  class=" hrefMood hrefSettingCursor" onmouseover="selectMenuMood('levelMood')" onmouseout="unSelectMenuMood('levelMood')">
+            <div id="levelMood"  class=" hrefMood hrefSettingCursor" onmouseover="selectMenuMood('levelMood')" onmouseout="unSelectMenuMood('levelMood')" onclick="levelMood()">
                 POZIOMY NASTROJU
             </div>
             <div id="changeNameAction"  class=" hrefMood hrefSettingCursor" onmouseover="selectMenuMood('changeNameAction')" onmouseout="unSelectMenuMood('changeNameAction')">
@@ -63,8 +63,28 @@
     <div id="MenuPageUser" style="display: none;">
 
     </div>
-    <div class="pagePageMood pagepage" id="addNewAction" style="display: none;">
+    <div class="pagePageMood pagepage bodyMoodPage" id="addNewAction" style="display: none;">
+
+        </div>
+    <div class="pagePageMood pagepage bodyMoodPage" id="levelMoodAdd" style="display: none;">
 
         </div>
 </div>
+
+<script>
+
+    var urlArray = [
+        '{{route('settings.addNewAction')}}',
+        '{{route('settings.levelMood')}}'
+        
+    ];
+    var urlArraySubmit = [
+        '{{route('settings.addNewActionSubmit')}}',
+        '{{route('settings.levelMoodSubmit')}}'
+    ];
+    
+
+window.onload=setFunction();
+
+    </script>
 @endsection

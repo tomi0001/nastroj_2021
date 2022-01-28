@@ -42,4 +42,22 @@ class SettingsMoodController {
             print json_encode(["error"=>0,"succes"=>"Pomyślnie dodano akcję"]);
         }
     }
+    public function levelMood() {
+        $Mood = new MoodServices;
+        $bool = $Mood->setLevelMood(Auth::User()->id);
+
+        return view("Users.Settings.Mood.levelMood")->with("arrayLevel",$Mood->levelMood)->with("i",1);
+
+    }
+    public function levelMoodSubmit(Request $request) {
+        $Mood = new MoodServices;
+        $Mood->checkErrorLevelMood($request);
+        if (count($Mood->errors) > 0) {
+            return View("ajax.error")->with("error",$Mood->errors);
+        }
+        else {
+            $Mood->updateSettingMood($request);
+            return View("ajax.succes")->with("succes","Pomyslnie zmodyfikowano dane");
+        }
+    }
 }

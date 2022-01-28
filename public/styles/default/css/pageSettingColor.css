@@ -55,7 +55,7 @@ box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
 background-color: rgba(238, 241, 74, 0.71);
 
     }
-    #addNewAction {
+    .bodyMoodPage {
                         color: #878507;
 -webkit-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
 -moz-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);

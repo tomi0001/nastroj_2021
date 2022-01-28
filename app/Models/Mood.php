@@ -27,7 +27,7 @@ class Mood extends Model
         //print $date;
         return self::selectRaw(DB::Raw("(DATE(IF(HOUR(moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) as dat"))
                 ->selectRaw(DB::Raw("(DATE(IF(HOUR(moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) as dat2"))
-                ->selectRaw(" (sum( ( unix_timestamp(date_end) - unix_timestamp(date_start) ) * level_mood)  / sum( unix_timestamp(date_end) - unix_timestamp(date_start) ) ) as sum_mood ")
+                ->selectRaw(" ((sum( ( unix_timestamp(date_end) - unix_timestamp(date_start) ) * level_mood)  / sum( unix_timestamp(date_end) - unix_timestamp(date_start) ) )  )as sum_mood ")
                 ->selectRaw(" (sum( ( unix_timestamp(date_end) - unix_timestamp(date_start) ) * level_anxiety)  / sum( unix_timestamp(date_end) - unix_timestamp(date_start) ) ) as sum_anxiety ")
                 ->selectRaw(" (sum( ( unix_timestamp(date_end) - unix_timestamp(date_start) ) * level_nervousness )  / sum( unix_timestamp(date_end) - unix_timestamp(date_start) ) ) as sum_nervousness ")
                 ->selectRaw(" (sum( ( unix_timestamp(date_end) - unix_timestamp(date_start) ) * level_stimulation)  / sum( unix_timestamp(date_end) - unix_timestamp(date_start) ) ) as sum_stimulation ")
@@ -134,4 +134,5 @@ class Mood extends Model
     public static function ifIdUsersExist(int $idMood, int $idUsers) {
         return self::where("id",$idMood)->where("id_users",$idUsers)->first();
     }
+
 }

@@ -21,6 +21,146 @@ class Mood {
     public $dateEnd;
     public $errors = [];
     public $moodsVariable = [];
+    public $levelMood = [
+        0 =>  ["from" => -20, "to" => -18],
+        1 =>  ["from" => -18, "to" => -16],
+        2 =>  ["from" => -16, "to" => -14],
+        3 =>  ["from" => -14, "to" => -12],
+        4 =>  ["from" => -12, "to" => -10],
+        5 =>  ["from" => -10, "to" => -8],
+        6 =>  ["from" => -8, "to" => -6],
+        7 =>  ["from" => -6, "to" => -2],
+        8 =>  ["from" => -2, "to" => -1],
+        9 =>  ["from" => -1, "to" => 0],
+        10 =>  ["from" => 0, "to" => 1],
+        11 =>  ["from" => 1, "to" => 2],
+        12 =>  ["from" => 2, "to" => 4],
+        13 =>  ["from" => 4, "to" => 6],
+        14 =>  ["from" => 6, "to" => 8],
+        15 =>  ["from" => 8, "to" => 10],
+        16 =>  ["from" => 10, "to" => 12],
+        17 =>  ["from" => 12, "to" => 14],
+        18 =>  ["from" => 14, "to" => 16],
+        19 =>  ["from" => 16, "to" => 18],
+        20 =>  ["from" => 18, "to" => 20],
+        
+    ];
+    
+    
+    public function checkErrorLevelMood(Request $request) {
+        
+        for ($i = -10;$i <= 10;$i++) {
+            if ($request->get("valueMood" . $i . "From") == "") {
+                array_push($this->errors,"Formularz o numerze "  . ($i + 11) . " 'Od' musi być uzpełniony");
+            }
+            if ($request->get("valueMood" . $i . "To") == "") {
+                array_push($this->errors,"Formularz o numerze " . ($i + 11) . " 'Do' musi być uzpełniony");
+            }
+            if (!is_numeric($request->get("valueMood" . $i . "From") ) or $request->get("valueMood" . $i . "From") < -20 or $request->get("valueMood" . $i . "From") > 20) {
+                array_push($this->errors,"Formularz o numerze "  . ($i + 11) . " 'Od' być w zakresie od -20 do +20");
+            }
+            if (!is_numeric($request->get("valueMood" . $i . "To") ) or $request->get("valueMood" . $i . "To") < -20 or $request->get("valueMood" . $i . "To") > 20) {
+                array_push($this->errors,"Formularz o numerze "  . ($i + 11) . " 'Do' być w zakresie od -20 do +20");
+            }
+            
+            else if ($request->get("valueMood" . $i . "To") <= $request->get("valueMood" . $i . "From")) {
+                array_push($this->errors,"Formularz o numerze "  . ($i + 11) . " 'Od' Jest większy bądź równy od Formularza 'Do' o numerze " .  ($i + 11));
+            }
+            if ($i > -10 and $request->get("valueMood" . ($i -1). "To") != $request->get("valueMood" . ($i) . "From")) {
+                array_push($this->errors,"Formularz o numerze "  . ($i + 11) . " 'Od' Jest mniejszy  od Formularza 'Do' o numerze " .  (($i + 11) -1));
+            }
+        }
+        
+ 
+    }
+    public function updateSettingMood(Request $request) {
+        $User = new MUser;
+        $User->where("id",Auth::User()->id)->update([
+            "level_mood_10" => $request->get("valueMood-10From"),
+            "level_mood_9" => $request->get("valueMood-9From"),
+            "level_mood_8" => $request->get("valueMood-8From"),
+            "level_mood_7" => $request->get("valueMood-7From"),
+            "level_mood_6" => $request->get("valueMood-6From"),
+            "level_mood_5" => $request->get("valueMood-5From"),
+            "level_mood_4" => $request->get("valueMood-4From"),
+            "level_mood_3" => $request->get("valueMood-3From"),
+            "level_mood_2" => $request->get("valueMood-2From"),
+            "level_mood_1" => $request->get("valueMood-1From"),
+            "level_mood0" => $request->get("valueMood0From"),
+            "level_mood1" => $request->get("valueMood1From"),
+            "level_mood2" => $request->get("valueMood2From"),
+            "level_mood3" => $request->get("valueMood3From"),
+            "level_mood4" => $request->get("valueMood4From"),
+            "level_mood5" => $request->get("valueMood5From"),
+            "level_mood6" => $request->get("valueMood6From"),
+            "level_mood7" => $request->get("valueMood7From"),
+            "level_mood8" => $request->get("valueMood8From"),
+            "level_mood9" => $request->get("valueMood9From"),
+            "level_mood10" => $request->get("valueMood10From"),
+            "level_mood_10_to" => $request->get("valueMood-10To"),
+            "level_mood_9_to" => $request->get("valueMood-9To"),
+            "level_mood_8_to" => $request->get("valueMood-8To"),
+            "level_mood_7_to" => $request->get("valueMood-7To"),
+            "level_mood_6_to" => $request->get("valueMood-6To"),
+            "level_mood_5_to" => $request->get("valueMood-5To"),
+            "level_mood_4_to" => $request->get("valueMood-4To"),
+            "level_mood_3_to" => $request->get("valueMood-3To"),
+            "level_mood_2_to" => $request->get("valueMood-2To"),
+            "level_mood_1_to" => $request->get("valueMood-1To"),
+            "level_mood0_to" => $request->get("valueMood0To"),
+            "level_mood1_to" => $request->get("valueMood1To"),
+            "level_mood2_to" => $request->get("valueMood2To"),
+            "level_mood3_to" => $request->get("valueMood3To"),
+            "level_mood4_to" => $request->get("valueMood4To"),
+            "level_mood5_to" => $request->get("valueMood5To"),
+            "level_mood6_to" => $request->get("valueMood6To"),
+            "level_mood7_to" => $request->get("valueMood7To"),
+            "level_mood8_to" => $request->get("valueMood8To"),
+            "level_mood9_to" => $request->get("valueMood9To"),
+            "level_mood10_to" => $request->get("valueMood10To")
+            
+            
+            
+        ]);
+ 
+        
+    }
+
+    
+    public function setLevelMood(int $idUsers) :bool {
+        $ifExist = MUser::ifExistLevelMood($idUsers);
+        if (($ifExist->level_mood0) == 0 and $ifExist->level_mood1 == 0) {
+            return false;
+        }
+        else {
+            $array = MUser::readLevelMood($idUsers);
+            $this->levelMood = [
+                        0 =>  ["from" => $array->level_mood_10 , "to" => $array->level_mood_10_to],
+                        1 =>  ["from" => $array->level_mood_9 , "to" => $array->level_mood_9_to],
+                        2 =>  ["from" => $array->level_mood_8 , "to" => $array->level_mood_8_to],
+                        3 =>  ["from" => $array->level_mood_7 , "to" => $array->level_mood_7_to],
+                        4 =>  ["from" => $array->level_mood_6 , "to" => $array->level_mood_6_to],
+                        5 =>  ["from" => $array->level_mood_5 , "to" => $array->level_mood_5_to],
+                        6 =>  ["from" => $array->level_mood_4 , "to" => $array->level_mood_4_to],
+                        7 =>  ["from" => $array->level_mood_3 , "to" => $array->level_mood_3_to],
+                        8 =>  ["from" => $array->level_mood_2 , "to" => $array->level_mood_2_to],
+                        9 =>  ["from" => $array->level_mood_1 , "to" => $array->level_mood_1_to],
+                        10 =>  ["from" => $array->level_mood0 , "to" => $array->level_mood0_to],
+                        11 =>  ["from" => $array->level_mood1 , "to" => $array->level_mood1_to],
+                        12 =>  ["from" => $array->level_mood2 , "to" => $array->level_mood2_to],
+                        13 =>  ["from" => $array->level_mood3 , "to" => $array->level_mood3_to],
+                        14 =>  ["from" => $array->level_mood4 , "to" => $array->level_mood4_to],
+                        15 =>  ["from" => $array->level_mood5 , "to" => $array->level_mood5_to],
+                        16 =>  ["from" => $array->level_mood6 , "to" => $array->level_mood6_to],
+                        17 =>  ["from" => $array->level_mood7 , "to" => $array->level_mood7_to],
+                        18 =>  ["from" => $array->level_mood8 , "to" => $array->level_mood8_to],
+                        19 =>  ["from" => $array->level_mood9 , "to" => $array->level_mood9_to],
+                        20 =>  ["from" => $array->level_mood10 , "to" => $array->level_mood10_to],
+            ];
+            return true;
+        }
+    }
+    
     public function saveMood(Request $request,string $dateStart,string $dateEnd,array $arrayMood) {
         $Mood = new MoodModel;
         $Mood->date_start = $dateStart . ":00";

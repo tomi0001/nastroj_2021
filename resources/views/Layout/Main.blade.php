@@ -48,16 +48,16 @@
                         <a class="menu mainHref" href="{{route('users.main')}}" >GŁÓWNA STRONA</a>
                     </div>
                     <div class="menu">
-                        <a class="menu" href="{{route('users.search')}}">WYSZUKAJ</a>
+                        <a class="menu mainHref" href="{{route('users.search')}}">WYSZUKAJ</a>
                     </div>
 
                     <div class="menu">
 
-                        <a class="menu" href="{{route('users.setting')}}">USTAWIENIA KONTA</a>
+                        <a class="menu mainHref" href="{{route('users.setting')}}">USTAWIENIA KONTA</a>
 
                     </div>
                     <div class="menu">
-                        <a class="menu" href="{{route('logout')}}">WYLOGUJ</a>
+                        <a class="menu mainHref" href="{{route('logout')}}">WYLOGUJ</a>
                     </div>
 
                     
