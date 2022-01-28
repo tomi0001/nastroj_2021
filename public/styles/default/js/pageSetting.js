@@ -28,7 +28,11 @@ function selectMenu() {
     }
 }
 
-
+function loadValue(valueInputsave,valueInputread) {
+    //alert('fd');
+    $("input[name='" +valueInputsave +  "']").val($("input[name='" +valueInputread +  "']").val());
+    
+}
 
 function loadPageMood() {
     $(".titleSettingsMood").addClass("selectedMenu");

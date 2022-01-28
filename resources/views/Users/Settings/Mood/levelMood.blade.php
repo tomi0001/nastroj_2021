@@ -12,13 +12,13 @@
                    Wartośc nastroju od do przy której czujesz myśli samobójcze i totalną depresję
                 </td>
                 <td>
-                    <input type="text" name="valueMood-10From" class="form-control" value="{{$arrayLevel[0]["from"]}}">
+                    <input type="text" name="valueMood-10From" class="form-control" value="{{$arrayLevel[0]["from"]}}" disabled>
                 </td>
                 <td class="tdColorMood">
                     Do
                 </td>
                 <td>
-                    <input type="text" name="valueMood-10To" class="form-control" value="{{$arrayLevel[0]["to"]}}">
+                    <input type="text" name="valueMood-10To" class="form-control" value="{{$arrayLevel[0]["to"]}}" disabled>
                 </td>
 
             </tr>
@@ -30,13 +30,13 @@
                     Wartośc nastroju od do przy której czujesz myśli samobójcze i totalną depresję, ale trochę mniejsze
                 </td>
                 <td>
-                    <input type="text" name="valueMood-9From" class="form-control" value="{{$arrayLevel[1]["from"]}}">
+                    <input type="text" name="valueMood-9From" class="form-control" value="{{$arrayLevel[1]["from"]}}" onkeyup="loadValue('valueMood-10To','valueMood-9From')">
                 </td>
                 <td class="tdColorMood">
                     Do
                 </td>
                 <td>
-                    <input type="text" name="valueMood-9To" class="form-control" value="{{$arrayLevel[1]["to"]}}">
+                    <input type="text" name="valueMood-9To" class="form-control" value="{{$arrayLevel[1]["to"]}}" disabled>
                 </td>
 
             </tr>
@@ -48,13 +48,13 @@
                     Wartośc nastroju od do przy której czujesz myśli rezygnacyjne i totalną depresję
                 </td>
                 <td>
-                    <input type="text" name="valueMood-8From" class="form-control" value="{{$arrayLevel[2]["from"]}}">
+                    <input type="text" name="valueMood-8From" class="form-control" value="{{$arrayLevel[2]["from"]}}" onkeyup="loadValue('valueMood-9To','valueMood-8From')">
                 </td>
                 <td class="tdColorMood">
                     Do
                 </td>
                 <td>
-                    <input type="text" name="valueMood-8To" class="form-control" value="{{$arrayLevel[2]["to"]}}">
+                    <input type="text" name="valueMood-8To" class="form-control" value="{{$arrayLevel[2]["to"]}}" disabled>
                 </td>
 
             </tr>
@@ -66,13 +66,13 @@
                   Wartośc nastroju od do przy której czujesz myśli rezygnacyjne i totalną depresję, ale trochę mniejsze
                 </td>
                 <td>
-                    <input type="text" name="valueMood-7From" class="form-control" value="{{$arrayLevel[3]["from"]}}">
+                    <input type="text" name="valueMood-7From" class="form-control" value="{{$arrayLevel[3]["from"]}}"  onkeyup="loadValue('valueMood-8To','valueMood-7From')">
                 </td>
                 <td class="tdColorMood">
                     Do
                 </td>
                 <td>
-                    <input type="text" name="valueMood-7To" class="form-control" value="{{$arrayLevel[3]["to"]}}">
+                    <input type="text" name="valueMood-7To" class="form-control" value="{{$arrayLevel[3]["to"]}}" disabled>
                 </td>
 
                         </tr>
@@ -84,13 +84,13 @@
                   Wartośc nastroju od do przy której czujesz myśli rezygnacyjne i totalną depresję
                 </td>
                 <td>
-                    <input type="text" name="valueMood-6From" class="form-control" value="{{$arrayLevel[4]["from"]}}">
+                    <input type="text" name="valueMood-6From" class="form-control" value="{{$arrayLevel[4]["from"]}}"  onkeyup="loadValue('valueMood-7To','valueMood-6From')">
                 </td>
                 <td class="tdColorMood">
                     Do
                 </td>
                 <td>
-                    <input type="text" name="valueMood-6To" class="form-control" value="{{$arrayLevel[4]["to"]}}">
+                    <input type="text" name="valueMood-6To" class="form-control" value="{{$arrayLevel[4]["to"]}}" disabled>
                 </td>
 
                         </tr>
@@ -103,13 +103,13 @@
                    Wartośc nastroju od do przy której czujesz myśli rezygnacyjne i umiarkowną depresję
                 </td>
                 <td>
-                    <input type="text" name="valueMood-5From" class="form-control" value="{{$arrayLevel[5]["from"]}}">
+                    <input type="text" name="valueMood-5From" class="form-control" value="{{$arrayLevel[5]["from"]}}"  onkeyup="loadValue('valueMood-6To','valueMood-5From')">
                 </td>
                 <td class="tdColorMood">
                     Do
                 </td>
                 <td>
-                    <input type="text" name="valueMood-5To" class="form-control" value="{{$arrayLevel[5]["to"]}}">
+                    <input type="text" name="valueMood-5To" class="form-control" value="{{$arrayLevel[5]["to"]}}" disabled>
                 </td>
 
             </tr>
@@ -121,13 +121,13 @@
                  Wartośc nastroju od do przy której czujesz myśli lekką depresję
                 </td>
                 <td>
-                    <input type="text" name="valueMood-4From" class="form-control" value="{{$arrayLevel[6]["from"]}}">
+                    <input type="text" name="valueMood-4From" class="form-control" value="{{$arrayLevel[6]["from"]}}"  onkeyup="loadValue('valueMood-5To','valueMood-4From')">
                 </td>
                 <td class="tdColorMood">
                     Do
                 </td>
                 <td>
-                    <input type="text" name="valueMood-4To" class="form-control" value="{{$arrayLevel[6]["to"]}}">
+                    <input type="text" name="valueMood-4To" class="form-control" value="{{$arrayLevel[6]["to"]}}" disabled>
                 </td>
 
             </tr>
@@ -139,13 +139,13 @@
              Wartośc nastroju od do przy której czujesz lekkie obniżenie nastroju
                 </td>
                 <td>
-                    <input type="text" name="valueMood-3From" class="form-control" value="{{$arrayLevel[7]["from"]}}">
+                    <input type="text" name="valueMood-3From" class="form-control" value="{{$arrayLevel[7]["from"]}}"  onkeyup="loadValue('valueMood-4To','valueMood-3From')">
                 </td>
                 <td class="tdColorMood">
                     Do
                 </td>
                 <td>
-                    <input type="text" name="valueMood-3To" class="form-control" value="{{$arrayLevel[7]["to"]}}">
+                    <input type="text" name="valueMood-3To" class="form-control" value="{{$arrayLevel[7]["to"]}}" disabled>
                 </td>
 
             </tr>
@@ -157,13 +157,13 @@
              Wartośc nastroju od do przy której czujesz myśli chandre
                 </td>
                 <td>
-                    <input type="text" name="valueMood-2From" class="form-control" value="{{$arrayLevel[8]["from"]}}">
+                    <input type="text" name="valueMood-2From" class="form-control" value="{{$arrayLevel[8]["from"]}}"  onkeyup="loadValue('valueMood-3To','valueMood-2From')">
                 </td>
                 <td class="tdColorMood">
                     Do
                 </td>
                 <td>
-                    <input type="text" name="valueMood-2To" class="form-control" value="{{$arrayLevel[8]["to"]}}">
+                    <input type="text" name="valueMood-2To" class="form-control" value="{{$arrayLevel[8]["to"]}}" disabled>
                 </td>
 
             </tr>
@@ -175,13 +175,13 @@
   Wartośc nastroju od do przy której czujesz myśli lzejszą handrę
                 </td>
                 <td>
-                    <input type="text" name="valueMood-1From" class="form-control" value="{{$arrayLevel[9]["from"]}}">
+                    <input type="text" name="valueMood-1From" class="form-control" value="{{$arrayLevel[9]["from"]}}"  onkeyup="loadValue('valueMood-2To','valueMood-1From')">
                 </td>
                 <td class="tdColorMood">
                     Do
                 </td>
                 <td>
-                    <input type="text" name="valueMood-1To" class="form-control" value="{{$arrayLevel[9]["to"]}}">
+                    <input type="text" name="valueMood-1To" class="form-control" value="{{$arrayLevel[9]["to"]}}" disabled>
                 </td>
 
             </tr>
@@ -193,13 +193,13 @@
             Wartośc nastroju od do przy której czujesz się normalnie
                 </td>
                 <td>
-                    <input type="text" name="valueMood0From" class="form-control" value="{{$arrayLevel[10]["from"]}}">
+                    <input type="text" name="valueMood0From" class="form-control" value="{{$arrayLevel[10]["from"]}}"  onkeyup="loadValue('valueMood-1To','valueMood0From')">
                 </td>
                 <td class="tdColorMood">
                     Do
                 </td>
                 <td>
-                    <input type="text" name="valueMood0To" class="form-control" value="{{$arrayLevel[10]["to"]}}">
+                    <input type="text" name="valueMood0To" class="form-control" value="{{$arrayLevel[10]["to"]}}" disabled>
                 </td>
 
             </tr>
@@ -211,13 +211,13 @@
               Wartośc nastroju od do przy której czujesz się trochę lepiej
                 </td>
                 <td>
-                    <input type="text" name="valueMood1From" class="form-control" value="{{$arrayLevel[11]["from"]}}">
+                    <input type="text" name="valueMood1From" class="form-control" value="{{$arrayLevel[11]["from"]}}"  onkeyup="loadValue('valueMood0To','valueMood1From')">
                 </td>
                 <td class="tdColorMood">
                     Do
                 </td>
                 <td>
-                    <input type="text" name="valueMood1To" class="form-control" value="{{$arrayLevel[11]["to"]}}">
+                    <input type="text" name="valueMood1To" class="form-control" value="{{$arrayLevel[11]["to"]}}" disabled>
                 </td>
 
             </tr>
@@ -229,13 +229,13 @@
             Wartośc nastroju od do przy której czujesz, że masz nastrój lekko podwyższony
                 </td>
                 <td>
-                    <input type="text" name="valueMood2From" class="form-control" value="{{$arrayLevel[12]["from"]}}">
+                    <input type="text" name="valueMood2From" class="form-control" value="{{$arrayLevel[12]["from"]}}"  onkeyup="loadValue('valueMood1To','valueMood2From')">
                 </td>
                 <td class="tdColorMood">
                     Do
                 </td>
                 <td>
-                    <input type="text" name="valueMood2To" class="form-control" value="{{$arrayLevel[12]["to"]}}">
+                    <input type="text" name="valueMood2To" class="form-control" value="{{$arrayLevel[12]["to"]}}" disabled>
                 </td>
 
             </tr>
@@ -247,13 +247,13 @@
            Wartośc nastroju od do przy której czujesz, że masz nastrój jeszcze bardziej podwyższony
                 </td>
                 <td>
-                    <input type="text" name="valueMood3From" class="form-control" value="{{$arrayLevel[13]["from"]}}">
+                    <input type="text" name="valueMood3From" class="form-control" value="{{$arrayLevel[13]["from"]}}"  onkeyup="loadValue('valueMood2To','valueMood3From')">
                 </td>
                 <td class="tdColorMood">
                     Do
                 </td>
                 <td>
-                    <input type="text" name="valueMood3To" class="form-control" value="{{$arrayLevel[13]["to"]}}">
+                    <input type="text" name="valueMood3To" class="form-control" value="{{$arrayLevel[13]["to"]}}" disabled>
                 </td>
 
             </tr>
@@ -265,13 +265,13 @@
        Wartośc nastroju od do przy której czujesz, że masz lekką hipomanię
                 </td>
                 <td>
-                    <input type="text" name="valueMood4From" class="form-control" value="{{$arrayLevel[14]["from"]}}">
+                    <input type="text" name="valueMood4From" class="form-control" value="{{$arrayLevel[14]["from"]}}"  onkeyup="loadValue('valueMood3To','valueMood4From')">
                 </td>
                 <td class="tdColorMood">
                     Do
                 </td>
                 <td>
-                    <input type="text" name="valueMood4To" class="form-control" value="{{$arrayLevel[14]["to"]}}">
+                    <input type="text" name="valueMood4To" class="form-control" value="{{$arrayLevel[14]["to"]}}" disabled>
                 </td>
 
             </tr>
@@ -283,13 +283,13 @@
            Wartośc nastroju od do przy której czujesz, że masz hipomanię
                 </td>
                 <td>
-                    <input type="text" name="valueMood5From" class="form-control" value="{{$arrayLevel[15]["from"]}}">
+                    <input type="text" name="valueMood5From" class="form-control" value="{{$arrayLevel[15]["from"]}}"  onkeyup="loadValue('valueMood4To','valueMood5From')">
                 </td>
                 <td class="tdColorMood">
                     Do
                 </td>
                 <td>
-                    <input type="text" name="valueMood5To" class="form-control" value="{{$arrayLevel[15]["to"]}}">
+                    <input type="text" name="valueMood5To" class="form-control" value="{{$arrayLevel[15]["to"]}}" disabled>
                 </td>
 
             </tr>
@@ -301,13 +301,13 @@
        Wartośc nastroju od do przy której czujesz, że masz większą hipomanię
                 </td>
                 <td>
-                    <input type="text" name="valueMood6From" class="form-control" value="{{$arrayLevel[16]["from"]}}">
+                    <input type="text" name="valueMood6From" class="form-control" value="{{$arrayLevel[16]["from"]}}"  onkeyup="loadValue('valueMood5To','valueMood6From')">
                 </td>
                 <td class="tdColorMood">
                     Do
                 </td>
                 <td>
-                    <input type="text" name="valueMood6To" class="form-control" value="{{$arrayLevel[16]["to"]}}">
+                    <input type="text" name="valueMood6To" class="form-control" value="{{$arrayLevel[16]["to"]}}" disabled>
                 </td>
 
             </tr>
@@ -319,13 +319,13 @@
     Wartośc nastroju od do przy której czujesz, że masz lekką manię
                 </td>
                 <td>
-                    <input type="text" name="valueMood7From" class="form-control" value="{{$arrayLevel[17]["from"]}}">
+                    <input type="text" name="valueMood7From" class="form-control" value="{{$arrayLevel[17]["from"]}}"  onkeyup="loadValue('valueMood6To','valueMood7From')">
                 </td>
                 <td class="tdColorMood">
                     Do
                 </td>
                 <td>
-                    <input type="text" name="valueMood7To" class="form-control" value="{{$arrayLevel[17]["to"]}}">
+                    <input type="text" name="valueMood7To" class="form-control" value="{{$arrayLevel[17]["to"]}}" disabled>
                 </td>
 
             </tr>
@@ -337,13 +337,13 @@
        Wartośc nastroju od do przy której czujesz, że masz manię
                 </td>
                 <td>
-                    <input type="text" name="valueMood8From" class="form-control" value="{{$arrayLevel[18]["from"]}}">
+                    <input type="text" name="valueMood8From" class="form-control" value="{{$arrayLevel[18]["from"]}}"  onkeyup="loadValue('valueMood7To','valueMood8From')">
                 </td>
                 <td class="tdColorMood">
                     Do
                 </td>
                 <td>
-                    <input type="text" name="valueMood8To" class="form-control" value="{{$arrayLevel[18]["to"]}}">
+                    <input type="text" name="valueMood8To" class="form-control" value="{{$arrayLevel[18]["to"]}}" disabled>
                 </td>
 
             </tr>
@@ -355,13 +355,13 @@
       Wartośc nastroju od do przy której czujesz, że masz silniejszą manię
                 </td>
                 <td>
-                    <input type="text" name="valueMood9From" class="form-control" value="{{$arrayLevel[19]["from"]}}">
+                    <input type="text" name="valueMood9From" class="form-control" value="{{$arrayLevel[19]["from"]}}"  onkeyup="loadValue('valueMood8To','valueMood9From')">
                 </td>
                 <td class="tdColorMood">
                     Do
                 </td>
                 <td>
-                    <input type="text" name="valueMood9To" class="form-control" value="{{$arrayLevel[19]["to"]}}">
+                    <input type="text" name="valueMood9To" class="form-control" value="{{$arrayLevel[19]["to"]}}" disabled>
                 </td>
 
             </tr>
@@ -374,13 +374,13 @@
 
                 </td>
                 <td>
-                    <input type="text" name="valueMood10From" class="form-control" value="{{$arrayLevel[20]["from"]}}">
+                    <input type="text" name="valueMood10From" class="form-control" value="{{$arrayLevel[20]["from"]}}"  onkeyup="loadValue('valueMood9To','valueMood10From')">
                 </td>
                 <td class="tdColorMood">
                     Do
                 </td>
                 <td>
-                    <input type="text" name="valueMood10To" class="form-control" value="{{$arrayLevel[20]["to"]}}">
+                    <input type="text" name="valueMood10To" class="form-control" value="{{$arrayLevel[20]["to"]}}" disabled>
                 </td>
 
             </tr>

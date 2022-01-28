@@ -51,27 +51,7 @@ class CreateUsersTable extends Migration
             $table->float('level_mood8',6,2)->nullable();
             $table->float('level_mood9',6,2)->nullable();
             $table->float('level_mood10',6,2)->nullable();
-            $table->float('level_mood_10_to',6,2)->nullable();
-            $table->float('level_mood_9_to',6,2)->nullable();
-            $table->float('level_mood_8_to',6,2)->nullable();
-            $table->float('level_mood_7_to',6,2)->nullable();
-            $table->float('level_mood_6_to',6,2)->nullable();
-            $table->float('level_mood_5_to',6,2)->nullable();
-            $table->float('level_mood_4_to',6,2)->nullable();
-            $table->float('level_mood_3_to',6,2)->nullable();
-            $table->float('level_mood_2_to',6,2)->nullable();
-            $table->float('level_mood_1_to',6,2)->nullable();
-            $table->float('level_mood0_to',6,2)->nullable();
-            $table->float('level_mood1_to',6,2)->nullable();
-            $table->float('level_mood2_to',6,2)->nullable();
-            $table->float('level_mood3_to',6,2)->nullable();
-            $table->float('level_mood4_to',6,2)->nullable();
-            $table->float('level_mood5_to',6,2)->nullable();
-            $table->float('level_mood6_to',6,2)->nullable();
-            $table->float('level_mood7_to',6,2)->nullable();
-            $table->float('level_mood8_to',6,2)->nullable();
-            $table->float('level_mood9_to',6,2)->nullable();
-            $table->float('level_mood10_to',6,2)->nullable();
+
             $table->rememberToken();
             $table->timestamps();
         });
