@@ -76,7 +76,7 @@ class Mood {
                  * 
                  */
                 if ($request->get("valueMood" . $i . "From") <= $request->get("valueMood" . ($i-1) . "From")) {
-                    array_push($this->errors,"Formularz o numerze "  . ($i + 11) . " 'Od' Jest większy bądź równy od Formularza 'Do' o numerze " .  (($i - 1 ) + 11));
+                    array_push($this->errors,"Formularz o numerze "  . ($i + 11) . " Jest mniejszy bądź równy od Formularza  o numerze " .  (($i - 1 ) + 11));
                 }
                 /*
                 if ($i > -10 and $request->get("valueMood" . ($i -1). "To") != $request->get("valueMood" . ($i) . "From")) {
