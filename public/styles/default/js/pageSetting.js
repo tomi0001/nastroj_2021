@@ -28,8 +28,32 @@ function selectMenu() {
     }
 }
 
-function loadValue(valueInputsave,valueInputread) {
-    //alert('fd');
+function checkError(i) {
+
+    if (i == 10) {
+        if ((parseFloat($("input[name='valueMood" + i + "From']").val()) >= 20 ) || (parseFloat($("input[name='valueMood" + i + "From']").val())  <= parseFloat($("input[name='valueMood" + (i-1) + "From']").val()) )  ) {
+            $("input[name='valueMood" + i + "From']").addClass("errorForm");
+        }
+        else {
+            $("input[name='valueMood" + i + "From']").removeClass("errorForm");
+        }
+        return;
+    }
+    
+        if ((parseFloat($("input[name='valueMood" + i + "From']").val())  > parseFloat($("input[name='valueMood" + (i-1) + "From']").val()) )  && ( parseFloat($("input[name='valueMood" + i + "From']").val()) < parseFloat($("input[name='valueMood" + (i+1) + "From']").val()) )) {
+            $("input[name='valueMood" + i + "From']").removeClass("errorForm");
+        }
+        else {
+            $("input[name='valueMood" + i + "From']").addClass("errorForm");
+        }
+
+    
+}
+
+function loadValue(valueInputsave,valueInputread,i) {
+
+        checkError(i);
+
     $("input[name='" +valueInputsave +  "']").val($("input[name='" +valueInputread +  "']").val());
     
 }
