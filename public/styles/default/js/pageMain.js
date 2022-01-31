@@ -40,6 +40,7 @@ function translateFunction(string,url) {
 }
 
 var arrayAction = [];
+var arrayActionAction = [];
 
 function selectedActionMain(id,index) {
 
@@ -58,6 +59,28 @@ function selectedActionMain(id,index) {
         //$("#idAction").eq(index).val('NULL');
         $("#divActionPercent_" + id).addClass("hiddenPercentExecuting").removeClass('active');
         $("#divAction_" + id).removeClass("actionMainselected").addClass("actionMainAll");
+
+    }
+    
+}
+
+function selectedActionAction(id,index) {
+
+    if ($("#divActionAction_" + id + ":first").hasClass("actionMainAllAction")) {
+        $("#divActionAction_" + id).removeClass("actionMainAllAction").addClass("actionMainselected");
+        //$("#divActionPercent_" + id).removeClass("hiddenPercentExecuting").addClass('active');
+        //$("#idAction").eq(index).val(id);
+        arrayActionAction.push(id);
+        //$("#idActio" + id).val(id);
+        //alert(index);
+    }
+    else {
+        var i = arrayActionAction.indexOf(id);
+        arrayActionAction.splice(i,1);
+        //$("#idActio" + id).val('');
+        //$("#idAction").eq(index).val('NULL');
+        //$("#divActionPercent_" + id).addClass("hiddenPercentExecuting").removeClass('active');
+        $("#divActionAction_" + id).removeClass("actionMainselected").addClass("actionMainAllAction");
 
     }
     
@@ -252,6 +275,26 @@ $(document).ready(function(){
     $( ".message" ).prop( "disabled", true );
 });
 
+
+$(document).ready(function(){
+
+     jQuery.expr[':'].contains = function(a, i, m) {
+  return jQuery(a).text().toUpperCase()
+      .indexOf(m[3].toUpperCase()) >= 0;
+};
+    $("#hideActionsAction").keyup( function(e) {
+      if ($("#hideActionsAction").val() == "") {
+          $('.actionMainAllAction').show();
+          return;
+      }
+        $('.actionMainAllAction').hide();
+        var val = $.trim($("#hideActionsAction").val());
+        val = ".actionMainAllAction:contains("+val+")";
+        $( val ).show();
+      
+    });
+    $( ".message" ).prop( "disabled", true );
+});
 
 function ifExistArrayIdMood(id) {
     return id == 1;
@@ -501,26 +544,32 @@ function SwitchMenuMoodAdd(type) {
         case 'mood': 
             $("#mood").css("display","block");
             $("#moodSelected").addClass("moodSelected");
-            schitchMenuMoodDezactived(['drugs',"action","sleep"]);
+            schitchMenuMoodDezactived(['drugs',"action","sleep","actionPlaned"]);
             sessionSet("mood");
             break;
         case 'drugs':
             $("#drugs").css("display","block");
             $("#drugsSelected").addClass("moodSelected");
-            schitchMenuMoodDezactived(['mood',"action","sleep"]);
+            schitchMenuMoodDezactived(['mood',"action","sleep","actionPlaned"]);
             sessionSet("drugs");
             break;
         case 'sleep':
             $("#sleep").css("display","block");
             $("#sleepSelected").addClass("moodSelected");
-            schitchMenuMoodDezactived(['mood',"action","drugs"]);
+            schitchMenuMoodDezactived(['mood',"action","drugs","actionPlaned"]);
             sessionSet("sleep");
             break;
         case 'action':
             $("#action").css("display","block");
             $("#actionSelected").addClass("moodSelected");
-            schitchMenuMoodDezactived(['mood',"drugs","sleep"]);
+            schitchMenuMoodDezactived(['mood',"drugs","sleep","actionPlaned"]);
             sessionSet("action");
+            break;
+        case 'actionPlaned':
+            $("#actionPlaned").css("display","block");
+            $("#actionPlanedSelected").addClass("moodSelected");
+            schitchMenuMoodDezactived(['mood',"drugs","sleep","action"]);
+            sessionSet("actionPlaned");
             break;
     }
 }

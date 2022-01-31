@@ -61,6 +61,9 @@
        <div class="menuMood action" id='actionSelected' onclick="SwitchMenuMoodAdd('action')">
             DODAJ AKCJE CAŁODNIOWĄ
         </div>
+        <div class="menuMood action" id='actionPlanedSelected' onclick="SwitchMenuMoodAdd('actionPlaned')" style="padding-top: 16px;">
+          ZAPLANUJ AKCJĘ
+        </div>
 
     </div>
            
@@ -69,6 +72,7 @@
           @include('Users.Main.addSleep')
           @include('Users.Main.addDrugs')
           @include('Users.Main.addAction')
+          @include('Users.Main.addActionPlaned')
           <br><br><br><br>
       
           <script>

@@ -22,6 +22,7 @@ class CreateActionsPlansTable extends Migration
             $table->foreign("id_actions")->references("id")->on("actions");
             $table->dateTime('date')->nullable();
             $table->integer('long')->nullable();
+            $table->text('what_work')->nullable();
             $table->timestamps();
         });
     }
