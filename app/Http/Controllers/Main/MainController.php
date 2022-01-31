@@ -164,7 +164,7 @@ class MainController {
             $Mood->checkError($timeStart,$timeEnd);
             $Mood->checkAddMood($Mood->moodsVariable);
             if (!empty($request->get("idActions")) ) {
-                $Mood->checkErrorAction($request);
+                $Mood->checkErrorAction($request,round(((StrToTime($timeEnd) - StrToTime($timeStart)) /60 ),2) );
             }
             if (count($Mood->errors) != 0) {
                 return View("ajax.error")->with("error",$Mood->errors);
@@ -271,11 +271,18 @@ class MainController {
         
     }
     public function updateAction(Request $request) {
-        
+        $Mood =  new MoodServices;
         if (Mood::ifIdUsersExist($request->get("idMood"),Auth::User()->id) != NULL ) {
-            $MoodServices = new MoodServices;
-            $MoodServices->deleteMoodAction($request->get("idMood"));
-            $MoodServices->saveActionUpdate($request,$request->get("idMood"));
+            $datemood = Mood::selectDateMood($request->get("idMood"));
+            $Mood->checkErrorAction($request,round(((StrToTime($datemood->dateEnd) - StrToTime($datemood->dateStart)) /60 ),2) );
+            if (count($Mood->errors) == 0) {
+                $MoodServices = new MoodServices;
+                $MoodServices->deleteMoodAction($request->get("idMood"));
+                $MoodServices->saveActionUpdate($request,$request->get("idMood"));
+            }
+            else {
+                return View("ajax.error")->with("error",$Mood->errors);
+            }
         }
     }
     public function updateSleep(Request $request) {

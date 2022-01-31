@@ -21,6 +21,7 @@
                                                             $arrayJson["idList"][$i] = $list->id;
                                                             $arrayJson["index"][$i] = $loop->index;
                                                             $arrayJson["percent"][$i] = $val->percent_executing;
+                                                            $arrayJson["minute"][$i] = $val->minute_exe;
                                                             $i++;
                                                           @endphp
                                                                 
@@ -35,7 +36,10 @@
                                                      @endif
                                                     <div class='actionMain actionMain{{$idMood}}'  id='divAction_{{$list->id}}_{{$idMood}}' onclick='selectedActionMainValue({{$list->id}},{{$loop->index}},{{$idMood}})'>{{$list->name}}</div>
                                                     <div class="hiddenPercentExecuting centerPercent" id='divActionPercent_{{$list->id}}_{{$idMood}}'>
-                                                        <div style="display: inline-block; width: 40%;"><input type="number" class="percentExecuting form-control form-control-lg " title="procent wykonania" placeholder="procent wyk" id="percentExe_{{$loop->index}}" name="percentExe{{$idMood}}[]" min="1" max="100"></div>
+                                                        <div style="display: inline-block; width: 40%;">
+                                                            <input type="number" class="percentExecuting form-control form-control-lg " title="procent wykonania" placeholder="procent wyk" id="percentExe_{{$loop->index}}" name="percentExe{{$idMood}}[]" min="1" max="100">
+                                                            <input type="number" class="percentExecuting form-control form-control-lg " title="minut wykonania" placeholder="minut wyk" id="minute_exe_{{$loop->index}}" name="minute_exe{{$idMood}}[]" min="1">
+                                                        </div>
                                                         <input type="hidden"  id='idAction' name="idActionss{{$idMood}}[]" value='{{$list->id}},{{$idMood}}'>
                                                     </div>
                                                  </div>

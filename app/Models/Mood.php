@@ -23,6 +23,11 @@ class Mood extends Model
                 ->groupBy("dat2")
                 ->first();
     }
+    public static function selectDateMood(int $idMood) {
+        return self::selectRaw("date_start as dateStart")
+                ->selectRaw("date_end as dateEnd")
+                ->where("id",$idMood)->first();
+    }
     public static function sumAll(string $date,  $startDay,int $idUsers) {
         //print $date;
         return self::selectRaw(DB::Raw("(DATE(IF(HOUR(moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) as dat"))
@@ -90,7 +95,14 @@ class Mood extends Model
                 ->join("actions","actions.id","moods_actions.id_actions")
                 ->selectRaw("actions.name as name")
                 ->selectRaw("actions.level_pleasure as level_pleasure")
-                ->selectRaw("(round(( sum((   if (moods_actions.percent_executing is NULL, (     (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end))  ), (   (moods_actions.percent_executing / 100) * (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end)) ))     ) ) ))   ) as sum  ")
+                                ->selectRaw(" round("
+                        . " CASE "
+                        . " WHEN moods_actions.percent_executing is NULL && moods_actions.minute_exe is  NULL THEN (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) ) "
+                        . " WHEN moods_actions.minute_exe is NOT NULL  THEN (moods_actions.minute_exe)    "
+                        . " WHEN moods_actions.percent_executing is NOT NULL THEN     (  moods_actions.percent_executing / 100) * (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) )  "
+                        . "ELSE 1 "
+                        . " END)"
+                        . "  as sum ")
                 ->whereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) = '" . $date . "'" ))
                 ->orWhereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) = '" . $date . "'" ))
                 ->where("moods.id_users",$idUsers)

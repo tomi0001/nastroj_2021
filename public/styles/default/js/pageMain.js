@@ -138,6 +138,7 @@ function selectedActionMainSetValue(data,lenght) {
             //arrayActionMulti["idMood"].push(idMood);
             arrayActionMulti.push(data.idList[i] + ',' + data.idMood[i]);
             $("#percentExe_" + data.index[i]).val(data.percent[i]);
+            $("#minute_exe_" + data.index[i]).val(data.minute[i]);
         }
     }
  
@@ -270,6 +271,7 @@ function changeArrayAtHiddenAddMood() {
 
           $("#formAddMood").append("<input type=\'hidden\' name=\'idAction[]\' value='" +  $('input[name^="idActionss"]').eq(i).val()  + "' class=\'form-control typeMood\'>");
           $("#formAddMood").append("<input type=\'hidden\' name=\'idActions[]\' value='" + $('input[name^="percentExe"]').eq(i).val() + "' class=\'form-control typeMood\'>");
+          $("#formAddMood").append("<input type=\'hidden\' name=\'idActionMinute[]\' value='" + $('input[name^="minuteExe"]').eq(i).val() + "' class=\'form-control typeMood\'>");
         }
         //alert($('input[name^="percentExe"]').eq(i).val());
         //alert($('input[name^="idActionss"]').eq(i).val());
@@ -324,6 +326,7 @@ function changeArrayAtHiddenAddMoodId(id) {
 
           $("#formUpdateAction" + id).append("<input type=\'hidden\' name=\'idAction[]\' value='" +  $("input[name^='idActionss" + id + "']").eq(i).val()  + "' class=\'form-control typeMood\'>");
           $("#formUpdateAction" + id).append("<input type=\'hidden\' name=\'idActions[]\' value='" + $("input[name^='percentExe" + id + "']").eq(i).val() + "' class=\'form-control typeMood\'>");
+          $("#formUpdateAction" + id).append("<input type=\'hidden\' name=\'idActionMinute[]\' value='" + $("input[name^='minute_exe" + id + "']").eq(i).val() + "' class=\'form-control typeMood\'>");
         }
     //alert(id);
      //alert(arrayActionMulti[id][i]);

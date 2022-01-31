@@ -51,8 +51,10 @@ class Mood {
         
         for ($i = -10;$i <= 10;$i++) {
             if ($i == -10 ) {
-                //$i++;
-                continue;
+
+                if ($request->get("valueMood-9From") <= -20) {
+                    array_push($this->errors,"Formularz o numerze "  . ($i + 11) . " Jest mniejszy bądź równy od -20" );
+                }
             }
             else {
                 if ($request->get("valueMood" . $i . "From") == "") {
@@ -269,8 +271,11 @@ class Mood {
                 $Moods_action->id_moods = $idMood;
                 $Moods_action->id_actions = $request->get("idAction")[$i];
 
-                if ($request->get("idActions")[$i] != "NULL" ) {
+                if ($request->get("idActions")[$i] != NULL ) {
                     $Moods_action->percent_executing = $request->get("idActions")[$i];
+                }
+                if ($request->get("idActionMinute")[$i] != NULL ) {
+                    $Moods_action->minute_exe = $request->get("idActionMinute")[$i];
                 }
                 $Moods_action->save();
             }
@@ -290,15 +295,23 @@ class Mood {
                 if ($request->get("idActions")[$i] != "" ) {
                     $Moods_action->percent_executing = (int) $request->get("idActions")[$i];
                 }
-                
+                if ($request->get("idActionMinute")[$i] != NULL ) {
+                    $Moods_action->minute_exe = $request->get("idActionMinute")[$i];
+                }   
                 $Moods_action->save();
             }
         }
     }
-    public function checkErrorAction(Request $request) {
+    public function checkErrorAction(Request $request,int $minute) {
         for ($i = 0;$i < count($request->get("idActions"));$i++) {
-            if ($request->get("idActions")[$i] != "" and $request->get("idActions")[$i] != "NULL" and ($request->get("idActions")[$i] < 1 or $request->get("idActions")[$i] > 100)) {
+            if ($request->get("idActions")[$i] != "" and $request->get("idActions")[$i] != NULL and ($request->get("idActions")[$i] < 1 or $request->get("idActions")[$i] > 100)) {
                 array_push($this->errors,"Procent musi być w zakresie od 1 do 100 lub pole ma być puste");
+            }
+            if ($request->get("idActionMinute")[$i] != NULL and $request->get("idActions")[$i] != NULL) {
+                array_push($this->errors,"Nie może być dla jednej akcji obie wartości procesntu i minut wykonania różne od NULL");
+            }
+            if ($request->get("idActionMinute")[$i] != NULL and $request->get("idActionMinute")[$i] > $minute) {
+                array_push($this->errors,"Wartośc minut wykracza za wartośc czasowa nastroju");
             }
             
         }
