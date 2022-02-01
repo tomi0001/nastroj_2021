@@ -178,7 +178,16 @@ class MainController {
                     $Mood->saveAction($request,$id);
             }
     }
-
+    public function actionPlanedpAdd(Request $request) {
+        $Action = new ActionServices;
+        $Action->checkErrorPlaned($request);
+        if ( count($Action->error) > 0  ) {
+            return View("ajax.error")->with("error",$Action->error);
+        }
+        else {
+            $Action->saveActionPlaned($request);
+        }
+    }
     public function atHourActonPlan(Request $request) {
         $hour = Action_plan::selectHourId($request->get("id"),Auth::User()->id);
         if (strtotime(date("Y-m-d H:i:s")) > strtotime($hour->date)) {

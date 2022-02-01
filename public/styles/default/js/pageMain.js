@@ -301,6 +301,41 @@ function ifExistArrayIdMood(id) {
 }
 
 
+function changeArrayAtHiddenAddActionPlaned() {
+        for (var i=0;i < arrayActionAction.length;i++) {
+        //alert($('input[name^="idActionss"]').eq(i).val());
+        //var id = $('input[name^="idActionss"]').eq(i).val();
+        //if (arrayAction.find(element => element == id )) {
+
+          $("#formAddActionPlaned").append("<input type=\'hidden\' name=\'idAction[]\' value='" +  arrayActionAction[i]  + "' class=\'form-control typeMood\'>");
+          //$("#formAddMood").append("<input type=\'hidden\' name=\'idActions[]\' value='" + $('input[name^="percentExe"]').eq(i).val() + "' class=\'form-control typeMood\'>");
+          //$("#formAddMood").append("<input type=\'hidden\' name=\'idActionMinute[]\' value='" + $('input[name^="minuteExe"]').eq(i).val() + "' class=\'form-control typeMood\'>");
+        //}
+        //alert($('input[name^="percentExe"]').eq(i).val());
+        //alert($('input[name^="idActionss"]').eq(i).val());
+        //alert($(this).val() );
+        //$('input[name^="percentExe"]').each(function() {
+                    //alert($("input[name='percentExe[" + i + "]']").val());
+                //if ((arrayAction[i]) != "") {
+                    //alert('f');
+                    //alert($(this).parents().parents().attr('class') );
+                    /*
+                    if ($(this).parents().parents().hasClass("active")) {
+                        //JSON["idAction"][i]  = arrayAction[i];
+                        //JSON["percent"][i]  = $(this).val();
+                        
+                        //$("#formAddMood").append("<input type=\'hidden\' name=\'idAction[]\' value='" + arrayAction[i] + "' class=\'form-control typeMood\'>");
+                      
+                    //    alert('dd');
+                    i++;
+                    }
+                //}
+            //alert($(this).val());
+            
+            */
+            }
+}
+
 function changeArrayAtHiddenAddMood() {
     //var i = 0;
 
@@ -471,6 +506,38 @@ function addMood(url) {
      $("#formAddMood").find(":hidden").filter(".typeMood").remove();
     //$("#formAddMood").find(":disabled").remove();
 }
+
+function addActionPlaned(url) {
+        changeArrayAtHiddenAddActionPlaned();
+    //$("#formAddMood").find(":disabled").remove();
+    $.ajax({
+        url : url,
+            method : "get",
+            data : 
+              $("#formAddActionPlaned").serialize()
+            ,
+            dataType : "html",
+            beforeSend: function() { $('#buttonActionAddPlaned').addClass("spinner-border"); },
+
+        complete: function() { $('#buttonActionAddPlaned').removeClass("spinner-border"); }
+    })
+    .done(function(response) {
+        $("#formResultActionPlaned").html(response);
+        if (response == "") {
+            setInterval("reload();",20000);
+            $("#formResultActionPlaned").html("<div class='ajaxSucces'>Pomyślnie dodano</div>");
+        }
+    
+
+    })
+
+    .fail(function() {
+        $("#formResultActionPlaned").html( "<div class='ajaxError'>Wystąpił błąd</div>" );
+    })
+    
+     $("#formAddActionPlaned").find(":hidden").filter(".typeMood").remove();
+     $("#formAddActionPlaned").find(":hidden").filter(".typeMood").remove();
+}
 function loadSesson() {
     loadMenuSession();
     loadMenuSessionShow();
@@ -514,25 +581,31 @@ function loadMenuSession() {
             
             $("#mood").css("display","block");
             $("#moodSelected").addClass("moodSelected");
-            schitchMenuMoodDezactived(['drugs',"action","sleep"]);
+            schitchMenuMoodDezactived(['drugs',"action","sleep","actionPlaned"]);
             //sessionSet("mood");
             break;
         case 'drugs':
             $("#drugs").css("display","block");
             $("#drugsSelected").addClass("moodSelected");
-            schitchMenuMoodDezactived(['mood',"action","sleep"]);
+            schitchMenuMoodDezactived(['mood',"action","sleep","actionPlaned"]);
             //sessionSet("drugs");
             break;
         case 'sleep':
             $("#sleep").css("display","block");
             $("#sleepSelected").addClass("moodSelected");
-            schitchMenuMoodDezactived(['mood',"action","drugs"]);
+            schitchMenuMoodDezactived(['mood',"action","drugs","actionPlaned"]);
             //sessionSet("sleep");
             break;
         case 'action':
             $("#action").css("display","block");
             $("#actionSelected").addClass("moodSelected");
-            schitchMenuMoodDezactived(['mood',"drugs","sleep"]);
+            schitchMenuMoodDezactived(['mood',"drugs","sleep","actionPlaned"]);
+            //sessionSet("action");
+            break;
+        case 'actionPlaned':
+            $("#actionPlaned").css("display","block");
+            $("#actionPlanedSelected").addClass("moodSelected");
+            schitchMenuMoodDezactived(['mood',"drugs","sleep","action"]);
             //sessionSet("action");
             break;
         

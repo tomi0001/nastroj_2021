@@ -40,6 +40,7 @@
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Mood/addNewAction.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/Common700.css</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/User.php</file>
+            <file>file:/var/www/html/nastroj_2021/database/migrations/2016_12_13_000000_create_actions_plans_table.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Action.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/tlo.png</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Calendar.php</file>
@@ -76,6 +77,7 @@
             <file>file:/var/www/html/nastroj_2021/app/Models/Description.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Mood.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/Common1410.css</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/addActionPlaned.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/addDrugs.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Layout/Settings.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainAll.css</file>

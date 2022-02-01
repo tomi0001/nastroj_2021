@@ -35,4 +35,12 @@ class Action_plan extends Model
                 ->groupBy("dat")
                 ->first();         
     }
+    public static function selectLastAction(string $date, $minute,int $idUsers, $whatWork,int $idAction) {
+        return self::where("id_users",$idUsers)
+                    ->where("id_actions",$idAction)
+                    ->where("date",$date)
+                    ->where("long",$minute)
+                    ->where("what_work",$whatWork)
+                    ->first();     
+    }
 }

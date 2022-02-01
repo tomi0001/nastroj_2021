@@ -13,14 +13,14 @@
                     <div class='col-lg-1 col-md-1 col-xs-0 col-sm-0'>
                     </div>    
                     <div class='col-lg-10 col-md-10 col-xs-10 col-sm-10'>
-                        <form method='get' id="formAddAction">
+                        <form method='get' id="formAddActionPlaned">
                             <table class='table '>
                                 <tr>
                                     <td rowspan='2' style='padding-top: 35px; ' class='moodadd  widthMoodAdd'>
                                         Dzień i godzina
                                     </td>
                                     <td class='borderless'>
-                                        <input type='date' name='dateStart' class='form-control' value='{{ date("Y-m-d")}}'>
+                                        <input type='date' name='dateStart' class='form-control' value='{{ date("Y-m-d",StrToTime(date("Y-m-d")) + 3600 * 24)}}'>
                                     </td>
                                 </tr>
                                 <tr>
@@ -60,7 +60,7 @@
                                                     <div class='actionMain actionMainAllAction'  id='divActionAction_{{$list->id}}' onclick='selectedActionAction({{$list->id}},{{$loop->index}})'>{{$list->name}}</div>
                                                     <div class="hiddenPercentExecuting centerPercent" id='divActionPercent_{{$list->id}}'>
                                                         
-                                                        <input type="hidden"  id='idActionAction[]' name="idActionss[]" value='{{$list->id}}'>
+                                                        <input type="hidden"  id='idActionAction[]' name="idActionssAction[]" value='{{$list->id}}'>
                                                         
                                                     </div>
                                                  </div>
@@ -73,12 +73,12 @@
 
                                 <tr>
                                     <td colspan="2" class="center">
-                                        <input type="button" id="buttonActionAdd" onclick="addActionDay('{{ route('users.actionDaypAdd')}}')" class=" btn-action" value="Dodaj akcje" >
+                                        <input type="button" id="buttonActionAddPlaned" onclick="addActionPlaned('{{ route('users.actionPlanedpAdd')}}')" class=" btn-action" value="Zaplanuj akcje" >
                                     </td>
                                 </tr>    
                                 <tr>
                                     <td colspan="2" class="center">
-                                        <div  id="formResultAction"></div>
+                                        <div  id="formResultActionPlaned"></div>
                                     </td>
                                 </tr>
                             </table>
