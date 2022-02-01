@@ -50,6 +50,11 @@ class Mood {
     public function checkErrorLevelMood(Request $request) {
         
         for ($i = -10;$i <= 10;$i++) {
+            if ($i == 10) {
+                if ($request->get("valueMood10From") >=  20) {
+                    array_push($this->errors,"Formularz o numerze "  . ($i + 11) . " Jest mniejszy bądź równy od -20" );
+                }
+            }
             if ($i == -10 ) {
 
                 if ($request->get("valueMood-9From") <= -20) {
