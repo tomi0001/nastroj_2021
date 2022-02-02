@@ -38,6 +38,20 @@ class Action {
             array_push($this->error,"Już wpisałeś tą akcję");
         }
     }
+    public function checkErrorChangeName(Request $request) {
+        if (($request->get("nameAction") == "") ){
+            array_push($this->error,"Wybierz akcję");
+        }  
+        if (($request->get("newName") == "") ){
+            array_push($this->error,"Musisz wpisać nazwę");
+        } 
+        if (( $request->get("pleasure") < -20 or $request->get("pleasure") > 20) or ( (string)(float) $request->get("pleasure") !== $request->get("pleasure")  and ($request->get("pleasure") != "") ) ) {
+            array_push($this->error,"Poziom przyjemności musi mieścić się w zakresie od -20 do +20");
+        }
+        if (actionModels::checkIfNameAction($request->get("newName"),Auth::User()->id,$request->get("nameAction")) > 0) {
+            array_push($this->error,"Jest już akcja o takiej nazwie");
+        }
+    }
     private function checkLastAction(Request $request) {
         $bool = true;
         for ($i=0;$i < count($request->get("idAction"));$i++) {
@@ -99,5 +113,9 @@ class Action {
             $Action->what_work  = str_replace("\n", "<br>", $request->get("description"));
             $Action->save();
         }
+    }
+    public function updateActionName(Request $request) {
+        $Action = new actionModels;
+        $Action->where("id",$request->get("nameAction"))->where("id_users",Auth::User()->id)->update(["name"=>$request->get("newName"),"level_pleasure"=>$request->get("pleasure")]);
     }
 }

@@ -1,3 +1,6 @@
+/*
+ * copyright 2022 Tomasz Leszczyński tomi0001@gmail.com
+ */
 function setFunction() {
     //alert('zfdsf');
     selectMenu();
@@ -120,6 +123,7 @@ function addActionNew() {
                 alert("Wystąpił błąd");
             })    
             $("#levelMoodAdd").css("display","none");
+            $("#changeNameActionChange").css("display","none");
     }
     else {
         
@@ -191,13 +195,45 @@ function levelMood() {
                 alert("Wystąpił błąd");
             })    
             $("#addNewAction").css("display","none");
+            $("#changeNameActionChange").css("display","none");
     }
     else {
         
         $("#levelMoodAdd").css("display","none");
     }    
 }
+function changeNameAction() {
+    
+    sessionStorage.setItem('settingType', "changeNameAction");
+    if ($("#changeNameActionChange").css("display") == "none" ) {
+        
+        $.ajax({
+                url : urlArray[2],
+                    method : "get",
 
+                    dataType : "html",
+            })
+            .done(function(response) {
+
+
+
+
+                  $("#changeNameActionChange").css("display","block");
+                  $("#changeNameActionChange").html(response);
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })    
+            $("#addNewAction").css("display","none");
+            $("#levelMoodAdd").css("display","none");
+    }
+    else {
+        
+        $("#changeNameActionChange").css("display","none");
+    }        
+}
 function addActionNewSubmit() {
     var arrayError = "";
     if ($("input[name='nameAction']").val() == "") {
@@ -245,4 +281,62 @@ function addActionNewSubmit() {
                 alert("Wystąpił błąd");
             })    
     }
+}
+
+function changeNameActionSubmit() {
+             $.ajax({
+                url : urlArraySubmit[2],
+                    method : "get",
+                    data : 
+              $("#formchangeNameAction").serialize(),
+                    dataType : "html",
+            })
+            .done(function(response) {
+
+
+          
+                $("#changeNameActionSubmit").html(response);
+            
+
+
+                  
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })    
+}
+
+function loadPleasure(url) {
+    if ($("select[name='nameAction']").val() != "") { 
+        $("input[name='pleasure']").prop("disabled",false);
+            $.ajax({
+                url : url,
+                    method : "get",
+                    data : 
+                        "id=" + $("select[name='nameAction']").val(),
+                    dataType : "json",
+            })
+            .done(function(response) {
+
+                
+            
+
+                  $("input[name='pleasure']").val(response["level_pleasure"]);
+                  
+                  $("#newName").css("visibility","visible");
+                  $("textarea[name='newName']").val(response["name"])
+//                  $("#changeNameActionChange").html(response);
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })    
+        }
+        else {
+            $("input[name='pleasure']").prop("disabled",true);
+            $("#newName").css("visibility","hidden");
+        }
 }

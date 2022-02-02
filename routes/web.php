@@ -106,6 +106,12 @@ Route::get("/settings/levelMood",[App\Http\Controllers\Settings\SettingsMoodCont
         ->name("settings.levelMood")->middleware('auth')->middleware('can:users');
 Route::get("/settings/levelMoodSubmit",[App\Http\Controllers\Settings\SettingsMoodController::class, 'levelMoodSubmit'])
         ->name("settings.levelMoodSubmit")->middleware('auth')->middleware('can:users');
+Route::get("/settings/changeNameAction",[App\Http\Controllers\Settings\SettingsMoodController::class, 'changeNameAction'])
+        ->name("settings.changeNameAction")->middleware('auth')->middleware('can:users');
+Route::get("/settings/changeNameActionSubmit",[App\Http\Controllers\Settings\SettingsMoodController::class, 'changeNameActionSubmit'])
+        ->name("settings.changeNameActionSubmit")->middleware('auth')->middleware('can:users');
+Route::get("/settings/loadValuePlasure",[App\Http\Controllers\Settings\SettingsMoodController::class, 'loadValuePlasure'])
+        ->name("settings.loadValuePlasure")->middleware('auth')->middleware('can:users');
 
 
             Route::get('/users4/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\Search\SearchController::class, 'index2'])->name('users.search')

@@ -60,4 +60,25 @@ class SettingsMoodController {
             return View("ajax.succes")->with("succes","Pomyslnie zmodyfikowano dane");
         }
     }
+    public function changeNameAction() {
+        $listAction = Action::downloadListAction(Auth::User()->id);
+        return view("Users.Settings.Mood.changeNameAction")->with("listAction",$listAction);
+    }
+    public function loadValuePlasure(Request $request) {
+        $pleasure = Action::showPleasure(Auth::User()->id,$request->get("id"));
+        //print ["pleasure"=> $pleasure->level_pleasure,"name"=>$pleasure->name];
+        print json_encode($pleasure);
+    }
+    public function changeNameActionSubmit(Request $request) {
+        $Action = new ActionServices;
+        $Action->checkErrorChangeName($request);
+        if (count($Action->error) > 0 ) {
+            return View("ajax.error")->with("error",$Action->error);
+        }
+        else {
+            $Action->updateActionName($request);
+            return View("ajax.succes")->with("succes","Pomyslnie zmodyfikowano");
+        }
+        
+    }
 }
