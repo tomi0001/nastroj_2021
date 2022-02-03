@@ -1,4 +1,30 @@
-    div.titleSettings {
+        button.danger:hover {
+                background-color: #F92900;
+                color: white;
+                border-color: #C29713;
+          
+             
+        }  
+                button.danger {
+            box-shadow: 6px 6px 6px #F4E375;
+            background-color: red;
+            color: white;
+        }
+                button.main {
+                
+          
+                color: white;
+           
+                box-shadow: 6px 6px 6px #F4E375;
+        }
+
+        button.main:hover {
+                
+                color: white;
+                border-color: #C29713;
+        
+        }
+div.titleSettings {
 
 
         color: #50E6F0;

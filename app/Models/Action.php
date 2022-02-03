@@ -17,6 +17,7 @@ class Action extends Model
     public static function downloadListAction(int $idUsers) {
         return self::selectRaw("name as name")->selectRaw("id as id")->where("id_users",$idUsers)->get();
     }
+   
     public static function showPleasure(int $idUsers,int $id) {
         return self::selectRaw("name as name")->selectRaw("level_pleasure as level_pleasure ")
                 ->where("id_users",$idUsers)->where("id",$id)->first();

@@ -81,4 +81,28 @@ class SettingsMoodController {
         }
         
     }
+    
+    public function changeDateAction() {
+        $listAction = Action_plan::downloadListAction(Auth::User()->id);
+        return view("Users.Settings.Mood.changeDateAction")->with("listAction",$listAction);
+    }
+    
+    
+    public function loadActionChange(Request $request) {
+        $actionId = Action_plan::selectActionPlan($request->get('id'),Auth::User()->id);
+        $listAction = Action::downloadListAction(Auth::User()->id);
+        
+        if (StrTotime($actionId->date) < time()) {
+            $bool = true;
+        }
+        else {
+            $bool = false;
+        }
+        $json["actionPlan"] = $actionId;
+        $json["actionList"] = $listAction;
+        $json["bool"] = $bool;
+        print json_encode($json);
+         
+    }
+    
 }

@@ -43,4 +43,26 @@ class Action_plan extends Model
                     ->where("what_work",$whatWork)
                     ->first();     
     }
+    public static function downloadListAction(int $idUsers) {
+        return self::join("actions","actions.id","actions_plans.id_actions")
+                    ->selectRaw("actions_plans.id as id")
+                    ->selectRaw("actions.name as name")
+                    ->selectRaw("actions_plans.date as date")
+                    ->where("actions_plans.id_users",$idUsers)
+                    ->orderBy("actions_plans.id","DESC")
+                    ->get();           
+    }
+    public static function selectActionPlan(int $id,int $idUsers) {
+        return self::join("actions","actions.id","actions_plans.id_actions")
+                    ->selectRaw("actions_plans.id as id")
+                    ->selectRaw("actions_plans.id_actions as id_actions")
+                    ->selectRaw("actions_plans.what_work as what_work")
+                    ->selectRaw("actions_plans.long as longer")
+                    ->selectRaw("actions.name as name")
+                    ->selectRaw("SUBSTRING_INDEX(actions_plans.date,' ',1) as date")
+                    ->selectRaw("left(SUBSTRING_INDEX(actions_plans.date,' ',-1),5 )as time")
+                    ->where("actions_plans.id",$id)
+                    ->where("actions_plans.id_users",$idUsers)
+                    ->first();
+    }
 }

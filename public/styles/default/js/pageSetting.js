@@ -124,6 +124,7 @@ function addActionNew() {
             })    
             $("#levelMoodAdd").css("display","none");
             $("#changeNameActionChange").css("display","none");
+            $("#changeDateActionChange").css("display","none");
     }
     else {
         
@@ -196,12 +197,48 @@ function levelMood() {
             })    
             $("#addNewAction").css("display","none");
             $("#changeNameActionChange").css("display","none");
+            $("#changeDateActionChange").css("display","none");
     }
     else {
         
         $("#levelMoodAdd").css("display","none");
     }    
 }
+
+function changeDateAction() {
+    sessionStorage.setItem('settingType', "changeDateAction");
+    if ($("#changeDateActionChange").css("display") == "none" ) {
+        
+        $.ajax({
+                url : urlArray[3],
+                    method : "get",
+
+                    dataType : "html",
+            })
+            .done(function(response) {
+
+
+
+
+                  $("#changeDateActionChange").css("display","block");
+                  $("#changeDateActionChange").html(response);
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })    
+            $("#addNewAction").css("display","none");
+            $("#changeNameActionChange").css("display","none");
+            $("#levelMoodAdd").css("display","none");
+    }
+    else {
+        
+        $("#changeDateActionChange").css("display","none");
+    }   
+}
+
+
 function changeNameAction() {
     
     sessionStorage.setItem('settingType', "changeNameAction");
@@ -228,6 +265,7 @@ function changeNameAction() {
             })    
             $("#addNewAction").css("display","none");
             $("#levelMoodAdd").css("display","none");
+            $("#changeDateActionChange").css("display","none");
     }
     else {
         
@@ -308,6 +346,11 @@ function changeNameActionSubmit() {
             })    
 }
 
+
+
+
+
+
 function loadPleasure(url) {
     if ($("select[name='nameAction']").val() != "") { 
         $("input[name='pleasure']").prop("disabled",false);
@@ -339,4 +382,72 @@ function loadPleasure(url) {
             $("input[name='pleasure']").prop("disabled",true);
             $("#newName").css("visibility","hidden");
         }
+}
+
+function createListAction(id,list) {
+    var string = "";
+    for (var i = 0; i < list.actionList.length; i++) {
+        if (list.actionList[i].id == id) {
+            string += "<option value='" + list.actionList[i].id + "' selected>"  + list.actionList[i].name + "</option>";
+        }
+        else {
+            string += "<option value='" + list.actionList[i].id + "'>"  + list.actionList[i].name + "</option>";
+        }
+    }
+    return string;
+}
+function loadChangeAction(url) {
+    if ($("select[name='nameAction']").val() != "") { 
+        $("#changeActionHidden").css("display","block");
+        
+            $.ajax({
+                url : url,
+                    method : "get",
+                    data : 
+                        "id=" + $("select[name='nameAction']").val(),
+                    dataType : "json",
+            })
+            .done(function(response) {
+                //$("select[name='changeAction']").val("sdsdf");
+        
+                
+               var string =  createListAction(response["actionPlan"]["id_actions"],response);
+               //alert(string);
+                $("select[name='changeAction']").html(string);
+                $("textarea[name='description']").html(response["actionPlan"]["what_work"]);
+                $("input[name='long']").val(response["actionPlan"]["longer"]);
+                $("input[name='date']").val(response["actionPlan"]["date"]);
+                $("input[name='time']").val(response["actionPlan"]["time"]);
+                //alert(response["actionPlan"]["time"]);
+                //alert(response["actionPlan"]["id_actions"]);
+            
+                if (response["bool"] == true) {
+                    $("select[name='changeAction']").prop("disabled",true);
+                    $("textarea[name='description']").prop("disabled",true);
+                    $("input[name='long']").prop("disabled",true);
+                    $("input[name='date']").prop("disabled",true);
+                    $("input[name='time']").prop("disabled",true);
+                    $("#changeButton").prop("disabled",true);
+                    //$("#changeButton").addClass("disable");
+                    $("#buttonDelete").prop("disabled",true);
+                }
+                  //$("input[name='pleasure']").val(response["level_pleasure"]);
+                  
+                  //$("#newName").css("visibility","visible");
+                  //$("textarea[name='newName']").val(response["name"])
+//                  $("#changeNameActionChange").html(response);
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })    
+        }
+        else {
+            $("input[name='pleasure']").prop("disabled",true);
+            $("#newName").css("visibility","hidden");
+        }    
+         
+    
+    
 }

@@ -102,16 +102,31 @@ Route::get("/settings/addNewAction",[App\Http\Controllers\Settings\SettingsMoodC
         ->name("settings.addNewAction")->middleware('auth')->middleware('can:users');
 Route::get("/settings/addNewActionSubmit",[App\Http\Controllers\Settings\SettingsMoodController::class, 'addNewActionSubmit'])
         ->name("settings.addNewActionSubmit")->middleware('auth')->middleware('can:users');
+
 Route::get("/settings/levelMood",[App\Http\Controllers\Settings\SettingsMoodController::class, 'levelMood'])
         ->name("settings.levelMood")->middleware('auth')->middleware('can:users');
 Route::get("/settings/levelMoodSubmit",[App\Http\Controllers\Settings\SettingsMoodController::class, 'levelMoodSubmit'])
         ->name("settings.levelMoodSubmit")->middleware('auth')->middleware('can:users');
+
 Route::get("/settings/changeNameAction",[App\Http\Controllers\Settings\SettingsMoodController::class, 'changeNameAction'])
         ->name("settings.changeNameAction")->middleware('auth')->middleware('can:users');
 Route::get("/settings/changeNameActionSubmit",[App\Http\Controllers\Settings\SettingsMoodController::class, 'changeNameActionSubmit'])
         ->name("settings.changeNameActionSubmit")->middleware('auth')->middleware('can:users');
+
 Route::get("/settings/loadValuePlasure",[App\Http\Controllers\Settings\SettingsMoodController::class, 'loadValuePlasure'])
         ->name("settings.loadValuePlasure")->middleware('auth')->middleware('can:users');
+
+Route::get("/settings/changeDateAction",[App\Http\Controllers\Settings\SettingsMoodController::class, 'changeDateAction'])
+        ->name("settings.changeDateAction")->middleware('auth')->middleware('can:users');
+Route::get("/settings/changeDateActionSubmit",[App\Http\Controllers\Settings\SettingsMoodController::class, 'changeDateActionSubmit'])
+        ->name("settings.changeDateActionSubmit")->middleware('auth')->middleware('can:users');
+
+Route::get("/settings/loadActionChange",[App\Http\Controllers\Settings\SettingsMoodController::class, 'loadActionChange'])
+        ->name("settings.loadActionChange")->middleware('auth')->middleware('can:users');
+
+
+
+
 
 
             Route::get('/users4/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\Search\SearchController::class, 'index2'])->name('users.search')
