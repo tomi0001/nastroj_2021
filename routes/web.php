@@ -124,7 +124,8 @@ Route::get("/settings/changeDateActionSubmit",[App\Http\Controllers\Settings\Set
 Route::get("/settings/loadActionChange",[App\Http\Controllers\Settings\SettingsMoodController::class, 'loadActionChange'])
         ->name("settings.loadActionChange")->middleware('auth')->middleware('can:users');
 
-
+Route::get("/settings/deleteAction",[App\Http\Controllers\Settings\SettingsMoodController::class, 'deleteAction'])
+        ->name("settings.deleteAction")->middleware('auth')->middleware('can:users');
 
 
 

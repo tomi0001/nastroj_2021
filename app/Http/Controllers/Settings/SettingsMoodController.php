@@ -92,7 +92,7 @@ class SettingsMoodController {
         $actionId = Action_plan::selectActionPlan($request->get('id'),Auth::User()->id);
         $listAction = Action::downloadListAction(Auth::User()->id);
         
-        if (StrTotime($actionId->date) < time()) {
+        if (StrTotime($actionId->date . " " . $actionId->time . ":00") < time()) {
             $bool = true;
         }
         else {
@@ -103,6 +103,24 @@ class SettingsMoodController {
         $json["bool"] = $bool;
         print json_encode($json);
          
+    }
+    public function deleteAction(Request $request) {
+        $bool = Action_plan::ifIdExist($request->get('id'),Auth::User()->id);
+        if ($bool > 0) {
+            $Action = new serviceAction;
+            $Action->deleteActionPlan($request->get('id'));
+        }
+    }
+    public function changeDateActionSubmit(Request $request) {
+        $ActionServices = new ActionServices;
+        $ActionServices->checkErrorPlanedUpdate($request);
+        if (count($ActionServices->error) > 0 ) {
+            return View("ajax.error")->with("error",$ActionServices->error);
+        }
+        else {
+            $ActionServices->updateAction($request);
+            return View("ajax.succes")->with("succes","Pomyślnie zmodyfikowano akcje");
+        }
     }
     
 }

@@ -20,7 +20,7 @@
                     Nazwa akcji
                 </td>
                 <td style="width: 50%;">
-                    <select name="nameAction"  id="select" class="form-control" onchange="loadChangeAction('{{ route('settings.loadActionChange')}}')">
+                    <select name="nameActionChange"  id="select" class="form-control" onchange="loadChangeAction('{{ route('settings.loadActionChange')}}')">
                         <option value=""></option>
                         @foreach ($listAction as $list)
                             <option value="{{$list->id}}" class="form-control">{{$list->name}} - {{$list->date}}</option>
@@ -37,7 +37,7 @@
 
                             </td>
                             <td>
-                                <button class="danger main"  id='buttonDelete' onclick="deleteAction()">USUŃ</button>
+                                <input type='button' class="danger main"  id='buttonDelete' onclick="deleteAction('{{route('settings.deleteAction')}}')" value='USUŃ'>
                             </td>
                         </tr>
                         <tr   >
@@ -84,7 +84,7 @@
                 </tr>
                             <tr>
                 <td colspan="2"  class="center">
-                    <input type="button" class="btn-mood main mood" id="changeButton" onclick="changeNameActionSubmit()" value='ZMIEŃ'>
+                    <input type="button" class=" main mood" id="changeButton" onclick="changeDateActionSubmit()" value='ZMIEŃ'>
                 </td>
             </tr>
                     </table>
@@ -95,7 +95,7 @@
 
             <tr>
                 <td colspan="2" class='center'>
-                    <div id='changeNameActionSubmit' class=' center ajaxMessage'>
+                    <div id='changeDateActionSubmit' class=' center ajaxMessage'>
 
                     </div>
                 </td>

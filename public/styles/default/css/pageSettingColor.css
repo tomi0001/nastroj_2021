@@ -5,12 +5,12 @@
           
              
         }  
-                button.danger {
+                input,button.danger {
             box-shadow: 6px 6px 6px #F4E375;
             background-color: red;
             color: white;
         }
-                button.main {
+                input,button.main {
                 
           
                 color: white;

@@ -18,6 +18,27 @@ use Auth;
 use DB;
 class Action {
     public $error = [];
+    public function checkErrorPlanedUpdate(Request $request) {
+        if (($request->get("date") == "") ){
+            array_push($this->error,"Uzupełnij datę");
+        } 
+        if ($request->get("time") == "") {
+            array_push($this->error,"Uzupełnij czas");
+        }
+        if (strtotime($request->get("date") . " " . $request->get("time")) < strtotime(date("Y-m-d H:i:s"))) {
+            array_push($this->error,"Data akcji zaplanowanej jest wieksza niż teraźniejsza data");
+        }        
+        if ((($request->get("long") != "" )  and  !is_numeric($request->get("long"))  and $request->get("long") < 0 )    ) {
+            array_push($this->error,"Minuty musza być dodatnią liczbą całkowitą");
+        }        
+    }
+    public function updateAction(Request $request) {
+        $Actions_plan = new Actions_plan;
+        $Actions_plan->where("id",$request->get("nameActionChange"))->update(["id_actions"=>$request->get("changeAction"),
+            "date"=>$request->get("date") . " " . $request->get("time") ,
+            "long"=>$request->get("long"),"what_work"=>$request->get("description")]);
+        
+    }
     public function checkErrorPlaned(Request $request) {
         if (($request->get("dateStart") == "") ){
             array_push($this->error,"Uzupełnij datę");
@@ -37,6 +58,10 @@ class Action {
         else if ($this->checkLastAction($request) == false) {
             array_push($this->error,"Już wpisałeś tą akcję");
         }
+    }
+    public function deleteActionPlan(int $id) {
+        $Actions_plan = new Actions_plan;
+        $Actions_plan->where("id",$id)->delete();
     }
     public function checkErrorChangeName(Request $request) {
         if (($request->get("nameAction") == "") ){

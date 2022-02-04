@@ -65,4 +65,7 @@ class Action_plan extends Model
                     ->where("actions_plans.id_users",$idUsers)
                     ->first();
     }
+    public static function ifIdExist(int $id, int $idUsers) {
+        return self::where("id",$id)->where("id_users",$idUsers)->count();
+    }
 }

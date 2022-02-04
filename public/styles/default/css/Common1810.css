@@ -107,7 +107,7 @@
                 font-size: 14px;
                 font-weight: bold;
         }
-        button.main {
+        input,button.main {
                 border: solid 1px transparent;
                 
                 
@@ -121,7 +121,7 @@
                 font-weight: bold;
                 
         }
-        button.danger:hover {
+        input,button.danger:hover {
 
                 border-radius: 12px;
                 text-align: center;

@@ -346,9 +346,58 @@ function changeNameActionSubmit() {
             })    
 }
 
+function changeDateActionSubmit() {
+             $.ajax({
+                url : urlArraySubmit[3],
+                    method : "get",
+                    data : 
+              $("#formchangeDateAction").serialize(),
+                    dataType : "html",
+            })
+            .done(function(response) {
 
 
+          
+                $("#changeDateActionSubmit").html(response);
+            
 
+
+                  
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })        
+}
+
+function deleteAction(url) {
+   var bool = confirm("Czy na pewno");
+   if (bool == true) {
+     $.ajax({
+                url : url,
+                    method : "get",
+                    data : 'id=' + $("select[name='nameActionChange']").val(),
+              
+                    dataType : "html",
+            })
+            .done(function(response) {
+
+
+          
+               
+            
+
+
+                  
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })    
+   }
+}
 
 
 function loadPleasure(url) {
@@ -397,14 +446,15 @@ function createListAction(id,list) {
     return string;
 }
 function loadChangeAction(url) {
-    if ($("select[name='nameAction']").val() != "") { 
+    var bool = true;
+    if ($("select[name='nameActionChange']").val() != "") { 
         $("#changeActionHidden").css("display","block");
         
             $.ajax({
                 url : url,
                     method : "get",
                     data : 
-                        "id=" + $("select[name='nameAction']").val(),
+                        "id=" + $("select[name='nameActionChange']").val(),
                     dataType : "json",
             })
             .done(function(response) {
@@ -420,17 +470,23 @@ function loadChangeAction(url) {
                 $("input[name='time']").val(response["actionPlan"]["time"]);
                 //alert(response["actionPlan"]["time"]);
                 //alert(response["actionPlan"]["id_actions"]);
-            
+                
                 if (response["bool"] == true) {
-                    $("select[name='changeAction']").prop("disabled",true);
-                    $("textarea[name='description']").prop("disabled",true);
-                    $("input[name='long']").prop("disabled",true);
-                    $("input[name='date']").prop("disabled",true);
-                    $("input[name='time']").prop("disabled",true);
-                    $("#changeButton").prop("disabled",true);
-                    //$("#changeButton").addClass("disable");
-                    $("#buttonDelete").prop("disabled",true);
+                    bool = true;
+
                 }
+                else {
+                    bool = false;
+                    
+                }
+                    $("select[name='changeAction']").prop("disabled",bool);
+                    $("textarea[name='description']").prop("disabled",bool);
+                    $("input[name='long']").prop("disabled",bool);
+                    $("input[name='date']").prop("disabled",bool);
+                    $("input[name='time']").prop("disabled",bool);
+                    $("#changeButton").prop("disabled",bool);
+                    //$("#changeButton").addClass("disable");
+                    $("#buttonDelete").prop("disabled",bool);
                   //$("input[name='pleasure']").val(response["level_pleasure"]);
                   
                   //$("#newName").css("visibility","visible");

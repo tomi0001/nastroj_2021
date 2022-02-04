@@ -60,7 +60,7 @@
         
         
     }
-        button.main {
+        .main {
                 
                 border: solid 1px transparent;
                 
@@ -78,6 +78,7 @@
                 font-weight: bold;
               
         }
+        
     #changeNameActionChange {
         min-height: 200px;
         width: 900px;
