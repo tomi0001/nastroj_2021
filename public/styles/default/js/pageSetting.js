@@ -458,13 +458,14 @@ function loadChangeAction(url) {
                     dataType : "json",
             })
             .done(function(response) {
+                var regex = /<br\s*[\/]?>/gi;
                 //$("select[name='changeAction']").val("sdsdf");
         
-                
+                var str = response["actionPlan"]["what_work"];
                var string =  createListAction(response["actionPlan"]["id_actions"],response);
                //alert(string);
                 $("select[name='changeAction']").html(string);
-                $("textarea[name='description']").html(response["actionPlan"]["what_work"]);
+                $("textarea[name='description']").html(str.replace(regex, "\n"));
                 $("input[name='long']").val(response["actionPlan"]["longer"]);
                 $("input[name='date']").val(response["actionPlan"]["date"]);
                 $("input[name='time']").val(response["actionPlan"]["time"]);

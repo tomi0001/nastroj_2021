@@ -5,7 +5,7 @@
           
              
         }  
-                input,button.danger {
+                input.danger,button.danger {
             box-shadow: 6px 6px 6px #F4E375;
             background-color: red;
             color: white;
