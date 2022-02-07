@@ -84,7 +84,7 @@
                 </tr>
                             <tr>
                 <td colspan="2"  class="center">
-                    <input type="button" class=" main mood" id="changeButton" onclick="changeDateActionSubmit()" value='ZMIEŃ'>
+                    <input type="button" class=" btn-mood  mood" id="changeButton" onclick="changeDateActionSubmit()" value='ZMIEŃ'>
                 </td>
             </tr>
                     </table>

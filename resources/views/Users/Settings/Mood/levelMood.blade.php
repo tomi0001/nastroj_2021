@@ -386,7 +386,7 @@
             </tr>
             <tr>
                 <td colspan="5"  class="center">
-                    <input type="button" class="btn-mood main mood" onclick="levelMoodSubmit()" value='EDYTUJ'>
+                    <input type="button" class="btn-mood  mood" onclick="levelMoodSubmit()" value='EDYTUJ'>
                 </td>
             </tr>
             <tr>

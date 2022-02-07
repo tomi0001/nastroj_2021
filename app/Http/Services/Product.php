@@ -13,6 +13,7 @@ use App\Models\Moods_action as MoodAction;
 use App\Http\Services\Calendar;
 use App\Models\Planned_drug;
 use App\Models\Usee;
+use App\Models\Group;
 use App\Models\Product as appProduct;
 use App\Models\Users_description;
 use App\Models\Description;
@@ -120,5 +121,12 @@ class Product {
     public function showDescriptions(int $id) {
         $Users_description = Users_description::showDescriptions($id);
         return $Users_description;
+    }
+    public function addNewGroup(Request $request) {
+        $Group = new Group;
+        $Group->name  = $request->get("nameGroup");
+        //$Group->level_pleasure  = $request->get("levelPleasure");
+        $Group->id_users  = Auth::User()->id;
+        $Group->save();
     }
 }

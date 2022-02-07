@@ -6,9 +6,15 @@ function setFunction() {
     selectMenu();
     switch (sessionStorage.getItem('settingType')) {
         
-        case 'addActionNew': addActionNew(urlArray[0]);
+        case 'addActionNew': addActionNew();
             break;
-        case 'levelMood': levelMood(urlArray[1]);
+        case 'levelMood': levelMood();
+            break;
+        case 'changeNameAction': changeNameAction();
+            break;
+        case 'changeDateAction': changeDateAction();
+            break;
+        case 'addNewGroup': addNewGroup();
             break;
     }
 }
@@ -26,8 +32,11 @@ function resetSession() {
     //sessionStorage.removeItem('mainShow');
 }
 function selectMenu() {
-    if (sessionStorage.getItem('settingType') == 'addActionNew' || sessionStorage.getItem('settingType') == 'levelMood') {
+    if (sessionStorage.getItem('settingType') == 'addActionNew' || sessionStorage.getItem('settingType') == 'levelMood' || sessionStorage.getItem('settingType') == 'changeNameAction' || sessionStorage.getItem('settingType') == 'changeDateAction') {
         loadPageMood();
+    }
+    if (sessionStorage.getItem('settingType') == 'addNewGroup' ) {
+        loadPageDrugs();
     }
 }
 
@@ -507,4 +516,84 @@ function loadChangeAction(url) {
          
     
     
+}
+
+
+
+function addNewGroup() {
+    sessionStorage.setItem('settingType', "addNewGroup");
+    if ($("#addNewGroup").css("display") == "none" ) {
+        
+        $.ajax({
+                url : urlArray[4],
+                    method : "get",
+
+                    dataType : "html",
+            })
+            .done(function(response) {
+
+
+
+
+                  $("#addNewGroup").css("display","block");
+                  $("#addNewGroup").html(response);
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })    
+            //$("#levelMoodAdd").css("display","none");
+            //$("#changeNameActionChange").css("display","none");
+            //$("#changeDateActionChange").css("display","none");
+    }
+    else {
+        
+        $("#addNewGroup").css("display","none");
+    }    
+}
+
+
+function addGroupNewSubmit() {
+ var arrayError = "";
+    if ($("input[name='nameGroup']").val() == "") {
+        arrayError += "Uzupełnij nazwe Grupy<br>";
+        //alert('Uzupełnij nazwe akcji');
+        //return;
+    }
+
+    if (arrayError != "") {
+        $("#addNewGroupSubmit").addClass("ajaxError");
+        $("#addNewGroupSubmit").html(arrayError);
+        return;
+    }
+    else {
+         $.ajax({
+                url : urlArraySubmit[4],
+                    method : "get",
+                    data : 
+              $("#formaddGroupNew").serialize(),
+                    dataType : "json",
+            })
+            .done(function(response) {
+
+            if (response['error'] != "") {
+                //alert("Już jest taka akcja o takiej nazwie");
+        $("#addNewGroupSubmit").addClass("ajaxError").removeClass("ajaxSucces");
+        $("#addNewGroupSubmit").html("Już jest taka grupa o takiej nazwie");
+            }
+            else {
+                $("#addNewGroupSubmit").addClass("ajaxSucces");
+                $("#addNewGroupSubmit").html(response["succes"]);
+            }
+
+
+                  
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })    
+    }
 }

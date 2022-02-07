@@ -46,7 +46,7 @@
             </tr>
             <tr>
                 <td colspan="2"  class="center">
-                    <input type="button" class="btn-mood main mood" onclick="changeNameActionSubmit()" value='ZMIEŃ'>
+                    <input type="button" class="btn-mood  mood" onclick="changeNameActionSubmit()" value='ZMIEŃ'>
                 </td>
             </tr>
             <tr>

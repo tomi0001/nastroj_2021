@@ -22,7 +22,7 @@
             </tr>
             <tr>
                 <td colspan="2"  class="center">
-                    <input type="button" class="btn-mood main mood" onclick="addActionNewSubmit()" value='DODAJ'>
+                    <input type="button" class="btn-mood  mood" onclick="addActionNewSubmit()" value='DODAJ'>
                 </td>
             </tr>
             <tr>
