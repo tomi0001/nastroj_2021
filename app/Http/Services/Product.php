@@ -13,6 +13,8 @@ use App\Models\Moods_action as MoodAction;
 use App\Http\Services\Calendar;
 use App\Models\Planned_drug;
 use App\Models\Usee;
+use App\Models\Substance;
+use App\Models\Substances_group;
 use App\Models\Group;
 use App\Models\Product as appProduct;
 use App\Models\Users_description;
@@ -22,6 +24,15 @@ use Auth;
 use DB;
 class Product {
     public $date;
+    public $error = [];
+    public function checkErrorAddSubstance(Request $request) {
+         if (  !empty( $ifExist = Substance::ifExist($request->get("nameSubstance"),Auth::User()->id) ))  {
+             array_push($this->error,"Już jest taka substancja");
+         }
+         if ($request->get("equivalent") < 0  or  ( (string)(float) $request->get("equivalent") !== $request->get("equivalent") ) and ($request->get("equivalent") != "") ) {
+             array_push($this->error,"Równoważnik musi być dodatnią liczbą zmienno przcinkową");
+         }
+    }
     public function addDrugs(Request $request,$date,$price) {
         $use = new Usee;
         $use->id_users = Auth::User()->id;
@@ -128,5 +139,24 @@ class Product {
         //$Group->level_pleasure  = $request->get("levelPleasure");
         $Group->id_users  = Auth::User()->id;
         $Group->save();
+    }
+    public function addNewSubstance(Request $request) {
+        $Substance = new Substance;
+        $Substance->name  = $request->get("nameSubstance");
+        //$Group->level_pleasure  = $request->get("levelPleasure");
+        $Substance->id_users  = Auth::User()->id;
+        $Substance->equivalent  = $request->get("equivalent");
+        $Substance->save();
+        if (!empty($request->get("idGroup"))  ) {
+            $this->addSubstanceGroup($request->get("idGroup"),$Substance->id);
+        }
+    }
+    private function addSubstanceGroup(array $group,int $idSubstance) {
+        for ($i = 0;$i < count($group);$i++)  {
+            $Substances_group = new Substances_group;
+            $Substances_group->id_substances = $idSubstance;
+            $Substances_group->id_groups = $group[$i];
+            $Substances_group->save();
+        }
     }
 }

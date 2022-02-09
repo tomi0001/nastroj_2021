@@ -16,6 +16,7 @@ use App\Models\Group;
 use App\Http\Services\Mood as serviceMood; 
 use App\Models\Moods_action;
 use App\Models\Usee;
+use App\Models\Substance;
 use App\Http\Services\Sleep;
 use App\Models\Product as ModelProduct;
 use App\Http\Services\Product;
@@ -25,6 +26,10 @@ use Auth;
 class SettingsProductController {
     public function addNewGroup() {
         return view("Users.Settings.Product.addNewGroup");
+    }
+    public function addNewSubstance() {
+        $listGroup = Group::selectListGroup(Auth::User()->id);
+        return view("Users.Settings.Product.addNewSubstance")->with("listGroup",$listGroup);
     }
     public function addNewGroupSubmit(Request $request) {
         
@@ -37,6 +42,22 @@ class SettingsProductController {
             $Group->addNewGroup($request);
             
             print json_encode(["error"=>0,"succes"=>"Pomyślnie dodano akcję"]);
+        }
+    }
+    public function addNewSubstanceSubmit(Request $request) {
+        $Substance = new Product;
+        $Substance->checkErrorAddSubstance($request);
+        if (count($Substance->error) > 0) {
+            return View("ajax.error")->with("error",$Substance->error);
+            
+        }
+
+        
+        else {
+            
+            $Substance->addNewSubstance($request);
+            return View("ajax.succes")->with("succes","Pomyślnie dodano akcję");
+         //   print json_encode(["error"=>0,"succes"=>"Pomyślnie dodano akcję"]);
         }
     }
  

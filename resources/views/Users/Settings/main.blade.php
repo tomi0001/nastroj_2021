@@ -41,7 +41,7 @@
                DODAJ NOWĄ GRUPĘ
             </div>
            
-            <div id="newSubstance"  class=" hrefDrugs hrefSettingCursor" onmouseover="selectMenuMood('newSubstance')" onmouseout="unSelectMenuMood('newSubstance')">
+            <div id="newSubstance"  class=" hrefDrugs hrefSettingCursor" onmouseover="selectMenuMood('newSubstance')" onmouseout="unSelectMenuMood('newSubstance')" onclick="addNewSubstance()">
                 DODAJ NOWĄ SUBSTANCJĘ
             </div>
             <div id="newProduct"  class=" hrefDrugs hrefSettingCursor" onmouseover="selectMenuMood('newProduct')" onmouseout="unSelectMenuMood('newProduct')">
@@ -80,6 +80,9 @@
     <div class="pagePageDrugs pagepage bodyDrugsPage" id="addNewGroup" style="display: none;">
 
         </div>
+     <div class="pagePageDrugs pagepage bodyDrugsPage" id="addNewSubstance" style="display: none;">
+
+        </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
@@ -94,14 +97,16 @@
         '{{route('settings.levelMood')}}',
         '{{route('settings.changeNameAction')}}',
         '{{route('settings.changeDateAction')}}',
-        '{{route('settings.addNewGroup')}}'
+        '{{route('settings.addNewGroup')}}',
+        '{{route('settings.addNewSubstance')}}'
     ];
     var urlArraySubmit = [
         '{{route('settings.addNewActionSubmit')}}',
         '{{route('settings.levelMoodSubmit')}}',
         '{{route('settings.changeNameActionSubmit')}}',
         '{{route('settings.changeDateActionSubmit')}}',
-        '{{route('settings.addNewGroupSubmit')}}'
+        '{{route('settings.addNewGroupSubmit')}}',
+        '{{route('settings.addNewSubstanceSubmit')}}'
     ];
     
 

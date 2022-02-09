@@ -11,4 +11,7 @@ class Group extends Model
     public static function ifExist(string $name,int $idUsers) {
         return self::selectRaw("name as name")->where("id_users",$idUsers)->where("name",$name)->first();
     }
+    public static function selectListGroup(int $idUsers) {
+        return self::selectRaw("id as id")->selectRaw("name as name")->where("id_users",$idUsers)->get();
+    }
 }

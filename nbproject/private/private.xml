@@ -14,6 +14,7 @@
             <file>file:/var/www/html/nastroj_2021/database/migrations/2021_01_12_1111114_create_products_table.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageNotLoginwidth700.css</file>
             <file>file:/var/www/html/nastroj_2021/routes/web.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/addNewGroup.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Product.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/CommonAll.css</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainwidth1410.css</file>
@@ -32,6 +33,7 @@
             <file>file:/var/www/html/nastroj_2021/app/Models/Substance.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showActionDays.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSettingswidth700.css</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/addNewSubstance.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/layouts/app.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSettingColor.css</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Substances_product.php</file>
@@ -78,6 +80,7 @@
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Mood.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/Common1410.css</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/addActionPlaned.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Models/Group.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Layout/Settings.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/addDrugs.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainAll.css</file>

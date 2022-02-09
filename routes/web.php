@@ -131,9 +131,14 @@ Route::get("/settings/deleteAction",[App\Http\Controllers\Settings\SettingsMoodC
 
 Route::get("/settings/addNewGroup",[App\Http\Controllers\Settings\SettingsProductController::class, 'addNewGroup'])
         ->name("settings.addNewGroup")->middleware('auth')->middleware('can:users');
-
 Route::get("/settings/addNewGroupSubmit",[App\Http\Controllers\Settings\SettingsProductController::class, 'addNewGroupSubmit'])
         ->name("settings.addNewGroupSubmit")->middleware('auth')->middleware('can:users');
+
+Route::get("/settings/addNewSubstance",[App\Http\Controllers\Settings\SettingsProductController::class, 'addNewSubstance'])
+        ->name("settings.addNewSubstance")->middleware('auth')->middleware('can:users');
+Route::get("/settings/addNewSubstanceSubmit",[App\Http\Controllers\Settings\SettingsProductController::class, 'addNewSubstanceSubmit'])
+        ->name("settings.addNewSubstanceSubmit")->middleware('auth')->middleware('can:users');
+
 
             Route::get('/users4/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\Search\SearchController::class, 'index2'])->name('users.search')
                     ->middleware('auth')->middleware('can:users');

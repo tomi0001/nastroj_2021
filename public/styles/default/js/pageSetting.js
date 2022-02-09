@@ -1,6 +1,10 @@
 /*
  * copyright 2022 Tomasz Leszczyński tomi0001@gmail.com
  */
+
+
+
+
 function setFunction() {
     //alert('zfdsf');
     selectMenu();
@@ -15,6 +19,8 @@ function setFunction() {
         case 'changeDateAction': changeDateAction();
             break;
         case 'addNewGroup': addNewGroup();
+            break;
+        case 'addNewSubstance': addNewSubstance();
             break;
     }
 }
@@ -35,7 +41,7 @@ function selectMenu() {
     if (sessionStorage.getItem('settingType') == 'addActionNew' || sessionStorage.getItem('settingType') == 'levelMood' || sessionStorage.getItem('settingType') == 'changeNameAction' || sessionStorage.getItem('settingType') == 'changeDateAction') {
         loadPageMood();
     }
-    if (sessionStorage.getItem('settingType') == 'addNewGroup' ) {
+    if (sessionStorage.getItem('settingType') == 'addNewGroup' ||  sessionStorage.getItem('settingType') == 'addNewSubstance') {
         loadPageDrugs();
     }
 }
@@ -141,6 +147,7 @@ function addActionNew() {
     }
     
 }
+
 
 
 function levelMoodSubmit() {
@@ -543,6 +550,7 @@ function addNewGroup() {
             .fail(function() {
                 alert("Wystąpił błąd");
             })    
+             $("#addNewSubstance").css("display","none");
             //$("#levelMoodAdd").css("display","none");
             //$("#changeNameActionChange").css("display","none");
             //$("#changeDateActionChange").css("display","none");
@@ -553,7 +561,114 @@ function addNewGroup() {
     }    
 }
 
+function addNewSubstance() {
+    sessionStorage.setItem('settingType', "addNewSubstance");
+    if ($("#addNewSubstance").css("display") == "none" ) {
+        
+        $.ajax({
+                url : urlArray[5],
+                    method : "get",
 
+                    dataType : "html",
+            })
+            .done(function(response) {
+
+
+
+
+                  $("#addNewSubstance").css("display","block");
+                  $("#addNewSubstance").html(response);
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })    
+            //$("#levelMoodAdd").css("display","none");
+            //$("#changeNameActionChange").css("display","none");
+            $("#addNewGroup").css("display","none");
+    }
+    else {
+        
+        $("#addNewSubstance").css("display","none");
+    }    
+}
+var arrayGroupSubstance = [];
+function selectedGroupSubstance(id,index) {
+
+    if ($("#divGroupGroup_" + id + ":first").hasClass("groupMainAllGroup")) {
+        $("#divGroupGroup_" + id).removeClass("groupMainAllGroup").addClass("groupMainselected");
+        //$("#divActionPercent_" + id).removeClass("hiddenPercentExecuting").addClass('active');
+        //$("#idAction").eq(index).val(id);
+        arrayGroupSubstance.push(id);
+        //$("#idActio" + id).val(id);
+        //alert(index);
+    }
+    else {
+        var i = arrayGroupSubstance.indexOf(id);
+        arrayGroupSubstance.splice(i,1);
+        
+        //$("#idActio" + id).val('');
+        //$("#idAction").eq(index).val('NULL');
+        //$("#divActionPercent_" + id).addClass("hiddenPercentExecuting").removeClass('active');
+        $("#divGroupGroup_" + id).removeClass("groupMainselected").addClass("groupMainAllGroup");
+
+    }
+    
+}
+
+
+function changeArrayFormAddSubstance() {
+        for (var i=0;i < arrayGroupSubstance.length;i++) {
+
+          $("#formaddSubstanceNew").append("<input type=\'hidden\' name=\'idGroup[]\' value='" +  arrayGroupSubstance[i]  + "' class=\'form-control typeMood\'>");
+
+            }
+}
+
+
+
+function addSubstanceNewSubmit() {
+ var arrayError = "";
+ //alert(arrayGroupSubstance.length);
+    if ($("input[name='nameSubstance']").val() == "") {
+        arrayError += "Uzupełnij nazwe Substancji<br>";
+        //alert('Uzupełnij nazwe akcji');
+        //return;
+    }
+
+    if (arrayError != "") {
+        $("#addNewSubstanceSubmit").addClass("ajaxError");
+        $("#addNewSubstanceSubmit").html(arrayError);
+        return;
+    }
+    else {
+        changeArrayFormAddSubstance();
+         $.ajax({
+                url : urlArraySubmit[5],
+                    method : "get",
+                    data : 
+              $("#formaddSubstanceNew").serialize(),
+                    dataType : "html",
+            })
+            .done(function(response) {
+
+          
+        $("#addNewSubstanceSubmit").html(response);
+       
+                
+            $("#formaddSubstanceNew").find(":hidden").filter(".typeMood").remove();
+
+
+                  
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })    
+    }    
+}
 function addGroupNewSubmit() {
  var arrayError = "";
     if ($("input[name='nameGroup']").val() == "") {
