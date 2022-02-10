@@ -1,5 +1,5 @@
         <div class="titleDrugsSettings">
-                        DODAJ NOWĄ AKCJE
+                        DODAJ NOWĄ GRUPĘ
         </div>
 <div class="bodyPage">
     <form method="get" id='formaddGroupNew'>

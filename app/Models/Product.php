@@ -25,4 +25,7 @@ class Product extends Model
                 ->where("id_users", Auth::User()->id)
                 ->where("id",$idProduct)->first();
     }
+    public static function ifExist(string $name, int $idUsers) {
+        return self::selectRaw("name as name")->where("id_users",$idUsers)->where("name",$name)->first();
+    }
 }

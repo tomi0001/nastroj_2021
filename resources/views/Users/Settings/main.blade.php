@@ -44,7 +44,7 @@
             <div id="newSubstance"  class=" hrefDrugs hrefSettingCursor" onmouseover="selectMenuMood('newSubstance')" onmouseout="unSelectMenuMood('newSubstance')" onclick="addNewSubstance()">
                 DODAJ NOWĄ SUBSTANCJĘ
             </div>
-            <div id="newProduct"  class=" hrefDrugs hrefSettingCursor" onmouseover="selectMenuMood('newProduct')" onmouseout="unSelectMenuMood('newProduct')">
+            <div id="newProduct"  class=" hrefDrugs hrefSettingCursor" onmouseover="selectMenuMood('newProduct')" onmouseout="unSelectMenuMood('newProduct')" onclick="addNewProduct()">
                 DODAJ NOWY PRODUKT
             </div>
             <div id="editGroup"  class=" hrefDrugs hrefSettingCursor" onmouseover="selectMenuMood('editGroup')" onmouseout="unSelectMenuMood('editGroup')">
@@ -83,6 +83,9 @@
      <div class="pagePageDrugs pagepage bodyDrugsPage" id="addNewSubstance" style="display: none;">
 
         </div>
+     <div class="pagePageDrugs pagepage bodyDrugsPage" id="addNewProduct" style="display: none;">
+
+        </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
@@ -98,7 +101,8 @@
         '{{route('settings.changeNameAction')}}',
         '{{route('settings.changeDateAction')}}',
         '{{route('settings.addNewGroup')}}',
-        '{{route('settings.addNewSubstance')}}'
+        '{{route('settings.addNewSubstance')}}',
+        '{{route('settings.addNewProduct')}}'
     ];
     var urlArraySubmit = [
         '{{route('settings.addNewActionSubmit')}}',
@@ -106,7 +110,8 @@
         '{{route('settings.changeNameActionSubmit')}}',
         '{{route('settings.changeDateActionSubmit')}}',
         '{{route('settings.addNewGroupSubmit')}}',
-        '{{route('settings.addNewSubstanceSubmit')}}'
+        '{{route('settings.addNewSubstanceSubmit')}}',
+        '{{route('settings.addNewProductSubmit')}}'
     ];
     
 

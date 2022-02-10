@@ -76,6 +76,17 @@
     border-radius: 20px;
     cursor:pointer;
 }
+        div.substanceMain {
+
+    margin: 10px;
+    padding: 7px;
+
+    text-align: center;
+    font-size: 19px;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor:pointer;
+}
         .main {
                 
                 border: solid 1px transparent;
@@ -107,6 +118,11 @@
     }
     #addNewGroup {
        min-height: 200px;
+        width: 900px;
+        margin-top: 15px; 
+    }
+    #addNewProduct {
+        min-height: 200px;
         width: 900px;
         margin-top: 15px; 
     }

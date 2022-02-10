@@ -30,6 +30,21 @@ div.groupMainAllGroup {
  
 }
 
+
+
+        div.substanceMainselected {
+    background-color: #034903;
+  
+    color: #CDE1F3;
+
+}
+div.SubstanceMainAllSubstance {
+    background-color: #0B9C0B;
+ 
+    color: #CDE1F3;
+ 
+}
+
         button.main:hover {
                 
                 color: white;

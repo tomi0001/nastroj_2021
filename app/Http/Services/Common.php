@@ -15,6 +15,13 @@ use DateTime;
  * @author tomi2
  */
 class Common {
+    private static $doseProduct = [
+        null,
+        'Mg',
+        'militry',
+         'ilości',
+         'waga ciała'
+    ];
     public static function setColor( $mood) :string {
         if (empty($mood) and $mood != 0) {
             return '10000';
@@ -186,25 +193,10 @@ class Common {
         }
     }
     public static function showDoseProduct(int $type) {
-        switch ($type) {
-            
-            case 1 : 
-                return "Mg";
-                break;
-            case 2:
-                return "militry";
-                break;
-            case 3:
-                return "ilości";
-                break;
-            case 4:
-                return "waga ciała";
-                break;
-            default:
-                return "Mg";
-                break;
-            
-        }
+        return self::$doseProduct[$type];
+    }
+    public static function showListDoseProduct() :array {
+        return self::$doseProduct;
     }
     public static function ifDateTrue(string $date) :bool  {
         if (strlen($date) == 19) {

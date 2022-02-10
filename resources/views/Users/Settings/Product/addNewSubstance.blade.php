@@ -21,7 +21,7 @@
 
 </script>
 <div class="titleDrugsSettings">
-                        DODAJ NOWĄ AKCJE
+                        DODAJ NOWĄ SUBSTANCĘ
         </div>
 <div class="bodyPage">
     <form method="get" id='formaddSubstanceNew'>
@@ -71,7 +71,7 @@
             </tr>
             <tr>
                 <td colspan="2" class='center'>
-                    <div id='addNewSubstanceSubmit' class=' center ajaxMessage'>
+                    <div id='addNewProductSubmit' class=' center ajaxMessage'>
 
                     </div>
                 </td>

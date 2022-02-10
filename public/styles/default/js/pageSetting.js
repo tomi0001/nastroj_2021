@@ -551,6 +551,7 @@ function addNewGroup() {
                 alert("Wystąpił błąd");
             })    
              $("#addNewSubstance").css("display","none");
+             $("#addNewProduct").css("display","none");
             //$("#levelMoodAdd").css("display","none");
             //$("#changeNameActionChange").css("display","none");
             //$("#changeDateActionChange").css("display","none");
@@ -587,11 +588,46 @@ function addNewSubstance() {
             //$("#levelMoodAdd").css("display","none");
             //$("#changeNameActionChange").css("display","none");
             $("#addNewGroup").css("display","none");
+            $("#addNewProduct").css("display","none");
     }
     else {
         
         $("#addNewSubstance").css("display","none");
     }    
+}
+
+function addNewProduct() {
+    sessionStorage.setItem('settingType', "addNewProduct");
+    if ($("#addNewProduct").css("display") == "none" ) {
+        
+        $.ajax({
+                url : urlArray[6],
+                    method : "get",
+
+                    dataType : "html",
+            })
+            .done(function(response) {
+
+
+
+
+                  $("#addNewProduct").css("display","block");
+                  $("#addNewProduct").html(response);
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })    
+            //$("#levelMoodAdd").css("display","none");
+            //$("#changeNameActionChange").css("display","none");
+            $("#addNewGroup").css("display","none");
+            $("#addNewSubstance").css("display","none");
+    }
+    else {
+        
+        $("#addNewProduct").css("display","none");
+    }        
 }
 var arrayGroupSubstance = [];
 function selectedGroupSubstance(id,index) {
@@ -617,6 +653,30 @@ function selectedGroupSubstance(id,index) {
     
 }
 
+var arraySubstanceProduct = [];
+function selectedProductProduct(id,index) {
+
+    if ($("#divSubstanceSubstance_" + id + ":first").hasClass("SubstanceMainAllSubstance")) {
+        $("#divSubstanceSubstance_" + id).removeClass("SubstanceMainAllSubstance").addClass("substanceMainselected");
+        //$("#divActionPercent_" + id).removeClass("hiddenPercentExecuting").addClass('active');
+        //$("#idAction").eq(index).val(id);
+        arraySubstanceProduct.push(id);
+        //$("#idActio" + id).val(id);
+        //alert(index);
+    }
+    else {
+        var i = arraySubstanceProduct.indexOf(id);
+        arraySubstanceProduct.splice(i,1);
+        
+        //$("#idActio" + id).val('');
+        //$("#idAction").eq(index).val('NULL');
+        //$("#divActionPercent_" + id).addClass("hiddenPercentExecuting").removeClass('active');
+        $("#divSubstanceSubstance_" + id).removeClass("substanceMainselected").addClass("SubstanceMainAllSubstance");
+
+    }
+    
+}
+
 
 function changeArrayFormAddSubstance() {
         for (var i=0;i < arrayGroupSubstance.length;i++) {
@@ -626,7 +686,13 @@ function changeArrayFormAddSubstance() {
             }
 }
 
+function changeArrayFormAddProduct() {
+   for (var i=0;i < arraySubstanceProduct.length;i++) {
 
+          $("#formaddSubstanceNew").append("<input type=\'hidden\' name=\'idSubstance[]\' value='" +  arraySubstanceProduct[i]  + "' class=\'form-control typeMood\'>");
+
+            }   
+}
 
 function addSubstanceNewSubmit() {
  var arrayError = "";
@@ -669,6 +735,52 @@ function addSubstanceNewSubmit() {
             })    
     }    
 }
+
+
+function addProductNewSubmit() {
+ var arrayError = "";
+ $("#addNewProductSubmit").removeClass("ajaxError");
+ //alert(arrayGroupSubstance.length);
+    if ($("input[name='nameProduct']").val() == "") {
+        arrayError += "Uzupełnij nazwe Produktu<br>";
+        //alert('Uzupełnij nazwe akcji');
+        //return;
+    }
+
+    if (arrayError != "") {
+        $("#addNewProductSubmit").addClass("ajaxError");
+        $("#addNewProductSubmit").html(arrayError);
+        return;
+    }
+    else {
+        changeArrayFormAddProduct();
+         $.ajax({
+                url : urlArraySubmit[6],
+                    method : "get",
+                    data : 
+              $("#formaddProductNew").serialize(),
+                    dataType : "html",
+            })
+            .done(function(response) {
+
+          
+        $("#addNewProductSubmit").html(response);
+       
+                
+            $("#formaddProductNew").find(":hidden").filter(".typeMood").remove();
+
+
+                  
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })    
+    }        
+}
+
+
 function addGroupNewSubmit() {
  var arrayError = "";
     if ($("input[name='nameGroup']").val() == "") {

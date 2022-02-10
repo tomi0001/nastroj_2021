@@ -139,6 +139,11 @@ Route::get("/settings/addNewSubstance",[App\Http\Controllers\Settings\SettingsPr
 Route::get("/settings/addNewSubstanceSubmit",[App\Http\Controllers\Settings\SettingsProductController::class, 'addNewSubstanceSubmit'])
         ->name("settings.addNewSubstanceSubmit")->middleware('auth')->middleware('can:users');
 
+Route::get("/settings/addNewProduct",[App\Http\Controllers\Settings\SettingsProductController::class, 'addNewProduct'])
+        ->name("settings.addNewProduct")->middleware('auth')->middleware('can:users');
+Route::get("/settings/addNewProductSubmit",[App\Http\Controllers\Settings\SettingsProductController::class, 'addNewProductSubmit'])
+        ->name("settings.addNewProductSubmit")->middleware('auth')->middleware('can:users');
+
 
             Route::get('/users4/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\Search\SearchController::class, 'index2'])->name('users.search')
                     ->middleware('auth')->middleware('can:users');

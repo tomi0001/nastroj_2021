@@ -31,6 +31,10 @@ class SettingsProductController {
         $listGroup = Group::selectListGroup(Auth::User()->id);
         return view("Users.Settings.Product.addNewSubstance")->with("listGroup",$listGroup);
     }
+    public function addNewProduct() {
+        $listSubstance = Substance::selectListSubstance(Auth::User()->id);
+        return view("Users.Settings.Product.addNewProduct")->with("listSubstance",$listSubstance);
+    }
     public function addNewGroupSubmit(Request $request) {
         
         $ifExist = Group::ifExist($request->get("nameGroup"),Auth::User()->id);
@@ -41,7 +45,7 @@ class SettingsProductController {
             $Group = new Product;
             $Group->addNewGroup($request);
             
-            print json_encode(["error"=>0,"succes"=>"Pomyślnie dodano akcję"]);
+            print json_encode(["error"=>0,"succes"=>"Pomyślnie dodano grupę"]);
         }
     }
     public function addNewSubstanceSubmit(Request $request) {
@@ -56,10 +60,25 @@ class SettingsProductController {
         else {
             
             $Substance->addNewSubstance($request);
-            return View("ajax.succes")->with("succes","Pomyślnie dodano akcję");
+            return View("ajax.succes")->with("succes","Pomyślnie dodano substancę");
          //   print json_encode(["error"=>0,"succes"=>"Pomyślnie dodano akcję"]);
         }
     }
- 
+    public function addNewProductSubmit(Request $request) {
+        $Product = new Product;
+        $Product->checkErrorAddProduct($request);
+        if (count($Product->error) > 0) {
+            return View("ajax.error")->with("error",$Product->error);
+            
+        }
+
+        
+        else {
+            
+            $Product->addNewProduct($request);
+            return View("ajax.succes")->with("succes","Pomyślnie dodano produkt");
+         //   print json_encode(["error"=>0,"succes"=>"Pomyślnie dodano akcję"]);
+        }
+    } 
    
 }

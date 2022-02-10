@@ -16,6 +16,7 @@ use App\Models\Usee;
 use App\Models\Substance;
 use App\Models\Substances_group;
 use App\Models\Group;
+use App\Models\Substances_product;
 use App\Models\Product as appProduct;
 use App\Models\Users_description;
 use App\Models\Description;
@@ -32,6 +33,24 @@ class Product {
          if ($request->get("equivalent") < 0  or  ( (string)(float) $request->get("equivalent") !== $request->get("equivalent") ) and ($request->get("equivalent") != "") ) {
              array_push($this->error,"Równoważnik musi być dodatnią liczbą zmienno przcinkową");
          }
+    }
+    public function checkErrorAddProduct(Request $request) {
+        if (  !empty( $ifExist = appProduct::ifExist($request->get("nameProduct"),Auth::User()->id) ))  {
+             array_push($this->error,"Już jest taki produkt");
+         }
+         if ($request->get("percent") < 0  or  ( (string)(float) $request->get("percent") !== $request->get("percent") ) and ($request->get("percent") != "") ) {
+             array_push($this->error,"procent napoju alkoholowego musi być dodatnią liczbą zmienno przecinkową");
+         }
+         if ($request->get("price") < 0  or  ( (string)(float) $request->get("price") !== $request->get("price") ) and ($request->get("price") != "") ) {
+             array_push($this->error,"cena produktu musi być dodatnią liczbą zmienno przecinkową");
+         }
+         if ($request->get("how") < 0  or  ( (string)(float) $request->get("how") !== $request->get("how") ) and ($request->get("how") != "") ) {
+             array_push($this->error,"za ile musi być dodatnią liczbą zmienno przecinkową");
+         }
+         if (( $request->get("type")< 1)  or ( (string)(int) $request->get("type") !== $request->get("type") ) ) {
+             array_push($this->error,"uzupełnij typ porcji produktu");
+         }
+
     }
     public function addDrugs(Request $request,$date,$price) {
         $use = new Usee;
@@ -157,6 +176,28 @@ class Product {
             $Substances_group->id_substances = $idSubstance;
             $Substances_group->id_groups = $group[$i];
             $Substances_group->save();
+        }
+    }
+    public function addNewProduct(Request $request) {
+        $Product = new appProduct;
+        $Product->name  = $request->get("nameProduct");
+        //$Group->level_pleasure  = $request->get("levelPleasure");
+        $Product->id_users  = Auth::User()->id;
+        $Product->how_percent  = $request->get("percent");
+        $Product->type_of_portion  = $request->get("type");
+        $Product->price  = $request->get("price");
+        $Product->how_much  = $request->get("how");
+        $Product->save();
+        if (!empty($request->get("idSubstance"))  ) {
+            $this->addProductSubstance($request->get("idSubstance"),$Product->id);
+        }
+    }
+    private function addProductSubstance(array $substance,int $idProduct) {
+        for ($i = 0;$i < count($substance);$i++)  {
+            $Substances_product = new Substances_product;
+            $Substances_product->id_product= $idProduct;
+            $Substances_product->id_substances = $substance[$i];
+            $Substances_product->save();
         }
     }
 }
