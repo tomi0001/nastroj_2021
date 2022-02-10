@@ -22,6 +22,8 @@ function setFunction() {
             break;
         case 'addNewSubstance': addNewSubstance();
             break;
+        case 'addNewProduct': addNewProduct();
+            break;
     }
 }
     
@@ -41,7 +43,7 @@ function selectMenu() {
     if (sessionStorage.getItem('settingType') == 'addActionNew' || sessionStorage.getItem('settingType') == 'levelMood' || sessionStorage.getItem('settingType') == 'changeNameAction' || sessionStorage.getItem('settingType') == 'changeDateAction') {
         loadPageMood();
     }
-    if (sessionStorage.getItem('settingType') == 'addNewGroup' ||  sessionStorage.getItem('settingType') == 'addNewSubstance') {
+    if (sessionStorage.getItem('settingType') == 'addNewGroup' ||  sessionStorage.getItem('settingType') == 'addNewSubstance' || sessionStorage.getItem('settingType') == 'addNewProduct') {
         loadPageDrugs();
     }
 }
@@ -653,11 +655,67 @@ function selectedGroupSubstance(id,index) {
     
 }
 
+
+
+function changeArrayFormAddProduct() {
+    //var i = 0;
+
+    let array = document.querySelectorAll('input[name^="howMg"]');
+    //alert(u.length);
+    
+    for (var i=0;i < array.length;i++) {
+        //alert($('input[name^="idActionss"]').eq(i).val());
+        var id = $('input[name^="idSubstance"]').eq(i).val();
+        if (arraySubstanceProduct.find(element => element == id )) {
+
+          $("#formaddProductNew").append("<input type=\'hidden\' name=\'idSubstance2[]\' value='" +  $('input[name^="idSubstance"]').eq(i).val()  + "' class=\'form-control typeMood\'>");
+          $("#formaddProductNew").append("<input type=\'hidden\' name=\'howMg2[]\' value='" + $('input[name^="howMg"]').eq(i).val() + "' class=\'form-control typeMood\'>");
+          
+        }
+        //alert($('input[name^="percentExe"]').eq(i).val());
+        //alert($('input[name^="idActionss"]').eq(i).val());
+        //alert($(this).val() );
+        //$('input[name^="percentExe"]').each(function() {
+                    //alert($("input[name='percentExe[" + i + "]']").val());
+                //if ((arrayAction[i]) != "") {
+                    //alert('f');
+                    //alert($(this).parents().parents().attr('class') );
+                    /*
+                    if ($(this).parents().parents().hasClass("active")) {
+                        //JSON["idAction"][i]  = arrayAction[i];
+                        //JSON["percent"][i]  = $(this).val();
+                        
+                        //$("#formAddMood").append("<input type=\'hidden\' name=\'idAction[]\' value='" + arrayAction[i] + "' class=\'form-control typeMood\'>");
+                      
+                    //    alert('dd');
+                    i++;
+                    }
+                //}
+            //alert($(this).val());
+            
+            */
+            }
+        //});
+/*
+    for (i=0;i < arrayAction.length;i++) {
+        alert($("input[name='percentExe[" + i + "]']").val());
+        if ((arrayAction[i]) != "") {
+            //alert('f');
+            $("#formAddMood").append("<input type=\'hidden\' name=\'idAction[]\' value='" + arrayAction[i] + "' class=\'form-control typeMood\'>");
+            $("#formAddMood").append("<input type=\'hidden\' name=\'idActions[]\' value='" + $("#percentExe").val() + "' class=\'form-control typeMood\'>");
+        }
+    }
+     * 
+ */
+}
+
+
 var arraySubstanceProduct = [];
 function selectedProductProduct(id,index) {
 
     if ($("#divSubstanceSubstance_" + id + ":first").hasClass("SubstanceMainAllSubstance")) {
         $("#divSubstanceSubstance_" + id).removeClass("SubstanceMainAllSubstance").addClass("substanceMainselected");
+        $("#divSubstanceSubstancePercent_" + id).removeClass("hiddenPercentExecuting").addClass('active');
         //$("#divActionPercent_" + id).removeClass("hiddenPercentExecuting").addClass('active');
         //$("#idAction").eq(index).val(id);
         arraySubstanceProduct.push(id);
@@ -671,6 +729,7 @@ function selectedProductProduct(id,index) {
         //$("#idActio" + id).val('');
         //$("#idAction").eq(index).val('NULL');
         //$("#divActionPercent_" + id).addClass("hiddenPercentExecuting").removeClass('active');
+        $("#divSubstanceSubstancePercent_" + id).addClass("hiddenPercentExecuting").removeClass('active');
         $("#divSubstanceSubstance_" + id).removeClass("substanceMainselected").addClass("SubstanceMainAllSubstance");
 
     }
@@ -686,13 +745,7 @@ function changeArrayFormAddSubstance() {
             }
 }
 
-function changeArrayFormAddProduct() {
-   for (var i=0;i < arraySubstanceProduct.length;i++) {
 
-          $("#formaddSubstanceNew").append("<input type=\'hidden\' name=\'idSubstance[]\' value='" +  arraySubstanceProduct[i]  + "' class=\'form-control typeMood\'>");
-
-            }   
-}
 
 function addSubstanceNewSubmit() {
  var arrayError = "";

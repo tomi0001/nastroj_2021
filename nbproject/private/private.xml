@@ -3,10 +3,32 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/var/www/html/nastroj_2021/public/styles/default/js/pageSetting.js</file>
-            <file>file:/var/www/html/nastroj_2021/app/Http/Services/Mood.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Settings/SettingsProductController.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSettingswidth700.css</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Services/Common.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/addNewSubstance.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSettingColor.css</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Mood.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/main.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Services/Product.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSettingAll.css</file>
+            <file>file:/var/www/html/nastroj_2021/routes/web.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/addNewGroup.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Services/Action.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Models/Product.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/CommonAll.css</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Services/Mood.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Models/Group.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/ajax/error.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/addDrugs.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Main/MainController.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/addNewProduct.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Product/ProductController.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSettingwidth1810.css</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default/js/pageSetting.js</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Mood/MoodController.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/ajax/succes.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Models/Substance.php</file>
         </group>
     </open-files>
 </project-private>

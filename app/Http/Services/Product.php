@@ -50,7 +50,17 @@ class Product {
          if (( $request->get("type")< 1)  or ( (string)(int) $request->get("type") !== $request->get("type") ) ) {
              array_push($this->error,"uzupełnij typ porcji produktu");
          }
+         if (!empty($request->get("howMg"))) {
+            $this->searchMg($request->get("howMg"));
+         }
 
+    }
+    private function searchMg(array $howMg) {
+        for ($i=0;$i < count ($howMg);$i++) {
+            if ($howMg[$i] < 0  or  ( (string)(float) $howMg[$i] !== $howMg[$i] ) and ($howMg[$i] != "") ) {
+             array_push($this->error,"zawartośc mg musi być liczbą zmienno przecinkową");
+            }
+        }
     }
     public function addDrugs(Request $request,$date,$price) {
         $use = new Usee;
@@ -189,14 +199,15 @@ class Product {
         $Product->how_much  = $request->get("how");
         $Product->save();
         if (!empty($request->get("idSubstance"))  ) {
-            $this->addProductSubstance($request->get("idSubstance"),$Product->id);
+            $this->addProductSubstance($request,$Product->id);
         }
     }
-    private function addProductSubstance(array $substance,int $idProduct) {
-        for ($i = 0;$i < count($substance);$i++)  {
+    private function addProductSubstance(Request $request,int $idProduct) {
+        for ($i = 0;$i < count($request->get("idSubstance2"));$i++)  {
             $Substances_product = new Substances_product;
-            $Substances_product->id_product= $idProduct;
-            $Substances_product->id_substances = $substance[$i];
+            $Substances_product->id_products= $idProduct;
+            $Substances_product->id_substances = $request->get("idSubstance2")[$i];
+            $Substances_product->doseProduct = $request->get("howMg2")[$i];
             $Substances_product->save();
         }
     }

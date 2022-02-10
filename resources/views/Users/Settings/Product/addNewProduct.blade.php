@@ -47,8 +47,16 @@
                                             
                                                  @foreach ($listSubstance as $list)
                                                  <div class="rowPercent">
-                                                    <div class='SubstanceMain SubstanceMainAllSubstance'  id='divSubstanceSubstance_{{$list->id}}' onclick='selectedProductProduct({{$list->id}},{{$loop->index}})'>{{$list->name}}</div>
-                                                
+                                                     <div class='substanceMain SubstanceMainAllSubstance'  id='divSubstanceSubstance_{{$list->id}}' onclick='selectedProductProduct({{$list->id}},{{$loop->index}})'>{{$list->name}}</div>
+                                                    <div class="hiddenPercentExecuting centerPercent" id='divSubstanceSubstancePercent_{{$list->id}}'>
+                                                        
+                                                        <div style="display: inline-block; width: 40%; ">
+                                                            <input type="text" class="percentExecuting form-control form-control-lg " title="zawartość mg" placeholder="zawartość mg" name="howMg[]"  min="1">
+                                                            
+                                                        </div>
+                                                        <input type="hidden"  id='idSubstance[]' name="idSubstance[]" value='{{$list->id}}'>
+                                                        
+                                                    </div>
                                                  </div>
                                                  @endforeach
                                             </div>
