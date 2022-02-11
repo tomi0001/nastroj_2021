@@ -24,6 +24,8 @@ function setFunction() {
             break;
         case 'addNewProduct': addNewProduct();
             break;
+        case 'editGroupSet': editGroup();
+            break;
     }
 }
     
@@ -43,7 +45,7 @@ function selectMenu() {
     if (sessionStorage.getItem('settingType') == 'addActionNew' || sessionStorage.getItem('settingType') == 'levelMood' || sessionStorage.getItem('settingType') == 'changeNameAction' || sessionStorage.getItem('settingType') == 'changeDateAction') {
         loadPageMood();
     }
-    if (sessionStorage.getItem('settingType') == 'addNewGroup' ||  sessionStorage.getItem('settingType') == 'addNewSubstance' || sessionStorage.getItem('settingType') == 'addNewProduct') {
+    if (sessionStorage.getItem('settingType') == 'addNewGroup' ||  sessionStorage.getItem('settingType') == 'addNewSubstance' || sessionStorage.getItem('settingType') == 'addNewProduct' || sessionStorage.getItem('settingType') == 'editGroupSet' ) {
         loadPageDrugs();
     }
 }
@@ -554,6 +556,7 @@ function addNewGroup() {
             })    
              $("#addNewSubstance").css("display","none");
              $("#addNewProduct").css("display","none");
+             $("#editGroupSet").css("display","none");
             //$("#levelMoodAdd").css("display","none");
             //$("#changeNameActionChange").css("display","none");
             //$("#changeDateActionChange").css("display","none");
@@ -591,6 +594,7 @@ function addNewSubstance() {
             //$("#changeNameActionChange").css("display","none");
             $("#addNewGroup").css("display","none");
             $("#addNewProduct").css("display","none");
+            $("#editGroupSet").css("display","none");
     }
     else {
         
@@ -625,12 +629,49 @@ function addNewProduct() {
             //$("#changeNameActionChange").css("display","none");
             $("#addNewGroup").css("display","none");
             $("#addNewSubstance").css("display","none");
+            $("#editGroupSet").css("display","none");
     }
     else {
         
         $("#addNewProduct").css("display","none");
     }        
 }
+
+function editGroup() {
+    sessionStorage.setItem('settingType', "editGroupSet");
+    if ($("#editGroupSet").css("display") == "none" ) {
+        
+        $.ajax({
+                url : urlArray[7],
+                    method : "get",
+
+                    dataType : "html",
+            })
+            .done(function(response) {
+
+
+
+
+                  $("#editGroupSet").css("display","block");
+                  $("#editGroupSet").html(response);
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })    
+            //$("#levelMoodAdd").css("display","none");
+            //$("#changeNameActionChange").css("display","none");
+            $("#addNewGroup").css("display","none");
+            $("#addNewSubstance").css("display","none");
+            $("#addNewProduct").css("display","none");
+    }
+    else {
+        
+        $("#editGroupSet").css("display","none");
+    }     
+}
+
 var arrayGroupSubstance = [];
 function selectedGroupSubstance(id,index) {
 
@@ -653,6 +694,16 @@ function selectedGroupSubstance(id,index) {
 
     }
     
+}
+
+
+function changeNameGroup() {
+    if ($("select[name='nameGroupEdit']").val() != "") {
+        $("#editGroupButton").prop("disabled",false);
+        $("#newName").css("display","block");
+        $("input[name='newNameGroup']").val($("select[name='nameGroupEdit']").text());
+        $("input[name='newNameGroupHidden']").val($("select[name='nameGroupEdit']").val())
+    }
 }
 
 
@@ -787,6 +838,32 @@ function addSubstanceNewSubmit() {
                 alert("Wystąpił błąd");
             })    
     }    
+}
+
+
+function editGroupSubmit() {
+             $.ajax({
+                url : urlArraySubmit[7],
+                    method : "get",
+                    data : 
+              $("#formeditGroup").serialize(),
+                    dataType : "html",
+            })
+            .done(function(response) {
+
+
+          
+                $("#editGroupSubmit").html(response);
+            
+
+
+                  
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })        
 }
 
 

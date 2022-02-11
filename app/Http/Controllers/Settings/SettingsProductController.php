@@ -35,6 +35,10 @@ class SettingsProductController {
         $listSubstance = Substance::selectListSubstance(Auth::User()->id);
         return view("Users.Settings.Product.addNewProduct")->with("listSubstance",$listSubstance);
     }
+    public function editGroup() {
+        $listGroup = Group::selectListGroup(Auth::User()->id);
+        return view("Users.Settings.Product.editGroup")->with("listGroup",$listGroup);
+    }
     public function addNewGroupSubmit(Request $request) {
         
         $ifExist = Group::ifExist($request->get("nameGroup"),Auth::User()->id);
@@ -46,6 +50,20 @@ class SettingsProductController {
             $Group->addNewGroup($request);
             
             print json_encode(["error"=>0,"succes"=>"Pomyślnie dodano grupę"]);
+        }
+    }
+    public function editGroupSubmit(Request $request) {
+        $ifExist = Group::checkIfNameAction($request->get("newNameGroup"),Auth::User()->id,$request->get("newNameGroupHidden"));
+        if (!empty($ifExist) ) {
+            return View("ajax.error")->with("error",["Już jest taka Grupa"]);
+            //print json_encode(["error"=>"Już jest taka Grupa"]);
+        }
+        else {
+            $Group = new Product;
+            $Group->editNameGroup($request);
+            
+            //print json_encode(["error"=>0,"succes"=>"Pomyślnie zmodyfikowano nazwę grupy"]);
+            return View("ajax.succes")->with("succes","Pomyślnie zmodyfikowano nazwę grupy");
         }
     }
     public function addNewSubstanceSubmit(Request $request) {

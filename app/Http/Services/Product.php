@@ -82,6 +82,10 @@ class Product {
         $Usee->where("id",$request->get("id"))->where("id_users",Auth::User()->id)
                 ->update(["portion"=> $request->get("doseEdit"),"id_products"=> $request->get("idProduct"),"date" => $date,"price"=> $price]);
     }
+    public function editNameGroup(Request $request) {
+        $Group = new Group;
+        $Group->where("id",$request->get("newNameGroupHidden"))->update(["name"=>$request->get("newNameGroup")]);
+    }
     public function addDescription(Request $request,$id,$date) {
         $Description = new description;
         $Description->description = str_replace("\n", "<br>", $request->get("description"));

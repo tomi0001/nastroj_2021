@@ -47,7 +47,7 @@
             <div id="newProduct"  class=" hrefDrugs hrefSettingCursor" onmouseover="selectMenuMood('newProduct')" onmouseout="unSelectMenuMood('newProduct')" onclick="addNewProduct()">
                 DODAJ NOWY PRODUKT
             </div>
-            <div id="editGroup"  class=" hrefDrugs hrefSettingCursor" onmouseover="selectMenuMood('editGroup')" onmouseout="unSelectMenuMood('editGroup')">
+            <div id="editGroup"  class=" hrefDrugs hrefSettingCursor" onmouseover="selectMenuMood('editGroup')" onmouseout="unSelectMenuMood('editGroup')" onclick="editGroup()">
                 EDYTUJ GRUPĘ
             </div>
             <div id="editSubstance"  class=" hrefDrugs hrefSettingCursor" onmouseover="selectMenuMood('editSubstance')" onmouseout="unSelectMenuMood('editSubstance')">
@@ -86,6 +86,9 @@
      <div class="pagePageDrugs pagepage bodyDrugsPage" id="addNewProduct" style="display: none;">
 
         </div>
+     <div class="pagePageDrugs pagepage bodyDrugsPage" id="editGroupSet" style="display: none;">
+
+        </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
@@ -102,7 +105,8 @@
         '{{route('settings.changeDateAction')}}',
         '{{route('settings.addNewGroup')}}',
         '{{route('settings.addNewSubstance')}}',
-        '{{route('settings.addNewProduct')}}'
+        '{{route('settings.addNewProduct')}}',
+        '{{route('settings.editGroup')}}'
     ];
     var urlArraySubmit = [
         '{{route('settings.addNewActionSubmit')}}',
@@ -111,7 +115,8 @@
         '{{route('settings.changeDateActionSubmit')}}',
         '{{route('settings.addNewGroupSubmit')}}',
         '{{route('settings.addNewSubstanceSubmit')}}',
-        '{{route('settings.addNewProductSubmit')}}'
+        '{{route('settings.addNewProductSubmit')}}',
+        '{{route('settings.editGroupSubmit')}}'
     ];
     
 
