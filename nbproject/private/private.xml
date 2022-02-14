@@ -3,122 +3,47 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageNotLogin1210.css</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showAll.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/addSleep.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showActionSum.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSettingwidth1210.css</file>
-            <file>file:/var/www/html/nastroj_2021/app/Models/Action_plan.php</file>
-            <file>file:/var/www/html/nastroj_2021/database/migrations/2014_12_12_000000_create_moods_table.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Settings/SettingsProductController.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSettingswidth700.css</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/editGroup.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/ajax/showAction.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Services/Common.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/addNewSubstance.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSettingColor.css</file>
+            <file>file:/var/www/html/nastroj_2021/app/Models/Mood.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainwidth1810.css</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showDrugs.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/main.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Models/Moods_action.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Models/Usee.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Services/Product.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/editSubstance.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSettingAll.css</file>
-            <file>file:/var/www/html/nastroj_2021/database/migrations/2021_01_12_1111114_create_products_table.php</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageNotLoginwidth700.css</file>
             <file>file:/var/www/html/nastroj_2021/routes/web.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/addMood.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/addNewGroup.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Services/Action.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Product.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/CommonAll.css</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainwidth1410.css</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/auth/loginDoctor.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Layout/User.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/database/migrations/2021_01_12_1111132_create_users_descriptions_table.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Layout/SelectSearch.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/User/UserController.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/auth/login.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Models/Action.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/editSubstanceLoadGroup.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Services/Mood.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Models/Group.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/ajax/error.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/ajax/editActionMood.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/addDrugs.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Main/MainController.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainAll.css</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/addNewProduct.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Product/ProductController.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSettingwidth1810.css</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/js/pageSetting.js</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/ajax/succes.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Settings/SettingsController.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/ajax/showTypyPortion.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/app/Models/Actions_day.php</file>
-            <file>file:/var/www/html/nastroj_2021/app/Models/Substance.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showActionDays.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSettingswidth700.css</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/addNewSubstance.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/layouts/app.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSettingColor.css</file>
-            <file>file:/var/www/html/nastroj_2021/app/Models/Substances_product.php</file>
-            <file>file:/var/www/html/nastroj_2021/storage/framework/views/f9a55d47ac24e78488a818734604890b04954090.php</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageNotLoginwidth1810.css</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Mood/addNewAction.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/Common700.css</file>
-            <file>file:/var/www/html/nastroj_2021/database/migrations/2016_12_13_000000_create_actions_plans_table.php</file>
-            <file>file:/var/www/html/nastroj_2021/app/Models/User.php</file>
-            <file>file:/var/www/html/nastroj_2021/app/Models/Action.php</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/default/tlo.png</file>
-            <file>file:/var/www/html/nastroj_2021/app/Http/Services/Calendar.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/ajax/showDrugs.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/ajax/editActionMood.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/database/seeders/DatabaseSeeder.php</file>
-            <file>file:/var/www/html/nastroj_2021/database/migrations/2023_05_06_1300501_actions_days.php</file>
-            <file>file:/var/www/html/nastroj_2021/database/migrations/2021_01_12_1111113_create_substances_table.php</file>
-            <file>file:/var/www/html/nastroj_2021/app/Models/Users_description.php</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainwidth1210.css</file>
-            <file>file:/var/www/html/nastroj_2021/database/migrations/2021_01_12_1111118_create_substances_products_table.php</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/default/js/pageMain.js</file>
-            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/doctorController.php</file>
-            <file>file:/var/www/html/nastroj_2021/app/Models/Planned_drug.php</file>
-            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Settings/SettingsProductController.php</file>
-            <file>file:/var/www/html/nastroj_2021/app/Http/Services/Common.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/auth/verify.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/CommonColor.css</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainwidth1810.css</file>
-            <file>file:/var/www/html/nastroj_2021/database/migrations/2021_01_12_1111116_create_descriptions_table.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/main.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/app/Models/Usee.php</file>
-            <file>file:/var/www/html/nastroj_2021/app/Models/Moods_action.php</file>
-            <file>file:/var/www/html/nastroj_2021/app/Http/Services/Product.php</file>
-            <file>file:/var/www/html/nastroj_2021/database/migrations/2022_01_12_0111132_create_planned_drugs_table.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/addMood.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Mood/levelMood.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Layout/Main.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/app/Http/Services/Action.php</file>
-            <file>file:/var/www/html/nastroj_2021/database/migrations/2021_01_12_1111115_create_usees_table.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showActionPlaned.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/main.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/ajax/showDescriptionDrugs.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/app/Models/Description.php</file>
-            <file>file:/var/www/html/nastroj_2021/app/Http/Services/Mood.php</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/Common1410.css</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/addActionPlaned.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/app/Models/Group.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Layout/Settings.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/addDrugs.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainAll.css</file>
-            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Main/MainController.php</file>
-            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/HomeController.php</file>
-            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Product/ProductController.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Mood/changeDateAction.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/database/migrations/2014_10_12_000000_create_users_table.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Mood/MoodController.php</file>
-            <file>file:/var/www/html/nastroj_2021/app/Http/Services/Main.php</file>
-            <file>file:/var/www/html/nastroj_2021/app/Http/Services/Sleep.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/addAction.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainColor.css</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/ajax/showAction.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSettingwidth1410.css</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageNotLogin1410.css</file>
-            <file>file:/var/www/html/nastroj_2021/config/database.php</file>
-            <file>file:/var/www/html/nastroj_2021/app/Models/Mood.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showDrugs.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showMood.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/database/migrations/2021_01_12_1111116_create_substances_groups_table.php</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageNotLoginColor.css</file>
-            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Sleep/SleepController.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showMenu.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Settings/SettingsMoodController.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/auth/register.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/calendar.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/auth/main.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/.env</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainwidth700.css</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/ajax/error.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/database/migrations/2016_12_12_000000_create_moods_actions_table.php</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/Common1810.css</file>
-            <file>file:/var/www/html/nastroj_2021/database/migrations/2021_01_12_1111111_create_groups_table.php</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/Common1210.css</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showAction.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/ajax/succes.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Mood/changeNameAction.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Action/ActionController.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default/js/pageMain.js</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainColor.css</file>
+            <file>file:/var/www/html/nastroj_2021/app/Models/Substance.php</file>
         </group>
     </open-files>
 </project-private>

@@ -149,7 +149,13 @@ Route::get("/settings/editGroup",[App\Http\Controllers\Settings\SettingsProductC
 Route::get("/settings/editGroupSubmit",[App\Http\Controllers\Settings\SettingsProductController::class, 'editGroupSubmit'])
         ->name("settings.editGroupSubmit")->middleware('auth')->middleware('can:users');
 
+Route::get("/settings/editSubstance",[App\Http\Controllers\Settings\SettingsProductController::class, 'editSubstance'])
+        ->name("settings.editSubstance")->middleware('auth')->middleware('can:users');
+Route::get("/settings/editSubstanceSubmit",[App\Http\Controllers\Settings\SettingsProductController::class, 'editSubstanceSubmit'])
+        ->name("settings.editSubstanceSubmit")->middleware('auth')->middleware('can:users');
 
+Route::get("/settings/changeSubstance",[App\Http\Controllers\Settings\SettingsProductController::class, 'changeSubstance'])
+        ->name("settings.changeSubstance")->middleware('auth')->middleware('can:users');
 
             Route::get('/users4/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\Search\SearchController::class, 'index2'])->name('users.search')
                     ->middleware('auth')->middleware('can:users');

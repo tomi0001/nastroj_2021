@@ -17,4 +17,7 @@ class Group extends Model
     public static function checkIfNameAction( $name,int $idUsers, $id) {
         return self::where("id_users",$idUsers)->where("name",$name)->where("id","!=",$id)->count();
     }
+    public static function showGroups(int $idUsers) {
+        return self::selectRaw("name as name")->selectRaw("id as id")->where("id_users",$idUsers)->get();
+    }
 }

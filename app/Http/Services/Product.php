@@ -34,6 +34,40 @@ class Product {
              array_push($this->error,"Równoważnik musi być dodatnią liczbą zmienno przcinkową");
          }
     }
+    public function checkErrorEditSubstance(Request $request) {
+         if (  ( $ifExist = Substance::checkIfNameSubstance($request->get("newName"),Auth::User()->id,$request->get("nameSubstance")) > 0 ))  {
+             array_push($this->error,"Już jest taka substancja");
+         }
+         if ($request->get("equivalent") < 0  or  ( (string)(float) $request->get("equivalent") !== $request->get("equivalent") ) and ($request->get("equivalent") != "") ) {
+             array_push($this->error,"Równoważnik musi być dodatnią liczbą zmienno przcinkową");
+         }
+    }
+    public function sortWhereSubstance($listGroup,$listSubstance) {
+        $arrayNew = [];
+        $i = 0;
+        $bool = false;
+        foreach ($listGroup as $listGro) {
+            foreach ($listSubstance as $listSub) {
+                if ($listSub->id_groups == $listGro->id) {
+
+                    $arrayNew[$i]["bool"] = true;
+                    $arrayNew[$i]["nameGroup"] = $listGro->name;
+                    $arrayNew[$i]["id"] = $listGro->id;
+                    $bool = true;
+                    break;
+                }
+            }
+            if ($bool == false) {
+                $arrayNew[$i]["bool"] = false;
+                $arrayNew[$i]["nameGroup"] = $listGro->name;
+                $arrayNew[$i]["id"] = $listGro->id;
+                
+            }
+            $bool = false;
+            $i++;
+        }
+        return $arrayNew;
+    }
     public function checkErrorAddProduct(Request $request) {
         if (  !empty( $ifExist = appProduct::ifExist($request->get("nameProduct"),Auth::User()->id) ))  {
              array_push($this->error,"Już jest taki produkt");
@@ -213,6 +247,22 @@ class Product {
             $Substances_product->id_substances = $request->get("idSubstance2")[$i];
             $Substances_product->doseProduct = $request->get("howMg2")[$i];
             $Substances_product->save();
+        }
+    }
+    public function resetSubstance(Request $request) {
+        $Substances_group = new Substances_group;
+        $Substances_group->where("id_substances",$request->get("nameSubstance"))->delete();
+    }
+    public function updateSubstanceGroupname(Request $request) {
+        $Substance = new Substance;
+        $Substance->where("id",$request->get("nameSubstance"))->update(["name"=>$request->get("newName"),"equivalent"=>$request->get("equivalent")]);
+    }
+    public function updateSubstanceGroup(Request $request) {
+        for ($i = 0;$i < count($request->get("idGroup"));$i++) {
+            $Substances_group = new Substances_group;
+            $Substances_group->id_substances = $request->get("nameSubstance");
+            $Substances_group->id_groups  =$request->get("idGroup")[$i];
+            $Substances_group->save();
         }
     }
 }

@@ -66,12 +66,12 @@
             </tr>
             <tr>
                 <td colspan="2"  class="center">
-                    <input type="button" class="btn-drugs  drugs" onclick="addSubstanceNewSubmit()" value='DODAJ'>
+                    <input type="button" class="btn-drugs  drugs" id= "addNewSubstanceButton" onclick="addSubstanceNewSubmit()" value='DODAJ'>
                 </td>
             </tr>
             <tr>
                 <td colspan="2" class='center'>
-                    <div id='addNewProductSubmit' class=' center ajaxMessage'>
+                    <div id='addNewSubstanceSubmit' class=' center ajaxMessage'>
 
                     </div>
                 </td>

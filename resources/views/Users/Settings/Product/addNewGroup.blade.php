@@ -15,7 +15,7 @@
             
             <tr>
                 <td colspan="2"  class="center">
-                    <input type="button" class="btn-drugs  drugs" onclick="addGroupNewSubmit()" value='DODAJ'>
+                    <input type="button" class="btn-drugs  drugs" id="addNewGroupButton" onclick="addGroupNewSubmit()" value='DODAJ'>
                 </td>
             </tr>
             <tr>

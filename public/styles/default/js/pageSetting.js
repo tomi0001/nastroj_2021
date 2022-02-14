@@ -26,6 +26,8 @@ function setFunction() {
             break;
         case 'editGroupSet': editGroup();
             break;
+        case 'editSubstanceSet': editSubstance();
+            break;
     }
 }
     
@@ -45,7 +47,7 @@ function selectMenu() {
     if (sessionStorage.getItem('settingType') == 'addActionNew' || sessionStorage.getItem('settingType') == 'levelMood' || sessionStorage.getItem('settingType') == 'changeNameAction' || sessionStorage.getItem('settingType') == 'changeDateAction') {
         loadPageMood();
     }
-    if (sessionStorage.getItem('settingType') == 'addNewGroup' ||  sessionStorage.getItem('settingType') == 'addNewSubstance' || sessionStorage.getItem('settingType') == 'addNewProduct' || sessionStorage.getItem('settingType') == 'editGroupSet' ) {
+    if (sessionStorage.getItem('settingType') == 'addNewGroup' ||  sessionStorage.getItem('settingType') == 'addNewSubstance' || sessionStorage.getItem('settingType') == 'addNewProduct' || sessionStorage.getItem('settingType') == 'editGroupSet' || sessionStorage.getItem('settingType') == 'editSubstanceSet'  ) {
         loadPageDrugs();
     }
 }
@@ -557,6 +559,7 @@ function addNewGroup() {
              $("#addNewSubstance").css("display","none");
              $("#addNewProduct").css("display","none");
              $("#editGroupSet").css("display","none");
+             $("#editSubstanceSet").css("display","none");
             //$("#levelMoodAdd").css("display","none");
             //$("#changeNameActionChange").css("display","none");
             //$("#changeDateActionChange").css("display","none");
@@ -595,6 +598,7 @@ function addNewSubstance() {
             $("#addNewGroup").css("display","none");
             $("#addNewProduct").css("display","none");
             $("#editGroupSet").css("display","none");
+            $("#editSubstanceSet").css("display","none");
     }
     else {
         
@@ -630,6 +634,7 @@ function addNewProduct() {
             $("#addNewGroup").css("display","none");
             $("#addNewSubstance").css("display","none");
             $("#editGroupSet").css("display","none");
+            $("#editSubstanceSet").css("display","none");
     }
     else {
         
@@ -665,13 +670,48 @@ function editGroup() {
             $("#addNewGroup").css("display","none");
             $("#addNewSubstance").css("display","none");
             $("#addNewProduct").css("display","none");
+            $("#editSubstanceSet").css("display","none");
     }
     else {
         
         $("#editGroupSet").css("display","none");
     }     
 }
+function editSubstance() {
+    sessionStorage.setItem('settingType', "editSubstanceSet");
+    if ($("#editSubstanceSet").css("display") == "none" ) {
+        
+        $.ajax({
+                url : urlArray[8],
+                    method : "get",
 
+                    dataType : "html",
+            })
+            .done(function(response) {
+
+
+
+
+                  $("#editSubstanceSet").css("display","block");
+                  $("#editSubstanceSet").html(response);
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })    
+            //$("#levelMoodAdd").css("display","none");
+            //$("#changeNameActionChange").css("display","none");
+            $("#addNewGroup").css("display","none");
+            $("#addNewSubstance").css("display","none");
+            $("#addNewProduct").css("display","none");
+            $("#editGroupSet").css("display","none");
+    }
+    else {
+        
+        $("#editSubstanceSet").css("display","none");
+    }        
+}
 var arrayGroupSubstance = [];
 function selectedGroupSubstance(id,index) {
 
@@ -695,6 +735,43 @@ function selectedGroupSubstance(id,index) {
     }
     
 }
+var arrayGroupSubstanceChange = [];
+function selectedSubstanceChangeMainSetValue(data,lenght) {
+    //return;
+//alert(lenght);
+    for (var i = 0;i < lenght;i++) {
+        
+        if ($("#divSubstanceSubstanceChange_" + data[i].id).length==1) {
+            $("#divSubstanceSubstanceChange_" + data[i].id).removeClass("groupMainAllGroup").addClass("groupMainselected");
+            arrayGroupSubstanceChange.push(data[i].id);
+          
+        }
+    }
+ 
+}
+function selectedSubstanceChangeMainValue(id,index) {
+    
+    if ($("#divSubstanceSubstanceChange_" + id + ":first").hasClass("groupMainAllGroup")) {
+        $("#divSubstanceSubstanceChange_" + id).removeClass("groupMainAllGroup").addClass("groupMainselected");
+        //$("#divActionPercent_" + id).removeClass("hiddenPercentExecuting").addClass('active');
+        //$("#idAction").eq(index).val(id);
+        arrayGroupSubstanceChange.push(id);
+        //$("#idActio" + id).val(id);
+        //alert(index);
+    }
+    else {
+        var i = arrayGroupSubstanceChange.indexOf(id);
+        arrayGroupSubstanceChange.splice(i,1);
+        
+        //$("#idActio" + id).val('');
+        //$("#idAction").eq(index).val('NULL');
+        //$("#divActionPercent_" + id).addClass("hiddenPercentExecuting").removeClass('active');
+        $("#divSubstanceSubstanceChange_" + id).removeClass("groupMainselected").addClass("groupMainAllGroup");
+
+    }    
+}
+
+
 
 
 function changeNameGroup() {
@@ -795,11 +872,47 @@ function changeArrayFormAddSubstance() {
 
             }
 }
+function changeArrayFormEditSubstance() {
+
+        for (var i=0;i < arrayGroupSubstanceChange.length;i++) {
+
+          $("#formUpdateSubstance2").append("<input type=\'hidden\' name=\'idGroup[]\' value='" +  arrayGroupSubstanceChange[i]  + "' class=\'form-control typeMood\'>");
+
+            }
+}
+function loadChangeSubstance(url) {
+    if ($("#nameSubstance").val() != "") {
+        
+        $("#editSubstanceSubmitButton").prop("disabled",false);
+         $.ajax({
+                url : url,
+                    method : "get",
+                    data : "id=" + $("#nameSubstance").val(),
+
+                    dataType : "html",
+            })
+            .done(function(response) {
+
+          
+        $("#changeSubstanceDiv").html(response);
+       
+                
+            //$("#formaddSubstanceNew").find(":hidden").filter(".typeMood").remove();
 
 
+                  
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })       
+        }
+}
 
 function addSubstanceNewSubmit() {
  var arrayError = "";
+ 
  //alert(arrayGroupSubstance.length);
     if ($("input[name='nameSubstance']").val() == "") {
         arrayError += "Uzupełnij nazwe Substancji<br>";
@@ -826,7 +939,7 @@ function addSubstanceNewSubmit() {
           
         $("#addNewSubstanceSubmit").html(response);
        
-                
+                arrayGroupSubstance.length = 0;
             $("#formaddSubstanceNew").find(":hidden").filter(".typeMood").remove();
 
 
@@ -840,6 +953,48 @@ function addSubstanceNewSubmit() {
     }    
 }
 
+
+function editSubstanceSubmit() {
+ var arrayError = "";
+ //alert(arrayGroupSubstance.length);
+    if ($("input[name='newName']").val() == "") {
+        arrayError += "Uzupełnij nazwe Substancji<br>";
+        //alert('Uzupełnij nazwe akcji');
+        //return;
+    }
+
+    if (arrayError != "") {
+        $("#updateSubstanceDiv").addClass("ajaxError");
+        $("#updateSubstanceDiv").html(arrayError);
+        return;
+    }
+    else {
+        changeArrayFormEditSubstance();
+         $.ajax({
+                url : urlArraySubmit[8],
+                    method : "get",
+                    data : 
+              $("#formUpdateSubstance2").serialize() + $("#formUpdateSubstance").serialize(),
+                    dataType : "html",
+            })
+            .done(function(response) {
+
+          
+        $("#updateSubstanceDiv").html(response);
+       
+                 arrayGroupSubstanceChange.length = 0;
+            $("#formUpdateSubstance2").find(":hidden").filter(".typeMood").remove();
+
+
+                  
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })    
+    }       
+}
 
 function editGroupSubmit() {
              $.ajax({
@@ -896,7 +1051,7 @@ function addProductNewSubmit() {
           
         $("#addNewProductSubmit").html(response);
        
-                
+                arraySubstanceProduct.length = 0;
             $("#formaddProductNew").find(":hidden").filter(".typeMood").remove();
 
 

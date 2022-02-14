@@ -106,7 +106,7 @@
             </tr>
             <tr>
                 <td colspan="2"  class="center">
-                    <input type="button" class="btn-drugs  drugs" onclick="addProductNewSubmit()" value='DODAJ'>
+                    <input type="button" class="btn-drugs  drugs"  id= "addNewProductButton" onclick="addProductNewSubmit()" value='DODAJ'>
                 </td>
             </tr>
             <tr>

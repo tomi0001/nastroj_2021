@@ -39,6 +39,10 @@ class SettingsProductController {
         $listGroup = Group::selectListGroup(Auth::User()->id);
         return view("Users.Settings.Product.editGroup")->with("listGroup",$listGroup);
     }
+    public function editSubstance() {
+        $listSubstance = Substance::selectListSubstance(Auth::User()->id);
+        return view("Users.Settings.Product.editSubstance")->with("listSubstance",$listSubstance);
+    }
     public function addNewGroupSubmit(Request $request) {
         
         $ifExist = Group::ifExist($request->get("nameGroup"),Auth::User()->id);
@@ -51,6 +55,17 @@ class SettingsProductController {
             
             print json_encode(["error"=>0,"succes"=>"Pomyślnie dodano grupę"]);
         }
+    }
+    public function changeSubstance(Request $request) {
+        $listGroup = Group::selectListGroup(Auth::User()->id);
+        $showSettingsSubstance = Substance::showSettingsSubstance($request->get("id"),Auth::User()->id);
+        $equivalent = Substance::showSubstanceEquivalentName($request->get("id"),Auth::User()->id);
+        $Product = new Product;
+        $newList = $Product->sortWhereSubstance($listGroup,$showSettingsSubstance);
+        return View("Users.Settings.Product.editSubstanceLoadGroup")->with("listGroup",$newList)->with("idSubstance",$request->get("id"))
+                ->with("equivalent",$equivalent);    
+        //print ("<pre>");
+        //print_r($showSettingsSubstance);
     }
     public function editGroupSubmit(Request $request) {
         $ifExist = Group::checkIfNameAction($request->get("newNameGroup"),Auth::User()->id,$request->get("newNameGroupHidden"));
@@ -80,6 +95,24 @@ class SettingsProductController {
             $Substance->addNewSubstance($request);
             return View("ajax.succes")->with("succes","Pomyślnie dodano substancę");
          //   print json_encode(["error"=>0,"succes"=>"Pomyślnie dodano akcję"]);
+        }
+    }
+    public function editSubstanceSubmit(Request $request) {
+        $Substance = new Product;
+        $Substance->checkErrorEditSubstance($request);
+        if (count($Substance->error) > 0) {
+            return View("ajax.error")->with("error",$Substance->error);
+            
+        }
+        else {
+            $Substance->resetSubstance($request);
+            
+            $Substance->updateSubstanceGroupname($request);
+            
+            if (!empty($request->get("idGroup")) ) {
+                $Substance->updateSubstanceGroup($request);
+            }
+            return View("ajax.succes")->with("succes","Pomyslnie zmodyfikowano susbtancę");
         }
     }
     public function addNewProductSubmit(Request $request) {

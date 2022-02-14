@@ -14,5 +14,19 @@ class Substance extends Model
     public static function selectListSubstance(int $idUsers) {
         return self::selectRaw("id as id")->selectRaw("name as name")->where("id_users",$idUsers)->get();
     }
-
+    public static function showSettingsSubstance(int $id, int $idUsers) {
+        return self::join("substances_groups","substances_groups.id_substances","substances.id")
+                ->join("groups","groups.id","substances_groups.id_groups")
+                ->selectRaw("groups.name as nameGroup")
+                ->selectRaw("substances_groups.id_groups as id_groups")
+                ->where("substances.id",$id)
+                ->where("substances.id_users",$idUsers)->get();
+    }
+    public static function showSubstanceEquivalentName(int $id,int $idUsers) {
+       return self::selectRaw("substances.equivalent as equivalent")->selectRaw("substances.name as name")->where("id",$id)
+                ->where("id_users",$idUsers)->first();
+    }
+    public static function checkIfNameSubstance( $name,int $idUsers, $id) {
+        return self::where("id_users",$idUsers)->where("name",$name)->where("id","!=",$id)->count();
+    }
 }
