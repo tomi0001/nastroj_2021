@@ -154,8 +154,17 @@ Route::get("/settings/editSubstance",[App\Http\Controllers\Settings\SettingsProd
 Route::get("/settings/editSubstanceSubmit",[App\Http\Controllers\Settings\SettingsProductController::class, 'editSubstanceSubmit'])
         ->name("settings.editSubstanceSubmit")->middleware('auth')->middleware('can:users');
 
+Route::get("/settings/editProduct",[App\Http\Controllers\Settings\SettingsProductController::class, 'editProduct'])
+        ->name("settings.editProduct")->middleware('auth')->middleware('can:users');
+Route::get("/settings/editProductSubmit",[App\Http\Controllers\Settings\SettingsProductController::class, 'editProductSubmit'])
+        ->name("settings.editProductSubmit")->middleware('auth')->middleware('can:users');
+
+Route::get("/settings/changeProduct",[App\Http\Controllers\Settings\SettingsProductController::class, 'changeProduct'])
+        ->name("settings.changeProduct")->middleware('auth')->middleware('can:users');
+
 Route::get("/settings/changeSubstance",[App\Http\Controllers\Settings\SettingsProductController::class, 'changeSubstance'])
         ->name("settings.changeSubstance")->middleware('auth')->middleware('can:users');
+
 
             Route::get('/users4/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\Search\SearchController::class, 'index2'])->name('users.search')
                     ->middleware('auth')->middleware('can:users');

@@ -68,7 +68,35 @@ class Product {
         }
         return $arrayNew;
     }
-    public function checkErrorAddProduct(Request $request) {
+    public function sortWhereProduct($listSubstance,$listProduct) {
+        $arrayNew = [];
+        $i = 0;
+        $bool = false;
+        foreach ($listSubstance as $listSub) {
+            foreach ($listProduct as $listPro) {
+                if ($listPro->id_substances == $listSub->id) {
+
+                    $arrayNew[$i]["bool"] = true;
+                    $arrayNew[$i]["nameSub"] = $listSub->name;
+                    $arrayNew[$i]["id"] = $listSub->id;
+                    $arrayNew[$i]["dose"] = $listPro->doseProduct;
+                    $bool = true;
+                    break;
+                }
+            }
+            if ($bool == false) {
+                $arrayNew[$i]["bool"] = false;
+                $arrayNew[$i]["nameSub"] = $listSub->name;
+                $arrayNew[$i]["id"] = $listSub->id;
+                $arrayNew[$i]["dose"] = "";
+                
+            }
+            $bool = false;
+            $i++;
+        }
+        return $arrayNew;        
+    }
+    public function checkErrorAddProduct(Request $request) { 
         if (  !empty( $ifExist = appProduct::ifExist($request->get("nameProduct"),Auth::User()->id) ))  {
              array_push($this->error,"Już jest taki produkt");
          }
@@ -81,6 +109,9 @@ class Product {
          if ($request->get("how") < 0  or  ( (string)(float) $request->get("how") !== $request->get("how") ) and ($request->get("how") != "") ) {
              array_push($this->error,"za ile musi być dodatnią liczbą zmienno przecinkową");
          }
+         if ($request->get("how") == "" xor $request->get("price") == "") {
+             array_push($this->error,"Pola Cana i za ile muszą być dwa puste albo dwa wypełnione");
+         }
          if (( $request->get("type")< 1)  or ( (string)(int) $request->get("type") !== $request->get("type") ) ) {
              array_push($this->error,"uzupełnij typ porcji produktu");
          }
@@ -88,6 +119,29 @@ class Product {
             $this->searchMg($request->get("howMg"));
          }
 
+    }
+    public function checkErrorEditProduct(Request $request) {
+        if (  !empty( $ifExist = appProduct::ifExistEdit($request->get("newName"),Auth::User()->id,$request->get("nameProduct")) ))  {
+             array_push($this->error,"Już jest taki produkt");
+         }
+         if ($request->get("percent") < 0  or  ( (string)(float) $request->get("percent") !== $request->get("percent") ) and ($request->get("percent") != "") ) {
+             array_push($this->error,"procent napoju alkoholowego musi być dodatnią liczbą zmienno przecinkową");
+         }
+         if ($request->get("price") < 0  or  ( (string)(float) $request->get("price") !== $request->get("price") ) and ($request->get("price") != "") ) {
+             array_push($this->error,"cena produktu musi być dodatnią liczbą zmienno przecinkową");
+         }
+         if ($request->get("howMuch") < 0  or  ( (string)(float) $request->get("howMuch") !== $request->get("howMuch") ) and ($request->get("howMuch") != "") ) {
+             array_push($this->error,"za ile musi być dodatnią liczbą zmienno przecinkową");
+         }
+         if ($request->get("howMuch") == "" xor $request->get("price") == "") {
+             array_push($this->error,"Pola Cana i za ile muszą być dwa puste albo dwa wypełnione");
+         }
+         if (( $request->get("type")< 1)  or ( (string)(int) $request->get("type") !== $request->get("type") ) ) {
+             array_push($this->error,"uzupełnij typ porcji produktu");
+         }
+         if (!empty($request->get("howMg2"))) {
+            $this->searchMg($request->get("howMg2"));
+         }        
     }
     private function searchMg(array $howMg) {
         for ($i=0;$i < count ($howMg);$i++) {
@@ -236,7 +290,7 @@ class Product {
         $Product->price  = $request->get("price");
         $Product->how_much  = $request->get("how");
         $Product->save();
-        if (!empty($request->get("idSubstance"))  ) {
+        if (!empty($request->get("idSubstance2"))  ) {
             $this->addProductSubstance($request,$Product->id);
         }
     }
@@ -253,9 +307,18 @@ class Product {
         $Substances_group = new Substances_group;
         $Substances_group->where("id_substances",$request->get("nameSubstance"))->delete();
     }
+    public function resetProduct(Request $request) {
+        $Substances_product = new Substances_product;
+        $Substances_product->where("id_products",$request->get("nameProduct"))->delete();
+    }
     public function updateSubstanceGroupname(Request $request) {
         $Substance = new Substance;
         $Substance->where("id",$request->get("nameSubstance"))->update(["name"=>$request->get("newName"),"equivalent"=>$request->get("equivalent")]);
+    }
+    public function updateProductSubstancename(Request $request) {
+        $Product = new appProduct;
+        $Product->where("id",$request->get("nameProduct"))->update(["name"=>$request->get("newName"),"how_percent"=>$request->get("percent"),
+                "type_of_portion" => $request->get("type"),"price" => $request->get("price"),"how_much" => $request->get("howMuch")]);
     }
     public function updateSubstanceGroup(Request $request) {
         for ($i = 0;$i < count($request->get("idGroup"));$i++) {
@@ -263,6 +326,15 @@ class Product {
             $Substances_group->id_substances = $request->get("nameSubstance");
             $Substances_group->id_groups  =$request->get("idGroup")[$i];
             $Substances_group->save();
+        }
+    }
+    public function updateProductSubstance(Request $request) {
+        for ($i = 0;$i < count($request->get("idSubstance2"));$i++) {
+            $Substances_product = new Substances_product;
+            $Substances_product->id_products = $request->get("nameProduct");
+            $Substances_product->id_substances  =$request->get("idSubstance2")[$i];
+            $Substances_product->doseProduct  =$request->get("howMg2")[$i];
+            $Substances_product->save();
         }
     }
 }

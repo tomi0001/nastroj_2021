@@ -308,6 +308,9 @@ class Mood {
         }
     }
     public function checkErrorAction(Request $request,int $minute) {
+        if (empty($request->get("idActions")  )) {
+            return;
+        }
         for ($i = 0;$i < count($request->get("idActions"));$i++) {
             if ($request->get("idActions")[$i] != "" and $request->get("idActions")[$i] != NULL and ($request->get("idActions")[$i] < 1 or $request->get("idActions")[$i] > 100)) {
                 array_push($this->errors,"Procent musi być w zakresie od 1 do 100 lub pole ma być puste");

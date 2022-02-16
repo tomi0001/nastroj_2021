@@ -19,6 +19,7 @@
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Product.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/editSubstance.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSettingAll.css</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Settings/SettingsMoodController.php</file>
             <file>file:/var/www/html/nastroj_2021/routes/web.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/addMood.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/addNewGroup.blade.php</file>
@@ -40,6 +41,8 @@
             <file>file:/var/www/html/nastroj_2021/public/styles/default/js/pageSetting.js</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Mood/MoodController.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/ajax/succes.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/editProductLoadSubstance.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/editProduct.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Mood/changeNameAction.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/js/pageMain.js</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainColor.css</file>

@@ -46,7 +46,7 @@
                                                      @endif
                                                      
                                                     <div class='groupMain groupMainAllGroup'  id='divSubstanceSubstanceChange_{{$listGroup[$i]["id"]}}' onclick='selectedSubstanceChangeMainValue({{$listGroup[$i]["id"]}},{{$i}})'>{{$listGroup[$i]["nameGroup"]}} </div>
-                                                    <div class="hiddenPercentExecuting centerPercent" id='divActionPercent_$listGroup[$i]["id"]'>
+                                                    <div class="hiddenPercentExecuting centerPercent" id='divActionPercent_{{$listGroup[$i]["id"]}}'>
                                                         <div style="display: inline-block; width: 40%;">
 
                                                         </div>

@@ -10,19 +10,19 @@
   });    
 </script>
 <div class="titleDrugsSettings">
-                        EDYTUJ SUBSTANCĘ
+                        EDYTUJ PRODUKT
         </div>
 <div class="bodyPage">
-    <form method="get" id='formUpdateSubstance2'>
+    <form method="get" id='formUpdateProduct2'>
         <table class="table">
             <tr>
                 <td class="tdColorDrugs">
-                    Nazwa substancji
+                    Nazwa produktu
                 </td>
                 <td width="50%">
-                    <select id="nameSubstance" name="nameSubstance" class="form-control" onchange="loadChangeSubstance('{{ route('settings.changeSubstance')}}')">
+                    <select id="nameProduct" name="nameProduct" class="form-control" onchange="loadChangeProduct('{{ route('settings.changeProduct')}}')">
                         <option value=""></option>
-                         @foreach ($listSubstance as $list)
+                         @foreach ($listProduct as $list)
                             <option value="{{$list->id}}">{{$list->name}}</option>
                          @endforeach
                     </select>
@@ -30,7 +30,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <div id="changeSubstanceDiv">
+                    <div id="changeProductDiv">
                         
                     </div>
                 </td>
@@ -39,12 +39,12 @@
             
             <tr>
                 <td colspan="2"  class="center">
-                    <input type="button" class="btn-drugs  drugs" disabled id="editSubstanceSubmitButton" onclick="editSubstanceSubmit()" value='EDYTUJ'>
+                    <input type="button" class="btn-drugs  drugs" disabled id="editProductSubmitButton" onclick="editProductSubmit()" value='EDYTUJ'>
                 </td>
             </tr>
             <tr>
                 <td colspan="2" class='center'>
-                    <div id='updateSubstanceDiv' class=' center ajaxMessage'>
+                    <div id='updateProductDiv' class=' center ajaxMessage'>
 
                     </div>
                 </td>

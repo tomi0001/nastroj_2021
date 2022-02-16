@@ -43,6 +43,10 @@ class SettingsProductController {
         $listSubstance = Substance::selectListSubstance(Auth::User()->id);
         return view("Users.Settings.Product.editSubstance")->with("listSubstance",$listSubstance);
     }
+    public function editProduct() {
+        $listProduct = ModelProduct::selectListProduct(Auth::User()->id);
+        return view("Users.Settings.Product.editProduct")->with("listProduct",$listProduct);
+    }
     public function addNewGroupSubmit(Request $request) {
         
         $ifExist = Group::ifExist($request->get("nameGroup"),Auth::User()->id);
@@ -67,6 +71,18 @@ class SettingsProductController {
         //print ("<pre>");
         //print_r($showSettingsSubstance);
     }
+    
+    public function changeProduct(Request $request) {
+        $listSubstance = Substance::selectListSubstance(Auth::User()->id);
+        $showSettingsProduct = ModelProduct::showSettingsProduct($request->get("id"),Auth::User()->id);
+        $percent = ModelProduct::showProductPercentName($request->get("id"),Auth::User()->id);
+        $Product = new Product;
+        $newList = $Product->sortWhereProduct($listSubstance,$showSettingsProduct);
+        return View("Users.Settings.Product.editProductLoadSubstance")->with("listSub",$newList)->with("idProduct",$request->get("id"))
+                ->with("percent",$percent);   
+    }
+    
+    
     public function editGroupSubmit(Request $request) {
         $ifExist = Group::checkIfNameAction($request->get("newNameGroup"),Auth::User()->id,$request->get("newNameGroupHidden"));
         if (!empty($ifExist) ) {
@@ -80,6 +96,25 @@ class SettingsProductController {
             //print json_encode(["error"=>0,"succes"=>"Pomyślnie zmodyfikowano nazwę grupy"]);
             return View("ajax.succes")->with("succes","Pomyślnie zmodyfikowano nazwę grupy");
         }
+    }
+    public function editProductSubmit(Request $request) {
+        $Product = new Product;
+        $Product->checkErrorEditProduct($request);
+        if (count($Product->error) > 0) {
+            return View("ajax.error")->with("error",$Product->error);
+            
+        }
+        else {
+            $Product->resetProduct($request);
+            
+            $Product->updateProductSubstancename($request);
+            
+            if (!empty($request->get("idSubstance2")) ) {
+                $Product->updateProductSubstance($request);
+            }
+            return View("ajax.succes")->with("succes","Pomyslnie zmodyfikowano produkt");
+        }
+        
     }
     public function addNewSubstanceSubmit(Request $request) {
         $Substance = new Product;

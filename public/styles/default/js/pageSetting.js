@@ -28,6 +28,8 @@ function setFunction() {
             break;
         case 'editSubstanceSet': editSubstance();
             break;
+        case 'editProductSet': editProduct();
+            break;
     }
 }
     
@@ -47,7 +49,7 @@ function selectMenu() {
     if (sessionStorage.getItem('settingType') == 'addActionNew' || sessionStorage.getItem('settingType') == 'levelMood' || sessionStorage.getItem('settingType') == 'changeNameAction' || sessionStorage.getItem('settingType') == 'changeDateAction') {
         loadPageMood();
     }
-    if (sessionStorage.getItem('settingType') == 'addNewGroup' ||  sessionStorage.getItem('settingType') == 'addNewSubstance' || sessionStorage.getItem('settingType') == 'addNewProduct' || sessionStorage.getItem('settingType') == 'editGroupSet' || sessionStorage.getItem('settingType') == 'editSubstanceSet'  ) {
+    if (sessionStorage.getItem('settingType') == 'addNewGroup' ||  sessionStorage.getItem('settingType') == 'addNewSubstance' || sessionStorage.getItem('settingType') == 'addNewProduct' || sessionStorage.getItem('settingType') == 'editGroupSet' || sessionStorage.getItem('settingType') == 'editSubstanceSet' || sessionStorage.getItem('settingType') == 'editProductSet'  ) {
         loadPageDrugs();
     }
 }
@@ -560,6 +562,7 @@ function addNewGroup() {
              $("#addNewProduct").css("display","none");
              $("#editGroupSet").css("display","none");
              $("#editSubstanceSet").css("display","none");
+             $("#editProductSet").css("display","none");
             //$("#levelMoodAdd").css("display","none");
             //$("#changeNameActionChange").css("display","none");
             //$("#changeDateActionChange").css("display","none");
@@ -599,6 +602,7 @@ function addNewSubstance() {
             $("#addNewProduct").css("display","none");
             $("#editGroupSet").css("display","none");
             $("#editSubstanceSet").css("display","none");
+            $("#editProductSet").css("display","none");
     }
     else {
         
@@ -635,6 +639,7 @@ function addNewProduct() {
             $("#addNewSubstance").css("display","none");
             $("#editGroupSet").css("display","none");
             $("#editSubstanceSet").css("display","none");
+            $("#editProductSet").css("display","none");
     }
     else {
         
@@ -671,6 +676,7 @@ function editGroup() {
             $("#addNewSubstance").css("display","none");
             $("#addNewProduct").css("display","none");
             $("#editSubstanceSet").css("display","none");
+            $("#editProductSet").css("display","none");
     }
     else {
         
@@ -706,12 +712,51 @@ function editSubstance() {
             $("#addNewSubstance").css("display","none");
             $("#addNewProduct").css("display","none");
             $("#editGroupSet").css("display","none");
+            $("#editProductSet").css("display","none");
     }
     else {
         
         $("#editSubstanceSet").css("display","none");
     }        
 }
+
+function editProduct() {
+    sessionStorage.setItem('settingType', "editProductSet");
+    if ($("#editProductSet").css("display") == "none" ) {
+        
+        $.ajax({
+                url : urlArray[9],
+                    method : "get",
+
+                    dataType : "html",
+            })
+            .done(function(response) {
+
+
+
+
+                  $("#editProductSet").css("display","block");
+                  $("#editProductSet").html(response);
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })    
+            //$("#levelMoodAdd").css("display","none");
+            //$("#changeNameActionChange").css("display","none");
+            $("#addNewGroup").css("display","none");
+            $("#addNewSubstance").css("display","none");
+            $("#addNewProduct").css("display","none");
+            $("#editGroupSet").css("display","none");
+            $("#editSubstanceSet").css("display","none");
+    }
+    else {
+        
+        $("#editProductSet").css("display","none");
+    }        
+}
+
 var arrayGroupSubstance = [];
 function selectedGroupSubstance(id,index) {
 
@@ -735,6 +780,7 @@ function selectedGroupSubstance(id,index) {
     }
     
 }
+
 var arrayGroupSubstanceChange = [];
 function selectedSubstanceChangeMainSetValue(data,lenght) {
     //return;
@@ -748,6 +794,43 @@ function selectedSubstanceChangeMainSetValue(data,lenght) {
         }
     }
  
+}
+function selectedProductChangeMainSetValue(data,lenght) {
+    //return;
+//alert(lenght);
+    for (var i = 0;i < lenght;i++) {
+        
+        if ($("#divSubstanceSubstanceChange_" + data[i].id).length==1) {
+            $("#divSubstanceSubstanceChange_" + data[i].id).removeClass("groupMainAllGroup").addClass("groupMainselected");
+            arraySubstanceProductChange.push(data[i].id);
+            //arraySubstanceProductChange.push(data[i].dose);
+          
+        }
+    }
+ 
+}
+var arraySubstanceProductChange = [];
+function selectedProductChangeMainValue(id,index) {
+    if ($("#divSubstanceSubstanceChange_" + id + ":first").hasClass("groupMainAllGroup")) {
+        $("#divSubstanceSubstanceChange_" + id).removeClass("groupMainAllGroup").addClass("groupMainselected");
+        $("#divActionPercent_" + id).removeClass("hiddenPercentExecuting").addClass("showPercentExecuting");
+        //$("#divActionPercent_" + id).removeClass("hiddenPercentExecuting").addClass('active');
+        //$("#idAction").eq(index).val(id);
+        arraySubstanceProductChange.push(id);
+        //$("#idActio" + id).val(id);
+        //alert(index);
+    }
+    else {
+        var i = arraySubstanceProductChange.indexOf(id);
+        arraySubstanceProductChange.splice(i,1);
+        
+        //$("#idActio" + id).val('');
+        //$("#idAction").eq(index).val('NULL');
+        //$("#divActionPercent_" + id).addClass("hiddenPercentExecuting").removeClass('active');
+        $("#divSubstanceSubstanceChange_" + id).removeClass("groupMainselected").addClass("groupMainAllGroup");
+        $("#divActionPercent_" + id).removeClass("showPercentExecuting").addClass("hiddenPercentExecuting");
+
+    }   
 }
 function selectedSubstanceChangeMainValue(id,index) {
     
@@ -838,6 +921,59 @@ function changeArrayFormAddProduct() {
 }
 
 
+function changeArrayFormEditProduct() {
+    //var i = 0;
+
+    let array = document.querySelectorAll('input[name^="howMg"]');
+    //alert(u.length);
+    
+    for (var i=0;i < array.length;i++) {
+        //alert($('input[name^="idActionss"]').eq(i).val());
+        var id = $('input[name^="idSubstance"]').eq(i).val();
+        if (arraySubstanceProductChange.find(element => element == id )) {
+
+          $("#formUpdateProduct2").append("<input type=\'hidden\' name=\'idSubstance2[]\' value='" +  $('input[name^="idSubstance"]').eq(i).val()  + "' class=\'form-control typeMood\'>");
+          $("#formUpdateProduct2").append("<input type=\'hidden\' name=\'howMg2[]\' value='" + $('input[name^="howMg"]').eq(i).val() + "' class=\'form-control typeMood\'>");
+          
+        }
+        //alert($('input[name^="percentExe"]').eq(i).val());
+        //alert($('input[name^="idActionss"]').eq(i).val());
+        //alert($(this).val() );
+        //$('input[name^="percentExe"]').each(function() {
+                    //alert($("input[name='percentExe[" + i + "]']").val());
+                //if ((arrayAction[i]) != "") {
+                    //alert('f');
+                    //alert($(this).parents().parents().attr('class') );
+                    /*
+                    if ($(this).parents().parents().hasClass("active")) {
+                        //JSON["idAction"][i]  = arrayAction[i];
+                        //JSON["percent"][i]  = $(this).val();
+                        
+                        //$("#formAddMood").append("<input type=\'hidden\' name=\'idAction[]\' value='" + arrayAction[i] + "' class=\'form-control typeMood\'>");
+                      
+                    //    alert('dd');
+                    i++;
+                    }
+                //}
+            //alert($(this).val());
+            
+            */
+            }
+        //});
+/*
+    for (i=0;i < arrayAction.length;i++) {
+        alert($("input[name='percentExe[" + i + "]']").val());
+        if ((arrayAction[i]) != "") {
+            //alert('f');
+            $("#formAddMood").append("<input type=\'hidden\' name=\'idAction[]\' value='" + arrayAction[i] + "' class=\'form-control typeMood\'>");
+            $("#formAddMood").append("<input type=\'hidden\' name=\'idActions[]\' value='" + $("#percentExe").val() + "' class=\'form-control typeMood\'>");
+        }
+    }
+     * 
+ */
+}
+
+
 var arraySubstanceProduct = [];
 function selectedProductProduct(id,index) {
 
@@ -884,6 +1020,10 @@ function loadChangeSubstance(url) {
     if ($("#nameSubstance").val() != "") {
         
         $("#editSubstanceSubmitButton").prop("disabled",false);
+                   $("#formUpdateSubstance2").trigger('reset');
+                $("#formUpdateSubstance").trigger('reset');
+                   arrayGroupSubstanceChange.length = 0;
+            $("#formUpdateSubstance2").find(":hidden").filter(".typeMood").remove();
          $.ajax({
                 url : url,
                     method : "get",
@@ -892,8 +1032,7 @@ function loadChangeSubstance(url) {
                     dataType : "html",
             })
             .done(function(response) {
-
-          
+     
         $("#changeSubstanceDiv").html(response);
        
                 
@@ -909,7 +1048,38 @@ function loadChangeSubstance(url) {
             })       
         }
 }
+function loadChangeProduct(url) {
+    if ($("#nameProduct").val() != "") {
+        
+        $("#editProductSubmitButton").prop("disabled",false);
+                   $("#formUpdateProduct2").trigger('reset');
+                $("#formUpdateProduct").trigger('reset');
+                   arraySubstanceProductChange.length = 0;
+            $("#formUpdateProduct2").find(":hidden").filter(".typeMood").remove();
+         $.ajax({
+                url : url,
+                    method : "get",
+                    data : "id=" + $("#nameProduct").val(),
 
+                    dataType : "html",
+            })
+            .done(function(response) {
+     
+        $("#changeProductDiv").html(response);
+       
+                
+            //$("#formaddSubstanceNew").find(":hidden").filter(".typeMood").remove();
+
+
+                  
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })       
+        }    
+}
 function addSubstanceNewSubmit() {
  var arrayError = "";
  
@@ -970,11 +1140,12 @@ function editSubstanceSubmit() {
     }
     else {
         changeArrayFormEditSubstance();
+        alert(arrayGroupSubstanceChange.length);
          $.ajax({
                 url : urlArraySubmit[8],
                     method : "get",
                     data : 
-              $("#formUpdateSubstance2").serialize() + $("#formUpdateSubstance").serialize(),
+              $("#formUpdateSubstance2").serialize()  + "&" + $("#formUpdateSubstance").serialize(),
                     dataType : "html",
             })
             .done(function(response) {
@@ -982,7 +1153,7 @@ function editSubstanceSubmit() {
           
         $("#updateSubstanceDiv").html(response);
        
-                 arrayGroupSubstanceChange.length = 0;
+              //   arrayGroupSubstanceChange.length = 0;
             $("#formUpdateSubstance2").find(":hidden").filter(".typeMood").remove();
 
 
@@ -996,6 +1167,52 @@ function editSubstanceSubmit() {
     }       
 }
 
+
+
+
+
+function editProductSubmit() {
+ var arrayError = "";
+ //alert(arrayGroupSubstance.length);
+    if ($("input[name='newName']").val() == "") {
+        arrayError += "Uzupełnij nazwe Produktu<br>";
+        //alert('Uzupełnij nazwe akcji');
+        //return;
+    }
+
+    if (arrayError != "") {
+        $("#updateProductDiv").addClass("ajaxError");
+        $("#updateProductDiv").html(arrayError);
+        return;
+    }
+    else {
+        changeArrayFormEditProduct();
+        alert(arraySubstanceProductChange.length);
+         $.ajax({
+                url : urlArraySubmit[9],
+                    method : "get",
+                    data : 
+              $("#formUpdateProduct2").serialize() + "&" + $("#formUpdateProduct").serialize(),
+                    dataType : "html",
+            })
+            .done(function(response) {
+
+          
+        $("#updateProductDiv").html(response);
+       
+              //   arrayGroupSubstanceChange.length = 0;
+            $("#formUpdateProduct2").find(":hidden").filter(".typeMood").remove();
+
+
+                  
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })    
+    }           
+}
 function editGroupSubmit() {
              $.ajax({
                 url : urlArraySubmit[7],
@@ -1051,7 +1268,7 @@ function addProductNewSubmit() {
           
         $("#addNewProductSubmit").html(response);
        
-                arraySubstanceProduct.length = 0;
+                //arraySubstanceProduct.length = 0;
             $("#formaddProductNew").find(":hidden").filter(".typeMood").remove();
 
 
