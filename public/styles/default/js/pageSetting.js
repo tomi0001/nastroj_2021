@@ -720,6 +720,74 @@ function editSubstance() {
     }        
 }
 
+
+function planedDose() {
+    sessionStorage.setItem('settingType', "planedDose");
+    if ($("#planedDoseSet").css("display") == "none" ) {
+        
+        $.ajax({
+                url : urlArray[10],
+                    method : "get",
+
+                    dataType : "html",
+            })
+            .done(function(response) {
+
+
+
+
+                  $("#planedDoseSet").css("display","block");
+                  $("#planedDoseSet").html(response);
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })    
+            //$("#levelMoodAdd").css("display","none");
+            //$("#changeNameActionChange").css("display","none");
+            $("#addNewGroup").css("display","none");
+            $("#addNewSubstance").css("display","none");
+            $("#addNewProduct").css("display","none");
+            $("#editGroupSet").css("display","none");
+            $("#editProductSet").css("display","none");
+            $("#editSubstanceSet").css("display","none");
+    }
+    else {
+        
+        $("#planedDoseSet").css("display","none");
+    }       
+}
+
+
+function addNewPlaned(url) {
+
+        $.ajax({
+                url : url,
+                    method : "get",
+ data : 
+                        $("#formaddNewPlaned").serialize(),
+                    dataType : "html",
+            })
+            .done(function(response) {
+
+
+
+
+               
+                  $("#planedAddNew").html(response);
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })    
+
+
+}
+
+
+
 function editProduct() {
     sessionStorage.setItem('settingType', "editProductSet");
     if ($("#editProductSet").css("display") == "none" ) {

@@ -19,6 +19,7 @@ use App\Models\Usee;
 use App\Models\Substance;
 use App\Http\Services\Sleep;
 use App\Models\Product as ModelProduct;
+use App\Models\Planned_drug;
 use App\Http\Services\Product;
 use App\Http\Services\Common;
 use App\Http\Services\Action as serviceAction;
@@ -47,6 +48,23 @@ class SettingsProductController {
         $listProduct = ModelProduct::selectListProduct(Auth::User()->id);
         return view("Users.Settings.Product.editProduct")->with("listProduct",$listProduct);
     }
+    public function planedDose() {
+        $listProduct = ModelProduct::selectListProduct(Auth::User()->id);
+        $listPlaned = Planned_drug::selectDose(Auth::User()->id);
+        return view("Users.Settings.Product.PlanedDrug")->with("listProduct",$listProduct)->with("listPlaned",$listPlaned);
+    }
+    public function addNewPlaned(Request $request) {
+        $Product = new Product;
+        $Product->checkErrorNewPlaned($request);
+        if (count($Product->error) > 0) {
+            return View("ajax.error")->with("error",$Product->error);
+            
+        }
+        else {
+            $Product->addNewPlaned($request);
+            return View("ajax.succes")->with("succes","Pomyślnie dodano zaplaniowaną dawkę");
+        }
+    } 
     public function addNewGroupSubmit(Request $request) {
         
         $ifExist = Group::ifExist($request->get("nameGroup"),Auth::User()->id);

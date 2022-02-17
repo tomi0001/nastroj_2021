@@ -165,6 +165,14 @@ Route::get("/settings/changeProduct",[App\Http\Controllers\Settings\SettingsProd
 Route::get("/settings/changeSubstance",[App\Http\Controllers\Settings\SettingsProductController::class, 'changeSubstance'])
         ->name("settings.changeSubstance")->middleware('auth')->middleware('can:users');
 
+Route::get("/settings/planedDose",[App\Http\Controllers\Settings\SettingsProductController::class, 'planedDose'])
+        ->name("settings.planedDose")->middleware('auth')->middleware('can:users');
+Route::get("/settings/planedDoseSubmit",[App\Http\Controllers\Settings\SettingsProductController::class, 'planedDoseSubmit'])
+        ->name("settings.planedDoseSubmit")->middleware('auth')->middleware('can:users');
+Route::get("/settings/addNewPlaned",[App\Http\Controllers\Settings\SettingsProductController::class, 'addNewPlaned'])
+        ->name("settings.addNewPlaned")->middleware('auth')->middleware('can:users');
+
+
 
             Route::get('/users4/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\Search\SearchController::class, 'index2'])->name('users.search')
                     ->middleware('auth')->middleware('can:users');

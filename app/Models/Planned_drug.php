@@ -9,11 +9,11 @@ use Auth;
 class Planned_drug extends Model
 {
     use HasFactory;
-    public static function selectDose() {
+    public static function selectDose(int $idUsers) {
         
         return self::selectRaw("name")
                 ->selectRaw("id")
-                ->where("id_users", Auth::User()->id)->groupBy("name")
+                ->where("id_users", $idUsers)->groupBy("name")
                 ->orderBy("name")->get();
     }
     public static function showPlaned(string $name) {
@@ -28,6 +28,8 @@ class Planned_drug extends Model
     public static function selectidProductPlaned(int $idPlaned) {
         return self::selectRaw("name")->where("id_users",Auth::User()->id)->where("id",$id)->first();
     }
-
+    public static function ifExist(string $name, int $idUsers) {
+        return self::selectRaw("name as name")->where("id_users",$idUsers)->where("name",$name)->first();
+    }
     
 }

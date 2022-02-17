@@ -37,7 +37,7 @@
                                     <td class='borderless'>
                                          <select name='namePlaned' class="form-control" id="select-state" onchange="DisableDose()">
                                             <option value="" class="form-control"></option>
-                                            @foreach (\App\Models\Planned_drug::selectDose() as $listDose)
+                                            @foreach (\App\Models\Planned_drug::selectDose(Auth::User()->id) as $listDose)
                                                 <option value="{{$listDose->id}}" class="form-control">{{$listDose->name}}</option>
                                             @endforeach
                                         </select>

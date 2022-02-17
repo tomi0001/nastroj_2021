@@ -26,6 +26,23 @@ use DB;
 class Product {
     public $date;
     public $error = [];
+    public function addNewPlaned(Request $request) {
+            $Planned_drug = new Planned_drug;
+            $Planned_drug->id_products = $request->get("idProduct");
+            $Planned_drug->id_users  =Auth::User()->id;
+            $Planned_drug->name  =$request->get("namePlanedNew");
+            $Planned_drug->portion  =$request->get("portion");
+            $Planned_drug->save();
+    }
+    public function checkErrorNewPlaned(Request $request) {
+        if ($request->get("namePlanedNew") == "") {
+            array_push($this->error,"Musisz wpisac nazwę zaplanowanej dawki");
+        }
+        if ($request->get("portion") < 0  or  ( (string)(float) $request->get("portion") !== $request->get("portion") ))  {
+             array_push($this->error,"porcja musi być dodatnią liczbą zmienno przcinkową");
+         }
+      
+    }
     public function checkErrorAddSubstance(Request $request) {
          if (  !empty( $ifExist = Substance::ifExist($request->get("nameSubstance"),Auth::User()->id) ))  {
              array_push($this->error,"Już jest taka substancja");

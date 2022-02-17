@@ -56,7 +56,7 @@
             <div id="editProduct"  class=" hrefDrugs hrefSettingCursor" onmouseover="selectMenuMood('editProduct')" onmouseout="unSelectMenuMood('editProduct')" onclick="editProduct()">
                 EDYTUJ PRODUKT
             </div>
-            <div id="planedDose"  class=" hrefDrugs hrefSettingCursor" onmouseover="selectMenuMood('planedDose')" onmouseout="unSelectMenuMood('planedDose')">
+            <div id="planedDose"  class=" hrefDrugs hrefSettingCursor" onmouseover="selectMenuMood('planedDose')" onmouseout="unSelectMenuMood('planedDose')" onclick="planedDose()">
                 ZAPLANUJ DAWKĘ
             </div>
     </div>
@@ -95,6 +95,9 @@
         <div class="pagePageDrugs pagepage bodyDrugsPage" id="editProductSet" style="display: none;">
 
         </div>
+        <div class="pagePageDrugs pagepage bodyDrugsPage" id="planedDoseSet" style="display: none;">
+
+        </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
@@ -114,7 +117,8 @@
         '{{route('settings.addNewProduct')}}',
         '{{route('settings.editGroup')}}',
         '{{route('settings.editSubstance')}}',
-        '{{route('settings.editProduct')}}'
+        '{{route('settings.editProduct')}}',
+        '{{route('settings.planedDose')}}'
     ];
     var urlArraySubmit = [
         '{{route('settings.addNewActionSubmit')}}',
@@ -126,7 +130,8 @@
         '{{route('settings.addNewProductSubmit')}}',
         '{{route('settings.editGroupSubmit')}}',
         '{{route('settings.editSubstanceSubmit')}}',
-        '{{route('settings.editProductSubmit')}}'
+        '{{route('settings.editProductSubmit')}}',
+        '{{route('settings.planedDoseSubmit')}}'
     ];
     
 
