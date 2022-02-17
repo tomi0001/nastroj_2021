@@ -132,17 +132,17 @@ function updateActionForMood(url,id) {
 
     })
     .done(function(response) {
-        $("#formResult").html(response);
+        $("#formResult" + id).html(response);
         if (response == "") {
             setInterval("reload();",20000);
-            $("#formResult").html("<div class='ajaxSucces'>Pomyślnie dodano</div>");
+            $("#formResult" + id).html("<div class='ajaxSucces'>Pomyślnie dodano</div>");
         }
         $("#formUpdateAction" + id).find(":hidden").filter(".typeMood").remove();
 
     })
 
     .fail(function() {
-        $("#formResult").html( "<div class='ajaxError'>Wystąpił błąd</div>" );
+        $("#formResult" + id).html( "<div class='ajaxError'>Wystąpił błąd</div>" );
     })
     
 
@@ -153,6 +153,7 @@ function selectedActionMainSetValue(data,lenght) {
 
     for (var i = 0;i < lenght;i++) {
         if ($("#divAction_" + data.idList[i] + "_" + data.idMood[i]).length==1) {
+            
             $("#divAction_" + data.idList[i] + "_" + data.idMood[i]).removeClass("actionMain" + data.idMood[i]).addClass("actionMainselected");
             $("#divActionPercent_" + data.idList[i] + "_" + data.idMood[i]).removeClass("hiddenPercentExecuting").addClass('active');
             //$("#idAction").eq(index).val(id);
@@ -160,8 +161,9 @@ function selectedActionMainSetValue(data,lenght) {
             //arrayActionMulti["id"].push(id);
             //arrayActionMulti["idMood"].push(idMood);
             arrayActionMulti.push(data.idList[i] + ',' + data.idMood[i]);
-            $("#percentExe_" + data.index[i]).val(data.percent[i]);
-            $("#minute_exe_" + data.index[i]).val(data.minute[i]);
+            $("#percentExe_" + data.index[i]+ "_" + data.idMood[i]).val(data.percent[i]);
+            $("#minute_exe_" + data.index[i]+ "_" + data.idMood[i]).val(data.minute[i]);
+
         }
     }
  
@@ -1452,6 +1454,7 @@ function showDrugs(url,id) {
 
 
 function editActionMood(url,id) {
+
         if ($(".actionMoodShow" + id).css("display") == "none" ) {
             $.ajax({
                 url : url,

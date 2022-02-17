@@ -319,7 +319,7 @@
                                 
                                 
                             </div>
-                            <button class="btn-action MainEdit " onclick="updateActionForMood('{{ route('ajax.updateAction')}}',{{$list->id}})">Modyfikój akcje</button>
+                            <button class="btn-action MainEdit " onclick="updateActionForMood('{{ route('ajax.updateAction')}}',{{$list->id}})">Modyfikuj akcje</button>
                             <br><br>
                             
                         </div>
