@@ -5,9 +5,11 @@
       $('select').selectize({
           sortField: 'text'
       });
+     
       //$("input[name='pleasure']").prop("disabled",true);
     
-  });    
+  });  
+
 </script>
 <div class="titleDrugsSettings">
                         ZAPLANUJ DAWKĘ
@@ -28,7 +30,7 @@
                     produkt
                 </td>
                 <td width="50%">
-                    <select name="idProduct" class="form-control">
+                    <select name="idProduct"  class="form-control">
                         @foreach ($listProduct as $list)
                             <option value="{{$list->id}}">{{$list->name}}</option>
                             
@@ -55,8 +57,27 @@
                     </div>
                 </td>
             </tr>
+            <tr>
+                <td class="tdColorDrugs">
+                    Wybierz zaplanową dawkę
+                </td>
+                <td width="50%">
+                    <select  name="namePlaned"  class="form-control" onchange="loadChangePlaned('{{ route('settings.loadChangePlaned')}}')">
 
-            
+                        @foreach ($listPlaned as $list2)
+                            <option value="{{$list2->id}}">{{$list2->name}}</option>
+                            
+                        @endforeach
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div id="loadChangePlaned">
+                        
+                    </div>
+                </td>
+            </tr>
             <tr>
                 <td colspan="2"  class="center">
                     <input type="button" class="btn-drugs  drugs" disabled id="editProductSubmitButton" onclick="editProductSubmit()" value='EDYTUJ'>

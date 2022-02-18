@@ -19,6 +19,13 @@ class Planned_drug extends Model
     public static function showPlaned(string $name) {
         return self::where("id_users",Auth::User()->id)->where("name",$name)->get();
     }
+    public static function showPlanedProduct(string $name) {
+        return self::join("products","products.id","planned_drugs.id_products")
+                ->selectRaw("products.name as name")->selectRaw("products.id as id")
+                ->selectRaw("planned_drugs.portion as portion")
+                ->where("planned_drugs.id_users",Auth::User()->id)
+                ->where("planned_drugs.name",$name)->get();
+    }
     public static function showPlanedOne(string $name) {
         return self::selectRaw("id_products")->where("id_users",Auth::User()->id)->where("name",$name)->first();
     }
@@ -31,5 +38,5 @@ class Planned_drug extends Model
     public static function ifExist(string $name, int $idUsers) {
         return self::selectRaw("name as name")->where("id_users",$idUsers)->where("name",$name)->first();
     }
-    
+ 
 }

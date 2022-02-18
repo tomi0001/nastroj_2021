@@ -171,7 +171,8 @@ Route::get("/settings/planedDoseSubmit",[App\Http\Controllers\Settings\SettingsP
         ->name("settings.planedDoseSubmit")->middleware('auth')->middleware('can:users');
 Route::get("/settings/addNewPlaned",[App\Http\Controllers\Settings\SettingsProductController::class, 'addNewPlaned'])
         ->name("settings.addNewPlaned")->middleware('auth')->middleware('can:users');
-
+Route::get("/settings/loadChangePlaned",[App\Http\Controllers\Settings\SettingsProductController::class, 'loadChangePlaned'])
+        ->name("settings.loadChangePlaned")->middleware('auth')->middleware('can:users');
 
 
             Route::get('/users4/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\Search\SearchController::class, 'index2'])->name('users.search')

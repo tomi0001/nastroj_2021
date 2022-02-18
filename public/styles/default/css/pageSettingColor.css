@@ -177,3 +177,10 @@ background-image: linear-gradient(180deg, rgba(1, 55, 4, 1) 0%, #65E457 100%);
   border-color: red;
   box-shadow: inset 0 1px 1px rgb(200, 54, 54), 0 0 8px rgb(200, 54, 54);
 }
+
+div.plusButton {
+    background-color: #60CEF0;
+}
+div.minusButton {
+    background-color: #F76868;
+}

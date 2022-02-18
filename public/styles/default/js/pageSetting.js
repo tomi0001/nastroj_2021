@@ -760,6 +760,28 @@ function planedDose() {
 }
 
 
+
+function loadChangePlaned(url) {
+            $.ajax({
+                url : url,
+                    method : "get",
+                    data : 
+                            
+                        "id=" + $("select[name='namePlaned']").val(),
+                    dataType : "html",
+            })
+            .done(function(response) {
+
+                  $("#loadChangePlaned").html(response);
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })    
+}
+
+
 function addNewPlaned(url) {
 
         $.ajax({
