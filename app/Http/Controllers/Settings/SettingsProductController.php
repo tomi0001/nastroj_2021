@@ -57,7 +57,21 @@ class SettingsProductController {
         $namePlaned = Planned_drug::showName($request->get("id"));
         $listPlaned = Planned_drug::showPlanedProduct($namePlaned->name);
         $listProduct = ModelProduct::selectListProduct(Auth::User()->id);
-        return View("Users.Settings.Product.changeLoadPlaned")->with("listPlaned",$listPlaned)->with("listProduct",$listProduct);
+        return View("Users.Settings.Product.changeLoadPlaned")->with("listPlaned",$listPlaned)->with("listProduct",$listProduct)
+                ->with("id",$namePlaned->name);
+    }
+    public function editPlanedsubmit(Request $request) {
+        $namePlaned = Planned_drug::ifExist($request->get("id"),Auth::User()->id);
+        $Product = new Product;
+        $Product->deletePlaned($namePlaned->name);
+        $Product->addNewPlanedArray($request,$namePlaned->name);
+        return View("ajax.succes")->with("succes","pomyślnie zmodyfikowano zaplanowaną dawkę.");
+        //var_dump($request->get("portions"));
+    }
+    public function deletePlaned(Request $request) {
+        $namePlaned = Planned_drug::showName($request->get("id"));
+        $Product = new Product;
+        $Product->deletePlaned($namePlaned->name);
     }
     public function addNewPlaned(Request $request) {
         $Product = new Product;

@@ -65,7 +65,7 @@
                     <select  name="namePlaned"  class="form-control" onchange="loadChangePlaned('{{ route('settings.loadChangePlaned')}}')">
 
                         @foreach ($listPlaned as $list2)
-                            <option value="{{$list2->id}}">{{$list2->name}}</option>
+                            <option value="{{$list2->name}}">{{$list2->name}}</option>
                             
                         @endforeach
                     </select>
@@ -79,13 +79,20 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="2"  class="center">
-                    <input type="button" class="btn-drugs  drugs" disabled id="editProductSubmitButton" onclick="editProductSubmit()" value='EDYTUJ'>
+                <td class="center">
+                    <div style="float: left;">
+                        <div class="plusButton addPlusButton" style="float: left; pointer-events:none;" disabled onclick="addNewPosition()">  <img width="60" class="minus" id="bool{{$list->id}}" src="{{asset('/image/icon_plus.png')}}"></div>
+                        <div style="float: left;  padding-left: 25px; "><input type="button" class="btn-drugs  drugs" disabled id="editPlanedSubmitButton" onclick="editPlanedSubmitFunction('{{ route('setting.editPlanedsubmit')}}')" value='EDYTUJ'></div>
+                        
+                    </div>
+                </td>
+                <td class="center">
+                    <input type="button" class="danger main" disabled id="deletePlanedSubmitButton" onclick="deletePlanedSubmit('{{ route('settings.deletePlaned')}}')" value='USUŃ'>
                 </td>
             </tr>
             <tr>
                 <td colspan="2" class='center'>
-                    <div id='updateProductDiv' class=' center ajaxMessage'>
+                    <div id='updatePlanedDiv' class=' center ajaxMessage'>
 
                     </div>
                 </td>

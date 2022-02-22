@@ -33,3 +33,8 @@ div.plusMinusButton {
     height: 40px;
     border-radius: 12px;
 }
+div.addPlusButton {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+}

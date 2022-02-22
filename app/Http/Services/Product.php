@@ -26,6 +26,16 @@ use DB;
 class Product {
     public $date;
     public $error = [];
+    public function addNewPlanedArray(Request $request,$name) {
+        for ($i=0;$i < count($request->get("idProducts"));$i++) {
+            $Planned_drug = new Planned_drug;
+            $Planned_drug->id_products = $request->get("idProducts")[$i];
+            $Planned_drug->id_users  =Auth::User()->id;
+            $Planned_drug->name  =$name;
+            $Planned_drug->portion  =$request->get("portions")[$i];
+            $Planned_drug->save();
+        }
+    }
     public function addNewPlaned(Request $request) {
             $Planned_drug = new Planned_drug;
             $Planned_drug->id_products = $request->get("idProduct");
@@ -277,6 +287,10 @@ class Product {
         //$Group->level_pleasure  = $request->get("levelPleasure");
         $Group->id_users  = Auth::User()->id;
         $Group->save();
+    }
+    public function deletePlaned(string $name) {
+        $Planned_drug = new Planned_drug;
+        $Planned_drug->where("name",$name)->delete();
     }
     public function addNewSubstance(Request $request) {
         $Substance = new Substance;

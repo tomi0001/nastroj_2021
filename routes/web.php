@@ -173,6 +173,10 @@ Route::get("/settings/addNewPlaned",[App\Http\Controllers\Settings\SettingsProdu
         ->name("settings.addNewPlaned")->middleware('auth')->middleware('can:users');
 Route::get("/settings/loadChangePlaned",[App\Http\Controllers\Settings\SettingsProductController::class, 'loadChangePlaned'])
         ->name("settings.loadChangePlaned")->middleware('auth')->middleware('can:users');
+Route::get("/settings/deletePlaned",[App\Http\Controllers\Settings\SettingsProductController::class, 'deletePlaned'])
+        ->name("settings.deletePlaned")->middleware('auth')->middleware('can:users');
+Route::get("/settings/editPlanedsubmit",[App\Http\Controllers\Settings\SettingsProductController::class, 'editPlanedsubmit'])
+        ->name("setting.editPlanedsubmit")->middleware('auth')->middleware('can:users');
 
 
             Route::get('/users4/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\Search\SearchController::class, 'index2'])->name('users.search')

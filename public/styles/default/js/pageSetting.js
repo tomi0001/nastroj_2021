@@ -759,9 +759,84 @@ function planedDose() {
     }       
 }
 
+var idPlaned = "";
+
+
+function changeStatusPlaned(id,minus,plus) {
+    //alert(id);
+    if ($("#bool"+id).hasClass("minus") ) {
+
+        //$("#trPlaned" + id).prop("disabled",true);
+        $("#trPlanedInput"+id).prop('disabled', true);
+
+        $('#trPlanedSelect' + id)[0].selectize.disable();
+
+        $("#bool"+id).removeClass("minus").addClass("plus");
+        $("#bool"+id).attr("src",plus);
+        $("#bool2" + id).removeClass("minusButton").addClass("plusButton");
+    }
+    else {
+        $("#trPlanedInput"+id).prop('disabled', false);
+        $('#trPlanedSelect' + id)[0].selectize.enable();
+        $("#bool"+id).removeClass("plus").addClass("minus");
+        $("#bool"+id).attr("src",minus);
+        $("#bool2" + id).removeClass("plusButton").addClass("minusButton");
+    }
+}
+
+
+function changeStatusPlaned2(id,minus,plus) {
+    //alert(id);
+    if ($("#bool"+id).hasClass("minus") ) {
+
+        //$("#trPlaned" + id).prop("disabled",true);
+        $("#trPlanedInput"+id).prop('disabled', true);
+        $("#trPlanedSelect"+id).prop('disabled', true);
+
+        $('#trPlanedSelect' + id).prop('disabled', true);
+        $("#bool"+id).removeClass("minus").addClass("plus");
+        $("#bool"+id).attr("src",plus);
+        $("#bool2" + id).removeClass("minusButton").addClass("plusButton");
+    }
+    else {
+        $("#trPlanedInput"+id).prop('disabled', false);
+        //$("#trPlanedSelect"+id).prop('disabled', true);
+        $("#trPlanedSelect"+id).prop('disabled', false);
+
+        $("#bool"+id).removeClass("plus").addClass("minus");
+        $("#bool"+id).attr("src",minus);
+        $("#bool2" + id).removeClass("plusButton").addClass("minusButton");
+    }
+}
+
+
+
+function deletePlanedSubmit(url) {
+    var bool = confirm("Czy na pewno");
+        if (bool == true) {
+         $.ajax({
+                     url : url,
+                         method : "get",
+                         data : 
+
+                             "id=" + idPlaned,
+                         dataType : "html",
+                 })
+                 .done(function(response) {
+                       
+                       $("#loadChangePlaned").html(response);
+
+
+                 })
+                 .fail(function() {
+                     alert("Wystąpił błąd");
+                 })   
+        }
+}
 
 
 function loadChangePlaned(url) {
+    if ( $("select[name='namePlaned']").val() != "") {
             $.ajax({
                 url : url,
                     method : "get",
@@ -771,7 +846,11 @@ function loadChangePlaned(url) {
                     dataType : "html",
             })
             .done(function(response) {
-
+                  idPlaned = $("select[name='namePlaned']").val();
+                  $("#deletePlanedSubmitButton").prop("disabled",false);
+                  $("#editPlanedSubmitButton").prop("disabled",false);
+                  $(".addPlusButton").css("pointer-events","auto");
+                  $(".addPlusButton").css("cursor","pointer");
                   $("#loadChangePlaned").html(response);
 
 
@@ -779,8 +858,44 @@ function loadChangePlaned(url) {
             .fail(function() {
                 alert("Wystąpił błąd");
             })    
+    }
+    else {
+        $("#deletePlanedSubmitButton").prop("disabled",true);
+        $("#editPlanedSubmitButton").prop("disabled",true);
+        $(".addPlusButton").css("pointer-events","none");
+        $(".addPlusButton").css("cursor","none");
+        $("#loadChangePlaned").html("");
+    }
 }
+var editPlanedSubmit = 0;
 
+            
+
+
+function addNewPosition() {
+        
+        var td2 = "<td class='tdColorDrugs ' >";
+        var td2End = '</td>';
+        var td3 = "<td class='tdColorDrugs '><input type='text' name='portion[]' class='form-control' id='trPlanedInput" + (positionPlaned+2) + "'></td>";
+        var td3End = "</td>" ;
+        var td4 = "<td class='tdColorDrugs ' >";
+        var td4End = "</td>" ;
+        var selectName = $("#selectHidden").html();
+        var selectNameResult = selectName.replaceAll("xxxx","position" + (positionPlaned+2));
+        var selectNameResult2= selectNameResult.replaceAll("trPlanedSelect","trPlanedSelect" + (positionPlaned+2));
+        //$(".tmpId").attr("id","trPlanedSelect" + (positionPlaned+2));
+        //$(".tmpId").attr("name","position" + (positionPlaned+2));
+        var imgPlaned = $("#hiddenTd").html();
+        //alert(imgPlaned);
+        var result = imgPlaned.replaceAll("xxxx",(positionPlaned+2));
+        //var imgPlaned = $("#hiddenTd");
+        //result = imgPlaned.html().replace("xxxx", (positionPlaned+2));
+        //e.html(fix);
+                
+        $('#tablePlaned').append("<tr> <td  class='tdColorDrugs '> pozycja " + (positionPlaned+2) + "</td>" + td2 + selectNameResult2 + td2End + td3 + td3End   + td4 +  result + td4End + "</tr>");
+        //alert(positionPlaned+2);
+        positionPlaned++;
+}
 
 function addNewPlaned(url) {
 
@@ -1256,13 +1371,74 @@ function editSubstanceSubmit() {
             })    
     }       
 }
+var checkErrorPlanedInput = "";
+var checkErrorPlanedSelect = "";
+
+function checkErrorEdit() {
+    for (var i=0;i < positionPlaned+1;i++) {
+        if ($("select[name='position[]']").eq(i).val() == "" && !$("select[name='position[]']").eq(i).prop('disabled')) {
+            checkErrorPlanedSelect = ("któryś z pół substancji nie jest uzupełnione <br>");
+        }
+        if (($("input[name='portion[]']").eq(i).val() == "" ||  (  isNaN($("input[name='portion[]']").eq(i).val()) || $("input[name='portion[]']").eq(i).val() <= 0 ) ) && !$("input[name='portion[]']").eq(i).prop('disabled') ) {
+            checkErrorPlanedInput = ("pole textowe musi być dodatnią liczbą zmienno przecinkową ");
+        }
+    }
+}
+
+function createFormPlanedSubmit() {
+    for (var i=0;i < positionPlaned+1;i++) {
+        
+        if (!$("input[name='portion[]']").eq(i).prop('disabled')) {
+
+               $("#formupdatePlaned").append("<input type=\'hidden\' name=\'portions[]\' value='" +  $("input[name^='portion[]']").eq(i).val()  + "' class=\'form-control typeMood\'>");
+               $("#formupdatePlaned").append("<input type=\'hidden\' name=\'idProducts[]\' value='" + $("select[name^='position[]']").eq(i).val() + "' class=\'form-control typeMood\'>");
+          }
+  }
+}
+
+function editPlanedSubmitFunction(url) {
+
+    checkErrorEdit();
+    if (checkErrorPlanedSelect !=  "" || checkErrorPlanedInput !=  "") {
+        $("#updatePlanedDiv").addClass("ajaxError");
+        $("#updatePlanedDiv").html(checkErrorPlanedSelect  +  checkErrorPlanedInput);
+    }
+
+    else {
+         createFormPlanedSubmit();
+        //alert(arraySubstanceProductChange.length);
+         $.ajax({
+                url : url,
+                    method : "get",
+                    data : 
+              $("#formupdatePlaned").serialize() + "&id=" + idPlaned2,
+                    dataType : "html",
+            })
+            .done(function(response) {
+
+          
+        $("#updatePlanedDiv").html(response);
+       
+              //   arrayGroupSubstanceChange.length = 0;
+            $("#formupdatePlaned").find(":hidden").filter(".typeMood").remove();
 
 
+                  
 
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })          
+    }
+    checkErrorPlanedSelect = "";
+    checkErrorPlanedInput = "";
+}
 
 
 function editProductSubmit() {
  var arrayError = "";
+
  //alert(arrayGroupSubstance.length);
     if ($("input[name='newName']").val() == "") {
         arrayError += "Uzupełnij nazwe Produktu<br>";

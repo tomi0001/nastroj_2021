@@ -6,6 +6,7 @@
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Settings/SettingsProductController.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Planned_drug.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Common.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/changeLoadPlaned.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainwidth1810.css</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/main.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Moods_action.php</file>
@@ -16,12 +17,14 @@
             <file>file:/var/www/html/nastroj_2021/routes/web.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/addMood.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/addNewGroup.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Layout/Main.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Action.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Product.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/CommonAll.css</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Mood.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Group.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/addDrugs.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Layout/Settings.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Main/MainController.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainAll.css</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Product/ProductController.php</file>
@@ -45,6 +48,7 @@
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showMood.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Settings/SettingsMoodController.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Action.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default/tlo.png</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/editSubstanceLoadGroup.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Calendar.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/PlanedDrug.blade.php</file>

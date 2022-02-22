@@ -21,16 +21,16 @@ class Planned_drug extends Model
     }
     public static function showPlanedProduct(string $name) {
         return self::join("products","products.id","planned_drugs.id_products")
-                ->selectRaw("products.name as name")->selectRaw("products.id as id")
-                ->selectRaw("planned_drugs.portion as portion")
+                ->selectRaw("products.name as name")->selectRaw("planned_drugs.id as id")
+                ->selectRaw("planned_drugs.portion as portion")->selectRaw("products.id as id_product")
                 ->where("planned_drugs.id_users",Auth::User()->id)
                 ->where("planned_drugs.name",$name)->get();
     }
     public static function showPlanedOne(string $name) {
         return self::selectRaw("id_products")->where("id_users",Auth::User()->id)->where("name",$name)->first();
     }
-    public static function showName(int $id) {
-        return self::select("name")->where("id_users",Auth::User()->id)->where("id",$id)->first();
+    public static function showName(string $id) {
+        return self::select("name")->where("id_users",Auth::User()->id)->where("name",$id)->first();
     }
     public static function selectidProductPlaned(int $idPlaned) {
         return self::selectRaw("name")->where("id_users",Auth::User()->id)->where("id",$id)->first();
