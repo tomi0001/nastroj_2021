@@ -61,7 +61,14 @@ class Usee extends Model
         return self::join("products","products.id","usees.id_products")
                 ->join("substances_products","substances_products.id_products","products.id")
                 ->join("substances","substances.id","substances_products.id_substances")
+                ->selectRaw(" round(sum("
+                        . " CASE "
+                        . " WHEN substances_products.doseProduct is NULL  THEN (usees.portion ) "
+                        . "ELSE (substances_products.doseProduct * usees.portion) "
+                        . " END),2)"
+                        . "  as portion ")
                 ->selectRaw("substances.name as name")
+                ->selectRaw("products.type_of_portion as type")
                 ->where("usees.id_users",$idUsers)
                 ->whereRaw(DB::Raw("(DATE(IF(HOUR(    usees.date) >= '" . $startDay . "', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ) = '" . $date . "' "))
                 ->groupBy("substances.id")

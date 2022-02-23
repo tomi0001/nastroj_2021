@@ -10,6 +10,7 @@ div.sumDrugsAt {
              margin-left: auto;
              margin-right: auto;
              height: 100%;
+             clear: both;
         }
         div.positionAction {
             width: 100%;
@@ -33,8 +34,8 @@ div.sumDrugsAt {
             margin-bottom: 15px;
         }
         div.positionDrugs {
-            width: 100%;
-
+            width: 74%;
+            float: left;
             margin-bottom: 6px;
             height: 30px;
 
@@ -43,6 +44,19 @@ div.sumDrugsAt {
             border-radius: 20px;
             text-align: center;
         }
+        div.positionDrugsDose {
+            width: 25%;
+            float: left;
+            margin-bottom: 6px;
+            height: 30px;
+
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+
                 div.errorMainMessagesmall {
 
             text-align: center;

@@ -1149,7 +1149,7 @@ function addSubstanceNewSubmit() {
           
         $("#addNewSubstanceSubmit").html(response);
        
-                arrayGroupSubstance.length = 0;
+                //arrayGroupSubstance.length = 0;
             $("#formaddSubstanceNew").find(":hidden").filter(".typeMood").remove();
 
 
@@ -1177,7 +1177,7 @@ function editSubstanceSubmit() {
     }
     else {
         changeArrayFormEditSubstance();
-        alert(arrayGroupSubstanceChange.length);
+
          $.ajax({
                 url : urlArraySubmit[8],
                     method : "get",

@@ -171,6 +171,12 @@ class Common {
     public static function showDoseProduct(int $type) {
         return self::$doseProduct[$type];
     }
+    public static function showDoseProductSubstance(int $type) {
+        if ($type == 3) {
+            return self::$doseProduct[1];
+        }
+        return self::$doseProduct[$type];
+    }
     public static function showListDoseProduct() :array {
         return self::$doseProduct;
     }

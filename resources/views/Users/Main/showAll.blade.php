@@ -29,6 +29,7 @@
                         <div class='sumDrugsAt'>
                             @foreach ($listSubstance as $list)
                                 <div class='positionDrugs'>{{$list->name}}</div>
+                                <div class='positionDrugsDose'>{{$list->portion}} {{\App\Http\Services\Common::showDoseProductSubstance($list->type)}}</div>
                             @endforeach
                         </div>
                     @else

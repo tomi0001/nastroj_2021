@@ -289,6 +289,11 @@ height: 1.0em; width: 80%; border: 1px solid #942314;
             color: #CFF5CA;
          
         }
+        div.positionDrugsDose {
+            background-color: #65950D;
+          
+            color: #CFF5CA;
+        }
                 div.errorMainMessagesmall {
             color: white;
      
@@ -425,6 +430,7 @@ div.typeOfPortion {
     background-color: #56B392;
     color: white;
 }
+
 table.moodShow {
 
     background-color: rgba(255, 235, 56, 0.6);
