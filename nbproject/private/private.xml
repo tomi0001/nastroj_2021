@@ -5,9 +5,11 @@
         <group>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Settings/SettingsProductController.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Planned_drug.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSettingwidth700.css</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Common.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/changeLoadPlaned.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainwidth1810.css</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSettingwidth1210.css</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/main.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Moods_action.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Usee.php</file>
@@ -23,6 +25,7 @@
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/CommonAll.css</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Mood.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Group.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/Common1410.css</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/addDrugs.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Layout/Settings.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Main/MainController.php</file>
@@ -38,25 +41,29 @@
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Sleep.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainColor.css</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Substance.php</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSettingswidth700.css</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/editGroup.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/ajax/showAction.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/addNewSubstance.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSettingwidth1410.css</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSettingColor.css</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Mood.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showDrugs.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showMood.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/Common700.css</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Settings/SettingsMoodController.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Action.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/tlo.png</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/editSubstanceLoadGroup.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainwidth700.css</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Calendar.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/PlanedDrug.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/ajax/error.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/ajax/editActionMood.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/addNewProduct.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/User.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/Common1810.css</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/editProductLoadSubstance.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/Common1210.css</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Mood/changeNameAction.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/js/pageMain.js</file>
         </group>

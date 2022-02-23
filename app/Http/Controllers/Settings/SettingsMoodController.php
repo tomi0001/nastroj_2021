@@ -66,7 +66,6 @@ class SettingsMoodController {
     }
     public function loadValuePlasure(Request $request) {
         $pleasure = Action::showPleasure(Auth::User()->id,$request->get("id"));
-        //print ["pleasure"=> $pleasure->level_pleasure,"name"=>$pleasure->name];
         print json_encode($pleasure);
     }
     public function changeNameActionSubmit(Request $request) {

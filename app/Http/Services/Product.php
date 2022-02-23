@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use App\Models\User as MUser;
 use App\Models\Mood as MoodModel;
 use App\Models\Moods_action as MoodAction;
-//use App\Models\description as description;
 use App\Http\Services\Calendar;
 use App\Models\Planned_drug;
 use App\Models\Usee;
@@ -185,7 +184,6 @@ class Product {
         $use->price = $price;
         $use->portion = $request->get("dose");
         $use->save();
-        //$id = $use->orderBy("id","DESC")->first();
         if ($request->get("description") != "") {
             $this->addDescription($request,$use->id,$date);
         }
@@ -259,8 +257,7 @@ class Product {
         $use->price = $price;
         $use->portion = $dose;
         $use->save();
-        //$id = $use->orderBy("id","DESC")->first();
-   
+
         
     }
     public function deleteDrugs(int $id) {
@@ -284,7 +281,6 @@ class Product {
     public function addNewGroup(Request $request) {
         $Group = new Group;
         $Group->name  = $request->get("nameGroup");
-        //$Group->level_pleasure  = $request->get("levelPleasure");
         $Group->id_users  = Auth::User()->id;
         $Group->save();
     }
@@ -295,7 +291,6 @@ class Product {
     public function addNewSubstance(Request $request) {
         $Substance = new Substance;
         $Substance->name  = $request->get("nameSubstance");
-        //$Group->level_pleasure  = $request->get("levelPleasure");
         $Substance->id_users  = Auth::User()->id;
         $Substance->equivalent  = $request->get("equivalent");
         $Substance->save();
@@ -314,7 +309,6 @@ class Product {
     public function addNewProduct(Request $request) {
         $Product = new appProduct;
         $Product->name  = $request->get("nameProduct");
-        //$Group->level_pleasure  = $request->get("levelPleasure");
         $Product->id_users  = Auth::User()->id;
         $Product->how_percent  = $request->get("percent");
         $Product->type_of_portion  = $request->get("type");

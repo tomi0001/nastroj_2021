@@ -15,10 +15,8 @@ function LoadPage(url) {
 
 function submitEnter(e,url,nameFunction) {
     if (e.keyCode == 13) {
-        //eval('nameFunction(url)');
         translateFunction(nameFunction,url);
-        //var obj = nameFunctions['je'];
-        //eval(tb.value);
+
         return false;
     }
 }
@@ -47,16 +45,12 @@ function selectedActionMain(id,index) {
     if ($("#divAction_" + id + ":first").hasClass("actionMainAll")) {
         $("#divAction_" + id).removeClass("actionMainAll").addClass("actionMainselected");
         $("#divActionPercent_" + id).removeClass("hiddenPercentExecuting").addClass('active');
-        //$("#idAction").eq(index).val(id);
         arrayAction.push(id);
-        //$("#idActio" + id).val(id);
-        //alert(index);
+
     }
     else {
         var i = arrayAction.indexOf(id);
         arrayAction.splice(i,1);
-        //$("#idActio" + id).val('');
-        //$("#idAction").eq(index).val('NULL');
         $("#divActionPercent_" + id).addClass("hiddenPercentExecuting").removeClass('active');
         $("#divAction_" + id).removeClass("actionMainselected").addClass("actionMainAll");
 
@@ -68,18 +62,11 @@ function selectedActionAction(id,index) {
 
     if ($("#divActionAction_" + id + ":first").hasClass("actionMainAllAction")) {
         $("#divActionAction_" + id).removeClass("actionMainAllAction").addClass("actionMainselected");
-        //$("#divActionPercent_" + id).removeClass("hiddenPercentExecuting").addClass('active');
-        //$("#idAction").eq(index).val(id);
         arrayActionAction.push(id);
-        //$("#idActio" + id).val(id);
-        //alert(index);
     }
     else {
         var i = arrayActionAction.indexOf(id);
         arrayActionAction.splice(i,1);
-        //$("#idActio" + id).val('');
-        //$("#idAction").eq(index).val('NULL');
-        //$("#divActionPercent_" + id).addClass("hiddenPercentExecuting").removeClass('active');
         $("#divActionAction_" + id).removeClass("actionMainselected").addClass("actionMainAllAction");
 
     }
@@ -91,16 +78,12 @@ function selectedActionMainValue(id,index,idMood) {
     if ($("#divAction_" + id  + "_" + idMood + ":first").hasClass("actionMain" + idMood)) {
         $("#divAction_" + id + "_" + idMood).removeClass("actionMain"+ idMood).addClass("actionMainselected");
         $("#divActionPercent_" + id + "_" + idMood).removeClass("hiddenPercentExecuting").addClass('active');
-        //$("#idAction").eq(index).val(id);
-        //arrayActionMulti["idMood"].push(idMood);
-        //arrayActionMulti["id"].push(id);
+
         arrayActionMulti.push(id+ ',' + idMood);
-        
-        //alert(index);
+
     }
     else {
-        
-        //arrayActionMulti.indexOf([]);
+
         
         
         var i = arrayActionMulti.indexOf(id+ ',' + idMood);
@@ -119,9 +102,7 @@ function updateActionForMood(url,id) {
 
     
      changeArrayAtHiddenAddMoodId(id);
-     
-     //alert(arrayActionMulti.length);
-    //$("#formAddMood").find(":disabled").remove();
+ 
     $.ajax({
         url : url,
             method : "get",
@@ -156,10 +137,7 @@ function selectedActionMainSetValue(data,lenght) {
             
             $("#divAction_" + data.idList[i] + "_" + data.idMood[i]).removeClass("actionMain" + data.idMood[i]).addClass("actionMainselected");
             $("#divActionPercent_" + data.idList[i] + "_" + data.idMood[i]).removeClass("hiddenPercentExecuting").addClass('active');
-            //$("#idAction").eq(index).val(id);
-            //eval(arrayActionMulti + idMood)
-            //arrayActionMulti["id"].push(id);
-            //arrayActionMulti["idMood"].push(idMood);
+
             arrayActionMulti.push(data.idList[i] + ',' + data.idMood[i]);
             $("#percentExe_" + data.index[i]+ "_" + data.idMood[i]).val(data.percent[i]);
             $("#minute_exe_" + data.index[i]+ "_" + data.idMood[i]).val(data.minute[i]);
@@ -236,7 +214,6 @@ function deleteDrugs(url,id) {
                dataType : "html",
        })
        .done(function(response) {
-          //$("#showdrugs").html(response);
            $(".drugsClass" + id).remove();
 
 
@@ -305,47 +282,17 @@ function ifExistArrayIdMood(id) {
 
 function changeArrayAtHiddenAddActionPlaned() {
         for (var i=0;i < arrayActionAction.length;i++) {
-        //alert($('input[name^="idActionss"]').eq(i).val());
-        //var id = $('input[name^="idActionss"]').eq(i).val();
-        //if (arrayAction.find(element => element == id )) {
-
+ 
           $("#formAddActionPlaned").append("<input type=\'hidden\' name=\'idAction[]\' value='" +  arrayActionAction[i]  + "' class=\'form-control typeMood\'>");
-          //$("#formAddMood").append("<input type=\'hidden\' name=\'idActions[]\' value='" + $('input[name^="percentExe"]').eq(i).val() + "' class=\'form-control typeMood\'>");
-          //$("#formAddMood").append("<input type=\'hidden\' name=\'idActionMinute[]\' value='" + $('input[name^="minuteExe"]').eq(i).val() + "' class=\'form-control typeMood\'>");
-        //}
-        //alert($('input[name^="percentExe"]').eq(i).val());
-        //alert($('input[name^="idActionss"]').eq(i).val());
-        //alert($(this).val() );
-        //$('input[name^="percentExe"]').each(function() {
-                    //alert($("input[name='percentExe[" + i + "]']").val());
-                //if ((arrayAction[i]) != "") {
-                    //alert('f');
-                    //alert($(this).parents().parents().attr('class') );
-                    /*
-                    if ($(this).parents().parents().hasClass("active")) {
-                        //JSON["idAction"][i]  = arrayAction[i];
-                        //JSON["percent"][i]  = $(this).val();
-                        
-                        //$("#formAddMood").append("<input type=\'hidden\' name=\'idAction[]\' value='" + arrayAction[i] + "' class=\'form-control typeMood\'>");
-                      
-                    //    alert('dd');
-                    i++;
-                    }
-                //}
-            //alert($(this).val());
-            
-            */
+
             }
 }
 
 function changeArrayAtHiddenAddMood() {
-    //var i = 0;
 
     let array = document.querySelectorAll('input[name^="percentExe"]');
-    //alert(u.length);
-    
+
     for (var i=0;i < array.length;i++) {
-        //alert($('input[name^="idActionss"]').eq(i).val());
         var id = $('input[name^="idActionss"]').eq(i).val();
         if (arrayAction.find(element => element == id )) {
 
@@ -353,53 +300,18 @@ function changeArrayAtHiddenAddMood() {
           $("#formAddMood").append("<input type=\'hidden\' name=\'idActions[]\' value='" + $('input[name^="percentExe"]').eq(i).val() + "' class=\'form-control typeMood\'>");
           $("#formAddMood").append("<input type=\'hidden\' name=\'idActionMinute[]\' value='" + $('input[name^="minuteExe"]').eq(i).val() + "' class=\'form-control typeMood\'>");
         }
-        //alert($('input[name^="percentExe"]').eq(i).val());
-        //alert($('input[name^="idActionss"]').eq(i).val());
-        //alert($(this).val() );
-        //$('input[name^="percentExe"]').each(function() {
-                    //alert($("input[name='percentExe[" + i + "]']").val());
-                //if ((arrayAction[i]) != "") {
-                    //alert('f');
-                    //alert($(this).parents().parents().attr('class') );
-                    /*
-                    if ($(this).parents().parents().hasClass("active")) {
-                        //JSON["idAction"][i]  = arrayAction[i];
-                        //JSON["percent"][i]  = $(this).val();
-                        
-                        //$("#formAddMood").append("<input type=\'hidden\' name=\'idAction[]\' value='" + arrayAction[i] + "' class=\'form-control typeMood\'>");
-                      
-                    //    alert('dd');
-                    i++;
-                    }
-                //}
-            //alert($(this).val());
-            
-            */
+
             }
-        //});
-/*
-    for (i=0;i < arrayAction.length;i++) {
-        alert($("input[name='percentExe[" + i + "]']").val());
-        if ((arrayAction[i]) != "") {
-            //alert('f');
-            $("#formAddMood").append("<input type=\'hidden\' name=\'idAction[]\' value='" + arrayAction[i] + "' class=\'form-control typeMood\'>");
-            $("#formAddMood").append("<input type=\'hidden\' name=\'idActions[]\' value='" + $("#percentExe").val() + "' class=\'form-control typeMood\'>");
-        }
-    }
-     * 
- */
+
 }
 
 
 
 
 function changeArrayAtHiddenAddMoodId(id) {
-    //var i = 0;
     let array = document.querySelectorAll("input[name^='percentExe" + id +  "']");
-    //alert(u.length);
     
     for (var i=0;i < array.length;i++) {
-        //alert($('input[name^="idActionss"]').eq(i).val());
         var idindex = $("input[name^='idActionss" + id + "']").eq(i).val();
         
         if (arrayActionMulti.find(element => element == idindex )) {
@@ -408,41 +320,7 @@ function changeArrayAtHiddenAddMoodId(id) {
           $("#formUpdateAction" + id).append("<input type=\'hidden\' name=\'idActions[]\' value='" + $("input[name^='percentExe" + id + "']").eq(i).val() + "' class=\'form-control typeMood\'>");
           $("#formUpdateAction" + id).append("<input type=\'hidden\' name=\'idActionMinute[]\' value='" + $("input[name^='minute_exe" + id + "']").eq(i).val() + "' class=\'form-control typeMood\'>");
         }
-    //alert(id);
-     //alert(arrayActionMulti[id][i]);
-     /*
-        $("input[name^='percentExe" + id +  "']").each(function() {
-           
-                    //alert($("input[name='percentExe[" + i + "]']").val());
-                //if ((arrayAction[i]) != "") {
-                    //alert('f');
-                    //alert($(this).parents().parents().attr('class') );
-                    //alert(arrayActionMulti[id][i]);
-                    if ($(this).parents().parents().hasClass("active")) {
-                        
-                        var j = arrayActionMulti.indexOf(id + ',' + i);
-                        $("#formUpdateAction" + id).append("<input type=\'hidden\' name=\'idAction[]\' value='" + arrayActionMulti[i] + "' class=\'form-control typeMood\'>");
-                        $("#formUpdateAction" + id).append("<input type=\'hidden\' name=\'idActions[]\' value='" + $(this).val() + "' class=\'form-control typeMood\'>");
-                    //    alert('dd');
-                    i++;
-                    }
-                //}
-            //alert($(this).val());
-            
-                
-        });
-   
-/*
-    for (i=0;i < arrayAction.length;i++) {
-        alert($("input[name='percentExe[" + i + "]']").val());
-        if ((arrayAction[i]) != "") {
-            //alert('f');
-            $("#formAddMood").append("<input type=\'hidden\' name=\'idAction[]\' value='" + arrayAction[i] + "' class=\'form-control typeMood\'>");
-            $("#formAddMood").append("<input type=\'hidden\' name=\'idActions[]\' value='" + $("#percentExe").val() + "' class=\'form-control typeMood\'>");
-        }
-    }
-     * 
- */
+
 }
 }
 
@@ -478,7 +356,6 @@ function addMood(url) {
 
 
     changeArrayAtHiddenAddMood();
-    //$("#formAddMood").find(":disabled").remove();
     $.ajax({
         url : url,
             method : "get",
@@ -506,12 +383,10 @@ function addMood(url) {
     
      $("#formAddMood").find(":hidden").filter(".typeMood").remove();
      $("#formAddMood").find(":hidden").filter(".typeMood").remove();
-    //$("#formAddMood").find(":disabled").remove();
 }
 
 function addActionPlaned(url) {
         changeArrayAtHiddenAddActionPlaned();
-    //$("#formAddMood").find(":disabled").remove();
     $.ajax({
         url : url,
             method : "get",
@@ -545,7 +420,6 @@ function loadSesson() {
     loadMenuSessionShow();
 }
 function loadMenuSessionShow() {
-//alert(sessionStorage.getItem('mainShow'));
     switch (sessionStorage.getItem('mainShow')) {
         case 'moodShow': 
             
@@ -577,38 +451,32 @@ function schitchMenuMoodShowDezactivedShow(type) {
     }  
 }
 function loadMenuSession() {
-//alert(sessionStorage.getItem('main'));
     switch (sessionStorage.getItem('main')) {
         case 'mood': 
             
             $("#mood").css("display","block");
             $("#moodSelected").addClass("moodSelected");
             schitchMenuMoodDezactived(['drugs',"action","sleep","actionPlaned"]);
-            //sessionSet("mood");
             break;
         case 'drugs':
             $("#drugs").css("display","block");
             $("#drugsSelected").addClass("moodSelected");
             schitchMenuMoodDezactived(['mood',"action","sleep","actionPlaned"]);
-            //sessionSet("drugs");
             break;
         case 'sleep':
             $("#sleep").css("display","block");
             $("#sleepSelected").addClass("moodSelected");
             schitchMenuMoodDezactived(['mood',"action","drugs","actionPlaned"]);
-            //sessionSet("sleep");
             break;
         case 'action':
             $("#action").css("display","block");
             $("#actionSelected").addClass("moodSelected");
             schitchMenuMoodDezactived(['mood',"drugs","sleep","actionPlaned"]);
-            //sessionSet("action");
             break;
         case 'actionPlaned':
             $("#actionPlaned").css("display","block");
             $("#actionPlanedSelected").addClass("moodSelected");
             schitchMenuMoodDezactived(['mood',"drugs","sleep","action"]);
-            //sessionSet("action");
             break;
         
     }
@@ -651,7 +519,6 @@ function SwitchMenuMoodAdd(type) {
 
 
 function SwitchMenuMoodShow(type,bool = true) {
-    //alert(type);
     switch(type) {
         case 'mood': 
             $("#showmood").css("display","block");
@@ -693,9 +560,7 @@ function DisableDose() {
 }
 
 function loadTypePortion(url) {
-      //$("#typePortion").load(url + "?" + $("#form8").serialize());
-      //alert('dsd');
-      
+
       if ($("select[name='nameProduct']").val() == "")  {
           $("#typePortion").html('');
           return;
@@ -711,7 +576,6 @@ function loadTypePortion(url) {
                dataType : "html",
        })
        .done(function(response) {
-          //$("#showdrugs").html(response);
            $("#typePortion").html(response);
 
 
@@ -813,7 +677,6 @@ function addDrugs(url) {
 
 
 function editMood(id) {
-    //alert('dd');
     $(".showMenuMood" + id).css("display","none");
     $(".showMenuEditMood" + id).css("display","block");
 }
@@ -845,13 +708,6 @@ function editMoodDescription(url,id) {
                   $(".description" + id).css("display","block");
                   $("#description" + id).html(response["what_work"]);
 
-                  //$("#cancelActionDayButton"+id).css("display","none");
-                  //$("#updateActionDayButton"+id).css("display","none");
-                  //$("#editActionDayButton"+id).css("display","block");
-                  //$("#deleteActionDayButton"+id).css("display","block");
-
-                 //$("#editActionDay" + id).html(response["name"]);
-
 
 
             })
@@ -882,14 +738,6 @@ function editSleepDescription(url,id) {
 
                   $(".descriptionSleep" + id).css("display","block");
                   $("#descriptionSleep" + id).html(response["what_work"]);
-
-                  //$("#cancelActionDayButton"+id).css("display","none");
-                  //$("#updateActionDayButton"+id).css("display","none");
-                  //$("#editActionDayButton"+id).css("display","block");
-                  //$("#deleteActionDayButton"+id).css("display","block");
-
-                 //$("#editActionDay" + id).html(response["name"]);
-
 
 
             })
@@ -927,13 +775,6 @@ function showDescritionMood(url,id) {
 
                  
 
-                  //$("#cancelActionDayButton"+id).css("display","none");
-                  //$("#updateActionDayButton"+id).css("display","none");
-                  //$("#editActionDayButton"+id).css("display","block");
-                  //$("#deleteActionDayButton"+id).css("display","block");
-
-                 //$("#editActionDay" + id).html(response["name"]);
-
 
 
             })
@@ -964,14 +805,6 @@ function showDescritionSleep(url,id) {
 
                  
 
-                  //$("#cancelActionDayButton"+id).css("display","none");
-                  //$("#updateActionDayButton"+id).css("display","none");
-                  //$("#editActionDayButton"+id).css("display","block");
-                  //$("#deleteActionDayButton"+id).css("display","block");
-
-                 //$("#editActionDay" + id).html(response["name"]);
-
-
 
             })
             .fail(function() {
@@ -997,20 +830,10 @@ function updateDescription(url,id) {
             .done(function(response) {
 
 
-                //$("#messageDescription"+id).text(response);
         if (response == "") {
-            //setInterval("reload();",20000);
             $("#messageDescription"+id).html("<div class='ajaxSucces'>Pomyślnie dodano</div>");
         }
                  
-
-                  //$("#cancelActionDayButton"+id).css("display","none");
-                  //$("#updateActionDayButton"+id).css("display","none");
-                  //$("#editActionDayButton"+id).css("display","block");
-                  //$("#deleteActionDayButton"+id).css("display","block");
-
-                 //$("#editActionDay" + id).html(response["name"]);
-
 
 
             })
@@ -1073,7 +896,6 @@ function updateMood(url,id) {
                dataType : "json",
        })
        .done(function(response) {
-           //levelNervousness
            $("#levelMood"+id).text(response["level_mood"]);
            $("#levelAnxiety"+id).text(response["level_anxiety"]);
            $("#levelNervousness"+id).text(response["level_nervousness"]);
@@ -1084,12 +906,11 @@ function updateMood(url,id) {
                $("#levelEpizodes"+id).text(response["epizodes_psychotik"] + " epizodów psychotycznych");
            }
            else {
-               //alert('dd');
+
                $("#levelEpizodes"+id).removeClass("MessageError");
                $("#levelEpizodes"+id).text(" Brak");
            }
-           
-           //$("#levelEpizodes"+id).text(response["epizodes_psychotik"]);
+
            
            
            $(".showMenuMood" + id).css("display","block");
@@ -1121,20 +942,15 @@ function updateDrugs(url,id) {
                dataType : "json",
        })
        .done(function(response) {
-           //levelNervousness
            if (response["errorDate"] == true) {
                 alert("Błędna data");
            }
            $("#nameDrugs"+id).text(response["name"]);
-           //$("#substanceDrugs"+id).text(response["type"]);
            $("#doseDrugs"+id).text(response["portion"] + " " + response["type"]);
            $("#dateDrugs"+id).text(response["date"]);
            $("#percentDrugs"+id).text(response["price"] + " zł");
 
 
-           
-           //$("#levelEpizodes"+id).text(response["epizodes_psychotik"]);
-           
            
            $(".showMenuDrugs" + id).css("display","block");
            $(".showMenuEditDrugs" + id).css("display","none");
@@ -1162,21 +978,17 @@ function updateSleep(url,id) {
                dataType : "json",
        })
        .done(function(response) {
-           //levelNervousness
-
            
            if (response["epizodes_psychotik"] > 0 ) {
                $("#levelEpizodes"+id).addClass("MessageError");
                $("#levelEpizodes"+id).text(response["epizodes_psychotik"] + " wybudzeń");
            }
            else {
-               //alert('dd');
+               
                $("#levelEpizodes"+id).removeClass("MessageError");
                $("#levelEpizodes"+id).text(" Brak");
            }
-           
-           //$("#levelEpizodes"+id).text(response["epizodes_psychotik"]);
-           
+          
            
            $(".showMenuMood" + id).css("display","block");
            $(".showMenuEditMood" + id).css("display","none");
@@ -1242,19 +1054,14 @@ function editActionDay(url,id,idAction) {
                
                
                if (response[i]["id"] == idAction) {
-                   //alert(id);
-                   //arrayForm.push("<option value='" + response[i]["id"] + "' selected >'" + response[i]["name"] + "</option>");
                    arrayForm += "<option value='" + response[i]["id"] + "' selected >" + response[i]["name"] + "</option>";
-                   //$("#editActionDay" + id).append("<option value='" + response[i]["id"] + "' selected >'" + response[i]["name"] + "</option>");
-                   //alert(id);
+                
                }
                else {
                    arrayForm += "<option value='" + response[i]["id"] + "'  >" + response[i]["name"] + "</option>";
-                   //arrayForm += "<option value='0'  >gfhfhgfh</option>";
-                   //$("#editActionDays" + id ).append(new Option("respon","rsddespon"));
+                   
                }
              
-           //     alert('ff');
            }
              arrayFormEnd = "</select>";
              $("#cancelActionDayButton"+id).css("display","block");
@@ -1306,8 +1113,6 @@ function cancelActionDay(url,id) {
              
 }
 function updateActionDay(url,id) {
-    //alert($("[name='formActionEditDay" + id + "'").val());
-    //return;
          $.ajax({
            url : url,
                method : "get",
@@ -1347,18 +1152,8 @@ function showAction(url,id) {
                     dataType : "html",
             })
             .done(function(response) {
-                //alert(response);
                 $(".actionShow" + id).css("display","block");
                 $("#messageactionShow"+id).html(response);
-
-                 
-
-                  //$("#cancelActionDayButton"+id).css("display","none");
-                  //$("#updateActionDayButton"+id).css("display","none");
-                  //$("#editActionDayButton"+id).css("display","block");
-                  //$("#deleteActionDayButton"+id).css("display","block");
-
-                 //$("#editActionDay" + id).html(response["name"]);
 
 
 
@@ -1387,19 +1182,8 @@ function showDescriptionDrugs(url,id) {
                     dataType : "html",
             })
             .done(function(response) {
-                //alert(response);
                 $(".descriptionShowDrugs" + id).css("display","block");
                 $("#messageDescriptionshowDrugs"+id).html(response);
-
-                 
-
-                  //$("#cancelActionDayButton"+id).css("display","none");
-                  //$("#updateActionDayButton"+id).css("display","none");
-                  //$("#editActionDayButton"+id).css("display","block");
-                  //$("#deleteActionDayButton"+id).css("display","block");
-
-                 //$("#editActionDay" + id).html(response["name"]);
-
 
 
             })
@@ -1426,19 +1210,8 @@ function showDrugs(url,id) {
 
             })
             .done(function(response) {
-                //alert(response);
                 $(".drugsShow" + id).css("display","block");
                 $("#messagedrugsShow"+id).html(response);
-
-                 
-
-                  //$("#cancelActionDayButton"+id).css("display","none");
-                  //$("#updateActionDayButton"+id).css("display","none");
-                  //$("#editActionDayButton"+id).css("display","block");
-                  //$("#deleteActionDayButton"+id).css("display","block");
-
-                 //$("#editActionDay" + id).html(response["name"]);
-
 
 
             })
@@ -1465,18 +1238,8 @@ function editActionMood(url,id) {
                     dataType : "html",
             })
             .done(function(response) {
-                //alert(response);
                 $(".actionMoodShow" + id).css("display","block");
                 $("#messageactionMoodShow"+id).html(response);
-
-                 
-
-                  //$("#cancelActionDayButton"+id).css("display","none");
-                  //$("#updateActionDayButton"+id).css("display","none");
-                  //$("#editActionDayButton"+id).css("display","block");
-                  //$("#deleteActionDayButton"+id).css("display","block");
-
-                 //$("#editActionDay" + id).html(response["name"]);
 
 
 
@@ -1502,8 +1265,6 @@ function addDescriptionDrugsSubmit(url,id) {
                     dataType : "html",
             })
             .done(function(response) {
-                //alert(response);
-                //$(".actionMoodShow" + id).css("display","block");
                 $("#messageDescriptionAddDrugs"+id).html(response);
 
                  
@@ -1516,19 +1277,8 @@ function addDescriptionDrugsSubmit(url,id) {
 function addDescriptionDrugs(id) {
     
          if ($(".descriptionDrugs" + id).css("display") == "none" ) {
-
-                //alert(response);
                 $(".descriptionDrugs" + id).css("display","block");
-                //$("#messageDescriptionAddDrugs"+id).html(response);
 
-                 
-
-                  //$("#cancelActionDayButton"+id).css("display","none");
-                  //$("#updateActionDayButton"+id).css("display","none");
-                  //$("#editActionDayButton"+id).css("display","block");
-                  //$("#deleteActionDayButton"+id).css("display","block");
-
-                 //$("#editActionDay" + id).html(response["name"]);
 
 
  
@@ -1546,7 +1296,6 @@ function sessionSet(type) {
     sessionStorage.setItem('main', type);
 }
 function sessionSetShow(type) {
-    //type = 'drugsShow';
-    //alert(type);
+
     sessionStorage.setItem('mainShow', type);
 }

@@ -26,26 +26,10 @@ class Main {
             $this->IdUsers = Auth::User()->id_users;
         }
     }
-    /*
-    private function setHourMood($year,$month,$day,bool $bool = false) {
-        $second = strtotime($year . "-" . $month . "-" . $day . " " . Auth::User()->startDay . ":00:00");
-        
-        $second2 = $second + (3600 * 24);
-        if ($bool == false) {
-            $this->dateStart = date("Y-m-d H:i:s",$second);
-            $this->dateEnd = date("Y-m-d H:i:s",$second2);
-        }
-        else {
-            return [date("Y-m-d H:i:s",$second),date("Y-m-d H:i:s",$second2)];
-        }
-    }
-     * 
-     */
+
     public function createDayColorMood($year,$month,$day) {
         $listMood = [];
-        //print $month;
         $dayMonth = calendar::checkMonth($month,$year);
-        //print $dayMonth;
         for ($i=0;$i < $dayMonth;$i++) {
             $this->listMood[$i] = \App\Models\Mood::sumMood($year . "-" . $month . "-" . ($i+1), Auth::User()->start_day,$this->IdUsers);
             if (empty($this->listMood[$i])) {
@@ -62,87 +46,15 @@ class Main {
                 $this->listColor[$i] = Common::setColor($this->listMood[$i]->sum_mood);
             }
         }
-        //return $listMood;
+
     }
     public function downloadMood($year,$month,$day) {
-         ;
-        //print Auth::User()->start_day;
+
         $listMood = MoodModel::downloadMood($year . "-" . $month . "-" . $day, Auth::User()->start_day, $this->IdUsers);
         return $listMood;
    
     }
-    /*
-    private function setColor( $mood) {
-        if (empty($mood)) {
-            return 10000;
-        }
-        if ($mood >= -20  and  $mood < -16) {
-            return -10;
-        }
-        if ($mood >= -16  and  $mood < -11) {
-            return -9;
-        }
-        if ($mood >= -11  and  $mood < -7) {
-            return -8;
-        }
-        if ($mood >= -7  and  $mood < -2) {
-            return -7;
-        }
-        if ($mood >= -2  and  $mood < -1) {
-            return -6;
-        }
-        if ($mood >= -1  and  $mood < -0.5) {
-            return -5;
-        }
-        if ($mood >= -0.5  and  $mood < -0.2) {
-            return -4;
-        }
-        if ($mood >= -0.2  and  $mood < -0.1) {
-            return -3;
-        }
-        if ($mood >= -0.1  and  $mood < -0.05) {
-            return -2;
-        }
-        if ($mood >= -0.05  and  $mood < 0) {
-            return -1;
-        }
-        if ($mood >= 0  and  $mood < 0.03) {
-            return 0;
-        }
-        if ($mood >= 0.03  and  $mood < 0.1) {
-            return 1;
-        }
-        if ($mood >= 0.1  and  $mood < 0.2) {
-            return 2;
-        }
-        if ($mood >= 0.2  and  $mood < 0.3) {
-            return 3;
-        }
-        if ($mood >= 0.3  and  $mood < 0.5) {
-            return 4;
-        }
-        if ($mood >= 0.5  and  $mood < 1) {
-            return 5;
-        }
-        if ($mood >= 1  and  $mood < 3) {
-            return 6;
-        }
-        if ($mood >= 3  and  $mood < 8) {
-            return 7;
-        }
-        if ($mood >= 8  and  $mood < 12) {
-            return 8;
-        }
-        if ($mood >= 12  and  $mood < 16) {
-            return 9;
-        }
-        if ($mood >= 16  and  $mood <= 20) {
-            return 10;
-        }
 
-    }    
-     * 
-     */
     public function setPercent($list) {
         $percent = [];
         $i = 0;

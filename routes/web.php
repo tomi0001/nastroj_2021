@@ -23,18 +23,15 @@ Route::get('/loginUser', [App\Http\Controllers\HomeController::class, 'loginUser
 Route::post("/loginDr",[App\Http\Controllers\doctorController::class, 'loginDoctor'])->name("loginDoctor");
 Auth::routes();
 
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('main');
 
 
 Route::get('/users.addMood', [App\Http\Controllers\Mood\MoodController::class, 'addTestMood'])->name('users.addMood')
                     ->middleware('auth')->middleware('can:users');
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('main');
 Route::get('/users/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\Main\MainController::class, 'index'])->name('users.main')
-          //          ->where("year","[0-9]?[0-9]?[0-9]?[0-9]$")
-        //            ->where("month","^(1[0-2]|[1-9])$")->where("day","^(3[01]|[12][0-9]|[1-9])$")
         ->middleware('auth')->middleware('can:users');            
 Route::get('/users.drugsAdd', [App\Http\Controllers\Main\MainController::class, 'addProduct'])->name('users.drugsAdd')
                     ->middleware('auth')->middleware('can:users');
-            
 Route::get('/users.moodAdd',  [App\Http\Controllers\Main\MainController::class, 'addMood'])->name('users.moodAdd')
                     ->middleware('auth')->middleware('can:users');
 Route::get('/users.sleepAdd', [App\Http\Controllers\Main\MainController::class, 'addSleep'])->name('users.sleepAdd')
@@ -96,6 +93,8 @@ Route::get("/ajax/loadTypePortion",[App\Http\Controllers\Main\MainController::cl
         ->name("ajax.loadTypePortion")->middleware('auth')->middleware('can:users');
 Route::get("/ajax/actionPlanedpAdd",[App\Http\Controllers\Main\MainController::class, 'actionPlanedpAdd'])
         ->name("users.actionPlanedpAdd")->middleware('auth')->middleware('can:users');
+
+
 
 
 Route::get("/settings/addNewAction",[App\Http\Controllers\Settings\SettingsMoodController::class, 'addNewAction'])
@@ -179,26 +178,15 @@ Route::get("/settings/editPlanedsubmit",[App\Http\Controllers\Settings\SettingsP
         ->name("setting.editPlanedsubmit")->middleware('auth')->middleware('can:users');
 
 
-            Route::get('/users4/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\Search\SearchController::class, 'index2'])->name('users.search')
+Route::get('/users4/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\Search\SearchController::class, 'index2'])->name('users.search')
                     ->middleware('auth')->middleware('can:users');
             
-            Route::get('/users.settings', [App\Http\Controllers\Settings\SettingsController::class, 'index'])->name('users.setting')
+Route::get('/users.settings', [App\Http\Controllers\Settings\SettingsController::class, 'index'])->name('users.setting')
                     ->middleware('auth')->middleware('can:users');
             
             
             
             
             
-            Route::get('/doctor', [App\Http\Controllers\HomeController::class, 'index2'])->name('doctor.main')->middleware('auth')->middleware('can:doctor');
-            Route::get('/logout', [App\Http\Controllers\HomeController::class, 'logout'])->name('logout')->middleware('auth');
-            //Route::get('/', [App\Http\Controllers\HomeController::class, 'index2'])->name('home')->middleware('web');
-  //      });
-
-/*
-Route::group(['middleware' => ['auth']], function() {
-    Route::resource('roles', RoleController::class);
-    Route::resource('users', UserController::class);
-    Route::resource('products', ProductController::class);
-})
- * ;
- */
+Route::get('/doctor', [App\Http\Controllers\HomeController::class, 'index2'])->name('doctor.main')->middleware('auth')->middleware('can:doctor');
+Route::get('/logout', [App\Http\Controllers\HomeController::class, 'logout'])->name('logout')->middleware('auth');

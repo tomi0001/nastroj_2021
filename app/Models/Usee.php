@@ -53,7 +53,6 @@ class Usee extends Model
                 ->where("usees.id_users",$idUsers)
                 ->where("usees.date",">=",$dateOne)
                 ->where("usees.date","<",$dateTwo)
-                //->whereRaw(DB::Raw("(DATE(IF(HOUR(    usees.date) >= '" . $startDay . "', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ) = '" . $date . "' "))
                 ->orderBy("usees.date")
                 ->get();
                 
@@ -70,7 +69,6 @@ class Usee extends Model
     }
     public static function ifDescriptionDrugs(int $idUsee, int $idUsers) {
         return self::join("users_descriptions","users_descriptions.id_usees","usees.id")
-                //->selectRaw("count(users_descriptions.id) as count")
                 ->where("users_descriptions.id_usees",$idUsee)
                 ->count();
     }

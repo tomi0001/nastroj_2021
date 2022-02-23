@@ -66,7 +66,6 @@ class SettingsProductController {
         $Product->deletePlaned($namePlaned->name);
         $Product->addNewPlanedArray($request,$namePlaned->name);
         return View("ajax.succes")->with("succes","pomyślnie zmodyfikowano zaplanowaną dawkę.");
-        //var_dump($request->get("portions"));
     }
     public function deletePlaned(Request $request) {
         $namePlaned = Planned_drug::showName($request->get("id"));
@@ -106,8 +105,6 @@ class SettingsProductController {
         $newList = $Product->sortWhereSubstance($listGroup,$showSettingsSubstance);
         return View("Users.Settings.Product.editSubstanceLoadGroup")->with("listGroup",$newList)->with("idSubstance",$request->get("id"))
                 ->with("equivalent",$equivalent);    
-        //print ("<pre>");
-        //print_r($showSettingsSubstance);
     }
     
     public function changeProduct(Request $request) {
@@ -131,7 +128,6 @@ class SettingsProductController {
             $Group = new Product;
             $Group->editNameGroup($request);
             
-            //print json_encode(["error"=>0,"succes"=>"Pomyślnie zmodyfikowano nazwę grupy"]);
             return View("ajax.succes")->with("succes","Pomyślnie zmodyfikowano nazwę grupy");
         }
     }
@@ -167,7 +163,6 @@ class SettingsProductController {
             
             $Substance->addNewSubstance($request);
             return View("ajax.succes")->with("succes","Pomyślnie dodano substancę");
-         //   print json_encode(["error"=>0,"succes"=>"Pomyślnie dodano akcję"]);
         }
     }
     public function editSubstanceSubmit(Request $request) {
@@ -201,7 +196,6 @@ class SettingsProductController {
             
             $Product->addNewProduct($request);
             return View("ajax.succes")->with("succes","Pomyślnie dodano produkt");
-         //   print json_encode(["error"=>0,"succes"=>"Pomyślnie dodano akcję"]);
         }
     } 
    

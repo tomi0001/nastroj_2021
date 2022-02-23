@@ -32,15 +32,12 @@ class MainController {
         $Calendar = new Calendar($year, $month, $day, $action);
         $Mood = new Main;
         $Drugs = new Product;
-
-        //print Auth::User()->start_day;
         $listMood = $Mood->downloadMood($Calendar->year, $Calendar->month, $Calendar->day);
         $listDrugs = Usee::selectUsee($Calendar->year . "-" . $Calendar->month . "-" . $Calendar->day, Auth::User()->id, Auth::User()->start_day);
         $listSubstance = Usee::listSubstnace($Calendar->year . "-" . $Calendar->month . "-" . $Calendar->day, Auth::User()->id, Auth::User()->start_day);
         $percent =  Mood::sortMood($Calendar->year . "-" . $Calendar->month . "-" .  $Calendar->day,Auth::User()->start_day,Auth::User()->id);
         $percent = $Mood->setPercent($percent);
         $sumAll = \App\Models\Mood::sumAll($Calendar->year . "-" . $Calendar->month . "-" . $Calendar->day, Auth::User()->start_day,Auth::User()->id);
-        //$listAction = Action::selectAction(Auth::User()->id);
         $Mood->createDayColorMood($Calendar->year, $Calendar->month, $Calendar->day);
         $actionForDay = Actions_day::showActionForAllDay($Calendar->year . "-" . $Calendar->month . "-" .  $Calendar->day,Auth::User()->id,Auth::User()->start_day);
         $actionPlan = Action_plan::showActionPlan($Calendar->year . "-" . $Calendar->month . "-" .  $Calendar->day,Auth::User()->id,Auth::User()->start_day);
@@ -68,9 +65,7 @@ class MainController {
                                 ->with("listPlanedAction",$Mood->listPlanedAction)
                                 ->with("actionSum",$actionSum)
                                 ->with("date",$Calendar->year . "-" . $Calendar->month . "-" .  $Calendar->day);
-                                //->with("date",$Calendar->year . "-" .  $Calendar->month . "-" .  $Calendar->day);
-                                //->with("listAction",$listAction);
-        
+    
     }
     public function addActionDay(Request $request) {
         $Action = new serviceAction;
@@ -95,7 +90,6 @@ class MainController {
     public function addProduct(Request $request) {
             
             $Drugs = new Product;
-            //$date = $Drugs->setkDate($request->get("date"),$request->get("time"));
             $error = $Drugs->setDate($request);
             if ($error == false) {
                 array_push($this->error, "Błędna data");
@@ -241,12 +235,10 @@ class MainController {
         $Product->deleteDrugs($request->get("id"));
     }
     public function editMoodDescription(Request $request) {
-        //$Mood = new Mood;
         $description = Mood::selectDescription($request->get("id"),Auth::User()->id);
         print json_encode($description);
     }
     public function editSleepDescription(Request $request) {
-        //$Mood = new Mood;
         $description = Mood::selectDescription($request->get("id"),Auth::User()->id);
         print json_encode($description);
     }
@@ -276,7 +268,6 @@ class MainController {
         return View("ajax.showDrugs")->with("listDrugs",$listDrugs)->with("listDrugsAt",$listDrugsAt);
     }
     public function editActionMood(Request $request) {
-        //$listValueAction = Moods_action::selectValueActionForMood($request->get("id"),Auth::User()->id);
         return View("ajax.editActionMood")->with("idMood",$request->get("id"));
         
     }

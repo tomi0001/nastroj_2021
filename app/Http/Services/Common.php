@@ -1,9 +1,7 @@
 <?php
 
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * copyright 2021 Tomasz Leszczyński tomi0001@gmail.com
  */
 
 namespace App\Http\Services;
@@ -95,31 +93,20 @@ class Common {
         $dateStart = new \DateTime($dateOne);
         $dateEnd = new \DateTime($dateTwo);
         $diff = $dateEnd->diff($dateStart);
-        //$bool = false;
-        //$year = "";
-        //$month = "";
-        //$day = "";
-        //$hour = "";
-        //$minute = "";
         $string = "";
         if ($diff->y != 0) {
-            //$bool = true;
             $string .=  $diff->y .  " Lat, ";
         }
         if ($diff->m != 0) {
-            //$bool = true;
             $string .=  $diff->m . " Miesięcy, ";
         }
         if ($diff->d != 0) {
-            //$bool = true;
             $string .=  $diff->d . " Dni, ";
         }
         if ($diff->h != 0) {
-            //$bool = true;
             $string .=  $diff->h . " Godzin, ";
         }
         if ($diff->i != 0) {
-            //$bool = true;
             $string .=  $diff->i . " Minut, ";
         }        
         return substr($string,0,-2);
@@ -128,31 +115,20 @@ class Common {
         $dateStart = new \DateTime("1970-01-01 00:00:00");
         $dateEnd = new \DateTime(date("Y-m-d H:i:s", strtotime("1970-01-01 00:00:00") + $time));
         $diff = $dateEnd->diff($dateStart);
-        //$bool = false;
-        //$year = "";
-        //$month = "";
-        //$day = "";
-        //$hour = "";
-        //$minute = "";
         $string = "";
         if ($diff->y != 0) {
-            //$bool = true;
             $string .=  $diff->y .  " Lat, ";
         }
         if ($diff->m != 0) {
-            //$bool = true;
             $string .=  $diff->m . " Miesięcy, ";
         }
         if ($diff->d != 0) {
-            //$bool = true;
             $string .=  $diff->d . " Dni, ";
         }
         if ($diff->h != 0) {
-            //$bool = true;
             $string .=  $diff->h . " Godzin, ";
         }
         if ($diff->i != 0) {
-            //$bool = true;
             $string .=  $diff->i . " Minut, ";
         }        
         return substr($string,0,-2);

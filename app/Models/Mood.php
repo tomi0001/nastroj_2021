@@ -29,7 +29,6 @@ class Mood extends Model
                 ->where("id",$idMood)->first();
     }
     public static function sumAll(string $date,  $startDay,int $idUsers) {
-        //print $date;
         return self::selectRaw(DB::Raw("(DATE(IF(HOUR(moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) as dat"))
                 ->selectRaw(DB::Raw("(DATE(IF(HOUR(moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) as dat2"))
                 ->selectRaw(" ((sum( ( unix_timestamp(date_end) - unix_timestamp(date_start) ) * level_mood)  / sum( unix_timestamp(date_end) - unix_timestamp(date_start) ) )  )as sum_mood ")
@@ -58,7 +57,6 @@ class Mood extends Model
     public static function sortMood(string $date, $startDay,int $idUsers) {
         return self::selectRaw(DB::Raw("(DATE(IF(HOUR(moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) as dat"))
                 ->selectRaw("unix_timestamp(date_end) - unix_timestamp(date_start) as second")
-                //->selectRaw("date_end")
                 ->selectRaw("id")
                 ->where(function ($query) use ($date,$startDay) {
                     $query->whereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) = '$date'" ))
@@ -70,8 +68,7 @@ class Mood extends Model
         return self::select("what_work")->where("id",$idMood)->first();
     }
     public static function downloadMood(string $date,int $startDay,int $IdUsers) {
-        return self::selectRaw("moods.id as id")
-                //->selectRaw(DB::Raw("(DATE(IF(HOUR(moods.date_start) >= '" . Auth::User()->start_day . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) as dat"))
+        return self::selectRaw("moods.id as id")                
                 ->selectRaw("moods.date_start as date_start")
                 ->selectRaw("moods.date_end as date_end")
                 ->selectRaw("moods.level_mood as level_mood")
@@ -80,7 +77,6 @@ class Mood extends Model
                 ->selectRaw("moods.level_stimulation  as level_stimulation")
                 ->selectRaw("moods.epizodes_psychotik as epizodes_psychotik")
                 ->selectRaw("moods.type as type")
-                //->selectRaw("(unix_timestamp(date_end)  - unix_timestamp(date_start)) as division")
                 ->selectRaw(" ((unix_timestamp(date_end)  - unix_timestamp(date_start)) * level_mood) as average_mood")
                 ->selectRaw("((unix_timestamp(date_end)  - unix_timestamp(date_start)) * level_anxiety) as average_anxiety")
                 ->selectRaw("((unix_timestamp(date_end)  - unix_timestamp(date_start)) * level_nervousness) as average_nervousness")

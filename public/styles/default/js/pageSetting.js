@@ -6,7 +6,6 @@
 
 
 function setFunction() {
-    //alert('zfdsf');
     selectMenu();
     switch (sessionStorage.getItem('settingType')) {
         
@@ -45,7 +44,6 @@ $(document).ready(function(){
 });
 function resetSession() {
     sessionStorage.removeItem('settingType');
-    //sessionStorage.removeItem('mainShow');
 }
 function selectMenu() {
     if (sessionStorage.getItem('settingType') == 'addActionNew' || sessionStorage.getItem('settingType') == 'levelMood' || sessionStorage.getItem('settingType') == 'changeNameAction' || sessionStorage.getItem('settingType') == 'changeDateAction') {
@@ -179,13 +177,8 @@ function levelMoodSubmit() {
             .done(function(response) {
 
 
-   
-                //$("#levelMoodSubmit").addClass("ajaxSucces");
                 $("#levelMoodSubmit").html(response);
             
-
-
-                  
 
 
             })
@@ -302,14 +295,11 @@ function addActionNewSubmit() {
     var arrayError = "";
     if ($("input[name='nameAction']").val() == "") {
         arrayError += "Uzupełnij nazwe akcji<br>";
-        //alert('Uzupełnij nazwe akcji');
-        //return;
+
     }
     if ($("input[name='levelPleasure']").val() == "" || ($("input[name='levelPleasure']").val() > 20 || $("input[name='levelPleasure']").val() < -20) || isNaN($("input[name='levelPleasure']").val()) ) {
-            //alert("Zła wartość przyjemności musi być od -20 do +20");
             arrayError += "Zła wartość przyjemności musi być od -20 do +20";
-            
-          //  return;
+
     }
     if (arrayError != "") {
         $("#addNewActionSubmit").addClass("ajaxError");
@@ -327,7 +317,6 @@ function addActionNewSubmit() {
             .done(function(response) {
 
             if (response['error'] != "") {
-                //alert("Już jest taka akcja o takiej nazwie");
         $("#addNewActionSubmit").addClass("ajaxError").removeClass("ajaxSucces");
         $("#addNewActionSubmit").html("Już jest taka akcja o takiej nazwie");
             }
@@ -360,10 +349,6 @@ function changeNameActionSubmit() {
 
           
                 $("#changeNameActionSubmit").html(response);
-            
-
-
-                  
 
 
             })
@@ -385,10 +370,6 @@ function changeDateActionSubmit() {
 
           
                 $("#changeDateActionSubmit").html(response);
-            
-
-
-                  
 
 
             })
@@ -408,14 +389,6 @@ function deleteAction(url) {
                     dataType : "html",
             })
             .done(function(response) {
-
-
-          
-               
-            
-
-
-                  
 
 
             })
@@ -445,8 +418,6 @@ function loadPleasure(url) {
                   
                   $("#newName").css("visibility","visible");
                   $("textarea[name='newName']").val(response["name"])
-//                  $("#changeNameActionChange").html(response);
-
 
             })
             .fail(function() {
@@ -485,18 +456,15 @@ function loadChangeAction(url) {
             })
             .done(function(response) {
                 var regex = /<br\s*[\/]?>/gi;
-                //$("select[name='changeAction']").val("sdsdf");
         
                 var str = response["actionPlan"]["what_work"];
                var string =  createListAction(response["actionPlan"]["id_actions"],response);
-               //alert(string);
                 $("select[name='changeAction']").html(string);
                 $("textarea[name='description']").html(str.replace(regex, "\n"));
                 $("input[name='long']").val(response["actionPlan"]["longer"]);
                 $("input[name='date']").val(response["actionPlan"]["date"]);
                 $("input[name='time']").val(response["actionPlan"]["time"]);
-                //alert(response["actionPlan"]["time"]);
-                //alert(response["actionPlan"]["id_actions"]);
+
                 
                 if (response["bool"] == true) {
                     bool = true;
@@ -512,13 +480,7 @@ function loadChangeAction(url) {
                     $("input[name='date']").prop("disabled",bool);
                     $("input[name='time']").prop("disabled",bool);
                     $("#changeButton").prop("disabled",bool);
-                    //$("#changeButton").addClass("disable");
                     $("#buttonDelete").prop("disabled",bool);
-                  //$("input[name='pleasure']").val(response["level_pleasure"]);
-                  
-                  //$("#newName").css("visibility","visible");
-                  //$("textarea[name='newName']").val(response["name"])
-//                  $("#changeNameActionChange").html(response);
 
 
             })
@@ -566,9 +528,7 @@ function addNewGroup() {
              $("#editSubstanceSet").css("display","none");
              $("#editProductSet").css("display","none");
              $("#planedDoseSet").css("display","none");
-            //$("#levelMoodAdd").css("display","none");
-            //$("#changeNameActionChange").css("display","none");
-            //$("#changeDateActionChange").css("display","none");
+
     }
     else {
         
@@ -599,8 +559,6 @@ function addNewSubstance() {
             .fail(function() {
                 alert("Wystąpił błąd");
             })    
-            //$("#levelMoodAdd").css("display","none");
-            //$("#changeNameActionChange").css("display","none");
             $("#addNewGroup").css("display","none");
             $("#addNewProduct").css("display","none");
             $("#editGroupSet").css("display","none");
@@ -637,8 +595,7 @@ function addNewProduct() {
             .fail(function() {
                 alert("Wystąpił błąd");
             })    
-            //$("#levelMoodAdd").css("display","none");
-            //$("#changeNameActionChange").css("display","none");
+
             $("#addNewGroup").css("display","none");
             $("#addNewSubstance").css("display","none");
             $("#editGroupSet").css("display","none");
@@ -675,8 +632,7 @@ function editGroup() {
             .fail(function() {
                 alert("Wystąpił błąd");
             })    
-            //$("#levelMoodAdd").css("display","none");
-            //$("#changeNameActionChange").css("display","none");
+
             $("#addNewGroup").css("display","none");
             $("#addNewSubstance").css("display","none");
             $("#addNewProduct").css("display","none");
@@ -712,8 +668,7 @@ function editSubstance() {
             .fail(function() {
                 alert("Wystąpił błąd");
             })    
-            //$("#levelMoodAdd").css("display","none");
-            //$("#changeNameActionChange").css("display","none");
+ 
             $("#addNewGroup").css("display","none");
             $("#addNewSubstance").css("display","none");
             $("#addNewProduct").css("display","none");
@@ -751,8 +706,6 @@ function planedDose() {
             .fail(function() {
                 alert("Wystąpił błąd");
             })    
-            //$("#levelMoodAdd").css("display","none");
-            //$("#changeNameActionChange").css("display","none");
             $("#addNewGroup").css("display","none");
             $("#addNewSubstance").css("display","none");
             $("#addNewProduct").css("display","none");
@@ -770,10 +723,7 @@ var idPlaned = "";
 
 
 function changeStatusPlaned(id,minus,plus) {
-    //alert(id);
     if ($("#bool"+id).hasClass("minus") ) {
-
-        //$("#trPlaned" + id).prop("disabled",true);
         $("#trPlanedInput"+id).prop('disabled', true);
 
         $('#trPlanedSelect' + id)[0].selectize.disable();
@@ -793,10 +743,9 @@ function changeStatusPlaned(id,minus,plus) {
 
 
 function changeStatusPlaned2(id,minus,plus) {
-    //alert(id);
+
     if ($("#bool"+id).hasClass("minus") ) {
 
-        //$("#trPlaned" + id).prop("disabled",true);
         $("#trPlanedInput"+id).prop('disabled', true);
         $("#trPlanedSelect"+id).prop('disabled', true);
 
@@ -807,7 +756,6 @@ function changeStatusPlaned2(id,minus,plus) {
     }
     else {
         $("#trPlanedInput"+id).prop('disabled', false);
-        //$("#trPlanedSelect"+id).prop('disabled', true);
         $("#trPlanedSelect"+id).prop('disabled', false);
 
         $("#bool"+id).removeClass("plus").addClass("minus");
@@ -890,17 +838,12 @@ function addNewPosition() {
         var selectName = $("#selectHidden").html();
         var selectNameResult = selectName.replaceAll("xxxx","position" + (positionPlaned+2));
         var selectNameResult2= selectNameResult.replaceAll("trPlanedSelect","trPlanedSelect" + (positionPlaned+2));
-        //$(".tmpId").attr("id","trPlanedSelect" + (positionPlaned+2));
-        //$(".tmpId").attr("name","position" + (positionPlaned+2));
+
         var imgPlaned = $("#hiddenTd").html();
-        //alert(imgPlaned);
         var result = imgPlaned.replaceAll("xxxx",(positionPlaned+2));
-        //var imgPlaned = $("#hiddenTd");
-        //result = imgPlaned.html().replace("xxxx", (positionPlaned+2));
-        //e.html(fix);
+
                 
         $('#tablePlaned').append("<tr> <td  class='tdColorDrugs '> pozycja " + (positionPlaned+2) + "</td>" + td2 + selectNameResult2 + td2End + td3 + td3End   + td4 +  result + td4End + "</tr>");
-        //alert(positionPlaned+2);
         positionPlaned++;
 }
 
@@ -955,8 +898,7 @@ function editProduct() {
             .fail(function() {
                 alert("Wystąpił błąd");
             })    
-            //$("#levelMoodAdd").css("display","none");
-            //$("#changeNameActionChange").css("display","none");
+
             $("#addNewGroup").css("display","none");
             $("#addNewSubstance").css("display","none");
             $("#addNewProduct").css("display","none");
@@ -975,19 +917,11 @@ function selectedGroupSubstance(id,index) {
 
     if ($("#divGroupGroup_" + id + ":first").hasClass("groupMainAllGroup")) {
         $("#divGroupGroup_" + id).removeClass("groupMainAllGroup").addClass("groupMainselected");
-        //$("#divActionPercent_" + id).removeClass("hiddenPercentExecuting").addClass('active');
-        //$("#idAction").eq(index).val(id);
         arrayGroupSubstance.push(id);
-        //$("#idActio" + id).val(id);
-        //alert(index);
     }
     else {
         var i = arrayGroupSubstance.indexOf(id);
         arrayGroupSubstance.splice(i,1);
-        
-        //$("#idActio" + id).val('');
-        //$("#idAction").eq(index).val('NULL');
-        //$("#divActionPercent_" + id).addClass("hiddenPercentExecuting").removeClass('active');
         $("#divGroupGroup_" + id).removeClass("groupMainselected").addClass("groupMainAllGroup");
 
     }
@@ -996,8 +930,7 @@ function selectedGroupSubstance(id,index) {
 
 var arrayGroupSubstanceChange = [];
 function selectedSubstanceChangeMainSetValue(data,lenght) {
-    //return;
-//alert(lenght);
+
     for (var i = 0;i < lenght;i++) {
         
         if ($("#divSubstanceSubstanceChange_" + data[i].id).length==1) {
@@ -1009,14 +942,12 @@ function selectedSubstanceChangeMainSetValue(data,lenght) {
  
 }
 function selectedProductChangeMainSetValue(data,lenght) {
-    //return;
-//alert(lenght);
+
     for (var i = 0;i < lenght;i++) {
         
         if ($("#divSubstanceSubstanceChange_" + data[i].id).length==1) {
             $("#divSubstanceSubstanceChange_" + data[i].id).removeClass("groupMainAllGroup").addClass("groupMainselected");
             arraySubstanceProductChange.push(data[i].id);
-            //arraySubstanceProductChange.push(data[i].dose);
           
         }
     }
@@ -1027,19 +958,11 @@ function selectedProductChangeMainValue(id,index) {
     if ($("#divSubstanceSubstanceChange_" + id + ":first").hasClass("groupMainAllGroup")) {
         $("#divSubstanceSubstanceChange_" + id).removeClass("groupMainAllGroup").addClass("groupMainselected");
         $("#divActionPercent_" + id).removeClass("hiddenPercentExecuting").addClass("showPercentExecuting");
-        //$("#divActionPercent_" + id).removeClass("hiddenPercentExecuting").addClass('active');
-        //$("#idAction").eq(index).val(id);
         arraySubstanceProductChange.push(id);
-        //$("#idActio" + id).val(id);
-        //alert(index);
     }
     else {
         var i = arraySubstanceProductChange.indexOf(id);
         arraySubstanceProductChange.splice(i,1);
-        
-        //$("#idActio" + id).val('');
-        //$("#idAction").eq(index).val('NULL');
-        //$("#divActionPercent_" + id).addClass("hiddenPercentExecuting").removeClass('active');
         $("#divSubstanceSubstanceChange_" + id).removeClass("groupMainselected").addClass("groupMainAllGroup");
         $("#divActionPercent_" + id).removeClass("showPercentExecuting").addClass("hiddenPercentExecuting");
 
@@ -1049,19 +972,13 @@ function selectedSubstanceChangeMainValue(id,index) {
     
     if ($("#divSubstanceSubstanceChange_" + id + ":first").hasClass("groupMainAllGroup")) {
         $("#divSubstanceSubstanceChange_" + id).removeClass("groupMainAllGroup").addClass("groupMainselected");
-        //$("#divActionPercent_" + id).removeClass("hiddenPercentExecuting").addClass('active');
-        //$("#idAction").eq(index).val(id);
         arrayGroupSubstanceChange.push(id);
-        //$("#idActio" + id).val(id);
-        //alert(index);
+
     }
     else {
         var i = arrayGroupSubstanceChange.indexOf(id);
         arrayGroupSubstanceChange.splice(i,1);
-        
-        //$("#idActio" + id).val('');
-        //$("#idAction").eq(index).val('NULL');
-        //$("#divActionPercent_" + id).addClass("hiddenPercentExecuting").removeClass('active');
+
         $("#divSubstanceSubstanceChange_" + id).removeClass("groupMainselected").addClass("groupMainAllGroup");
 
     }    
@@ -1082,13 +999,10 @@ function changeNameGroup() {
 
 
 function changeArrayFormAddProduct() {
-    //var i = 0;
 
     let array = document.querySelectorAll('input[name^="howMg"]');
-    //alert(u.length);
-    
+
     for (var i=0;i < array.length;i++) {
-        //alert($('input[name^="idActionss"]').eq(i).val());
         var id = $('input[name^="idSubstance"]').eq(i).val();
         if (arraySubstanceProduct.find(element => element == id )) {
 
@@ -1096,52 +1010,16 @@ function changeArrayFormAddProduct() {
           $("#formaddProductNew").append("<input type=\'hidden\' name=\'howMg2[]\' value='" + $('input[name^="howMg"]').eq(i).val() + "' class=\'form-control typeMood\'>");
           
         }
-        //alert($('input[name^="percentExe"]').eq(i).val());
-        //alert($('input[name^="idActionss"]').eq(i).val());
-        //alert($(this).val() );
-        //$('input[name^="percentExe"]').each(function() {
-                    //alert($("input[name='percentExe[" + i + "]']").val());
-                //if ((arrayAction[i]) != "") {
-                    //alert('f');
-                    //alert($(this).parents().parents().attr('class') );
-                    /*
-                    if ($(this).parents().parents().hasClass("active")) {
-                        //JSON["idAction"][i]  = arrayAction[i];
-                        //JSON["percent"][i]  = $(this).val();
-                        
-                        //$("#formAddMood").append("<input type=\'hidden\' name=\'idAction[]\' value='" + arrayAction[i] + "' class=\'form-control typeMood\'>");
-                      
-                    //    alert('dd');
-                    i++;
-                    }
-                //}
-            //alert($(this).val());
-            
-            */
             }
-        //});
-/*
-    for (i=0;i < arrayAction.length;i++) {
-        alert($("input[name='percentExe[" + i + "]']").val());
-        if ((arrayAction[i]) != "") {
-            //alert('f');
-            $("#formAddMood").append("<input type=\'hidden\' name=\'idAction[]\' value='" + arrayAction[i] + "' class=\'form-control typeMood\'>");
-            $("#formAddMood").append("<input type=\'hidden\' name=\'idActions[]\' value='" + $("#percentExe").val() + "' class=\'form-control typeMood\'>");
-        }
-    }
-     * 
- */
+
 }
 
 
 function changeArrayFormEditProduct() {
-    //var i = 0;
-
+ 
     let array = document.querySelectorAll('input[name^="howMg"]');
-    //alert(u.length);
-    
+ 
     for (var i=0;i < array.length;i++) {
-        //alert($('input[name^="idActionss"]').eq(i).val());
         var id = $('input[name^="idSubstance"]').eq(i).val();
         if (arraySubstanceProductChange.find(element => element == id )) {
 
@@ -1149,41 +1027,9 @@ function changeArrayFormEditProduct() {
           $("#formUpdateProduct2").append("<input type=\'hidden\' name=\'howMg2[]\' value='" + $('input[name^="howMg"]').eq(i).val() + "' class=\'form-control typeMood\'>");
           
         }
-        //alert($('input[name^="percentExe"]').eq(i).val());
-        //alert($('input[name^="idActionss"]').eq(i).val());
-        //alert($(this).val() );
-        //$('input[name^="percentExe"]').each(function() {
-                    //alert($("input[name='percentExe[" + i + "]']").val());
-                //if ((arrayAction[i]) != "") {
-                    //alert('f');
-                    //alert($(this).parents().parents().attr('class') );
-                    /*
-                    if ($(this).parents().parents().hasClass("active")) {
-                        //JSON["idAction"][i]  = arrayAction[i];
-                        //JSON["percent"][i]  = $(this).val();
-                        
-                        //$("#formAddMood").append("<input type=\'hidden\' name=\'idAction[]\' value='" + arrayAction[i] + "' class=\'form-control typeMood\'>");
-                      
-                    //    alert('dd');
-                    i++;
-                    }
-                //}
-            //alert($(this).val());
-            
-            */
+
             }
-        //});
-/*
-    for (i=0;i < arrayAction.length;i++) {
-        alert($("input[name='percentExe[" + i + "]']").val());
-        if ((arrayAction[i]) != "") {
-            //alert('f');
-            $("#formAddMood").append("<input type=\'hidden\' name=\'idAction[]\' value='" + arrayAction[i] + "' class=\'form-control typeMood\'>");
-            $("#formAddMood").append("<input type=\'hidden\' name=\'idActions[]\' value='" + $("#percentExe").val() + "' class=\'form-control typeMood\'>");
-        }
-    }
-     * 
- */
+
 }
 
 
@@ -1193,19 +1039,11 @@ function selectedProductProduct(id,index) {
     if ($("#divSubstanceSubstance_" + id + ":first").hasClass("SubstanceMainAllSubstance")) {
         $("#divSubstanceSubstance_" + id).removeClass("SubstanceMainAllSubstance").addClass("substanceMainselected");
         $("#divSubstanceSubstancePercent_" + id).removeClass("hiddenPercentExecuting").addClass('active');
-        //$("#divActionPercent_" + id).removeClass("hiddenPercentExecuting").addClass('active');
-        //$("#idAction").eq(index).val(id);
         arraySubstanceProduct.push(id);
-        //$("#idActio" + id).val(id);
-        //alert(index);
     }
     else {
         var i = arraySubstanceProduct.indexOf(id);
         arraySubstanceProduct.splice(i,1);
-        
-        //$("#idActio" + id).val('');
-        //$("#idAction").eq(index).val('NULL');
-        //$("#divActionPercent_" + id).addClass("hiddenPercentExecuting").removeClass('active');
         $("#divSubstanceSubstancePercent_" + id).addClass("hiddenPercentExecuting").removeClass('active');
         $("#divSubstanceSubstance_" + id).removeClass("substanceMainselected").addClass("SubstanceMainAllSubstance");
 
@@ -1247,12 +1085,6 @@ function loadChangeSubstance(url) {
             .done(function(response) {
      
         $("#changeSubstanceDiv").html(response);
-       
-                
-            //$("#formaddSubstanceNew").find(":hidden").filter(".typeMood").remove();
-
-
-                  
 
 
             })
@@ -1280,9 +1112,6 @@ function loadChangeProduct(url) {
      
         $("#changeProductDiv").html(response);
        
-                
-            //$("#formaddSubstanceNew").find(":hidden").filter(".typeMood").remove();
-
 
                   
 
@@ -1295,12 +1124,10 @@ function loadChangeProduct(url) {
 }
 function addSubstanceNewSubmit() {
  var arrayError = "";
- 
- //alert(arrayGroupSubstance.length);
+
     if ($("input[name='nameSubstance']").val() == "") {
         arrayError += "Uzupełnij nazwe Substancji<br>";
-        //alert('Uzupełnij nazwe akcji');
-        //return;
+
     }
 
     if (arrayError != "") {
@@ -1339,11 +1166,8 @@ function addSubstanceNewSubmit() {
 
 function editSubstanceSubmit() {
  var arrayError = "";
- //alert(arrayGroupSubstance.length);
     if ($("input[name='newName']").val() == "") {
         arrayError += "Uzupełnij nazwe Substancji<br>";
-        //alert('Uzupełnij nazwe akcji');
-        //return;
     }
 
     if (arrayError != "") {
@@ -1366,7 +1190,6 @@ function editSubstanceSubmit() {
           
         $("#updateSubstanceDiv").html(response);
        
-              //   arrayGroupSubstanceChange.length = 0;
             $("#formUpdateSubstance2").find(":hidden").filter(".typeMood").remove();
 
 
@@ -1414,7 +1237,6 @@ function editPlanedSubmitFunction(url) {
 
     else {
          createFormPlanedSubmit();
-        //alert(arraySubstanceProductChange.length);
          $.ajax({
                 url : url,
                     method : "get",
@@ -1427,7 +1249,6 @@ function editPlanedSubmitFunction(url) {
           
         $("#updatePlanedDiv").html(response);
        
-              //   arrayGroupSubstanceChange.length = 0;
             $("#formupdatePlaned").find(":hidden").filter(".typeMood").remove();
 
 
@@ -1447,11 +1268,8 @@ function editPlanedSubmitFunction(url) {
 function editProductSubmit() {
  var arrayError = "";
 
- //alert(arrayGroupSubstance.length);
     if ($("input[name='newName']").val() == "") {
         arrayError += "Uzupełnij nazwe Produktu<br>";
-        //alert('Uzupełnij nazwe akcji');
-        //return;
     }
 
     if (arrayError != "") {
@@ -1473,8 +1291,7 @@ function editProductSubmit() {
 
           
         $("#updateProductDiv").html(response);
-       
-              //   arrayGroupSubstanceChange.length = 0;
+
             $("#formUpdateProduct2").find(":hidden").filter(".typeMood").remove();
 
 
@@ -1500,11 +1317,6 @@ function editGroupSubmit() {
 
           
                 $("#editGroupSubmit").html(response);
-            
-
-
-                  
-
 
             })
             .fail(function() {
@@ -1516,11 +1328,8 @@ function editGroupSubmit() {
 function addProductNewSubmit() {
  var arrayError = "";
  $("#addNewProductSubmit").removeClass("ajaxError");
- //alert(arrayGroupSubstance.length);
     if ($("input[name='nameProduct']").val() == "") {
         arrayError += "Uzupełnij nazwe Produktu<br>";
-        //alert('Uzupełnij nazwe akcji');
-        //return;
     }
 
     if (arrayError != "") {
@@ -1541,8 +1350,7 @@ function addProductNewSubmit() {
 
           
         $("#addNewProductSubmit").html(response);
-       
-                //arraySubstanceProduct.length = 0;
+
             $("#formaddProductNew").find(":hidden").filter(".typeMood").remove();
 
 
@@ -1561,8 +1369,7 @@ function addGroupNewSubmit() {
  var arrayError = "";
     if ($("input[name='nameGroup']").val() == "") {
         arrayError += "Uzupełnij nazwe Grupy<br>";
-        //alert('Uzupełnij nazwe akcji');
-        //return;
+
     }
 
     if (arrayError != "") {
@@ -1581,7 +1388,6 @@ function addGroupNewSubmit() {
             .done(function(response) {
 
             if (response['error'] != "") {
-                //alert("Już jest taka akcja o takiej nazwie");
         $("#addNewGroupSubmit").addClass("ajaxError").removeClass("ajaxSucces");
         $("#addNewGroupSubmit").html("Już jest taka grupa o takiej nazwie");
             }

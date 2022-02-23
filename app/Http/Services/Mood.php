@@ -65,32 +65,15 @@ class Mood {
                 if ($request->get("valueMood" . $i . "From") == "") {
                     array_push($this->errors,"Formularz o numerze "  . ($i + 11) . " 'Od' musi być uzpełniony");
                 }
-                /*
-                if ($request->get("valueMood" . $i . "To") == "") {
-                    array_push($this->errors,"Formularz o numerze " . ($i + 11) . " 'Do' musi być uzpełniony");
-                }
-                 * 
-                 */
+ 
                 if (!is_numeric($request->get("valueMood" . $i . "From") ) or $request->get("valueMood" . $i . "From") < -20 or $request->get("valueMood" . $i . "From") > 20) {
                     array_push($this->errors,"Formularz o numerze "  . ($i + 11) . " 'Od' być w zakresie od -20 do +20");
                 }
-                /*
-                if (!is_numeric($request->get("valueMood" . $i . "To") ) or $request->get("valueMood" . $i . "To") < -20 or $request->get("valueMood" . $i . "To") > 20) {
-                    array_push($this->errors,"Formularz o numerze "  . ($i + 11) . " 'Do' być w zakresie od -20 do +20");
-                }
 
-                
-                 * 
-                 */
                 if ($request->get("valueMood" . $i . "From") <= $request->get("valueMood" . ($i-1) . "From")) {
                     array_push($this->errors,"Formularz o numerze "  . ($i + 11) . " Jest mniejszy bądź równy od Formularza  o numerze " .  (($i - 1 ) + 11));
                 }
-                /*
-                if ($i > -10 and $request->get("valueMood" . ($i -1). "To") != $request->get("valueMood" . ($i) . "From")) {
-                    array_push($this->errors,"Formularz o numerze "  . ($i + 11) . " 'Od' Jest mniejszy  od Formularza 'Do' o numerze " .  (($i + 11) -1));
-                }
-                 * 
-                 */
+
             }
         }
         
