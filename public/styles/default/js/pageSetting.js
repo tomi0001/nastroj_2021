@@ -30,6 +30,8 @@ function setFunction() {
             break;
         case 'editProductSet': editProduct();
             break;
+        case 'planedDose': planedDose();
+            break;
     }
 }
     
@@ -49,7 +51,7 @@ function selectMenu() {
     if (sessionStorage.getItem('settingType') == 'addActionNew' || sessionStorage.getItem('settingType') == 'levelMood' || sessionStorage.getItem('settingType') == 'changeNameAction' || sessionStorage.getItem('settingType') == 'changeDateAction') {
         loadPageMood();
     }
-    if (sessionStorage.getItem('settingType') == 'addNewGroup' ||  sessionStorage.getItem('settingType') == 'addNewSubstance' || sessionStorage.getItem('settingType') == 'addNewProduct' || sessionStorage.getItem('settingType') == 'editGroupSet' || sessionStorage.getItem('settingType') == 'editSubstanceSet' || sessionStorage.getItem('settingType') == 'editProductSet'  ) {
+    if (sessionStorage.getItem('settingType') == 'addNewGroup' ||  sessionStorage.getItem('settingType') == 'addNewSubstance' || sessionStorage.getItem('settingType') == 'addNewProduct' || sessionStorage.getItem('settingType') == 'editGroupSet' || sessionStorage.getItem('settingType') == 'editSubstanceSet' || sessionStorage.getItem('settingType') == 'editProductSet' || sessionStorage.getItem('settingType') == 'planedDose' ) {
         loadPageDrugs();
     }
 }
@@ -563,6 +565,7 @@ function addNewGroup() {
              $("#editGroupSet").css("display","none");
              $("#editSubstanceSet").css("display","none");
              $("#editProductSet").css("display","none");
+             $("#planedDoseSet").css("display","none");
             //$("#levelMoodAdd").css("display","none");
             //$("#changeNameActionChange").css("display","none");
             //$("#changeDateActionChange").css("display","none");
@@ -603,6 +606,7 @@ function addNewSubstance() {
             $("#editGroupSet").css("display","none");
             $("#editSubstanceSet").css("display","none");
             $("#editProductSet").css("display","none");
+            $("#planedDoseSet").css("display","none");
     }
     else {
         
@@ -640,6 +644,7 @@ function addNewProduct() {
             $("#editGroupSet").css("display","none");
             $("#editSubstanceSet").css("display","none");
             $("#editProductSet").css("display","none");
+            $("#planedDoseSet").css("display","none");
     }
     else {
         
@@ -677,6 +682,7 @@ function editGroup() {
             $("#addNewProduct").css("display","none");
             $("#editSubstanceSet").css("display","none");
             $("#editProductSet").css("display","none");
+            $("#planedDoseSet").css("display","none");
     }
     else {
         
@@ -713,6 +719,7 @@ function editSubstance() {
             $("#addNewProduct").css("display","none");
             $("#editGroupSet").css("display","none");
             $("#editProductSet").css("display","none");
+            $("#planedDoseSet").css("display","none");
     }
     else {
         
@@ -955,6 +962,7 @@ function editProduct() {
             $("#addNewProduct").css("display","none");
             $("#editGroupSet").css("display","none");
             $("#editSubstanceSet").css("display","none");
+            $("#planedDoseSet").css("display","none");
     }
     else {
         
