@@ -417,3 +417,28 @@ td.titleDrugs {
              float:right;
              margin-right: 5px;
         }
+        
+        
+        div.sumAverage {
+            width: 70%;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 25px;
+            min-height: 100px;
+            margin-top: 20px;
+            margin-bottom: 15px;
+ 
+        }
+        div.titleAverage {
+
+             border-radius: 25px 25px 0px 0px;
+                
+            
+                width: 100%;
+                height: 15px;
+                padding-top: 6px;
+                padding-left: 4%;
+                font-size: 26px;
+   
+                text-align: center;  
+        }

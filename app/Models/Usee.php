@@ -94,4 +94,22 @@ class Usee extends Model
                 ->where("usees.id",$id)
                 ->first(); 
     }
+    public static function selectAllSubstance(int $id,int $idUsers) {
+        return self::join("products","products.id","usees.id_products")
+                ->join("substances_products","substances_products.id_products","products.id")
+                ->join("substances","substances.id","substances_products.id_substances")
+                ->selectRaw("substances.name  as nameSubstances")
+                ->selectRaw("substances.id as id_substances")
+                ->where("usees.id_users",$idUsers)
+                ->where("usees.id",$id)
+                ->get(); 
+    }
+    public static function selectProductName(int $id,int $idUsers) {
+        return self::join("products","products.id","usees.id_products")
+                ->selectRaw("products.name  as nameProducts")
+                ->selectRaw("products.id  as id_products")
+                ->where("usees.id_users",$idUsers)
+                ->where("usees.id",$id)
+                ->get(); 
+    }
 }

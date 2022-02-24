@@ -335,4 +335,13 @@ class MainController {
         return View("ajax.showTypyPortion")->with("type",$typeText);
     }
     
+    public function showAverage(Request $request) {
+        $allSubstance = Usee::selectAllSubstance($request->get("id"),Auth::User()->id);
+        $productName = Usee::selectProductName($request->get("id"),Auth::User()->id);
+        return View("ajax.showAverage")->with("allSubstance",$allSubstance)->with("productName",$productName)->with("id",$request->get("id"));
+    }
+    public function sumAverage(Request $request) {
+        return View("ajax.sumAverage");
+    }
+    
 }

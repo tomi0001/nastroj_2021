@@ -93,7 +93,10 @@ Route::get("/ajax/loadTypePortion",[App\Http\Controllers\Main\MainController::cl
         ->name("ajax.loadTypePortion")->middleware('auth')->middleware('can:users');
 Route::get("/ajax/actionPlanedpAdd",[App\Http\Controllers\Main\MainController::class, 'actionPlanedpAdd'])
         ->name("users.actionPlanedpAdd")->middleware('auth')->middleware('can:users');
-
+Route::get("/ajax/showAverage",[App\Http\Controllers\Main\MainController::class, 'showAverage'])
+        ->name("ajax.showAverage")->middleware('auth')->middleware('can:users');
+Route::get("/ajax/sumAverage",[App\Http\Controllers\Main\MainController::class, 'sumAverage'])
+        ->name("ajax.sumAverage")->middleware('auth')->middleware('can:users');
 
 
 

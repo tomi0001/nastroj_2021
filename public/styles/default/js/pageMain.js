@@ -288,6 +288,11 @@ function changeArrayAtHiddenAddActionPlaned() {
             }
 }
 
+
+
+
+
+
 function changeArrayAtHiddenAddMood() {
 
     let array = document.querySelectorAll('input[name^="percentExe"]');
@@ -1298,4 +1303,53 @@ function sessionSet(type) {
 function sessionSetShow(type) {
 
     sessionStorage.setItem('mainShow', type);
+}
+
+
+function showAverage(id,url) {
+    if ($(".showAverage" + id).css("display") == "none" ) {
+           $.ajax({
+                url : url,
+                    method : "get",
+                    data : 
+                      "id=" + id 
+                    ,
+                    dataType : "html",
+            })
+            .done(function(response) {
+                $(".showAverage" + id).css("display","block");
+                $("#messageDescriptionshowAverage"+id).html(response);
+
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })     
+    }
+    else {
+        
+        $(".showAverage" + id).css("display","none");
+    } 
+}
+
+function loadAverage(url,id) {
+         $.ajax({
+                url : url,
+                    method : "get",
+                    data : 
+                      "id=" + id 
+                    ,
+                    dataType : "html",
+            })
+            .done(function(response) {
+            
+                $("#sumAverage"+id).html(response);
+
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })    
 }

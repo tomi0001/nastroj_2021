@@ -115,7 +115,7 @@
                                 </td>
                                 <td style="padding-right: 7px;">
                                    
-                                        <button class="btn-drugs main" onclick="showDrugs("")">oblicz średnią</button>
+                                        <button class="btn-drugs main" onclick="showAverage({{$list->id}},'{{ route('ajax.showAverage')}}')">oblicz średnią</button>
                                     
                                      
                                     
@@ -161,6 +161,15 @@
                         <div  class="hiddenMood descriptionShowDrugs{{$list->id}}" style="display: none;">
                             
                             <div id="messageDescriptionshowDrugs{{$list->id}}" ></div>
+                        </div>
+                    </td>
+                
+                </tr>
+                <tr class='drugsClass{{$list->id}}'>
+                    <td  colspan="7">
+                        <div  class="hiddenMood showAverage{{$list->id}}" style="display: none;">
+                            
+                            <div id="messageDescriptionshowAverage{{$list->id}}" ></div>
                         </div>
                     </td>
                 
