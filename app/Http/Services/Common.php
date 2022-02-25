@@ -90,9 +90,11 @@ class Common {
 
     }
     public static function calculateHour($dateOne,$dateTwo) {
+
         $dateStart = new \DateTime($dateOne);
         $dateEnd = new \DateTime($dateTwo);
         $diff = $dateEnd->diff($dateStart);
+        
         $string = "";
         if ($diff->y != 0) {
             $string .=  $diff->y .  " Lat, ";
@@ -111,6 +113,7 @@ class Common {
         }        
         return substr($string,0,-2);
     }
+    
     public static function calculateHourOne(int $time) {
         $dateStart = new \DateTime("1970-01-01 00:00:00");
         $dateEnd = new \DateTime(date("Y-m-d H:i:s", strtotime("1970-01-01 00:00:00") + $time));

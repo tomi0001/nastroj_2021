@@ -341,7 +341,16 @@ class MainController {
         return View("ajax.showAverage")->with("allSubstance",$allSubstance)->with("productName",$productName)->with("id",$request->get("id"));
     }
     public function sumAverage(Request $request) {
-        return View("ajax.sumAverage");
+        $Product = new Product;
+        $type = explode("_",$request->get("averageType"));
+        
+        switch($type[0]) {
+            case 1 : $result = $Product->sumAverageProduct($type[1],$request->get("id"));
+                break;
+            
+        }
+       
+        return View("ajax.sumAverage")->with("listAverage",$result);
     }
     
 }

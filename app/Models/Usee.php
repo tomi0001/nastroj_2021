@@ -112,4 +112,21 @@ class Usee extends Model
                 ->where("usees.id",$id)
                 ->get(); 
     }
+    public static function selectDateIdUsee(int $id,int $idUsers) {
+        return self::selectRaw("date  as date")
+                ->where("usees.id_users",$idUsers)
+                ->where("usees.id",$id)
+                ->first(); 
+    }
+    public static function selectOldUsee(int $idProduct,string $dateEnd,int $idUsers,int $startDay) {
+        return self::selectRaw("sum(portion) as portion")
+                ->selectRaw("count(portion) as how")
+                ->selectRaw(DB::Raw("(DATE(IF(HOUR(    usees.date) >= '" . $startDay . "', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ) as dat "))
+                ->where("usees.date","<=",$dateEnd)
+                ->where("usees.id_products",$idProduct)
+                ->where("id_users",$idUsers)
+                ->groupBy(DB::Raw("(DATE(IF(HOUR(    usees.date) >= '" . $startDay . "', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) )  "))
+                ->orderBy("date","DESC")
+                ->get();
+    }
 }

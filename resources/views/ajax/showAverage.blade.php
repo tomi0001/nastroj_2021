@@ -1,4 +1,4 @@
-<select name='averageType{{$id}}' class='form-control' onchange="loadAverage('{{ route('ajax.sumAverage')}}',{{$id}})">
+<select id='averageType{{$id}}' class='form-control' onchange="loadAverage('{{ route('ajax.sumAverage')}}',{{$id}})">
     <option value="" selected></option>
     @foreach ($productName as $list)
         <option value="0_{{$list->id_products}}" >dla Wspólnych substancji</option>
@@ -8,7 +8,7 @@
     
     @foreach ($allSubstance as $list)
         
-        <option value="2_{{$list->id_subtances}}" >dla {{$list->nameSubstances}}</option>
+        <option value="2_{{$list->id_substances}}" >dla {{$list->nameSubstances}}</option>
 
     @endforeach
 </select>

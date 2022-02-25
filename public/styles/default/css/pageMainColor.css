@@ -902,3 +902,11 @@ box-shadow: 0px 0px 17px -5px rgba(3, 70, 22, 1);
         div.titleAverage {
             background-color: #19B846;
         }
+        
+        div.averageDiv {
+                 -webkit-box-shadow: 0px 0px 17px -5px rgba(3, 70, 22, 1);
+-moz-box-shadow: 0px 0px 17px -5px rgba(3, 70, 22, 1);
+box-shadow: 0px 0px 17px -5px rgba(3, 70, 22, 1);
+            background-color: #6EE55B;
+            color: #676C03;
+        }

@@ -362,4 +362,119 @@ class Product {
             $Substances_product->save();
         }
     }
+    public function sumAverageProduct(int $idProduct,int $id) {
+        $dateEnd = Usee::selectDateIdUsee($id,Auth::User()->id);
+        $listArray = Usee::selectOldUsee($idProduct,$dateEnd->date,Auth::User()->id,Auth::User()->start_day);
+        return $this->sortAverage($listArray);
+    }
+    private function sortAverage( $arrayList) {
+        $newArray = [];
+        $j = 0;
+        //$howDays = 1;
+        $bool = false;
+        for ($i=0;$i < count($arrayList);$i++)  { // as $list => $i) {
+//            if (($i != 0 )and ( ( strtotime($arrayList[$i-1]->dat) - strtotime($arrayList[$i]->dat)  > 172800 ) or ($arrayList[$i-1]->portion != $arrayList[$i]->portion)or ($arrayList[$i-1]->how != $arrayList[$i]->how)))  {
+//                $bool = true;
+//                $dateStart = $arrayList[$i]->dat;
+//                
+//                $newArray[$j]["bool"] = true;
+//                $newArray[$j]["dateStart"] = $arrayList[$i]->dat;
+//                $newArray[$j]["dateEnd"] = $arrayList[$i]->dat;
+//                $newArray[$j]["portion"] = $arrayList[$i]->portion;
+//                $newArray[$j]["how"] = $arrayList[$i]->how;
+//                $j++;
+//                $howDays = 0;
+//                print "dos" . $arrayList[$i+1]->dat .   " "  . $arrayList[$i+1]->portion .   " "  . $arrayList[$i+1]->how  .   '-  - '.  $arrayList[$i]->dat .   " "  . $arrayList[$i]->portion .   " "  . $arrayList[$i]->how   .   "<br>";
+//            }
+//            else if ( ($i != 0 ) and ( ( strtotime($arrayList[$i-1]->dat) - strtotime($arrayList[$i]->dat)  <= 86400 ) or ($arrayList[$i-1]->portion == $arrayList[$i]->portion)or ($arrayList[$i-1]->how == $arrayList[$i]->how)) )  {
+//                $z++;
+//                //$newArray[$j]["bool"] = false;
+//                $dateStart = $arrayList[$i]->dat;
+//                print  $arrayList[$i]->dat .   " "  . $arrayList[$i]->portion     .   " "  . $arrayList[$i]->how  .    "<br>";
+//            }
+//           // if ($bool == true) {
+//                
+//           // }
+//            $j++;
+            
+              if ($i == 0) {
+//                $array[$j][0] = $dose[$i] . $type;
+//                $array[$j][1] = $data1[$i][0];
+//                $array[$j][2] = $data1[$i][0];
+//                $array[$j][3] = 0;
+//                $array[$j][4] = $count[$i];
+              
+                //$newArray[$j]["howDays"] = 1;
+                $newArray[$j]["dateEnd"] = $arrayList[$i]->dat;
+                $newArray[$j]["portion"] = $arrayList[$i]->portion;
+                $newArray[$j]["how"] = $arrayList[$i]->how;
+                //$newArray[$j]["howDays"] = $howDays;
+                $newArray[$j]["dateEnd"] = $arrayList[$i]->dat;
+            }
+        
+      
+        
+        
+//            if ($i == 0) {
+//                $newArray[$j]["howDays"] = 1;
+//                $newArray[$j]["dateStart"] = $arrayList[$i]->dat;
+//                $newArray[$j]["portion"] = $arrayList[$i]->portion;
+//                $newArray[$j]["how"] = $arrayList[$i]->how;
+//                $newArray[$j]["howDays"] = $howDays;
+//                $bool = false;
+// 
+//            }
+          //
+               else if ((((strtotime($arrayList[$i-1]->dat) - strtotime($arrayList[$i]->dat)  > 146400 )   or ( ($arrayList[$i]->portion) != $arrayList[$i-1]->portion) ) or ( ($arrayList[$i]->how) != $arrayList[$i-1]->how) )      ) {
+//                   if ($bool == false) {
+//                       $newArray[$j]["dateEnd"] = $arrayList[$i-1]->dat;
+//                       $j++;
+//                       $howDays = 1;
+//                   }
+//                   else {
+//
+//                       $newArray[$j]["dateStart"] = $arrayList[$i-1]->dat;
+//                   }
+//                   $bool = !$bool;
+                   $newArray[$j]["dateStart"] = $arrayList[$i-1]->dat;
+                   $j++;
+                   $newArray[$j]["dateEnd"] = $arrayList[$i]->dat;
+                   $newArray[$j]["dateEnd"] = $arrayList[$i]->dat;
+                   $newArray[$j]["portion"] = $arrayList[$i]->portion;
+                   $newArray[$j]["how"] = $arrayList[$i]->how;
+                   //$newArray[$j]["howDays"] = $howDays;
+                   //$howDays = 1;
+                    
+                  
+                    
+//  $array[$j][2] = $data1[$i-1][0];   
+//                $array[$j][3] = 1;
+//                $j++;               
+//                $array[$j][0] = $dose[$i] . $type;
+//                $array[$j][1] = $data1[$i][0];
+//                $array[$j][2] = $data1[$i][0];
+//                $array[$j][3] = 0;
+//                $array[$j][4] = $count[$i];
+
+               }
+               else if ($i == count($arrayList) - 1){
+                   $newArray[$j]["dateStart"] = $arrayList[$i]->dat;
+//                   $j++;
+//                   $newArray[$j]["dateStart"] = $arrayList[$i]->dat;
+//                   $newArray[$j]["dateEnd"] = $arrayList[$i-1]->dat;
+//                   $newArray[$j]["portion"] = $arrayList[$i]->portion;
+//                   $newArray[$j]["how"] = $arrayList[$i]->how;
+//                   $newArray[$j]["howDays"] = $howDays;
+//                   $array[$j][0] = $dose[$i] . $type;
+//                $array[$j][2] = $data1[$i][0];
+//                
+//                $array[$j][3] = 0;
+               }
+               //$howDays++;
+ 
+            
+            
+        }
+       return $newArray;
+    }
 }

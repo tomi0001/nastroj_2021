@@ -424,9 +424,12 @@ td.titleDrugs {
             margin-left: auto;
             margin-right: auto;
             border-radius: 25px;
-            min-height: 100px;
+            max-height: 400px;
             margin-top: 20px;
             margin-bottom: 15px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            overflow-y: scroll; 
  
         }
         div.titleAverage {
@@ -441,4 +444,15 @@ td.titleDrugs {
                 font-size: 26px;
    
                 text-align: center;  
+        }
+        
+        div.averageDiv {
+            width: 70%;
+            height: 120px;
+            border-radius: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 15px;
+            padding: 8px;
+            
         }
