@@ -456,3 +456,11 @@ td.titleDrugs {
             padding: 8px;
             
         }
+        div.averageNr {
+            width: 65%;
+            margin-left: auto;
+            max-height: 25px;
+            margin-right: auto;
+            border-radius: 20px;
+            
+        }

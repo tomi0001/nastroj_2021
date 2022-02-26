@@ -347,9 +347,9 @@ class MainController {
         switch($type[0]) {
             case 1 : $result = $Product->sumAverageProduct($type[1],$request->get("id"));
                 break;
+            case 2 : $result = $Product->sumAverageSubstances($type[1],$request->get("id"));
             
         }
-       
         return View("ajax.sumAverage")->with("listAverage",$result);
     }
     
