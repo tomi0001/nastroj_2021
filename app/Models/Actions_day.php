@@ -23,7 +23,6 @@ class Actions_day extends Model
 
     public static function returnNameAction(int $idUsers,int $id) {
          return self::join("actions","actions.id","actions_days.id_actions")
-                      //->selectRaw("distinct actions.id")
                 ->selectRaw("actions.name as name")
                 ->selectRaw("actions.id as id")
                 
