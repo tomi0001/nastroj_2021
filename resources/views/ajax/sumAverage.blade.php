@@ -23,8 +23,14 @@
             
              <br>
         </div>
+        @if (($i !=(count($listAverage) - 1  ) )    and ( strtotime($listAverage[$i]["dateStart"])  - strtotime($listAverage[$i+1]["dateEnd"]) ) >   ( 86400)   )
         
-    
+          
+        <div class="lineAverage">
+            
+        </div>
+          
+        @endif
     @endfor
     
     
