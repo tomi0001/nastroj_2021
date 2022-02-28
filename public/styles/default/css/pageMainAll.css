@@ -449,11 +449,13 @@ td.titleDrugs {
         div.averageDiv {
             width: 70%;
             height: 120px;
+            font-size: 17px;
             border-radius: 20px;
             margin-left: auto;
             margin-right: auto;
             margin-bottom: 15px;
             padding: 8px;
+            
             
         }
         div.averageNr {
