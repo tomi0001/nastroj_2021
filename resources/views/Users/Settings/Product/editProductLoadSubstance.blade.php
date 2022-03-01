@@ -26,7 +26,7 @@
                                                      
                                                      @if ($listSub[$i]["bool"] == true )
                                                        
-                               
+                            
                                                           @php
                                                           
                                                             $arrayJson[$j]["idProduct"] = $idProduct;
@@ -46,7 +46,7 @@
                                                          
                                                      @endif
                                                      
-                                                    <div class='groupMain groupMainAllGroup'  id='divSubstanceSubstanceChange_{{$listSub[$i]["id"]}}' onclick='selectedProductChangeMainValue({{$listSub[$i]["id"]}},{{$i}})'>{{$listSub[$i]["nameSub"]}} </div>
+                                                    <div class='groupMain groupMainAllGroup'  id='divSubstanceProductChange_{{$listSub[$i]["id"]}}' onclick='selectedProductChangeMainValue({{$listSub[$i]["id"]}},{{$i}})'>{{$listSub[$i]["nameSub"]}} </div>
                                                     @if ($listSub[$i]["bool"] == true)
                                                         <div class="showPercentExecuting centerPercent" id='divActionPercent_{{$listSub[$i]["id"]}}'>
                                                             <div style="display: inline-block; width: 40%; " >
@@ -131,7 +131,7 @@
                                             <div id="formResult"></div></div>
                                       </form>
 
-   <script type="application/json" id="json">
+   <script type="application/json" id="jsonPro">
   <?php 
   if (count($arrayJson) > 0) {
   echo json_encode($arrayJson); 
@@ -139,7 +139,7 @@
   
   ?>
 </script>
- <script type="application/json" id="jsonLenght">
+ <script type="application/json" id="jsonLenghtPro">
   <?php
   if (count($arrayJson) > 0) {
   echo count($arrayJson) ;
@@ -154,13 +154,11 @@
     
    
     $(document).ready(function(){
-        const myDataLenght = JSON.parse(document.getElementById("jsonLenght").innerText);
+        const myDataLenght = JSON.parse(document.getElementById("jsonLenghtPro").innerText);
         if (myDataLenght > 0) {
-            const myData = JSON.parse(document.getElementById("json").innerText);
+            const myData = JSON.parse(document.getElementById("jsonPro").innerText);
         
-        //alert(myDataLenght);
-            
-        
+
             selectedProductChangeMainSetValue(myData,myDataLenght);
         }
      jQuery.expr[':'].contains = function(a, i, m) {

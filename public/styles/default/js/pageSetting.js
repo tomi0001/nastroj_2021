@@ -944,9 +944,9 @@ function selectedSubstanceChangeMainSetValue(data,lenght) {
 function selectedProductChangeMainSetValue(data,lenght) {
 
     for (var i = 0;i < lenght;i++) {
-        
-        if ($("#divSubstanceSubstanceChange_" + data[i].id).length==1) {
-            $("#divSubstanceSubstanceChange_" + data[i].id).removeClass("groupMainAllGroup").addClass("groupMainselected");
+        if ($("#divSubstanceProductChange_" + data[i].id).length==1) {
+            
+            $("#divSubstanceProductChange_" + data[i].id).removeClass("groupMainAllGroup").addClass("groupMainselected");
             arraySubstanceProductChange.push(data[i].id);
           
         }
@@ -955,15 +955,15 @@ function selectedProductChangeMainSetValue(data,lenght) {
 }
 var arraySubstanceProductChange = [];
 function selectedProductChangeMainValue(id,index) {
-    if ($("#divSubstanceSubstanceChange_" + id + ":first").hasClass("groupMainAllGroup")) {
-        $("#divSubstanceSubstanceChange_" + id).removeClass("groupMainAllGroup").addClass("groupMainselected");
+    if ($("#divSubstanceProductChange_" + id + ":first").hasClass("groupMainAllGroup")) {
+        $("#divSubstanceProductChange_" + id).removeClass("groupMainAllGroup").addClass("groupMainselected");
         $("#divActionPercent_" + id).removeClass("hiddenPercentExecuting").addClass("showPercentExecuting");
         arraySubstanceProductChange.push(id);
     }
     else {
         var i = arraySubstanceProductChange.indexOf(id);
         arraySubstanceProductChange.splice(i,1);
-        $("#divSubstanceSubstanceChange_" + id).removeClass("groupMainselected").addClass("groupMainAllGroup");
+        $("#divSubstanceProductChange_" + id).removeClass("groupMainselected").addClass("groupMainAllGroup");
         $("#divActionPercent_" + id).removeClass("showPercentExecuting").addClass("hiddenPercentExecuting");
 
     }   

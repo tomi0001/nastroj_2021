@@ -8,7 +8,6 @@
         <link href="{{ asset('./styles/' . config('view.styles') . '/css/pageNotLoginwidth700.css') }}" rel="stylesheet">
         <link href="{{ asset('./styles/' . config('view.styles') . '/css/pageNotLoginAll.css') }}" rel="stylesheet">
         <link href="{{ asset('./styles/' . config('view.styles') . '/css/pageNotLoginColor.css') }}" rel="stylesheet">
-        <link href="{{ asset('./styles/' . config('view.styles') . '/css/pageNotLoginwidth700.css') }}" rel="stylesheet">
 
 
       

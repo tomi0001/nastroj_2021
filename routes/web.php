@@ -181,9 +181,17 @@ Route::get("/settings/editPlanedsubmit",[App\Http\Controllers\Settings\SettingsP
         ->name("setting.editPlanedsubmit")->middleware('auth')->middleware('can:users');
 
 
-Route::get('/users4/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\Search\SearchController::class, 'index2'])->name('users.search')
+Route::get('/settings/searchMain', [App\Http\Controllers\Search\SearchController::class, 'searchMain'])->name('users.search')
                     ->middleware('auth')->middleware('can:users');
-            
+
+
+Route::get('/settings/searchMoodSubmit', [App\Http\Controllers\Search\SearchMoodController::class, 'searchMoodSubmit'])->name('search.searchMoodSubmit')
+                    ->middleware('auth')->middleware('can:users');
+
+
+
+
+
 Route::get('/users.settings', [App\Http\Controllers\Settings\SettingsController::class, 'index'])->name('users.setting')
                     ->middleware('auth')->middleware('can:users');
             

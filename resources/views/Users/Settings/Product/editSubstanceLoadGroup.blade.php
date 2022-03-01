@@ -80,7 +80,7 @@
                                             <div id="formResult"></div></div>
                                       </form>
 
-   <script type="application/json" id="json">
+   <script type="application/json" id="jsonSub">
   <?php 
   if (count($arrayJson) > 0) {
   echo json_encode($arrayJson); 
@@ -88,7 +88,7 @@
   
   ?>
 </script>
- <script type="application/json" id="jsonLenght">
+ <script type="application/json" id="jsonLenghtSub">
   <?php
   if (count($arrayJson) > 0) {
   echo count($arrayJson) ;
@@ -103,9 +103,9 @@
     
    
     $(document).ready(function(){
-        const myDataLenght = JSON.parse(document.getElementById("jsonLenght").innerText);
+        const myDataLenght = JSON.parse(document.getElementById("jsonLenghtSub").innerText);
         if (myDataLenght > 0) {
-            const myData = JSON.parse(document.getElementById("json").innerText);
+            const myData = JSON.parse(document.getElementById("jsonSub").innerText);
         
         //alert(myDataLenght);
             

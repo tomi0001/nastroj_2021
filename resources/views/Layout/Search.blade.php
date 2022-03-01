@@ -3,12 +3,12 @@
         <title>Dzienniczek nastrojów - @yield('title')</title>
         
 
-        <link href="{{ asset('./styles/' . config('view.styles') . '/css/pageSettingwidth1810.css') }}" rel="stylesheet">
-        <link href="{{ asset('./styles/' . config('view.styles') . '/css/pageSettingwidth1410.css') }}" rel="stylesheet">
-        <link href="{{ asset('./styles/' . config('view.styles') . '/css/pageSettingwidth1210.css') }}" rel="stylesheet">
-        <link href="{{ asset('./styles/' . config('view.styles') . '/css/pageSettingwidth700.css') }}" rel="stylesheet">
-        <link href="{{ asset('./styles/' . config('view.styles') . '/css/pageSettingAll.css') }}" rel="stylesheet">
-        <link href="{{ asset('./styles/' . config('view.styles') . '/css/pageSettingColor.css') }}" rel="stylesheet">
+        <link href="{{ asset('./styles/' . config('view.styles') . '/css/pageSearchwidth1810.css') }}" rel="stylesheet">
+        <link href="{{ asset('./styles/' . config('view.styles') . '/css/pageSearchwidth1410.css') }}" rel="stylesheet">
+        <link href="{{ asset('./styles/' . config('view.styles') . '/css/pageSearchwidth1210.css') }}" rel="stylesheet">
+        <link href="{{ asset('./styles/' . config('view.styles') . '/css/pageSearchwidth700.css') }}" rel="stylesheet">
+        <link href="{{ asset('./styles/' . config('view.styles') . '/css/pageSearchAll.css') }}" rel="stylesheet">
+        <link href="{{ asset('./styles/' . config('view.styles') . '/css/pageSearchColor.css') }}" rel="stylesheet">
         
         <link href="{{ asset('./styles/' . config('view.styles') . '/css/Common1810.css') }}" rel="stylesheet">
         <link href="{{ asset('./styles/' . config('view.styles') . '/css/Common1410.css') }}" rel="stylesheet">
@@ -16,6 +16,7 @@
         <link href="{{ asset('./styles/' . config('view.styles') . '/css/Common700.css') }}" rel="stylesheet">
         <link href="{{ asset('./styles/' . config('view.styles') . '/css/CommonAll.css') }}" rel="stylesheet">
         <link href="{{ asset('./styles/' . config('view.styles') . '/css/CommonColor.css') }}" rel="stylesheet">
+
       
         <link rel="stylesheet"  href="{{asset('./bootstrap-5.1.3-dist/css/bootstrap.css')}}"  >
 <script src="{{asset('./bootstrap-5.1.3-dist/js/bootstrap.js')}}" ></script>
@@ -28,7 +29,7 @@
 
         
         
-        <script src="{{ asset('./styles/'. config('view.styles') . '/js/pageSetting.js')}}"></script>
+        <script src="{{ asset('./styles/'. config('view.styles') . '/js/pageSearch.js')}}"></script>
 
 
        <script data-ad-client="ca-pub-9009102811248163" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>

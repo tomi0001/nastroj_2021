@@ -1,0 +1,21 @@
+    div.titleAllSettings {
+        clear: both;
+        margin-left: auto;
+        margin-right: auto;
+        
+    }
+
+ 
+    div.titleSettingsAll {
+        float: left;
+    }
+    
+        .hrefSettingCursor {
+        cursor: pointer;
+    }
+    
+    div.plusMinusButton {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+}

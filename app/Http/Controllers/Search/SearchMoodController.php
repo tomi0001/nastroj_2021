@@ -8,8 +8,8 @@ namespace App\Http\Controllers\Search;
 use Illuminate\Http\Request;
 use App\Models\User as MUser;
 use Hash;
-class SearchController {
-    public function searchMain() {
-        return View('Users.Search.main');
+class SearchMoodController {
+    public function searchMoodSubmit() {
+        //return View('Users.Search.Mood.searchMood');
     }
 }
