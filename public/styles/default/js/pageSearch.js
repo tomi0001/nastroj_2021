@@ -7,7 +7,6 @@
 function loadPageMood() {
       $(".titleSettingsMood").addClass("selectedMenu");
       $(".titleSettingsDrugs").removeClass("selectedMenu");
-      $(".titleSettingsUser").removeClass("selectedMenu");
       $(".MenuPageMood").css("display","block");
       $(".MenuPageDrugs").css("display","none");
      
@@ -35,4 +34,45 @@ function searchMood() {
         
         $("#searchMoodDiv").css("display","none");
     }
+}
+
+
+function addFieldWhatWork() {
+    $("#idWhatWork").append($("#idWhatWorkCopy").html());
+}
+function addFieldAction() {
+    $("#idAction").append($("#idActionCopy").html());
+}
+
+function setFunction() {
+    selectMenu();
+    switch (sessionStorage.getItem('searchType')) {
+        
+        case 'searchMood': searchMood();
+            break;
+
+    }
+}
+
+$(document).ready(function(){
+
+        $(".mainHref").click( function() {
+        
+            resetSession();
+        });
+
+});
+function resetSession() {
+    sessionStorage.removeItem('searchType');
+}
+function selectMenu() {
+    if (sessionStorage.getItem('searchType') == 'searchMood' ) {
+        loadPageMood();
+    }
+    /*
+    if (sessionStorage.getItem('searchType') == 'addNewGroup' ||  sessionStorage.getItem('settingType') == 'addNewSubstance' || sessionStorage.getItem('settingType') == 'addNewProduct' || sessionStorage.getItem('settingType') == 'editGroupSet' || sessionStorage.getItem('settingType') == 'editSubstanceSet' || sessionStorage.getItem('settingType') == 'editProductSet' || sessionStorage.getItem('settingType') == 'planedDose' ) {
+        loadPageDrugs();
+    }
+     * 
+     */
 }

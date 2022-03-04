@@ -63,7 +63,7 @@ class Mood {
             }
             else {
                 if ($request->get("valueMood" . $i . "From") == "") {
-                    array_push($this->errors,"Formularz o numerze "  . ($i + 11) . " 'Od' musi być uzpełniony");
+                    array_push($this->errors,"Formularz o numerze "  . ($i + 11) . " 'Od' musi być uzupełniony");
                 }
  
                 if (!is_numeric($request->get("valueMood" . $i . "From") ) or $request->get("valueMood" . $i . "From") < -20 or $request->get("valueMood" . $i . "From") > 20) {
