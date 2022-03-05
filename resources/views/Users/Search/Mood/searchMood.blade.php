@@ -9,7 +9,7 @@
                     poziom nastroju
                 </td>
                 <td>
-                    <input type='text' name='moodFrom' class='form-control'>
+                    <input type='text' name='moodFrom' class='form-control' value="{{Request::old("moodFrom")}}">
                 </td>
                 <td style='padding-top: 10px;'>
                     do

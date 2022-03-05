@@ -12,4 +12,11 @@ class SearchController {
     public function searchMain() {
         return View('Users.Search.main');
     }
+    public function back() {
+        
+    // Validate the request...
+ 
+        return redirect()->back()->withInput();
+        
+    }
 }

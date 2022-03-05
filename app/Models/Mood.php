@@ -6,9 +6,95 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use DB;
 use Auth;
+use Illuminate\Http\Request;
 class Mood extends Model
 {
     use HasFactory;
+    public $questions;
+    public function createQuestions() {
+        $this->questions =  self::query();
+        $this->questions->leftjoin("moods_actions","moods_actions.id_moods","moods.id")
+                        ->leftjoin("actions","actions.id","moods_actions.id_actions")
+                        ->selectRaw("moods.date_start as date_start")
+                        ->selectRaw("moods.date_end as date_end")
+                        ->selectRaw("moods.level_mood as level_mood")
+                
+                        ->selectRaw("moods.level_anxiety as level_anxiety")
+                        ->selectRaw("moods.level_nervousness as level_nervousness")
+                        ->selectRaw("moods.level_stimulation as level_stimulation")
+                        ->selectRaw("moods.epizodes_psychotik as epizodes_psychotik")
+                        ->selectRaw("moods.what_work as what_work")
+                        ->selectRaw("actions.name as nameActions")
+                        ->selectRaw("actions.level_pleasure as level_pleasure")
+                        ->selectRaw("moods_actions.percent_executing as percent_executing")
+                        ->selectRaw("moods_actions.minute_exe as minute_exe");
+    }
+    public function setDate($dateFrom,$dateTo,$startDay) {
+        if ($dateFrom != "")  {
+           
+        $this->questions->where(function ($query) use ($startDay,$dateFrom) {
+                    $query->whereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) >= '$dateFrom'" ))
+                    ->orwhereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) >= '$dateFrom'" ));
+                });
+        }
+        if ($dateTo != "" ) {
+           
+           $this->questions->where(function ($query) use ($startDay,$dateTo) {
+                    $query->whereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) < '$dateTo'" ))
+                    ->orwhereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) < '$dateTo'" ));
+                });
+        }
+    }
+    public function setMood(Request $request) {
+         if ($request->get("moodFrom") != "")  {
+             $this->questions->where("moods.level_mood",">=",$request->get("moodFrom"));
+         }
+         if ($request->get("moodTo") != "" ) {
+             $this->questions->where("moods.level_mood","<=",$request->get("moodTo"));
+         }
+         if ($request->get("anxientyFrom") != "")  {
+             $this->questions->where("moods.level_anxiety",">=",$request->get("anxientyFrom"));
+         }
+         if ($request->get("anxientyTo") != "" ) {
+             $this->questions->where("moods.level_anxiety","<=",$request->get("anxientyTo"));
+         }
+         if ($request->get("voltageFrom") != "")  {
+             $this->questions->where("moods.level_nervousness",">=",$request->get("voltageFrom"));
+         }
+         if ($request->get("voltageTo") != "" ) {
+             $this->questions->where("moods.level_nervousness","<=",$request->get("voltageTo"));
+         }
+         if ($request->get("stimulationFrom") != "")  {
+             $this->questions->where("moods.level_stimulation",">=",$request->get("stimulationFrom"));
+         }
+         if ($request->get("stimulationTo") != "" ) {
+             $this->questions->where("moods.level_stimulation","<=",$request->get("stimulationTo"));
+         }
+     }
+     public function setLongMood(Request $request) {
+         $timeFrom = 0;
+         $timeTo = 0;
+         if ($request->get("longMoodHourFrom") != "")  {
+             $timeFrom += $request->get("longMoodHourFrom") * 60;
+         }
+         if ($request->get("longMoodMinuteFrom") != "")  {
+             $timeFrom += $request->get("longMoodMinuteFrom");
+         }
+         if ($request->get("longMoodHourFrom") != "" or $request->get("longMoodMinuteFrom") != "") {
+             $this->questions->whereRaw("TIMESTAMPDIFF (MINUTE, moods.date_start , moods.date_end) " . ">=" . $timeFrom);
+         }
+         if ($request->get("longMoodHourTo") != "")  {
+             $timeTo += $request->get("longMoodHourTo") * 60;
+             
+         }
+         if ($request->get("longMoodMinuteTo") != "")  {
+             $timeTo += $request->get("longMoodMinuteTo");
+         }
+         if ($request->get("longMoodHourTo") != "" or $request->get("longMoodMinuteTo") != "") {
+             $this->questions->whereRaw("TIMESTAMPDIFF (MINUTE, moods.date_start , moods.date_end) " . "<=" . $timeTo);
+         }
+         
+     }
     public static function sumMood(string $date,  $startDay,int $idUsers) {
         return self::selectRaw(DB::Raw("(DATE(IF(HOUR(moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) as dat"))
                 ->selectRaw(DB::Raw("(DATE(IF(HOUR(moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) as dat2"))

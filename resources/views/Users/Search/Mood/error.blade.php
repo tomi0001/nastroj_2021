@@ -19,7 +19,7 @@ Wyszukiwanie
 </div>
 <br>
 <div class='center'>
-<a href='{{ URL::previous() }}'><button class="btn-mood mood" >WSTECZ</button></a>
+<a href="javascript:history.back()"><button class="btn-mood mood" >WSTECZ</button></a>
 </div>                   
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

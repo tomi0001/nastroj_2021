@@ -16,5 +16,12 @@ class SearchMoodController {
         if (count($SearchMood->errors) > 0) {
             return View("Users.Search.Mood.error")->with("errors",$SearchMood->errors);
         }
+        else {
+            $result = $SearchMood->createQuestion($request);
+            foreach ($result as $l) {
+                print $l->level_mood . "<Br>";
+            }
+            
+        }
     }
 }

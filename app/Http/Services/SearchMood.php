@@ -15,6 +15,39 @@ use DB;
 
 class SearchMood {
      public $errors = [];
+     private $idUsers;
+     private $startDay;
+     public $question;
+     //private $dateFro
+     function __construct($bool = 0) {
+        if ($bool == 0) {
+            $this->idUsers = Auth::User()->id;
+        }
+        else {
+            $this->idUsers  = Auth::User()->id_users;
+        }
+        $this->startDay  = Auth::User()->start_day;
+        /*
+        if ($dateStart == "") {
+            $dateStart = explode(" ",User::firstMood($id)->date_start);
+            $this->dateStart = $dateStart[0];
+        }
+        else {
+            $this->dateStart = $dateStart;
+        }
+        if ($dateTo == "") {
+            $this->dateTo = date("Y-m-d",time() + 86400);
+        }
+        else {
+            $this->dateTo = $dateTo;
+        }
+        /*
+        if ($request->get("sumMoods") == "on" or $request->get("sumDays") == "on") {
+            $this->bool = true;
+        }
+         * 
+         */
+     }
      public function checkError(Request $request) {
         if (($request->get("moodFrom") != "") and ($request->get("moodFrom") < -20 or $request->get("moodFrom") > 20  or  ( (string)(float) $request->get("moodFrom") !== $request->get("moodFrom")  ) ))   {
             array_push($this->errors,"Nastrój musi mieścić się w zakresie od -20 do +20");
@@ -55,4 +88,27 @@ class SearchMood {
             array_push($this->errors,"Minuty (długośc nastroju) musi byc dodatnią liczbą całkowitą");
         }
      }
+     
+     
+     public function createQuestion(Request $request) {
+         $startDay = $this->startDay;
+         $moodModel = new  MoodModel;
+         $moodModel->createQuestions();
+                  
+         $moodModel->setDate($request->get("dateFrom"),$request->get("dateTo"),$this->startDay);
+         $moodModel->setMood($request);
+         $moodModel->setLongMood($request);
+         return $moodModel->questions->get();
+         
+         
+         
+         
+     }
+
+
+     private function setHour(Request $request) {
+         
+     }
+
+     
 }
