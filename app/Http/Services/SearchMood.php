@@ -98,16 +98,68 @@ class SearchMood {
          $moodModel->setDate($request->get("dateFrom"),$request->get("dateTo"),$this->startDay);
          $moodModel->setMood($request);
          $moodModel->setLongMood($request);
+         $this->setHour($moodModel,$request);
+         if (!empty($request->get("whatWork")) ) {
+             $moodModel->searchWhatWork($request->get("whatWork"));
+         }
+         if (!empty($request->get("action")) ) {
+
+             $moodModel->searchAction($request->get("action"),$request->get("actionFrom"),$request->get("actionTo"));
+         }
+         if (($request->get("ifAction")) == "on" ) {
+             $moodModel->actionOn();
+         }
+         if (($request->get("ifWhatWork")) == "on" ) {
+             $moodModel->whatWorkOn();
+         }
+         $moodModel->idUsers($this->idUsers);
+         $moodModel->moodsSelect();
+         $moodModel->groupByAction();
          return $moodModel->questions->get();
          
          
          
          
      }
-
-
-     private function setHour(Request $request) {
+     private function searchWhatWork(array $arrayWork) {
          
+     }
+     private function sumHour($hour,$startDay) {
+        $sumHour = $hour[0] - $startDay;
+        if ($sumHour < 0) {
+            $sumHour = 24 + $sumHour;
+        }
+        if (strlen($sumHour) == 1) {
+            $sumHour = "0" .$sumHour;
+        }
+        if (strlen($hour[1]) == 1) {
+            $hour[1] = "0" . $hour[1];
+        }
+
+        return $sumHour . ":" .  $hour[1] . ":00";
+     }
+
+     private function setHour($moodModel,Request $request) {
+         $hour  = $this->startDay;
+        if ($request->get("timeFrom") != "" and $request->get("timeTo") != "") {
+            $timeFrom = explode(":",$request->get("timeFrom"));
+            $timeTo = explode(":",$request->get("timeTo"));
+            $hourFrom = $this->sumHour($timeFrom,$this->startDay);
+            $hourTo = $this->sumHour($timeTo,$this->startDay);
+            $moodModel->setHourTwo($hourFrom,$hourTo,$this->startDay);
+            
+
+        }
+        else if ($request->get("timeTo") != "") {
+            $moodModel->setHourTo($request->get("timeTo"));
+            
+        }
+        else if ($request->get("timeFrom") != "") {
+            $moodModel->setHourFrom($request->get("timeFrom"));
+            
+        }
+
+
      }
 
      
