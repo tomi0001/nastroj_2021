@@ -18,6 +18,7 @@ class SearchMood {
      private $idUsers;
      private $startDay;
      public $question;
+     public $count;
      //private $dateFro
      function __construct($bool = 0) {
         if ($bool == 0) {
@@ -93,7 +94,7 @@ class SearchMood {
      public function createQuestion(Request $request) {
          $startDay = $this->startDay;
          $moodModel = new  MoodModel;
-         $moodModel->createQuestions();
+         $moodModel->createQuestions($this->startDay);
                   
          $moodModel->setDate($request->get("dateFrom"),$request->get("dateTo"),$this->startDay);
          $moodModel->setMood($request);
@@ -115,7 +116,14 @@ class SearchMood {
          $moodModel->idUsers($this->idUsers);
          $moodModel->moodsSelect();
          $moodModel->groupByAction();
-         return $moodModel->questions->get();
+         if ($request->get("sort2") == "asc") {
+             $moodModel->orderBy("asc",$request->get("sort"));
+         }
+         else {
+             $moodModel->orderBy("desc",$request->get("sort"));
+         }
+         $this->count = $moodModel->questions->get()->count();
+         return $moodModel->questions->paginate(20);
          
          
          
@@ -138,7 +146,36 @@ class SearchMood {
 
         return $sumHour . ":" .  $hour[1] . ":00";
      }
-
+     public function sortMoods($list) {
+         $array = $this->changeArray($list);
+         
+         array_multisort($array,SORT_DESC);
+         $array = $this->setPercent($array);
+         return $array;
+     }
+     private function setPercent(array $list) {
+         $percent = $list[0]["longMood"];
+         for ($i=0;$i < count($list);$i++) {
+             if ($i == 0) {
+                 $list[$i]["percent"] = 100;
+             }
+             else {
+                 $list[$i]["percent"] = round(($list[$i]["longMood"] / $percent) * 100);
+             }
+         }
+         return $list;
+     }
+     private function changeArray($list) {
+         $array = [];
+         $i = 0;
+         foreach ($list as $list2) {
+             $array[$i]["longMood"] = $list2->longMood;
+             $array[$i]["id"] = $list2->id;
+             $array[$i]["percent"] = 0;
+             $i++;
+         }
+         return $array;
+     }
      private function setHour($moodModel,Request $request) {
          $hour  = $this->startDay;
         if ($request->get("timeFrom") != "" and $request->get("timeTo") != "") {

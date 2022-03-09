@@ -23,6 +23,59 @@ body {
  
 
 }
+
+      span.left {
+            float:left;
+        }
+        span.right {
+             float:right;
+             margin-right: 5px;
+        }
+        td.sizeTableMood {
+    width: 8%;
+    text-align: center;
+}
+td.start {
+    width: 30%;
+    padding-left: 15px;
+    padding: 15px;
+}
+td.end {
+    text-align: right;
+    padding-right: 15px;
+}
+table.moodShow, td.showMood, td.moodButton {
+
+   border-collapse: collapse;
+
+}
+table.moodShow {
+    margin: 10px;
+
+    max-width: 99%;
+}
+thead.titleTheadMood {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  
+    
+}
+  div.cell {
+            height: 100%;
+            padding-top: 25%;
+            opacity: 0.7;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+div.level {
+    height: 35px;
+    margin: 9px;
+      
+    border-radius: 15px;
+    text-align: center;
+}
 div.ajaxError {
 
             border-radius: 20px 20px 20px 20px;

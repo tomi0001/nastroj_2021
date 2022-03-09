@@ -18,9 +18,13 @@ class SearchMoodController {
         }
         else {
             $result = $SearchMood->createQuestion($request);
-            foreach ($result as $l) {
-                print $l->level_mood . "<Br>";
+            if ($SearchMood->count > 0) {
+                $arrayPercent = $SearchMood->sortMoods($result);
             }
+            else {
+                $arrayPercent = [];
+            }
+            return View("Users.Search.Mood.seachResultMood")->with("arrayList",$result)->with("count",$SearchMood->count)->with("percent",$arrayPercent);
             
         }
     }

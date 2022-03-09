@@ -11,14 +11,17 @@ class Mood extends Model
 {
     use HasFactory;
     public $questions;
-    public function createQuestions() {
+    public function createQuestions(int $startDay) {
         $this->questions =  self::query();
         $this->questions->leftjoin("moods_actions","moods_actions.id_moods","moods.id")
                         ->leftjoin("actions","actions.id","moods_actions.id_actions")
                         ->selectRaw("moods.date_start as date_start")
+                        ->selectRaw("moods.id as id")
                         ->selectRaw("moods.date_end as date_end")
+                        ->selectRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) as datStart " ))
+                        ->selectRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) as datEnd" ))
                         ->selectRaw("moods.level_mood as level_mood")
-                
+                        ->selectRaw("(TIMESTAMPDIFF (minute, date_start , date_end)) as longMood")
                         ->selectRaw("moods.level_anxiety as level_anxiety")
                         ->selectRaw("moods.level_nervousness as level_nervousness")
                         ->selectRaw("moods.level_stimulation as level_stimulation")
@@ -69,6 +72,27 @@ class Mood extends Model
     }
     public function whatWorkOn() {
         $this->questions->where("moods.what_work","!=","");
+    }
+    public function orderBy(string $asc,string $type) {
+        
+        switch ($type) {
+            
+            case 'date': $this->questions->orderBy("moods.date_end",$asc);
+                break;
+            case 'hour' : $this->questions->orderByRaw("time(moods.date_end) $asc");
+                break;
+            case 'mood' : $this->questions->orderBy("moods.level_mood",$asc);
+                break;
+            case 'anxienty' : $this->questions->orderBy("moods.level_anxiety",$asc);
+                break;
+            case 'voltage' : $this->questions->orderBy("moods.level_nervousness",$asc);
+                break;
+            case 'stimulation' : $this->questions->orderBy("moods.level_stimulation",$asc);
+                break;
+            case 'longMood' : $this->questions->orderBy("longMood",$asc);
+                break;
+                                       
+        }
     }
     public function searchAction(array $action,array $actionFrom,array $actionTo) {
 

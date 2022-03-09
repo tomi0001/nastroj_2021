@@ -173,15 +173,7 @@ div.moodSelected {
            width: 21%;
 
 }
-td.start {
-    width: 30%;
-    padding-left: 15px;
-    padding: 15px;
-}
-td.end {
-    text-align: right;
-    padding-right: 15px;
-}
+
 div.descriptionModShowMood {
 
     border-radius: 25px;
@@ -189,10 +181,7 @@ div.descriptionModShowMood {
     padding-top: 10px;
     padding-bottom: 10px;
 }
-td.sizeTableMood {
-    width: 8%;
-    text-align: center;
-}
+
 div.typeOfPortion {
     min-width: 90px;
     min-height: 30px;
@@ -201,11 +190,7 @@ div.typeOfPortion {
     padding-top: 2px;
 
 }
-table.moodShow {
-    margin: 10px;
 
-    max-width: 99%;
-}
 table.drugsShow {
     margin: 10px;
  
@@ -225,11 +210,7 @@ td.boldTitle {
     font-size: 20px;
 
 }
-table.moodShow, td.showMood, td.moodButton {
 
-   border-collapse: collapse;
-
-}
 table.drugsShow, td.drugsShow, td.drugsButton {
 
    border-collapse: collapse;
@@ -251,21 +232,9 @@ table.actionShowIdMood {
 tr.bold {
     font-weight: bold;
 }
-div.level {
-    height: 35px;
-    margin: 9px;
-      
-    border-radius: 15px;
-    text-align: center;
-}
 
-        div.cell {
-            height: 100%;
-            padding-top: 25%;
-            opacity: 0.7;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+
+      
         div.centerMood {
             margin-left: auto;
             margin-right: auto;
@@ -298,14 +267,7 @@ span.fontMoodNot {
 
 }
 
-thead.titleTheadMood {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-    z-index: 2;
-  
-    
-}
+
 thead.titleTheadAction {
     position: -webkit-sticky;
     position: sticky;
@@ -410,13 +372,7 @@ td.titleDrugs {
             font-weight: bold;
         }
         
-        span.left {
-            float:left;
-        }
-        span.right {
-             float:right;
-             margin-right: 5px;
-        }
+  
         
         
         div.sumAverage {
