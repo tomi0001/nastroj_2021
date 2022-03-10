@@ -71,10 +71,7 @@ div.sumDrugsAt {
 
             border-radius: 30px;
         }
-                div.disable {
 
-            cursor: not-allowed;
-        }
         div.errorMainMessage {
 
             text-align: center;
@@ -250,10 +247,7 @@ div.descriptionDrugsShow {
           
            cursor: default;
         }
-div.cellBorder {
-    border-radius: 20px;
-   
-}
+
 
 
 

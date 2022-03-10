@@ -19,6 +19,10 @@
 
             border-radius: 15px 15px 15px 15px;
         }
+                div.divButton {
+            float: left;
+            padding: 10px;
+        }
             div.menu {
             width: 20%;
          
@@ -153,16 +157,16 @@
        
                 border: solid 1px transparent;
 
-                padding-top: 13px;
+                padding-top: 10px;
                 padding-left: 25px;
                 padding-right: 25px;
                 padding-bottom: 13px;
     
                 border-radius: 12px;
-                height: 65px;
+                height: 55px;
                 text-align: center;
                 display: inline-block;
-                font-size: 24px;
+                font-size: 18px;
                 font-weight: bold;
    
 
@@ -172,7 +176,7 @@
                 border-radius: 12px;
                 text-align: center;
                 display: inline-block;
-                font-size: 24px;
+                font-size: 18px;
                 font-weight: bold;
         }
         .btn-sleep {

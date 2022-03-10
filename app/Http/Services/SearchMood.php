@@ -103,9 +103,9 @@ class SearchMood {
          if (!empty($request->get("whatWork")) ) {
              $moodModel->searchWhatWork($request->get("whatWork"));
          }
-         if (!empty($request->get("action")) ) {
+         if (!empty($request->get("action")) and ($request->get("action") != "undefined") ) {
 
-             $moodModel->searchAction($request->get("action"),$request->get("actionFrom"),$request->get("actionTo"));
+             $moodModel->searchAction($request->get("action"),(array)$request->get("actionFrom"),(array)$request->get("actionTo"));
          }
          if (($request->get("ifAction")) == "on" ) {
              $moodModel->actionOn();
@@ -123,7 +123,7 @@ class SearchMood {
              $moodModel->orderBy("desc",$request->get("sort"));
          }
          $this->count = $moodModel->questions->get()->count();
-         return $moodModel->questions->paginate(20);
+         return $moodModel->questions->paginate(15);
          
          
          
@@ -178,7 +178,7 @@ class SearchMood {
      }
      private function setHour($moodModel,Request $request) {
          $hour  = $this->startDay;
-        if ($request->get("timeFrom") != "" and $request->get("timeTo") != "") {
+        if (($request->get("timeFrom") != "" and $request->get("timeTo") != "") and ($request->get("timeFrom") != "undefined" and $request->get("timeTo") != "undefined")) {
             $timeFrom = explode(":",$request->get("timeFrom"));
             $timeTo = explode(":",$request->get("timeTo"));
             $hourFrom = $this->sumHour($timeFrom,$this->startDay);
@@ -187,11 +187,11 @@ class SearchMood {
             
 
         }
-        else if ($request->get("timeTo") != "") {
+        else if ($request->get("timeTo") != "" and $request->get("timeTo") != "undefined") {
             $moodModel->setHourTo($request->get("timeTo"));
             
         }
-        else if ($request->get("timeFrom") != "") {
+        else if ($request->get("timeFrom") != "" and $request->get("timeTo") != "undefined") {
             $moodModel->setHourFrom($request->get("timeFrom"));
             
         }

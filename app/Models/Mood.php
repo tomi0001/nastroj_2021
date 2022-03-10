@@ -98,39 +98,10 @@ class Mood extends Model
 
         $this->questions->where(function ($query) use ($action,$actionFrom,$actionTo) {
         for ($i=0;$i < count ($action);$i++) {
-
             if ($action[$i] == "NULL") {
                 continue;
             }
-             if ($action[$i] != "" and ($actionFrom[$i] == "" and $actionTo[$i] == "")) {
-                  
-                 $query->orwhereRaw("actions.name like '%" . $action[$i]  . "%'");
-             }
-             else if ($action[$i] != "" and ($actionFrom[$i] != "" and $actionTo[$i] == "")) {
-                 $query->orwhereRaw("("
-                         . "actions.name like '%" . $action[$i]  . "%'  and  (("
-                         .      " CASE "
-                        . " WHEN moods_actions.percent_executing is NULL && moods_actions.minute_exe is  NULL THEN (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) ) "
-                        . " WHEN moods_actions.minute_exe is NOT NULL  THEN (moods_actions.minute_exe)    "
-                        . " WHEN moods_actions.percent_executing is NOT NULL THEN     (  moods_actions.percent_executing / 100) * (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) )  "
-                        . " "
-                        . " END)" 
-                         . ")  >= '" . $actionFrom[$i] .  "')"
-                         . " " );
-             }
-             else if ($action[$i] != "" and ($actionFrom[$i] == "" and $actionTo[$i] != "")) {
-                 $query->orwhereRaw("("
-                         . "actions.name like '%" . $action[$i]  . "%'  and  (("
-                         .      " CASE "
-                        . " WHEN moods_actions.percent_executing is NULL && moods_actions.minute_exe is  NULL THEN (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) ) "
-                        . " WHEN moods_actions.minute_exe is NOT NULL  THEN (moods_actions.minute_exe)    "
-                        . " WHEN moods_actions.percent_executing is NOT NULL THEN     (  moods_actions.percent_executing / 100) * (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) )  "
-                        . ""
-                        . " END)" 
-                         . ")  <= '" . $actionTo[$i] .  "')"
-                         . " " );
-             }
-             else if ($action[$i] != "" and ($actionFrom[$i] != "" and $actionTo[$i] != "")) {
+             if ($action[$i] != "" and (!empty($actionFrom) and (!empty($actionTo)))  and  ($actionFrom[$i] != "" and $actionTo[$i] != "")) {
                  $query->orwhereRaw("("
                          . "actions.name like '%" . $action[$i]  . "%'  and  (" . 
                          "(CASE "
@@ -152,18 +123,51 @@ class Mood extends Model
                           );
                  
              }
+              else if ($action[$i] != "" and  ( (!empty($actionTo)))  and  ($actionTo[$i] != "")) {
+                 $query->orwhereRaw("("
+                         . "actions.name like '%" . $action[$i]  . "%'  and  (("
+                         .      " CASE "
+                        . " WHEN moods_actions.percent_executing is NULL && moods_actions.minute_exe is  NULL THEN (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) ) "
+                        . " WHEN moods_actions.minute_exe is NOT NULL  THEN (moods_actions.minute_exe)    "
+                        . " WHEN moods_actions.percent_executing is NOT NULL THEN     (  moods_actions.percent_executing / 100) * (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) )  "
+                        . ""
+                        . " END)" 
+                         . ")  <= '" . $actionTo[$i] .  "')"
+                         . " " );
+             }
+              else if ($action[$i] != "" and  (!empty($actionFrom) )  and  ($actionFrom[$i] != "")) {
+                 $query->orwhereRaw("("
+                         . "actions.name like '%" . $action[$i]  . "%'  and  (("
+                         .      " CASE "
+                        . " WHEN moods_actions.percent_executing is NULL && moods_actions.minute_exe is  NULL THEN (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) ) "
+                        . " WHEN moods_actions.minute_exe is NOT NULL  THEN (moods_actions.minute_exe)    "
+                        . " WHEN moods_actions.percent_executing is NOT NULL THEN     (  moods_actions.percent_executing / 100) * (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) )  "
+                        . " "
+                        . " END)" 
+                         . ")  >= '" . $actionFrom[$i] .  "')"
+                         . " " );
+             }
+             else if ($action[$i] != "" ) {
+                  
+                 $query->orwhereRaw("actions.name like '%" . $action[$i]  . "%'");
+             }
+            
+            
+            
+            
+             
          }
         });
     }
     public function setDate($dateFrom,$dateTo,$startDay) {
-        if ($dateFrom != "")  {
+        if ($dateFrom != "" and $dateFrom != "undefined")  {
            
         $this->questions->where(function ($query) use ($startDay,$dateFrom) {
                     $query->whereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) >= '$dateFrom'" ))
                     ->orwhereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) >= '$dateFrom'" ));
                 });
         }
-        if ($dateTo != "" ) {
+        if ($dateTo != "" and $dateTo != "undefined") {
            
            $this->questions->where(function ($query) use ($startDay,$dateTo) {
                     $query->whereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) < '$dateTo'" ))
@@ -172,51 +176,51 @@ class Mood extends Model
         }
     }
     public function setMood(Request $request) {
-         if ($request->get("moodFrom") != "")  {
+         if ($request->get("moodFrom") != "" and $request->get("moodFrom") != "undefined")  {
              $this->questions->where("moods.level_mood",">=",$request->get("moodFrom"));
          }
-         if ($request->get("moodTo") != "" ) {
+         if ($request->get("moodTo") != "" and $request->get("moodTo") != "undefined") {
              $this->questions->where("moods.level_mood","<=",$request->get("moodTo"));
          }
-         if ($request->get("anxientyFrom") != "")  {
+         if ($request->get("anxientyFrom") != "" and $request->get("anxientyFrom") != "undefined")  {
              $this->questions->where("moods.level_anxiety",">=",$request->get("anxientyFrom"));
          }
-         if ($request->get("anxientyTo") != "" ) {
+         if ($request->get("anxientyTo") != "" and $request->get("anxientyTo") != "undefined") {
              $this->questions->where("moods.level_anxiety","<=",$request->get("anxientyTo"));
          }
-         if ($request->get("voltageFrom") != "")  {
+         if ($request->get("voltageFrom") != "" and $request->get("voltageFrom") != "undefined")  {
              $this->questions->where("moods.level_nervousness",">=",$request->get("voltageFrom"));
          }
-         if ($request->get("voltageTo") != "" ) {
+         if ($request->get("voltageTo") != "" and $request->get("voltageTo") != "undefined") {
              $this->questions->where("moods.level_nervousness","<=",$request->get("voltageTo"));
          }
-         if ($request->get("stimulationFrom") != "")  {
+         if ($request->get("stimulationFrom") != "" and $request->get("stimulationFrom") != "undefined")   {
              $this->questions->where("moods.level_stimulation",">=",$request->get("stimulationFrom"));
          }
-         if ($request->get("stimulationTo") != "" ) {
+         if ($request->get("stimulationTo") != "" and $request->get("stimulationTo") != "undefined") {
              $this->questions->where("moods.level_stimulation","<=",$request->get("stimulationTo"));
          }
      }
      public function setLongMood(Request $request) {
          $timeFrom = 0;
          $timeTo = 0;
-         if ($request->get("longMoodHourFrom") != "")  {
+         if ($request->get("longMoodHourFrom") != "" and  $request->get("longMoodHourFrom") != "undefined"  )  {
              $timeFrom += $request->get("longMoodHourFrom") * 60;
          }
-         if ($request->get("longMoodMinuteFrom") != "")  {
+         if ($request->get("longMoodMinuteFrom") != "" and  $request->get("longMoodHourFrom") != "undefined"  )  {
              $timeFrom += $request->get("longMoodMinuteFrom");
          }
-         if ($request->get("longMoodHourFrom") != "" or $request->get("longMoodMinuteFrom") != "") {
+         if (($request->get("longMoodHourFrom") != "" or $request->get("longMoodMinuteFrom") != "")   and  ($request->get("longMoodHourFrom") != "undefined" or $request->get("longMoodMinuteFrom") != "undefined")) {
              $this->questions->whereRaw("TIMESTAMPDIFF (MINUTE, moods.date_start , moods.date_end) " . ">=" . $timeFrom);
          }
-         if ($request->get("longMoodHourTo") != "")  {
+         if ($request->get("longMoodHourTo") != "" and $request->get("longMoodHourTo") != "undefined")  {
              $timeTo += $request->get("longMoodHourTo") * 60;
              
          }
-         if ($request->get("longMoodMinuteTo") != "")  {
+         if ($request->get("longMoodMinuteTo") != "" and $request->get("longMoodHourTo") != "undefined")  {
              $timeTo += $request->get("longMoodMinuteTo");
          }
-         if ($request->get("longMoodHourTo") != "" or $request->get("longMoodMinuteTo") != "") {
+         if (($request->get("longMoodHourTo") != "" or $request->get("longMoodMinuteTo") != "")  and ($request->get("longMoodHourTo") != "undefined" or $request->get("longMoodMinuteTo") != "undefined")) {
              $this->questions->whereRaw("TIMESTAMPDIFF (MINUTE, moods.date_start , moods.date_end) " . "<=" . $timeTo);
          }
          

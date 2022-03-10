@@ -200,16 +200,7 @@ div.actionMainselected {
           
              
         }
-        button:disabled, button.disable {
-                            background-color: #D92A2A; 
-               
-                border-color: #6E791A;
-               
-                color: white;
-             
-                box-shadow: 6px 6px 6px #F4E375;
-              
-        }
+
      
         
         
@@ -536,10 +527,7 @@ td.titleDrugs {
 
 
         
-        span.MessageError {
-            color: #FB0303;
-
-        }
+   
         
         
         div.sumAverage {

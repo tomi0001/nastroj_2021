@@ -300,7 +300,20 @@ div.level10 {
 
     color: black;
 }
+     span.MessageError {
+            color: #FB0303;
 
+        }
+                button:disabled, button.disable {
+                            background-color: #D92A2A; 
+               
+                border-color: #6E791A;
+               
+                color: white;
+             
+                box-shadow: 6px 6px 6px #F4E375;
+              
+        }
 div.cellBorder {
     
     box-shadow: 0px 0px 4px 3px rgba(64,66,29,0.47);

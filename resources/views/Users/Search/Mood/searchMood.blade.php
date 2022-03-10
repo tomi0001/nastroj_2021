@@ -225,8 +225,8 @@
                 </td>
                 <td colspan="3">
                     <select name='sort2' class='form-control'>
-                        <option value='asc'>Od największego</option>
-                        <option value='desc'>Od najmniejszego</option>
+                        <option value='desc'>Od największego</option>
+                        <option value='asc'>Od najmniejszego</option>
                      
                     </select>
                

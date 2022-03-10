@@ -28,4 +28,21 @@ class SearchMoodController {
             
         }
     }
+    
+//    public function searchMoodAjaxSubmit(Request $request) {
+//        $SearchMood = new SearchMood;
+//       
+//        
+//        
+//            $result = $SearchMood->createQuestion($request);
+//            if ($SearchMood->count > 0) {
+//                $arrayPercent = $SearchMood->sortMoods($result);
+//            }
+//            else {
+//                $arrayPercent = [];
+//            }
+//            return View("Users.Search.Mood.seachResultMoodAjax")->with("arrayList",$result)->with("count",$SearchMood->count)->with("percent",$arrayPercent)->render();
+//            
+//        
+//    }
 }

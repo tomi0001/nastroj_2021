@@ -181,9 +181,11 @@ Route::get("/settings/editPlanedsubmit",[App\Http\Controllers\Settings\SettingsP
         ->name("setting.editPlanedsubmit")->middleware('auth')->middleware('can:users');
 
 
+
 Route::get('/search/searchMain', [App\Http\Controllers\Search\SearchController::class, 'searchMain'])->name('users.search')
                     ->middleware('auth')->middleware('can:users');
-
+//Route::get("/search/searchMoodAjaxSubmit",[App\Http\Controllers\Search\SearchMoodController::class, 'searchMoodAjaxSubmit'])
+//        ->name("search.searchMoodAjaxSubmit")->middleware('auth')->middleware('can:users');
 
 Route::get('/search/searchMoodSubmit', [App\Http\Controllers\Search\SearchMoodController::class, 'searchMoodSubmit'])->name('search.searchMoodSubmit')
                     ->middleware('auth')->middleware('can:users');

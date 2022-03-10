@@ -4,9 +4,9 @@
 
 
 
-@section ('title') 
-Wyszukiwanie
-@endsection
+    @section ('title') 
+    Wyszukiwanie
+    @endsection
 
 <br>
 <div class="titleSearch">WYSZUKIWANIE</div>
