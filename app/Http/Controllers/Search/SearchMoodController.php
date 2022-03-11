@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Models\User as MUser;
 use Hash;
 use App\Http\Services\SearchMood;
+use App\Models\Mood;
+use Auth;
 class SearchMoodController {
     public function searchMoodSubmit(Request $request) {
         $SearchMood = new SearchMood;
@@ -28,7 +30,14 @@ class SearchMoodController {
             
         }
     }
-    
+    public function allDayMood(Request $request) {
+        $sumAll = Mood::sumAll($request->get("date"),Auth::User()->start_day,  Auth::User()->id);
+        return  View("Users.Search.Mood.showAllDayMood")->with("sumAll",$sumAll);
+    }
+    public function allActionDay(Request $request) {
+        $sumAction = Mood::sumAction($request->get("date"),Auth::User()->start_day,  Auth::User()->id);
+        return View("Users.Search.Mood.showAllDayAction")->with("actionSum",$sumAction);
+    }
 //    public function searchMoodAjaxSubmit(Request $request) {
 //        $SearchMood = new SearchMood;
 //       

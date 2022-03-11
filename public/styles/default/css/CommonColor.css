@@ -16,6 +16,55 @@ body {
 
              
         }
+        table.actionShow {
+
+    background-color: #09B6EB;
+    color: #034053;
+
+    border: 2px solid #0E5970;
+}
+td.boldTitle {
+
+    color: #020F3A;
+
+    background-color: #2048C9;
+}
+thead.titleTheadAction {
+
+    background-color: #7BDBF8; 
+}
+       td.tdAction {
+         
+            border-right: 2px solid #0E5970;
+            
+            
+        }
+                div.sumDrugs {
+          
+            background-color: rgba(99, 231, 84, 0.81);
+   
+           
+        }
+                div.positionDrugs {
+          
+            background-color: #1BBC09;
+          
+            color: #CFF5CA;
+         
+        }
+        div.positionDrugsDose {
+            background-color: #65950D;
+          
+            color: #CFF5CA;
+        }
+                div.errorMainMessage {
+            color: white;
+
+            background-color: red;
+  
+            box-shadow: 6px 0  20px 8px rgba(127, 15, 15, 0.8);
+        
+        }
         .sleep {
             background-color: rgba(158, 66, 224, 0.84);
             color: white;
@@ -314,6 +363,88 @@ div.level10 {
                 box-shadow: 6px 6px 6px #F4E375;
               
         }
+        div.descriptionModShowMood {
+    background-color: #6D6D21;
+
+    color: white;
+
+}
+        div.titleActionShowAjax {
+            background-color: #294898;
+        
+
+        }
+        div.titleDrugsShowAjax {
+            background-color: #3A9900;
+        
+        }
+        td.titleAction {
+        background-color: #084071;
+        
+   
+        
+}
+       div.positionAction {
+          
+            color: #3F5B0B;
+             
+        }
+        div.leveAction0 {
+    background-color:  #969682;
+}
+div.leveAction1 {
+    background-color: #BBBCA9;
+}
+div.leveAction2 {
+    background-color: #BCBCBC;
+}
+div.leveAction3 {
+    background-color: #CCCBB7;
+}
+div.leveAction4 {
+    background-color: #EAEAE3;
+}
+div.leveAction5 {
+    background-color: #E9EAD7;
+}
+div.leveAction6 {
+    background-color: #F7F7EA;
+}
+div.leveAction7 {
+    background-color: #F4F2BA;
+}
+div.leveAction8 {
+    background-color: #F2EF9D;
+}
+div.leveAction9 {
+    background-color: #F7F981;
+}
+div.leveAction10 {
+    background-color: #F9DE54;
+}
+
+td.titleDrugs {
+        background-color: #3A7F0F;
+      
+   
+        
+}
+
+
+.drugssShowModShow {
+        background-color: #54CD08;
+
+-webkit-box-shadow: 0px 0px 18px 1px #235902;
+-moz-box-shadow: 0px 0px 18px 1px #235902;
+box-shadow: 0px 0px 18px 1px #235902;
+}
+.actionShowModShow {
+    background-color: #308EED;
+ 
+-webkit-box-shadow: 0px 0px 18px 1px rgba(10, 44, 105, 1);
+-moz-box-shadow: 0px 0px 18px 1px rgba(10, 44, 105, 1);
+box-shadow: 0px 0px 18px 1px rgba(10, 44, 105, 1);
+}
 div.cellBorder {
     
     box-shadow: 0px 0px 4px 3px rgba(64,66,29,0.47);

@@ -57,9 +57,45 @@
                 
                 @if ($i == 0 or $arrayList[$i]->datEnd != $arrayList[$i-1]->datEnd)
                 <tr>
+                    <td colspan="7">
+                        <div class='hr'></div>
+                    </td>
+                </tr>
+                <tr>
                     <td colspan="7" style="padding: 10px; padding-top: 30px;">
                         <div class="dayMood">
                              Dzień  {{$arrayList[$i]->datEnd}}
+                        </div>
+                        <br>
+                        <div class="divAtButtonDay">
+                            <button  style=" float: left; margin-right: 10px;"  class="btn-mood  mood" onclick="showDayMood('{{route("search.allDayMood")}}','{{$arrayList[$i]->datEnd}}')">Wartość nastroji dla dnia</button>
+                            @if (count(\App\Models\Usee::listSubstnace($arrayList[$i]->datEnd, Auth::User()->id,Auth::User()->start_day)) > 0)
+                            <button style=" float: left; margin-right: 10px;" class="btn-mood  drugs" onclick="showDaySubstance('{{route("search.allSubstanceDay")}}','{{$arrayList[$i]->datEnd}}')">Substancje dla danego dnia</button>
+                            @else
+                            <button style=" float: left; margin-right: 10px; width: 200px;" type="button" class="disable "  disabled >nie było substancji</button>
+                            @endif
+                            
+                            @if ((\App\Models\Mood::ifActionForDayMood($arrayList[$i]->datEnd, Auth::User()->id,Auth::User()->start_day)) > 0)
+                            <button style=" float: left; margin-right: 10px;" class="btn-mood  action" onclick="showDayAction('{{route("search.allActionDay")}}','{{$arrayList[$i]->datEnd}}')">Akcje dla danego dnia</button>
+                            @else
+                            <button style=" float: left; margin-right: 10px; width: 200px;" type="button" class="disable "  disabled >nie było akcji</button>
+                            @endif
+                            
+                        </div>
+                        <div style="clear: both;"></div>
+                        <br>
+                        
+                        <div class='showAjaxDay'>
+                            <div id="dayMood{{$arrayList[$i]->datEnd}}" style="display: none; float: left; margin-right: 10px;">
+
+                            </div>
+                            <div  id="daySubstance{{$arrayList[$i]->datEnd}}" style="float: left; display: none; margin-right: 10px;">
+                                
+                            </div>
+                            <div style="clear: both;"></div>
+                            <div  id="dayAction{{$arrayList[$i]->datEnd}}" class='divActionSum' style="float: left; display: none; margin-right: 10px; ">
+                                
+                            </div>
                         </div>
                     </td>
                 </tr>
@@ -140,6 +176,41 @@
                         
                     </td>
                 </tr>
+                <tr >
+                    <td  colspan="7">
+                        <div  class="hiddenMood descriptionShowMood{{$arrayList[$i]->id}}" style="display: none;">
+                            
+                            <div id="messageDescriptionshowMood{{$arrayList[$i]->id}}" class="descriptionModShowMood"></div>
+                        </div>
+                    </td>
+                
+                </tr>
+                <tr >
+                    <td  colspan="7">
+                        <div  class="hiddenMood actionShow{{$arrayList[$i]->id}}" style="display: none;">
+                            
+                            <div id="messageactionShow{{$arrayList[$i]->id}}" class="actionShowModShow">
+                                
+                                
+                            </div>
+                            <br>
+                        </div>
+                    </td>
+                
+                </tr>      
+                <tr >
+                    <td  colspan="7">
+                        <div  class="hiddenMood drugsShow{{$arrayList[$i]->id}}" style="display: none;">
+                            
+                            <div id="messagedrugsShow{{$arrayList[$i]->id}}" class="drugssShowModShow">
+                                
+                                
+                            </div>
+                            <br>
+                        </div>
+                    </td>
+                
+                </tr> 
                 @endfor
                 <tr>
                     <td colspan="7" class=" ">

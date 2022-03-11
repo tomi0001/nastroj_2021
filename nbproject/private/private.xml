@@ -17,6 +17,7 @@
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/CommonAll.css</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Layout/User.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Layout/SelectSearch.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/seachResultMoodAjax.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSettingwidth1810.css</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/auth/login.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/js/pageSetting.js</file>
@@ -43,6 +44,7 @@
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/SearchMood.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/PlanedDrug.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/ajax/editActionMood.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/ajax/showDrugs.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/addNewProduct.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/User.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Users_description.php</file>

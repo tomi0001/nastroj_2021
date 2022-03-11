@@ -8,6 +8,15 @@
             border-radius: 25px 25px 25px 25px;
             min-height: 100%;
         }
+                div.sumMood {
+            width: 400px;
+            height: 200px;
+
+            border-radius: 20px;
+            padding: 22px;
+            margin-left: auto;
+            margin-right: auto;
+        }
         #PageMenu {
             width: 96%;
 
@@ -18,6 +27,16 @@
             height: 290px;
 
             border-radius: 15px 15px 15px 15px;
+        }
+                div.sumDrugs {
+           width: 400px;
+            height: 200px;
+
+            border-radius: 20px;
+            padding: 22px;
+            margin-left: auto;
+            margin-right: auto;    
+           
         }
                 div.divButton {
             float: left;
@@ -132,6 +151,15 @@
                 display: inline-block;
              
         }
+                td.tdAction {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            padding-left: 10px;
+            padding-right: 10px;
+
+            
+            
+        }
         button:disabled, button.disable {
                   
                 border: solid 1px transparent;
@@ -152,7 +180,24 @@
                 box-shadow: 6px 6px 6px #F4E375;
                 display:block;
         }
-         
+         div.hiddenMood {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+
+    text-align: center;
+}
+        div.titleDrugsShowAjax {
+
+            border-radius: 17px 17px 0px 0px;
+            min-height: 22px;
+        }
+        div.titleActionShowAjax {
+
+            border-radius: 17px 17px 0px 0px;
+            min-height: 22px;
+
+        }
         .btn-mood {
        
                 border: solid 1px transparent;

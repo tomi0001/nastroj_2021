@@ -18,13 +18,7 @@ div.actionMain {
     border-radius: 20px;
     cursor:pointer;
 }
-div.hiddenMood {
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
 
-    text-align: center;
-}
 div.hiddenMoodEdit {
     margin-left: auto;
     margin-right: auto;
@@ -81,26 +75,9 @@ div.actionMainselected {
         }
 
 
-        div.titleActionShowAjax {
 
-            border-radius: 17px 17px 0px 0px;
-            min-height: 22px;
 
-        }
-        div.titleDrugsShowAjax {
 
-            border-radius: 17px 17px 0px 0px;
-            min-height: 22px;
-        }
-        td.tdAction {
-            padding-top: 20px;
-            padding-bottom: 20px;
-            padding-left: 10px;
-            padding-right: 10px;
-
-            
-            
-        }
         div.NotShow {
             width: 80%;
             margin-left: auto;
@@ -336,25 +313,8 @@ div.actionMainselected {
         }
 
 
-        div.sumMood {
-            width: 400px;
-            height: 200px;
 
-            border-radius: 20px;
-            padding: 22px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        div.sumDrugs {
-           width: 400px;
-            height: 200px;
 
-            border-radius: 20px;
-            padding: 22px;
-            margin-left: auto;
-            margin-right: auto;    
-           
-        }
         div.sumAction {
            width: 400px;
             height: 200px;

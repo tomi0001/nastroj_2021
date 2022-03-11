@@ -19,6 +19,24 @@
     height: 40px;
     border-radius: 12px;
 }
+div.showAjaxDay {
+    float: left;
+    width: 100%;
+    
+}
+div.hr {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 15px;
+    border-radius: 35px;
+}
+div.divAtButtonDay {
+    float: left;
+}
+div.divActionSum {
+    width: 100%;
+}
 div.dayMood {
     width: 25%;
     min-height: 50px;

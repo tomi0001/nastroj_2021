@@ -97,7 +97,103 @@ function fetch_data(page) {
 }
 
 
-*/
+
+ **/
+
+
+function showDayMood(url,date) {
+     
+    if ($("#dayMood" + date).css("display") == "none" ) {
+        
+            $.ajax({
+                url : url,
+                    method : "get",
+                    data : 
+                      "date=" + date 
+                    ,
+                    dataType : "html",
+
+            })
+            .done(function(response) {
+               
+                $("#dayMood" + date).css("display","block");
+                $("#dayMood" + date).html(response);
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })       
+    }
+    else {
+        
+        $("#dayMood" + date).css("display","none");
+    }      
+}
+
+
+function showDaySubstance(url,date) {
+     
+    if ($("#daySubstance" + date).css("display") == "none" ) {
+        
+            $.ajax({
+                url : url,
+                    method : "get",
+                    data : 
+                      "date=" + date 
+                    ,
+                    dataType : "html",
+
+            })
+            .done(function(response) {
+               
+                $("#daySubstance" + date).css("display","block");
+                $("#daySubstance" + date).html(response);
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })       
+    }
+    else {
+        
+        $("#daySubstance" + date).css("display","none");
+    }      
+}
+
+
+function showDayAction(url,date) {
+    if ($("#dayAction" + date).css("display") == "none" ) {
+        
+            $.ajax({
+                url : url,
+                    method : "get",
+                    data : 
+                      "date=" + date 
+                    ,
+                    dataType : "html",
+
+            })
+            .done(function(response) {
+               
+                $("#dayAction" + date).css("display","block");
+                $("#dayAction" + date).html(response);
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })       
+    }
+    else {
+        
+        $("#dayAction" + date).css("display","none");
+    }      
+}
+
+
+
 function loadPageMood() {
       $(".titleSettingsMood").addClass("selectedMenu");
       $(".titleSettingsDrugs").removeClass("selectedMenu");
@@ -169,4 +265,87 @@ function selectMenu() {
     }
      * 
      */
+}
+
+function showDrugs(url,id) {
+        if ($(".drugsShow" + id).css("display") == "none" ) {
+            $.ajax({
+                url : url,
+                    method : "get",
+                    data : 
+                      "id=" + id 
+                    ,
+                    dataType : "html",
+
+            })
+            .done(function(response) {
+                $(".drugsShow" + id).css("display","block");
+                $("#messagedrugsShow"+id).html(response);
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })       
+    }
+    else {
+        
+        $(".drugsShow" + id).css("display","none");
+    }  
+}
+
+function showAction(url,id) {
+        if ($(".actionShow" + id).css("display") == "none" ) {
+            $.ajax({
+                url : url,
+                    method : "get",
+                    data : 
+                      "id=" + id 
+                    ,
+                    dataType : "html",
+            })
+            .done(function(response) {
+                $(".actionShow" + id).css("display","block");
+                $("#messageactionShow"+id).html(response);
+
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })       
+    }
+    else {
+        
+        $(".actionShow" + id).css("display","none");
+    }
+}
+function showDescritionMood(url,id) {
+    if ($(".descriptionShowMood" + id).css("display") == "none" ) {
+            $.ajax({
+                url : url,
+                    method : "get",
+                    data : 
+                      "id=" + id 
+                    ,
+                    dataType : "html",
+            })
+            .done(function(response) {
+                //alert(response);
+                $(".descriptionShowMood" + id).css("display","block");
+                $("#messageDescriptionshowMood"+id).html(response);
+
+                 
+
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })       
+    }
+    else {
+        
+        $(".descriptionShowMood" + id).css("display","none");
+    }
 }

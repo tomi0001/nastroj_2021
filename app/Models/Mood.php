@@ -311,19 +311,25 @@ class Mood extends Model
                 ->join("actions","actions.id","moods_actions.id_actions")
                 ->selectRaw("actions.name as name")
                 ->selectRaw("actions.level_pleasure as level_pleasure")
-                                ->selectRaw(" round("
+                                ->selectRaw(" sum(round("
                         . " CASE "
                         . " WHEN moods_actions.percent_executing is NULL && moods_actions.minute_exe is  NULL THEN (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) ) "
                         . " WHEN moods_actions.minute_exe is NOT NULL  THEN (moods_actions.minute_exe)    "
                         . " WHEN moods_actions.percent_executing is NOT NULL THEN     (  moods_actions.percent_executing / 100) * (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) )  "
                         . "ELSE 1 "
-                        . " END)"
+                        . " END))"
                         . "  as sum ")
                 ->whereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) = '" . $date . "'" ))
                 ->orWhereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) = '" . $date . "'" ))
                 ->where("moods.id_users",$idUsers)
                 ->groupBy("actions.id")
                 ->get();
+    }
+    public static function ifActionForDayMood(string $date, int $idUsers, int $startDay) {
+        return self::join("moods_actions","moods_actions.id_moods","moods.id")
+                ->whereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) = '" . $date . "'" ))
+                ->orWhereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) = '" . $date . "'" ))
+                ->where("moods.id_users",$idUsers)->count();
     }
     public static function selectValueMood(int $id,int $idUsers) {
         return self::selectRaw("round(moods.level_mood,2) as level_mood")

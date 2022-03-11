@@ -4,26 +4,8 @@ body {
 span.smallMenu {
     font-size: 17px;
 }
-div.sumDrugsAt {
-             overflow-y: scroll; 
-             width: 98%;
-             margin-left: auto;
-             margin-right: auto;
-             height: 100%;
-             clear: both;
-        }
-        div.positionAction {
-            width: 100%;
- 
-            margin-bottom: 3px;
-            height: 30px;
-            margin-top: 10px;
 
-            font-size: 18px;
-            font-weight: bold;
-            border-radius: 20px;
-            text-align: center;     
-        }
+
         div.hourPlan {
             border-radius: 20px;
 
@@ -33,28 +15,7 @@ div.sumDrugsAt {
 
             margin-bottom: 15px;
         }
-        div.positionDrugs {
-            width: 74%;
-            float: left;
-            margin-bottom: 6px;
-            height: 30px;
 
-            font-size: 20px;
-            font-weight: bold;
-            border-radius: 20px;
-            text-align: center;
-        }
-        div.positionDrugsDose {
-            width: 25%;
-            float: left;
-            margin-bottom: 6px;
-            height: 30px;
-
-            font-size: 15px;
-            font-weight: bold;
-            border-radius: 20px;
-            text-align: center;
-        }
 
 
                 div.errorMainMessagesmall {
@@ -72,20 +33,7 @@ div.sumDrugsAt {
             border-radius: 30px;
         }
 
-        div.errorMainMessage {
 
-            text-align: center;
-            padding-top: 18px;
-            font-size: 30px;
-
-            width: 90%;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 10px;
-            height: 90%;
-
-            border-radius: 30px;
-        }
 #calendar {
     
 
@@ -171,13 +119,7 @@ div.moodSelected {
 
 }
 
-div.descriptionModShowMood {
 
-    border-radius: 25px;
-
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
 
 div.typeOfPortion {
     min-width: 90px;
@@ -194,19 +136,8 @@ table.drugsShow {
 
     width: 97%;
 }
-table.actionShow {
-    margin: 10px;
 
 
-    width: 97%;
-
-}
-td.boldTitle {
-    font-weight: bold;
-
-    font-size: 20px;
-
-}
 
 table.drugsShow, td.drugsShow, td.drugsButton {
 
@@ -214,21 +145,8 @@ table.drugsShow, td.drugsShow, td.drugsButton {
 
 }
 
-table.actionShowIdMood {
-    
-   text-align: center;
-  
-    width: 97%;
-    border-collapse: separate;
-    border-spacing: 3px;
-    padding: 20px;
 
-    
-}
 
-tr.bold {
-    font-weight: bold;
-}
 
 
       
@@ -262,13 +180,7 @@ span.fontMoodNot {
 }
 
 
-thead.titleTheadAction {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-    z-index: 2;
- 
-}
+
 thead.titleTheadDrugs {
         position: -webkit-sticky;
     position: sticky;
@@ -289,32 +201,10 @@ table.tableCenter {
 }
 
 
-.actionShowModShow {
-    
-    padding: 0px;
-    border-radius: 21px;
 
-}
-.drugssShowModShow {
-       
-    padding: 0px;
-    border-radius: 21px;
 
-}
-td.titleAction {
-        
-        height: 35px;
-        font-weight: bold;
-   
-        
-}
-td.titleDrugs {
-       
-        height: 35px;
-        font-weight: bold;
-   
-        
-}
+
+
 
 
 
