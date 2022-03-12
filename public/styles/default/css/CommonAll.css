@@ -126,7 +126,7 @@ table.moodShow {
 
     max-width: 99%;
 }
-thead.titleTheadMood {
+td.titleTheadMood {
     position: -webkit-sticky;
     position: sticky;
     top: 0;

@@ -122,11 +122,21 @@ box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
     color: white;
     }
     
-    div.dayMood {
+    .dayMood {
         background-color: #C3FF42;
--webkit-box-shadow: 0px 0px 31px -1px rgba(21, 68, 1, 1);
--moz-box-shadow: 0px 0px 31px -1px rgba(21, 68, 1, 1);
-box-shadow: 0px 0px 31px -1px rgba(21, 68, 1, 1);
+
+color: #4F9805;
+-webkit-box-shadow: 0px -15px 24px 0px rgba(85, 109, 46, 1);
+-moz-box-shadow: 0px -15px 24px 0px rgba(85, 109, 46, 1);
+box-shadow: 0px -15px 24px 0px rgba(85, 109, 46, 1);
+    }
+    
+    .dayMoodEnd {
+                background-color: #C3FF42;
+-webkit-box-shadow: 0px 15px 13px 0px rgba(85, 109, 46, 1);
+-moz-box-shadow: 0px 15px 13px 0px rgba(85, 109, 46, 1);
+box-shadow: 0px 15px 13px 0px rgba(85, 109, 46, 1);
+
 color: #4F9805;
     }
     
@@ -136,3 +146,12 @@ color: #4F9805;
 -moz-box-shadow: inset 0px 0px 29px -15px rgba(6, 37, 7, 1);
 box-shadow: inset 0px 0px 29px -15px rgba(6, 37, 7, 1);
     }
+    
+    td.borderLeftSearch {
+    border-left: 2px solid #C3FF42;
+
+}
+td.borderRightSearch {
+    border-right: 2px solid #C3FF42;
+
+}

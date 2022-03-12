@@ -27,46 +27,61 @@
         <div class='tableSearchMood' id="ajaxData">
             <div class="titleSearchResult titleSearchResultMood">WYSZUKIWANIE</div>
             <table class='moodShow'>
-                <thead class="titleTheadMood">
+                <thead >
                 <tr class="bold">
-                    <td class="start showMood" style=" border-right-style: hidden;" >
+                    <td style="width: 3%;"></td>
+                    <td style="width: 2%;">
+                        
+                    </td>
+                    <td class="start showMood titleTheadMood" style=" border-right-style: hidden; width: 25%;" >
                         Start
                     </td>
-                    <td class="end showMood">
+                    <td class="end showMood titleTheadMood" style="width: 25%;">
                         Koniec
                     </td>
-                    <td class="sizeTableMood showMood">
+                    <td class="sizeTableMood showMood titleTheadMood" style="width: 6%;">
                         Nastrój
                     </td>
-                    <td class="sizeTableMood showMood">
+                    <td class="sizeTableMood showMood titleTheadMood" style="width: 6%;">
                         Lęk
                     </td>
-                    <td class="sizeTableMood showMood">
+                    <td class="sizeTableMood showMood titleTheadMood" style="width: 6%;">
                         napięcie /<br>rozdrażnienie
                     </td>
-                    <td class="sizeTableMood showMood">
+                    <td class="sizeTableMood showMood titleTheadMood" style="width: 5%;">
                         Pobudzenie
                     </td>
-                    <td class="center showMood" style="width: 35%;">
+                    <td class="center showMood titleTheadMood" style="width: 11%;">
                         Epizodów psychotycznych
                     </td>
-                    
+                    <td >
+                        
+                    </td>
+                    <td style="width: 3%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                 </tr>
                 </thead>
                 @for ($i=0;$i < count($arrayList);$i++)
                 
                 @if ($i == 0 or $arrayList[$i]->datEnd != $arrayList[$i-1]->datEnd)
                 <tr>
-                    <td colspan="7">
-                        <div class='hr'></div>
+                    <td colspan="11">&nbsp;</td>
+                </tr>
+            
+                <tr>
+                    <td></td>
+                    <td colspan="9" class="dayMood" >
+                        
+                             Dzień  {{$arrayList[$i]->datEnd}}
+                        
                     </td>
+                    <td></td>
                 </tr>
                 <tr>
+                    <td ></td>
+                    <td class="borderLeftSearch"></td>
                     <td colspan="7" style="padding: 10px; padding-top: 30px;">
-                        <div class="dayMood">
-                             Dzień  {{$arrayList[$i]->datEnd}}
-                        </div>
-                        <br>
+                        
+                        
                         <div class="divAtButtonDay">
                             <button  style=" float: left; margin-right: 10px;"  class="btn-mood  mood" onclick="showDayMood('{{route("search.allDayMood")}}','{{$arrayList[$i]->datEnd}}')">Wartość nastroji dla dnia</button>
                             @if (count(\App\Models\Usee::listSubstnace($arrayList[$i]->datEnd, Auth::User()->id,Auth::User()->start_day)) > 0)
@@ -98,11 +113,15 @@
                             </div>
                         </div>
                     </td>
+                    <td class="borderRightSearch"    ></td>
+                    <td></td>
                 </tr>
                 
                 @endif
                 <tr>
-                    <td class="showMood start" colspan="2" style="width: 50%;">
+                    <td></td>
+                   <td class="borderLeftSearch"></td>
+                    <td class="showMood start" colspan="2" ">
                         <span class="left">{{date("H:i",strtotime($arrayList[$i]->date_start) )}}</span>
                         <span class="right">{{date("H:i",strtotime($arrayList[$i]->date_end) )}}</span>
                         <br>
@@ -139,9 +158,12 @@
                             @endif
                         
                     </td>
-                    
+                     <td class="borderRightSearch"  ></td>
+                     <td></td>
                 </tr>
                 <tr class='moodClass{{$arrayList[$i]->id}}'>
+                     <td></td>
+                     <td class="borderLeftSearch"></td>
                     <td colspan="7" class="moodButton">
                        
                         <div >
@@ -175,9 +197,11 @@
                      
                         
                     </td>
+                     <td class="borderRightSearch" ></td>
+                     <td></td>
                 </tr>
                 <tr >
-                    <td  colspan="7">
+                    <td  colspan="11">
                         <div  class="hiddenMood descriptionShowMood{{$arrayList[$i]->id}}" style="display: none;">
                             
                             <div id="messageDescriptionshowMood{{$arrayList[$i]->id}}" class="descriptionModShowMood"></div>
@@ -186,7 +210,7 @@
                 
                 </tr>
                 <tr >
-                    <td  colspan="7">
+                    <td  colspan="11">
                         <div  class="hiddenMood actionShow{{$arrayList[$i]->id}}" style="display: none;">
                             
                             <div id="messageactionShow{{$arrayList[$i]->id}}" class="actionShowModShow">
@@ -199,7 +223,7 @@
                 
                 </tr>      
                 <tr >
-                    <td  colspan="7">
+                    <td  colspan="11">
                         <div  class="hiddenMood drugsShow{{$arrayList[$i]->id}}" style="display: none;">
                             
                             <div id="messagedrugsShow{{$arrayList[$i]->id}}" class="drugssShowModShow">
@@ -210,10 +234,27 @@
                         </div>
                     </td>
                 
-                </tr> 
+                </tr>
+                @if ($i == count($arrayList)-1 or $arrayList[$i]->datEnd != $arrayList[$i+1]->datEnd)
+                    <tr style="height: 40px;">
+                        <td></td>
+                        <td colspan="9" class="dayMoodEnd" >
+
+                                 
+
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="9" >
+                            &nbsp;
+                        </td>
+                    </tr>
+                @endif
+                
                 @endfor
                 <tr>
-                    <td colspan="7" class=" ">
+                    <td colspan="11" class=" ">
                         @php 
                         $arrayList->appends(['sort'=>Request::get('sort')])
                         ->appends(['moodFrom'=>Request::get("moodFrom")])
