@@ -26,8 +26,47 @@
       
         <div class='tableSearchMood' id="ajaxData">
             <div class="titleSearchResult titleSearchResultMood">WYSZUKIWANIE</div>
-            <table class='moodShow'>
-                <thead >
+            
+                @for ($i=0;$i < count($arrayList);$i++)
+                
+                @if ($i == 0 or $arrayList[$i]->datEnd != $arrayList[$i-1]->datEnd)
+                <div class="moodSearchResult">
+                    <div class="dayMood">Dzień  {{$arrayList[$i]->datEnd}}</div>  
+                    <div style="margin-left: 5%; margin-right: 5%; margin-top: 2%; margin-bottom: 1%;">
+                         <div class="divAtButtonDay">
+                            <button  style=" float: left; margin-right: 10px;"  class="btn-mood  mood" onclick="showDayMood('{{route("search.allDayMood")}}','{{$arrayList[$i]->datEnd}}')">Wartość nastroji dla dnia</button>
+                            @if (count(\App\Models\Usee::listSubstnace($arrayList[$i]->datEnd, Auth::User()->id,Auth::User()->start_day)) > 0)
+                            <button style=" float: left; margin-right: 10px;" class="btn-mood  drugs" onclick="showDaySubstance('{{route("search.allSubstanceDay")}}','{{$arrayList[$i]->datEnd}}')">Substancje dla danego dnia</button>
+                            @else
+                            <button style=" float: left; margin-right: 10px; width: 200px;" type="button" class="disable "  disabled >nie było substancji</button>
+                            @endif
+                            
+                            @if ((\App\Models\Mood::ifActionForDayMood($arrayList[$i]->datEnd, Auth::User()->id,Auth::User()->start_day)) > 0)
+                            <button style=" float: left; margin-right: 10px;" class="btn-mood  action" onclick="showDayAction('{{route("search.allActionDay")}}','{{$arrayList[$i]->datEnd}}')">Akcje dla danego dnia</button>
+                            @else
+                            <button style=" float: left; margin-right: 10px; width: 200px;" type="button" class="disable "  disabled >nie było akcji</button>
+                            @endif
+                            
+                        </div>
+                        <div style="clear: both;"></div>
+                        <br>
+                        
+                        <div class='showAjaxDay'>
+                            <div id="dayMood{{$arrayList[$i]->datEnd}}" style="display: none; float: left; margin-right: 10px;">
+
+                            </div>
+                            <div  id="daySubstance{{$arrayList[$i]->datEnd}}" style="float: left; display: none; margin-right: 10px;">
+                                
+                            </div>
+                            <div style="clear: both;"></div>
+                            <div  id="dayAction{{$arrayList[$i]->datEnd}}" class='divActionSum' style="float: left; display: none; margin-right: 10px; ">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <table>
+                        
+                        <thead >
                 <tr class="bold">
                     <td style="width: 3%;"></td>
                     <td style="width: 2%;">
@@ -60,67 +99,14 @@
                     <td style="width: 3%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                 </tr>
                 </thead>
-                @for ($i=0;$i < count($arrayList);$i++)
-                
-                @if ($i == 0 or $arrayList[$i]->datEnd != $arrayList[$i-1]->datEnd)
-                <tr>
-                    <td colspan="11">&nbsp;</td>
-                </tr>
+               
             
-                <tr>
-                    <td></td>
-                    <td colspan="9" class="dayMood" >
-                        
-                             Dzień  {{$arrayList[$i]->datEnd}}
-                        
-                    </td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td ></td>
-                    <td class="borderLeftSearch"></td>
-                    <td colspan="7" style="padding: 10px; padding-top: 30px;">
-                        
-                        
-                        <div class="divAtButtonDay">
-                            <button  style=" float: left; margin-right: 10px;"  class="btn-mood  mood" onclick="showDayMood('{{route("search.allDayMood")}}','{{$arrayList[$i]->datEnd}}')">Wartość nastroji dla dnia</button>
-                            @if (count(\App\Models\Usee::listSubstnace($arrayList[$i]->datEnd, Auth::User()->id,Auth::User()->start_day)) > 0)
-                            <button style=" float: left; margin-right: 10px;" class="btn-mood  drugs" onclick="showDaySubstance('{{route("search.allSubstanceDay")}}','{{$arrayList[$i]->datEnd}}')">Substancje dla danego dnia</button>
-                            @else
-                            <button style=" float: left; margin-right: 10px; width: 200px;" type="button" class="disable "  disabled >nie było substancji</button>
-                            @endif
-                            
-                            @if ((\App\Models\Mood::ifActionForDayMood($arrayList[$i]->datEnd, Auth::User()->id,Auth::User()->start_day)) > 0)
-                            <button style=" float: left; margin-right: 10px;" class="btn-mood  action" onclick="showDayAction('{{route("search.allActionDay")}}','{{$arrayList[$i]->datEnd}}')">Akcje dla danego dnia</button>
-                            @else
-                            <button style=" float: left; margin-right: 10px; width: 200px;" type="button" class="disable "  disabled >nie było akcji</button>
-                            @endif
-                            
-                        </div>
-                        <div style="clear: both;"></div>
-                        <br>
-                        
-                        <div class='showAjaxDay'>
-                            <div id="dayMood{{$arrayList[$i]->datEnd}}" style="display: none; float: left; margin-right: 10px;">
-
-                            </div>
-                            <div  id="daySubstance{{$arrayList[$i]->datEnd}}" style="float: left; display: none; margin-right: 10px;">
-                                
-                            </div>
-                            <div style="clear: both;"></div>
-                            <div  id="dayAction{{$arrayList[$i]->datEnd}}" class='divActionSum' style="float: left; display: none; margin-right: 10px; ">
-                                
-                            </div>
-                        </div>
-                    </td>
-                    <td class="borderRightSearch"    ></td>
-                    <td></td>
-                </tr>
-                
+              
+       
                 @endif
                 <tr>
                     <td></td>
-                   <td class="borderLeftSearch"></td>
+                   <td ></td>
                     <td class="showMood start" colspan="2" ">
                         <span class="left">{{date("H:i",strtotime($arrayList[$i]->date_start) )}}</span>
                         <span class="right">{{date("H:i",strtotime($arrayList[$i]->date_end) )}}</span>
@@ -158,12 +144,12 @@
                             @endif
                         
                     </td>
-                     <td class="borderRightSearch"  ></td>
+                     <td  ></td>
                      <td></td>
                 </tr>
                 <tr class='moodClass{{$arrayList[$i]->id}}'>
                      <td></td>
-                     <td class="borderLeftSearch"></td>
+                     <td ></td>
                     <td colspan="7" class="moodButton">
                        
                         <div >
@@ -197,7 +183,7 @@
                      
                         
                     </td>
-                     <td class="borderRightSearch" ></td>
+                     <td ></td>
                      <td></td>
                 </tr>
                 <tr >
@@ -236,25 +222,14 @@
                 
                 </tr>
                 @if ($i == count($arrayList)-1 or $arrayList[$i]->datEnd != $arrayList[$i+1]->datEnd)
-                    <tr style="height: 40px;">
-                        <td></td>
-                        <td colspan="9" class="dayMoodEnd" >
-
-                                 
-
-                        </td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td colspan="9" >
-                            &nbsp;
-                        </td>
-                    </tr>
+                  
+                    </table>
+                    <div class="dayMoodEnd"></div>  
+                </div>
                 @endif
                 
                 @endfor
-                <tr>
-                    <td colspan="11" class=" ">
+                <div class="d-flex justify-content-center">
                         @php 
                         $arrayList->appends(['sort'=>Request::get('sort')])
                         ->appends(['moodFrom'=>Request::get("moodFrom")])
@@ -285,10 +260,8 @@
                         ->links();
                         @endphp
                         {{$arrayList}}
-
-                    </td>
-            </tr>
-            </table>
+                </div>
+         
         </div>
 
     

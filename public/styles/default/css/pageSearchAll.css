@@ -61,6 +61,13 @@ div.divActionSum {
     font-size: 23px;
     font-weight: bold;
 }
+div.moodSearchResult {
+    width: 95%;
+    border-radius: 30px;
+    border: 3px solid red;
+    margin: 30px;
+    
+}
 div.countSearch {
     margin-left: auto;
     margin-right: auto;

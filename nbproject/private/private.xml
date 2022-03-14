@@ -84,6 +84,7 @@
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainAll.css</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/ajax/sumAverage.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/HomeController.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Mood/changeDateAction.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSearchwidth700.css</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Main.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Sleep.php</file>
