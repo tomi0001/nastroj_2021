@@ -20,4 +20,11 @@ class Group extends Model
     public static function showGroups(int $idUsers) {
         return self::selectRaw("name as name")->selectRaw("id as id")->where("id_users",$idUsers)->get();
     }
+    public static function selectIdNameGroupIdProduct(string $name) {
+        return self::join("substances_groups","substances_groups.id_groups","groups.id")
+            ->join("substances_products","substances_products.id_substances","substances_groups.id_substances")
+            ->join("products","substances_products.id_products","products.id")
+            ->selectRaw("products.id as id")
+            ->where("groups.name","like","%".$name."%")->get();
+    }
 }

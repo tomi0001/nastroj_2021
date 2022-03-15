@@ -195,7 +195,8 @@ Route::get('/search/allSubstanceDay', [App\Http\Controllers\Search\SearchDrugsCo
                     ->middleware('auth')->middleware('can:users');
 Route::get('/search/allActionDay', [App\Http\Controllers\Search\SearchMoodController::class, 'allActionDay'])->name('search.allActionDay')
                     ->middleware('auth')->middleware('can:users');
-
+Route::get('/search/searchDrugsSubmit', [App\Http\Controllers\Search\SearchDrugsController::class, 'searchDrugsSubmit'])->name("search.searchDrugsSubmit")
+        ->middleware('auth')->middleware('can:users');
 
 Route::get('/search/back', [App\Http\Controllers\Search\SearchController::class, 'back'])->name('search.back')
                     ->middleware('auth')->middleware('can:users');

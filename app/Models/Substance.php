@@ -29,4 +29,10 @@ class Substance extends Model
     public static function checkIfNameSubstance( $name,int $idUsers, $id) {
         return self::where("id_users",$idUsers)->where("name",$name)->where("id","!=",$id)->count();
     }
+    public static function selectIdNameSubstanceIdProduct(string $name) {
+        return self::join("substances_products","substances_products.id_substances","substances.id")
+                    ->join("products","substances_products.id_products","products.id")
+            ->selectRaw("products.id as id")
+            ->where("substances.name","like","%".$name."%")->get();
+    }
 }

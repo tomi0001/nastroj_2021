@@ -10,10 +10,13 @@ class Product extends Model
 {
     use HasFactory;
     public static function selectProduct() {
-        
+
         return self::selectRaw("name")
                 ->selectRaw("id")
                 ->where("id_users", Auth::User()->id)->orderBy("name")->get();
+    }
+    public static function selectIdNameProduct(string $name) {
+        return self::selectRaw("id as id ")->where("name","like","%".$name."%")->get();
     }
     public static function selectNameProduct(int $idProduct) {
         return self::selectRaw("name")

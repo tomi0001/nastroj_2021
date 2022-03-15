@@ -9,6 +9,60 @@ use DB;
 class Usee extends Model
 {
     use HasFactory;
+    public $questions;
+    public function createQuestions(int $startDay)
+    {
+        $this->questions = self::query();
+        $this->questions
+            ->leftjoin("users_descriptions","usees.id","users_descriptions.id_usees")
+            ->leftjoin("descriptions","descriptions.id","users_descriptions.id_descriptions")
+            ->join("products","products.id","usees.id_products")
+            ->select( DB::Raw("(DATE(IF(HOUR(usees.date) >= '$startDay', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ) as dat  "))
+            ->selectRaw("hour(usees.date) as hour")
+
+            ->selectRaw("day(usees.date) as day")
+            ->selectRaw("month(usees.date) as month")
+            ->selectRaw("year(usees.date) as year")
+            ->selectRaw("usees.portion as portion")
+            ->selectRaw("usees.date as date")
+            ->selectRaw("usees.id_products as id")
+            ->selectRaw("usees.id as id_usees")
+            ->selectRaw(  DB::Raw("TIME(Date_add(usees.date, INTERVAL - '$startDay' HOUR) ) as hour2"))
+            ->selectRaw("descriptions.description as description")
+            ->selectRaw("descriptions.date as date_description")
+            ->selectRaw("usees.id_products as product")
+            ->selectRaw("products.name as name")
+            ->selectRaw("products.type_of_portion as type");
+
+
+
+    }
+    public function setDate($dateFrom,$dateTo,$startDay) {
+        if ($dateFrom != "") {
+            $this->questions->whereRaw(DB::Raw("(DATE(IF(HOUR(    usees.date) >= '" . $startDay . "', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ) >= '$dateFrom'") );
+        }
+        if ($dateTo != "") {
+            $this->questions->whereRaw(DB::Raw("(DATE(IF(HOUR(    usees.date) >= '" . $startDay . "', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ) < '$dateTo'") );
+        }
+    }
+    public function setDose($doseFrom,$doseTo) {
+        if ($doseFrom != "") {
+            $this->questions->where("usees.portion",">=",$doseFrom);
+        }
+        if ($doseTo != "") {
+            $this->questions->where("usees.portion","<=",$doseTo);
+        }
+    }
+    public function setHourTwo($hourFrom,$hourTo,$startDay) {
+        $this->questions->whereRaw("(time(date_add(usees.date,INTERVAL - $startDay hour))) <= '$hourTo'");
+        $this->questions->whereRaw("(time(date_add(usees.date,INTERVAL - $startDay hour))) >= '$hourFrom'");
+    }
+    public function setHourTo(string $hourTo) {
+        $this->questions->whereRaw("time(usees.date) <= " . "'" .  $hourTo . ":00'");
+    }
+    public function setHourFrom(string $hourFrom) {
+        $this->questions->whereRaw("time(usees.date) >= " . "'" .  $hourFrom . ":00'");
+    }
     public static function selectLastDrugs(int $idProduct,string $date,float $dose) {
         return self::selectRaw("date")->where("id_users",Auth::User()->id)->where("id_products",$idProduct)->where("portion",$dose)
                 ->where("date",">=",date("Y-m-d H:i:s", strtotime($date )- 80))->where("date","<=",$date)->first();
@@ -20,11 +74,11 @@ class Usee extends Model
     }
     public static function selectLastDrugsPlaned(int $idProduct,string $date) {
         return self::selectRaw("date")->where("id_users",Auth::User()->id)->where("id_products",$idProduct)
-                ->where("date",">=",date("Y-m-d H:i:s", strtotime($date )- 80))->where("date","<=",$date)->first();        
+                ->where("date",">=",date("Y-m-d H:i:s", strtotime($date )- 80))->where("date","<=",$date)->first();
     }
     public static function ifExistUsee(string $dateStart, string $dateEnd, int $idUsers) {
         return self::selectRaw("date")->where("id_users",$idUsers)
-                ->where("date",">=",$dateStart)->where("date","<=",$dateEnd)->first();    
+                ->where("date",">=",$dateStart)->where("date","<=",$dateEnd)->first();
     }
     public static function selectUsee(string $date, int $idUsers,int $startDay) {
         return self::join("products","products.id","usees.id_products")
@@ -39,7 +93,7 @@ class Usee extends Model
                 ->whereRaw(DB::Raw("(DATE(IF(HOUR(    usees.date) >= '" . $startDay . "', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ) = '" . $date . "' "))
                 ->orderBy("usees.date")
                 ->get();
-                
+
     }
     public static function selectlistDrugs(string $dateOne, string $dateTwo, int $idUsers) {
         return self::join("products","products.id","usees.id_products")
@@ -55,7 +109,7 @@ class Usee extends Model
                 ->where("usees.date","<",$dateTwo)
                 ->orderBy("usees.date")
                 ->get();
-                
+
     }
     public static function listSubstnace(string $date, int $idUsers,int $startDay) {
         return self::join("products","products.id","usees.id_products")
@@ -72,7 +126,7 @@ class Usee extends Model
                 ->where("usees.id_users",$idUsers)
                 ->whereRaw(DB::Raw("(DATE(IF(HOUR(    usees.date) >= '" . $startDay . "', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ) = '" . $date . "' "))
                 ->groupBy("substances.id")
-                ->get();     
+                ->get();
     }
     public static function ifDescriptionDrugs(int $idUsee, int $idUsers) {
         return self::join("users_descriptions","users_descriptions.id_usees","usees.id")
@@ -92,7 +146,7 @@ class Usee extends Model
                 ->selectRaw("products.type_of_portion as type")
                 ->where("usees.id_users",$idUsers)
                 ->where("usees.id",$id)
-                ->first(); 
+                ->first();
     }
     public static function selectAllSubstance(int $id,int $idUsers) {
         return self::join("products","products.id","usees.id_products")
@@ -102,7 +156,7 @@ class Usee extends Model
                 ->selectRaw("substances.id as id_substances")
                 ->where("usees.id_users",$idUsers)
                 ->where("usees.id",$id)
-                ->get(); 
+                ->get();
     }
     public static function selectProductName(int $id,int $idUsers) {
         return self::join("products","products.id","usees.id_products")
@@ -110,13 +164,13 @@ class Usee extends Model
                 ->selectRaw("products.id  as id_products")
                 ->where("usees.id_users",$idUsers)
                 ->where("usees.id",$id)
-                ->get(); 
+                ->get();
     }
     public static function selectDateIdUsee(int $id,int $idUsers) {
         return self::selectRaw("date  as date")
                 ->where("usees.id_users",$idUsers)
                 ->where("usees.id",$id)
-                ->first(); 
+                ->first();
     }
     public static function selectOldUsee(int $idProduct,string $dateEnd,int $idUsers,int $startDay) {
         return self::join("products","products.id","usees.id_products")

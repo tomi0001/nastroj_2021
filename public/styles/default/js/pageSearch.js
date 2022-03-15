@@ -202,7 +202,16 @@ function loadPageMood() {
      
       $(".pagePageDrugs").css("display","none");
 }
-
+function loadPageDrugs() {
+      $(".titleSettingsMood").removeClass("selectedMenu");
+      $(".titleSettingsDrugs").addClass("selectedMenu");
+      $(".MenuPageMood").css("display","none");
+      $(".MenuPageDrugs").css("display","block");
+      
+      $(".pagePageMood").css("display","none");
+     
+      
+}
 function selectMenuMood(menu) {
     $("#" + menu).addClass("selectedMenuMoodHref");
     
@@ -227,6 +236,19 @@ function searchMood() {
 }
 
 
+function searchDrugs() {
+    sessionStorage.setItem('searchType', "searchDrugs");
+    if ($("#searchDrugsDiv").css("display") == "none" ) {
+        $("#searchDrugsDiv").css("display","block");
+   
+            
+    }
+    else {
+        
+        $("#searchDrugsDiv").css("display","none");
+    }
+}
+
 function addFieldWhatWork() {
     $("#idWhatWork").append($("#idWhatWorkCopy").html());
 }
@@ -234,11 +256,25 @@ function addFieldAction() {
     $("#idAction").append($("#idActionCopy").html());
 }
 
+
+function addFieldnameProduct() {
+    $("#idNameProduct").append($("#idNameProductCopy").html());
+}
+function addFieldnameSubstance() {
+    $("#idNameSubstance").append($("#idNameSubstanceCopy").html());
+}
+function addFieldnameGroup() {
+    $("#idNameGroup").append($("#idNameGroupCopy").html());
+}
+
+
 function setFunction() {
     selectMenu();
     switch (sessionStorage.getItem('searchType')) {
         
         case 'searchMood': searchMood();
+            break;
+        case 'searchDrugs': searchDrugs();
             break;
 
     }
@@ -258,6 +294,9 @@ function resetSession() {
 function selectMenu() {
     if (sessionStorage.getItem('searchType') == 'searchMood' ) {
         loadPageMood();
+    }
+    else if (sessionStorage.getItem('searchType') == 'searchDrugs') {
+        loadPageDrugs();
     }
     /*
     if (sessionStorage.getItem('searchType') == 'addNewGroup' ||  sessionStorage.getItem('settingType') == 'addNewSubstance' || sessionStorage.getItem('settingType') == 'addNewProduct' || sessionStorage.getItem('settingType') == 'editGroupSet' || sessionStorage.getItem('settingType') == 'editSubstanceSet' || sessionStorage.getItem('settingType') == 'editProductSet' || sessionStorage.getItem('settingType') == 'planedDose' ) {

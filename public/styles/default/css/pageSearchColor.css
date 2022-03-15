@@ -43,7 +43,27 @@ box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
 background-color: rgba(238, 241, 74, 0.71);
 
     }
-    
+            .titleDrugsSettings {
+            color: #27F650;
+background-color: rgba(1, 55, 4, 1);
+background-image: linear-gradient(180deg, rgba(1, 55, 4, 1) 0%, #65E457 100%);
+
+    }   
+        .bodyDrugsPage {
+                        
+-webkit-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
+-moz-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
+box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
+background-color: #65E457;      
+    }
+        div.hrefDrugs {
+             color: #6CFF32;
+-webkit-box-shadow: 0px 0px 10px 9px rgba(31, 111, 0, 1);
+-moz-box-shadow: 0px 0px 10px 9px rgba(31, 111, 0, 1);
+box-shadow: 0px 0px 10px 9px rgba(31, 111, 0, 1);
+background-color: rgba(53, 136, 10, 1);
+background-image: linear-gradient(180deg, rgba(53, 136, 10, 1) 49%, rgba(178, 243, 52, 1) 86%);
+    }
         div.hrefMood {
              color: #E0FD01;
 -webkit-box-shadow: 0px 0px 10px 9px rgba(111, 101, 1, 1);
@@ -79,7 +99,9 @@ background-image: linear-gradient(180deg, rgba(87, 88, 2, 1) 0%, rgba(226, 224, 
     table.searchTableMood {
         color: #7A7E52;
     }
-    
+    table.searchTableDrugs {
+        color: #016916;
+    }
     div.plusButton {
     background-color: #60CEF0;
 }
@@ -143,7 +165,13 @@ color: #4F9805;
 box-shadow: inset 0px 0px 29px -15px rgba(6, 37, 7, 1);
     }
     
-
+    div.pageDrugs {
+                color: #F8FC02;
+-webkit-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
+-moz-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
+box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
+background-color: rgba(137, 242, 33, 0.81);        
+    }
 div.moodSearchResult {
     background-color: rgba(255, 235, 56, 0.6);
     border: 2px solid #C3FF42;

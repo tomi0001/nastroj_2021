@@ -22,7 +22,16 @@
         
 
     }
-   
+       div.pageDrugs {
+        width: 1400px;
+        min-height: 200px;
+    }
+        div.hrefDrugs {
+        float: left;
+        margin: 15px;
+        padding: 10px;
+        border-radius: 20px;
+    }
     div.titleAllSettings {
         width: 100%;
         margin-left: auto;
@@ -49,6 +58,13 @@
         padding: 10px;
         border-radius: 20px;
     }
+        .titleDrugsSettings {
+        border-radius: 20px 20px 0px 0px;
+        text-align: center;
+        min-height: 30px;
+        font-weight: bold;
+        font-size: 20px;
+    }
         div.pagepage {
         
         
@@ -66,6 +82,11 @@
         
         
     }
+    #searchDrugsDiv {
+        min-height: 200px;
+        width: 1000px;
+        margin-top: 15px;
+    }
     .titleMoodSettings {
 
         border-radius: 20px 20px 0px 0px;
@@ -75,6 +96,13 @@
         font-size: 20px;
     }
     table.searchTableMood {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        
+        font-size: 20px;
+    }
+    table.searchTableDrugs {
         width: 90%;
         margin-left: auto;
         margin-right: auto;

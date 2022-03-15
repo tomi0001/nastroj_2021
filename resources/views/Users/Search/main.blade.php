@@ -43,28 +43,10 @@
         
     </div>
     <div  class="MenuPageDrugs pagepagepage pageDrugs" style="display: none;">
-            <div id="newGroup" class="hrefDrugs hrefSettingCursor" onmouseover="selectMenuMood('newGroup')" onmouseout="unSelectMenuMood('newGroup')"  onclick="addNewGroup()">
-               DODAJ NOWĄ GRUPĘ
-            </div>
+            <div id="searchDrugs" class="hrefDrugs hrefSettingCursor" onmouseover="selectMenuMood('searchDrugs')" onmouseout="unSelectMenuMood('searchDrugs')"  onclick="searchDrugs()">
+              WYSZUKAJ PRODUKT            </div>
            
-            <div id="newSubstance"  class=" hrefDrugs hrefSettingCursor" onmouseover="selectMenuMood('newSubstance')" onmouseout="unSelectMenuMood('newSubstance')" onclick="addNewSubstance()">
-                DODAJ NOWĄ SUBSTANCJĘ
-            </div>
-            <div id="newProduct"  class=" hrefDrugs hrefSettingCursor" onmouseover="selectMenuMood('newProduct')" onmouseout="unSelectMenuMood('newProduct')" onclick="addNewProduct()">
-                DODAJ NOWY PRODUKT
-            </div>
-            <div id="editGroup"  class=" hrefDrugs hrefSettingCursor" onmouseover="selectMenuMood('editGroup')" onmouseout="unSelectMenuMood('editGroup')" onclick="editGroup()">
-                EDYTUJ GRUPĘ
-            </div>
-            <div id="editSubstance"  class=" hrefDrugs hrefSettingCursor" onmouseover="selectMenuMood('editSubstance')" onmouseout="unSelectMenuMood('editSubstance')" onclick="editSubstance()">
-                EDYTUJ SUBSTANCJĘ
-            </div>
-            <div id="editProduct"  class=" hrefDrugs hrefSettingCursor" onmouseover="selectMenuMood('editProduct')" onmouseout="unSelectMenuMood('editProduct')" onclick="editProduct()">
-                EDYTUJ PRODUKT
-            </div>
-            <div id="planedDose"  class=" hrefDrugs hrefSettingCursor" onmouseover="selectMenuMood('planedDose')" onmouseout="unSelectMenuMood('planedDose')" onclick="planedDose()">
-                ZAPLANUJ DAWKĘ
-            </div>
+           
     </div>
     <div id="MenuPageUser" style="display: none;">
 
@@ -89,27 +71,10 @@
         </div>
     
     
-    <div class="pagePageDrugs pagepage bodyDrugsPage" id="addNewGroup" style="display: none;">
-
+    <div class="pagePageDrugs pagepage bodyDrugsPage" id="searchDrugsDiv" style="display: none;">
+        @include ('Users.Search.Product.searchDrugs')
         </div>
-     <div class="pagePageDrugs pagepage bodyDrugsPage" id="addNewSubstance" style="display: none;">
 
-        </div>
-     <div class="pagePageDrugs pagepage bodyDrugsPage" id="addNewProduct" style="display: none;">
-
-        </div>
-     <div class="pagePageDrugs pagepage bodyDrugsPage" id="editGroupSet" style="display: none;">
-
-        </div>
-         <div class="pagePageDrugs pagepage bodyDrugsPage" id="editSubstanceSet" style="display: none;">
-
-        </div>
-        <div class="pagePageDrugs pagepage bodyDrugsPage" id="editProductSet" style="display: none;">
-
-        </div>
-        <div class="pagePageDrugs pagepage bodyDrugsPage" id="planedDoseSet" style="display: none;">
-
-        </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
