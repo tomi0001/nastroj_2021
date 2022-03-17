@@ -22,11 +22,11 @@ class SearchDrugsController {
         $SearchDrugs = new SearchDrugs($request);
         $SearchDrugs->checkError($request);
         if (count($SearchDrugs->errors) > 0) {
-            var_dump($SearchDrugs->errors);
-            //            return View("Users.Search.Mood.error")->with("errors",$SearchDrugs->errors);
+            return View("Users.Search.Product.error")->with("errors",$SearchDrugs->errors);
         }
         else {
-            $SearchDrugs->createQuestion($request);
+            $result = $SearchDrugs->createQuestion($request);
+            return View("Users.Search.Product.searchResultDrugs")->with("arrayList",$result)->with("count",$SearchDrugs->count);
         }
     }
 }

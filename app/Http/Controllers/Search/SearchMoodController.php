@@ -26,8 +26,8 @@ class SearchMoodController {
             else {
                 $arrayPercent = [];
             }
-            return View("Users.Search.Mood.seachResultMood")->with("arrayList",$result)->with("count",$SearchMood->count)->with("percent",$arrayPercent);
-            
+            return View("Users.Search.Mood.searchResultMood")->with("arrayList",$result)->with("count",$SearchMood->count)->with("percent",$arrayPercent);
+
         }
     }
     public function allDayMood(Request $request) {
@@ -40,9 +40,9 @@ class SearchMoodController {
     }
 //    public function searchMoodAjaxSubmit(Request $request) {
 //        $SearchMood = new SearchMood;
-//       
-//        
-//        
+//
+//
+//
 //            $result = $SearchMood->createQuestion($request);
 //            if ($SearchMood->count > 0) {
 //                $arrayPercent = $SearchMood->sortMoods($result);
@@ -51,7 +51,7 @@ class SearchMoodController {
 //                $arrayPercent = [];
 //            }
 //            return View("Users.Search.Mood.seachResultMoodAjax")->with("arrayList",$result)->with("count",$SearchMood->count)->with("percent",$arrayPercent)->render();
-//            
-//        
+//
+//
 //    }
 }

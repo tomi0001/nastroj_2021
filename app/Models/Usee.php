@@ -10,7 +10,7 @@ class Usee extends Model
 {
     use HasFactory;
     public $questions;
-    public function createQuestions(int $startDay)
+    public function createQuestions(int $startDay,$doseDay)
     {
         $this->questions = self::query();
         $this->questions
@@ -18,12 +18,18 @@ class Usee extends Model
             ->leftjoin("descriptions","descriptions.id","users_descriptions.id_descriptions")
             ->join("products","products.id","usees.id_products")
             ->select( DB::Raw("(DATE(IF(HOUR(usees.date) >= '$startDay', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ) as dat  "))
-            ->selectRaw("hour(usees.date) as hour")
-
+            ->selectRaw("hour(usees.date) as hour");
+        if ($doseDay == "on") {
+            $this->questions->selectRaw("sum(usees.portion) as portion");
+        }
+        else {
+            $this->questions->selectRaw("usees.portion as portion");
+        }
+        $this->questions
             ->selectRaw("day(usees.date) as day")
             ->selectRaw("month(usees.date) as month")
             ->selectRaw("year(usees.date) as year")
-            ->selectRaw("usees.portion as portion")
+
             ->selectRaw("usees.date as date")
             ->selectRaw("usees.id_products as id")
             ->selectRaw("usees.id as id_usees")
@@ -31,11 +37,31 @@ class Usee extends Model
             ->selectRaw("descriptions.description as description")
             ->selectRaw("descriptions.date as date_description")
             ->selectRaw("usees.id_products as product")
+            ->selectRaw("usees.price as price")
             ->selectRaw("products.name as name")
             ->selectRaw("products.type_of_portion as type");
 
 
 
+    }
+    public function setGroupDay(int $startDay) {
+        $this->questions->groupBy(DB::Raw("(DATE(IF(HOUR(usees.date) >= '$startDay', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) )  "));
+    }
+    public function orderBy(string $asc,string $type) {
+
+        switch ($type) {
+
+            case 'date': $this->questions->orderBy("usees.date",$asc);
+                break;
+            case 'hour' : $this->questions->orderByRaw("time(usees.date) $asc");
+                break;
+            case 'product' : $this->questions->orderBy("usees.id_products",$asc);
+                break;
+            case 'dose' : $this->questions->orderBy("usees.portion",$asc);
+                break;
+
+
+        }
     }
     public function setDate($dateFrom,$dateTo,$startDay) {
         if ($dateFrom != "") {
@@ -53,9 +79,18 @@ class Usee extends Model
             $this->questions->where("usees.portion","<=",$doseTo);
         }
     }
+    public function setProduct(array $idProduct) {
+        $this->questions->whereIn("usees.id_products",$idProduct);
+    }
     public function setHourTwo($hourFrom,$hourTo,$startDay) {
         $this->questions->whereRaw("(time(date_add(usees.date,INTERVAL - $startDay hour))) <= '$hourTo'");
         $this->questions->whereRaw("(time(date_add(usees.date,INTERVAL - $startDay hour))) >= '$hourFrom'");
+    }
+    public function setWhatWork(string $whatWork) {
+        $this->questions->whereRaw("descriptions.description like '%" . $whatWork  . "%'");
+    }
+    public function setWhatWorkOn() {
+        $this->questions->where("descriptions.description","!=","");
     }
     public function setHourTo(string $hourTo) {
         $this->questions->whereRaw("time(usees.date) <= " . "'" .  $hourTo . ":00'");
