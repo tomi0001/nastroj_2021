@@ -4,9 +4,9 @@
 /*
 $(document).ready(function(){
         var array = [];
-        
-        
-//        
+
+
+//
 //          $arrayList->appends(['sort'=>Request::get('sort')])
 //                        ->appends(['moodFrom'=>Request::get("moodFrom")])
 //                        ->appends(['moodTo'=>Request::get("moodTo")])
@@ -32,40 +32,40 @@ $(document).ready(function(){
 //                        ->appends(['epizodesTo'=>Request::get("epizodesTo")])
 //                        ->appends(['ifDescriptions'=>Request::get("ifDescriptions")])
 //                        ->appends(['ifactions'=>Request::get("ifactions")])
-        
-        
+
+
         $(".pagination a").click( function(event) {
             event.preventDefault();
-         
+
                $.ajax({
                 url : urlArray[0] + "?page=" + $(this).attr('href').split("page=")[1]
                         + "&moodFrom=" + $(this).attr('href').split("moodFrom=")[1]
-                        + "&sort=" + $(this).attr('href').split("sort=")[1] + 
-                        "&moodTo=" +  $(this).attr('href').split("moodTo=")[1] + 
+                        + "&sort=" + $(this).attr('href').split("sort=")[1] +
+                        "&moodTo=" +  $(this).attr('href').split("moodTo=")[1] +
                         "&anxietyFrom=" +  $(this).attr('href').split("anxietyFrom=")[1]+
                         "&anxietyTo=" +  $(this).attr('href').split("anxietyTo=")[1]+
-                        "&voltageFrom=" +  $(this).attr('href').split("voltageFrom=")[1]+ 
+                        "&voltageFrom=" +  $(this).attr('href').split("voltageFrom=")[1]+
                         "&voltageTo=" +  $(this).attr('href').split("voltageTo=")[1] +
-                        "&stimulationFrom=" +  $(this).attr('href').split("stimulationFrom=")[1] + 
-                        "&stimulationTo=" +  $(this).attr('href').split("stimulationTo=")[1]+ 
-                        "&dateFrom=" +  $(this).attr('href').split("dateFrom=")[1] + 
-                        "&dateTo=" +  $(this).attr('href').split("dateTo=")[1] + 
-                        "&timeFrom=" +  $(this).attr('href').split("timeFrom=")[1] + 
-                        "&timeTo=" +  $(this).attr('href').split("timeTo=")[1] + 
-                        "&longMoodFromHour=" +  $(this).attr('href').split("longMoodFromHour=")[1] + 
-                        "&longMoodFromMinutes=" +  $(this).attr('href').split("longMoodFromMinutes=")[1] + 
-                        "&longMoodHourTo=" +  $(this).attr('href').split("longMoodHourTo=")[1] + 
-                        "&longMoodToMinutes=" +  $(this).attr('href').split("longMoodToMinutes=")[1] + 
-                        "&action=" +  $(this).attr('href').split("action=")[1] + 
-                        "&actionsNumberFrom=" +  $(this).attr('href').split("actionsNumberFrom=")[1] + 
-                        "&actionsNumberTo=" +  $(this).attr('href').split("actionsNumberTo=")[1] + 
-                        "&descriptions=" +  $(this).attr('href').split("descriptions=")[1] + 
-                        "&epizodesFrom=" +  $(this).attr('href').split("epizodesFrom=")[1] + 
-                        "&epizodesTo=" +  $(this).attr('href').split("epizodesTo=")[1] + 
-                        "&ifDescriptions=" +  $(this).attr('href').split("ifDescriptions=")[1] + 
-                        "&ifactions=" +  $(this).attr('href').split("ifactions=")[1] + 
-                        "&sort2=" +  $(this).attr('href').split("sort2=")[1] 
-                
+                        "&stimulationFrom=" +  $(this).attr('href').split("stimulationFrom=")[1] +
+                        "&stimulationTo=" +  $(this).attr('href').split("stimulationTo=")[1]+
+                        "&dateFrom=" +  $(this).attr('href').split("dateFrom=")[1] +
+                        "&dateTo=" +  $(this).attr('href').split("dateTo=")[1] +
+                        "&timeFrom=" +  $(this).attr('href').split("timeFrom=")[1] +
+                        "&timeTo=" +  $(this).attr('href').split("timeTo=")[1] +
+                        "&longMoodFromHour=" +  $(this).attr('href').split("longMoodFromHour=")[1] +
+                        "&longMoodFromMinutes=" +  $(this).attr('href').split("longMoodFromMinutes=")[1] +
+                        "&longMoodHourTo=" +  $(this).attr('href').split("longMoodHourTo=")[1] +
+                        "&longMoodToMinutes=" +  $(this).attr('href').split("longMoodToMinutes=")[1] +
+                        "&action=" +  $(this).attr('href').split("action=")[1] +
+                        "&actionsNumberFrom=" +  $(this).attr('href').split("actionsNumberFrom=")[1] +
+                        "&actionsNumberTo=" +  $(this).attr('href').split("actionsNumberTo=")[1] +
+                        "&descriptions=" +  $(this).attr('href').split("descriptions=")[1] +
+                        "&epizodesFrom=" +  $(this).attr('href').split("epizodesFrom=")[1] +
+                        "&epizodesTo=" +  $(this).attr('href').split("epizodesTo=")[1] +
+                        "&ifDescriptions=" +  $(this).attr('href').split("ifDescriptions=")[1] +
+                        "&ifactions=" +  $(this).attr('href').split("ifactions=")[1] +
+                        "&sort2=" +  $(this).attr('href').split("sort2=")[1]
+
                         ,
                     method : "get",
 
@@ -83,17 +83,17 @@ $(document).ready(function(){
             })
             .fail(function() {
                 alert("Wystąpił błąd");
-            })  
+            })
             //alert(moodFrom);
             //fetch_data(array);
-            
+
         });
 
 });
 
 
 function fetch_data(page) {
-   
+
 }
 
 
@@ -101,21 +101,50 @@ function fetch_data(page) {
  **/
 
 
+
+function showDescriptionDrugs(url,id) {
+
+    if ($(".descriptionShowDrugs" + id).css("display") == "none" ) {
+        $.ajax({
+            url : url,
+            method : "get",
+            data :
+                "id=" + id
+            ,
+            dataType : "html",
+        })
+            .done(function(response) {
+                $(".descriptionShowDrugs" + id).css("display","block");
+                $("#messageDescriptionshowDrugs"+id).html(response);
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })
+    }
+    else {
+
+        $(".descriptionShowDrugs" + id).css("display","none");
+    }
+}
+
+
 function showDayMood(url,date) {
-     
+
     if ($("#dayMood" + date).css("display") == "none" ) {
-        
+
             $.ajax({
                 url : url,
                     method : "get",
-                    data : 
-                      "date=" + date 
+                    data :
+                      "date=" + date
                     ,
                     dataType : "html",
 
             })
             .done(function(response) {
-               
+
                 $("#dayMood" + date).css("display","block");
                 $("#dayMood" + date).html(response);
 
@@ -123,30 +152,30 @@ function showDayMood(url,date) {
             })
             .fail(function() {
                 alert("Wystąpił błąd");
-            })       
+            })
     }
     else {
-        
+
         $("#dayMood" + date).css("display","none");
-    }      
+    }
 }
 
 
 function showDaySubstance(url,date) {
-     
+
     if ($("#daySubstance" + date).css("display") == "none" ) {
-        
+
             $.ajax({
                 url : url,
                     method : "get",
-                    data : 
-                      "date=" + date 
+                    data :
+                      "date=" + date
                     ,
                     dataType : "html",
 
             })
             .done(function(response) {
-               
+
                 $("#daySubstance" + date).css("display","block");
                 $("#daySubstance" + date).html(response);
 
@@ -154,29 +183,29 @@ function showDaySubstance(url,date) {
             })
             .fail(function() {
                 alert("Wystąpił błąd");
-            })       
+            })
     }
     else {
-        
+
         $("#daySubstance" + date).css("display","none");
-    }      
+    }
 }
 
 
 function showDayAction(url,date) {
     if ($("#dayAction" + date).css("display") == "none" ) {
-        
+
             $.ajax({
                 url : url,
                     method : "get",
-                    data : 
-                      "date=" + date 
+                    data :
+                      "date=" + date
                     ,
                     dataType : "html",
 
             })
             .done(function(response) {
-               
+
                 $("#dayAction" + date).css("display","block");
                 $("#dayAction" + date).html(response);
 
@@ -184,12 +213,12 @@ function showDayAction(url,date) {
             })
             .fail(function() {
                 alert("Wystąpił błąd");
-            })       
+            })
     }
     else {
-        
+
         $("#dayAction" + date).css("display","none");
-    }      
+    }
 }
 
 
@@ -199,7 +228,7 @@ function loadPageMood() {
       $(".titleSettingsDrugs").removeClass("selectedMenu");
       $(".MenuPageMood").css("display","block");
       $(".MenuPageDrugs").css("display","none");
-     
+
       $(".pagePageDrugs").css("display","none");
 }
 function loadPageDrugs() {
@@ -207,14 +236,14 @@ function loadPageDrugs() {
       $(".titleSettingsDrugs").addClass("selectedMenu");
       $(".MenuPageMood").css("display","none");
       $(".MenuPageDrugs").css("display","block");
-      
+
       $(".pagePageMood").css("display","none");
-     
-      
+
+
 }
 function selectMenuMood(menu) {
     $("#" + menu).addClass("selectedMenuMoodHref");
-    
+
 }
 
 function unSelectMenuMood(menu) {
@@ -226,11 +255,11 @@ function searchMood() {
     sessionStorage.setItem('searchType', "searchMood");
     if ($("#searchMoodDiv").css("display") == "none" ) {
         $("#searchMoodDiv").css("display","block");
-   
-            
+
+
     }
     else {
-        
+
         $("#searchMoodDiv").css("display","none");
     }
 }
@@ -240,11 +269,11 @@ function searchDrugs() {
     sessionStorage.setItem('searchType', "searchDrugs");
     if ($("#searchDrugsDiv").css("display") == "none" ) {
         $("#searchDrugsDiv").css("display","block");
-   
-            
+
+
     }
     else {
-        
+
         $("#searchDrugsDiv").css("display","none");
     }
 }
@@ -271,7 +300,7 @@ function addFieldnameGroup() {
 function setFunction() {
     selectMenu();
     switch (sessionStorage.getItem('searchType')) {
-        
+
         case 'searchMood': searchMood();
             break;
         case 'searchDrugs': searchDrugs();
@@ -283,7 +312,7 @@ function setFunction() {
 $(document).ready(function(){
 
         $(".mainHref").click( function() {
-        
+
             resetSession();
         });
 
@@ -302,7 +331,7 @@ function selectMenu() {
     if (sessionStorage.getItem('searchType') == 'addNewGroup' ||  sessionStorage.getItem('settingType') == 'addNewSubstance' || sessionStorage.getItem('settingType') == 'addNewProduct' || sessionStorage.getItem('settingType') == 'editGroupSet' || sessionStorage.getItem('settingType') == 'editSubstanceSet' || sessionStorage.getItem('settingType') == 'editProductSet' || sessionStorage.getItem('settingType') == 'planedDose' ) {
         loadPageDrugs();
     }
-     * 
+     *
      */
 }
 
@@ -311,8 +340,8 @@ function showDrugs(url,id) {
             $.ajax({
                 url : url,
                     method : "get",
-                    data : 
-                      "id=" + id 
+                    data :
+                      "id=" + id
                     ,
                     dataType : "html",
 
@@ -325,12 +354,12 @@ function showDrugs(url,id) {
             })
             .fail(function() {
                 alert("Wystąpił błąd");
-            })       
+            })
     }
     else {
-        
+
         $(".drugsShow" + id).css("display","none");
-    }  
+    }
 }
 
 function showAction(url,id) {
@@ -338,8 +367,8 @@ function showAction(url,id) {
             $.ajax({
                 url : url,
                     method : "get",
-                    data : 
-                      "id=" + id 
+                    data :
+                      "id=" + id
                     ,
                     dataType : "html",
             })
@@ -352,10 +381,10 @@ function showAction(url,id) {
             })
             .fail(function() {
                 alert("Wystąpił błąd");
-            })       
+            })
     }
     else {
-        
+
         $(".actionShow" + id).css("display","none");
     }
 }
@@ -364,8 +393,8 @@ function showDescritionMood(url,id) {
             $.ajax({
                 url : url,
                     method : "get",
-                    data : 
-                      "id=" + id 
+                    data :
+                      "id=" + id
                     ,
                     dataType : "html",
             })
@@ -374,17 +403,17 @@ function showDescritionMood(url,id) {
                 $(".descriptionShowMood" + id).css("display","block");
                 $("#messageDescriptionshowMood"+id).html(response);
 
-                 
+
 
 
 
             })
             .fail(function() {
                 alert("Wystąpił błąd");
-            })       
+            })
     }
     else {
-        
+
         $(".descriptionShowMood" + id).css("display","none");
     }
 }

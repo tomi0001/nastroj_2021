@@ -2,27 +2,33 @@
         clear: both;
         margin-left: auto;
         margin-right: auto;
-        
+
     }
 
- 
+
     div.titleSettingsAll {
         float: left;
     }
-    
+
         .hrefSettingCursor {
         cursor: pointer;
     }
-    
+
     div.plusMinusButton {
     width: 40px;
     height: 40px;
     border-radius: 12px;
 }
+    div.descriptionDrugsShow {
+
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-radius: 25px;
+    }
 div.showAjaxDay {
     float: left;
     width: 100%;
-    
+
 }
 div.hr {
     width: 95%;
@@ -48,7 +54,7 @@ div.divActionSum {
     border-radius: 30px 30px 0px 0px;
     font-size: 23px;
     font-weight: bold;
-    
+
 }
 .dayMoodEnd {
     width: 100%;
@@ -61,12 +67,41 @@ div.divActionSum {
     font-size: 23px;
     font-weight: bold;
 }
+    .dayDrugs {
+        width: 100%;
+        min-height: 50px;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 8px;
+        border-radius: 30px 30px 0px 0px;
+        font-size: 23px;
+        font-weight: bold;
+
+    }
+    .dayDrugsEnd {
+        width: 100%;
+        min-height: 50px;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 8px;
+        border-radius: 0px 0px 30px 30px;
+        font-size: 23px;
+        font-weight: bold;
+    }
 div.moodSearchResult {
     width: 95%;
     border-radius: 30px;
     border: 3px solid red;
     margin: 30px;
-    
+
+}
+div.drugsSearchResult {
+    width: 95%;
+    border-radius: 30px;
+    border: 3px solid red;
+    margin: 30px;
 }
 div.countSearch {
     margin-left: auto;
@@ -78,7 +113,7 @@ div.countSearch {
     text-align: center;
     font-size: 22px;
     padding-top: 3px;
-    
+
 }
 div.titleSearchResult {
     border-radius: 17px 17px 0px 0px;

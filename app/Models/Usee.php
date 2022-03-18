@@ -14,9 +14,7 @@ class Usee extends Model
     {
         $this->questions = self::query();
         $this->questions
-            ->leftjoin("users_descriptions","usees.id","users_descriptions.id_usees")
-            ->leftjoin("descriptions","descriptions.id","users_descriptions.id_descriptions")
-            ->join("products","products.id","usees.id_products")
+
             ->select( DB::Raw("(DATE(IF(HOUR(usees.date) >= '$startDay', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ) as dat  "))
             ->selectRaw("hour(usees.date) as hour");
         if ($doseDay == "on") {
@@ -34,18 +32,24 @@ class Usee extends Model
             ->selectRaw("usees.id_products as id")
             ->selectRaw("usees.id as id_usees")
             ->selectRaw(  DB::Raw("TIME(Date_add(usees.date, INTERVAL - '$startDay' HOUR) ) as hour2"))
-            ->selectRaw("descriptions.description as description")
-            ->selectRaw("descriptions.date as date_description")
+            //->selectRaw("descriptions.description as description")
+            //->selectRaw("descriptions.date as date_description")
             ->selectRaw("usees.id_products as product")
             ->selectRaw("usees.price as price")
             ->selectRaw("products.name as name")
-            ->selectRaw("products.type_of_portion as type");
+            ->selectRaw("products.type_of_portion as type")
+            ->leftjoin("users_descriptions","usees.id","users_descriptions.id_usees")
+            ->leftjoin("descriptions","descriptions.id","users_descriptions.id_descriptions")
+            ->join("products","products.id","usees.id_products");
 
 
 
     }
     public function setGroupDay(int $startDay) {
         $this->questions->groupBy(DB::Raw("(DATE(IF(HOUR(usees.date) >= '$startDay', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) )  "));
+    }
+    public function setGroupDescription() {
+        $this->questions->groupBy("usees.id");
     }
     public function orderBy(string $asc,string $type) {
 

@@ -13,8 +13,8 @@ body {
     }
     div.hiddenPercentExecuting {
      display: none;
-     
- 
+
+
 
 }
 thead.titleTheadAction {
@@ -22,7 +22,7 @@ thead.titleTheadAction {
     position: sticky;
     top: 0;
     z-index: 2;
- 
+
 }
 tr.bold {
     font-weight: bold;
@@ -36,8 +36,8 @@ td.boldTitle {
 }
     div.showPercentExecuting {
      display: block;
-     
- 
+
+
 
 }
 
@@ -66,7 +66,7 @@ td.end {
     padding-right: 15px;
 }
 div.sumDrugsAt {
-             overflow-y: scroll; 
+             overflow-y: scroll;
              width: 98%;
              margin-left: auto;
              margin-right: auto;
@@ -116,7 +116,7 @@ div.sumDrugsAt {
     width: 97%;
 
 }
-table.moodShow, td.showMood, td.moodButton {
+table.moodShow, td.showMood, td.moodButton, td.showDrugs{
 
    border-collapse: collapse;
 
@@ -131,24 +131,32 @@ td.titleTheadMood {
     position: sticky;
     top: 0;
     z-index: 2;
-  
-    
+
+
+}
+td.titleTheadDrugs {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+
+
 }
 div.cellBorder {
     border-radius: 20px;
-   
+
 }
   div.cell {
             height: 100%;
             padding-top: 25%;
             opacity: 0.7;
-            
+
             cursor: pointer;
         }
 div.level {
     height: 35px;
     margin: 9px;
-      
+
     border-radius: 15px;
     text-align: center;
 }
@@ -182,39 +190,39 @@ div.descriptionModShowMood {
     padding-bottom: 10px;
 }
 table.actionShowIdMood {
-    
+
    text-align: center;
-  
+
     width: 97%;
     border-collapse: separate;
     border-spacing: 3px;
     padding: 20px;
 
-    
+
 }
 td.titleDrugs {
-       
+
         height: 35px;
         font-weight: bold;
-   
-        
+
+
 }
 .drugssShowModShow {
-       
+
     padding: 0px;
     border-radius: 21px;
 
 }
 td.titleAction {
-        
+
         height: 35px;
         font-weight: bold;
-   
-        
+
+
 }
         div.positionAction {
             width: 100%;
- 
+
             margin-bottom: 3px;
             height: 30px;
             margin-top: 10px;
@@ -222,10 +230,10 @@ td.titleAction {
             font-size: 18px;
             font-weight: bold;
             border-radius: 20px;
-            text-align: center;     
+            text-align: center;
         }
 .actionShowModShow {
-    
+
     padding: 0px;
     border-radius: 21px;
 
