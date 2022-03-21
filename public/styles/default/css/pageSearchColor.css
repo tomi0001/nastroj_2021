@@ -156,7 +156,17 @@ box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
 color: #4F9805;
 
     }
+div.titleSearchSumDay {
+    background-color: #1F6C13;
+    border: 2px solid #319701;
 
+}
+span.fontSearchSumDay {
+    color: #055017;
+}
+span.titleSearchSumDay {
+    color: #E5E484;
+}
     .dayMoodEnd {
                 background-color: #C3FF42;
 
@@ -204,4 +214,11 @@ div.drugsSearchResult {
     -webkit-box-shadow: 0px 0px 30px 0px rgba(63, 76, 8, 1);
     -moz-box-shadow: 0px 0px 30px 0px rgba(63, 76, 8, 1);
     box-shadow: 0px 0px 30px 0px rgba(63, 76, 8, 1);
+}
+div.dateSumDay {
+    background-color: #0FB62B;
+    border: 2px solid #319701;
+    -webkit-box-shadow: inset 0px 0px 24px -8px rgba(66, 68, 90, 1);
+    -moz-box-shadow: inset 0px 0px 24px -8px rgba(66, 68, 90, 1);
+    box-shadow: inset 0px 0px 24px -8px rgba(66, 68, 90, 1);
 }

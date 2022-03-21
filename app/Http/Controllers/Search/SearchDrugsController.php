@@ -25,8 +25,28 @@ class SearchDrugsController {
             return View("Users.Search.Product.error")->with("errors",$SearchDrugs->errors);
         }
         else {
-            $result = $SearchDrugs->createQuestion($request);
-            return View("Users.Search.Product.searchResultDrugs")->with("arrayList",$result)->with("count",$SearchDrugs->count);
+            if ($request->get("doseDay") == "on") {
+                $result = $SearchDrugs->createQuestionGroupDay($request);
+                return View("Users.Search.Product.searchResultDrugsGroupDay")->with("arrayList",$result)->with("count",$SearchDrugs->count);
+            }
+            else if ($request->get("sumDay") == "on") {
+                $result = $SearchDrugs->createQuestionSumDay($request);
+                return View("Users.Search.Product.searchResultDrugsSumDay")
+                    ->with("arrayList",$result)->with("count",$SearchDrugs->count)
+                    ->with("dateFrom",$request->get("dateFrom"))
+                    ->with("dateTo",$request->get("dateTo"))
+                    ->with("timeFrom",$request->get("timeFrom"))
+                    ->with("timeTo",$request->get("timeTo"))
+                    ->with("doseFrom",$request->get("doseFrom"))
+                    ->with("doseTo",$request->get("doseTo"))
+
+                    ;
+            }
+            else {
+                $result = $SearchDrugs->createQuestion($request);
+                return View("Users.Search.Product.searchResultDrugs")->with("arrayList",$result)->with("count",$SearchDrugs->count);
+            }
+
         }
     }
 }

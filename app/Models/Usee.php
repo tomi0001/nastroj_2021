@@ -10,19 +10,44 @@ class Usee extends Model
 {
     use HasFactory;
     public $questions;
-    public function createQuestions(int $startDay,$doseDay)
+    public function createQuestionsSumDay(int $startDay) {
+        $this->questions = self::query();
+        $this->questions
+
+            ->select( DB::Raw("(DATE(IF(HOUR(usees.date) >= '$startDay', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ) as dat  "))
+            ->selectRaw("sum(usees.portion) as portion")
+            ->selectRaw("count(*) as count")
+            ->selectRaw("usees.id_products as id")
+            ->selectRaw("usees.id as id_usees")
+            ->selectRaw("products.name as name")
+            ->selectRaw("sum(usees.price) as price")
+            ->selectRaw("products.type_of_portion as type")
+            ->join("products","products.id","usees.id_products");
+    }
+    public function createQuestionsGroupDay(int $startDay) {
+        $this->questions = self::query();
+        $this->questions
+
+            ->select( DB::Raw("(DATE(IF(HOUR(usees.date) >= '$startDay', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ) as dat  "))
+            ->selectRaw("sum(usees.portion) as portion")
+            ->selectRaw("count(*) as count")
+            ->selectRaw("usees.id_products as id")
+            ->selectRaw("usees.id as id_usees")
+            ->selectRaw("products.name as name")
+            ->selectRaw("sum(usees.price) as price")
+            ->selectRaw("products.type_of_portion as type")
+            ->join("products","products.id","usees.id_products");
+    }
+    public function createQuestions(int $startDay)
     {
         $this->questions = self::query();
         $this->questions
 
             ->select( DB::Raw("(DATE(IF(HOUR(usees.date) >= '$startDay', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ) as dat  "))
             ->selectRaw("hour(usees.date) as hour");
-        if ($doseDay == "on") {
-            $this->questions->selectRaw("sum(usees.portion) as portion");
-        }
-        else {
+
             $this->questions->selectRaw("usees.portion as portion");
-        }
+
         $this->questions
             ->selectRaw("day(usees.date) as day")
             ->selectRaw("month(usees.date) as month")
@@ -45,8 +70,12 @@ class Usee extends Model
 
 
     }
+
     public function setGroupDay(int $startDay) {
         $this->questions->groupBy(DB::Raw("(DATE(IF(HOUR(usees.date) >= '$startDay', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) )  "));
+    }
+    public function setGroupIdProduct() {
+        $this->questions->groupBy("usees.id_products");
     }
     public function setGroupDescription() {
         $this->questions->groupBy("usees.id");
@@ -85,6 +114,10 @@ class Usee extends Model
     }
     public function setProduct(array $idProduct) {
         $this->questions->whereIn("usees.id_products",$idProduct);
+    }
+
+    public function setIdUsers(int $idUsers) {
+        $this->questions->where("usees.id_users",$idUsers);
     }
     public function setHourTwo($hourFrom,$hourTo,$startDay) {
         $this->questions->whereRaw("(time(date_add(usees.date,INTERVAL - $startDay hour))) <= '$hourTo'");

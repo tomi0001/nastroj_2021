@@ -46,7 +46,7 @@ class SearchMood {
         if ($request->get("sumMoods") == "on" or $request->get("sumDays") == "on") {
             $this->bool = true;
         }
-         * 
+         *
          */
      }
      public function checkError(Request $request) {
@@ -74,8 +74,8 @@ class SearchMood {
         if ( ($request->get("stimulationTo") != "") and (  $request->get("stimulationTo") < -20 or $request->get("stimulationTo") > 20  or  ( (string)(float) $request->get("stimulationTo") !== $request->get("stimulationTo")  ) ) )  {
             array_push($this->errors,"Pobudzenie musi mieścić się w zakresie od -20 do +20");
         }
-        
-        
+
+
         if (($request->get("longMoodHourFrom") != "") and (  $request->get("longMoodHourFrom") < 0   or  ( (string)(int) $request->get("longMoodHourFrom") !== $request->get("longMoodHourFrom")  ) )  ) {
             array_push($this->errors,"Godziny (długośc nastroju) musi byc dodatnią liczbą całkowitą");
         }
@@ -89,13 +89,13 @@ class SearchMood {
             array_push($this->errors,"Minuty (długośc nastroju) musi byc dodatnią liczbą całkowitą");
         }
      }
-     
-     
+
+
      public function createQuestion(Request $request) {
          $startDay = $this->startDay;
          $moodModel = new  MoodModel;
          $moodModel->createQuestions($this->startDay);
-                  
+
          $moodModel->setDate($request->get("dateFrom"),$request->get("dateTo"),$this->startDay);
          $moodModel->setMood($request);
          $moodModel->setLongMood($request);
@@ -124,13 +124,13 @@ class SearchMood {
          }
          $this->count = $moodModel->questions->get()->count();
          return $moodModel->questions->paginate(15);
-         
-         
-         
-         
+
+
+
+
      }
      private function searchWhatWork(array $arrayWork) {
-         
+
      }
      private function sumHour($hour,$startDay) {
         $sumHour = $hour[0] - $startDay;
@@ -148,7 +148,7 @@ class SearchMood {
      }
      public function sortMoods($list) {
          $array = $this->changeArray($list);
-         
+
          array_multisort($array,SORT_DESC);
          $array = $this->setPercent($array);
          return $array;
@@ -184,20 +184,20 @@ class SearchMood {
             $hourFrom = $this->sumHour($timeFrom,$this->startDay);
             $hourTo = $this->sumHour($timeTo,$this->startDay);
             $moodModel->setHourTwo($hourFrom,$hourTo,$this->startDay);
-            
+
 
         }
         else if ($request->get("timeTo") != "" and $request->get("timeTo") != "undefined") {
             $moodModel->setHourTo($request->get("timeTo"));
-            
+
         }
         else if ($request->get("timeFrom") != "" and $request->get("timeTo") != "undefined") {
             $moodModel->setHourFrom($request->get("timeFrom"));
-            
+
         }
 
 
      }
 
-     
+
 }
