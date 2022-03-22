@@ -14,29 +14,35 @@ class Usee extends Model
         $this->questions = self::query();
         $this->questions
 
-            ->select( DB::Raw("(DATE(IF(HOUR(usees.date) >= '$startDay', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ) as dat  "))
-            ->selectRaw("sum(usees.portion) as portion")
-            ->selectRaw("count(*) as count")
-            ->selectRaw("usees.id_products as id")
+            ->select( DB::Raw("(DATE(IF(HOUR(usees.date) >= '$startDay', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ) as dat  "));
+
+            $this->questions->selectRaw("(sum(usees.portion)   )  as portion")
+                ->selectRaw("((count(*) ) )  as count");
+
+        $this->questions->selectRaw("usees.id_products as id")
             ->selectRaw("usees.id as id_usees")
             ->selectRaw("products.name as name")
             ->selectRaw("sum(usees.price) as price")
-            ->selectRaw("products.type_of_portion as type")
-            ->join("products","products.id","usees.id_products");
+            ->selectRaw("products.type_of_portion as type");
+
+            $this->questions->join("products","products.id","usees.id_products");
     }
     public function createQuestionsGroupDay(int $startDay) {
         $this->questions = self::query();
         $this->questions
 
-            ->select( DB::Raw("(DATE(IF(HOUR(usees.date) >= '$startDay', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ) as dat  "))
-            ->selectRaw("sum(usees.portion) as portion")
-            ->selectRaw("count(*) as count")
-            ->selectRaw("usees.id_products as id")
+            ->select( DB::Raw("(DATE(IF(HOUR(usees.date) >= '$startDay', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ) as dat  "));
+
+            $this->questions->selectRaw("(sum(usees.portion)   )  as portion")
+                ->selectRaw("((count(*) ) )  as count");
+
+        $this->questions->selectRaw("usees.id_products as id")
             ->selectRaw("usees.id as id_usees")
             ->selectRaw("products.name as name")
             ->selectRaw("sum(usees.price) as price")
-            ->selectRaw("products.type_of_portion as type")
-            ->join("products","products.id","usees.id_products");
+            ->selectRaw("products.type_of_portion as type");
+
+        $this->questions->join("products","products.id","usees.id_products");
     }
     public function createQuestions(int $startDay)
     {

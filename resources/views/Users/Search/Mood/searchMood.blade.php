@@ -67,7 +67,7 @@
                     <input type='text' name='longMoodHourFrom' class='form-control' placeholder="Godziny">
                 </td>
                 <td style='padding-top: 10px;'>
-                    
+
                 </td>
                 <td>
                     <input type='text' name='longMoodMinuteFrom' class='form-control' placeholder="Minuty">
@@ -81,7 +81,7 @@
                     <input type='text' name='longMoodHourTo' class='form-control' placeholder="Godziny">
                 </td>
                 <td style='padding-top: 10px;'>
-                    
+
                 </td>
                 <td>
                     <input type='text' name='longMoodMinuteTo' class='form-control' placeholder="Minuty">
@@ -117,7 +117,7 @@
             </tr>
             <tr>
                 <td style='padding-top: 10px; width: 37%;'>
-                    słowa kluczowe co robiłem 
+                    słowa kluczowe co robiłem
                 </td>
                 <td colspan="3">
                 <div style='clear: both;'>
@@ -134,13 +134,13 @@
                     </div>
                 </div>
                 </td>
-             
-                   
-                
+
+
+
             </tr>
             <tr>
                 <td style='padding-top: 10px; width: 37%;'>
-                    słowa kluczowe akcji 
+                    słowa kluczowe akcji
                 </td>
                 <td colspan="3" >
                 <div style='clear: both;'>
@@ -165,14 +165,14 @@
                         <div style='float: left; width:20%; margin-left: 10px;'>
                             <input type='text' name='actionTo[]' class='form-control' placeholder="wartość do">
                         </div>
-                        
-                        
+
+
                     </div>
-                
-                    
-                
-                
-                   
+
+
+
+
+
                     <div style='float: left; margin-left: 20px; '>
                     <a onclick="addFieldAction()" style="cursor: pointer;">
                 <div class="plusButton plusMinusButton" id='addFieldWhatWork'> <img width="40" class="minus" id="boolxxxx" src="{{asset('/image/icon_plus.png')}}"></div>
@@ -180,9 +180,9 @@
                     </div>
                 </div>
                 </td>
-             
-                   
-                
+
+
+
             </tr>
             <tr>
                 <td style='padding-top: 10px; width: 37%;'>
@@ -191,17 +191,36 @@
                 <td>
                     <input type='checkbox' name='ifWhatWork' class='form-check-input'>
                 </td>
-               
+
             </tr>
             <tr>
                 <td style='padding-top: 10px; width: 37%;'>
-                    Wyszukja tylko wpisy, które mają jakąś akcję
+                    Pogrupuj wg. dnia
                 </td>
                 <td>
-                    <input type='checkbox' name='ifAction' class='form-check-input'>
+                    <input type='checkbox' name='groupDay' class='form-check-input'>
                 </td>
-               
+
             </tr>
+            <tr>
+                <td style='padding-top: 10px; width: 37%;'>
+                    Sumuj wszystkie dni
+                </td>
+                <td>
+                    <input type='checkbox' name='sumDay' class='form-check-input'>
+                </td>
+
+            </tr>
+            <tr>
+                <td style='padding-top: 10px; width: 37%;'>
+                    Sumuj wszystkie nastroje
+                </td>
+                <td>
+                    <input type='checkbox' name='sumMood' class='form-check-input'>
+                </td>
+
+            </tr>
+
             <tr>
                 <td style='padding-top: 10px; width: 37%;'>
                     Sortuj wg.
@@ -216,7 +235,7 @@
                         <option value='stimulation'>Pobudzenia</option>
                         <option value='longMood'>Długości trwania nastroju</option>
                     </select>
-               
+
                 </td>
             </tr>
             <tr>
@@ -227,9 +246,9 @@
                     <select name='sort2' class='form-control'>
                         <option value='desc'>Od największego</option>
                         <option value='asc'>Od najmniejszego</option>
-                     
+
                     </select>
-               
+
                 </td>
             </tr>
             <tr>
@@ -241,5 +260,5 @@
             </tr>
         </table>
     </form>
-    
+
 </div>

@@ -1,35 +1,35 @@
 
 
 <div id="showmood" class="formAddMood borderMood" style="display: none;">
-            
+
               <div class='titleMoodShow mood'>
                             NASTROJE
               </div>
             <table class="moodShow">
-                <thead class="titleTheadMood">
+                <thead>
                 <tr class="bold">
-                    <td class="start showMood" style=" border-right-style: hidden;" >
+                    <td class="start showMood titleTheadMood" style=" border-right-style: hidden;" >
                         Start
                     </td>
-                    <td class="end showMood">
+                    <td class="end showMood titleTheadMood">
                         Koniec
                     </td>
-                    <td class="sizeTableMood showMood">
+                    <td class="sizeTableMood showMood titleTheadMood">
                         Nastrój
                     </td>
-                    <td class="sizeTableMood showMood">
+                    <td class="sizeTableMood showMood titleTheadMood"  >
                         Lęk
                     </td>
-                    <td class="sizeTableMood showMood">
+                    <td class="sizeTableMood showMood titleTheadMood">
                         napięcie /<br>rozdrażnienie
                     </td>
-                    <td class="sizeTableMood showMood">
+                    <td class="sizeTableMood showMood titleTheadMood">
                         Pobudzenie
                     </td>
-                    <td class="center showMood">
+                    <td class="center showMood titleTheadMood">
                         Ilośc wybudzeń /<br> Epizodów psychotycznych
                     </td>
-                    
+
                 </tr>
                 </thead>
                 <tr>
@@ -38,15 +38,15 @@
                     </td>
                 </tr>
                 @foreach ($listMood as $list)
-                
-                
+
+
                 <tr class='moodClass{{$list->id}}'>
                     <td  class="start showMood" colspan="2">
                         <span class="left"> {{substr($list->date_start,11,-3)}}</span>
-                   
+
                         <span class='right'>{{substr($list->date_end,11,-3)}}</span>
                         <br>
-                            
+
                         @if ($list->type == "sleep")
                             <div class='levelSleep level' style='width: {{$percent[(array_search($list->id,array_column($percent, 'id')))]["percent"]}}%'>&nbsp;</div>
                         @else
@@ -105,9 +105,9 @@
                                 @endif
                             </div>
                             <div class=" showMenuEditMood{{$list->id}} " style="display: none; width: 40%; margin-left: auto; margin-right: auto; ">
-                               
+
                                     <input class="form-control" type="text" id="levelEpizodesEdit{{$list->id}}" value="{{$list->epizodes_psychotik}}" >
-                                
+
                             </div>
                         <div class="showMenuEditMood{{$list->id}}" style="display: none;">
                         @else
@@ -119,9 +119,9 @@
                                 @endif
                             </div>
                             <div class=" showMenuEditMood{{$list->id}} " style="display: none; width: 40%; margin-left: auto; margin-right: auto; ">
-                               
+
                                     <input class="form-control" type="text" id="levelEpizodesEdit{{$list->id}}" value="{{$list->epizodes_psychotik}}" >
-                                
+
                             </div>
 
                         @endif
@@ -132,7 +132,7 @@
                     <td colspan="7" class="moodButton">
                         @if ($list->type == "mood")
                         <div class="showMenuMood{{$list->id}} ">
-                           
+
                                    <div class="divButton">
                                         @if (!empty(\App\Models\Usee::ifExistUsee($list->date_start,$list->date_end,Auth::User()->id) ))
                                             <button class="btn-drugs main" onclick="showDrugs('{{ route('ajax.showDrugs')}}',{{$list->id}})">pokaż leki</button>
@@ -159,33 +159,33 @@
                                     <div class="divButton ">
 
                                             <button class="btn-mood main-long mood" onclick="editMood({{$list->id}})">Edytuj nastrój</button>
-                                     </div>           
+                                     </div>
                                     <div class="divButton divButtonBr">
 
                                             <button class="btn-mood main-long mood" onclick="editMoodDescription('{{route("ajax.editMoodDescription")}}',{{$list->id}})">Edytuj Dodaj opis</button>
-                                     </div>           
+                                     </div>
                                    <div class="divButton">
 
                                             <button class="danger main" onclick="deleteMood('{{route("ajax.deleteMood")}}',{{$list->id}})">Usuń nastrój</button>
-                                    </div>        
+                                    </div>
                                     <div class="divButton">
 
                                             <button class="btn-mood main-long mood" onclick="editActionMood('{{route("ajax.editActionMood")}}',{{$list->id}})">Dodaj usuń akcje</button>
-                                     </div>       
-                                
+                                     </div>
+
                         </div>
                         <div class="showMenuEditMood{{$list->id}}" style="display: none;">
                             <table  class="tableCenter"  >
                                 <tr>
                                     <td style="padding-right: 7px;">
-                                        
+
                                             <button class="btn-mood main mood" onclick="updateMood('{{route('ajax.updateMood')}}',{{$list->id}})">Uaktualnij</button>
-                                       
+
                                     </td>
                                     <td style="padding-right: 7px;">
-                                        
+
                                             <button class="btn-mood main mood" onclick="cancel({{$list->id}})">Anuluj</button>
-                                       
+
                                     </td>
                                 </tr>
                             </table>
@@ -205,24 +205,24 @@
                                         @else
                                             <button type="button" class="disable "  disabled>nie było opisu</button>
                                         @endif
-                                    </td>    
+                                    </td>
                                     <td style="padding-right: 7px;">
 
                                             <button class="btn-sleep main-long" onclick="editMoodSleep({{$list->id}})">Edytuj Sen</button>
 
-                                    </td>    
+                                    </td>
 
                                     <td style="padding-right: 7px;">
 
                                             <button class="btn-sleep main-long" onclick="editSleepDescription('{{route("ajax.editSleepDescription")}}',{{$list->id}})">Edytuj Dodaj opis</button>
 
-                                    </td> 
+                                    </td>
 
                                     <td style="padding-right: 7px;">
 
                                             <button class="danger main" onclick="deleteSleep('{{route("ajax.deleteSleep")}}',{{$list->id}})">Usuń sen</button>
 
-                                    </td>  
+                                    </td>
                                 </tr>
                             </table>
                         </div>
@@ -230,14 +230,14 @@
                             <table  class="tableCenter"  >
                                 <tr>
                                     <td style="padding-right: 7px;">
-                                        
+
                                             <button class="btn-sleep main" onclick="updateSleep('{{route('ajax.updateSleep')}}',{{$list->id}})">Uaktualnij</button>
-                                       
+
                                     </td>
                                     <td style="padding-right: 7px;">
-                                        
+
                                             <button class="btn-sleep main" onclick="cancel({{$list->id}})">Anuluj</button>
-                                       
+
                                     </td>
                                 </tr>
                             </table>
@@ -254,7 +254,7 @@
                             <div id="messageDescription{{$list->id}}"></div>
                         </div>
                     </td>
-                
+
                 </tr>
                 <tr class='moodClass{{$list->id}}'>
                     <td  colspan="7">
@@ -264,69 +264,69 @@
                             <div id="messageDescription{{$list->id}}"></div>
                         </div>
                     </td>
-                
+
                 </tr>
                 <tr class='moodClass{{$list->id}}'>
                     <td  colspan="7">
                         <div  class="hiddenMood descriptionShowSleep{{$list->id}}" style="display: none;">
-                            
+
                             <div id="messageDescriptionshowSleep{{$list->id}}" class="descriptionModShowSleep"></div>
                         </div>
                     </td>
-                
+
                 </tr>
                 <tr class='moodClass{{$list->id}}'>
                     <td  colspan="7">
                         <div  class="hiddenMood descriptionShowMood{{$list->id}}" style="display: none;">
-                            
+
                             <div id="messageDescriptionshowMood{{$list->id}}" class="descriptionModShowMood"></div>
                         </div>
                     </td>
-                
+
                 </tr>
                 <tr class='moodClass{{$list->id}}'>
                     <td  colspan="7">
                         <div  class="hiddenMood actionShow{{$list->id}}" style="display: none;">
-                            
+
                             <div id="messageactionShow{{$list->id}}" class="actionShowModShow">
-                                
-                                
+
+
                             </div>
                             <br>
                         </div>
                     </td>
-                
-                </tr>      
+
+                </tr>
                 <tr class='moodClass{{$list->id}}'>
                     <td  colspan="7">
                         <div  class="hiddenMood drugsShow{{$list->id}}" style="display: none;">
-                            
+
                             <div id="messagedrugsShow{{$list->id}}" class="drugssShowModShow">
-                                
-                                
+
+
                             </div>
                             <br>
                         </div>
                     </td>
-                
-                </tr>    
+
+                </tr>
 
                 <tr class='moodClass{{$list->id}}'>
                     <td  colspan="7">
                         <div  class="hiddenMood actionMoodShow{{$list->id}}" style="display: none;">
-                            
+
                             <div id="messageactionMoodShow{{$list->id}}" class="actionMoodShowModShow">
-                                
-                                
+
+
                             </div>
                             <button class="btn-action MainEdit " onclick="updateActionForMood('{{ route('ajax.updateAction')}}',{{$list->id}})">Modyfikuj akcje</button>
                             <br><br>
-                            
+
                         </div>
-                        
+
                     </td>
-                
-                </tr>   
+
+                </tr>
                 @endforeach
             </table>
         </div>

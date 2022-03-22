@@ -19,15 +19,24 @@ class SearchMoodController {
             return View("Users.Search.Mood.error")->with("errors",$SearchMood->errors);
         }
         else {
-            $result = $SearchMood->createQuestion($request);
-            if ($SearchMood->count > 0) {
-                $arrayPercent = $SearchMood->sortMoods($result);
+            if ($request->get("groupDay") == "on") {
+                $result = $SearchMood->createQuestionGroupDay($request);
+                if ($SearchMood->count > 0) {
+                    $arrayPercent = $SearchMood->sortMoods($result);
+                } else {
+                    $arrayPercent = [];
+                }
+                return View("Users.Search.Mood.searchResultMoodGroupDay")->with("arrayList", $result)->with("count", $SearchMood->count)->with("percent", $arrayPercent);
             }
             else {
-                $arrayPercent = [];
+                $result = $SearchMood->createQuestion($request);
+                if ($SearchMood->count > 0) {
+                    $arrayPercent = $SearchMood->sortMoods($result);
+                } else {
+                    $arrayPercent = [];
+                }
+                return View("Users.Search.Mood.searchResultMood")->with("arrayList", $result)->with("count", $SearchMood->count)->with("percent", $arrayPercent);
             }
-            return View("Users.Search.Mood.searchResultMood")->with("arrayList",$result)->with("count",$SearchMood->count)->with("percent",$arrayPercent);
-
         }
     }
     public function allDayMood(Request $request) {

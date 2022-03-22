@@ -38,9 +38,7 @@ class SearchDrugsController {
                     ->with("timeFrom",$request->get("timeFrom"))
                     ->with("timeTo",$request->get("timeTo"))
                     ->with("doseFrom",$request->get("doseFrom"))
-                    ->with("doseTo",$request->get("doseTo"))
-
-                    ;
+                    ->with("doseTo",$request->get("doseTo"));
             }
             else {
                 $result = $SearchDrugs->createQuestion($request);

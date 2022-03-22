@@ -90,7 +90,41 @@ class SearchMood {
         }
      }
 
+     public function createQuestionGroupDay(Request $request) {
+         $startDay = $this->startDay;
+         $moodModel = new  MoodModel;
+         $moodModel->createQuestionGroupDay($this->startDay);
+         $moodModel->setDate($request->get("dateFrom"),$request->get("dateTo"),$this->startDay);
+         $moodModel->setMood($request);
+         $moodModel->setLongMood($request);
+         $this->setHour($moodModel,$request);
+//         if (!empty($request->get("whatWork")) ) {
+//             $moodModel->searchWhatWork($request->get("whatWork"));
+//         }
+//         if (!empty($request->get("action")) and ($request->get("action") != "undefined") ) {
+//
+//             $moodModel->searchAction($request->get("action"),(array)$request->get("actionFrom"),(array)$request->get("actionTo"));
+//         }
+//         if (($request->get("ifAction")) == "on" ) {
+//             $moodModel->actionOn();
+//         }
+//         if (($request->get("ifWhatWork")) == "on" ) {
+//             $moodModel->whatWorkOn();
+//         }
+         $moodModel->idUsers($this->idUsers);
+         $moodModel->moodsSelect();
 
+
+         $moodModel->setGroupDay(Auth::User()->start_day);
+         if ($request->get("sort2") == "asc") {
+             $moodModel->orderBy("asc",$request->get("sort"));
+         }
+         else {
+             $moodModel->orderBy("desc",$request->get("sort"));
+         }
+         $this->count = $moodModel->questions->get()->count();
+         return $moodModel->questions->paginate(15);
+     }
      public function createQuestion(Request $request) {
          $startDay = $this->startDay;
          $moodModel = new  MoodModel;
@@ -116,6 +150,7 @@ class SearchMood {
          $moodModel->idUsers($this->idUsers);
          $moodModel->moodsSelect();
          $moodModel->groupByAction();
+
          if ($request->get("sort2") == "asc") {
              $moodModel->orderBy("asc",$request->get("sort"));
          }
