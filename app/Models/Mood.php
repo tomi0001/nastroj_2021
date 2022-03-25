@@ -11,20 +11,48 @@ class Mood extends Model
 {
     use HasFactory;
     public $questions;
-    public function createQuestionGroupDay(int $startDay) {
+    public function createQuestionSumDay(int $startDay) {
         $this->questions =  self::query();
         $this->questions
-        ->selectRaw("sum(TIMESTAMPDIFF (minute, moods.date_start , moods.date_end)) as longMood")
+            ->selectRaw("sum(TIMESTAMPDIFF (minute, moods.date_start , moods.date_end)) as longMood")
             ->selectRaw(" round((sum( ( unix_timestamp(moods.date_end) - unix_timestamp(moods.date_start) ) * moods.level_mood)  / sum( unix_timestamp(moods.date_end) - unix_timestamp(moods.date_start) ) ),3  )as level_mood ")
             ->selectRaw(" round(sum( ( unix_timestamp(moods.date_end) - unix_timestamp(moods.date_start) ) * moods.level_anxiety)  / sum( unix_timestamp(moods.date_end) - unix_timestamp(moods.date_start) ),3 ) as level_anxiety ")
             ->selectRaw(" round(sum( ( unix_timestamp(moods.date_end) - unix_timestamp(moods.date_start) ) * moods.level_nervousness )  / sum( unix_timestamp(moods.date_end) - unix_timestamp(moods.date_start) ),3 ) as level_nervousness ")
             ->selectRaw(" round(sum( ( unix_timestamp(moods.date_end) - unix_timestamp(moods.date_start) ) * moods.level_stimulation)  / sum( unix_timestamp(moods.date_end) - unix_timestamp(moods.date_start) ),3 ) as level_stimulation ")
-        ->selectRaw("min(moods.date_start) minMood")
+            ->selectRaw("min(moods.date_start) minMood")
             ->selectRaw("count(moods.id ) as count")
             ->selectRaw("max(moods.date_end) maxMood")
             ->selectRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) as datStart " ))
             ->selectRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) as datEnd" ));
 
+    }
+    public function createQuestionGroupDay(int $startDay,bool $ifAction,$actionOn) {
+        $this->questions =  self::query();
+
+
+            $this->questions
+                ->selectRaw("sum(TIMESTAMPDIFF (minute, moods.date_start , moods.date_end)) as longMood")
+                //->selectRaw("sum(moods.level_mood)  as level_mood")
+                ->selectRaw(" round(sum( ( unix_timestamp(moods.date_end) - unix_timestamp(moods.date_start) ) * moods.level_mood)  / sum( unix_timestamp(moods.date_end) - unix_timestamp(moods.date_start) ),3 ) as level_mood ")
+                ->selectRaw(" round(sum( ( unix_timestamp(moods.date_end) - unix_timestamp(moods.date_start) ) * moods.level_anxiety)  / sum( unix_timestamp(moods.date_end) - unix_timestamp(moods.date_start) ),3 ) as level_anxiety ")
+                ->selectRaw(" round(sum( ( unix_timestamp(moods.date_end) - unix_timestamp(moods.date_start) ) * moods.level_nervousness )  / sum( unix_timestamp(moods.date_end) - unix_timestamp(moods.date_start) ),3 ) as level_nervousness ")
+                ->selectRaw(" round(sum( ( unix_timestamp(moods.date_end) - unix_timestamp(moods.date_start) ) * moods.level_stimulation)  / sum( unix_timestamp(moods.date_end) - unix_timestamp(moods.date_start) ),3 ) as level_stimulation ")
+            ->selectRaw("(count(moods.id ) ) as count")
+
+            ->selectRaw("min(moods.date_start) minMood")
+
+            ->selectRaw("max(moods.date_end) maxMood")
+            ->selectRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) as datStart " ))
+            ->selectRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) as datEnd" ));
+
+//        if ($ifAction == true or $actionOn == "on") {
+//            $this->questions->crossjoin("moods_actions","moods_actions.id_moods","moods.id");
+//            //->join("actions","actions.id","moods_actions.id_actions");
+//
+//        }
+    }
+    public function havingActionOn() {
+        //$this->questions->havingRaw("count(moods_actions.id_actions) <= 3");
     }
     public function createQuestions(int $startDay) {
         $this->questions =  self::query();
@@ -55,6 +83,15 @@ class Mood extends Model
     }
     public function groupByAction() {
         $this->questions->groupBy("moods.id");
+    }
+    public function groupMoodAction() {
+        $this->questions->whereExists(function ($query) {
+            $query
+                ->select(DB::raw(1))
+                ->from('moods_actions')
+                ->whereColumn('moods_actions.id_moods', 'moods.id');
+        });
+        //$this->questions->groupBy("moods_actions.id_actions");
     }
     public function idUsers(int $idUsers) {
         $this->questions->where("moods.id_users",$idUsers);
@@ -172,7 +209,75 @@ class Mood extends Model
 
 
          }
+
         });
+    }
+    public function searchActionGroup(array $action,array $actionFrom,array $actionTo)
+    {
+
+//        $this->questions
+//            ->select(DB::Raw(" name from actions where actions.name like '%" . $action[0] . "%'"));
+            //->where(function ($query) use ($action, $actionFrom, $actionTo) {
+
+
+
+//            for ($i = 0; $i < count($action); $i++) {
+//                if ($action[$i] == "NULL") {
+//                    continue;
+//                }
+//                if ($action[$i] != "" and (!empty($actionFrom) and (!empty($actionTo))) and ($actionFrom[$i] != "" and $actionTo[$i] != "")) {
+//                    $query->orwhereRaw("("
+//                        . "actions.name like '%" . $action[$i] . "%'  and  (" .
+//                        "(CASE "
+//                        . " WHEN moods_actions.percent_executing is NULL && moods_actions.minute_exe is  NULL THEN (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) ) "
+//                        . " WHEN moods_actions.minute_exe is NOT NULL  THEN (moods_actions.minute_exe)    "
+//                        . " WHEN moods_actions.percent_executing is NOT NULL THEN     (  moods_actions.percent_executing / 100) * (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) )  "
+//                        . " "
+//                        . " END)  >='" . $actionFrom[$i] . "')"
+//                        . "and ("
+//                        . "(CASE "
+//                        . " WHEN moods_actions.percent_executing is NULL && moods_actions.minute_exe is  NULL THEN (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) ) "
+//                        . " WHEN moods_actions.minute_exe is NOT NULL  THEN (moods_actions.minute_exe)    "
+//                        . " WHEN moods_actions.percent_executing is NOT NULL THEN     (  moods_actions.percent_executing / 100) * (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) )  "
+//                        . " "
+//                        . " END)  <='" . $actionTo[$i] . "')"
+//                        . ""
+//                        . ")"
+//
+//                    );
+//
+//                } else if ($action[$i] != "" and ((!empty($actionTo))) and ($actionTo[$i] != "")) {
+//                    $query->orwhereRaw("("
+//                        . "actions.name like '%" . $action[$i] . "%'  and  (("
+//                        . " CASE "
+//                        . " WHEN moods_actions.percent_executing is NULL && moods_actions.minute_exe is  NULL THEN (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) ) "
+//                        . " WHEN moods_actions.minute_exe is NOT NULL  THEN (moods_actions.minute_exe)    "
+//                        . " WHEN moods_actions.percent_executing is NOT NULL THEN     (  moods_actions.percent_executing / 100) * (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) )  "
+//                        . ""
+//                        . " END)"
+//                        . ")  <= '" . $actionTo[$i] . "')"
+//                        . " ");
+//                } else if ($action[$i] != "" and (!empty($actionFrom)) and ($actionFrom[$i] != "")) {
+//                    $query->orwhereRaw("("
+//                        . "actions.name like '%" . $action[$i] . "%'  and  (("
+//                        . " CASE "
+//                        . " WHEN moods_actions.percent_executing is NULL && moods_actions.minute_exe is  NULL THEN (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) ) "
+//                        . " WHEN moods_actions.minute_exe is NOT NULL  THEN (moods_actions.minute_exe)    "
+//                        . " WHEN moods_actions.percent_executing is NOT NULL THEN     (  moods_actions.percent_executing / 100) * (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) )  "
+//                        . " "
+//                        . " END)"
+//                        . ")  >= '" . $actionFrom[$i] . "')"
+//                        . " ");
+//                } else if ($action[$i] != "") {
+//
+//                    $query->orwhereRaw("actions.name like '%" . $action[$i] . "%'");
+//                }
+//
+//
+//            }
+//            //$query->where('actions.id','moods_actions.id_actions');
+//            //$query->where('moods.id','moods_actions.id_moods');
+//        });
     }
     public function setDate($dateFrom,$dateTo,$startDay) {
         if ($dateFrom != "" and $dateFrom != "undefined")  {

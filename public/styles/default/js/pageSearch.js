@@ -130,6 +130,9 @@ function showDescriptionDrugs(url,id) {
 }
 
 
+
+
+
 function showDayMood(url,date) {
 
     if ($("#dayMood" + date).css("display") == "none" ) {
@@ -255,7 +258,7 @@ function searchMood() {
     sessionStorage.setItem('searchType', "searchMood");
     if ($("#searchMoodDiv").css("display") == "none" ) {
         $("#searchMoodDiv").css("display","block");
-
+        $("#averageMoodSumDiv").css("display","none");
 
     }
     else {
@@ -263,7 +266,20 @@ function searchMood() {
         $("#searchMoodDiv").css("display","none");
     }
 }
+function averageMoodSum() {
+    sessionStorage.setItem('searchType', "averageMoodSum");
+    if ($("#averageMoodSumDiv").css("display") == "none" ) {
+        $("#averageMoodSumDiv").css("display","block");
+        $("#searchMoodDiv").css("display","none");
+        //$("#changeNameActionChange").css("display","none");
+        //$("#changeDateActionChange").css("display","none");
 
+    }
+    else {
+
+        $("#averageMoodSumDiv").css("display","none");
+    }
+}
 
 function searchDrugs() {
     sessionStorage.setItem('searchType', "searchDrugs");
@@ -305,7 +321,8 @@ function setFunction() {
             break;
         case 'searchDrugs': searchDrugs();
             break;
-
+        case 'averageMoodSum': averageMoodSum();
+            break;
     }
 }
 
@@ -321,7 +338,7 @@ function resetSession() {
     sessionStorage.removeItem('searchType');
 }
 function selectMenu() {
-    if (sessionStorage.getItem('searchType') == 'searchMood' ) {
+    if (sessionStorage.getItem('searchType') == 'searchMood' || sessionStorage.getItem('searchType') == 'averageMoodSum' ) {
         loadPageMood();
     }
     else if (sessionStorage.getItem('searchType') == 'searchDrugs') {

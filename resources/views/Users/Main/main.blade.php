@@ -4,51 +4,51 @@
 
 
 
-@section ('title') 
+@section ('title')
  Strona Główna
 @endsection
 
 <br>
     @include('Users.Main.calendar')<br>
-    
-    
-    
+
+
+
     @include('Users.Main.showAll')
-    
+
     @include ('Users.Main.showMenu')
     @include('Users.Main.showMood')
     @include('Users.Main.showDrugs')
     @include('Users.Main.showAction')
-    @if (!empty($sumAll) or (count($listMood)) > 0 )
+    @if (($sumAll->sum_mood) != "" or (count($listMood)) > 0 )
               <script>
                 window.onload=SwitchMenuMoodShow('mood',false);
-                
+
 
             </script>
-        
+
     @elseif (count($listDrugs) > 0)
             <script>
                 window.onload=SwitchMenuMoodShow('drugs',false);
-                
+
 
             </script>
     @elseif (count($actionPlan) > 0 or count($actionForDay) > 0)
             <script>
                 window.onload=SwitchMenuMoodShow('action',false);
-                
+
 
             </script>
     @endif
     <br><br><br>
-    
-        
 
 
-    
-    
+
+
+
+
     <div class="menuSelectAddMain">
 
-        
+
         <div class="menuMood mood moodSelected" id='moodSelected' style="padding-top: 16px;" onclick="SwitchMenuMoodAdd('mood')">
             DODAJ NASTRÓJ
         </div>
@@ -66,18 +66,18 @@
         </div>
 
     </div>
-           
-    
+
+
           @include('Users.Main.addMood')
           @include('Users.Main.addSleep')
           @include('Users.Main.addDrugs')
           @include('Users.Main.addAction')
           @include('Users.Main.addActionPlaned')
           <br><br><br><br>
-      
+
           <script>
               window.onload=loadSesson();
           </script>
 
-     
+
 @endsection

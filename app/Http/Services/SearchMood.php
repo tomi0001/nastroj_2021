@@ -89,11 +89,10 @@ class SearchMood {
             array_push($this->errors,"Minuty (długośc nastroju) musi byc dodatnią liczbą całkowitą");
         }
      }
-
-     public function createQuestionGroupDay(Request $request) {
+     public function createQuestionSumDay(Request $request) {
          $startDay = $this->startDay;
          $moodModel = new  MoodModel;
-         $moodModel->createQuestionGroupDay($this->startDay);
+         $moodModel->createQuestionSumDay($this->startDay);
          $moodModel->setDate($request->get("dateFrom"),$request->get("dateTo"),$this->startDay);
          $moodModel->setMood($request);
          $moodModel->setLongMood($request);
@@ -115,7 +114,65 @@ class SearchMood {
          $moodModel->moodsSelect();
 
 
+         //$moodModel->setGroupDay(Auth::User()->start_day);
+         if ($request->get("sort2") == "asc") {
+             $moodModel->orderBy("asc",$request->get("sort"));
+         }
+         else {
+             $moodModel->orderBy("desc",$request->get("sort"));
+         }
+         //$this->count = $moodModel->questions->get()->count();
+         return $moodModel->questions->get();
+     }
+     private function searchAction(array $action) :bool {
+         for ($i = 0;$i < count($action);$i++) {
+             if ($action[$i] != NULL) {
+                 return true;
+             }
+         }
+         return false;
+     }
+     public function createQuestionGroupDay(Request $request) {
+         $startDay = $this->startDay;
+         $moodModel = new  MoodModel;
+         $bool = $this->searchAction($request->get("action"));
+         $moodModel->createQuestionGroupDay($this->startDay,$bool,$request->get("ifAction"));
+         $moodModel->setDate($request->get("dateFrom"),$request->get("dateTo"),$this->startDay);
+         $moodModel->setMood($request);
+         $moodModel->setLongMood($request);
+         $this->setHour($moodModel,$request);
+         if (($request->get("ifAction")) == "on" ) {
+             $moodModel->groupMoodAction();
+         }
+         if (!empty($request->get("action"))  ) {
+
+             $moodModel->searchActionGroup($request->get("action"),(array)$request->get("actionFrom"),(array)$request->get("actionTo"));
+         }
+         if (($request->get("ifAction")) == "on" ) {
+             //$moodModel->actionOn();
+         }
+//         if (!empty($request->get("whatWork")) ) {
+//             $moodModel->searchWhatWork($request->get("whatWork"));
+//         }
+//         if (!empty($request->get("action")) and ($request->get("action") != "undefined") ) {
+//
+//             $moodModel->searchAction($request->get("action"),(array)$request->get("actionFrom"),(array)$request->get("actionTo"));
+//         }
+//         if (($request->get("ifAction")) == "on" ) {
+//             $moodModel->actionOn();
+//         }
+//         if (($request->get("ifWhatWork")) == "on" ) {
+//             $moodModel->whatWorkOn();
+//         }
+         $moodModel->idUsers($this->idUsers);
+         $moodModel->moodsSelect();
+
          $moodModel->setGroupDay(Auth::User()->start_day);
+
+         $moodModel->havingActionOn();
+         //$moodModel->groupMoodAction();
+         //$moodModel->groupByAction();
+
          if ($request->get("sort2") == "asc") {
              $moodModel->orderBy("asc",$request->get("sort"));
          }

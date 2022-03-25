@@ -20,6 +20,31 @@ div.dateSumDay {
     border-radius: 25px;
 
 }
+div.dayWeekDiv {
+    width: 25%;
+    float: left;
+
+
+}
+div.dayOne {
+    float: left;
+    width: 75%;
+}
+div.dayOne2 {
+    float: left;
+
+
+
+
+
+}
+div.dateSumDayMood {
+    height: 70px;
+    width: 31%;
+    float: left;
+    border-radius: 25px;
+    margin: 11px;
+}
     div.plusMinusButton {
     width: 40px;
     height: 40px;
@@ -91,6 +116,9 @@ div.divActionSum {
         font-weight: bold;
     }
     div.titleSearchSumDay {
+        border-radius: 17px 17px 0px 0px;
+    }
+    div.titleSearchSumDayMood {
         border-radius: 17px 17px 0px 0px;
     }
     span.fontSearchSumDay {

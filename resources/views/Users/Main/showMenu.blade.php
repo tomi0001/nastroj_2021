@@ -1,5 +1,5 @@
     <div class="showLink">
-        @if (!empty($sumAll) or (count($listMood)) > 0 )
+        @if (($sumAll->sum_mood) != "" or (count($listMood)) > 0 )
             <div class="linkShow  mood linkSelected" id='moodShowSelected' onclick="SwitchMenuMoodShow('mood')">
                 POKAŻ NASTROJE
             </div>
@@ -9,14 +9,14 @@
             </div>
         @endif
         @if (count($listDrugs) > 0 )
-        
+
             <div class="linkShow  drugs" id='drugsShowSelected' onclick="SwitchMenuMoodShow('drugs')">
             POKAŻ LEKI
             </div>
 
 
         @else
-            
+
             <div class="linkShow  disable" id='drugsShowSelected'>
                 NIE BYŁO LEKÓW
             </div>

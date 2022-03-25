@@ -161,11 +161,18 @@ div.titleSearchSumDay {
     border: 2px solid #319701;
 
 }
+div.titleSearchSumDayMood {
+    background-color: #9DC90C;
+    border: 2px solid #9DC90C;
+}
 span.fontSearchSumDay {
     color: #055017;
 }
 span.titleSearchSumDay {
     color: #E5E484;
+}
+span.titleSearchSumDayMood {
+    color: #EBFABC;
 }
     .dayMoodEnd {
                 background-color: #C3FF42;
@@ -221,4 +228,11 @@ div.dateSumDay {
     -webkit-box-shadow: inset 0px 0px 24px -8px rgba(66, 68, 90, 1);
     -moz-box-shadow: inset 0px 0px 24px -8px rgba(66, 68, 90, 1);
     box-shadow: inset 0px 0px 24px -8px rgba(66, 68, 90, 1);
+}
+div.dateSumDayMood {
+    background-color: #E4F76D;
+    border: 2px solid #9DC90C;
+    -webkit-box-shadow: inset 0px 0px 24px -8px rgba(158, 200, 31, 1);
+    -moz-box-shadow: inset 0px 0px 24px -8px rgba(158, 200, 31, 1);
+    box-shadow: inset 0px 0px 24px -8px rgba(158, 200, 31, 1);
 }

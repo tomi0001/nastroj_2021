@@ -4,7 +4,7 @@
 
 
 
-    @section ('title') 
+    @section ('title')
     Wyszukiwanie
     @endsection
 
@@ -16,16 +16,16 @@
 </div>
 <div class="downPage">
     <div class="MenuPageMood pagepagepage pageMood" style="display: none;">
-       
-           
+
+
             <div id="searchMood" class="hrefMood hrefSettingCursor" onmouseover="selectMenuMood('searchMood')" onmouseout="unSelectMenuMood('searchMood')" onclick="searchMood()">
                WYSZUKAJ NASTRÓJ
             </div>
-           
+
             <div id="searchSleep"  class="hrefMood hrefSettingCursor" onmouseover="selectMenuMood('searchSleep')" onmouseout="unSelectMenuMood('searchSleep')" onclick="levelMood()">
                 WYSZUKAJ SEN
             </div>
-            <div id="averageMoodSum"  class="hrefMood hrefSettingCursor" onmouseover="selectMenuMood('averageMoodSum')" onmouseout="unSelectMenuMood('averageMoodSum')" onclick="changeNameAction()">
+            <div id="averageMoodSum"  class="hrefMood hrefSettingCursor" onmouseover="selectMenuMood('averageMoodSum')" onmouseout="unSelectMenuMood('averageMoodSum')" onclick="averageMoodSum()">
                 OBLICZ ŚREDNIĄ TRWANIA NASTROJU
             </div>
             <div id="sumHowHMood"  class="hrefMood hrefSettingCursor" onmouseover="selectMenuMood('sumHowHMood')" onmouseout="unSelectMenuMood('sumHowHMood')" onclick="changeDateAction()">
@@ -35,18 +35,18 @@
                 WYGENERUJ PDF DLA NASTROJI
             </div>
             <div id="sumActionDay"  class="hrefMood hrefSettingCursor" onmouseover="selectMenuMood('sumActionDay')" onmouseout="unSelectMenuMood('sumActionDay')" onclick="changeDateAction()">
-                WYSZUKAJ AKCJE CAŁODNIOWĄ 
+                WYSZUKAJ AKCJE CAŁODNIOWĄ
             </div>
-            
-        
-        
-        
+
+
+
+
     </div>
     <div  class="MenuPageDrugs pagepagepage pageDrugs" style="display: none;">
             <div id="searchDrugs" class="hrefDrugs hrefSettingCursor" onmouseover="selectMenuMood('searchDrugs')" onmouseout="unSelectMenuMood('searchDrugs')"  onclick="searchDrugs()">
               WYSZUKAJ PRODUKT            </div>
-           
-           
+
+
     </div>
     <div id="MenuPageUser" style="display: none;">
 
@@ -58,7 +58,7 @@
 
         </div>
     <div class="pagePageMood pagepage bodyMoodPage" id="averageMoodSumDiv" style="display: none;">
-
+        @include ('Users.Search.Mood.averageMoodSum')
         </div>
     <div class="pagePageMood pagepage bodyMoodPage" id="sumHowHMoodDiv" style="display: none;">
 
@@ -69,8 +69,8 @@
     <div class="pagePageMood pagepage bodyMoodPage" id="sumActionDayDiv" style="display: none;">
 
         </div>
-    
-    
+
+
     <div class="pagePageDrugs pagepage bodyDrugsPage" id="searchDrugsDiv" style="display: none;">
         @include ('Users.Search.Product.searchDrugs')
         </div>

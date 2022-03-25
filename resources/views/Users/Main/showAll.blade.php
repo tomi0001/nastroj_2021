@@ -3,14 +3,15 @@
 
             <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
                 <div class="sumMood">
-                    @if (!empty($sumAll)  )
+
+                    @if (  $sumAll->sum_mood != ""  )
                     <div class="level level{{\App\Http\Services\Common::setColor($sumAll->sum_mood)}}" style="height: 20%; padding-top: 3px;">
                                 Poziom nastroju {{(round($sumAll->sum_mood,2) == '-0') ? '0' : round($sumAll->sum_mood,2)}} dla całego dnia
                     </div>
-                    <div class="level{{\App\Http\Services\Common::setColor(-$sumAll->sum_anxiety)}} level " style="height: 20%; padding-top: 3px;">
+                    <div class="level{{\App\Http\Services\Common::setColor($sumAll->sum_anxiety)}} level " style="height: 20%; padding-top: 3px;">
                                 Poziom lęku {{( round($sumAll->sum_anxiety,2)) == '-0' ? '0' : round($sumAll->sum_anxiety,2)}} dla całego dnia
                     </div>
-                    <div class="level{{\App\Http\Services\Common::setColor(-$sumAll->sum_nervousness)}} level " style="height: 20%; padding-top: 3px;">
+                    <div class="level{{\App\Http\Services\Common::setColor($sumAll->sum_nervousness)}} level " style="height: 20%; padding-top: 3px;">
                                 Poziom napięcia {{( round($sumAll->sum_nervousness,2)) == '-0' ? '0': round($sumAll->sum_nervousness,2)}} dla całego dnia
                     </div>
                     <div class="level{{\App\Http\Services\Common::setColor($sumAll->sum_stimulation)}} level" style="height: 20%; padding-top: 3px;">
@@ -45,10 +46,10 @@
                         @if (count($actionForDay) > 0)
                             <div class='sumDrugsAt'>
                                 @foreach ($actionForDay as $list)
-                                    
-                                    
+
+
                                      <div class='positionAction leveAction{{\App\Http\Services\Common::setColorPleasure($list->level_pleasure)}}'>{{$list->name}}</div>
-                                
+
 
                                 @endforeach
                             </div>
@@ -61,11 +62,11 @@
                         @if (count($actionPlan) > 0)
                             <div class='sumDrugsAt'>
                                 @foreach ($actionPlan as $list)
-                                    
-                                    
+
+
                                      <div class='positionAction leveAction{{\App\Http\Services\Common::setColorPleasure($list->level_pleasure)}}'>{{$list->name}}</div>
                                      <div class="hourPlan">Godzina <b>{{substr($list->date,11,-3)}}</b></div>
-                                
+
 
                                 @endforeach
                             </div>
@@ -77,9 +78,9 @@
                     @endif
                 </div>
             </div>
- 
 
-         
+
+
         </div>
 </div>
 <br>

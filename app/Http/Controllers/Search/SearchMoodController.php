@@ -28,6 +28,19 @@ class SearchMoodController {
                 }
                 return View("Users.Search.Mood.searchResultMoodGroupDay")->with("arrayList", $result)->with("count", $SearchMood->count)->with("percent", $arrayPercent);
             }
+            else if ($request->get("sumDay") == "on") {
+                $result = $SearchMood->createQuestionSumDay($request);
+
+                return View("Users.Search.Mood.searchResultMoodSumDay")
+                    ->with("arrayList", $result)->with("dateFrom",$request->get("dateFrom"))->with("dateTo",$request->get("dateTo"))
+                    ->with("timeFrom",$request->get("timeFrom"))->with("timeTo",$request->get("timeTo"))
+                    ->with("moodFrom",$request->get("moodFrom"))->with("moodTo",$request->get("moodTo"))
+                    ->with("anxientyFrom",$request->get("anxientyFrom"))->with("anxientyTo",$request->get("anxientyTo"))
+                    ->with("voltageFrom",$request->get("voltageFrom"))->with("voltageTo",$request->get("voltageTo"))
+                    ->with("stimulationFrom",$request->get("stimulationFrom"))->with("stimulationTo",$request->get("stimulationTo"))
+                    ->with("longMoodFrom",$request->get("longMoodHourFrom") . ":" . $request->get("longMoodMinuteFrom"))
+                    ->with("longMoodTo",$request->get("longMoodHourTo") . ":" . $request->get("longMoodMinuteTo"));
+            }
             else {
                 $result = $SearchMood->createQuestion($request);
                 if ($SearchMood->count > 0) {

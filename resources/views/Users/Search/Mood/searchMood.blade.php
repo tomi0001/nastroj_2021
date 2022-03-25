@@ -186,6 +186,15 @@
             </tr>
             <tr>
                 <td style='padding-top: 10px; width: 37%;'>
+                    Wyszukja tylko wpisy, które mają jakiąś akcję
+                </td>
+                <td>
+                    <input type='checkbox' name='ifAction' class='form-check-input'>
+                </td>
+
+            </tr>
+            <tr>
+                <td style='padding-top: 10px; width: 37%;'>
                     Wyszukja tylko wpisy, które mają jakiś opis
                 </td>
                 <td>
