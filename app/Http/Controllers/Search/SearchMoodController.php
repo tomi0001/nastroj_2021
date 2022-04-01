@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\User as MUser;
 use Hash;
 use App\Http\Services\SearchMood;
+use App\Http\Services\SearchMoodAI;
 use App\Models\Mood;
 use Auth;
 class SearchMoodController {
@@ -59,6 +60,54 @@ class SearchMoodController {
     public function allActionDay(Request $request) {
         $sumAction = Mood::sumAction($request->get("date"),Auth::User()->start_day,  Auth::User()->id);
         return View("Users.Search.Mood.showAllDayAction")->with("actionSum",$sumAction);
+    }
+    public function averageMoodSumSubmit(Request $request) {
+            $SearchMoodAI = new SearchMoodAI(Auth::User()->id,Auth::User()->start_day);
+            $SearchMoodAI->checkError($request);
+            if (count($SearchMoodAI->errors) > 0) {
+                return View("ajax.error")->with("error",$SearchMoodAI->errors);
+            }
+            else {
+                $SearchMoodAI->setVariable($request);
+                $SearchMoodAI->setDayWeek($request);
+                $SearchMoodAI->setHour($request);
+                //$SearchMoodAI->setHourAI($request);
+                $minMax = $SearchMoodAI->createQuestions($request);
+                //$list = $SearchMoodAI->createQuestionsMinMax($request);
+                print("<pre>");
+                print_r($minMax);
+
+/*
+                if (count($list) == 0) {
+                    if ( ($request->get("groupWeek") == "on") ) {
+                        return View("Users.Search.Mood.AverageMoodGroupWeek")->with("minMax", $minMax)
+                            ->with("timeFrom", $request->get("timeFrom"))->with("timeTo", $request->get("timeTo"))
+                            ->with("dateFrom", $request->get("dateFrom"))->with("dateTo", $request->get("dateTo"))
+                            ->with("week", $SearchMoodAI->dayWeek);
+                    }
+                    else {
+                        return View("Users.Search.Mood.AverageMood")->with("minMax", $minMax)->with("list", $list)
+                            ->with("timeFrom", $request->get("timeFrom"))->with("timeTo", $request->get("timeTo"))
+                            ->with("dateFrom", $request->get("dateFrom"))->with("dateTo", $request->get("dateTo"))
+                            ->with("week", $SearchMoodAI->dayWeek);
+                    }
+                }
+                else {
+                    return View("ajax.error")->with("error",["Nic nie wyszukano"]);
+                }
+//                for ($i=0;$i < count($minMax["mood"]);$i++) {
+//                    print "<br>" .  $minMax["mood"][$i] . "/" . $minMax["dat_end"][$i];
+//                }
+//                print "<br><br>";
+//                for ($i=0;$i < count($list);$i++) {
+//                    print "<br>" . "///" . $list[$i]->dat_end;
+//                }
+//                print "<br><br><br><br>";
+
+                //print count($minMax["mood"]) . "/" . count($list) . "<br>";
+*/
+            }
+
     }
 //    public function searchMoodAjaxSubmit(Request $request) {
 //        $SearchMood = new SearchMood;

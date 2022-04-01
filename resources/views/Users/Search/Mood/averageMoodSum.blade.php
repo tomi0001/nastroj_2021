@@ -1,8 +1,9 @@
+
 <div class="titleMoodSettings">
     OBLICZ ŚREDNIĄ TRWANIA NASTROJU
 </div>
 <div class="bodyPage">
-    <form action='{{route("search.searchMoodSubmit")}}' method='get'>
+    <form id="averageSumForm" method='get'>
         <table class='table searchTableMood'>
 
 
@@ -34,7 +35,16 @@
                     <input type='time' name='timeTo' class='form-control'>
                 </td>
             </tr>
+            <tr>
+                <td style='padding-top: 10px; width: 37%;'>
+                    Rozdzielenie minut
+                </td>
+                <td>
+                    <input type='number' name='divMinute' class='form-control' min="0" max ='1440' value="0">
+                </td>
 
+
+            </tr>
             <tr>
                 <td style='padding-top: 10px; width: 37%;'>
                     słowa kluczowe akcji
@@ -87,60 +97,60 @@
                 </td>
                 <td colspan="6">
                     <div style="clear:both;">
-                    <div class="dayWeekDiv">
-                        <div class="dayOne">
+                    <div class="dayWeekDiv" style="width: 23%;">
+                        <div class="dayOne" style="width: 82%;">
                             Poniedziałek
                         </div>
-                        <div class="dayOne2">
-                            <input type='checkbox' name='ifAction' class='form-check-input' checked>
+                        <div class="dayOne2" style="width: 17%; ">
+                            <input type='checkbox' name='day2' class='form-check-input' checked>
                         </div>
                     </div>
-                    <div class="dayWeekDiv">
-                        <div class="dayOne" style="width: 50%;">
-                            Wtorek
+                    <div class="dayWeekDiv" style="width: 18%; ">
+                        <div class="dayOne" style="width: 75%;">
+                             Środa
                         </div>
-                        <div class="dayOne2">
-                            <input type='checkbox' name='ifAction' class='form-check-input' checked>
+                        <div class="dayOne2" style="width: 20%; ">
+                            <input type='checkbox' name='day4' class='form-check-input' checked>
                         </div>
                     </div>
-                    <div class="dayWeekDiv">
-                        <div class="dayOne" style="width: 60%;">
-                        Środa
+                    <div class="dayWeekDiv" style="width: 15%;">
+                        <div class="dayOne" style="width: 75%;">
+                            Piątek
                         </div>
                         <div class="dayOne2">
-                            <input type='checkbox' name='ifAction' class='form-check-input' checked>
+                            <input type='checkbox' name='day6' class='form-check-input' checked>
                         </div>
                     </div>
                     <div class="dayWeekDiv">
                         <div class="dayOne" style="width: 56%;">
-                        Czwartek
+                             Niedziela
                         </div>
-                        <div class="dayOne2">
-                            <input type='checkbox' name='ifAction' class='form-check-input' checked>
-                        </div>
-                    </div>
-                    <div class="dayWeekDiv">
-                        <div class="dayOne">
-                        Piątek
-                        </div>
-                        <div class="dayOne2">
-                            <input type='checkbox' name='ifAction' class='form-check-input' checked>
+                        <div class="dayOne2" style="width: 20%; ">
+                            <input type='checkbox' name='day1' class='form-check-input' checked>
                         </div>
                     </div>
-                    <div class="dayWeekDiv">
-                        <div class="dayOne" style="width: 50%;">
-                        Sobota
+                    <div class="dayWeekDiv" style="width: 23%;">
+                        <div class="dayOne" style="width: 82%;">
+                        Wtorek
                         </div>
-                        <div class="dayOne2">
-                            <input type='checkbox' name='ifAction' class='form-check-input' checked>
+                        <div class="dayOne2" style="width: 17%; ">
+                            <input type='checkbox' name='day3' class='form-check-input' checked>
                         </div>
                     </div>
-                    <div class="dayWeekDiv">
+                    <div class="dayWeekDiv" style="width: 18%;">
+                        <div class="dayOne" style="width: 75%;">
+                         Czwartek
+                        </div>
+                        <div class="dayOne2" style="width: 20%; ">
+                            <input type='checkbox' name='day5' class='form-check-input' checked>
+                        </div>
+                    </div>
+                    <div class="dayWeekDiv" style="width: 19%;">
                         <div class="dayOne" style="width: 60%;">
-                        Niedziela
+                            Sobota
                         </div>
                         <div class="dayOne2">
-                            <input type='checkbox' name='ifAction' class='form-check-input' checked>
+                            <input type='checkbox' name='day7' class='form-check-input' checked>
                         </div>
                     </div>
                     </div>
@@ -163,7 +173,7 @@
                     Pogrupuj wg. tygodnia
                 </td>
                 <td>
-                    <input type='checkbox' name='groupDay' class='form-check-input'>
+                    <input type='checkbox' name='groupWeek' class='form-check-input'>
                 </td>
 
             </tr>
@@ -172,7 +182,7 @@
                     Pogrupuj wg. miesiąca
                 </td>
                 <td>
-                    <input type='checkbox' name='sumDay' class='form-check-input'>
+                    <input type='checkbox' name='groupMonth' class='form-check-input'>
                 </td>
 
             </tr>
@@ -181,7 +191,7 @@
                     Sumuj wszystkie nastroje
                 </td>
                 <td>
-                    <input type='checkbox' name='sumMood' class='form-check-input'>
+                    <input type='checkbox' name='sumDay' class='form-check-input'>
                 </td>
 
             </tr>
@@ -190,7 +200,8 @@
             <tr>
                 <td style='padding-top: 10px; width: 37%;' colspan="4">
                     <div style='text-align: center;'>
-                        <input type="submit" class="btn-mood  mood"  value='SZUKAJ'>
+
+                        <input type="button" class="btn-mood  mood "  onclick="averageMoodSumSubmit('{{route('search.averageMoodSumSubmit')}}')" value='SZUKAJ' id="searchAverageSum">
                     </div>
                 </td>
             </tr>
@@ -198,3 +209,8 @@
     </form>
 
 </div>
+<div id="averageSumDiv" class="averageSumDiv" >
+
+</div>
+<br><br>
+

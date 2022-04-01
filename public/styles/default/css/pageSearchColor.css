@@ -156,6 +156,33 @@ box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
 color: #4F9805;
 
     }
+
+div.dayWeekDivAverage {
+   background-color: #5E9315;
+    color: #D4E8BA;
+
+}
+div.dayWeekDivAverageOne {
+    background-color: #ADEC55;
+    color: #659323;
+}
+tr.borderTrAverageTitle {
+    background-color: #DFC97B;
+    border-color: #D4AE25;
+}
+tr.borderTrAverage {
+    background-color: #F7F591;
+    border-color: #D4AE25;
+}
+.rightBorder {
+    border-color: #D4AE25;
+}
+div.averageSumDiv {
+    background-color: #E5F6A1;
+    -webkit-box-shadow: inset 0px 0px 33px -10px rgba(131, 146, 46, 1);
+    -moz-box-shadow: inset 0px 0px 33px -10px rgba(131, 146, 46, 1);
+    box-shadow: inset 0px 0px 33px -10px rgba(131, 146, 46, 1);
+}
 div.titleSearchSumDay {
     background-color: #1F6C13;
     border: 2px solid #319701;
@@ -230,6 +257,13 @@ div.dateSumDay {
     box-shadow: inset 0px 0px 24px -8px rgba(66, 68, 90, 1);
 }
 div.dateSumDayMood {
+    background-color: #E4F76D;
+    border: 2px solid #9DC90C;
+    -webkit-box-shadow: inset 0px 0px 24px -8px rgba(158, 200, 31, 1);
+    -moz-box-shadow: inset 0px 0px 24px -8px rgba(158, 200, 31, 1);
+    box-shadow: inset 0px 0px 24px -8px rgba(158, 200, 31, 1);
+}
+div.dateSumDayMoodAverageDayWeek {
     background-color: #E4F76D;
     border: 2px solid #9DC90C;
     -webkit-box-shadow: inset 0px 0px 24px -8px rgba(158, 200, 31, 1);

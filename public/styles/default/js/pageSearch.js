@@ -379,6 +379,33 @@ function showDrugs(url,id) {
     }
 }
 
+
+
+function averageMoodSumSubmit(url) {
+
+    $.ajax({
+        url : url,
+        method : "get",
+        data :
+            $("#averageSumForm").serialize()
+        ,
+        dataType : "html",
+    })
+        .done(function(response) {
+            $("#averageSumDiv").css("display","block");
+            //$("#messageactionShow"+id).html(response);
+            $(".ajaxError").empty();
+
+            $("#averageSumDiv").prepend(response);
+
+        })
+        .fail(function() {
+            alert("Wystąpił błąd");
+        })
+
+}
+
+
 function showAction(url,id) {
         if ($(".actionShow" + id).css("display") == "none" ) {
             $.ajax({

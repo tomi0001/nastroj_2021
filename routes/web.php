@@ -29,7 +29,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ma
 Route::get('/users.addMood', [App\Http\Controllers\Mood\MoodController::class, 'addTestMood'])->name('users.addMood')
                     ->middleware('auth')->middleware('can:users');
 Route::get('/users/{year?}/{month?}/{day?}/{action?}', [App\Http\Controllers\Main\MainController::class, 'index'])->name('users.main')
-        ->middleware('auth')->middleware('can:users');            
+        ->middleware('auth')->middleware('can:users');
 Route::get('/users.drugsAdd', [App\Http\Controllers\Main\MainController::class, 'addProduct'])->name('users.drugsAdd')
                     ->middleware('auth')->middleware('can:users');
 Route::get('/users.moodAdd',  [App\Http\Controllers\Main\MainController::class, 'addMood'])->name('users.moodAdd')
@@ -38,13 +38,13 @@ Route::get('/users.sleepAdd', [App\Http\Controllers\Main\MainController::class, 
                     ->middleware('auth')->middleware('can:users');
 Route::get('/users.actionDayAdd', [App\Http\Controllers\Main\MainController::class, 'addActionDay'])->name('users.actionDaypAdd')
                     ->middleware('auth')->middleware('can:users');
-                    
-                    
-            
+
+
+
 Route::get("/ajax/atHourActonPlan",[App\Http\Controllers\Main\MainController::class, 'atHourActonPlan'])
-                    ->name("ajax.atHourActonPlan")->middleware('auth')->middleware('can:users');     
+                    ->name("ajax.atHourActonPlan")->middleware('auth')->middleware('can:users');
 Route::get("/ajax/showAllSubstance", [App\Http\Controllers\Main\MainController::class, 'showAllSubstance'])
-                    ->name("ajax.showAllSubctance")->middleware('auth')->middleware('can:users');            
+                    ->name("ajax.showAllSubctance")->middleware('auth')->middleware('can:users');
 Route::get("/ajax/deleteActionDay",[App\Http\Controllers\Main\MainController::class, 'deleteActionDay'])
         ->name("ajax.deleteActionDay")->middleware('auth')->middleware('can:users');
 Route::get("/ajax/editActionDay",[App\Http\Controllers\Main\MainController::class, 'editActionDay'])
@@ -197,6 +197,9 @@ Route::get('/search/allActionDay', [App\Http\Controllers\Search\SearchMoodContro
                     ->middleware('auth')->middleware('can:users');
 Route::get('/search/searchDrugsSubmit', [App\Http\Controllers\Search\SearchDrugsController::class, 'searchDrugsSubmit'])->name("search.searchDrugsSubmit")
         ->middleware('auth')->middleware('can:users');
+Route::get('/search/averageMoodSumSubmit', [App\Http\Controllers\Search\SearchMoodController::class, 'averageMoodSumSubmit'])->name("search.averageMoodSumSubmit")
+    ->middleware('auth')->middleware('can:users');
+
 
 Route::get('/search/back', [App\Http\Controllers\Search\SearchController::class, 'back'])->name('search.back')
                     ->middleware('auth')->middleware('can:users');
@@ -204,10 +207,10 @@ Route::get('/search/back', [App\Http\Controllers\Search\SearchController::class,
 
 Route::get('/users.settings', [App\Http\Controllers\Settings\SettingsController::class, 'index'])->name('users.setting')
                     ->middleware('auth')->middleware('can:users');
-            
-            
-            
-            
-            
+
+
+
+
+
 Route::get('/doctor', [App\Http\Controllers\HomeController::class, 'index2'])->name('doctor.main')->middleware('auth')->middleware('can:doctor');
 Route::get('/logout', [App\Http\Controllers\HomeController::class, 'logout'])->name('logout')->middleware('auth');

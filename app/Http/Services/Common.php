@@ -20,6 +20,27 @@ class Common {
          'ilości',
          'waga ciała'
     ];
+    public static function returnDayWeek($data) {
+        $week = date('N', strtotime($data));
+        switch ($week) {
+            case 1: return "Poniedziałek";
+                break;
+            case 2: return "Wtorek";
+                break;
+            case 3: return "Środa";
+                break;
+            case 4: return "Czwartek";
+                break;
+            case 5: return "Piątek";
+                break;
+            case 6: return "Sobota";
+                break;
+            default: return "Niedziela";
+                break;
+
+
+        }
+    }
     public static function setColor( $mood) :string {
         if (empty($mood) and $mood != 0) {
             return '10000';
@@ -94,7 +115,7 @@ class Common {
         $dateStart = new \DateTime($dateOne);
         $dateEnd = new \DateTime($dateTwo);
         $diff = $dateEnd->diff($dateStart);
-        
+
         $string = "";
         if ($diff->y != 0) {
             $string .=  $diff->y .  " Lat, ";
@@ -110,16 +131,16 @@ class Common {
         }
         if ($diff->i != 0) {
             $string .=  $diff->i . " Minut, ";
-        }        
+        }
         return substr($string,0,-2);
     }
     public static function calculateHourAverage($dateOne,$dateTwo) {
         $dateStart = new \DateTime($dateOne);
         $dateEnd = new \DateTime($dateTwo);
         $diff = $dateEnd->diff($dateStart);
-        
+
         //$sum =  $diff->y * $diff->m * $diff->d;
-         
+
         return $diff->days;
     }
     public static function calculateHourOne(int $time) {
@@ -141,7 +162,7 @@ class Common {
         }
         if ($diff->i != 0) {
             $string .=  $diff->i . " Minut, ";
-        }        
+        }
         return substr($string,0,-2);
     }
     public  static function setColorPleasure($color) {

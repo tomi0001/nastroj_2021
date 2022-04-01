@@ -20,10 +20,60 @@ div.dateSumDay {
     border-radius: 25px;
 
 }
+    div.averageSumDiv {
+        width: 96%;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        border-radius: 20px;
+        padding: 12px;
+        display: none;
+
+
+    }
+    tr.borderTrAverageTitle {
+        border-width: 2px;
+        border-style: solid;
+
+
+    }
+    tr.borderTrAverage {
+        border-width: 2px;
+        border-style: solid;
+    }
+    .rightBorder {
+        border-right-width: 2px;
+        border-right-style: solid;
+    }
 div.dayWeekDiv {
     width: 25%;
     float: left;
 
+
+}
+div.dayWeekDivAverage {
+    border-radius: 23px;
+    padding: 4px;
+    height: 40px;
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 7px;
+    margin-top: 7px;
+    font-size: 21px;
+    font-width: bold;
+}
+div.dayWeekDivAverageOne {
+    border-radius: 23px;
+    padding: 2px;
+    height: 30px;
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 7px;
+    margin-top: 7px;
+    font-size: 17px;
 
 }
 div.dayOne {
@@ -40,6 +90,13 @@ div.dayOne2 {
 }
 div.dateSumDayMood {
     height: 70px;
+    width: 31%;
+    float: left;
+    border-radius: 25px;
+    margin: 11px;
+}
+div.dateSumDayMoodAverageDayWeek {
+    min-height: 90px;
     width: 31%;
     float: left;
     border-radius: 25px;
@@ -77,7 +134,7 @@ div.divActionSum {
 
 .dayMood {
     width: 100%;
-    min-height: 50px;
+    min-height: 23px;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
@@ -86,6 +143,17 @@ div.divActionSum {
     font-size: 23px;
     font-weight: bold;
 
+}
+.dayMoodAverage {
+    width: 100%;
+
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 8px;
+    border-radius: 30px 30px 30px 30px;
+    font-size: 23px;
+    font-weight: bold;
 }
 .dayMoodEnd {
     width: 100%;

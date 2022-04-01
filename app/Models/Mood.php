@@ -11,6 +11,7 @@ class Mood extends Model
 {
     use HasFactory;
     public $questions;
+    public $questionsMinMax;
     public function createQuestionSumDay(int $startDay) {
         $this->questions =  self::query();
         $this->questions
@@ -24,6 +25,128 @@ class Mood extends Model
             ->selectRaw("max(moods.date_end) maxMood")
             ->selectRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) as datStart " ))
             ->selectRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) as datEnd" ));
+
+    }
+    public function createQuestionMinMaxAI(int $startDay) {
+        $this->questionsMinMax =  self::query();
+        $this->questionsMinMax
+            //->selectRaw("sum(TIMESTAMPDIFF (minute, moods.date_start , moods.date_end)) as longMood")
+//            ->selectRaw("  ( unix_timestamp(moods.date_end) - unix_timestamp(moods.date_start) ) as time ")
+//            ->selectRaw(" moods.level_mood as level_mood ")
+//            ->selectRaw(" moods.level_anxiety  as level_anxiety ")
+//            ->selectRaw("  moods.level_nervousness  as level_nervousness ")
+//            ->selectRaw("  moods.level_stimulation  as level_stimulation ")
+            //->selectRaw("  moods.date_start  as date_start ")
+            //->selectRaw("  moods.date_end  as date_end ")
+//            ->selectRaw("Date_add(date_start, INTERVAL - '$startDay' HOUR) as date_start")
+            ->selectRaw("min(moods.level_mood) as minMood")
+            ->selectRaw("max(moods.level_mood) as maxMood")
+            ->selectRaw("count(moods.level_mood) as count")
+//            ->selectRaw("Date_add(date_end, INTERVAL - '$startDay' HOUR) as date_end")
+            ->selectRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) as dat_end" ));
+            //->selectRaw("DATE(Date_add(date_end,INTERVAL - '$startDay' HOUR)) as dat_end");
+        //->selectRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) as datStart " ))
+        //->selectRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) as dat_end" ));
+
+    }
+    public function createQuestionAI(int $startDay,$timeFrom,$timeTo) {
+        $this->questions =  self::query();
+        $this->questions
+            //->selectRaw("sum(TIMESTAMPDIFF (minute, moods.date_start , moods.date_end)) as longMood")
+            //->selectRaw("  sum( unix_timestamp(moods.date_end) - unix_timestamp(moods.date_start) ) * moods.level_mood  as time ")
+            ->selectRaw(" moods.level_mood as level_mood ")
+            ->selectRaw(" (  sum(
+
+                              CASE
+
+                         WHEN   TIME_TO_SEC
+                         (
+                             timediff(
+                                 time(
+                                     Date_add(date_start, INTERVAL - '$startDay' HOUR)
+                                            )
+                                            ,
+                                 '$timeFrom')
+                                 )
+                                 <= 0
+                                 THEN (unix_timestamp(date_add(moods.date_end ,INTERVAL - '$startDay' HOUR) ) -  (unix_timestamp( CONCAT( date(Date_add(moods.date_start,INTERVAL - '$startDay' HOUR)),' ', '$timeFrom' )   )))
+
+
+
+                                 WHEN
+                                     TIME_TO_SEC
+                                     (
+                                         timediff(
+
+                                             time(
+                                                 Date_add(date_end, INTERVAL - '$startDay' HOUR)
+                                          ),
+                                          '$timeTo'
+
+
+                                 ))
+                                 >= 0 THEN
+                         (  (   unix_timestamp(CONCAT( date(Date_add(moods.date_end,INTERVAL - '$startDay' HOUR)),' ', '$timeTo' ) )) -  unix_timestamp( Date_add( moods.date_start,INTERVAL - '$startDay' HOUR) )   )
+
+                              ELSE  (unix_timestamp(date_add(moods.date_end,INTERVAL - '$startDay' HOUR))) - unix_timestamp(date_add(moods.date_start,INTERVAL - '$startDay' HOUR)) END
+
+
+                  * moods.level_mood ) /
+
+
+        sum(
+
+            CASE
+                         WHEN   TIME_TO_SEC
+        (
+            timediff(
+                time(
+                    Date_add(date_start, INTERVAL - '$startDay' HOUR)
+                                            )
+                                            ,
+                                 '$timeFrom')
+                                 )
+                                 <= 0
+                                 THEN   (unix_timestamp(Date_add(moods.date_end,INTERVAL - '$startDay' HOUR) ) -  (unix_timestamp( CONCAT( date(Date_add(moods.date_start,INTERVAL - '$startDay' HOUR)),' ', '$timeFrom' )   )))
+
+
+
+                                 WHEN
+                                     TIME_TO_SEC
+                                     (
+                                         timediff(
+
+                                             time(
+                                                 Date_add(date_end, INTERVAL - '$startDay' HOUR)
+                                            ),
+                                            '$timeTo'
+
+
+                                 )
+                                 )
+                                 >= 0 THEN
+        ((   unix_timestamp(CONCAT( date(Date_add(moods.date_end,INTERVAL - '$startDay' HOUR)),' ', '$timeTo' ) )) -  unix_timestamp(  Date_add(moods.date_start,INTERVAL - '$startDay' HOUR)  ) )
+
+                              ELSE  (unix_timestamp(date_add(moods.date_end,INTERVAL - '$startDay' HOUR))) - unix_timestamp(date_add(moods.date_start,INTERVAL - '$startDay' HOUR))
+
+
+               END  )
+
+)as sum  ")
+
+            ->selectRaw(" TIME_TO_SEC
+                                     (timediff(time( Date_add(date_start, INTERVAL - '$startDay' HOUR)) ,'$timeFrom') )  as debil")
+                                  //as debil")
+            ->selectRaw("  moods.level_nervousness  as level_nervousness ")
+            ->selectRaw("  moods.level_stimulation  as level_stimulation ")
+            //->selectRaw("  moods.date_start  as date_start ")
+            //->selectRaw("  moods.date_end  as date_end ")
+            ->selectRaw(" TIME_TO_SEC(timediff(time((Date_add(date_start, INTERVAL - '$startDay' HOUR) )),'$timeTo')) as date_start")
+            ->selectRaw("Date_add(date_end, INTERVAL - '$startDay' HOUR) as date_end")
+            ->selectRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) as dat_end" ));
+            //->selectRaw("DATE(Date_add(date_end,INTERVAL - '$startDay' HOUR)) as dat_end");
+            //->selectRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) as datStart " ))
+            //->selectRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) as dat_end" ));
 
     }
     public function createQuestionGroupDay(int $startDay,bool $ifAction,$actionOn) {
@@ -84,6 +207,7 @@ class Mood extends Model
     public function groupByAction() {
         $this->questions->groupBy("moods.id");
     }
+
     public function groupMoodAction() {
         $this->questions->whereExists(function ($query) {
             $query
@@ -96,12 +220,25 @@ class Mood extends Model
     public function idUsers(int $idUsers) {
         $this->questions->where("moods.id_users",$idUsers);
     }
+    public function idUsersMinMax(int $idUsers) {
+        $this->questionsMinMax->where("moods.id_users",$idUsers);
+    }
     public function moodsSelect() {
         $this->questions->where("moods.type","mood");
     }
+    public function setHourAI($hourFrom,$hourTo,$startDay)
+    {
+        $this->questions->whereRaw("time(Date_add(date_start,INTERVAL - '$startDay' HOUR)) <= '" . $hourTo. "'");
+        $this->questions->whereRaw("time(Date_add(date_end,INTERVAL - '$startDay' HOUR)) >= '" . $hourFrom. "'");
+    }
     public function setHourTwo($hourFrom,$hourTo,$startDay) {
-        $this->questions->whereRaw("(time(date_add(moods.date_start,INTERVAL - $startDay hour))) <= '$hourTo'");
-        $this->questions->whereRaw("(time(date_add(moods.date_end,INTERVAL - $startDay hour))) >= '$hourFrom'");
+        //print $hourTo;
+        $this->questions->whereRaw("(time(date_add(moods.date_start,INTERVAL - $startDay hour))) < '$hourTo'");
+        $this->questions->whereRaw("(time(date_add(moods.date_end,INTERVAL - $startDay hour))) > '$hourFrom'");
+    }
+    public function setHourTwoMinMax($hourFrom,$hourTo,$startDay) {
+        $this->questionsMinMax->whereRaw("(time(date_add(moods.date_start,INTERVAL - $startDay hour))) < '$hourTo'");
+        $this->questionsMinMax->whereRaw("(time(date_add(moods.date_end,INTERVAL - $startDay hour))) > '$hourFrom'");
     }
     public function setHourTo(string $hourTo) {
         $this->questions->whereRaw("time(moods.date_end) <= " . "'" .  $hourTo . ":00'");
@@ -145,6 +282,12 @@ class Mood extends Model
                 break;
 
         }
+    }
+    public function orderByAIMinMax() {
+        $this->questionsMinMax->orderBy("moods.date_end","asc");
+    }
+    public function orderByAI() {
+        $this->questions->orderBy("moods.date_end","asc");
     }
     public function searchAction(array $action,array $actionFrom,array $actionTo) {
 
@@ -295,6 +438,22 @@ class Mood extends Model
                 });
         }
     }
+    public function setDateAI($dateFrom,$dateTo,$startDay) {
+        $this->questions->where("moods.date_start",">=",$dateFrom);
+        $this->questions->where("moods.date_end","<=",$dateTo);
+    }
+    public function setDateMinMaxAI($dateFrom,$dateTo,$startDay) {
+        $this->questionsMinMax->where("moods.date_start",">=",$dateFrom);
+        $this->questionsMinMax->where("moods.date_end","<",$dateTo);
+    }
+    public function setWeekDay(array $week,int $startDay) {
+        //$this->questions->whereRaw("DAYOFWEEK(moods.date_end)",$week);
+        $this->questions->whereRaw(DB::raw("DAYOFWEEK((DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ))  in (" . implode(",", $week) . ")")  );
+    }
+    public function setWeekDayMinMax(array $week,int $startDay) {
+        //$this->questions->whereRaw("DAYOFWEEK(moods.date_end)",$week);
+        $this->questionsMinMax->whereRaw(DB::raw("DAYOFWEEK((DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ))  in (" . implode(",", $week) . ")")  );
+    }
     public function setMood(Request $request) {
          if ($request->get("moodFrom") != "" and $request->get("moodFrom") != "undefined")  {
              $this->questions->where("moods.level_mood",">=",$request->get("moodFrom"));
@@ -348,6 +507,12 @@ class Mood extends Model
     public function setGroupDay(int $startDay) {
         $this->questions->groupBy(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) ))) "));
     }
+    public function setGroupDayMinMax(int $startDay) {
+        $this->questionsMinMax->groupBy(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) ))) "));
+    }
+//    public function setGroupWeekMinMax(int $startDay) {
+//        $this->questionsMinMax->groupBy(DB::Raw("YEARWEEK(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) ))) "));
+//    }
     public static function sumMood(string $date,  $startDay,int $idUsers) {
         return self::selectRaw(DB::Raw("(DATE(IF(HOUR(moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) as dat"))
                 ->selectRaw(DB::Raw("(DATE(IF(HOUR(moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) as dat2"))
