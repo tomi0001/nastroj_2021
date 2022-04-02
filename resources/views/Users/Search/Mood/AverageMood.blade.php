@@ -137,40 +137,40 @@
         </thead>
         <tbody>
 
-        @for ($i=0;$i < count($minMax["mood"]);$i++)
+        @for ($i=0;$i < count($minMax);$i++)
             <tr class="borderTrAverage">
                 <td style="text-align: center; color: #554701; font-size: 18px; " class="rightBorder">
-                    {{$minMax["dat_end"][$i]}}
+                    {{$minMax[$i]->dat_end}}
                 </td>
 
                     <td style="text-align: center; color: #554701; font-size: 18px; " class="rightBorder">
-                        {{\App\Http\Services\Common::returnDayWeek($list[$i]->dat_end)}}
+                        {{\App\Http\Services\Common::returnDayWeek($minMax[$i]->dat_end)}}
                     </td>
 
                 <td style="text-align: center; color: #554701; font-size: 18px; " class="rightBorder">
-                    {{round($minMax["mood"][$i],3)}}
+                    {{round($minMax[$i]->mood,3)}}
                 </td>
 
                 <td style="text-align: center; color: #554701; font-size: 18px; " class="rightBorder">
-                    {{$list[$i]->minMood}} / {{$list[$i]->maxMood}}
+                    {{$minMax[$i]->minMood}} / {{$minMax[$i]->maxMood}}
 
                 </td>
                 <td style="text-align: center; color: #554701; font-size: 18px; " class="rightBorder">
-                    {{round($minMax["anxienty"][$i],3)}}
-                </td>
-
-
-                <td style="text-align: center; color: #554701; font-size: 18px; " class="rightBorder">
-                    {{round($minMax["voltage"][$i],3)}}
+                    {{round($minMax[$i]->anxienty,3)}}
                 </td>
 
 
                 <td style="text-align: center; color: #554701; font-size: 18px; " class="rightBorder">
-                    {{round($minMax["stimulation"][$i],3)}}
+                    {{round($minMax[$i]->voltage,3)}}
+                </td>
+
+
+                <td style="text-align: center; color: #554701; font-size: 18px; " class="rightBorder">
+                    {{round($minMax[$i]->stimulation,3)}}
                 </td>
 
                 <td style="text-align: center;  color: #554701; font-size: 18px; ">
-                    {{$list[$i]->count}}
+                    {{$minMax[$i]->count}}
 
                 </td>
             </tr>

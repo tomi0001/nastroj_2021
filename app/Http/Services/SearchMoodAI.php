@@ -20,8 +20,8 @@ class SearchMoodAI
     public $errors = [];
     private $idUsers;
     private $startDay;
-    private $dateTo;
-    private $dateFrom;
+    public $dateTo;
+    public $dateFrom;
     private $hourStart;
     private $arrayWeek = [];
     private $hourEnd;
@@ -109,20 +109,111 @@ class SearchMoodAI
         $moodModel->setWeekDay($this->dayWeek, $this->startDay);
         $moodModel->setHourTwo($this->hourStart, $this->hourEnd, $this->startDay);
         $moodModel->idUsers($this->idUsers);
-        $moodModel->setGroupDay($this->startDay);
+        //$moodModel->setGroupDay($this->startDay);
+//        if ($request->get("groupWeek") == "on") {
+//            $moodModel->setWhereWeek($this->dateFrom, $this->dateTo,$this->startDay);
+//            $moodModel->setGroupWeek($this->startDay);
+//            
+//        }
+//        else {
+            $moodModel->setGroupDay($this->startDay);
+        //}
         $moodModel->orderByAI();
         $list = $moodModel->questions->get();
-//        if ($request->get("groupWeek") == "on") {
-//            //$this->setWeekDays($this->dateFrom, $this->dateTo);
-//            $a = $this->filtrQuestionsGroupWeek4($list);
-//
-//            var_dump($a);
-//        } else {
-//            $this->filtrQuestions($list);
-//        }
+       
+            //$this->setWeekDays($this->dateFrom, $this->dateTo);
+            //$a = $this->filtrQuestionsGroupWeek4($list);
+
+            //var_dump($a);
+        //} else {
+          //  $this->filtrQuestions($list);
+        
         return $list;
     }
 
+    
+    
+    
+    public function createWeek(string $dateFrom,string $dateTo) {
+        $week = 1;
+        $arrayWeek = [];
+        $j = 0;
+        for ($i = strtotime($dateFrom);$i <= strtotime($dateTo);$i+= 86400 * 7) {
+            $dateIFrom = date("Y-m-d",$i);
+            $dateITo = date("Y-m-d",$i+ (86400 * 6) );
+            if (MoodModel::ifExistDAteMood($dateIFrom, $dateITo, $this->idUsers,$this->startDay) > 0 ) {
+                $arrayWeek["dateStart"][$j] = date("Y-m-d",$i);
+                $arrayWeek["dateEnd"][$j] = date("Y-m-d",$i+ (86400 * 6) );
+                $j++;
+            }
+            //$i+= 86400;
+            
+        }
+        return $arrayWeek;
+    }
+    
+    
+    public function sortWeek($list,$arrayWeek) {
+        
+        $j = 0;
+        $day = 0;
+        $arrayNew = [];
+        $y = 0;
+        $sumMood = 0;
+        $sumAnxienty = 0;
+        $sumVoltage = 0;
+        $sumStimulation = 0;
+        $count = 0;
+        for ($i=0;$i < count($list);$i++) {
+            if ($i == count($list)-1) {
+                $sumMood += $list[$i]->mood;
+                $sumAnxienty += $list[$i]->anxienty;
+                $sumVoltage += $list[$i]->voltage;
+                $sumStimulation += $list[$i]->stimulation;
+                $count += $list[$i]->count;
+                $day++;
+                goto END;
+            }
+            if (strtotime($arrayWeek["dateStart"][$j]) <= strtotime($list[$i]->dat_end) and strtotime($arrayWeek["dateEnd"][$j]) >= strtotime($list[$i]->dat_end) ) {
+                
+                $sumMood += $list[$i]->mood;
+                $sumAnxienty += $list[$i]->anxienty;
+                $sumVoltage += $list[$i]->voltage;
+                $sumStimulation += $list[$i]->stimulation;
+                $count += $list[$i]->count;
+                
+                
+                $day++;
+            }
+            else {
+                END:
+                $arrayNew["dateStart"][$y] = $arrayWeek["dateStart"][$y];
+                $arrayNew["dateEnd"][$y] = $arrayWeek["dateEnd"][$y];
+                $arrayNew["mood"][$y] = $sumMood /$day;
+                $arrayNew["anxienty"][$y] = $sumAnxienty / $day;
+                $arrayNew["voltage"][$y] =  $sumVoltage / $day;
+                $arrayNew["stimulation"][$y] = $sumStimulation /  $day;
+                $arrayNew["count"][$y] = $count;
+                $sumMood = 0;
+                $sumAnxienty = 0;
+                $sumVoltage = 0;
+                $sumStimulation = 0;
+                $count = 0;
+                $sumMood += $list[$i]->mood;
+                $sumAnxienty += $list[$i]->anxienty;
+                $sumVoltage += $list[$i]->voltage;
+                $sumStimulation += $list[$i]->stimulation;
+                $count += $list[$i]->count;
+                $y++;
+                $j++;
+                $day = 1;
+            }
+            
+        }
+        return $arrayNew;
+        
+    }
+    
 //    private function setWeekDays(string $dateFrom,string $dateTo) {
 //
 //        for ($i = strtotime($dateFrom); $i < strtotime($dateTo); $i+= (86400 * 7)) {

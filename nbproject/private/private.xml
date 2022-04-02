@@ -18,12 +18,13 @@
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/CommonAll.css</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Layout/User.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/showAllDayAction.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/AverageMoodGroupWeek.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Layout/SelectSearch.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/seachResultMoodAjax.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSettingwidth1810.css</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/auth/login.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Services/SearchMoodAI.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/js/pageSetting.js</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/seachResultMood.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/ajax/succes.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/showAllDayMood.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/editProduct.blade.php</file>
@@ -48,6 +49,7 @@
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/PlanedDrug.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/ajax/editActionMood.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/ajax/showDrugs.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/AverageMood.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/addNewProduct.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/User.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Users_description.php</file>

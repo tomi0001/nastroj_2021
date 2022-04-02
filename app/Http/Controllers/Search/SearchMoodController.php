@@ -74,19 +74,24 @@ class SearchMoodController {
                 //$SearchMoodAI->setHourAI($request);
                 $minMax = $SearchMoodAI->createQuestions($request);
                 //$list = $SearchMoodAI->createQuestionsMinMax($request);
-                print("<pre>");
-                print_r($minMax);
+//                print("<pre>");
+//                print_r($minMax);
+           
 
-/*
-                if (count($list) == 0) {
+                if (count($minMax) > 0) {
                     if ( ($request->get("groupWeek") == "on") ) {
-                        return View("Users.Search.Mood.AverageMoodGroupWeek")->with("minMax", $minMax)
+                         $arrayWeek = $SearchMoodAI->createWeek($SearchMoodAI->dateFrom,$SearchMoodAI->dateTo);
+                    
+                    $sort = $SearchMoodAI->sortWeek($minMax,$arrayWeek);
+//                                 print("<pre>");
+//                print_r($sort);
+                        return View("Users.Search.Mood.AverageMoodGroupWeek")->with("minMax", $sort)
                             ->with("timeFrom", $request->get("timeFrom"))->with("timeTo", $request->get("timeTo"))
                             ->with("dateFrom", $request->get("dateFrom"))->with("dateTo", $request->get("dateTo"))
                             ->with("week", $SearchMoodAI->dayWeek);
                     }
                     else {
-                        return View("Users.Search.Mood.AverageMood")->with("minMax", $minMax)->with("list", $list)
+                        return View("Users.Search.Mood.AverageMood")->with("minMax", $minMax)
                             ->with("timeFrom", $request->get("timeFrom"))->with("timeTo", $request->get("timeTo"))
                             ->with("dateFrom", $request->get("dateFrom"))->with("dateTo", $request->get("dateTo"))
                             ->with("week", $SearchMoodAI->dayWeek);
@@ -105,7 +110,7 @@ class SearchMoodController {
 //                print "<br><br><br><br>";
 
                 //print count($minMax["mood"]) . "/" . count($list) . "<br>";
-*/
+
             }
 
     }

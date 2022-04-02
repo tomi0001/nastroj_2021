@@ -54,7 +54,10 @@ class Mood extends Model
         $this->questions
             //->selectRaw("sum(TIMESTAMPDIFF (minute, moods.date_start , moods.date_end)) as longMood")
             //->selectRaw("  sum( unix_timestamp(moods.date_end) - unix_timestamp(moods.date_start) ) * moods.level_mood  as time ")
-            ->selectRaw(" moods.level_mood as level_mood ")
+          
+                 ->selectRaw("min(moods.level_mood) as minMood")
+            ->selectRaw("max(moods.level_mood) as maxMood")
+            ->selectRaw("count(moods.level_mood) as count")
             ->selectRaw(" (  sum(
 
                               CASE
@@ -132,21 +135,244 @@ class Mood extends Model
 
                END  )
 
-)as sum  ")
+)as mood  ")
+                            ->selectRaw(" (  sum(
 
-            ->selectRaw(" TIME_TO_SEC
-                                     (timediff(time( Date_add(date_start, INTERVAL - '$startDay' HOUR)) ,'$timeFrom') )  as debil")
-                                  //as debil")
-            ->selectRaw("  moods.level_nervousness  as level_nervousness ")
-            ->selectRaw("  moods.level_stimulation  as level_stimulation ")
-            //->selectRaw("  moods.date_start  as date_start ")
-            //->selectRaw("  moods.date_end  as date_end ")
-            ->selectRaw(" TIME_TO_SEC(timediff(time((Date_add(date_start, INTERVAL - '$startDay' HOUR) )),'$timeTo')) as date_start")
-            ->selectRaw("Date_add(date_end, INTERVAL - '$startDay' HOUR) as date_end")
+                              CASE
+
+                         WHEN   TIME_TO_SEC
+                         (
+                             timediff(
+                                 time(
+                                     Date_add(date_start, INTERVAL - '$startDay' HOUR)
+                                            )
+                                            ,
+                                 '$timeFrom')
+                                 )
+                                 <= 0
+                                 THEN (unix_timestamp(date_add(moods.date_end ,INTERVAL - '$startDay' HOUR) ) -  (unix_timestamp( CONCAT( date(Date_add(moods.date_start,INTERVAL - '$startDay' HOUR)),' ', '$timeFrom' )   )))
+
+
+
+                                 WHEN
+                                     TIME_TO_SEC
+                                     (
+                                         timediff(
+
+                                             time(
+                                                 Date_add(date_end, INTERVAL - '$startDay' HOUR)
+                                          ),
+                                          '$timeTo'
+
+
+                                 ))
+                                 >= 0 THEN
+                         (  (   unix_timestamp(CONCAT( date(Date_add(moods.date_end,INTERVAL - '$startDay' HOUR)),' ', '$timeTo' ) )) -  unix_timestamp( Date_add( moods.date_start,INTERVAL - '$startDay' HOUR) )   )
+
+                              ELSE  (unix_timestamp(date_add(moods.date_end,INTERVAL - '$startDay' HOUR))) - unix_timestamp(date_add(moods.date_start,INTERVAL - '$startDay' HOUR)) END
+
+
+                  * moods.level_anxiety ) /
+
+
+        sum(
+
+            CASE
+                         WHEN   TIME_TO_SEC
+        (
+            timediff(
+                time(
+                    Date_add(date_start, INTERVAL - '$startDay' HOUR)
+                                            )
+                                            ,
+                                 '$timeFrom')
+                                 )
+                                 <= 0
+                                 THEN   (unix_timestamp(Date_add(moods.date_end,INTERVAL - '$startDay' HOUR) ) -  (unix_timestamp( CONCAT( date(Date_add(moods.date_start,INTERVAL - '$startDay' HOUR)),' ', '$timeFrom' )   )))
+
+
+
+                                 WHEN
+                                     TIME_TO_SEC
+                                     (
+                                         timediff(
+
+                                             time(
+                                                 Date_add(date_end, INTERVAL - '$startDay' HOUR)
+                                            ),
+                                            '$timeTo'
+
+
+                                 )
+                                 )
+                                 >= 0 THEN
+        ((   unix_timestamp(CONCAT( date(Date_add(moods.date_end,INTERVAL - '$startDay' HOUR)),' ', '$timeTo' ) )) -  unix_timestamp(  Date_add(moods.date_start,INTERVAL - '$startDay' HOUR)  ) )
+
+                              ELSE  (unix_timestamp(date_add(moods.date_end,INTERVAL - '$startDay' HOUR))) - unix_timestamp(date_add(moods.date_start,INTERVAL - '$startDay' HOUR))
+
+
+               END  )
+
+)as anxienty  ")
+                            ->selectRaw(" (  sum(
+
+                              CASE
+
+                         WHEN   TIME_TO_SEC
+                         (
+                             timediff(
+                                 time(
+                                     Date_add(date_start, INTERVAL - '$startDay' HOUR)
+                                            )
+                                            ,
+                                 '$timeFrom')
+                                 )
+                                 <= 0
+                                 THEN (unix_timestamp(date_add(moods.date_end ,INTERVAL - '$startDay' HOUR) ) -  (unix_timestamp( CONCAT( date(Date_add(moods.date_start,INTERVAL - '$startDay' HOUR)),' ', '$timeFrom' )   )))
+
+
+
+                                 WHEN
+                                     TIME_TO_SEC
+                                     (
+                                         timediff(
+
+                                             time(
+                                                 Date_add(date_end, INTERVAL - '$startDay' HOUR)
+                                          ),
+                                          '$timeTo'
+
+
+                                 ))
+                                 >= 0 THEN
+                         (  (   unix_timestamp(CONCAT( date(Date_add(moods.date_end,INTERVAL - '$startDay' HOUR)),' ', '$timeTo' ) )) -  unix_timestamp( Date_add( moods.date_start,INTERVAL - '$startDay' HOUR) )   )
+
+                              ELSE  (unix_timestamp(date_add(moods.date_end,INTERVAL - '$startDay' HOUR))) - unix_timestamp(date_add(moods.date_start,INTERVAL - '$startDay' HOUR)) END
+
+
+                  * moods.level_nervousness ) /
+
+
+        sum(
+
+            CASE
+                         WHEN   TIME_TO_SEC
+        (
+            timediff(
+                time(
+                    Date_add(date_start, INTERVAL - '$startDay' HOUR)
+                                            )
+                                            ,
+                                 '$timeFrom')
+                                 )
+                                 <= 0
+                                 THEN   (unix_timestamp(Date_add(moods.date_end,INTERVAL - '$startDay' HOUR) ) -  (unix_timestamp( CONCAT( date(Date_add(moods.date_start,INTERVAL - '$startDay' HOUR)),' ', '$timeFrom' )   )))
+
+
+
+                                 WHEN
+                                     TIME_TO_SEC
+                                     (
+                                         timediff(
+
+                                             time(
+                                                 Date_add(date_end, INTERVAL - '$startDay' HOUR)
+                                            ),
+                                            '$timeTo'
+
+
+                                 )
+                                 )
+                                 >= 0 THEN
+        ((   unix_timestamp(CONCAT( date(Date_add(moods.date_end,INTERVAL - '$startDay' HOUR)),' ', '$timeTo' ) )) -  unix_timestamp(  Date_add(moods.date_start,INTERVAL - '$startDay' HOUR)  ) )
+
+                              ELSE  (unix_timestamp(date_add(moods.date_end,INTERVAL - '$startDay' HOUR))) - unix_timestamp(date_add(moods.date_start,INTERVAL - '$startDay' HOUR))
+
+
+               END  )
+
+)as voltage  ")
+                            ->selectRaw(" (  sum(
+
+                              CASE
+
+                         WHEN   TIME_TO_SEC
+                         (
+                             timediff(
+                                 time(
+                                     Date_add(date_start, INTERVAL - '$startDay' HOUR)
+                                            )
+                                            ,
+                                 '$timeFrom')
+                                 )
+                                 <= 0
+                                 THEN (unix_timestamp(date_add(moods.date_end ,INTERVAL - '$startDay' HOUR) ) -  (unix_timestamp( CONCAT( date(Date_add(moods.date_start,INTERVAL - '$startDay' HOUR)),' ', '$timeFrom' )   )))
+
+
+
+                                 WHEN
+                                     TIME_TO_SEC
+                                     (
+                                         timediff(
+
+                                             time(
+                                                 Date_add(date_end, INTERVAL - '$startDay' HOUR)
+                                          ),
+                                          '$timeTo'
+
+
+                                 ))
+                                 >= 0 THEN
+                         (  (   unix_timestamp(CONCAT( date(Date_add(moods.date_end,INTERVAL - '$startDay' HOUR)),' ', '$timeTo' ) )) -  unix_timestamp( Date_add( moods.date_start,INTERVAL - '$startDay' HOUR) )   )
+
+                              ELSE  (unix_timestamp(date_add(moods.date_end,INTERVAL - '$startDay' HOUR))) - unix_timestamp(date_add(moods.date_start,INTERVAL - '$startDay' HOUR)) END
+
+
+                  * moods.level_stimulation ) /
+
+
+        sum(
+
+            CASE
+                         WHEN   TIME_TO_SEC
+        (
+            timediff(
+                time(
+                    Date_add(date_start, INTERVAL - '$startDay' HOUR)
+                                            )
+                                            ,
+                                 '$timeFrom')
+                                 )
+                                 <= 0
+                                 THEN   (unix_timestamp(Date_add(moods.date_end,INTERVAL - '$startDay' HOUR) ) -  (unix_timestamp( CONCAT( date(Date_add(moods.date_start,INTERVAL - '$startDay' HOUR)),' ', '$timeFrom' )   )))
+
+
+
+                                 WHEN
+                                     TIME_TO_SEC
+                                     (
+                                         timediff(
+
+                                             time(
+                                                 Date_add(date_end, INTERVAL - '$startDay' HOUR)
+                                            ),
+                                            '$timeTo'
+
+
+                                 )
+                                 )
+                                 >= 0 THEN
+        ((   unix_timestamp(CONCAT( date(Date_add(moods.date_end,INTERVAL - '$startDay' HOUR)),' ', '$timeTo' ) )) -  unix_timestamp(  Date_add(moods.date_start,INTERVAL - '$startDay' HOUR)  ) )
+
+                              ELSE  (unix_timestamp(date_add(moods.date_end,INTERVAL - '$startDay' HOUR))) - unix_timestamp(date_add(moods.date_start,INTERVAL - '$startDay' HOUR))
+
+
+               END  )
+
+)as stimulation  ")
+
+
             ->selectRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) as dat_end" ));
-            //->selectRaw("DATE(Date_add(date_end,INTERVAL - '$startDay' HOUR)) as dat_end");
-            //->selectRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) as datStart " ))
-            //->selectRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) as dat_end" ));
 
     }
     public function createQuestionGroupDay(int $startDay,bool $ifAction,$actionOn) {
@@ -176,6 +402,12 @@ class Mood extends Model
     }
     public function havingActionOn() {
         //$this->questions->havingRaw("count(moods_actions.id_actions) <= 3");
+    }
+    public function setGroupWeek(int $startDay) {
+        $this->questions->groupBy(DB::Raw("YEARWEEK(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) ))) "));
+    }
+    public function setWhereWeek($dateFrom,$dateTo,int $startDay) {
+        $this->questions->whereRaw("moods.date_end BETWEEN '$dateFrom' AND '$dateTo'");
     }
     public function createQuestions(int $startDay) {
         $this->questions =  self::query();
@@ -618,6 +850,13 @@ class Mood extends Model
                 ->whereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) = '" . $date . "'" ))
                 ->orWhereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) = '" . $date . "'" ))
                 ->where("moods.id_users",$idUsers)->count();
+    }
+    public static function ifExistDAteMood(string $dateFrom, string $dateTo,int $idUsers,int $startDay) {
+        return self::whereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) >= '" . $dateFrom . "'" ))
+                ->whereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) <= '" . $dateTo . "'" ))
+                    ->where("moods.id_users",$idUsers)
+                    ->count();
+                
     }
     public static function selectValueMood(int $id,int $idUsers) {
         return self::selectRaw("round(moods.level_mood,2) as level_mood")

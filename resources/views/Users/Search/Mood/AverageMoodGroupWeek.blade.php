@@ -135,7 +135,7 @@
         @for ($i=0;$i < count($minMax["mood"]);$i++)
             <tr class="borderTrAverage">
                 <td style="text-align: center; color: #554701; font-size: 18px; " class="rightBorder">
-                    {{$minMax["dat_end"][$i]}}
+                    {{$minMax["dateStart"][$i]}} - {{$minMax["dateEnd"][$i]}}
                 </td>
 
 
