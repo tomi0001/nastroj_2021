@@ -68,11 +68,38 @@ class SearchMoodController {
                 return View("ajax.error")->with("error",$SearchMoodAI->errors);
             }
             else {
+             
                 $SearchMoodAI->setVariable($request);
                 $SearchMoodAI->setDayWeek($request);
                 $SearchMoodAI->setHour($request);
-                //$SearchMoodAI->setHourAI($request);
-                $minMax = $SearchMoodAI->createQuestions($request);
+//                $SearchMoodAI->setHourAI($request);
+//                if ($request->get("sumDay") == "on" and $request->get("divMinute") > 0) {
+//                    $SearchMoodAI->setHourSumDay($request);
+//                }
+//                else {
+                    //$SearchMoodAI->se
+                 
+                    //return;
+                if ($request->get("sumDay") == "on" and $request->get("divMinute") > 0) {
+                    $j = 0;
+                    for ($i=0;$i < count($SearchMoodAI->hourSum)-1;$i++) {
+                        //$minMax = $SearchMoodAI->createQuestions($request);
+                        $minMax[$i] = $SearchMoodAI->createQuestionsMinuteSumDay($request,$SearchMoodAI->hourSum[$i],$SearchMoodAI->hourSum[$i+1]);
+                        if (count($minMax[$i]) > 0) {
+                            $sum[$j] = $SearchMoodAI->sortSumDayMinute($minMax[$i],$SearchMoodAI->hourSum[$i],$SearchMoodAI->hourSum[$i+1]);
+                            $j++;
+                        }
+                    }
+                    if (empty($sum)) {
+                        goto END;
+                    }
+                     
+                    //$list = $SearchMoodAI->createQuestionsMinuteSumDay($request);
+                    //$minMax = $SearchMoodAI->createQuestions($request);
+                }
+                else {
+                    $minMax = $SearchMoodAI->createQuestions($request);
+                }
                 //$list = $SearchMoodAI->createQuestionsMinMax($request);
 //                print("<pre>");
 //                print_r($minMax);
@@ -90,6 +117,20 @@ class SearchMoodController {
                             ->with("dateFrom", $request->get("dateFrom"))->with("dateTo", $request->get("dateTo"))
                             ->with("week", $SearchMoodAI->dayWeek);
                     }
+                    else if ($request->get("sumDay") == "on" and $request->get("divMinute") == 0) {
+                        $sum = $SearchMoodAI->sortSumDay($minMax);
+                        return View("Users.Search.Mood.AverageMoodSumDay")->with("minMax", $sum)
+                            ->with("timeFrom", $request->get("timeFrom"))->with("timeTo", $request->get("timeTo"))
+                            ->with("dateFrom", $request->get("dateFrom"))->with("dateTo", $request->get("dateTo"))
+                            ->with("week", $SearchMoodAI->dayWeek);
+                    }
+                    else if ($request->get("sumDay") == "on" and $request->get("divMinute") >  0) {
+                        
+                        return View("Users.Search.Mood.AverageMoodSumDayMinute")->with("minMax", $sum)
+                            ->with("timeFrom", $request->get("timeFrom"))->with("timeTo", $request->get("timeTo"))
+                            ->with("dateFrom", $request->get("dateFrom"))->with("dateTo", $request->get("dateTo"))
+                            ->with("week", $SearchMoodAI->dayWeek)->with("startDay",Auth::User()->start_day);
+                    }
                     else {
                         return View("Users.Search.Mood.AverageMood")->with("minMax", $minMax)
                             ->with("timeFrom", $request->get("timeFrom"))->with("timeTo", $request->get("timeTo"))
@@ -98,6 +139,7 @@ class SearchMoodController {
                     }
                 }
                 else {
+                    END:
                     return View("ajax.error")->with("error",["Nic nie wyszukano"]);
                 }
 //                for ($i=0;$i < count($minMax["mood"]);$i++) {

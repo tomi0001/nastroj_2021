@@ -220,4 +220,22 @@ class Common {
             return false;
         }
     }
+    
+    public static function  sumHour($hour,$startDay) {
+        $sumHour = $hour[0] + $startDay;
+        if ($sumHour > 24) {
+            $sumHour = 24 - $sumHour;
+            if ($sumHour < 0) {
+                $sumHour = -$sumHour;
+            }
+        }
+        if (strlen($sumHour) == 1) {
+            $sumHour = "0" .$sumHour;
+        }
+        if (strlen($hour[1]) == 1) {
+            $hour[1] = "0" . $hour[1];
+        }
+
+        return $sumHour . ":" .  $hour[1] . ":00";
+    }
 }

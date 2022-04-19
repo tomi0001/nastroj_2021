@@ -22,9 +22,11 @@ class SearchMoodAI
     private $startDay;
     public $dateTo;
     public $dateFrom;
-    private $hourStart;
+    
     private $arrayWeek = [];
+    private $hourStart;
     private $hourEnd;
+    public $hourSum = [];
     public $boolHourEnd = false;
     public $listMood = [];
     public $dayWeek = [];
@@ -108,6 +110,7 @@ class SearchMoodAI
         $moodModel->setDateAI($this->dateFrom, $this->dateTo, $this->startDay);
         $moodModel->setWeekDay($this->dayWeek, $this->startDay);
         $moodModel->setHourTwo($this->hourStart, $this->hourEnd, $this->startDay);
+        $moodModel->moodsSelect();
         $moodModel->idUsers($this->idUsers);
         //$moodModel->setGroupDay($this->startDay);
 //        if ($request->get("groupWeek") == "on") {
@@ -116,7 +119,9 @@ class SearchMoodAI
 //            
 //        }
 //        else {
+        
             $moodModel->setGroupDay($this->startDay);
+        
         //}
         $moodModel->orderByAI();
         $list = $moodModel->questions->get();
@@ -131,7 +136,37 @@ class SearchMoodAI
         return $list;
     }
 
-    
+    public function createQuestionsMinuteSumDay(Request $request,$hourFrom,$hourEnd) {
+        $moodModel = new  MoodModel;
+        $moodModel->createQuestionAI($this->startDay,$hourFrom, $hourEnd);
+        $moodModel->setDateAI($this->dateFrom, $this->dateTo, $this->startDay);
+        $moodModel->setWeekDay($this->dayWeek, $this->startDay);
+        $moodModel->setHourTwo($hourFrom, $hourEnd, $this->startDay);
+        $moodModel->moodsSelect();
+        $moodModel->idUsers($this->idUsers);
+        //$moodModel->setGroupDay($this->startDay);
+//        if ($request->get("groupWeek") == "on") {
+//            $moodModel->setWhereWeek($this->dateFrom, $this->dateTo,$this->startDay);
+//            $moodModel->setGroupWeek($this->startDay);
+//            
+//        }
+//        else {
+        
+            $moodModel->setGroupDay($this->startDay);
+        
+        //}
+        $moodModel->orderByAI();
+        $list = $moodModel->questions->get();
+       
+            //$this->setWeekDays($this->dateFrom, $this->dateTo);
+            //$a = $this->filtrQuestionsGroupWeek4($list);
+
+            //var_dump($a);
+        //} else {
+          //  $this->filtrQuestions($list);
+        
+        return $list;
+    }
     
     
     public function createWeek(string $dateFrom,string $dateTo) {
@@ -152,6 +187,71 @@ class SearchMoodAI
         return $arrayWeek;
     }
     
+
+    public function sortSumDayMinute($list,$hourArrayFrom,$hourArrayTo) {
+        $arrayNew = [];
+        $sumMood = 0;
+        $sumAnxienty = 0;
+        $sumVoltage = 0;
+        $sumStimulation = 0;
+        $count = 0;
+        for ($i=0;$i < count($list);$i++) {
+            if ($i == 0) {
+                $arrayNew["dateStart"] = $list[$i]->dat_end;
+                //$arrayNew["hourStart"][0] = $hourArray[0];
+            }
+            if ($i == count($list)-1) {
+                $arrayNew["dateEnd"] = $list[$i]->dat_end;
+                //$arrayNew["hourEnd"][0] = $hourArray[$i];
+            }
+            $arrayNew["hourStart"] = $hourArrayFrom;
+            //if ($i == count($list)-1) {
+                $arrayNew["hourEnd"] = $hourArrayTo;
+            //}
+            $sumMood += $list[$i]->mood;
+            $sumAnxienty += $list[$i]->anxienty;
+            $sumVoltage += $list[$i]->voltage;
+            $sumStimulation += $list[$i]->stimulation;
+            $count += $list[$i]->count;
+        }
+        //$arrayNew["dateStart"] = $arrayWeek["dateStart"][$y];
+        //$arrayNew["dateEnd"] = $arrayWeek["dateEnd"][$y];
+        $arrayNew["mood"] = $sumMood /$i;
+        $arrayNew["anxienty"] = $sumAnxienty / $i;
+        $arrayNew["voltage"] =  $sumVoltage / $i;
+        $arrayNew["stimulation"] = $sumStimulation /  $i;
+        $arrayNew["count"] = $count;
+        return $arrayNew;
+    }
+    public function sortSumDay($list) {
+        $arrayNew = [];
+        $sumMood = 0;
+        $sumAnxienty = 0;
+        $sumVoltage = 0;
+        $sumStimulation = 0;
+        $count = 0;
+        for ($i=0;$i < count($list);$i++) {
+            if ($i == 0) {
+                $arrayNew["dateStart"][0] = $list[$i]->dat_end;
+            }
+            if ($i == count($list)-1) {
+                $arrayNew["dateEnd"][0] = $list[$i]->dat_end;
+            }
+            $sumMood += $list[$i]->mood;
+            $sumAnxienty += $list[$i]->anxienty;
+            $sumVoltage += $list[$i]->voltage;
+            $sumStimulation += $list[$i]->stimulation;
+            $count += $list[$i]->count;
+        }
+        //$arrayNew["dateStart"] = $arrayWeek["dateStart"][$y];
+        //$arrayNew["dateEnd"] = $arrayWeek["dateEnd"][$y];
+        $arrayNew["mood"][0] = $sumMood /$i;
+        $arrayNew["anxienty"][0] = $sumAnxienty / $i;
+        $arrayNew["voltage"][0] =  $sumVoltage / $i;
+        $arrayNew["stimulation"][0] = $sumStimulation /  $i;
+        $arrayNew["count"][0] = $count;
+        return $arrayNew;
+    }
     
     public function sortWeek($list,$arrayWeek) {
         
@@ -810,6 +910,51 @@ class SearchMoodAI
         }
 
     }
+    private function setHourArray(int $divMinute,$start,$end) {
+        $j = 0;
+        for ($i = $start;$i <= $end + $divMinute;$i += $divMinute * 60) {
+            $this->hourSum[$j] = date("H:i:s",$i);
+            $j++;
+        }
+    }
+//    public function setHourSumDay(Request $request) {
+//        if (($request->get("timeFrom") != "" and $request->get("timeTo") != "") ) {
+//            $timeFrom = explode(":",$request->get("timeFrom"));
+//            $timeTo = explode(":",$request->get("timeTo"));
+//            $hourFrom = $this->sumHour($timeFrom,$this->startDay);
+//            $hourTo = $this->sumHour($timeTo,$this->startDay);
+//            
+//            $this->hourStart = $hourFrom;
+//            $this->hourEnd = $hourTo;
+//
+//
+//
+//        }
+//        else if ($request->get("timeTo") != ""){
+//            $timeTo = explode(":",$request->get("timeTo"));
+//            $hourTo = $this->sumHour($timeTo,$this->startDay);
+//            $hourFrom = $this->sumHour(explode(":",$this->startDay . ":00:00"),$this->startDay);
+//            
+//            //$moodModel->setHourTo($hourTo);
+//            $this->hourStart = $hourFrom;
+//            $this->hourEnd = $hourTo;
+//        }
+//        else if ($request->get("timeFrom") != "" ) {
+//            $timeFrom = explode(":",$request->get("timeFrom"));
+//            $hourFrom = $this->sumHour($timeFrom,$this->startDay);
+//            $hourTo = $this->sumHour(explode(":",date("H:i:s",strtotime(  "2012-01-01 " . $this->startDay . ":00:00") - 60) ),$this->startDay);
+//            //$moodModel->setHourFrom($hourFrom);
+//            $this->hourStart = $hourFrom;
+//            $this->hourEnd = $hourTo;
+//
+//        }
+//        else {
+//            //print "jad";
+//            //print date("H:i:s",strtotime(  "2012-01-01 " . $this->startDay . ":00:00") - 60);
+//            $this->hourStart  = $this->sumHour(explode(":",$this->startDay . ":00:00"),$this->startDay);
+//            $this->hourEnd  = $this->sumHour(explode(":",date("H:i:s",strtotime(  "2012-01-01 " . $this->startDay . ":00:00") - 60)) ,$this->startDay);
+//        }
+//    }
     public function setHour(Request $request) {
         //$hour  = $this->startDay;
         if (($request->get("timeFrom") != "" and $request->get("timeTo") != "") ) {
@@ -845,6 +990,10 @@ class SearchMoodAI
             //print date("H:i:s",strtotime(  "2012-01-01 " . $this->startDay . ":00:00") - 60);
             $this->hourStart  = $this->sumHour(explode(":",$this->startDay . ":00:00"),$this->startDay);
             $this->hourEnd  = $this->sumHour(explode(":",date("H:i:s",strtotime(  "2012-01-01 " . $this->startDay . ":00:00") - 60)) ,$this->startDay);
+        }
+        if ($request->get("sumDay") == "on" and $request->get("divMinute") > 0) {
+            $this->setHourArray($request->get("divMinute"), strtotime($this->hourStart),strtotime($this->hourEnd));
+            //var_dump($this->hourSum);
         }
         //print $hourFrom;
 

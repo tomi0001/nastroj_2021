@@ -11,6 +11,7 @@ class Mood extends Model
 {
     use HasFactory;
     public $questions;
+    public $questionsMinute = [];
     public $questionsMinMax;
     public function createQuestionSumDay(int $startDay) {
         $this->questions =  self::query();
@@ -50,6 +51,7 @@ class Mood extends Model
 
     }
     public function createQuestionAI(int $startDay,$timeFrom,$timeTo) {
+       
         $this->questions =  self::query();
         $this->questions
             //->selectRaw("sum(TIMESTAMPDIFF (minute, moods.date_start , moods.date_end)) as longMood")
@@ -375,6 +377,8 @@ class Mood extends Model
             ->selectRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) as dat_end" ));
 
     }
+    
+ 
     public function createQuestionGroupDay(int $startDay,bool $ifAction,$actionOn) {
         $this->questions =  self::query();
 
@@ -674,6 +678,8 @@ class Mood extends Model
         $this->questions->where("moods.date_start",">=",$dateFrom);
         $this->questions->where("moods.date_end","<=",$dateTo);
     }
+  
+            
     public function setDateMinMaxAI($dateFrom,$dateTo,$startDay) {
         $this->questionsMinMax->where("moods.date_start",">=",$dateFrom);
         $this->questionsMinMax->where("moods.date_end","<",$dateTo);
