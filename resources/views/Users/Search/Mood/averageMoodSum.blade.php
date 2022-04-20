@@ -97,62 +97,65 @@
                 </td>
                 <td colspan="6">
                     <div style="clear:both;">
-                    <div class="dayWeekDiv" style="width: 23%;">
-                        <div class="dayOne" style="width: 82%;">
+                    <div class="dayWeekDiv" >
+                        <div class="dayOne" >
                             Poniedziałek
                         </div>
-                        <div class="dayOne2" style="width: 17%; ">
+                        <div class="dayOne2">
                             <input type='checkbox' name='day2' class='form-check-input' checked>
                         </div>
                     </div>
-                    <div class="dayWeekDiv" style="width: 18%; ">
-                        <div class="dayOne" style="width: 75%;">
+                   <div class="dayWeekDiv">
+                        <div class="dayOne" >
+                        Wtorek
+                        </div>
+                        <div class="dayOne2" >
+                            <input type='checkbox' name='day3' class='form-check-input' checked>
+                        </div>
+                    </div>
+                    <div class="dayWeekDiv">
+                        <div class="dayOne" >
                              Środa
                         </div>
-                        <div class="dayOne2" style="width: 20%; ">
+                        <div class="dayOne2">
                             <input type='checkbox' name='day4' class='form-check-input' checked>
                         </div>
                     </div>
-                    <div class="dayWeekDiv" style="width: 15%;">
-                        <div class="dayOne" style="width: 75%;">
+                         <div class="dayWeekDiv" >
+                        <div class="dayOne" >
+                         Czwartek
+                        </div>
+                        <div class="dayOne2" >
+                            <input type='checkbox' name='day5' class='form-check-input' checked>
+                        </div>
+                    </div>
+                    <div class="dayWeekDiv">
+                        <div class="dayOne" >
                             Piątek
                         </div>
                         <div class="dayOne2">
                             <input type='checkbox' name='day6' class='form-check-input' checked>
                         </div>
                     </div>
-                    <div class="dayWeekDiv">
-                        <div class="dayOne" style="width: 56%;">
-                             Niedziela
-                        </div>
-                        <div class="dayOne2" style="width: 20%; ">
-                            <input type='checkbox' name='day1' class='form-check-input' checked>
-                        </div>
-                    </div>
-                    <div class="dayWeekDiv" style="width: 23%;">
-                        <div class="dayOne" style="width: 82%;">
-                        Wtorek
-                        </div>
-                        <div class="dayOne2" style="width: 17%; ">
-                            <input type='checkbox' name='day3' class='form-check-input' checked>
-                        </div>
-                    </div>
-                    <div class="dayWeekDiv" style="width: 18%;">
-                        <div class="dayOne" style="width: 75%;">
-                         Czwartek
-                        </div>
-                        <div class="dayOne2" style="width: 20%; ">
-                            <input type='checkbox' name='day5' class='form-check-input' checked>
-                        </div>
-                    </div>
-                    <div class="dayWeekDiv" style="width: 19%;">
-                        <div class="dayOne" style="width: 60%;">
+                             
+                    <div class="dayWeekDiv" >
+                        <div class="dayOne" >
                             Sobota
                         </div>
                         <div class="dayOne2">
                             <input type='checkbox' name='day7' class='form-check-input' checked>
                         </div>
                     </div>
+                    <div class="dayWeekDiv">
+                        <div class="dayOne" >
+                             Niedziela
+                        </div>
+                        <div class="dayOne2" >
+                            <input type='checkbox' name='day1' class='form-check-input' checked>
+                        </div>
+                    </div>
+     
+              
                     </div>
 
                 </td>

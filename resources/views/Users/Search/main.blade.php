@@ -11,8 +11,8 @@
 <br>
 <div class="titleSearch">WYSZUKIWANIE</div>
 <div class="titleAllSettings" style="background-color: red;">
-    <a class="hrefSettingCursor" onclick="loadPageMood()"><div class="titleSettingsMood titleSettingsAll" style="margin-left: 90px;">WYSZUKIWANIE NASTROJU</DIV></a>
-    <a class="hrefSettingCursor" onclick="loadPageDrugs()"><div class="titleSettingsDrugs titleSettingsAll" style="margin-right: 90px;">WYSZKIWANIE PRODUKTÓW</DIV></a>
+    <a class="hrefSettingCursor" onclick="loadPageMood()"><div class="titleSettingsMood titleSettingsAll" >WYSZUKIWANIE NASTROJU</DIV></a>
+    <a class="hrefSettingCursor" onclick="loadPageDrugs()"><div class="titleSettingsDrugs titleSettingsAll" >WYSZKIWANIE PRODUKTÓW</DIV></a>
 </div>
 <div class="downPage">
     <div class="MenuPageMood pagepagepage pageMood" style="display: none;">

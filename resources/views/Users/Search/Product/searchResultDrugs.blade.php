@@ -173,11 +173,13 @@
                         </tr>
                         <tr>
                             <td colspan="7">
-                                <div class="hiddenMood descriptionShowDrugs{{$arrayList[$i]->id_usees}}" style="display: none;">
-                                    <div id="messageDescriptionshowDrugs{{$arrayList[$i]->id_usees}}">
+                                
+                                    <div class="hiddenMood descriptionShowDrugs{{$arrayList[$i]->id_usees}}" style="display: none;">
+                                        <div id="messageDescriptionshowDrugs{{$arrayList[$i]->id_usees}}">
 
+                                        </div>
                                     </div>
-                                </div>
+                                
                             </td>
                         </tr>
                         <tr >

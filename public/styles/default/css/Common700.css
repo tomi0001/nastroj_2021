@@ -10,7 +10,34 @@
                 min-height: 100%;
 
             }
-            #menuMain {
+                            div.divButton {
+            float: left;
+            padding: 10px;
+        }
+                div.titleDrugsShowAjax {
+
+            border-radius: 17px 17px 0px 0px;
+            min-height: 22px;
+        }
+        
+                        div.sumDrugs {
+           width: 400px;
+            height: 200px;
+
+            border-radius: 20px;
+            padding: 22px;
+            margin-left: auto;
+            margin-right: auto;    
+           
+        }
+                 div.hiddenMood {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+
+    text-align: center;
+}
+        #menuMain{
                 border-radius: 17px 17px 0px 0px;
 
                 width: 100%;

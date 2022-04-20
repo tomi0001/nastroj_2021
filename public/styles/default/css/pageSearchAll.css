@@ -46,12 +46,7 @@ div.dateSumDay {
         border-right-width: 2px;
         border-right-style: solid;
     }
-div.dayWeekDiv {
-    width: 25%;
-    float: left;
 
-
-}
 div.dayWeekDivAverage {
     border-radius: 23px;
     padding: 4px;
@@ -76,32 +71,8 @@ div.dayWeekDivAverageOne {
     font-size: 17px;
 
 }
-div.dayOne {
-    float: left;
-    width: 75%;
-}
-div.dayOne2 {
-    float: left;
 
 
-
-
-
-}
-div.dateSumDayMood {
-    height: 70px;
-    width: 31%;
-    float: left;
-    border-radius: 25px;
-    margin: 11px;
-}
-div.dateSumDayMoodAverageDayWeek {
-    min-height: 90px;
-    width: 31%;
-    float: left;
-    border-radius: 25px;
-    margin: 11px;
-}
     div.plusMinusButton {
     width: 40px;
     height: 40px;
@@ -145,7 +116,7 @@ div.divActionSum {
 
 }
 .dayMoodAverage {
-    width: 100%;
+    width: 95%;
 
     text-align: center;
     margin-left: auto;
