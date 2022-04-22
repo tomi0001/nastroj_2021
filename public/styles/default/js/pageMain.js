@@ -358,7 +358,7 @@ function addActionDay(url) {
 
 
 function addMood(url) {
-
+//alert(url);
 
     changeArrayAtHiddenAddMood();
     $.ajax({
@@ -388,6 +388,8 @@ function addMood(url) {
     
      $("#formAddMood").find(":hidden").filter(".typeMood").remove();
      $("#formAddMood").find(":hidden").filter(".typeMood").remove();
+     
+ 
 }
 
 function addActionPlaned(url) {

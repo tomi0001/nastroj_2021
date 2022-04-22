@@ -214,3 +214,24 @@ Route::get('/users.settings', [App\Http\Controllers\Settings\SettingsController:
 
 Route::get('/doctor', [App\Http\Controllers\HomeController::class, 'index2'])->name('doctor.main')->middleware('auth')->middleware('can:doctor');
 Route::get('/logout', [App\Http\Controllers\HomeController::class, 'logout'])->name('logout')->middleware('auth');
+
+
+
+
+
+
+
+
+
+//Route::get('/mysql/index', [App\Http\Controllers\MySQL\MySQLController::class, 'index'])->name('MySQL.tableUsers');
+                    
+//Route::get('/search/allDayMood', [App\Http\Controllers\Search\SearchMoodController::class, 'allDayMood'])->name('search.allDayMood')
+//                    ->middleware('auth')->middleware('can:users');
+//Route::get('/search/allSubstanceDay', [App\Http\Controllers\Search\SearchDrugsController::class, 'allSubstanceDay'])->name('search.allSubstanceDay')
+//                    ->middleware('auth')->middleware('can:users');
+//Route::get('/search/allActionDay', [App\Http\Controllers\Search\SearchMoodController::class, 'allActionDay'])->name('search.allActionDay')
+//                    ->middleware('auth')->middleware('can:users');
+//Route::get('/search/searchDrugsSubmit', [App\Http\Controllers\Search\SearchDrugsController::class, 'searchDrugsSubmit'])->name("search.searchDrugsSubmit")
+//        ->middleware('auth')->middleware('can:users');
+//Route::get('/search/averageMoodSumSubmit', [App\Http\Controllers\Search\SearchMoodController::class, 'averageMoodSumSubmit'])->name("search.averageMoodSumSubmit")
+//    ->middleware('auth')->middleware('can:users');

@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->engine = 'InnoDB';
             $table->id()->unsigned();
             $table->bigInteger("id_users")->unsigned()->nullable();
-            $table->foreign("id_users")->references("id")->on("users");
+            //$table->foreign("id_users")->references("id")->on("users");
             $table->string('name')->unique();
             $table->string('email')->nullable();
             $table->tinyInteger('if_true')->nullable();

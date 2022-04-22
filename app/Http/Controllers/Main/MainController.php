@@ -89,6 +89,7 @@ class MainController {
     }
     public function addProduct(Request $request) {
             
+            
             $Drugs = new Product;
             $error = $Drugs->setDate($request);
             if ($error == false) {
@@ -110,6 +111,7 @@ class MainController {
                 array_push($this->error, "Już wpisałeś ten lek");
             }
             else if ($request->get("nameProduct") == "") {
+                
                 $namePlaned = Planned_drug::showName($request->get("namePlaned"));
                 $showPlaned = Planned_drug::showPlanedOne($namePlaned->name);
                 if (!empty(Usee::selectLastDrugsPlaned($showPlaned->id_products,$Drugs->date) )) {
@@ -131,6 +133,7 @@ class MainController {
       
                 
             }
+             
             
     }
     public function addMood(Request $request) {
