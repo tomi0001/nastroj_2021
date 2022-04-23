@@ -54,8 +54,10 @@ class SettingsProductController {
         return view("Users.Settings.Product.PlanedDrug")->with("listProduct",$listProduct)->with("listPlaned",$listPlaned);
     }
     public function loadChangePlaned(Request $request) {
-        $namePlaned = Planned_drug::showName($request->get("id"));
-        $listPlaned = Planned_drug::showPlanedProduct($namePlaned->name);
+        $namePlaned = Planned_drug::showNameName($request->get("id"));
+        $listPlaned = Planned_drug::showPlanedOneSettings($namePlaned->name);
+        //print_r("<pre>");
+        //print_r($listPlaned);
         $listProduct = ModelProduct::selectListProduct(Auth::User()->id);
         return View("Users.Settings.Product.changeLoadPlaned")->with("listPlaned",$listPlaned)->with("listProduct",$listProduct)
                 ->with("id",$namePlaned->name);

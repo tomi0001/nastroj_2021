@@ -246,6 +246,7 @@
                         @endif
                     </td>
                 </tr>
+                @if ($list->type == "mood")
                 <tr class='moodClass{{$list->id}}'>
                     <td  colspan="7">
                         <div  class="hiddenMoodEdit description{{$list->id}}" style="display: none;">
@@ -256,16 +257,21 @@
                     </td>
 
                 </tr>
+                @else
                 <tr class='moodClass{{$list->id}}'>
                     <td  colspan="7">
+                        
                         <div  class="hiddenMoodEdit descriptionSleep{{$list->id}}" style="display: none;">
-                            <textarea  rows='6' class="descriptionSleep{{$list->id}} form-control " id="descriptionSleep{{$list->id}}" style="display: none; " ></textarea>
+                            <textarea  rows='6' class="descriptionSleep{{$list->id}} form-control " id="description{{$list->id}}" style="display: none; " ></textarea>
                             <button class="btn-mood main sleep" onclick="updateDescription('{{route('ajax.updateDescription')}}',{{$list->id}})">Modyfikuj opis</button>
                             <div id="messageDescription{{$list->id}}"></div>
+                            
                         </div>
                     </td>
 
                 </tr>
+                @endif
+                @if ($list->type == "sleep")
                 <tr class='moodClass{{$list->id}}'>
                     <td  colspan="7">
                         <div  class="hiddenMood descriptionShowSleep{{$list->id}}" style="display: none;">
@@ -275,6 +281,7 @@
                     </td>
 
                 </tr>
+                @else
                 <tr class='moodClass{{$list->id}}'>
                     <td  colspan="7">
                         <div  class="hiddenMood descriptionShowMood{{$list->id}}" style="display: none;">
@@ -284,6 +291,7 @@
                     </td>
 
                 </tr>
+                @endif
                 <tr class='moodClass{{$list->id}}'>
                     <td  colspan="7">
                         <div  class="hiddenMood actionShow{{$list->id}}" style="display: none;">

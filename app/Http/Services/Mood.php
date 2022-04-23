@@ -324,6 +324,7 @@ class Mood {
         $Mood->where("id",$id)->where("id_users",Auth::User()->id)->delete();
     }
     public function updateDescription(Request $request, int $idUsers) {
+        //print $request->get("description");
         $Mood = new MoodModel;
         $Mood->where("id",$request->get("id"))->where("id_users",Auth::User()->id)
                 ->update(["what_work"=>  ($request->get("description"))]);

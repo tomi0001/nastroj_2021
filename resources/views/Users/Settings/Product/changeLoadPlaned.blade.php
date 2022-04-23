@@ -18,6 +18,7 @@
 </form>
 <table class="table" id="tablePlaned">
     @foreach ($listPlaned as $list)
+
     <tr>
         <td  class="tdColorDrugs ">
                pozycja {{$loop->index+1}}

@@ -34,5 +34,10 @@ class Actions_day extends Model
         return self::selectRaw("date")->where("id_users",Auth::User()->id)->where("id_actions",$idAction)
                 ->where("created_at",">=",date("Y-m-d H:i:s", strtotime(date("Y-m-d H:i:s") )- 80))->first();
     }
+    public static function selectLastActionDate(int $idAction,string $date) {
+        //print $date;
+        return self::selectRaw("date")->where("id_users",Auth::User()->id)->where("id_actions",$idAction)->where("date",$date . ":00")
+                ->where("created_at",">=",date("Y-m-d H:i:s", strtotime(date("Y-m-d H:i:s") )- 80))->first();
+    }
 
 }

@@ -91,7 +91,10 @@ class Action {
         if (strtotime($request->get("date")) > strtotime(date("Y-m-d"))) {
             array_push($this->error,"Data akcji jest wieksza niż teraźniejsza data");
         }
-        else if ($request->get("actionDay") != "" and    !empty(Actions_day::selectLastAction($request->get("actionDay")) ) ) {
+        else if ($request->get("time") != "" and $request->get("actionDay") != "" and    !empty(Actions_day::selectLastActionDate($request->get("actionDay"),$request->get("date") . " " . $request->get("time")) ) ) {
+            array_push($this->error, "Już wpisałeś tą akcje");
+        }
+        else if ($request->get("time") == "" and $request->get("actionDay") != "" and    !empty(Actions_day::selectLastAction($request->get("actionDay")) ) ) {
             array_push($this->error, "Już wpisałeś tą akcje");
         } 
     }

@@ -18,7 +18,7 @@ use App\Models\Mood;
 use App\Models\Users_description;
 use App\Models\Planned_drug;
 use App\Models\Moods_action;
-
+/*
 class MySQLController {
     public function index() {
         set_time_limit(0);

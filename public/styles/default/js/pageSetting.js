@@ -791,6 +791,7 @@ function deletePlanedSubmit(url) {
 
 
 function loadChangePlaned(url) {
+    //alert($("select[name='namePlaned']").val());
     if ( $("select[name='namePlaned']").val() != "") {
             $.ajax({
                 url : url,
