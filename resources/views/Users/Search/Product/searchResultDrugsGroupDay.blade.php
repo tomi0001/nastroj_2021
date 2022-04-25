@@ -172,8 +172,11 @@
 
                 ->appends(['dateFrom'=>Request::get("dateFrom")])
                 ->appends(['dateTo'=>Request::get("dateTo")])
+                ->appends(['doseFrom'=>Request::get("doseFrom")])
+                ->appends(['doseTo'=>Request::get("doseTo")])
                 ->appends(['timeFrom'=>Request::get("timeFrom")])
                 ->appends(['timeTo'=>Request::get("timeTo")])
+                ->appends(['doseDay'=>'on'])
                 ->appends(["whatWork" => Request::get("whatWork")])
                 ->appends(['ifWhatWork'=>Request::get("ifWhatWork")])
                 ->appends(['sort2'=>Request::get("sort2")])

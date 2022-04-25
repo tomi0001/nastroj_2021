@@ -124,7 +124,7 @@ class SearchMood {
          //$this->count = $moodModel->questions->get()->count();
          return $moodModel->questions->get();
      }
-     private function searchAction(array $action) :bool {
+     private function searchAction( $action) :bool {
          for ($i = 0;$i < count($action);$i++) {
              if ($action[$i] != NULL) {
                  return true;
@@ -135,8 +135,8 @@ class SearchMood {
      public function createQuestionGroupDay(Request $request) {
          $startDay = $this->startDay;
          $moodModel = new  MoodModel;
-         $bool = $this->searchAction($request->get("action"));
-         $moodModel->createQuestionGroupDay($this->startDay,$bool,$request->get("ifAction"));
+         //$bool = $this->searchAction($request->get("action"));
+         $moodModel->createQuestionGroupDay($this->startDay);
          $moodModel->setDate($request->get("dateFrom"),$request->get("dateTo"),$this->startDay);
          $moodModel->setMood($request);
          $moodModel->setLongMood($request);

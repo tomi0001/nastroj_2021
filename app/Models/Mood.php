@@ -379,7 +379,7 @@ class Mood extends Model
     }
     
  
-    public function createQuestionGroupDay(int $startDay,bool $ifAction,$actionOn) {
+    public function createQuestionGroupDay(int $startDay) {
         $this->questions =  self::query();
 
 

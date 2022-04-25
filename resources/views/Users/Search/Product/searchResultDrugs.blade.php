@@ -234,6 +234,9 @@
                         ->appends(['nameGroup'=>Request::get('nameGroup')])
 
                 ->appends(['dateFrom'=>Request::get("dateFrom")])
+                ->appends(['doseFrom'=>Request::get("doseFrom")])
+                ->appends(['doseTo'=>Request::get("doseTo")])
+                
                 ->appends(['dateTo'=>Request::get("dateTo")])
                 ->appends(['timeFrom'=>Request::get("timeFrom")])
                 ->appends(['timeTo'=>Request::get("timeTo")])
