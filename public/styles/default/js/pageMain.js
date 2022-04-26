@@ -728,7 +728,7 @@ function editMoodDescription(url,id) {
     }
 }
 function editSleepDescription(url,id) {
-    alert(url);
+
     if ($(".descriptionSleep" + id).css("display") == "none" ) {
         
         $.ajax({
@@ -827,7 +827,7 @@ function showDescritionSleep(url,id) {
 
 
 function updateDescription(url,id) {
-alert($("#description"+id).val());
+
             $.ajax({
                 url : url,
                     method : "get",

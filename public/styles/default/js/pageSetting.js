@@ -1280,7 +1280,7 @@ function editProductSubmit() {
     }
     else {
         changeArrayFormEditProduct();
-        alert(arraySubstanceProductChange.length);
+     
          $.ajax({
                 url : urlArraySubmit[9],
                     method : "get",

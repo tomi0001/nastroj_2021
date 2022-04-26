@@ -58,7 +58,8 @@ class SearchMoodController {
         return  View("Users.Search.Mood.showAllDayMood")->with("sumAll",$sumAll);
     }
     public function allActionDay(Request $request) {
-        $sumAction = Mood::sumAction($request->get("date"),Auth::User()->start_day,  Auth::User()->id);
+
+        $sumAction = Mood::sumAction($request->get("date"),Auth::User()->id, Auth::User()->start_day);
         return View("Users.Search.Mood.showAllDayAction")->with("actionSum",$sumAction);
     }
     public function averageMoodSumSubmit(Request $request) {
