@@ -364,13 +364,61 @@ class Product {
     }
     public function sumAverageProduct(int $idProduct,int $id) {
         $dateEnd = Usee::selectDateIdUsee($id,Auth::User()->id);
+        
+                
         $listArray = Usee::selectOldUsee($idProduct,$dateEnd->date,Auth::User()->id,Auth::User()->start_day);
-        return $this->sortAverage($listArray);
+        $type = appProduct::selectTypeProduct($idProduct);
+        if ($type->type_of_portion == 4 or $type->type_of_portion == 5) {
+            return $this->sortAverageType4_5($listArray);
+        }
+        else {
+            return $this->sortAverage($listArray);
+        }
     }
     public function sumAverageSubstances(int $idSubstances,int $id) {
         $dateEnd = Usee::selectDateIdUsee($id,Auth::User()->id);
         $listArray = Usee::selectOldUseeSubstances($idSubstances,$dateEnd->date,Auth::User()->id,Auth::User()->start_day);
-        return $this->sortAverage($listArray);
+        $idProduct = appProduct::selectIdProduct($idSubstances);
+        $type = appProduct::selectTypeProduct($idProduct->id);
+        if ($type->type_of_portion == 4 or $type->type_of_portion == 5) {
+            return $this->sortAverageType4_5($listArray);
+        }
+        else {
+            return $this->sortAverage($listArray);
+        }
+    }
+    private function sortAverageType4_5($arrayList) {
+        $newArray = [];
+        $j = 0;
+        $bool = false;
+        for ($i=0;$i < count($arrayList);$i++)  { 
+            if ($i == 0) {
+                $newArray[$j]["dateStart"] = $arrayList[$i]->dat;
+                $newArray[$j]["portion"] = round(($arrayList[$i]->portion / $arrayList[$i]->how),2);
+                $newArray[$j]["how"] = $arrayList[$i]->how;
+                $newArray[$j]["type"] = $arrayList[$i]->type;
+                $newArray[$j]["dateEnd"] = $arrayList[$i]->dat;
+            }
+        
+
+            else if ((((strtotime($arrayList[$i-1]->dat) - strtotime($arrayList[$i]->dat)  > 146400 )   or ( ($arrayList[$i]->portion) != $arrayList[$i-1]->portion) ) or ( ($arrayList[$i]->how) != $arrayList[$i-1]->how) )      ) {
+                   $newArray[$j]["dateStart"] = $arrayList[$i-1]->dat;
+                   $j++;
+                   $newArray[$j]["dateEnd"] = $arrayList[$i]->dat;
+
+                   $newArray[$j]["portion"] = round(($arrayList[$i]->portion / $arrayList[$i]->how),2);
+                   $newArray[$j]["how"] =  $arrayList[$i]->how;
+                   $newArray[$j]["type"] = $arrayList[$i]->type;
+
+
+             }
+             if ($i == (count($arrayList) - 1)){
+                   $newArray[$j]["dateStart"] = $arrayList[$i]->dat;
+             }
+
+            
+       }
+       return $newArray;
     }
     private function sortAverage( $arrayList) {
         $newArray = [];

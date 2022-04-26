@@ -267,7 +267,14 @@ class Usee extends Model
         return self::join("products","products.id","usees.id_products")
                 ->join("substances_products","substances_products.id_products","products.id")
                 ->selectRaw("count(portion) as how")
-                ->selectRaw("'1' as type")
+                //->selectRaw("'1' as type")
+                ->selectRaw(" "
+                        . "( CASE "
+                        . " WHEN products.type_of_portion = 4  THEN ('4' ) "
+                        . " WHEN products.type_of_portion = 5  THEN ('5' ) "
+                        . "ELSE '1' "
+                        . " END)"
+                        . "  as type ")
                 ->selectRaw(" round(sum("
                         . " CASE "
                         . " WHEN substances_products.doseProduct is NULL  THEN (usees.portion ) "

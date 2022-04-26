@@ -14,6 +14,7 @@ class Substance extends Model
     public static function selectListSubstance(int $idUsers) {
         return self::selectRaw("id as id")->selectRaw("name as name")->where("id_users",$idUsers)->get();
     }
+    
     public static function showSettingsSubstance(int $id, int $idUsers) {
         return self::join("substances_groups","substances_groups.id_substances","substances.id")
                 ->join("groups","groups.id","substances_groups.id_groups")

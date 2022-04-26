@@ -18,6 +18,10 @@ class Product extends Model
     public static function selectIdNameProduct(string $name) {
         return self::selectRaw("id as id ")->where("name","like","%".$name."%")->get();
     }
+    public static function selectIdProduct(int $id) {
+        return self::join("substances_products","substances_products.id_products","products.id")
+                ->selectRaw("substances_products.id_products as id ")->where("substances_products.id_substances",$id)->first();
+    }
     public static function selectNameProduct(int $idProduct) {
         return self::selectRaw("name")
                 ->where("id_users", Auth::User()->id)
