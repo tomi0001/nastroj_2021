@@ -98,6 +98,23 @@ class Usee extends Model
                 break;
             case 'dose' : $this->questions->orderBy("usees.portion",$asc);
                 break;
+    
+
+
+        }
+    }
+    public function orderByGroupDay(string $asc,string $type) {
+
+        switch ($type) {
+
+            case 'date': $this->questions->orderBy("usees.date",$asc);
+                break;
+            case 'hour' : $this->questions->orderByRaw("time(usees.date) $asc");
+                break;
+            case 'product' : $this->questions->orderBy("usees.id_products",$asc);
+                break;
+            case 'dose' : $this->questions->orderBy("portion",$asc);
+                break;
 
 
         }

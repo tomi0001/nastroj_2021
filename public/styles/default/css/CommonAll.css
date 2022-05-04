@@ -88,7 +88,7 @@ div.sumDrugsAt {
             width: 25%;
             float: left;
             margin-bottom: 6px;
-            height: 30px;
+            min-height: 30px;
 
             font-size: 15px;
             font-weight: bold;
@@ -224,7 +224,7 @@ td.titleAction {
             width: 100%;
 
             margin-bottom: 3px;
-            height: 30px;
+            min-height: 30px;
             margin-top: 10px;
 
             font-size: 18px;

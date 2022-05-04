@@ -43,7 +43,7 @@ class Main {
             }
             else {
 
-                $this->listColor[$i] = Common::setColor($this->listMood[$i]->sum_mood);
+                $this->listColor[$i] = Common::setColor(round($this->listMood[$i]->sum_mood,3));
             }
         }
 

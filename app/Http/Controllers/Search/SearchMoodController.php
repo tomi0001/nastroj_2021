@@ -12,7 +12,23 @@ use App\Http\Services\SearchMood;
 use App\Http\Services\SearchMoodAI;
 use App\Models\Mood;
 use Auth;
+use \Illuminate\Pagination\Paginator;
+use IlluminatePaginationPaginator;
+use Illuminate\Support\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
+use IlluminateSupportCollection;
 class SearchMoodController {
+        public function paginate($items, $perPage = 5, $page = null, $options = [])
+
+    {
+
+        $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
+
+        $items = $items instanceof \Collection ? $items : Collection::make($items);
+
+        return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
+
+    }
     public function searchMoodSubmit(Request $request) {
         $SearchMood = new SearchMood;
         $SearchMood->checkError($request);
@@ -20,7 +36,8 @@ class SearchMoodController {
             return View("Users.Search.Mood.error")->with("errors",$SearchMood->errors);
         }
         else {
-            if ($request->get("groupDay") == "on") {
+            if ($request->get("groupDay") == "on" and  (empty($request->get("action")[0])  ) ) {
+                
                 $result = $SearchMood->createQuestionGroupDay($request);
                 if ($SearchMood->count > 0) {
                     $arrayPercent = $SearchMood->sortMoods($result);
@@ -28,6 +45,24 @@ class SearchMoodController {
                     $arrayPercent = [];
                 }
                 return View("Users.Search.Mood.searchResultMoodGroupDay")->with("arrayList", $result)->with("count", $SearchMood->count)->with("percent", $arrayPercent);
+            }
+            else if ($request->get("groupDay") == "on" and  (!empty($request->get("action"))  ) ) {
+                
+                $result = $SearchMood->createQuestion($request,true);
+                $newArray = $SearchMood->groupActionDay($result);
+                //$paginator = new LengthAwarePaginator($newArray, count($newArray), 15, 1);
+             
+                //$myCollectionObj = collect($newArray);
+
+                //$data = $this->paginate($myCollectionObj);
+                //$data->withPath(route('search.searchMoodSubmit'));
+                if ($SearchMood->count > 0) {
+                    $arrayPercent = $SearchMood->sortMoodsGroupAction($newArray);
+                } else {
+                    $arrayPercent = [];
+                }
+                return View("Users.Search.Mood.searchResultMoodGroupAction")->with("arrayList", $newArray)->with("count", $SearchMood->count)->with("percent", $arrayPercent);
+            
             }
             else if ($request->get("sumDay") == "on") {
                 $result = $SearchMood->createQuestionSumDay($request);

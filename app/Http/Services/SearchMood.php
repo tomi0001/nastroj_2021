@@ -146,7 +146,7 @@ class SearchMood {
          }
          if (!empty($request->get("action"))  ) {
 
-             $moodModel->searchActionGroup($request->get("action"),(array)$request->get("actionFrom"),(array)$request->get("actionTo"));
+             //$moodModel->searchAction($request->get("action"),(array)$request->get("actionFrom"),(array)$request->get("actionTo"));
          }
          if (($request->get("ifAction")) == "on" ) {
              //$moodModel->actionOn();
@@ -166,8 +166,9 @@ class SearchMood {
 //         }
          $moodModel->idUsers($this->idUsers);
          $moodModel->moodsSelect();
-
+         //if (empty($request->get("action"))  ) {
          $moodModel->setGroupDay(Auth::User()->start_day);
+         //}
 
          $moodModel->havingActionOn();
          //$moodModel->groupMoodAction();
@@ -182,7 +183,7 @@ class SearchMood {
          $this->count = $moodModel->questions->get()->count();
          return $moodModel->questions->paginate(15);
      }
-     public function createQuestion(Request $request) {
+     public function createQuestion(Request $request,$bool = false) {
          $startDay = $this->startDay;
          $moodModel = new  MoodModel;
          $moodModel->createQuestions($this->startDay);
@@ -215,11 +216,79 @@ class SearchMood {
              $moodModel->orderBy("desc",$request->get("sort"));
          }
          $this->count = $moodModel->questions->get()->count();
-         return $moodModel->questions->paginate(15);
+         if ($bool == false) {
+            return $moodModel->questions->paginate(15);
+         }
+         else {
+             return $moodModel->questions->get();
+         }
 
 
 
 
+     }
+     public function groupActionDay($list) {
+             $i = 0;
+             $j = 0;
+             $array =[];
+             $sumLong = 0;
+             $sumMood = 0;
+             $how = 0;
+             $sumAnxienty = 0;
+             $sumVolatge = 0;
+             $sumStimulation = 0;
+             $sumEpizodes = 0;
+         for ($i=0;$i < count($list);$i++) {
+
+             if ($i == 0) {
+
+                 $array[$j]["datEnd"] = $list[$i]->datEnd;
+      
+             }
+               if ($i != 0  and $list[$i]->datEnd != $list[$i-1]->datEnd ) {
+                 $array[$j]["count"] = $how;
+                 $array[$j]["mood"] = ($sumMood / $sumLong);
+                 $array[$j]["anxienty"] =$sumAnxienty / $sumLong;
+                 $array[$j]["voltage"] = $sumVolatge / $sumLong;
+                 $array[$j]["stimulation"] = $sumStimulation / $sumLong;
+                 $array[$j]["longMood"] = $sumLong;
+                 $array[$j]["epizodes_psychotik"] = $sumEpizodes;
+                 $array[$j]["id"] = $list[$i]->id;
+
+                 $j++;
+
+                 $array[$j]["datEnd"] = $list[$i]->datEnd;
+                 $sumMood = 0;
+                 $sumAnxienty = 0;
+                 $sumVolatge = 0;
+                 $sumStimulation = 0;
+                 $sumLong = 0;
+                 $how = 0;
+                 
+             }
+             
+                $sumMood += ($list[$i]->level_mood * $list[$i]->longMood);
+                $sumAnxienty += ($list[$i]->level_anxiety * $list[$i]->longMood);
+                $sumVolatge += ($list[$i]->level_nervousness * $list[$i]->longMood);
+                $sumStimulation += ($list[$i]->level_stimulation * $list[$i]->longMood);
+                $sumLong += $list[$i]->longMood;
+                $sumEpizodes += $list[$i]->epizodes_psychotik;
+
+                $how++;
+
+             if ($i == count($list)-1) {
+                  $array[$j]["count"] = $how;
+                 $array[$j]["mood"] = ($sumMood / $sumLong);
+                 $array[$j]["anxienty"] =$sumAnxienty / $sumLong;
+                 $array[$j]["voltage"] = $sumVolatge / $sumLong;
+                 $array[$j]["stimulation"] = $sumStimulation / $sumLong;
+                 $array[$j]["epizodes_psychotik"] = $sumEpizodes;
+                 $array[$j]["longMood"] = $sumLong;
+                 $array[$j]["id"] = $list[$i]->id;
+             }
+             
+         }
+         return $array;
      }
      private function searchWhatWork(array $arrayWork) {
 
@@ -245,6 +314,13 @@ class SearchMood {
          $array = $this->setPercent($array);
          return $array;
      }
+     public function sortMoodsGroupAction($list) {
+         $array = $this->changeArrayGroupAction($list);
+
+         array_multisort($array,SORT_DESC);
+         //$array = $this->setPercent($array);
+         return $array;
+     }
      private function setPercent(array $list) {
          $percent = $list[0]["longMood"];
          for ($i=0;$i < count($list);$i++) {
@@ -256,6 +332,17 @@ class SearchMood {
              }
          }
          return $list;
+     }
+     private function changeArrayGroupAction($list) {
+         $array = [];
+         $i = 0;
+         for($i=0;$i < count($list);$i++) {
+             $array[$i]["longMood"] = 0;
+             $array[$i]["id"] = 0;
+             $array[$i]["percent"] = 0;
+             $i++;
+         }
+         return $array;
      }
      private function changeArray($list) {
          $array = [];

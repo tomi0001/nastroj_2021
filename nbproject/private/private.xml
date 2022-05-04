@@ -16,6 +16,7 @@
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Search/SearchDrugsController.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/main.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Usee.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Services/Product.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/AverageMoodSumDay.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/routes/web.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/addMood.blade.php</file>
@@ -35,12 +36,14 @@
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSettingwidth1810.css</file>
             <file>file:/var/www/html/nastroj_2021/database/migrations/2014_10_12_000000_create_users_table.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/js/pageSetting.js</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/searchResultMoodSumDay.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSearchwidth700.css</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Product/searchResultDrugsSumDay.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/addAction.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Actions_day.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Substance.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/js/pageSearch.js</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/searchResultMoodGroupAction.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Product/searchResultDrugsGroupDay.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/config/database.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Mood.php</file>

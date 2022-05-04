@@ -594,69 +594,70 @@ class Mood extends Model
     public function searchActionGroup(array $action,array $actionFrom,array $actionTo)
     {
 
-//        $this->questions
-//            ->select(DB::Raw(" name from actions where actions.name like '%" . $action[0] . "%'"));
-            //->where(function ($query) use ($action, $actionFrom, $actionTo) {
+        $this->questions
+            //->select(DB::Raw(" name from actions where actions.name like '%" . $action[0] . "%'"))
+                ->selectRaw(" name ")
+            ->where(function ($query) use ($action, $actionFrom, $actionTo) {
 
 
 
-//            for ($i = 0; $i < count($action); $i++) {
-//                if ($action[$i] == "NULL") {
-//                    continue;
-//                }
-//                if ($action[$i] != "" and (!empty($actionFrom) and (!empty($actionTo))) and ($actionFrom[$i] != "" and $actionTo[$i] != "")) {
-//                    $query->orwhereRaw("("
-//                        . "actions.name like '%" . $action[$i] . "%'  and  (" .
-//                        "(CASE "
-//                        . " WHEN moods_actions.percent_executing is NULL && moods_actions.minute_exe is  NULL THEN (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) ) "
-//                        . " WHEN moods_actions.minute_exe is NOT NULL  THEN (moods_actions.minute_exe)    "
-//                        . " WHEN moods_actions.percent_executing is NOT NULL THEN     (  moods_actions.percent_executing / 100) * (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) )  "
-//                        . " "
-//                        . " END)  >='" . $actionFrom[$i] . "')"
-//                        . "and ("
-//                        . "(CASE "
-//                        . " WHEN moods_actions.percent_executing is NULL && moods_actions.minute_exe is  NULL THEN (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) ) "
-//                        . " WHEN moods_actions.minute_exe is NOT NULL  THEN (moods_actions.minute_exe)    "
-//                        . " WHEN moods_actions.percent_executing is NOT NULL THEN     (  moods_actions.percent_executing / 100) * (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) )  "
-//                        . " "
-//                        . " END)  <='" . $actionTo[$i] . "')"
-//                        . ""
-//                        . ")"
-//
-//                    );
-//
-//                } else if ($action[$i] != "" and ((!empty($actionTo))) and ($actionTo[$i] != "")) {
-//                    $query->orwhereRaw("("
-//                        . "actions.name like '%" . $action[$i] . "%'  and  (("
-//                        . " CASE "
-//                        . " WHEN moods_actions.percent_executing is NULL && moods_actions.minute_exe is  NULL THEN (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) ) "
-//                        . " WHEN moods_actions.minute_exe is NOT NULL  THEN (moods_actions.minute_exe)    "
-//                        . " WHEN moods_actions.percent_executing is NOT NULL THEN     (  moods_actions.percent_executing / 100) * (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) )  "
-//                        . ""
-//                        . " END)"
-//                        . ")  <= '" . $actionTo[$i] . "')"
-//                        . " ");
-//                } else if ($action[$i] != "" and (!empty($actionFrom)) and ($actionFrom[$i] != "")) {
-//                    $query->orwhereRaw("("
-//                        . "actions.name like '%" . $action[$i] . "%'  and  (("
-//                        . " CASE "
-//                        . " WHEN moods_actions.percent_executing is NULL && moods_actions.minute_exe is  NULL THEN (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) ) "
-//                        . " WHEN moods_actions.minute_exe is NOT NULL  THEN (moods_actions.minute_exe)    "
-//                        . " WHEN moods_actions.percent_executing is NOT NULL THEN     (  moods_actions.percent_executing / 100) * (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) )  "
-//                        . " "
-//                        . " END)"
-//                        . ")  >= '" . $actionFrom[$i] . "')"
-//                        . " ");
-//                } else if ($action[$i] != "") {
-//
-//                    $query->orwhereRaw("actions.name like '%" . $action[$i] . "%'");
-//                }
-//
-//
-//            }
-//            //$query->where('actions.id','moods_actions.id_actions');
-//            //$query->where('moods.id','moods_actions.id_moods');
-//        });
+            for ($i = 0; $i < count($action); $i++) {
+                if ($action[$i] == "NULL") {
+                    continue;
+                }
+                if ($action[$i] != "" and (!empty($actionFrom) and (!empty($actionTo))) and ($actionFrom[$i] != "" and $actionTo[$i] != "")) {
+                    $query->orwhereRaw("("
+                        . "actions.name like '%" . $action[$i] . "%'  and  (" .
+                        "(CASE "
+                        . " WHEN moods_actions.percent_executing is NULL && moods_actions.minute_exe is  NULL THEN (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) ) "
+                        . " WHEN moods_actions.minute_exe is NOT NULL  THEN (moods_actions.minute_exe)    "
+                        . " WHEN moods_actions.percent_executing is NOT NULL THEN     (  moods_actions.percent_executing / 100) * (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) )  "
+                        . " "
+                        . " END)  >='" . $actionFrom[$i] . "')"
+                        . "and ("
+                        . "(CASE "
+                        . " WHEN moods_actions.percent_executing is NULL && moods_actions.minute_exe is  NULL THEN (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) ) "
+                        . " WHEN moods_actions.minute_exe is NOT NULL  THEN (moods_actions.minute_exe)    "
+                        . " WHEN moods_actions.percent_executing is NOT NULL THEN     (  moods_actions.percent_executing / 100) * (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) )  "
+                        . " "
+                        . " END)  <='" . $actionTo[$i] . "')"
+                        . ""
+                        . ")"
+
+                    );
+
+                } else if ($action[$i] != "" and ((!empty($actionTo))) and ($actionTo[$i] != "")) {
+                    $query->orwhereRaw("("
+                        . "actions.name like '%" . $action[$i] . "%'  and  (("
+                        . " CASE "
+                        . " WHEN moods_actions.percent_executing is NULL && moods_actions.minute_exe is  NULL THEN (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) ) "
+                        . " WHEN moods_actions.minute_exe is NOT NULL  THEN (moods_actions.minute_exe)    "
+                        . " WHEN moods_actions.percent_executing is NOT NULL THEN     (  moods_actions.percent_executing / 100) * (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) )  "
+                        . ""
+                        . " END)"
+                        . ")  <= '" . $actionTo[$i] . "')"
+                        . " ");
+                } else if ($action[$i] != "" and (!empty($actionFrom)) and ($actionFrom[$i] != "")) {
+                    $query->orwhereRaw("("
+                        . "actions.name like '%" . $action[$i] . "%'  and  (("
+                        . " CASE "
+                        . " WHEN moods_actions.percent_executing is NULL && moods_actions.minute_exe is  NULL THEN (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) ) "
+                        . " WHEN moods_actions.minute_exe is NOT NULL  THEN (moods_actions.minute_exe)    "
+                        . " WHEN moods_actions.percent_executing is NOT NULL THEN     (  moods_actions.percent_executing / 100) * (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) )  "
+                        . " "
+                        . " END)"
+                        . ")  >= '" . $actionFrom[$i] . "')"
+                        . " ");
+                } else if ($action[$i] != "") {
+
+                    $query->orwhereRaw("actions.name like '%" . $action[$i] . "%'");
+                }
+
+
+            }
+            //$query->where('actions.id','moods_actions.id_actions');
+            //$query->where('moods.id','moods_actions.id_moods');
+        });
     }
     public function setDate($dateFrom,$dateTo,$startDay) {
         if ($dateFrom != "" and $dateFrom != "undefined")  {
