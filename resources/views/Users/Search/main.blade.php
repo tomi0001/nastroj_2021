@@ -34,7 +34,7 @@
             <div id="generatePdfMood"  class="hrefMood hrefSettingCursor" onmouseover="selectMenuMood('generatePdfMood')" onmouseout="unSelectMenuMood('generatePdfMood')" onclick="changeDateAction()">
                 WYGENERUJ PDF DLA NASTROJI
             </div>
-            <div id="sumActionDay"  class="hrefMood hrefSettingCursor" onmouseover="selectMenuMood('sumActionDay')" onmouseout="unSelectMenuMood('sumActionDay')" onclick="changeDateAction()">
+            <div id="sumActionDay"  class="hrefMood hrefSettingCursor" onmouseover="selectMenuMood('sumActionDay')" onmouseout="unSelectMenuMood('sumActionDay')" onclick="sumActionDay()">
                 WYSZUKAJ AKCJE CAŁODNIOWĄ
             </div>
 
@@ -67,7 +67,7 @@
 
         </div>
     <div class="pagePageMood pagepage bodyMoodPage" id="sumActionDayDiv" style="display: none;">
-
+        @include ('Users.Search.Mood.searchActionDay')
         </div>
 
 

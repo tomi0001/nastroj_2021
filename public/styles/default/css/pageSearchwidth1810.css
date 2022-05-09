@@ -82,6 +82,11 @@
 
 
     }
+    #sumActionDayDiv {
+        min-height: 200px;
+        width: 1000px;
+        margin-top: 15px;
+    }
         div.dateSumDayMood {
     height: 90px;
     width: 31%;

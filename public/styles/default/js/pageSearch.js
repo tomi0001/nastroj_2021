@@ -259,6 +259,7 @@ function searchMood() {
     if ($("#searchMoodDiv").css("display") == "none" ) {
         $("#searchMoodDiv").css("display","block");
         $("#averageMoodSumDiv").css("display","none");
+        $("#sumActionDayDiv").css("display","none");
 
     }
     else {
@@ -271,6 +272,7 @@ function averageMoodSum() {
     if ($("#averageMoodSumDiv").css("display") == "none" ) {
         $("#averageMoodSumDiv").css("display","block");
         $("#searchMoodDiv").css("display","none");
+        $("#sumActionDayDiv").css("display","none");
         //$("#changeNameActionChange").css("display","none");
         //$("#changeDateActionChange").css("display","none");
 
@@ -279,6 +281,23 @@ function averageMoodSum() {
 
         $("#averageMoodSumDiv").css("display","none");
     }
+}
+
+
+function sumActionDay() {
+    sessionStorage.setItem('searchType', "sumActionDay");
+    if ($("#sumActionDayDiv").css("display") == "none" ) {
+        $("#sumActionDayDiv").css("display","block");
+        $("#searchMoodDiv").css("display","none");
+        $("#averageMoodSumDiv").css("display","none");
+        //$("#changeNameActionChange").css("display","none");
+        //$("#changeDateActionChange").css("display","none");
+
+    }
+    else {
+
+        $("#sumActionDayDiv").css("display","none");
+    }    
 }
 
 function searchDrugs() {
@@ -300,7 +319,9 @@ function addFieldWhatWork() {
 function addFieldAction() {
     $("#idAction").append($("#idActionCopy").html());
 }
-
+function addFieldActionDay() {
+    //$("#idActionDay").append($("#idActionDayCopy").html());
+}
 
 function addFieldnameProduct() {
     $("#idNameProduct").append($("#idNameProductCopy").html());
@@ -312,6 +333,16 @@ function addFieldnameGroup() {
     $("#idNameGroup").append($("#idNameGroupCopy").html());
 }
 
+$(document).ready(function() { //wywołanie funkcji po załadowaniu całej strony
+	$("#addNewAction").click(function() {
+            //alert('ddd');
+            $("#idActionDay").append($("#idActionDayCopy").html());
+		//var test = $(this).val(); //przypisanie do zmiennej test wartości pola radio
+		//$("div.desc").hide(); //ukrycie wszystkich elementów div klasy .desc
+		//$("#"+test).show(); //wyświetlenie konkretnego elementu div dla danego "radio"
+	}); 
+}); // koniec funkcji ready
+
 
 function setFunction() {
     selectMenu();
@@ -322,6 +353,8 @@ function setFunction() {
         case 'searchDrugs': searchDrugs();
             break;
         case 'averageMoodSum': averageMoodSum();
+            break;
+        case 'sumActionDay': sumActionDay();
             break;
     }
 }
@@ -338,7 +371,7 @@ function resetSession() {
     sessionStorage.removeItem('searchType');
 }
 function selectMenu() {
-    if (sessionStorage.getItem('searchType') == 'searchMood' || sessionStorage.getItem('searchType') == 'averageMoodSum' ) {
+    if (sessionStorage.getItem('searchType') == 'searchMood' || sessionStorage.getItem('searchType') == 'averageMoodSum'  || sessionStorage.getItem('searchType') == 'sumActionDay' ) {
         loadPageMood();
     }
     else if (sessionStorage.getItem('searchType') == 'searchDrugs') {

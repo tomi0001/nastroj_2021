@@ -29,6 +29,14 @@ class SearchMoodController {
         return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
 
     }
+    public function searchActionDay(Request $request) {
+        $SearchMood = new SearchMood;
+         $SearchMood->setDayWeek($request);
+        $result = $SearchMood->createQuestionActionDay($request);
+       
+         return View("Users.Search.Mood.searchResultActionDay")->with("arrayList",$result)->with("count",$SearchMood->count);
+        
+    }
     public function searchMoodSubmit(Request $request) {
         $SearchMood = new SearchMood;
         $SearchMood->checkError($request);
@@ -54,14 +62,14 @@ class SearchMoodController {
              
                 //$myCollectionObj = collect($newArray);
 
-                //$data = $this->paginate($myCollectionObj);
-                //$data->withPath(route('search.searchMoodSubmit'));
+                $data = $this->paginate($newArray,15);
+                $data->withPath(route('search.searchMoodSubmit'));
                 if ($SearchMood->count > 0) {
                     $arrayPercent = $SearchMood->sortMoodsGroupAction($newArray);
                 } else {
                     $arrayPercent = [];
                 }
-                return View("Users.Search.Mood.searchResultMoodGroupAction")->with("arrayList", $newArray)->with("count", $SearchMood->count)->with("percent", $arrayPercent);
+                return View("Users.Search.Mood.searchResultMoodGroupAction")->with("arrayList", $data)->with("count", $SearchMood->count)->with("percent", $arrayPercent);
             
             }
             else if ($request->get("sumDay") == "on") {

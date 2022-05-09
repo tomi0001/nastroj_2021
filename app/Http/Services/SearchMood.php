@@ -7,6 +7,7 @@ namespace App\Http\Services;
 use Illuminate\Http\Request;
 use App\Models\User as MUser;
 use App\Models\Mood as MoodModel;
+use App\Models\Actions_day;
 use App\Models\Moods_action as MoodAction;
 use App\Http\Services\Calendar;
 use Hash;
@@ -19,6 +20,7 @@ class SearchMood {
      private $startDay;
      public $question;
      public $count;
+     public $dayWeek = [];
      //private $dateFro
      function __construct($bool = 0) {
         if ($bool == 0) {
@@ -182,6 +184,47 @@ class SearchMood {
          }
          $this->count = $moodModel->questions->get()->count();
          return $moodModel->questions->paginate(15);
+     }
+    public function setDayWeek(Request $request)
+    {
+        if ($request->get("day1") == "on") {
+            array_push($this->dayWeek, 1);
+        }
+        if ($request->get("day2") == "on") {
+            array_push($this->dayWeek, 2);
+        }
+        if ($request->get("day3") == "on") {
+            array_push($this->dayWeek, 3);
+        }
+        if ($request->get("day4") == "on") {
+            array_push($this->dayWeek, 4);
+        }
+        if ($request->get("day5") == "on") {
+            array_push($this->dayWeek, 5);
+        }
+        if ($request->get("day6") == "on") {
+            array_push($this->dayWeek, 6);
+        }
+        if ($request->get("day7") == "on") {
+            array_push($this->dayWeek, 7);
+        }
+    }
+     public function createQuestionActionDay(Request $request) {
+         $startDay = $this->startDay;
+         $Actions_day = new  Actions_day;
+         $Actions_day->createQuestionActionDay($this->startDay);
+         $Actions_day->setDate($request->get("dateFrom"),$request->get("dateTo"),$this->startDay);
+         $Actions_day->setWeekDay($this->dayWeek, $this->startDay);
+         $this->setHour($Actions_day,$request);
+         if (!empty($request->get("action"))  ) {
+
+             $Actions_day->searchAction($request->get("action"));
+         }
+         $Actions_day->idUsers($this->idUsers);
+         $Actions_day->orderBy("desc","date");
+         $this->count = $Actions_day->questions->get()->count();
+         return $Actions_day->questions->paginate(15);
+         //$moodModel->setDate($request->get("dateFrom"),$request->get("dateTo"),$this->startDay);
      }
      public function createQuestion(Request $request,$bool = false) {
          $startDay = $this->startDay;
@@ -381,6 +424,7 @@ class SearchMood {
 
 
      }
+
 
 
 }

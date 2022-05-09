@@ -20,6 +20,10 @@ div.dateSumDay {
     border-radius: 25px;
 
 }
+div.actionDay {
+    min-height: 70px;
+    padding: 20px;
+}
     div.averageSumDiv {
         width: 96%;
 

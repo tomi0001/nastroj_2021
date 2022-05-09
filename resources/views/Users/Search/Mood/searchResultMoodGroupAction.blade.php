@@ -165,7 +165,11 @@
 
         @endfor
         <div class="d-flex justify-content-center">
-
+       @php
+                $arrayList->appends(Request::except(['_tooken']))
+                ->links();
+            @endphp
+            {{$arrayList}}
         </div>
 
     </div>

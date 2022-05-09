@@ -186,7 +186,8 @@ Route::get('/search/searchMain', [App\Http\Controllers\Search\SearchController::
                     ->middleware('auth')->middleware('can:users');
 //Route::get("/search/searchMoodAjaxSubmit",[App\Http\Controllers\Search\SearchMoodController::class, 'searchMoodAjaxSubmit'])
 //        ->name("search.searchMoodAjaxSubmit")->middleware('auth')->middleware('can:users');
-
+Route::get('/search/searchActionDay', [App\Http\Controllers\Search\SearchMoodController::class, 'searchActionDay'])
+        ->name("search.searchActionDay")->middleware('auth')->middleware('can:users');
 Route::get('/search/searchMoodSubmit', [App\Http\Controllers\Search\SearchMoodController::class, 'searchMoodSubmit'])->name('search.searchMoodSubmit')
                     ->middleware('auth')->middleware('can:users');
 Route::get('/search/allDayMood', [App\Http\Controllers\Search\SearchMoodController::class, 'allDayMood'])->name('search.allDayMood')
