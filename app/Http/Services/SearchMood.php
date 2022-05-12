@@ -359,7 +359,7 @@ class SearchMood {
                  $array[$j]["longMood"] = $sumLong;
                  $array[$j]["id"] = $list[$i]->id;
              }
-             $this->countDays = $j;
+             $this->countDays = $j+1;
          }
          return $array;
      }
