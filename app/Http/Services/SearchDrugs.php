@@ -61,6 +61,12 @@ class SearchDrugs {
 //             $Usee->setWhatWorkOn();
 //         }
          $Usee->setGroupIdProduct();
+         if ($request->get("sort2") == "asc") {
+             $Usee->orderByGroupDay("asc",$request->get("sort"));
+         }
+         else {
+             $Usee->orderByGroupDay("desc",$request->get("sort"));
+         }
          //$Usee->setGroupDescription();
          $this->count = $Usee->questions->get()->count();
          return $Usee->questions->paginate(15);

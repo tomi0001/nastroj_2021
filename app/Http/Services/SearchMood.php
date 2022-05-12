@@ -21,6 +21,7 @@ class SearchMood {
      public $question;
      public $count;
      public $dayWeek = [];
+     public $countDays = 0;
      //private $dateFro
      function __construct($bool = 0) {
         if ($bool == 0) {
@@ -270,6 +271,35 @@ class SearchMood {
 
 
      }
+     
+     
+     
+     public function sumDays($list) {
+        $newArray = [];
+        $sumMood = 0;
+        $sumAnxienty = 0;
+        $sumVolatge = 0;
+        $sumStimulation = 0;
+        $sumEpizodes = 0;
+        $count = 0;
+         for ($i=0;$i < count($list);$i++) {
+             $sumMood += $list[$i]["mood"];
+             $sumAnxienty += $list[$i]["anxienty"];
+             $sumVolatge += $list[$i]["voltage"];
+             $sumStimulation += $list[$i]["stimulation"];
+             $sumEpizodes += $list[$i]["epizodes_psychotik"];
+             $count += $list[$i]["count"];
+         }
+         $newArray["mood"] = $sumMood / $this->countDays;
+         $newArray["anxienty"] = $sumAnxienty / $this->countDays;
+         $newArray["voltage"] = $sumVolatge / $this->countDays;
+         $newArray["stimulation"] = $sumStimulation / $this->countDays;
+         $newArray["epizodes_psychotik"] = $sumEpizodes;
+         $newArray["count"] = $count;
+         return $newArray;
+     }
+     
+     
      public function groupActionDay($list) {
              $i = 0;
              $j = 0;
@@ -290,10 +320,10 @@ class SearchMood {
              }
                if ($i != 0  and $list[$i]->datEnd != $list[$i-1]->datEnd ) {
                  $array[$j]["count"] = $how;
-                 $array[$j]["mood"] = ($sumMood / $sumLong);
-                 $array[$j]["anxienty"] =$sumAnxienty / $sumLong;
-                 $array[$j]["voltage"] = $sumVolatge / $sumLong;
-                 $array[$j]["stimulation"] = $sumStimulation / $sumLong;
+                 $array[$j]["mood"] = round(($sumMood / $sumLong),2);
+                 $array[$j]["anxienty"] =round($sumAnxienty / $sumLong,2);
+                 $array[$j]["voltage"] = round($sumVolatge / $sumLong,2);
+                 $array[$j]["stimulation"] = round($sumStimulation / $sumLong,2);
                  $array[$j]["longMood"] = $sumLong;
                  $array[$j]["epizodes_psychotik"] = $sumEpizodes;
                  $array[$j]["id"] = $list[$i]->id;
@@ -329,7 +359,7 @@ class SearchMood {
                  $array[$j]["longMood"] = $sumLong;
                  $array[$j]["id"] = $list[$i]->id;
              }
-             
+             $this->countDays = $j;
          }
          return $array;
      }

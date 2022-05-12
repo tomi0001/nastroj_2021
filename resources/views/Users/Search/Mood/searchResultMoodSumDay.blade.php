@@ -25,7 +25,7 @@
     <div class='tableSearchMood' id="ajaxData">
         <div class="titleSearchResult titleSearchResultMood">WYSZUKIWANIE</div>
 
-        @for ($i=0;$i < count($arrayList);$i++)
+      
 
 
                 <div class="moodSearchResult">
@@ -197,42 +197,41 @@
                             <td></td>
                             <td ></td>
                             <td class="showMood start" colspan="2" ">
-                            <span class="left">{{date("Y-m-d",strtotime($arrayList[$i]->minMood) )}}</span>
-                            <span class="right">{{date("Y-m-d",strtotime($arrayList[$i]->maxMood) )}}</span>
+                            
                             <br>
-                            <div class="cell{{\App\Http\Services\Common::setColor($arrayList[$i]->level_mood)}} level" style="width: 100%">&nbsp;</div>
+                            <div class="cell{{\App\Http\Services\Common::setColor($arrayList["mood"])}} level" style="width: 100%">&nbsp;</div>
                             <div style="text-align: center; width: 70%;">
-                                <span class="HourMood">{{\App\Http\Services\Common::calculateHour($arrayList[$i]->minMood,$arrayList[$i]->maxMood)}}</span>
+                                
                             </div>
                             </td>
                             <td class="sizeTableMood showMood ">
 
-                                <span class="fontMood" >{{$arrayList[$i]->level_mood}}</span>
+                                <span class="fontMood" >{{round($arrayList["mood"],3)}}</span>
 
                             </td>
                             <td class="sizeTableMood showMood ">
-                                <span class="fontMood"  >{{$arrayList[$i]->level_anxiety}}</span>
-
-                            </td>
-                            <td class="sizeTableMood showMood ">
-
-                                <span class="fontMood"  >{{$arrayList[$i]->level_nervousness}}</span>
+                                <span class="fontMood"  >{{round($arrayList["anxienty"],3)}}</span>
 
                             </td>
                             <td class="sizeTableMood showMood ">
 
-                                <span class="fontMood"  >{{$arrayList[$i]->level_stimulation}}</span>
+                                <span class="fontMood"  >{{round($arrayList["voltage"],3)}}</span>
 
                             </td>
                             <td class="sizeTableMood showMood ">
 
-                                <span class="fontMood"  >{{$arrayList[$i]->count}}</span>
+                                <span class="fontMood"  >{{round($arrayList["stimulation"],3)}}</span>
 
                             </td>
                             <td class="sizeTableMood showMood ">
 
-                                @if ($arrayList[$i]->epizodes_psychotik != 0)
-                                    <span class="MessageError" >{{$arrayList[$i]->epizodes_psychotik}} epizodów psychotycznych</span>
+                                <span class="fontMood"  >{{$arrayList["count"]}}</span>
+
+                            </td>
+                            <td class="sizeTableMood showMood ">
+
+                                @if ($arrayList["epizodes_psychotik"] != 0)
+                                    <span class="MessageError" >{{$arrayList["epizodes_psychotik"]}} epizodów psychotycznych</span>
                                 @else
                                     <span  > Brak </span>
                                 @endif
@@ -242,49 +241,15 @@
                             <td></td>
                         </tr>
 
-                        <tr >
-                            <td  colspan="11">
-                                <div  class="hiddenMood descriptionShowMood{{$arrayList[$i]->id}}" style="display: none;">
 
-                                    <div id="messageDescriptionshowMood{{$arrayList[$i]->id}}" class="descriptionModShowMood"></div>
-                                </div>
-                            </td>
-
-                        </tr>
-                        <tr >
-                            <td  colspan="11">
-                                <div  class="hiddenMood actionShow{{$arrayList[$i]->id}}" style="display: none;">
-
-                                    <div id="messageactionShow{{$arrayList[$i]->id}}" class="actionShowModShow">
-
-
-                                    </div>
-                                    <br>
-                                </div>
-                            </td>
-
-                        </tr>
-                        <tr >
-                            <td  colspan="11">
-                                <div  class="hiddenMood drugsShow{{$arrayList[$i]->id}}" style="display: none;">
-
-                                    <div id="messagedrugsShow{{$arrayList[$i]->id}}" class="drugssShowModShow">
-
-
-                                    </div>
-                                    <br>
-                                </div>
-                            </td>
-
-                        </tr>
-                        @if ($i == count($arrayList)-1 or $arrayList[$i]->datEnd != $arrayList[$i+1]->datEnd)
+                       
 
                     </table>
                     <div class="dayMoodEnd"></div>
                 </div>
-            @endif
+            
 
-        @endfor
+     
 
 
     </div>

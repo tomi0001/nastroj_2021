@@ -194,7 +194,7 @@
 
 
 
-
+                    </table>
 
 
 
@@ -206,6 +206,7 @@
                         ->appends(['nameSubstance'=>Request::get('nameSubstance')])
                         ->appends(['nameProduct'=>Request::get('nameProduct')])
                         ->appends(['nameGroup'=>Request::get('nameGroup')])
+                        ->appends(["sumDay" => Request::get('sumDay')])
 
                 ->appends(['dateFrom'=>Request::get("dateFrom")])
                 ->appends(['dateTo'=>Request::get("dateTo")])

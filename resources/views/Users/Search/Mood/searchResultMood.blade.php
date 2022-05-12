@@ -46,7 +46,7 @@
                             @else
                             <button  style="  width: 200px;" type="button" class="buttonSearch disable "  disabled >nie było akcji</button>
                             @endif
-                            
+                            <a href="{{route("users.main")}}/{{str_replace("-","/",$arrayList[$i]->datEnd)}}" target="_blank"><button class="buttonSearch btn-mood  day" >IDŹ DO DNIA</button></a>
                         </div>
                         <div style="clear: both;"></div>
                         <br>

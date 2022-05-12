@@ -34,6 +34,7 @@
                     <div class="dayDrugs">Dzień  {{$arrayList[$i]->dat}}</div>
                     <div style="margin-left: 5%; margin-right: 5%; margin-top: 2%; margin-bottom: 1%;">
                         <div class="divAtButtonDay">
+                            <div class="firstDiv">
                             <button  style=" float: left; margin-right: 10px;"  class="btn-drugs   mood" onclick="showDayMood('{{route("search.allDayMood")}}','{{$arrayList[$i]->dat}}')">Wartość nastroji dla dnia</button>
                             @if (count(\App\Models\Usee::listSubstnace($arrayList[$i]->dat, Auth::User()->id,Auth::User()->start_day)) > 0)
                                 <button style=" float: left; margin-right: 10px;" class="btn-drugs   drugs" onclick="showDaySubstance('{{route("search.allSubstanceDay")}}','{{$arrayList[$i]->dat}}')">Substancje dla danego dnia</button>
@@ -46,7 +47,10 @@
                             @else
                                 <button style=" float: left; margin-right: 10px; width: 200px;" type="button" class="disable "  disabled >nie było akcji</button>
                             @endif
-
+                            </div>
+                            <div class="secondDiv">
+                                <a href="{{route("users.main")}}/{{str_replace("-","/",$arrayList[$i]->dat)}}"  target="_blank"><button class="buttonSearch btn-mood  day" >IDŹ DO DNIA</button></a>
+                            </div>
                         </div>
                         <div style="clear: both;"></div>
                         <br>

@@ -58,6 +58,7 @@ class SearchMoodController {
                 
                 $result = $SearchMood->createQuestion($request,true);
                 $newArray = $SearchMood->groupActionDay($result);
+                
                 //$paginator = new LengthAwarePaginator($newArray, count($newArray), 15, 1);
              
                 //$myCollectionObj = collect($newArray);
@@ -73,10 +74,11 @@ class SearchMoodController {
             
             }
             else if ($request->get("sumDay") == "on") {
-                $result = $SearchMood->createQuestionSumDay($request);
-
+                $result = $SearchMood->createQuestion($request,true);
+                $newArray = $SearchMood->groupActionDay($result);
+                $sumDays = $SearchMood->sumDays($newArray);
                 return View("Users.Search.Mood.searchResultMoodSumDay")
-                    ->with("arrayList", $result)->with("dateFrom",$request->get("dateFrom"))->with("dateTo",$request->get("dateTo"))
+                    ->with("arrayList", $sumDays)->with("dateFrom",$request->get("dateFrom"))->with("dateTo",$request->get("dateTo"))
                     ->with("timeFrom",$request->get("timeFrom"))->with("timeTo",$request->get("timeTo"))
                     ->with("moodFrom",$request->get("moodFrom"))->with("moodTo",$request->get("moodTo"))
                     ->with("anxientyFrom",$request->get("anxientyFrom"))->with("anxientyTo",$request->get("anxientyTo"))

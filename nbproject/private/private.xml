@@ -47,6 +47,7 @@
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/addAction.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Actions_day.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Substance.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/searchResultActionDay.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/js/pageSearch.js</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/searchResultMoodGroupAction.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Product/searchResultDrugsGroupDay.blade.php</file>
