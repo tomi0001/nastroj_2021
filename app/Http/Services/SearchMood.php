@@ -316,6 +316,7 @@ class SearchMood {
              if ($i == 0) {
 
                  $array[$j]["datEnd"] = $list[$i]->datEnd;
+                 $array[$j]["dayweek"] = $list[$i]->dayweek;
       
              }
                if ($i != 0  and $list[$i]->datEnd != $list[$i-1]->datEnd ) {
@@ -327,10 +328,12 @@ class SearchMood {
                  $array[$j]["longMood"] = $sumLong;
                  $array[$j]["epizodes_psychotik"] = $sumEpizodes;
                  $array[$j]["id"] = $list[$i]->id;
+                 
 
                  $j++;
 
                  $array[$j]["datEnd"] = $list[$i]->datEnd;
+                 $array[$j]["dayweek"] = $list[$i]->dayweek;
                  $sumMood = 0;
                  $sumAnxienty = 0;
                  $sumVolatge = 0;
@@ -358,6 +361,7 @@ class SearchMood {
                  $array[$j]["epizodes_psychotik"] = $sumEpizodes;
                  $array[$j]["longMood"] = $sumLong;
                  $array[$j]["id"] = $list[$i]->id;
+                 
              }
              $this->countDays = $j+1;
          }

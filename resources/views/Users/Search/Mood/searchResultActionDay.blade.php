@@ -31,7 +31,37 @@
                 
                 @if ($i == 0 or $arrayList[$i]->dateDay != $arrayList[$i-1]->dateDay)
                 <div class="moodSearchResult">
-                    <div class="dayMood">Dzień  {{$arrayList[$i]->dateDay}}</div>  
+                    <div class="dayMood">Dzień  {{$arrayList[$i]->dateDay}}
+                    
+                        @switch ($arrayList[$i]->dayweek)
+                        
+                        
+
+                            @case (0)
+                                Poniedziałek
+                                @break
+                            @case (1)
+                                Wtorek
+                                @break
+                            @case (2)
+                                Środa
+                                @break
+                            @case (3)
+                                Czwartek
+                                @break
+                            @case (4)
+                                Piątek
+                                @break
+                            @case (5)
+                                Sobota
+                                @break
+                            @case (6)
+                                Niedziela
+                                @break
+                            
+                        @endswitch
+                        
+                    </div>  
                     <div style="margin-left: 5%; margin-right: 5%; margin-top: 2%; margin-bottom: 1%;">
                          <div class="divAtButtonDay">
                             <button  class=" buttonSearch btn-mood  mood" onclick="showDayMood('{{route("search.allDayMood")}}','{{$arrayList[$i]->dateDay}}')">Wartość nastroji dla dnia</button>

@@ -16,7 +16,10 @@ class Actions_day extends Model
                         ->selectRaw("actions_days.date as date")
                         ->selectRaw("actions.name as name")
                         ->selectRaw("actions.level_pleasure as level_pleasure")
-                        ->selectRaw(DB::Raw("(DATE(IF(HOUR(    actions_days.date) >= '" . $startDay . "', actions_days.date,Date_add(actions_days.date, INTERVAL - 1 DAY) )) ) as dateDay " ));
+                        ->selectRaw(DB::Raw("(DATE(IF(HOUR(    actions_days.date) >= '" . $startDay . "', actions_days.date,Date_add(actions_days.date, INTERVAL - 1 DAY) )) ) as dateDay " ))
+                        ->selectRaw(DB::Raw("WEEKDAY(DATE(IF(HOUR(    actions_days.date) >= '" . $startDay . "', actions_days.date,Date_add(actions_days.date, INTERVAL - 1 DAY) )) ) as dayweek " ));
+                        //->selectRaw(DB::Raw("WEEKDAY((DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) )) as dayweek" ));
+                        
     }
     public function setWeekDay(array $week,int $startDay) {
         //$this->questions->whereRaw("DAYOFWEEK(moods.date_end)",$week);

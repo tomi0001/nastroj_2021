@@ -57,13 +57,18 @@
   if (count($arrayJson) > 0) {
   echo json_encode($arrayJson); 
   }
-  
+  else {
+      echo 0;
+  }
   ?>
 </script>
     <script type="application/json" id="jsonLenght{{$idMood}}">
   <?php
   if (count($arrayJson) > 0) {
   echo count($arrayJson["idMood"]) ;
+  }
+  else {
+      echo 0;
   }
   ?>
 </script>  
@@ -83,6 +88,7 @@
       .indexOf(m[3].toUpperCase()) >= 0;
 };
     $("#hideActions{{$idMood}}").keyup( function(e) {
+        
       if ($("#hideActions{{$idMood}}").val() == "") {
           $('.actionMain{{$idMood}}').show();
           return;

@@ -241,6 +241,7 @@ $(document).ready(function(){
       .indexOf(m[3].toUpperCase()) >= 0;
 };
     $("#hideActions").keyup( function(e) {
+        
       if ($("#hideActions").val() == "") {
           $('.actionMainAll').show();
           return;
@@ -262,6 +263,7 @@ $(document).ready(function(){
       .indexOf(m[3].toUpperCase()) >= 0;
 };
     $("#hideActionsAction").keyup( function(e) {
+        
       if ($("#hideActionsAction").val() == "") {
           $('.actionMainAllAction').show();
           return;
