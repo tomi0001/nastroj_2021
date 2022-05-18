@@ -20,9 +20,12 @@ class SearchMood {
      private $startDay;
      public $question;
      public $count;
+     public $dateFrom;
+     public $dateTo;
      public $dayWeek = [];
      public $countDays = 0;
      //private $dateFro
+     
      function __construct($bool = 0) {
         if ($bool == 0) {
             $this->idUsers = Auth::User()->id;
@@ -51,6 +54,20 @@ class SearchMood {
         }
          *
          */
+     }
+     public function setDate($dateFrom,$dateTo) {
+         if ($dateFrom != "") {
+             $this->dateFrom = $dateFrom;
+         }
+         else {
+             $this->dateFrom = MoodModel::selecFirstMoods()->date_start;
+         }
+         if ($dateTo != "") {
+             $this->dateTo = $dateTo;
+         }
+         else {
+             $this->dateTo = MoodModel::selectLastMoods()->date_end;
+         }
      }
      public function checkError(Request $request) {
         if (($request->get("moodFrom") != "") and ($request->get("moodFrom") < -20 or $request->get("moodFrom") > 20  or  ( (string)(float) $request->get("moodFrom") !== $request->get("moodFrom")  ) ))   {

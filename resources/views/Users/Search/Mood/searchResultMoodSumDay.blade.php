@@ -150,6 +150,12 @@
                                 </div>
                             </div>
                         </div>
+                        
+                        
+                        
+                        @include ('Users.Main.showActionSum')
+                        
+                        
                     <table>
 
                         <thead >
@@ -189,7 +195,7 @@
                         </tr>
                         </thead>
 
-
+                       
 
 
 

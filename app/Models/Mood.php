@@ -796,6 +796,9 @@ class Mood extends Model
     public static function selectLastMoods() {
         return Mood::selectRaw("SUBSTRING((date_end),1,16) as date_end")->where("id_users",Auth::User()->id)->orderBy("date_end","DESC")->first();
     }
+    public static function selecFirstMoods() {
+        return Mood::selectRaw("SUBSTRING((date_start),1,16) as date_start")->where("id_users",Auth::User()->id)->orderBy("date_start")->first();
+    }
     public static function checkTimeExist($dateStart,$dateEnd) {
         return self::where("date_start","<=",$dateEnd)->where("date_end",">",$dateStart)->where("id_users",Auth::User()->id)->first();
     }
@@ -856,6 +859,35 @@ class Mood extends Model
                     ->orWhereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) = '" . $date . "'" ));
                 })
                 
+                ->groupBy("actions.id")
+                ->get();
+    }
+    public static function sumActionAll(string $dateFrom, string $dateTo, int $idUsers, int $startDay) {
+        return self::join("moods_actions","moods_actions.id_moods","moods.id")
+                ->join("actions","actions.id","moods_actions.id_actions")
+                ->selectRaw("actions.name as name")
+                ->selectRaw("actions.level_pleasure as level_pleasure")
+                                ->selectRaw(" sum(round("
+                        . " CASE "
+                        . " WHEN moods_actions.percent_executing is NULL && moods_actions.minute_exe is  NULL THEN (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) ) "
+                        . " WHEN moods_actions.minute_exe is NOT NULL  THEN (moods_actions.minute_exe)    "
+                        . " WHEN moods_actions.percent_executing is NOT NULL THEN     (  moods_actions.percent_executing / 100) * (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) )  "
+                        . "ELSE 1 "
+                        . " END))"
+                        . "  as sum ")
+                ->where("moods.id_users",$idUsers)
+                //->whereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) = '" . $date . "'" ))
+                //->orWhereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) = '" . $date . "'" ))
+                
+                 ->where(function ($query) use ($dateFrom,$startDay) {
+                    $query->whereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) >= '" . $dateFrom . "'" ))
+                    ->orWhereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) >= '" . $dateFrom . "'" ));
+                })
+                
+                 ->where(function ($query) use ($dateTo,$startDay) {
+                    $query->whereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) < '" . $dateTo . "'" ))
+                    ->orWhereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) < '" . $dateTo . "'" ));
+                })
                 ->groupBy("actions.id")
                 ->get();
     }

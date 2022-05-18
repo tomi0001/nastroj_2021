@@ -70,6 +70,7 @@
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/PlanedDrug.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/ajax/showDrugs.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/AverageMood.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/ajax/editActionMood.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Search/SearchController.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/Common1810.css</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showAction.blade.php</file>

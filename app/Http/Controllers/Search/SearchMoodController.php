@@ -77,6 +77,8 @@ class SearchMoodController {
                 $result = $SearchMood->createQuestion($request,true);
                 $newArray = $SearchMood->groupActionDay($result);
                 $sumDays = $SearchMood->sumDays($newArray);
+                $SearchMood->setDate($request->get("dateFrom"),$request->get("dateTo"));
+                $sumAction = Mood::sumActionAll($SearchMood->dateFrom,$SearchMood->dateTo,Auth::User()->id, Auth::User()->start_day);
                 return View("Users.Search.Mood.searchResultMoodSumDay")
                     ->with("arrayList", $sumDays)->with("dateFrom",$request->get("dateFrom"))->with("dateTo",$request->get("dateTo"))
                     ->with("timeFrom",$request->get("timeFrom"))->with("timeTo",$request->get("timeTo"))
@@ -85,7 +87,8 @@ class SearchMoodController {
                     ->with("voltageFrom",$request->get("voltageFrom"))->with("voltageTo",$request->get("voltageTo"))
                     ->with("stimulationFrom",$request->get("stimulationFrom"))->with("stimulationTo",$request->get("stimulationTo"))
                     ->with("longMoodFrom",$request->get("longMoodHourFrom") . ":" . $request->get("longMoodMinuteFrom"))
-                    ->with("longMoodTo",$request->get("longMoodHourTo") . ":" . $request->get("longMoodMinuteTo"));
+                    ->with("longMoodTo",$request->get("longMoodHourTo") . ":" . $request->get("longMoodMinuteTo"))
+                    ->with("actionSum",$sumAction);
             }
             else {
                 $result = $SearchMood->createQuestion($request);
