@@ -37,6 +37,23 @@ class SearchMoodController {
          return View("Users.Search.Mood.searchResultActionDay")->with("arrayList",$result)->with("count",$SearchMood->count);
         
     }
+    public function searchSleepSubmit(Request $request) {
+        $SearchMood = new SearchMood;
+        $SearchMood->checkErrorSleep($request);
+        if (count($SearchMood->errors) > 0) {
+            return View("Users.Search.Mood.error")->with("errors",$SearchMood->errors);
+        }
+        else {
+            $result = $SearchMood->createQuestionSleep($request);
+            if ($SearchMood->count > 0) {
+                 $arrayPercent = $SearchMood->sortMoods($result);
+            } else {
+                 $arrayPercent = [];
+            }
+            return View("Users.Search.Mood.searchResultSleep")->with("arrayList", $result)->with("count", $SearchMood->count)->with("percent", $arrayPercent);
+            
+        }
+    }
     public function searchMoodSubmit(Request $request) {
         $SearchMood = new SearchMood;
         $SearchMood->checkError($request);

@@ -200,6 +200,8 @@ Route::get('/search/searchDrugsSubmit', [App\Http\Controllers\Search\SearchDrugs
         ->middleware('auth')->middleware('can:users');
 Route::get('/search/averageMoodSumSubmit', [App\Http\Controllers\Search\SearchMoodController::class, 'averageMoodSumSubmit'])->name("search.averageMoodSumSubmit")
     ->middleware('auth')->middleware('can:users');
+Route::get('/search/searchSleepSubmit', [App\Http\Controllers\Search\SearchMoodController::class, 'searchSleepSubmit'])->name('search.searchSleepSubmit')
+                    ->middleware('auth')->middleware('can:users');
 
 
 Route::get('/search/back', [App\Http\Controllers\Search\SearchController::class, 'back'])->name('search.back')

@@ -192,6 +192,7 @@ function levelMoodSubmit() {
 
 
 function levelMood() {
+    
     sessionStorage.setItem('settingType', "levelMood");
     if ($("#levelMoodAdd").css("display") == "none" ) {
         

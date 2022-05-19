@@ -414,6 +414,32 @@ class Mood extends Model
     public function setWhereWeek($dateFrom,$dateTo,int $startDay) {
         $this->questions->whereRaw("moods.date_end BETWEEN '$dateFrom' AND '$dateTo'");
     }
+    public function whereEpizodes($workingFrom,$workingTo) {
+        if ($workingFrom != "") {
+              $this->questions->where("moods.epizodes_psychotik",">=",$workingFrom);
+        }
+        if ($workingTo != "") {
+              $this->questions->where("moods.epizodes_psychotik","<=",$workingTo);
+        }
+        
+    }
+    public function createQuestionsSleep(int $startDay) {
+        $this->questions =  self::query();
+        $this->questions->selectRaw("moods.date_start as date_start")
+                        ->selectRaw("moods.id as id")
+                        ->selectRaw("moods.date_end as date_end")
+                        ->selectRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) as datStart " ))
+                        ->selectRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) as datEnd" ))
+                        ->selectRaw(DB::Raw("WEEKDAY((DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) )) as dayweek" ))
+                        ->selectRaw("(TIMESTAMPDIFF (minute, date_start , date_end)) as longMood")
+                        ->selectRaw("moods.epizodes_psychotik as epizodes_psychotik")
+                        ->selectRaw("moods.what_work as what_work");
+                        
+                        
+                        
+                        
+                        
+    }
     public function createQuestions(int $startDay) {
         $this->questions =  self::query();
         $this->questions->leftjoin("moods_actions","moods_actions.id_moods","moods.id")
@@ -463,6 +489,9 @@ class Mood extends Model
     }
     public function moodsSelect() {
         $this->questions->where("moods.type","mood");
+    }
+    public function sleepSelect() {
+        $this->questions->where("moods.type","sleep");
     }
     public function setHourAI($hourFrom,$hourTo,$startDay)
     {
@@ -719,6 +748,29 @@ class Mood extends Model
          }
          if ($request->get("stimulationTo") != "" and $request->get("stimulationTo") != "undefined") {
              $this->questions->where("moods.level_stimulation","<=",$request->get("stimulationTo"));
+         }
+     }
+     public function setLongSleep(Request $request) {
+         $timeFrom = 0;
+         $timeTo = 0;
+         if ($request->get("longSleepHourFrom") != "" )  {
+             $timeFrom += $request->get("longSleepHourFrom") * 60;
+         }
+         if ($request->get("longSleepMinuteFrom") != ""  )  {
+             $timeFrom += $request->get("longSleepMinuteFrom");
+         }
+         if (($request->get("longSleepHourFrom") != "" or $request->get("longSleepMinuteFrom") != "")  ) {
+             $this->questions->whereRaw("TIMESTAMPDIFF (MINUTE, moods.date_start , moods.date_end) " . ">=" . $timeFrom);
+         }
+         if ($request->get("longSleepHourTo") != "" )  {
+             $timeTo += $request->get("longSleepHourTo") * 60;
+
+         }
+         if ($request->get("longSleepMinuteTo") != "")  {
+             $timeTo += $request->get("longSleepMinuteTo");
+         }
+         if (($request->get("longSleepHourTo") != "" or $request->get("longSleepMinuteTo") != "")  ) {
+             $this->questions->whereRaw("TIMESTAMPDIFF (MINUTE, moods.date_start , moods.date_end) " . "<=" . $timeTo);
          }
      }
      public function setLongMood(Request $request) {

@@ -69,6 +69,20 @@ class SearchMood {
              $this->dateTo = MoodModel::selectLastMoods()->date_end;
          }
      }
+     public function checkErrorSleep(Request $request) {
+        if (($request->get("longSleepHourFrom") != "") and (  $request->get("longSleepHourFrom") < 0   or  ( (string)(int) $request->get("longSleepHourFrom") !== $request->get("longSleepHourFrom")  ) )  ) {
+            array_push($this->errors,"Godziny (długośc snu) musi byc dodatnią liczbą całkowitą");
+        }
+        if ( ($request->get("longSleepMinuteFrom") != "") and (  $request->get("longSleepMinuteFrom") < 0   or  ( (string)(int) $request->get("longSleepMinuteFrom") !== $request->get("longSleepMinuteFrom")  ) )  ) {
+            array_push($this->errors,"Minuty (długośc snu) musi byc dodatnią liczbą całkowitą");
+        }
+        if ( ($request->get("longSleepHourTo") != "") and (  $request->get("longSleepHourTo") < 0   or  ( (string)(int) $request->get("longSleepHourTo") !== $request->get("longSleepHourTo")  ) )  ) {
+            array_push($this->errors,"Godziny (długośc snu) musi byc dodatnią liczbą całkowitą");
+        }
+        if ( ($request->get("longSleepMinuteTo") != "") and (  $request->get("longSleepMinuteTo") < 0   or  ( (string)(int) $request->get("longSleepMinuteTo") !== $request->get("longSleepMinuteTo")  ) ) )  {
+            array_push($this->errors,"Minuty (długośc snu) musi byc dodatnią liczbą całkowitą");
+        }
+     }
      public function checkError(Request $request) {
         if (($request->get("moodFrom") != "") and ($request->get("moodFrom") < -20 or $request->get("moodFrom") > 20  or  ( (string)(float) $request->get("moodFrom") !== $request->get("moodFrom")  ) ))   {
             array_push($this->errors,"Nastrój musi mieścić się w zakresie od -20 do +20");
@@ -244,6 +258,33 @@ class SearchMood {
          return $Actions_day->questions->paginate(15);
          //$moodModel->setDate($request->get("dateFrom"),$request->get("dateTo"),$this->startDay);
      }
+     
+     
+     
+     public function createQuestionSleep(Request $request) {
+         $startDay = $this->startDay;
+         $moodModel = new  MoodModel;
+         $moodModel->createQuestionsSleep($this->startDay);
+         $moodModel->setDate($request->get("dateFrom"),$request->get("dateTo"),$this->startDay);
+         $moodModel->setLongSleep($request);
+         $this->setHour($moodModel,$request);
+         if (($request->get("ifSleep")) == "on" ) {
+             $moodModel->whatWorkOn();
+         }
+         $moodModel->idUsers($this->idUsers);
+         $moodModel->sleepSelect();
+         $moodModel->whereEpizodes($request->get("workingFrom"),$request->get("workingTo"));
+         if ($request->get("sort2") == "asc") {
+             $moodModel->orderBy("asc",$request->get("sort"));
+         }
+         else {
+             $moodModel->orderBy("desc",$request->get("sort"));
+         }
+         $this->count = $moodModel->questions->get()->count();
+         return $moodModel->questions->paginate(15);
+     }
+     
+     
      public function createQuestion(Request $request,$bool = false) {
          $startDay = $this->startDay;
          $moodModel = new  MoodModel;

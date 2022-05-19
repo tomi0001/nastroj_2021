@@ -22,7 +22,7 @@
                WYSZUKAJ NASTRÓJ
             </div>
 
-            <div id="searchSleep"  class="hrefMood hrefSettingCursor" onmouseover="selectMenuMood('searchSleep')" onmouseout="unSelectMenuMood('searchSleep')" onclick="levelMood()">
+            <div id="searchSleep"  class="hrefMood hrefSettingCursor" onmouseover="selectMenuMood('searchSleep')" onmouseout="unSelectMenuMood('searchSleep')" onclick="searchSleep()">
                 WYSZUKAJ SEN
             </div>
             <div id="averageMoodSum"  class="hrefMood hrefSettingCursor" onmouseover="selectMenuMood('averageMoodSum')" onmouseout="unSelectMenuMood('averageMoodSum')" onclick="averageMoodSum()">
@@ -55,7 +55,7 @@
         @include ('Users.Search.Mood.searchMood')
         </div>
     <div class="pagePageMood pagepage bodyMoodPage" id="searchSleepDiv" style="display: none;">
-
+            @include ('Users.Search.Mood.searchSleep')
         </div>
     <div class="pagePageMood pagepage bodyMoodPage" id="averageMoodSumDiv" style="display: none;">
         @include ('Users.Search.Mood.averageMoodSum')

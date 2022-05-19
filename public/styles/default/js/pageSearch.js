@@ -260,7 +260,21 @@ function searchMood() {
         $("#searchMoodDiv").css("display","block");
         $("#averageMoodSumDiv").css("display","none");
         $("#sumActionDayDiv").css("display","none");
+        $("#searchSleepDiv").css("display","none");
+    }
+    else {
 
+        $("#searchMoodDiv").css("display","none");
+    }
+}
+function searchSleep() {
+    sessionStorage.setItem('searchType', "searchSleep");
+    if ($("#searchSleepDiv").css("display") == "none" ) {
+        $("#searchSleepDiv").css("display","block");
+        $("#averageMoodSumDiv").css("display","none");
+        $("#sumActionDayDiv").css("display","none");
+        $("#searchMoodDiv").css("display","none");
+        $("#sumMoodDayDiv").css("display","none");
     }
     else {
 
@@ -273,6 +287,7 @@ function averageMoodSum() {
         $("#averageMoodSumDiv").css("display","block");
         $("#searchMoodDiv").css("display","none");
         $("#sumActionDayDiv").css("display","none");
+        $("#searchSleepDiv").css("display","none");
         //$("#changeNameActionChange").css("display","none");
         //$("#changeDateActionChange").css("display","none");
 
@@ -290,6 +305,7 @@ function sumActionDay() {
         $("#sumActionDayDiv").css("display","block");
         $("#searchMoodDiv").css("display","none");
         $("#averageMoodSumDiv").css("display","none");
+        $("#searchSleepDiv").css("display","none");
         //$("#changeNameActionChange").css("display","none");
         //$("#changeDateActionChange").css("display","none");
 
@@ -356,6 +372,8 @@ function setFunction() {
             break;
         case 'sumActionDay': sumActionDay();
             break;
+        case 'searchSleep': searchSleep();
+            break;
     }
 }
 
@@ -371,7 +389,7 @@ function resetSession() {
     sessionStorage.removeItem('searchType');
 }
 function selectMenu() {
-    if (sessionStorage.getItem('searchType') == 'searchMood' || sessionStorage.getItem('searchType') == 'averageMoodSum'  || sessionStorage.getItem('searchType') == 'sumActionDay' ) {
+    if (sessionStorage.getItem('searchType') == 'searchMood' || sessionStorage.getItem('searchType') == 'averageMoodSum'  || sessionStorage.getItem('searchType') == 'sumActionDay' || sessionStorage.getItem('searchType') == 'searchSleep' ) {
         loadPageMood();
     }
     else if (sessionStorage.getItem('searchType') == 'searchDrugs') {
