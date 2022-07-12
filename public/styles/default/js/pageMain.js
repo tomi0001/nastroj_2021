@@ -115,7 +115,7 @@ function updateActionForMood(url,id) {
     .done(function(response) {
         $("#formResult" + id).html(response);
         if (response == "") {
-            setInterval("reload();",20000);
+            setInterval("reload();",50000);
             $("#formResult" + id).html("<div class='ajaxSucces'>Pomyślnie dodano</div>");
         }
         $("#formUpdateAction" + id).find(":hidden").filter(".typeMood").remove();
@@ -348,7 +348,7 @@ function addActionDay(url) {
         .done(function(response) {
             $("#formResultAction").html(response);
             if (response == "") {
-                setInterval("reload();",20000);
+                setInterval("reload();",50000);
                 $("#formResultAction").html("<div class='ajaxSucces'>Pomyślnie dodano</div>");
             }
 
@@ -377,7 +377,7 @@ function addMood(url) {
     .done(function(response) {
         $("#formResult").html(response);
         if (response == "") {
-            setInterval("reload();",20000);
+            setInterval("reload();",50000);
             $("#formResult").html("<div class='ajaxSucces'>Pomyślnie dodano</div>");
         }
     
@@ -410,7 +410,7 @@ function addActionPlaned(url) {
     .done(function(response) {
         $("#formResultActionPlaned").html(response);
         if (response == "") {
-            setInterval("reload();",20000);
+            setInterval("reload();",50000);
             $("#formResultActionPlaned").html("<div class='ajaxSucces'>Pomyślnie dodano</div>");
         }
     
@@ -625,7 +625,7 @@ function addSleep(url) {
     .done(function(response) {
         $("#formResultSleep").html(response);
         if (response == "") {
-            setInterval("reload();",20000);
+            setInterval("reload();",50000);
             $("#formResultSleep").html("<div class='ajaxSucces'>Pomyślnie dodano</div>");
         }
     
@@ -674,7 +674,7 @@ function addDrugs(url) {
         .done(function(response) {
             $("#formResultDrugs").html(response);
             if (response == "") {
-                setInterval("reload();",20000);
+                setInterval("reload();",50000);
                 $("#formResultDrugs").html("<div class='ajaxSucces'>Pomyślnie dodano</div>");
             }
 
