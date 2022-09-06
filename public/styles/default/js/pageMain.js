@@ -557,7 +557,15 @@ function SwitchMenuMoodShow(type,bool = true) {
     }    
 }
 
-
+function valueDose(int) {
+    if ($("select[name='namePlaned']").val() != "") {
+        $("input[name='dose']").val('1');
+    }
+    else {
+       $("input[name='dose']").val('');
+    }
+    
+}
 
 function DisableDose() {
     if ($("select[name='namePlaned']").val() != "") {

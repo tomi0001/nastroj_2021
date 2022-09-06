@@ -240,7 +240,7 @@ class Product {
         $list = $this->selectPlaned(Planned_drug::showName($request->get("namePlaned"))->name);
         foreach ($list as $list2) {
             $price = $this->sumPrice($list2->portion,$list2->id_products);
-            $this->addDrugsPlaned($list2->id_products,$list2->portion,$date,$price);
+            $this->addDrugsPlaned($list2->id_products,$list2->portion * $request->get("dose"),$date,$price);
         }
     }
     public function selectPlaned(string $namePlaned) {

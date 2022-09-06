@@ -35,7 +35,7 @@
                                         Nazwa zaplanowanej dawki
                                     </td>
                                     <td class='borderless'>
-                                         <select name='namePlaned' class="form-control" id="select-state" onchange="DisableDose()">
+                                         <select name='namePlaned' class="form-control" id="select-state" onchange="valueDose(1)">
                                             <option value="" class="form-control"></option>
                                             @foreach (\App\Models\Planned_drug::selectDose(Auth::User()->id) as $listDose)
                                                 <option value="{{$listDose->id}}" class="form-control">{{$listDose->name}}</option>
