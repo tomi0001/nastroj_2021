@@ -58,7 +58,7 @@
                 <tr>
 
                     <td class="buttonUser" colspan="2">
-                        <button  class="btn-primary btn  btn-lg " >ZAREJESTRUJ SIĘ</button>
+                        <button  class="btn-login btn-green" >ZAREJESTRUJ SIĘ</button>
                     </td>
                 </tr>
             </table>

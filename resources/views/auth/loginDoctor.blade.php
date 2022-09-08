@@ -47,7 +47,7 @@
                 <tr>
 
                     <td class="buttonUser" colspan="2">
-                        <button  class="btn-primary btn  btn-lg " >ZALOGUJ SIĘ</button>
+                        <button  class="btn-login btn-blue" >ZALOGUJ SIĘ</button>
                     </td>
                 </tr>
 

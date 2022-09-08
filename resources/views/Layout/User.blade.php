@@ -22,6 +22,7 @@
         
         
         <script src="{{ asset('./styles/'. config('view.styles') . '/js/pageMain.js')}}"></script>
+        <script src="{{ asset('./styles/'. config('view.styles') . '/js/pageLogin.js')}}"></script>
 
        <script data-ad-client="ca-pub-9009102811248163" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     </head>
@@ -35,7 +36,7 @@
                     
                
                 
-                
+                    <br><br>
             </div>
 
     </body>

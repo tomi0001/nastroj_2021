@@ -1,7 +1,7 @@
 
 
 
-@media (min-width: 1810px) {
+@media (min-width: 1410px) and (max-width: 1810px) {
     #PageMenuLogin {
              width: 96%;
              padding-left: 20px;
