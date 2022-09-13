@@ -27,6 +27,7 @@ class Action extends Model
                 ->selectRaw("actions.id as id")
                 
                 ->where("actions.id_users",$idUsers)
+                ->orderBy("actions.name")
                 ->get();
     }
     public static function ifExist(string $name,int $idUsers) {
