@@ -104,8 +104,11 @@ class MainController {
             if ($request->get("dose") == "" and $request->get("namePlaned") == "") {
                 array_push($this->error, "Uzupełnij pole dawka");
             }
-            else if (!is_numeric($request->get("dose")) and $request->get("namePlaned") == "") {
+            else if (!is_numeric($request->get("dose")) )  {
                 array_push($this->error, "Pole dawka musi być numeryczne");
+            }
+            if (($request->get("dose")) <= 0 ) {
+                array_push($this->error, "Pole dawka musi być większe o 0");
             }
             else if ( $request->get("nameProduct") != "" and    !empty(Usee::selectLastDrugs($request->get("nameProduct"),$Drugs->date,$request->get("dose")) )) {
                 array_push($this->error, "Już wpisałeś ten lek");

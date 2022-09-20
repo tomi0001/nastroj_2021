@@ -34,6 +34,7 @@
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/showAllDayMood.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Actions_day.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Substance.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showActionDays.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/searchResultActionDay.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/js/pageSearch.js</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/searchResultMoodGroupAction.blade.php</file>
