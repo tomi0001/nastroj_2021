@@ -42,6 +42,7 @@ class MainController {
         $actionForDay = Actions_day::showActionForAllDay($Calendar->year . "-" . $Calendar->month . "-" .  $Calendar->day,Auth::User()->id,Auth::User()->start_day);
         $actionPlan = Action_plan::showActionPlan($Calendar->year . "-" . $Calendar->month . "-" .  $Calendar->day,Auth::User()->id,Auth::User()->start_day);
         $actionSum = Mood::sumAction($Calendar->year . "-" . $Calendar->month . "-" .  $Calendar->day,Auth::User()->id,Auth::User()->start_day);
+
         return View("Users.Main.main")->with("text_month",$Calendar->text_month)
                                 ->with("year",$Calendar->year)
                                 ->with("day2",1)

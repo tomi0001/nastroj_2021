@@ -30,9 +30,17 @@ class Main {
     public function createDayColorMood($year,$month,$day) {
         $listMood = [];
         $dayMonth = calendar::checkMonth($month,$year);
+        $nextMonth = calendar::nextMonth($year,$month);
+        $this->listMood = \App\Models\Mood::sumMoodMonth($year . "-" .  $month . "-01",$nextMonth . "-01", Auth::User()->start_day,$this->IdUsers);
+        $arrayMonth = $this->listMood->toArray();
+        $j = 0;
         for ($i=0;$i < $dayMonth;$i++) {
-            $this->listMood[$i] = \App\Models\Mood::sumMood($year . "-" . $month . "-" . ($i+1), Auth::User()->start_day,$this->IdUsers);
-            if (empty($this->listMood[$i])) {
+            if (is_int(array_search(($i+1),array_column($arrayMonth, 'dat') )  )) {
+                $this->listColor[$i] = Common::setColor(round($this->listMood[$j]->sum_mood,3));
+                $j++;
+            }
+            else {
+                
                 $this->listPlanedAction[$i] = \App\Models\Action_plan::selectDayPlaned($year . "-" . $month . "-" . ($i+1), Auth::User()->start_day,$this->IdUsers);
                 if (empty($this->listPlanedAction[$i])) {
                     $this->listColor[$i] = 10000;
@@ -41,10 +49,8 @@ class Main {
                     $this->listColor[$i] = 100000;
                 }
             }
-            else {
+            
 
-                $this->listColor[$i] = Common::setColor(round($this->listMood[$i]->sum_mood,3));
-            }
         }
 
     }

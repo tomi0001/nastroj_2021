@@ -806,19 +806,33 @@ class Mood extends Model
 //    public function setGroupWeekMinMax(int $startDay) {
 //        $this->questionsMinMax->groupBy(DB::Raw("YEARWEEK(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) ))) "));
 //    }
-    public static function sumMood(string $date,  $startDay,int $idUsers) {
-        return self::selectRaw(DB::Raw("(DATE(IF(HOUR(moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) as dat"))
+//    public static function sumMood(string $date,  $startDay,int $idUsers) {
+//        return self::selectRaw(DB::Raw("(DATE(IF(HOUR(moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) as dat"))
+//                ->selectRaw(DB::Raw("(DATE(IF(HOUR(moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) as dat2"))
+//                ->selectRaw(" (sum( ( unix_timestamp(date_end) - unix_timestamp(date_start) ) * level_mood)  / sum( unix_timestamp(date_end) - unix_timestamp(date_start) ) ) as sum_mood ")
+//                ->where("type","mood")
+//                ->where("id_users",$idUsers)
+//                ->where(function ($query) use ($date,$startDay) {
+//                    $query->whereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) = '$date'" ))
+//                    ->orwhereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) = '$date'" ));
+//                })
+//                ->groupBy("dat")
+//                ->groupBy("dat2")
+//                ->first();
+//    }
+    public static function sumMoodMonth(string $date1,  $date2,  $startDay,int $idUsers) {
+        return self::selectRaw(DB::Raw("(DAY(IF(HOUR(moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) as dat"))
                 ->selectRaw(DB::Raw("(DATE(IF(HOUR(moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) as dat2"))
                 ->selectRaw(" (sum( ( unix_timestamp(date_end) - unix_timestamp(date_start) ) * level_mood)  / sum( unix_timestamp(date_end) - unix_timestamp(date_start) ) ) as sum_mood ")
                 ->where("type","mood")
                 ->where("id_users",$idUsers)
-                ->where(function ($query) use ($date,$startDay) {
-                    $query->whereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) = '$date'" ))
-                    ->orwhereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) = '$date'" ));
+                ->where(function ($query) use ($date1,$date2,$startDay) {
+                    $query->whereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) >= '$date1' " ))
+                    ->whereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) < '$date2'" ));
                 })
                 ->groupBy("dat")
                 ->groupBy("dat2")
-                ->first();
+                ->get();
     }
     public static function selectDateMood(int $idMood) {
         return self::selectRaw("date_start as dateStart")

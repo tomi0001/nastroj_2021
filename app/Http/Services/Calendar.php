@@ -54,7 +54,16 @@ class calendar
             }
 
       }
-    
+    public static function nextMonth($year,$month) {
+         if ($month == 12) {
+          $year++;
+          $month = 1;
+        }
+        else {
+          $month++;
+        }
+        return $year . "-" . $month;
+    }
     public function returnBackMonth($month,$year) {
         if ($month == 1) {
           $year--;
