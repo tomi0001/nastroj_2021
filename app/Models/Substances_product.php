@@ -14,4 +14,10 @@ class Substances_product extends Model
                 ->where("substances_products.id_products",$idProduct)
                 ->get();
     }
+    public static function selectMgUg(int $idProduct,int $idSubstances) {
+        return self::selectRaw("substances_products.Mg_Ug as MgUg")
+                ->where("substances_products.id_products",$idProduct)
+                ->where("substances_products.id_substances",$idSubstances)
+                ->first();
+    }
 }

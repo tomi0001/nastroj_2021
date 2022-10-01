@@ -51,8 +51,11 @@
                                                     <div class="hiddenPercentExecuting centerPercent" id='divSubstanceSubstancePercent_{{$list->id}}'>
                                                         
                                                         <div style="display: inline-block; width: 40%; ">
-                                                            <input type="text" class="percentExecuting form-control form-control-lg " title="zawartość mg" placeholder="zawartość mg" name="howMg[]"  min="1">
-                                                            
+                                                            <input type="text" class="percentExecuting form-control form-control-lg " title="zawartość mg/ug" placeholder="zawartość mg/ug" name="howMg[]"  min="1">
+                                                            <select name="typeMgUg[]" class="form-control">
+                                                                <option value="1">Mg</option>
+                                                                <option value="2">Ug</option>
+                                                            </select>
                                                         </div>
                                                         <input type="hidden"  id='idSubstance[]' name="idSubstance[]" value='{{$list->id}}'>
                                                         

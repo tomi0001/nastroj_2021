@@ -44,6 +44,7 @@ class Product extends Model
                 ->selectRaw("substances.name as nameSubstances")
                 ->selectRaw("substances_products.id_substances as id_substances")
                 ->selectRaw("substances_products.doseProduct as doseProduct")
+                ->selectRaw("substances_products.Mg_Ug as Mg_Ug")
                 ->where("products.id",$id)
                 ->where("products.id_users",$idUsers)->get();
     }

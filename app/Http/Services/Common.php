@@ -17,9 +17,11 @@ class Common {
         null,
         'Mg',
         'militry',
-         'ilości',
+         'porcji',
          'waga ciała',
-        'temperatura ciała'
+        'temperatura ciała',
+        'ilości',
+        'Ug'
     ];
     public static function returnDayWeek($data) {
         $week = date('N', strtotime($data));

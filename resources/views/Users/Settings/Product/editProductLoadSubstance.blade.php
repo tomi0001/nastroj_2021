@@ -32,6 +32,7 @@
                                                             $arrayJson[$j]["idProduct"] = $idProduct;
                                                             $arrayJson[$j]["id"] = $listSub[$i]["id"];
                                                             $arrayJson[$j]["dose"] = $listSub[$i]["dose"];
+                                                            $arrayJson[$j]["Mg_Ug"] = $listSub[$i]["Mg_Ug"];
                                                             $arrayJson[$j]["index"] = $i;
                                                             $j++;
                                                           @endphp
@@ -51,7 +52,21 @@
                                                         <div class="showPercentExecuting centerPercent" id='divActionPercent_{{$listSub[$i]["id"]}}'>
                                                             <div style="display: inline-block; width: 40%; " >
                                                                 <input type="text" class="percentExecuting form-control form-control-lg " title="zawartość mg" placeholder="zawartość mg" name="howMg[]"  min="1" value="{{$listSub[$i]["dose"]}}">
-
+                                                                       <select name="typeMgUg[]" class="form-control">
+                                                                           @if ($listSub[$i]["Mg_Ug"] == 1)
+                                                                                <option value="1" selected>Mg</option>
+                                                                                <option value="2">Ug</option>
+                                                                           
+                                                                           @elseif ($listSub[$i]["Mg_Ug"] == 2)
+                                                                                <option value="2" selected>Ug</option>
+                                                                                <option value="1">Mg</option>
+                                                                           
+                                                                           @else 
+                                                                                <option value="1" selected>Mg</option>
+                                                                                <option value="2">Ug</option>
+                                                                           @endif
+                                                                
+                                                            </select>
                                                             </div>
                                                             <input type="hidden"  id='idAction' name="idSubstance[]" value='{{$listSub[$i]["id"]}}'>
                                                         </div>
@@ -59,7 +74,10 @@
                                                         <div class="hiddenPercentExecuting centerPercent" id='divActionPercent_{{$listSub[$i]["id"]}}'>
                                                             <div style="display: inline-block; width: 40%; ">
                                                                 <input type="text" class="percentExecuting form-control form-control-lg " title="zawartość mg" placeholder="zawartość mg" name="howMg[]"  min="1">
-
+                                                                 <select name="typeMgUg[]" class="form-control">
+                                                                <option value="1">Mg</option>
+                                                                <option value="2">Ug</option>
+                                                            </select>
                                                             </div>
                                                             <input type="hidden"  id='idAction' name="idSubstance[]" value='{{$listSub[$i]["id"]}}'>
                                                         </div>

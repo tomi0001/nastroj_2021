@@ -289,6 +289,8 @@ class Usee extends Model
                         . "( CASE "
                         . " WHEN products.type_of_portion = 4  THEN ('4' ) "
                         . " WHEN products.type_of_portion = 5  THEN ('5' ) "
+                        . " WHEN products.type_of_portion = 6  THEN ('6' ) "
+                        . " WHEN substances_products.Mg_Ug = 2  THEN ('7' ) "
                         . "ELSE '1' "
                         . " END)"
                         . "  as type ")

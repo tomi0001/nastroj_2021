@@ -106,6 +106,8 @@ class Product {
                     $arrayNew[$i]["nameSub"] = $listSub->name;
                     $arrayNew[$i]["id"] = $listSub->id;
                     $arrayNew[$i]["dose"] = $listPro->doseProduct;
+                    $arrayNew[$i]["Mg_Ug"] = $listPro->Mg_Ug;
+                    
                     $bool = true;
                     break;
                 }
@@ -115,6 +117,7 @@ class Product {
                 $arrayNew[$i]["nameSub"] = $listSub->name;
                 $arrayNew[$i]["id"] = $listSub->id;
                 $arrayNew[$i]["dose"] = "";
+                $arrayNew[$i]["Mg_Ug"] = "";
                 
             }
             $bool = false;
@@ -315,6 +318,7 @@ class Product {
         $Product->price  = $request->get("price");
         $Product->how_much  = $request->get("how");
         $Product->save();
+        //var_dump($request->get("typeMgUg2"));
         if (!empty($request->get("idSubstance2"))  ) {
             $this->addProductSubstance($request,$Product->id);
         }
@@ -325,6 +329,7 @@ class Product {
             $Substances_product->id_products= $idProduct;
             $Substances_product->id_substances = $request->get("idSubstance2")[$i];
             $Substances_product->doseProduct = $request->get("howMg2")[$i];
+            $Substances_product->Mg_Ug  =$request->get("typeMgUg2")[$i];
             $Substances_product->save();
         }
     }
@@ -359,6 +364,7 @@ class Product {
             $Substances_product->id_products = $request->get("nameProduct");
             $Substances_product->id_substances  =$request->get("idSubstance2")[$i];
             $Substances_product->doseProduct  =$request->get("howMg2")[$i];
+            $Substances_product->Mg_Ug  =$request->get("typeMgUg2")[$i];
             $Substances_product->save();
         }
     }
@@ -380,6 +386,14 @@ class Product {
         $listArray = Usee::selectOldUseeSubstances($idSubstances,$dateEnd->date,Auth::User()->id,Auth::User()->start_day);
         $idProduct = appProduct::selectIdProduct($idSubstances);
         $type = appProduct::selectTypeProduct($idProduct->id);
+        //$bool = false;
+//        if  ($type->type_of_portion == 3)  {
+//            
+//            $type2 = Substances_product::selectMgUg($idProduct->id,$idSubstances);
+//            if ($type2->Mg_Ug == 2) {
+//                $bool = true;
+//            }
+//        }
         if ($type->type_of_portion == 4 or $type->type_of_portion == 5) {
             return $this->sortAverageType4_5($listArray);
         }
@@ -423,7 +437,7 @@ class Product {
     private function sortAverage( $arrayList) {
         $newArray = [];
         $j = 0;
-        $bool = false;
+     
         for ($i=0;$i < count($arrayList);$i++)  { 
             if ($i == 0) {
                 $newArray[$j]["dateStart"] = $arrayList[$i]->dat;

@@ -24,6 +24,7 @@ class CreateSubstancesProductsTable extends Migration {
             $table->bigInteger('id_products')->unsigned();
             $table->foreign("id_products")->references("id")->on("products");
             $table->float('doseProduct')->unsigned()->nullable();
+            $table->tinyInteger('Mg_Ug')->default(1)->unsigned();
             $table->timestamps();
         });
     }
