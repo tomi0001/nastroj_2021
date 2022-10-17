@@ -7,7 +7,7 @@
         <link href="{{ asset('./styles/' . config('view.styles') . '/css/pageNotLoginwidth1210.css') }}" rel="stylesheet">
         <link href="{{ asset('./styles/' . config('view.styles') . '/css/pageNotLoginwidth700.css') }}" rel="stylesheet">
         <link href="{{ asset('./styles/' . config('view.styles') . '/css/pageNotLoginAll.css') }}" rel="stylesheet">
-        <link href="{{ asset('./styles/' . config('view.styles') . '/css/pageNotLoginColor.css') }}" rel="stylesheet">
+        <link href="{{ asset('./styles/' . config('view.styles_color') . '/css/pageNotLoginColor.css') }}" rel="stylesheet">
 
 
       
@@ -21,8 +21,8 @@
         <link rel="shortcut icon" href="{{ asset('./image/icon.png')}}">
         
         
-        <script src="{{ asset('./styles/'. config('view.styles') . '/js/pageMain.js')}}"></script>
-        <script src="{{ asset('./styles/'. config('view.styles') . '/js/pageLogin.js')}}"></script>
+        <script src="{{ asset('/js/pageMain.js')}}"></script>
+        <script src="{{ asset('/js/pageLogin.js')}}"></script>
 
        <script data-ad-client="ca-pub-9009102811248163" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     </head>

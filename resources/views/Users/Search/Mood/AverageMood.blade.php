@@ -100,32 +100,32 @@
         <thead>
 
         <tr class="borderTrAverageTitle">
-            <th style="width:18%; text-align: center; color: #554701; font-weight: bold; font-size: 20px;" class="hrefSettingCursor rightBorder">
+            <th style="width:18%; text-align: center; font-weight: bold; font-size: 20px;" class="hrefSettingCursor rightBorder">
 
                 Data
             </th>
 
-            <th style="width:18%; text-align: center; color: #554701; font-weight: bold; font-size: 20px;" class="hrefSettingCursor rightBorder">
+            <th style="width:18%; text-align: center;  font-weight: bold; font-size: 20px;" class="hrefSettingCursor rightBorder">
                 Dzień tygodnia
             </th>
 
-            <th style="width:15%; text-align: center; color: #554701; font-weight: bold; font-size: 20px;" class="hrefSettingCursor rightBorder">
+            <th style="width:15%; text-align: center; font-weight: bold; font-size: 20px;" class="hrefSettingCursor rightBorder">
                 Poziom nastroju
             </th>
 
-            <th style="width:18%; text-align: center; color: #554701; font-weight: bold; font-size: 20px;"  class="hrefSettingCursor rightBorder">
+            <th style="width:18%; text-align: center;  font-weight: bold; font-size: 20px;"  class="hrefSettingCursor rightBorder">
                 różnica nastroju (min/max)
 
             </th>
-            <th style="width:15%; text-align: center; color: #554701; font-weight: bold; font-size: 20px;" class="hrefSettingCursor rightBorder">
+            <th style="width:15%; text-align: center; font-weight: bold; font-size: 20px;" class="hrefSettingCursor rightBorder">
                 Poziom lęku
             </th>
 
-            <th style="width:15%; text-align: center; color: #554701; font-weight: bold; font-size: 20px;" class="hrefSettingCursor rightBorder">
+            <th style="width:15%; text-align: center; font-weight: bold; font-size: 20px;" class="hrefSettingCursor rightBorder">
                 Poziom zdenerowania
             </th>
 
-            <th style="width:15%; text-align: center; color: #554701; font-weight: bold; font-size: 20px;" class="hrefSettingCursor rightBorder">
+            <th style="width:15%; text-align: center; font-weight: bold; font-size: 20px;" class="hrefSettingCursor rightBorder">
                 Poziom pobudzenia
             </th>
 
@@ -139,37 +139,37 @@
 
         @for ($i=0;$i < count($minMax);$i++)
             <tr class="borderTrAverage">
-                <td style="text-align: center; color: #554701; font-size: 18px; " class="rightBorder">
+                <td style="text-align: center;  font-size: 18px; " class="rightBorder">
                     {{$minMax[$i]->dat_end}}
                 </td>
 
-                    <td style="text-align: center; color: #554701; font-size: 18px; " class="rightBorder">
+                    <td style="text-align: center;  font-size: 18px; " class="rightBorder">
                         {{\App\Http\Services\Common::returnDayWeek($minMax[$i]->dat_end)}}
                     </td>
 
-                <td style="text-align: center; color: #554701; font-size: 18px; " class="rightBorder">
+                <td style="text-align: center;  font-size: 18px; " class="rightBorder">
                     {{round($minMax[$i]->mood,3)}}
                 </td>
 
-                <td style="text-align: center; color: #554701; font-size: 18px; " class="rightBorder">
+                <td style="text-align: center; font-size: 18px; " class="rightBorder">
                     {{$minMax[$i]->minMood}} / {{$minMax[$i]->maxMood}}
 
                 </td>
-                <td style="text-align: center; color: #554701; font-size: 18px; " class="rightBorder">
+                <td style="text-align: center;  font-size: 18px; " class="rightBorder">
                     {{round($minMax[$i]->anxienty,3)}}
                 </td>
 
 
-                <td style="text-align: center; color: #554701; font-size: 18px; " class="rightBorder">
+                <td style="text-align: center; font-size: 18px; " class="rightBorder">
                     {{round($minMax[$i]->voltage,3)}}
                 </td>
 
 
-                <td style="text-align: center; color: #554701; font-size: 18px; " class="rightBorder">
+                <td style="text-align: center;  font-size: 18px; " class="rightBorder">
                     {{round($minMax[$i]->stimulation,3)}}
                 </td>
 
-                <td style="text-align: center;  color: #554701; font-size: 18px; ">
+                <td style="text-align: center;  font-size: 18px; ">
                     {{$minMax[$i]->count}}
 
                 </td>
