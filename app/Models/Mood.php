@@ -707,8 +707,8 @@ class Mood extends Model
         }
     }
     public function setDateAI($dateFrom,$dateTo,$startDay) {
-        $this->questions->where("moods.date_start",">=",$dateFrom);
-        $this->questions->where("moods.date_end","<=",$dateTo);
+        $this->questions->whereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) >= '$dateFrom'" ));
+        $this->questions->whereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) < '$dateTo'" ));
     }
   
             

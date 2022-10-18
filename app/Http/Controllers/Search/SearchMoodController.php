@@ -134,7 +134,7 @@ class SearchMoodController {
                 return View("ajax.error")->with("error",$SearchMoodAI->errors);
             }
             else {
-             
+                //print $request->get("dateFrom");
                 $SearchMoodAI->setVariable($request);
                 $SearchMoodAI->setDayWeek($request);
                 $SearchMoodAI->setHour($request);

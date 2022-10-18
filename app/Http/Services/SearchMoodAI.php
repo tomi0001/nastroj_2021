@@ -107,6 +107,7 @@ class SearchMoodAI
     {
         $moodModel = new  MoodModel;
         $moodModel->createQuestionAI($this->startDay,$this->hourStart, $this->hourEnd);
+        //print $this->dateFrom;
         $moodModel->setDateAI($this->dateFrom, $this->dateTo, $this->startDay);
         $moodModel->setWeekDay($this->dayWeek, $this->startDay);
         $moodModel->setHourTwo($this->hourStart, $this->hourEnd, $this->startDay);
