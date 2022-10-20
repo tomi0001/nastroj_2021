@@ -229,7 +229,10 @@ class Common {
         if ($sumHour > 24) {
             $sumHour = 24 - $sumHour;
             if ($sumHour < 0) {
+                
                 $sumHour = -$sumHour;
+                $sumHour = " ND " .  $sumHour;
+                
             }
         }
         if (strlen($sumHour) == 1) {

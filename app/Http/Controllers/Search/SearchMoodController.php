@@ -152,9 +152,11 @@ class SearchMoodController {
                         //$minMax = $SearchMoodAI->createQuestions($request);
                         $minMax[$i] = $SearchMoodAI->createQuestionsMinuteSumDay($request,$SearchMoodAI->hourSum[$i],$SearchMoodAI->hourSum[$i+1]);
                         if (count($minMax[$i]) > 0) {
+                            //print "dd";
                             $sum[$j] = $SearchMoodAI->sortSumDayMinute($minMax[$i],$SearchMoodAI->hourSum[$i],$SearchMoodAI->hourSum[$i+1]);
                             $j++;
                         }
+                        
                     }
                     if (empty($sum)) {
                         goto END;
@@ -164,6 +166,7 @@ class SearchMoodController {
                     //$minMax = $SearchMoodAI->createQuestions($request);
                 }
                 else {
+                    
                     $minMax = $SearchMoodAI->createQuestions($request);
                 }
                 //$list = $SearchMoodAI->createQuestionsMinMax($request);
