@@ -107,6 +107,27 @@ class SearchMoodController {
                     ->with("longMoodTo",$request->get("longMoodHourTo") . ":" . $request->get("longMoodMinuteTo"))
                     ->with("actionSum",$sumAction);
             }
+            else if ( ($request->get("groupWeek") == "on") ) {
+                $SearchMoodAI = new SearchMoodAI(Auth::User()->id,Auth::User()->start_day);
+                $SearchMood->setDate($request->get("dateFrom"),$request->get("dateTo"));
+                         $arrayWeek = $SearchMoodAI->createWeek($SearchMood->dateFrom,$SearchMood->dateTo);
+                         //var_dump($arrayWeek);
+                  $SearchMood->createQuestionForWeekList($request,$arrayWeek,true);
+                  //print ("<pre>");
+                  //print_r ($SearchMood->listWeek);
+//                                 print("<pre>");
+//                print_r($sort);
+                 return View("Users.Search.Mood.searchResultMoodGroupWeek")
+                    ->with("arrayList", $SearchMood->listWeek)->with("dateFrom",$request->get("dateFrom"))->with("dateTo",$request->get("dateTo"))
+                    ->with("timeFrom",$request->get("timeFrom"))->with("timeTo",$request->get("timeTo"))
+                    ->with("moodFrom",$request->get("moodFrom"))->with("moodTo",$request->get("moodTo"))
+                    ->with("anxientyFrom",$request->get("anxientyFrom"))->with("anxientyTo",$request->get("anxientyTo"))
+                    ->with("voltageFrom",$request->get("voltageFrom"))->with("voltageTo",$request->get("voltageTo"))
+                    ->with("stimulationFrom",$request->get("stimulationFrom"))->with("stimulationTo",$request->get("stimulationTo"))
+                    ->with("longMoodFrom",$request->get("longMoodHourFrom") . ":" . $request->get("longMoodMinuteFrom"))
+                    ->with("longMoodTo",$request->get("longMoodHourTo") . ":" . $request->get("longMoodMinuteTo"))
+                    ->with("actionSum",$SearchMood->listAction)->with("arrayWeek",$arrayWeek);
+            }
             else {
                 $result = $SearchMood->createQuestion($request);
                 if ($SearchMood->count > 0) {

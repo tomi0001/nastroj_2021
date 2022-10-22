@@ -28,6 +28,10 @@ class Mood extends Model
             ->selectRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) as datEnd" ));
 
     }
+    public function countMoods() {
+        //$this->questions =  self::query();
+        $this->questions->selectRaw("(count(moods.id ) ) as count");
+    }
     public function createQuestionMinMaxAI(int $startDay) {
         $this->questionsMinMax =  self::query();
         $this->questionsMinMax

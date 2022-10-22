@@ -33,6 +33,7 @@
             <file>file:/var/www/html/nastroj_2021/resources/views/Layout/SelectSearch.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/searchResultMood.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/searchActionDay.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/seachResultMoodAjax.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/SearchMoodAI.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSettingwidth1810.css</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/auth/login.blade.php</file>
@@ -51,7 +52,6 @@
             <file>file:/var/www/html/nastroj_2021/app/Models/Substances_product.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSearchAll.css</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageNotLoginwidth1810.css</file>
-            <file>file:/var/www/html/nastroj_2021/storage/framework/views/f9a55d47ac24e78488a818734604890b04954090.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/ajax/showAverage.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/Common700.css</file>
             <file>file:/var/www/html/nastroj_2021/database/migrations/2016_12_13_000000_create_actions_plans_table.php</file>
@@ -78,6 +78,7 @@
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Common.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/changeLoadPlaned.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainwidth1810.css</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/styles_dark/css/pageSearchColor.css</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Search/SearchDrugsController.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/main.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Usee.php</file>

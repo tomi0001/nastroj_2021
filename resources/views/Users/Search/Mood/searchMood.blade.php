@@ -229,6 +229,15 @@
                 </td>
 
             </tr>
+            <tr>
+                <td style='padding-top: 10px; width: 37%;'>
+                    Pogrupuj według tygodnia
+                </td>
+                <td>
+                    <input type='checkbox' name='groupWeek' class='form-check-input'>
+                </td>
+
+            </tr>
 
             <tr>
                 <td style='padding-top: 10px; width: 37%;'>

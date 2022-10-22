@@ -24,6 +24,9 @@ class SearchMood {
      public $dateTo;
      public $dayWeek = [];
      public $countDays = 0;
+     public $listAction = [];
+     public $listWeek = [];
+     public $countWeek;
      //private $dateFro
      
      function __construct($bool = 0) {
@@ -330,6 +333,63 @@ class SearchMood {
 
      }
      
+     
+     
+     public function createQuestionForWeek(Request $request,$dateFrom,$dateTo) {
+         $startDay = $this->startDay;
+         $moodModel = new  MoodModel;
+         $moodModel->createQuestions($this->startDay);      
+         //$moodModel->countMoods();
+         $moodModel->setDate($dateFrom,$dateTo,$this->startDay);
+         $moodModel->setMood($request);
+         $moodModel->setLongMood($request);
+         $this->setHour($moodModel,$request);
+         if (!empty($request->get("whatWork")) ) {
+             $moodModel->searchWhatWork($request->get("whatWork"));
+         }
+         if (!empty($request->get("action")) and ($request->get("action") != "undefined") ) {
+
+             $moodModel->searchAction($request->get("action"),(array)$request->get("actionFrom"),(array)$request->get("actionTo"));
+         }
+         if (($request->get("ifAction")) == "on" ) {
+             $moodModel->actionOn();
+         }
+         if (($request->get("ifWhatWork")) == "on" ) {
+             $moodModel->whatWorkOn();
+         }
+         $moodModel->idUsers($this->idUsers);
+         $moodModel->moodsSelect();
+         $moodModel->groupByAction();
+         //$moodModel->setGroupDay(Auth::User()->start_day);
+
+         if ($request->get("sort2") == "asc") {
+             $moodModel->orderBy("asc",$request->get("sort"));
+         }
+         else {
+             $moodModel->orderBy("desc",$request->get("sort"));
+         }
+         
+         //$this->countWeek = $moodModel->questions->get()->count();
+         
+           
+      
+             return $moodModel->questions->get();
+         
+     }
+     
+     
+     public function createQuestionForWeekList(Request $request,$listDate) {
+         
+         for ($i=0;$i < count($listDate["dateStart"]);$i++) {
+             //print "x";
+             $tmp = $this->createQuestionForWeek($request,$listDate["dateStart"][$i],date("Y-m-d",strtotime($listDate["dateEnd"][$i]) + 86400) );
+             $newArray = $this->groupActionDay($tmp);
+             $sumDays = $this->sumDays($newArray);
+             $this->listWeek[$i] = $sumDays;
+             $this->listAction[$i] = MoodModel::sumActionAll($listDate["dateStart"][$i],date("Y-m-d",strtotime($listDate["dateEnd"][$i]) + 86400) ,Auth::User()->id, Auth::User()->start_day);
+         }
+         
+     }
      
      
      public function sumDays($list) {

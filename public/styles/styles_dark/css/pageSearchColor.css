@@ -174,6 +174,12 @@ tr.borderTrAverageTitle {
     background-color: #80785c;
     border-color: #4f4317;
 }
+div.titleWeek {
+color: rgba(241, 241, 147, 1);
+background-color: rgba(114, 117, 79, 1);
+background-image: radial-gradient(circle, rgba(105, 105, 56, 1) 50%, rgba(130, 121, 102, 0.6) 92%);
+
+}
 tr.borderTrAverage {
     background-color: #bfbf97;
     border-color: #4f4317;

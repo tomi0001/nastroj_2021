@@ -20,6 +20,14 @@ div.dateSumDay {
     border-radius: 25px;
 
 }
+div.titleWeek {
+    width: 100%;
+    height: 70px;
+    padding-left: 20px;
+    padding-top: 20px;
+    text-align: center;
+    font-size: 25px;
+}
 div.actionDay {
     min-height: 70px;
     padding: 20px;
