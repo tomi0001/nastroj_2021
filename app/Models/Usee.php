@@ -267,7 +267,7 @@ class Usee extends Model
                 ->where("usees.id",$id)
                 ->first();
     }
-    public static function selectOldUsee(int $idProduct,string $dateEnd,int $idUsers,int $startDay) {
+    public static function selectOldUsee(int $idProduct,string $dateEnd,int $idUsers,int $startDay,$hour) {
         return self::join("products","products.id","usees.id_products")
                 ->selectRaw("sum(usees.portion) as portion")
                 ->selectRaw("products.type_of_portion as type")
@@ -276,11 +276,14 @@ class Usee extends Model
                 ->where("usees.date","<=",$dateEnd)
                 ->where("usees.id_products",$idProduct)
                 ->where("usees.id_users",$idUsers)
+                ->whereRaw("(time(date_add(usees.date,INTERVAL - $startDay hour))) <= '$hour[1]'")
+                ->whereRaw("(time(date_add(usees.date,INTERVAL - $startDay hour))) >= '$hour[0]'")
                 ->groupBy(DB::Raw("(DATE(IF(HOUR(    usees.date) >= '" . $startDay . "', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) )  "))
                 ->orderBy("usees.date","DESC")
                 ->get();
     }
-    public static function selectOldUseeSubstances(int $idSubstances,string $dateEnd,int $idUsers,int $startDay) {
+
+    public static function selectOldUseeSubstances(int $idSubstances,string $dateEnd,int $idUsers,int $startDay,$hour) {
         return self::join("products","products.id","usees.id_products")
                 ->join("substances_products","substances_products.id_products","products.id")
                 ->selectRaw("count(portion) as how")
@@ -304,6 +307,8 @@ class Usee extends Model
                 ->where("usees.date","<=",$dateEnd)
                 ->where("substances_products.id_substances",$idSubstances)
                 ->where("usees.id_users",$idUsers)
+                ->whereRaw("(time(date_add(usees.date,INTERVAL - $startDay hour))) <= '$hour[1]'")
+                ->whereRaw("(time(date_add(usees.date,INTERVAL - $startDay hour))) >= '$hour[0]'")
                 ->groupBy(DB::Raw("(DATE(IF(HOUR(    usees.date) >= '" . $startDay . "', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) )  "))
                 ->orderBy("usees.date","DESC")
                 ->get();

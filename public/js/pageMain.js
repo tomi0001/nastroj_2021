@@ -1352,7 +1352,7 @@ function loadAverage(url,id) {
                 url : url,
                     method : "get",
                     data : 
-                      "id=" + id + "&averageType=" + $("#averageType" + id).val()
+                      "id=" + id + "&averageType=" + $("#averageType" + id).val() + "&hourFrom=" + $("#hourFrom" + id).val() + "&hourTo=" + $("#hourTo" + id).val()
                     ,
                     dataType : "html",
             })

@@ -19,6 +19,7 @@ use App\Models\Substances_product;
 use App\Models\Product as appProduct;
 use App\Models\Users_description;
 use App\Models\Description;
+use App\Http\Services\Common;
 use Hash;
 use Auth;
 use DB;
@@ -368,11 +369,11 @@ class Product {
             $Substances_product->save();
         }
     }
-    public function sumAverageProduct(int $idProduct,int $id) {
+    public function sumAverageProduct(int $idProduct,int $id,$hourFrom,$hourTo) {
         $dateEnd = Usee::selectDateIdUsee($id,Auth::User()->id);
-        
+        $hour = $this->setHour($hourFrom,$hourTo);
                 
-        $listArray = Usee::selectOldUsee($idProduct,$dateEnd->date,Auth::User()->id,Auth::User()->start_day);
+        $listArray = Usee::selectOldUsee($idProduct,$dateEnd->date,Auth::User()->id,Auth::User()->start_day,$hour);
         $type = appProduct::selectTypeProduct($idProduct);
         if ($type->type_of_portion == 4 or $type->type_of_portion == 5) {
             return $this->sortAverageType4_5($listArray);
@@ -381,9 +382,10 @@ class Product {
             return $this->sortAverage($listArray);
         }
     }
-    public function sumAverageSubstances(int $idSubstances,int $id) {
+    public function sumAverageSubstances(int $idSubstances,int $id,$hourFrom,$hourTo) {
         $dateEnd = Usee::selectDateIdUsee($id,Auth::User()->id);
-        $listArray = Usee::selectOldUseeSubstances($idSubstances,$dateEnd->date,Auth::User()->id,Auth::User()->start_day);
+        $hour = $this->setHour($hourFrom,$hourTo);
+        $listArray = Usee::selectOldUseeSubstances($idSubstances,$dateEnd->date,Auth::User()->id,Auth::User()->start_day,$hour);
         $idProduct = appProduct::selectIdProduct($idSubstances);
         $type = appProduct::selectTypeProduct($idProduct->id);
         //$bool = false;
@@ -400,6 +402,58 @@ class Product {
         else {
             return $this->sortAverage($listArray);
         }
+    }
+      private function setHour($hourFrom,$hourTo) {
+        $hour  = Auth::User()->start_day;
+        if (($hourFrom != "" and $hourTo != "") ) {
+           
+            $timeFrom = explode(":",$hourFrom);
+            $timeTo = explode(":",$hourTo);
+            $hourFrom = $this->sumHour($timeFrom,Auth::User()->start_day);
+            $hourTo = $this->sumHour($timeTo,Auth::User()->start_day);
+            //$drugsModel->setHourTwo($hourFrom,$hourTo,Auth::User()->start_day);
+
+
+        }
+        else if ($hourTo != "" ) {
+            //$drugsModel->setHourTo($hourTo);
+            $timeTo = explode(":",$hourTo);
+            $hourTo = $this->sumHour($timeTo,Auth::User()->start_day);
+            $timeFrom = explode(":", Auth::User()->start_day . ":00:00");
+            $hourFrom = $this->sumHour($timeFrom,Auth::User()->start_day);
+        }
+        else if ($hourFrom != "") {
+            //$drugsModel->setHourFrom($hourFrom);
+            $timeFrom = explode(":",$hourFrom);
+            $hourFrom = $this->sumHour($timeFrom,Auth::User()->start_day);
+            $hourTmp = date(" H:i:s", strtotime("2020-02-10" . Auth::User()->start_day . ":00:00") - 1);
+            $timeTo = explode(":",$hourTmp);
+            $hourTo = $this->sumHour($timeTo,Auth::User()->start_day);
+
+        }
+        else {
+            $timeFrom = explode(":", Auth::User()->start_day . ":00:00");
+            $hourFrom = $this->sumHour($timeFrom,Auth::User()->start_day);
+            $hourTmp = date(" H:i:s", strtotime("2020-02-10" . Auth::User()->start_day . ":00:00") - 1);
+            $timeTo = explode(":",$hourTmp);
+            $hourTo = $this->sumHour($timeTo,Auth::User()->start_day);
+        }
+
+        return array($hourFrom,$hourTo);
+    }
+    private function sumHour($hour,$startDay) {
+        $sumHour = $hour[0] - $startDay;
+        if ($sumHour < 0) {
+            $sumHour = 24 + $sumHour;
+        }
+        if (strlen($sumHour) == 1) {
+            $sumHour = "0" .$sumHour;
+        }
+        if (strlen($hour[1]) == 1) {
+            $hour[1] = "0" . $hour[1];
+        }
+
+        return $sumHour . ":" .  $hour[1] . ":00";
     }
     private function sortAverageType4_5($arrayList) {
         $newArray = [];
@@ -466,5 +520,25 @@ class Product {
             
        }
        return $newArray;
+  }
+  public function checkErrorAverage($hourFrom,$hourTo) {
+      
+      if ($hourFrom != "" and $hourTo != "") {
+          
+          
+          
+         $hour = explode(":",$hourFrom);
+         $tmp = $this->sumHour($hour,Auth::User()->start_day);
+           $tmp2 = strtotime("2020-02-10" . $tmp);
+           $hour2 = explode(":",$hourTo);
+         $tmp3 = $this->sumHour($hour2,Auth::User()->start_day);
+          $tmp4 =strtotime("2020-02-10" . $tmp3);
+          $tmp5 = $tmp4 - $tmp2;
+          if ($tmp5 <= 0) {
+              array_push($this->error,"Błędna data");
+          }
+
+          
+      }
   }
 }

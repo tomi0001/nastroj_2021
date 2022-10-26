@@ -6,6 +6,7 @@
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSettingwidth700.css</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/averageMoodSum.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default_color/css/pageMainColor.css</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/actionSum.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Search/SearchMoodController.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageNotLogin1210.css</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showAll.blade.php</file>
@@ -130,6 +131,7 @@
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainwidth700.css</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSearchwidth1810.css</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/error.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/searchResultMoodGroupWeek.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/database/migrations/2016_12_12_000000_create_moods_actions_table.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/styles_dark/css/CommonColor.css</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Search/SearchController.php</file>

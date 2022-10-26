@@ -351,14 +351,21 @@ class MainController {
         
         $Product = new Product;
         $type = explode("_",$request->get("averageType"));
-        //print $type[0];
-        switch($type[0]) {
-            case 1 : $result = $Product->sumAverageProduct($type[1],$request->get("id"));
-                break;
-            case 2 : $result = $Product->sumAverageSubstances($type[1],$request->get("id"));
-            
+        $Product->checkErrorAverage($request->get("hourFrom"),$request->get("hourTo"));
+        if (count($Product->error) > 0) {
+            return View("ajax.error")->with("error",$Product->error);
         }
-        return View("ajax.sumAverage")->with("listAverage",$result);
+        else {
+            switch($type[0]) {
+                case 1 : $result = $Product->sumAverageProduct($type[1],$request->get("id"),$request->get("hourFrom"),$request->get("hourTo"));
+                    break;
+                case 2 : $result = $Product->sumAverageSubstances($type[1],$request->get("id"),$request->get("hourFrom"),$request->get("hourTo"));
+               
+            }
+            if ($type[0] == 1 or $type[0] == 2) {
+                return View("ajax.sumAverage")->with("listAverage",$result);
+            }
+        }
     }
     
 }

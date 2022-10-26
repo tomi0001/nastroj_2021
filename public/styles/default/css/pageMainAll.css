@@ -316,3 +316,12 @@ table.tableCenter {
               margin-bottom: 12px;
             
         }
+        
+        div.hourAverage {
+            width: 100%;
+            
+        }
+        div.hourOneAverage {
+            width: 45%;
+            float: left;
+        }
