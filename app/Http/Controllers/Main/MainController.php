@@ -337,7 +337,7 @@ class MainController {
     
     
     public function loadTypePortion(Request $request) {
-        $type = ModelProduct::selectTypeProduct($request->get("nameProduct"));
+        $type = ModelProduct::selectTypeProduct($request->get("nameProduct"),Auth::User()->id);
         $typeText = Common::showDoseProduct($type->type_of_portion);
         return View("ajax.showTypyPortion")->with("type",$typeText);
     }
