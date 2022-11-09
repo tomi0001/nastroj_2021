@@ -26,8 +26,8 @@ class calendar
     public $back_month;
     public $how_day_month;
     
-    function __construct($year,$month,$day,$action) {
-            $this->setDate($month,$action,$day,$year);
+    function __construct($year,$month,$day) {
+            $this->setDate($month,$day,$year);
             $this->how_day_month = $this->checkMonth($this->month,$this->year);
             $this->back_month = $this->returnBackMonth($this->month,$this->year);
             $this->next_month = $this->returnNextMonth($this->month,$this->year);
@@ -96,7 +96,7 @@ class calendar
             return array($year-1,$this->month);
         }
     
-        public function setDate($month,$action,$day,$year) {
+        public function setDate($month,$day,$year) {
             if (empty($year)) {
                 
                 $this->year = date("Y");

@@ -60,9 +60,28 @@
                 ZAPLANUJ DAWKĘ
             </div>
     </div>
+    <div class="MenuPageUser pagepagepage pageUser" style="display: none;">
+       
+           
+            <div id="addDoctor" class="hrefUsers hrefSettingCursor" onmouseover="selectMenuUsers('addDoctor')" onmouseout="unSelectMenuUsers('addDoctor')" onclick="addDoctorNew()">
+               LOGOWANIE DOCTORA
+            </div>
+           
+
+        
+        
+        
+    </div>
     <div id="MenuPageUser" style="display: none;">
 
     </div>
+    
+    
+    <div class="pagePageUser pagepage bodyUserPage" id="addNewDoctor" style="display: none;">
+
+        </div>
+    
+    
     <div class="pagePageMood pagepage bodyMoodPage" id="addNewAction" style="display: none;">
 
         </div>
@@ -118,7 +137,8 @@
         '{{route('settings.editGroup')}}',
         '{{route('settings.editSubstance')}}',
         '{{route('settings.editProduct')}}',
-        '{{route('settings.planedDose')}}'
+        '{{route('settings.planedDose')}}',
+        '{{route('settings.addDoctorNew')}}'
     ];
     var urlArraySubmit = [
         '{{route('settings.addNewActionSubmit')}}',
@@ -131,7 +151,8 @@
         '{{route('settings.editGroupSubmit')}}',
         '{{route('settings.editSubstanceSubmit')}}',
         '{{route('settings.editProductSubmit')}}',
-        '{{route('settings.planedDoseSubmit')}}'
+        '{{route('settings.planedDoseSubmit')}}',
+        '{{route('settings.addDoctorNewSubmit')}}'
     ];
     
 

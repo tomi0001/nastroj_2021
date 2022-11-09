@@ -27,9 +27,9 @@ class Product extends Model
                 ->where("id_users", Auth::User()->id)
                 ->where("id",$idProduct)->first();
     }
-    public static function selectTypeProduct(int $idProduct) {
+    public static function selectTypeProduct(int $idProduct,int $idUsers) {
         return self::selectRaw("type_of_portion as type_of_portion")
-                ->where("id_users", Auth::User()->id)
+                ->where("id_users", $idUsers)
                 ->where("id",$idProduct)->first();
     }
     public static function ifExist(string $name, int $idUsers) {

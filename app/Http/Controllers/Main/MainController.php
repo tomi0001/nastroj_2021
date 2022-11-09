@@ -27,9 +27,9 @@ use App\Http\Services\Action as serviceAction;
 use Auth;
 class MainController {
     public $error = [];
-    public function index($year = "",$month  ="",$day = "",$action = "") {   
+    public function index($year = "",$month  ="",$day = "") {   
 
-        $Calendar = new Calendar($year, $month, $day, $action);
+        $Calendar = new Calendar($year, $month, $day);
         $Mood = new Main;
         $Drugs = new Product;
         $listMood = $Mood->downloadMood($Calendar->year, $Calendar->month, $Calendar->day);
@@ -357,9 +357,9 @@ class MainController {
         }
         else {
             switch($type[0]) {
-                case 1 : $result = $Product->sumAverageProduct($type[1],$request->get("id"),$request->get("hourFrom"),$request->get("hourTo"));
+                case 1 : $result = $Product->sumAverageProduct($type[1],$request->get("id"),$request->get("hourFrom"),$request->get("hourTo"),Auth::User()->id);
                     break;
-                case 2 : $result = $Product->sumAverageSubstances($type[1],$request->get("id"),$request->get("hourFrom"),$request->get("hourTo"));
+                case 2 : $result = $Product->sumAverageSubstances($type[1],$request->get("id"),$request->get("hourFrom"),$request->get("hourTo"),Auth::User()->id);
                
             }
             if ($type[0] == 1 or $type[0] == 2) {

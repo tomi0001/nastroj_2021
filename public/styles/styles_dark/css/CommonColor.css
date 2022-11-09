@@ -16,6 +16,12 @@ body {
 
 
         }
+                            .user {
+            background-color:  rgba(7, 73, 76, 1);
+            color: white;
+
+
+        }
         table.actionShow {
 
     background-color: #507e88;
@@ -115,8 +121,21 @@ thead.titleTheadAction {
 
         }
 
+                                    .btn-user {
+        border-color: #ada184;
+
+                color: white;
+
+                box-shadow: 6px 6px 6px #3a3527;
 
 
+        }
+        .btn-user:hover  {
+                background-color: #153E80;
+                color: white;
+                border-color: #C29713;
+
+        }
         .btn-mood {
 
 

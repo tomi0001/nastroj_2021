@@ -369,12 +369,12 @@ class Product {
             $Substances_product->save();
         }
     }
-    public function sumAverageProduct(int $idProduct,int $id,$hourFrom,$hourTo) {
-        $dateEnd = Usee::selectDateIdUsee($id,Auth::User()->id);
+    public function sumAverageProduct(int $idProduct,int $id,$hourFrom,$hourTo,$idUsers) {
+        $dateEnd = Usee::selectDateIdUsee($id,$idUsers);
         $hour = $this->setHour($hourFrom,$hourTo);
                 
-        $listArray = Usee::selectOldUsee($idProduct,$dateEnd->date,Auth::User()->id,Auth::User()->start_day,$hour);
-        $type = appProduct::selectTypeProduct($idProduct);
+        $listArray = Usee::selectOldUsee($idProduct,$dateEnd->date,$idUsers,Auth::User()->start_day,$hour);
+        $type = appProduct::selectTypeProduct($idProduct,$idUsers);
         if ($type->type_of_portion == 4 or $type->type_of_portion == 5) {
             return $this->sortAverageType4_5($listArray);
         }
@@ -382,12 +382,12 @@ class Product {
             return $this->sortAverage($listArray);
         }
     }
-    public function sumAverageSubstances(int $idSubstances,int $id,$hourFrom,$hourTo) {
-        $dateEnd = Usee::selectDateIdUsee($id,Auth::User()->id);
+    public function sumAverageSubstances(int $idSubstances,int $id,$hourFrom,$hourTo,$idUsers) {
+        $dateEnd = Usee::selectDateIdUsee($id,$idUsers);
         $hour = $this->setHour($hourFrom,$hourTo);
-        $listArray = Usee::selectOldUseeSubstances($idSubstances,$dateEnd->date,Auth::User()->id,Auth::User()->start_day,$hour);
+        $listArray = Usee::selectOldUseeSubstances($idSubstances,$dateEnd->date,$idUsers,Auth::User()->start_day,$hour);
         $idProduct = appProduct::selectIdProduct($idSubstances);
-        $type = appProduct::selectTypeProduct($idProduct->id);
+        $type = appProduct::selectTypeProduct($idProduct->id,$idUsers);
         //$bool = false;
 //        if  ($type->type_of_portion == 3)  {
 //            

@@ -130,6 +130,7 @@
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Product/searchDrugs.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainwidth700.css</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSearchwidth1810.css</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/ajax/error.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/error.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/searchResultMoodGroupWeek.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/database/migrations/2016_12_12_000000_create_moods_actions_table.php</file>

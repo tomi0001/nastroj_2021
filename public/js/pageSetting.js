@@ -31,6 +31,8 @@ function setFunction() {
             break;
         case 'planedDose': planedDose();
             break;
+        case 'addNewDoctor': addDoctorNew();
+            break;
     }
 }
     
@@ -51,6 +53,9 @@ function selectMenu() {
     }
     if (sessionStorage.getItem('settingType') == 'addNewGroup' ||  sessionStorage.getItem('settingType') == 'addNewSubstance' || sessionStorage.getItem('settingType') == 'addNewProduct' || sessionStorage.getItem('settingType') == 'editGroupSet' || sessionStorage.getItem('settingType') == 'editSubstanceSet' || sessionStorage.getItem('settingType') == 'editProductSet' || sessionStorage.getItem('settingType') == 'planedDose' ) {
         loadPageDrugs();
+    }
+     if (sessionStorage.getItem('settingType') == 'addNewDoctor' ) {
+        loadPageUser();
     }
 }
 
@@ -93,8 +98,22 @@ function loadPageMood() {
     
     $(".pagePageDrugs").css("display","none");
     
+    $(".pagePageUser").css("display","none");
+    $(".MenuPageUser").css("display","none");
+    
 }
-
+function loadPageUser() {
+    $(".titleSettingsMood").removeClass("selectedMenu");
+    $(".titleSettingsDrugs").removeClass("selectedMenu");
+    $(".titleSettingsUser").addClass("selectedMenu");
+    $(".MenuPageUser").css("display","block");
+    $(".MenuPageDrugs").css("display","none");
+    
+    $(".pagePageDrugs").css("display","none");
+    $(".MenuPageMood").css("display","none");
+    
+    $(".pagePageMood").css("display","none");
+}
 function loadPageDrugs() {
     
     $(".titleSettingsMood").removeClass("selectedMenu");
@@ -104,15 +123,24 @@ function loadPageDrugs() {
     $(".MenuPageMood").css("display","none");
     
     $(".pagePageMood").css("display","none");
+    
+    $(".pagePageUser").css("display","none");
+    $(".MenuPageUser").css("display","none");
 }
 
-function loadPageUser() {
-    $(".titleSettingsMood").removeClass("selectedMenu");
-    $(".titleSettingsDrugs").removeClass("selectedMenu");
-    $(".titleSettingsUser").addClass("selectedMenu");    
+//function loadPageUser() {
+//    $(".titleSettingsMood").removeClass("selectedMenu");
+//    $(".titleSettingsDrugs").removeClass("selectedMenu");
+//    $(".titleSettingsUser").addClass("selectedMenu");    
+//}
+
+function selectMenuUsers(menu) {
+     $("#" + menu).addClass("selectedMenuUsersHref");
 }
 
-
+function unSelectMenuUsers(menu) {
+    $("#" + menu).removeClass("selectedMenuUsersHref");
+}
 function selectMenuMood(menu) {
     $("#" + menu).addClass("selectedMenuMoodHref");
     
@@ -913,7 +941,38 @@ function editProduct() {
         $("#editProductSet").css("display","none");
     }        
 }
+function addDoctorNew() {
+    sessionStorage.setItem('settingType', "addNewDoctor");
+    
+    if ($("#addNewDoctor").css("display") == "none" ) {
+        
+        $.ajax({
+                url : urlArray[11],
+                    method : "get",
 
+                    dataType : "html",
+            })
+            .done(function(response) {
+
+
+
+
+                  $("#addNewDoctor").css("display","block");
+                  $("#addNewDoctor").html(response);
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })    
+
+            
+    }
+    else {
+        
+        $("#addNewDoctor").css("display","none");
+    }   
+}
 var arrayGroupSubstance = [];
 function selectedGroupSubstance(id,index) {
 
@@ -1327,6 +1386,29 @@ function editGroupSubmit() {
                 alert("Wystąpił błąd");
             })        
 }
+
+
+
+function addNewDoctorSubmit() {
+                 $.ajax({
+                url : urlArraySubmit[11],
+                    method : "get",
+                    data : 
+              $("#formaddNewDoctor").serialize(),
+                    dataType : "html",
+            })
+            .done(function(response) {
+
+
+          
+                $("#addNewDoctorSubmit").html(response);
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })       
+}
+
 
 
 function addProductNewSubmit() {

@@ -92,6 +92,10 @@
             width: 10%;
             float: left;
         }
+        div.empty_menuDr {
+            width: 18%;
+            float: left;
+        }
 
                     button.main:hover {
                 
@@ -207,6 +211,32 @@
 
         }
         .btn-mood:hover  {
+       
+                border-radius: 12px;
+                text-align: center;
+                display: inline-block;
+                font-size: 24px;
+                font-weight: bold;
+        }
+        .btn-user {
+       
+                border: solid 1px transparent;
+
+                padding-top: 13px;
+                padding-left: 25px;
+                padding-right: 25px;
+                padding-bottom: 13px;
+    
+                border-radius: 12px;
+                height: 65px;
+                text-align: center;
+                display: inline-block;
+                font-size: 24px;
+                font-weight: bold;
+   
+
+        }
+        .btn-user:hover  {
        
                 border-radius: 12px;
                 text-align: center;

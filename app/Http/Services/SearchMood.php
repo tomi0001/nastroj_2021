@@ -32,9 +32,11 @@ class SearchMood {
      function __construct($bool = 0) {
         if ($bool == 0) {
             $this->idUsers = Auth::User()->id;
+           
         }
         else {
             $this->idUsers  = Auth::User()->id_users;
+            
         }
         $this->startDay  = Auth::User()->start_day;
         /*

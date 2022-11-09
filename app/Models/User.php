@@ -69,4 +69,17 @@ class User extends Authenticatable
 
                 ->where("id",$idUsers)->first();
     }
+    public static function selectIdDoctor(int $idUser) {
+        return self::selectRaw("name as name")->where("id_users",$idUser)->where("type","doctor")->first();
+    }
+    public static function IfExistUserDoctor(string $nameUser,int $id = 0) {
+        return self::selectRaw("name as name")->where("name",$nameUser)->where("id_users","!=",$id)->count();
+    }
+    public static function IfExistUser(string $nameUser) {
+        return self::selectRaw("name as name")->where("name",$nameUser)->where("id_users",null)->count();
+    }
+    public static function checkIfCountDoctorId(int $idUser) {
+        return self::selectRaw("name as name")->where("id_users",$idUser)->where("type","doctor")->count();
+    }
+    
 }

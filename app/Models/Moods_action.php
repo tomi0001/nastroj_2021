@@ -24,6 +24,7 @@ class Moods_action extends Model
                         . "ELSE 1 "
                         . " END)"
                         . "  as sum ")
+                ->where("moods.id_users",$idUsers)
                 ->where("id_moods",$idMood)->get();
     }
     public static function selectValueActionForMood(int $idMood, int $idUsers,int $idAction) {

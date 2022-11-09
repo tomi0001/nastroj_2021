@@ -31,6 +31,7 @@ class SearchDrugs {
             $this->idUsers = Auth::User()->id;
         }
         else {
+            
             $this->idUsers  = Auth::User()->id_users;
         }
         $this->startDay  = Auth::User()->start_day;
@@ -50,6 +51,7 @@ class SearchDrugs {
      public function createQuestionSumDay(Request $request) {
          $Usee = new Usee;
          $Usee->createQuestionsSumDay($this->startDay);
+         $Usee->setIdUsers($this->idUsers);
          $Usee->setDate($request->get("dateFrom"),$request->get("dateTo"),$this->startDay);
          $this->setHour($Usee,$request);
          $Usee->setDose($request->get("doseFrom"),$request->get("doseTo"));
@@ -74,7 +76,7 @@ class SearchDrugs {
      public function createQuestionGroupDay(Request $request) {
          $Usee = new Usee;
          $Usee->createQuestionsGroupDay($this->startDay,$request->get("ifWhatWork"));
-         $Usee->setIdUsers(Auth::User()->id);
+         $Usee->setIdUsers($this->idUsers);
          $Usee->setDate($request->get("dateFrom"),$request->get("dateTo"),$this->startDay);
          $this->setHour($Usee,$request);
          $Usee->setDose($request->get("doseFrom"),$request->get("doseTo"));
@@ -111,7 +113,7 @@ class SearchDrugs {
          $this->setHour($Usee,$request);
          $Usee->setDose($request->get("doseFrom"),$request->get("doseTo"));
          $Usee->setProduct($this->idProduct);
-         $Usee->setIdUsers(Auth::User()->id);
+         $Usee->setIdUsers($this->idUsers);
          if ($request->get("whatWork") != "") {
              $Usee->setWhatWork($request->get("whatWork"));
          }
