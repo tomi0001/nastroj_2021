@@ -47,6 +47,7 @@ class SettingsUserController {
         }
         else {
             $User->updateUserDoctor($request);
+            return View("ajax.succes")->with("succes","pomyslnie zmodyfikwano ustawienia");
         }
     }
     

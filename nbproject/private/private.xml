@@ -3,64 +3,140 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/var/www/html/nastroj_2021/public/js/pageSetting.js</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSettingwidth700.css</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/averageMoodSum.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/default_color/css/pageMainColor.css</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/actionSum.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Search/SearchMoodController.php</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageNotLogin1210.css</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showAll.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/config/app.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showActionSum.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/searchMood.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSettingwidth1210.css</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSearchwidth1410.css</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Action_plan.php</file>
             <file>file:/var/www/html/nastroj_2021/database/migrations/2014_12_12_000000_create_moods_table.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSettingAll.css</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/AverageMoodSumDay.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageNotLoginwidth700.css</file>
-            <file>file:/var/www/html/nastroj_2021/database/migrations/2021_01_12_1111114_create_products_table.php</file>
-            <file>file:/var/www/html/nastroj_2021/routes/web.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Product.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/CommonAll.css</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/default_color/css/CommonColor.css</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainwidth1410.css</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/auth/loginDoctor.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/showAllDayAction.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Layout/User.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/database/migrations/2021_01_12_1111132_create_users_descriptions_table.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/AverageMoodGroupWeek.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Layout/SelectSearch.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/searchResultMood.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/searchActionDay.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/seachResultMoodAjax.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/app/Http/Services/SearchMoodAI.php</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSettingwidth1810.css</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/auth/login.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/searchResultMoodSumDay.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Main/showMood.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/showAllDayMood.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/editProduct.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/js/pageMain.js</file>
-            <file>file:/var/www/html/nastroj_2021/app/Models/Actions_day.php</file>
-            <file>file:/var/www/html/nastroj_2021/app/Models/Substance.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showActionDays.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/searchResultActionDay.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/searchResultMoodGroupAction.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageNotLoginwidth1410.css</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Layout/Search.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Product/searchResultDrugsGroupDay.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/config/view.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Substances_product.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSearchAll.css</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageNotLoginwidth1810.css</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Search/Mood/searchResultMood.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Search/Mood/actionSum.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/searchSleep.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Models/Action.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Services/Calendar.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Services/User.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Search/Product/showAllSubstanceMood.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Search/Product/searchResultDrugsGroupDay.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainwidth1210.css</file>
+            <file>file:/var/www/html/nastroj_2021/database/migrations/2021_01_12_1111118_create_substances_products_table.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Product/showAllSubstanceMood.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/doctorController.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Layout/Main.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/styles_dark/css/pageSearchColor.css</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Search/SearchDrugsController.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Main/showAll.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/main.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Models/Moods_action.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Services/Product.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Auth/LoginController.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/editSubstance.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/database/migrations/2022_01_12_0111132_create_planned_drugs_table.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Layout/Main.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Layout/Search.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/main.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showActionPlaned.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Main/showActionDays.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Controller.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Layout/Settings.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Main/MainController.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Main/main.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/MySQL/MySQLController.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSearchwidth700.css</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Doctor/Search/SearchController.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/styles_dark/css/pageMainColor.css</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Main/showDrugs.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/addAction.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Main/showAction.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSettingwidth1410.css</file>
+            <file>file:/var/www/html/nastroj_2021/config/database.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Models/Mood.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showMood.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Search/Mood/searchMood.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Search/Mood/searchResultActionDay.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/calendar.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/.env</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/auth/main.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/editSubstanceLoadGroup.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainwidth700.css</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Search/Mood/AverageMood.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSearchwidth1810.css</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/ajax/Doctor/showAverage.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Doctor/Main/MainController.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Search/Mood/averageMoodSum.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/error.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/styles_dark/css/CommonColor.css</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Search/Mood/AverageMoodSumDayMinute.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Search/SearchController.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Users/addNewDoctor.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/Common1810.css</file>
+            <file>file:/var/www/html/nastroj_2021/database/migrations/2021_01_12_1111111_create_groups_table.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Main/showActionSum.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/database/migrations/2014_12_12_000000_create_hashes_table.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Main/showMenu.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Search/Mood/searchResultSleep.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/AverageMoodSumDayMinute.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/searchResultSleep.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default_color/css/pageMainColor.css</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageNotLogin1210.css</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showAll.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/searchMood.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSettingwidth1210.css</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/AverageMoodSumDay.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageNotLoginwidth700.css</file>
+            <file>file:/var/www/html/nastroj_2021/database/migrations/2021_01_12_1111114_create_products_table.php</file>
+            <file>file:/var/www/html/nastroj_2021/routes/web.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Search/Mood/searchResultMoodGroupAction.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default_color/css/CommonColor.css</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainwidth1410.css</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Search/Mood/searchSleep.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/showAllDayAction.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Layout/User.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/database/migrations/2021_01_12_1111132_create_users_descriptions_table.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/AverageMoodGroupWeek.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Layout/SelectSearch.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/searchActionDay.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/seachResultMoodAjax.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Services/SearchMoodAI.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSettingwidth1810.css</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Settings/SettingsUserController.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Models/Actions_day.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Models/Substance.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/addNewSubstance.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Search/Mood/searchResultMoodSumDay.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Main/showActionPlaned.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/ajax/showAverage.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/Common700.css</file>
             <file>file:/var/www/html/nastroj_2021/database/migrations/2016_12_13_000000_create_actions_plans_table.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Models/User.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Search/main.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/searchResultMoodGroupDay.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/searchSleep.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/app/Models/Action.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Search/Mood/searchActionDay.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/SearchMood.php</file>
-            <file>file:/var/www/html/nastroj_2021/app/Http/Services/Calendar.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/PlanedDrug.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/ajax/showDrugs.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/AverageMood.blade.php</file>
@@ -68,83 +144,61 @@
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/addNewProduct.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/RegisterController.php</file>
             <file>file:/var/www/html/nastroj_2021/database/migrations/2021_01_12_1111113_create_substances_table.php</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainwidth1210.css</file>
-            <file>file:/var/www/html/nastroj_2021/database/migrations/2021_01_12_1111118_create_substances_products_table.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default_color/css/pageSettingColor.css</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Product/searchResultDrugs.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Product/showAllSubstanceMood.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/doctorController.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Doctor/Search/SearchDrugsController.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Planned_drug.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Settings/SettingsProductController.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Common.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/changeLoadPlaned.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Search/Mood/searchResultMoodGroupDay.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainwidth1810.css</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/styles_dark/css/pageSearchColor.css</file>
-            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Search/SearchDrugsController.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/main.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/ajax/Doctor/sumAverage.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Usee.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageNotLoginwidth1210.css</file>
-            <file>file:/var/www/html/nastroj_2021/app/Http/Services/Product.php</file>
-            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Auth/LoginController.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/editSubstance.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/database/migrations/2022_01_12_0111132_create_planned_drugs_table.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/addMood.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Layout/Main.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Layout/Search.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Action.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/main.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/database/migrations/2021_01_12_1111115_create_usees_table.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Search/Mood/searchResultMoodGroupWeek.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/ajax/showDescriptionDrugs.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Mood.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Search/Mood/showAllDayMood.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/Common1410.css</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/addDrugs.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Controller.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Layout/Settings.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Main/MainController.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainAll.css</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/SearchDrugs.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/ajax/sumAverage.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/MySQL/MySQLController.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Search/Product/searchResultDrugsSumDay.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/HomeController.php</file>
             <file>file:/var/www/html/nastroj_2021/database/migrations/2014_10_12_000000_create_users_table.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/styles_dark/css/pageSettingColor.css</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSearchwidth700.css</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Search/Mood/AverageMoodGroupWeek.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Search/Product/searchDrugs.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Product/searchResultDrugsSumDay.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Main.php</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/styles_dark/css/pageMainColor.css</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/addAction.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSettingwidth1410.css</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Main/calendar.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageNotLogin1410.css</file>
-            <file>file:/var/www/html/nastroj_2021/config/database.php</file>
-            <file>file:/var/www/html/nastroj_2021/app/Models/Mood.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/main.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showMood.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showDrugs.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/database/migrations/2021_01_12_1111116_create_substances_groups_table.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSearchwidth1210.css</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Settings/SettingsMoodController.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showMenu.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Providers/AppServiceProvider.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Search/Mood/AverageMoodSumDay.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/auth/register.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/calendar.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/.env</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/auth/main.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/editSubstanceLoadGroup.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Product/searchDrugs.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainwidth700.css</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSearchwidth1810.css</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/ajax/error.blade.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/error.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/searchResultMoodGroupWeek.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/database/migrations/2016_12_12_000000_create_moods_actions_table.php</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/styles_dark/css/CommonColor.css</file>
-            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Search/SearchController.php</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/Common1810.css</file>
-            <file>file:/var/www/html/nastroj_2021/database/migrations/2021_01_12_1111111_create_groups_table.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Search/Mood/seachResultMoodAjax.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Search/Product/searchResultDrugs.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Doctor/Search/SearchMoodController.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/editProductLoadSubstance.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showAction.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/Common1210.css</file>
-            <file>file:/var/www/html/nastroj_2021/database/migrations/2014_12_12_000000_create_hashes_table.php</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/AverageMoodSumDayMinute.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Search/Mood/showAllDayAction.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageNotLoginAll.css</file>
-            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/searchResultSleep.blade.php</file>
         </group>
     </open-files>
 </project-private>

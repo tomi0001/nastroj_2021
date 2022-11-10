@@ -20,7 +20,7 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
     public function loginDr() {
-        print "ddd";
+        //print "ddd";
     }
     /**
      * Show the application dashboard.
