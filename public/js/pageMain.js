@@ -102,12 +102,12 @@ function updateActionForMood(url,id) {
 
     
      changeArrayAtHiddenAddMoodId(id);
- 
+
     $.ajax({
         url : url,
             method : "get",
             data : 
-              $("#formUpdateAction" + id).serialize() + "&idMood=" + id
+              $("#formUpdateAction2" + id).serialize() + "&idMood=" + id
             ,
             dataType : "html",
 
@@ -316,16 +316,17 @@ function changeArrayAtHiddenAddMood() {
 
 
 function changeArrayAtHiddenAddMoodId(id) {
+    //$("#formUpdateAction" + id).empty();
     let array = document.querySelectorAll("input[name^='percentExe" + id +  "']");
     
     for (var i=0;i < array.length;i++) {
         var idindex = $("input[name^='idActionss" + id + "']").eq(i).val();
         
         if (arrayActionMulti.find(element => element == idindex )) {
-
-          $("#formUpdateAction" + id).append("<input type=\'hidden\' name=\'idAction[]\' value='" +  $("input[name^='idActionss" + id + "']").eq(i).val()  + "' class=\'form-control typeMood\'>");
-          $("#formUpdateAction" + id).append("<input type=\'hidden\' name=\'idActions[]\' value='" + $("input[name^='percentExe" + id + "']").eq(i).val() + "' class=\'form-control typeMood\'>");
-          $("#formUpdateAction" + id).append("<input type=\'hidden\' name=\'idActionMinute[]\' value='" + $("input[name^='minute_exe" + id + "']").eq(i).val() + "' class=\'form-control typeMood\'>");
+           
+          $("#formUpdateAction2" + id).append("<input type=\'hidden\' name=\'idAction[]\' value='" +  $("input[name^='idActionss" + id + "']").eq(i).val()  + "' class=\'form-control typeMood\'>");
+          $("#formUpdateAction2" + id).append("<input type=\'hidden\' name=\'idActions[]\' value='" + $("input[name^='percentExe" + id + "']").eq(i).val() + "' class=\'form-control typeMood\'>");
+          $("#formUpdateAction2" + id).append("<input type=\'hidden\' name=\'idActionMinute[]\' value='" + $("input[name^='minute_exe" + id + "']").eq(i).val() + "' class=\'form-control typeMood\'>");
         }
 
 }
