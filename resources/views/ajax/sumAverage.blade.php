@@ -23,7 +23,7 @@
             
              <br>
         </div>
-        @if (($i !=(count($listAverage) - 1  ) )    and ( strtotime($listAverage[$i]["dateStart"])  - strtotime($listAverage[$i+1]["dateEnd"]) ) >   ( 86400)   )
+        @if (($i !=(count($listAverage) - 1  ) )    and ( strtotime($listAverage[$i]["dateStart"])  - strtotime($listAverage[$i+1]["dateEnd"]) ) >   ( 86400)  and \App\Http\Services\Common::ifChangeTimeWinterOne($listAverage[$i]["dateStart"]) == false )
         
           
         <div class="lineAverage">

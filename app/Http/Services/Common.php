@@ -23,6 +23,36 @@ class Common {
         'ilości',
         'Ug'
     ];
+    public static function ifChangeTimeWinterOne(string $dateStart) :bool {
+        $yearFrom = explode("-",$dateStart);
+        //$yearFrom2 = explode("-",$yearFrom[0]);
+        
+//        $yearTo = explode(" ",$dateTo);
+//        $yearTo2 = explode("-",$yearTo[0]);
+        
+        
+        
+        
+         if ( (  (  strtotime($yearFrom[0] . "-" . "11-" . "01") - strtotime($dateStart)  )  < 86400 * 7)  and (  (  strtotime($yearFrom[0] . "-" . "11-" . "01") - strtotime($dateStart)  )  >= 0) ) {
+            return true;
+        }  
+        else {
+            return false;
+        }
+    }
+    
+    
+    public static function ifChangeTimeWinterTwo(string $dateStart) :bool {
+        $yearFrom = explode("-",$dateStart);
+        if  (  (  (   strtotime($dateStart)  )  < 86400 * 7  ) -  strtotime($yearFrom[0] . "-" . "11-" . "01")  and (  (  strtotime($yearFrom[0] . "-" . "11-" . "01") - strtotime($dateStart)  )  < 0)    ) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    
+    
     public static function returnDayWeek($data) {
         $week = date('N', strtotime($data));
         switch ($week) {

@@ -11,6 +11,7 @@ use App\Models\Moods_action as MoodAction;
 use App\Http\Services\Calendar;
 use Hash;
 use Datetime;
+use App\Http\Services\Common;
 use Auth;
 use DB;
 
@@ -178,8 +179,22 @@ class SearchMoodAI
             $dateIFrom = date("Y-m-d",$i);
             $dateITo = date("Y-m-d",$i+ (86400 * 6) );
             if (MoodModel::ifExistDAteMood($dateIFrom, $dateITo, $this->idUsers,$this->startDay) > 0 ) {
-                $arrayWeek["dateStart"][$j] = date("Y-m-d",$i);
-                $arrayWeek["dateEnd"][$j] = date("Y-m-d",$i+ (86400 * 6) );
+                if (Common::ifChangeTimeWinterOne(date("Y-m-d",$i))) {
+                    $arrayWeek["dateStart"][$j] = date("Y-m-d",$i+ (86400) );
+                    $arrayWeek["dateEnd"][$j] = date("Y-m-d",$i+ (86400 * 7) );
+                }
+                else if (Common::ifChangeTimeWinterTwo(date("Y-m-d",$i))) {
+                     $arrayWeek["dateStart"][$j] = date("Y-m-d",$i + (86400));
+                     $arrayWeek["dateEnd"][$j] = date("Y-m-d",$i+ (86400 * 7) );
+                }
+                else {
+                    $arrayWeek["dateStart"][$j] = date("Y-m-d",$i);
+                    $arrayWeek["dateEnd"][$j] = date("Y-m-d",$i+ (86400 * 6) );
+                }
+                
+     
+               
+                
                 $j++;
             }
             //$i+= 86400;
