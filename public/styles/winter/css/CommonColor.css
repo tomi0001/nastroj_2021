@@ -5,13 +5,13 @@ body {
 
             #MainPage {
 
-                background-color: rgba(59, 68, 3, 0.6);
+                background-color: rgba(83, 154, 239, 0.6);
 
 
             }
 
                     .mood {
-            background-color: rgba(49, 44, 35, 1);
+            background-color: rgba(8, 68, 140, 1);
             color: white;
 
 
@@ -24,8 +24,8 @@ body {
         }
         table.actionShow {
 
-    background-color: #507e88;
-    color: #034053;
+    background-color: #547fd3;
+    color: black;
 
     border: 2px solid #0E5970;
 }
@@ -37,7 +37,7 @@ td.boldTitle {
 }
 thead.titleTheadAction {
 
-    background-color: #00879d;
+    background-color: #2f60c1;
 }
        td.tdAction {
 
@@ -47,19 +47,19 @@ thead.titleTheadAction {
         }
                 div.sumDrugs {
 
-            background-color: rgba(14, 74, 3, 1);
+            background-color: rgb(32, 62, 26);
 
 
         }
                 div.positionDrugs {
 
-            background-color: rgba(61, 109, 72, 1);
+            background-color: rgb(3, 139, 34);
 
             color: #CFF5CA;
 
         }
         div.positionDrugsDose {
-            background-color: rgba(96, 179, 113, 1);
+            background-color: rgb(74 119 83);
 
             color: #CFF5CA;
         }
@@ -77,16 +77,16 @@ thead.titleTheadAction {
 
         }
         .drugs {
-            background-color: rgba(14, 74, 3, 1);
+            background-color: rgb(25, 58, 19);
             color: white;
 
         }
         .day {
-            background-color: #E79959;
+            background-color: #4c41c1;
             color: white;
         }
         .action {
-            background-color: rgba(42, 107, 102, 1);
+            background-color: rgb(106, 150, 255);
             color: white;
 
 
@@ -97,7 +97,7 @@ thead.titleTheadAction {
         }
         a.menu:hover {
             text-decoration: underline;
-            color: #E9BA10;
+            color: #869FE0;
         }
 
         .btn-success {
@@ -139,7 +139,7 @@ thead.titleTheadAction {
         .btn-mood {
 
 
-                border-color: #ada184;
+                border-color: #0035A7;
 
                 color: white;
 
@@ -147,9 +147,9 @@ thead.titleTheadAction {
 
         }
         .btn-mood:hover  {
-                background-color: #ada184;
+                background-color: #3431f0;
                 color: white;
-                border-color: #C29713;
+                border-color: #7D8AA5;
 
         }
         .btn-sleep {
@@ -162,7 +162,7 @@ thead.titleTheadAction {
                 box-shadow: 6px 6px 6px #2a053d;
         }
         .btn-sleep:hover  {
-                background-color: #ada184;
+                background-color: #3431f0;
                 color: white;
                 border-color: #d1aa4a;
 
@@ -170,18 +170,18 @@ thead.titleTheadAction {
 
 
         .btn-action {
-                background-color: #15536f;
+                background-color: rgb(106, 150, 255);
 
-                border-color: #6E791A;
+                border-color: rgb(106, 150, 255);
 
                 color: white;
 
                 box-shadow: 6px 6px 6px rgba(42, 121, 163, 0.3);
         }
         .btn-action:hover  {
-                background-color: #229fd6;
+                background-color: #3431f0;
                 color: white;
-                border-color: #C29713;
+                border-color: rgb(106, 150, 255);
 
         }
 
@@ -196,7 +196,7 @@ thead.titleTheadAction {
 
         }
         .btn-drugs:hover  {
-                background-color: #37ab23;
+                background-color: #3431f0;
                 color: white;
                 border-color: yellow;
 
@@ -218,12 +218,12 @@ div.ajaxSucces {
 
 div.level {
 
-        box-shadow: 0 0 8px 2px #5C5B04;
+        box-shadow: 0 0 8px 2px #18395f;
 
 }
 div.level-10 {
 
-    background-color: #15190f;
+    background-color: #566877;
 
     color: black;
 
@@ -237,7 +237,7 @@ div.levelSleep {
 }
 div.level-9 {
 
-    background-color: #242423;
+    background-color: #707E8A;
 
 
 
@@ -245,21 +245,21 @@ div.level-9 {
 }
 div.level-8 {
 
-    background-color: #41403F;
+    background-color: #98A6B3;
 
 
     color: black;
 }
 div.level-7 {
 
-    background-color: #5C5B59;
+    background-color: #ADB9C3;
 
 
     color: black;
 }
 div.level-6 {
 
-    background-color: #72716F;
+    background-color: #BBCBD8;
 
 
     color: black;
@@ -267,14 +267,14 @@ div.level-6 {
 
 div.level-5 {
 
-    background-color: #868273;
+    background-color: #D0E0ED;
 
 
     color: black;
 }
 div.level-4 {
 
-    background-color: #979F87;
+    background-color: #DAE6F1;
 
 
     color: black;
@@ -282,21 +282,21 @@ div.level-4 {
 
 div.level-3 {
 
-    background-color: #A8B298;
+    background-color: #DAE6F1;
 
 
     color: black;
 }
 div.level-2 {
 
-    background-color: #C3CCB5;
+    background-color: #DAE6F1;
 
 
     color: black;
 }
 div.level-1 {
 
-    background-color: #CFCBB5;
+    background-color: white;
 
 
     color: black;
@@ -310,19 +310,19 @@ div.level0 {
 }
 div.level1 {
 
-    background-color: #f6f9ac;
+    background-color: #C2E0F9;
 
     color: black;
 }
 div.level2 {
 
-    background-color: #f5f988;
+    background-color: #C2E0F9;
 
     color: black;
 }
 div.level3 {
 
-    background-color: #dfe365;
+    background-color: #ABD3F5;
 
 
     color: black;
@@ -330,49 +330,49 @@ div.level3 {
 }
 div.level4 {
 
-    background-color: #e5ea50;
+    background-color: #A0D2FD;
 
 
     color: black;
 }
 div.level5 {
 
-    background-color: #d8de3b;
+    background-color: #8CC8FD;
 
 
     color: black;
 }
 div.level6 {
 
-    background-color: #cdd410;
+    background-color: #70B7F7;
 
 
     color: black;
 }
 div.level7 {
 
-    background-color: #999f00;
+    background-color: #70B7F7;
 
 
     color: black;
 }
 div.level8 {
 
-    background-color: #9ae021;
+    background-color: #54A9F7;
 
 
     color: black;
 }
 div.level9 {
 
-    background-color: #84c80f;
+    background-color: #3EA3FF;
 
 
     color: black;
 }
 div.level10 {
 
-    background-color: #08F608;
+    background-color: #1791FF;
 
 
     color: black;
@@ -392,67 +392,67 @@ div.level10 {
 
         }
         div.descriptionModShowMood {
-    background-color: #6D6D21;
+    background-color: #0f5ba6;
 
     color: white;
 
 }
         div.titleActionShowAjax {
-            background-color: #0c3b81;
+            background-color: #0a54c1;
 
 
         }
         div.titleDrugsShowAjax {
-            background-color: #0b7015;
+            background-color: #014b08;
 
         }
         td.titleAction {
-        background-color: #084071;
+        background-color: #0068c3;
 
 
 
 }
        div.positionAction {
 
-            color: #3F5B0B;
+            color: #092352;
 
         }
         div.leveAction0 {
-    background-color:  #969682;
+    background-color:  #566877;
 }
 div.leveAction1 {
-    background-color: #BBBCA9;
+    background-color: #98A6B3;
 }
 div.leveAction2 {
-    background-color: #BCBCBC;
+    background-color: #ADB9C3;
 }
 div.leveAction3 {
-    background-color: #CCCBB7;
+    background-color: #D0E0ED;
 }
 div.leveAction4 {
-    background-color: #EAEAE3;
+    background-color: #DAE6F1;
 }
 div.leveAction5 {
-    background-color: #E9EAD7;
+    background-color: white;
 }
 div.leveAction6 {
-    background-color: #F7F7EA;
+    background-color: #C2E0F9;
 }
 div.leveAction7 {
-    background-color: #F4F2BA;
+    background-color: #A0D2FD;
 }
 div.leveAction8 {
-    background-color: #F2EF9D;
+    background-color: #70B7F7;
 }
 div.leveAction9 {
-    background-color: #F7F981;
+    background-color: #3EA3FF;
 }
 div.leveAction10 {
-    background-color: #F9DE54;
+    background-color: #1791FF;
 }
 
 td.titleDrugs {
-        background-color: #71bd79;
+        background-color: #015d0b;
 
 
 
@@ -460,14 +460,14 @@ td.titleDrugs {
 
 
 .drugssShowModShow {
-        background-color: #4f8e55;
+        background-color: #4e876f;
 
 -webkit-box-shadow: 0px 0px 18px 1px #235902;
 -moz-box-shadow: 0px 0px 18px 1px #235902;
 box-shadow: 0px 0px 18px 1px #235902;
 }
 .actionShowModShow {
-    background-color: #2962b6;
+    background-color: #2888d7;
 
 -webkit-box-shadow: 0px 0px 18px 1px rgba(10, 44, 105, 1);
 -moz-box-shadow: 0px 0px 18px 1px rgba(10, 44, 105, 1);
@@ -486,40 +486,40 @@ div.cell100 {
 }
 div.cell-10 {
 
-    background-color: #15190f;
+    background-color: #566877;
 
 
 
 }
         div.cell100000 {
 
-            background-color: #6AC5E0;
+            background-color: #c73e76;
 
 
         }
 div.cell-9 {
 
-    background-color: #242423;
+    background-color: #707E8A;
 
 
 }
 div.cell-8 {
 
-    background-color: #41403F;
+    background-color: #98A6B3;
 
 
 
 }
 div.cell-7 {
 
-    background-color: #5C5B59;
+    background-color: #ADB9C3;
 
 
 
 }
 div.cell-6 {
 
-    background-color: #72716F;
+    background-color: #BBCBD8;
 
 
 
@@ -527,34 +527,34 @@ div.cell-6 {
 
 div.cell-5 {
 
-    background-color: #868273;
+    background-color: #D0E0ED;
 
 
 
 }
 div.cell-4 {
 
-    background-color: #979F87;
+    background-color: #DAE6F1;
 
 
 }
 
 div.cell-3 {
 
-    background-color: #A8B298;
+    background-color: #DAE6F1;
 
 
 }
 div.cell-2 {
 
-    background-color: #C3CCB5;
+    background-color: #DAE6F1;
 
 
 
 }
 div.cell-1 {
 
-    background-color: #E2E3C3;
+    background-color: white;
 
 
 
@@ -568,65 +568,65 @@ div.cell0 {
 }
 div.cell1 {
 
-    background-color: #F4F7B4;
+    background-color: #C2E0F9;
 
 
 
 }
 div.cell2 {
 
-    background-color: #EEF395;
+    background-color: #C2E0F9;
 
 
 
 }
 div.cell3 {
 
-    background-color: #F2F683;
+    background-color: #ABD3F5;
 
 
 
 }
 div.cell4 {
 
-    background-color: #EFF66E;
+    background-color: #A0D2FD;
 
 
 
 }
 div.cell5 {
 
-    background-color: #F2FA50;
+    background-color: #8CC8FD;
 
 
 
 }
 div.cell6 {
 
-    background-color: #F4FF23;
+    background-color: #70B7F7;
 
 
 
 }
 div.cell7 {
 
-    background-color: #CAFB26;
+    background-color: #70B7F7;
 
 }
 div.cell8 {
 
-    background-color: #A8EB2D;
+    background-color: #54A9F7;
 
 }
 div.cell9 {
 
-    background-color: #A7F400;
+    background-color: #3EA3FF;
 
 
 }
 div.cell10 {
 
-    background-color: #39F400;
+    background-color: #1791FF;
 
 }
 
@@ -660,7 +660,7 @@ table.actionShowIdMood {
 }
 table.moodShow {
 
-background-color: rgba(140, 140, 103, 0.89);
+background-color: rgb(102 141 206 /  89%);
     color: #dee5e6;
 
 }
@@ -681,11 +681,11 @@ td.showdrugs {
 }
 td.titleTheadMood {
 
-  background-color: #515543;
+  background-color: #1e498f;
 
 }
 td.titleTheadDrugs {
 
-    background-color: #8dc882;
+    background-color: #105304;
 
 }

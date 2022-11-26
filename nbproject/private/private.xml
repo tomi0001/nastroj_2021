@@ -48,6 +48,7 @@
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/doctorController.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Layout/Main.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/styles_dark/css/pageSearchColor.css</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/winter/css/pageMainColor.css</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Search/SearchDrugsController.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Main/showAll.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/main.blade.php</file>
@@ -173,6 +174,7 @@
             <file>file:/var/www/html/nastroj_2021/database/migrations/2014_10_12_000000_create_users_table.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/styles_dark/css/pageSettingColor.css</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Search/Mood/AverageMoodGroupWeek.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/winter/css/CommonColor.css</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Doctor/Search/Product/searchDrugs.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Product/searchResultDrugsSumDay.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Main.php</file>

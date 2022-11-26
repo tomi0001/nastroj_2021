@@ -32,6 +32,7 @@ class Main {
         $dayMonth = calendar::checkMonth($month,$year);
         $nextMonth = calendar::nextMonth($year,$month);
         $this->listMood = \App\Models\Mood::sumMoodMonth($year . "-" .  $month . "-01",$nextMonth . "-01", Auth::User()->start_day,$this->IdUsers);
+        //var_dump($this->listMood);
         $arrayMonth = $this->listMood->toArray();
         $j = 0;
         for ($i=0;$i < $dayMonth;$i++) {

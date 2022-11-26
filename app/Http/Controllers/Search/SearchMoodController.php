@@ -79,7 +79,8 @@ class SearchMoodController {
                 //$paginator = new LengthAwarePaginator($newArray, count($newArray), 15, 1);
              
                 //$myCollectionObj = collect($newArray);
-
+                //print ("<pre>");
+                //print_r($newArray);
                 $data = $this->paginate($newArray,15);
                 $data->withPath(route('search.searchMoodSubmit'));
                 if ($SearchMood->count > 0) {

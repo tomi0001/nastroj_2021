@@ -7,7 +7,7 @@
     }
 
 div.actionMain {
-    background-color: rgba(22, 77, 109, 1);
+    background-color: #6380bd;
  
     color: #CDE1F3;
  
@@ -27,14 +27,14 @@ div.actionMainselected {
 
 
     div.borderDrugs {
-         border: 2px solid  rgba(14, 74, 3, 1);
+         border: 2px solid  rgb(25, 58, 19);
          box-shadow: 0 30px  30px 15px  rgba(65, 109, 52, 0.45);
 
 
     }
     div.borderMood {
-         border: 2px solid rgba(49, 44, 35, 1);
-         box-shadow: 0 30px  30px 15px rgba(12, 37, 36, 0.35);
+         border: 2px solid rgba(8, 68, 140, 1);
+         box-shadow: 0 30px  30px 15px rgba(8, 68, 140, 0.5);
 
 
     }
@@ -47,7 +47,7 @@ div.actionMainselected {
 
     }
     div.borderAction {
-         border: 2px solid rgba(42, 107, 102, 1);
+         border: 2px solid rgb(106, 150, 255);
          box-shadow: 0 30px  30px 15px rgba(42, 107, 102, 0.3);
 
  
@@ -75,24 +75,32 @@ div.actionMainselected {
     
         span.kalendar {
            
-            color: #404803;
+            color: white;
         }
         span.kalendarBig {
             
-            color: #404803;
+            color: white;
         }
 
         div.cell_active {
 
-            background-color: #2bd0b8;
+            background-color: #0008e6;
          
-            color: #524504;
+            color: white;
+            font-weight: bold;
+            
           
 
         }
         div.cell_selected {
 
-            background-color: yellow;
+            background-color: #4476F5;
+            border: solid 2px transparent;
+            border-color: #1842B1;
+            -webkit-box-shadow: inset 0px 0px 20px 1px rgba(66, 68, 90, 1);
+-moz-box-shadow: inset 0px 0px 20px 1px rgba(66, 68, 90, 1);
+box-shadow: inset 0px 0px 20px 1px rgba(66, 68, 90, 1);
+            
            
         }
 
@@ -108,7 +116,7 @@ div.actionMainselected {
             color: #0B3693;
         }
         a.no_active {
-            color: #6A720C;
+            color: #323335;
         }
 
 
@@ -121,18 +129,18 @@ div.actionMainselected {
 
 
         button.calendar {
-                background-color: #db5830; 
+                background-color: #4342d4; 
                
-                border-color: #952908;
+                border-color: #5b6988;
             
                 color: white;
          
-                box-shadow: 6px 6px 6px #da886f;
+                box-shadow: 6px 6px 6px #41435e;
         }
         button.calendar:hover {
-                background-color: yellow; 
+                background-color: #1C4600; 
                 color: white;
-                border-color: #C29713;
+                border-color: #1C4600;
             
         }
         button.main {
@@ -157,7 +165,7 @@ div.actionMainselected {
         button.main:hover {
                 
                 color: white;
-                border-color: #C29713;
+                border-color: black;
         
         }
         button.main-long {
@@ -198,30 +206,30 @@ div.actionMainselected {
    
         #showmood {
             
-            background-color: rgba(49, 44, 35, 1);
+            background-color: rgb(68 119 170);
        
         }
         #showdrugs {
            
-            background-color: rgba(96, 146, 79, 1);
+            background-color: #32865c;
       
         }
         #showaction {
            
-            background-color: rgba(210, 210, 44, 0.61);
+            background-color: rgb(80 170 214 / 61%);
 
         }
        
 
         div.sumMood {
             
-          background-color: rgba(42, 45, 21, 1);
+          background-color: rgba(27,98,135,1);
          
         }
 
         div.sumAction {
      
-            background-color: rgba(42, 107, 102, 1);
+            background-color: rgb(106, 150, 255);
      
         }
 
@@ -240,7 +248,7 @@ div.actionMainselected {
 
 
         hr.drugs {
-height: 1.0em; width: 80%; border: 1px solid #942314;
+height: 1.0em; width: 80%; border: 1px solid #015d0b;
 
         }
  
@@ -332,7 +340,7 @@ div.descriptionModShowSleep {
 div.moodSelected {
   
 
-           color: #aa6215;
+           color: #6ab5e9;
 }
 
 
@@ -355,13 +363,13 @@ table.drugsShow {
 
 
 div.descriptionDrugsShow {
-    background-color: #659e6b;
+    background-color: #004707;
 
     color: white;
 
 }
         div.linkSelected {
-           color: #d0c57a;
+           color: white;
            border:  2px solid #c7c8b8;
           
         }
@@ -379,7 +387,7 @@ span.fontMoodNot {
 
 thead.titleTheadDrugs {
 
-    background-color: #8dc882;
+    background-color: #003e1f;
 }
 td.moodButton {
    
@@ -391,7 +399,7 @@ td.moodButton {
 
 
 td.drugsTd {
-    color: #004208;
+    color: #c0e1c4;
 }
 
 
@@ -409,7 +417,7 @@ td.drugsTd {
             -webkit-box-shadow: 0px 0px 17px -5px rgba(3, 70, 22, 1);
 -moz-box-shadow: 0px 0px 17px -5px rgba(3, 70, 22, 1);
 box-shadow: 0px 0px 17px -5px rgba(3, 70, 22, 1);
-            background-color: #659e6b;
+            background-color: #254428;
         }
         div.titleAverage {
             background-color: #19B846;
@@ -419,7 +427,7 @@ box-shadow: 0px 0px 17px -5px rgba(3, 70, 22, 1);
                  -webkit-box-shadow: 0px 0px 17px -5px rgba(3, 70, 22, 1);
 -moz-box-shadow: 0px 0px 17px -5px rgba(3, 70, 22, 1);
 box-shadow: 0px 0px 17px -5px rgba(3, 70, 22, 1);
-            background-color: #70cb79;
+            background-color: #7bac7f;
             color: #676C03;
         }
         
