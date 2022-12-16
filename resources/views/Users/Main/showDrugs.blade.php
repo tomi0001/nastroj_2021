@@ -51,13 +51,18 @@
                     <td class=" drugsShow drugsTd showdrugs" id="substanceDrugs{{$list->id}}" >
                        
                         @foreach (\App\Models\Substances_product::showSubstance($list->products_id) as $list2)
+                            @if (count(\App\Models\Substances_product::showSubstance($list->products_id)) == 1)
+                                [{{$list2->name}} = {{$list->portion}} {{\App\Http\Services\Common::showDoseProduct($list->type)}}] <br>
 
-                            [{{$list2->name}}] 
-                            @if ($loop->index > 3)
-                                <a onclick ="showAllSubstance('{{route('ajax.showAllSubctance')}}')">.....</a>
-                                @break
+                            @else
+                            @php
+                                $tmp = \App\Models\Usee::showDosePruduct($list->id,$list2->id,Auth::User()->id);
+                            @endphp
+                            [{{$list2->name}} = {{$tmp->doseProduct}}  {{\App\Http\Services\Common::showDoseProduct($tmp->type)}}] <br>
+                              
                             @endif
                         @endforeach
+                        
                         @if (count(\App\Models\Substances_product::showSubstance($list->products_id)) == 0)
                             <span class="warning">Nie było żadnych substancji</span>
                         @endif

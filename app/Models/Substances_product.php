@@ -11,6 +11,7 @@ class Substances_product extends Model
     public static function showSubstance(int $idProduct) {
         return self::join("substances","substances.id","substances_products.id_substances")
                 ->selectRaw("substances.name as name")
+                ->selectRaw("substances.id as id")
                 ->where("substances_products.id_products",$idProduct)
                 ->get();
     }

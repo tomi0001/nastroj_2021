@@ -253,6 +253,25 @@ class Usee extends Model
                 ->where("usees.id",$id)
                 ->get();
     }
+    public static function showDosePruduct(int $idUsee,int $idSubstance,int $idUsers) {
+        return self::join("products","products.id","usees.id_products")
+                ->join("substances_products","substances_products.id_products","products.id")
+                ->selectRaw("(usees.portion * substances_products.doseProduct)  as doseProduct")
+                
+                ->selectRaw(" "
+                      . "( CASE "
+                        . " WHEN products.type_of_portion = 4  THEN ('4' ) "
+                        . " WHEN products.type_of_portion = 5  THEN ('5' ) "
+                        . " WHEN products.type_of_portion = 6  THEN ('6' ) "
+                        . " WHEN substances_products.Mg_Ug = 2  THEN ('7' ) "
+                        . "ELSE '1' "
+                        . " END)"
+                        . "  as type ")
+                ->where("usees.id_users",$idUsers)
+                ->where("usees.id",$idUsee)
+                ->where("substances_products.id_substances",$idSubstance)
+                ->first();
+    }
     public static function selectProductName(int $id,int $idUsers) {
         return self::join("products","products.id","usees.id_products")
                 ->selectRaw("products.name  as nameProducts")
