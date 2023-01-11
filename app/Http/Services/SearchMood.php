@@ -272,7 +272,7 @@ class SearchMood {
          $moodModel->createQuestionsSleep($this->startDay);
          $moodModel->setDate($request->get("dateFrom"),$request->get("dateTo"),$this->startDay);
          $moodModel->setLongSleep($request);
-         $this->setHour($moodModel,$request);
+         $this->setHour($moodModel,$request,"sleep");
          if (($request->get("ifSleep")) == "on" ) {
              $moodModel->whatWorkOn();
          }
@@ -552,26 +552,31 @@ class SearchMood {
          }
          return $array;
      }
-     private function setHour($moodModel,Request $request) {
-         $hour  = $this->startDay;
+     private function setHour($moodModel,Request $request,$hour = "mood") {
+         if ($hour == "mood") {
+            $hour  = $this->startDay;
+         }
+         else {
+             $hour = config('app.sleepHour');
+         }
         if (($request->get("timeFrom") != "" and $request->get("timeTo") != "") and ($request->get("timeFrom") != "undefined" and $request->get("timeTo") != "undefined")) {
             $timeFrom = explode(":",$request->get("timeFrom"));
             $timeTo = explode(":",$request->get("timeTo"));
-            $hourFrom = $this->sumHour($timeFrom,$this->startDay);
-            $hourTo = $this->sumHour($timeTo,$this->startDay);
-            $moodModel->setHourTwo($hourFrom,$hourTo,$this->startDay);
+            $hourFrom = $this->sumHour($timeFrom,$hour);
+            $hourTo = $this->sumHour($timeTo,$hour);
+            $moodModel->setHourTwo($hourFrom,$hourTo,$hour);
 
 
         }
         else if ($request->get("timeTo") != "" and $request->get("timeTo") != "undefined") {
             $timeTo = explode(":",$request->get("timeTo"));
-            $hourTo = $this->sumHour($timeTo,$this->startDay);
+            $hourTo = $this->sumHour($timeTo,$hour);
             $moodModel->setHourTo($hourTo);
 
         }
         else if ($request->get("timeFrom") != "" and $request->get("timeTo") != "undefined") {
             $timeFrom = explode(":",$request->get("timeFrom"));
-            $hourFrom = $this->sumHour($timeFrom,$this->startDay);
+            $hourFrom = $this->sumHour($timeFrom,$hour);
             $moodModel->setHourFrom($hourFrom);
 
         }

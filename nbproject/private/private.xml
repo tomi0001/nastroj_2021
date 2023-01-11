@@ -5,16 +5,26 @@
         <group>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainwidth1410.css</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSettingwidth700.css</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/Common1810.css</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSearchwidth700.css</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Services/Common.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainwidth700.css</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/Common1410.css</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Main/MainController.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Models/Substances_product.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainwidth1810.css</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showDrugs.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/ajax/sumAverage.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Models/Usee.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/Common1810.css</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSearchwidth700.css</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Services/Product.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/editProductLoadSubstance.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/editProduct.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/Common1210.css</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainwidth1210.css</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/ajax/showTypyPortion.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/Common700.css</file>
-            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Main/MainController.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Main.php</file>
-            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainwidth1810.css</file>
+            <file>file:/var/www/html/nastroj_2021/app/Models/Product.php</file>
         </group>
     </open-files>
 </project-private>
