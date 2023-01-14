@@ -210,9 +210,12 @@ class Usee extends Model
         return self::join("products","products.id","usees.id_products")
                 ->join("substances_products","substances_products.id_products","products.id")
                 ->join("substances","substances.id","substances_products.id_substances")
+                ->selectRaw("count(*) as count")
                 ->selectRaw(" round(sum("
                         . " CASE "
+                        . " WHEN products.type_of_portion = 2  THEN ( (products.how_percent / 100) * usees.portion ) " 
                         . " WHEN substances_products.doseProduct is NULL  THEN (usees.portion ) "
+                        
                         . "ELSE (substances_products.doseProduct * usees.portion) "
                         . " END),2)"
                         . "  as portion ")
@@ -309,6 +312,7 @@ class Usee extends Model
                 //->selectRaw("'1' as type")
                 ->selectRaw(" "
                         . "( CASE "
+                        . " WHEN products.type_of_portion = 2  THEN ('2' ) "
                         . " WHEN products.type_of_portion = 4  THEN ('4' ) "
                         . " WHEN products.type_of_portion = 5  THEN ('5' ) "
                         . " WHEN products.type_of_portion = 6  THEN ('6' ) "
@@ -318,6 +322,7 @@ class Usee extends Model
                         . "  as type ")
                 ->selectRaw(" round(sum("
                         . " CASE "
+                        . " WHEN products.type_of_portion = 2  THEN ( (products.how_percent / 100) * usees.portion ) " 
                         . " WHEN substances_products.doseProduct is NULL  THEN (usees.portion ) "
                         . "ELSE (substances_products.doseProduct * usees.portion) "
                         . " END),2)"
