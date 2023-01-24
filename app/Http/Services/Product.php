@@ -541,4 +541,26 @@ class Product {
           
       }
   }
+  
+  public function sumEquivalent(int $id,$hourFrom,$hourTo,$idUsers) {
+        $dateEnd = Usee::selectDateIdUsee($id,$idUsers);
+        $hour = $this->setHour($hourFrom,$hourTo);
+        $listArray = Usee::selectOldUseeEquivalent($dateEnd->date,$idUsers,Auth::User()->start_day,$hour);
+//        $idProduct = appProduct::selectIdProduct($id);
+//        $type = appProduct::selectTypeProduct($idProduct->id,$idUsers);
+        //$bool = false;
+//        if  ($type->type_of_portion == 3)  {
+//            
+//            $type2 = Substances_product::selectMgUg($idProduct->id,$idSubstances);
+//            if ($type2->Mg_Ug == 2) {
+//                $bool = true;
+//            }
+//        }
+//        if ($type->type_of_portion == 4 or $type->type_of_portion == 5) {
+//            return $this->sortAverageType4_5($listArray);
+//        }
+//        else {
+            return $this->sortAverage($listArray);
+        //}
+  }
 }

@@ -10,6 +10,8 @@ class Usee extends Model
 {
     use HasFactory;
     public $questions;
+    
+    
     public function createQuestionsSumDay(int $startDay) {
         $this->questions = self::query();
         $this->questions
@@ -337,4 +339,53 @@ class Usee extends Model
                 ->orderBy("usees.date","DESC")
                 ->get();
     }
+     /*
+     * 
+     * Create year 2023
+     */
+    
+    
+    public static function selectOldUseeEquivalent(string $dateEnd,int $idUsers,int $startDay,$hour) {
+        return self::join("products","products.id","usees.id_products")
+                ->join("substances_products","substances_products.id_products","products.id")
+                ->join("substances","substances.id","substances_products.id_substances")
+                ->selectRaw("count(portion) as how")
+                //->selectRaw("'1' as type")
+                ->selectRaw(" "
+                        . "( CASE "
+                        . " WHEN products.type_of_portion = 2  THEN ('2' ) "
+                        . " WHEN products.type_of_portion = 4  THEN ('4' ) "
+                        . " WHEN products.type_of_portion = 5  THEN ('5' ) "
+                        . " WHEN products.type_of_portion = 6  THEN ('6' ) "
+                        . " WHEN substances_products.Mg_Ug = 2  THEN ('7' ) "
+                        . "ELSE '1' "
+                        . " END)"
+                        . "  as type ")
+                ->selectRaw(" "
+                        . "sum(CASE "
+                        . "WHEN products.type_of_portion = 1 THEN  ( usees.portion / ( substances.equivalent / 10) ) "
+                        . "ELSE ( (usees.portion *  substances_products.doseProduct) / ( substances.equivalent / 10) ) "
+                        . " END"
+                        . ") as portion")
+                ->selectRaw(DB::Raw("(DATE(IF(HOUR(    usees.date) >= '" . $startDay . "', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ) as dat "))
+                ->where("usees.date","<=",$dateEnd)
+                ->where("usees.id_users",$idUsers)
+                ->whereRaw("(time(date_add(usees.date,INTERVAL - $startDay hour))) <= '$hour[1]'")
+                ->whereRaw("(time(date_add(usees.date,INTERVAL - $startDay hour))) >= '$hour[0]'")
+                ->where("substances.equivalent",">",0)
+                ->groupBy(DB::Raw("(DATE(IF(HOUR(    usees.date) >= '" . $startDay . "', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) )  "))
+                ->orderBy("usees.date","DESC")
+                ->get();        
+    }
+    
+    public static function checkEquivalent(int $idUsee,int $idUsers) {
+        return self::join("products","products.id","usees.id_products")
+                ->join("substances_products","substances_products.id_products","products.id")
+                ->join("substances","substances_products.id_substances","substances.id")
+                ->where("products.id_users",$idUsers)
+                ->where("usees.id",$idUsee)
+                ->where("substances.equivalent",">",0)
+                ->first();
+    }
+
 }

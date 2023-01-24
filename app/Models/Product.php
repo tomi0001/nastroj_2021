@@ -58,4 +58,30 @@ class Product extends Model
         return self::where("id_users",$idUsers)->where("name",$name)->where("id","!=",$id)->count();
 
     }
+     /*
+     * 
+     * Create year 2023
+     */
+    public static function showEquivalent(int $idSubstances,int $idUsers,float $portion) {
+        
+        return self::join("substances_products","substances_products.id_products","products.id")
+                ->join("substances","substances_products.id_substances","substances.id")
+                ->selectRaw(" "
+                        . "(CASE "
+                        . "WHEN products.type_of_portion = 1 THEN  ( $portion  / ( substances.equivalent / 10) ) "
+                        . "ELSE ( ($portion *  substances_products.doseProduct) / ( substances.equivalent / 10) ) "
+                        . " END"
+                        . ") as equivalent")
+                ->where("products.id_users",$idUsers)
+                ->where("substances.id",$idSubstances)
+                ->first();
+    }
+    public static function checkEquivalent(int $idProduct,int $idUsers) {
+        return self::join("substances_products","substances_products.id_products","products.id")
+                ->join("substances","substances_products.id_substances","substances.id")
+                ->where("products.id_users",$idUsers)
+                ->where("products.id",$idProduct)
+                ->where("substances.equivalent",">",0)
+                ->first();
+    }
 }

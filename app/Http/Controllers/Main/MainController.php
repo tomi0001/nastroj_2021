@@ -344,9 +344,14 @@ class MainController {
     }
     
     public function showAverage(Request $request) {
+        $Equivalent = null;
         $allSubstance = Usee::selectAllSubstance($request->get("id"),Auth::User()->id);
         $productName = Usee::selectProductName($request->get("id"),Auth::User()->id);
-        return View("ajax.showAverage")->with("allSubstance",$allSubstance)->with("productName",$productName)->with("id",$request->get("id"));
+        if (Usee::checkEquivalent($request->get("id"),Auth::User()->id) != null) {
+            $Equivalent = $request->get("id");
+        }
+        return View("ajax.showAverage")->with("allSubstance",$allSubstance)->with("productName",$productName)
+                ->with("id",$request->get("id"))->with("Equivalent",$Equivalent);
     }
     public function sumAverage(Request $request) {
         
@@ -361,9 +366,14 @@ class MainController {
                 case 1 : $result = $Product->sumAverageProduct($type[1],$request->get("id"),$request->get("hourFrom"),$request->get("hourTo"),Auth::User()->id);
                     break;
                 case 2 : $result = $Product->sumAverageSubstances($type[1],$request->get("id"),$request->get("hourFrom"),$request->get("hourTo"),Auth::User()->id);
+                    break;
+                case 3 : $result = $Product->sumEquivalent($type[1],$request->get("hourFrom"),$request->get("hourTo"),Auth::User()->id);
+                    break;
+                    
+                    
                
             }
-            if ($type[0] == 1 or $type[0] == 2) {
+            if ($type[0] == 1 or $type[0] == 2 or $type[0] == 3) {
                 return View("ajax.sumAverage")->with("listAverage",$result);
             }
         }

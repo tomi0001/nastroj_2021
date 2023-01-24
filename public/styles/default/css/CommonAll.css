@@ -17,6 +17,11 @@ body {
 
 
 }
+span.equivalent {
+    font-size: 14px;
+    padding-left: 7px;
+    font-style: italic;
+}
 thead.titleTheadAction {
     position: -webkit-sticky;
     position: sticky;

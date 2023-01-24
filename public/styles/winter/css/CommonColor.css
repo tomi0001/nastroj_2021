@@ -2,6 +2,9 @@ body {
     background-image: url('../tlo.png'); /* from http://subtlepatterns.com */
 
 }
+span.equivalent {
+    color: #1b2f26;
+}
 
             #MainPage {
 

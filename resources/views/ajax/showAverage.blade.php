@@ -19,6 +19,9 @@
         <option value="2_{{$list->id_substances}}" >dla {{$list->nameSubstances}}</option>
 
     @endforeach
+    @if ($Equivalent != null) 
+        <option value="3_{{$Equivalent}}" >Równoważnik diazepamu 10 mg</option>
+    @endif
 </select>
 
 <div id="sumAverage{{$id}}">

@@ -3,9 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showActionDays.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSettingwidth700.css</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Common.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Search/SearchMoodController.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showAll.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Product/searchResultDrugsGroupDay.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/config/database.php</file>
             <file>file:/var/www/html/nastroj_2021/config/app.php</file>
             <file>file:/var/www/html/nastroj_2021/config/view.php</file>
@@ -13,10 +16,14 @@
             <file>file:/var/www/html/nastroj_2021/app/Models/Mood.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainwidth1810.css</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showDrugs.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Search/SearchDrugsController.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Usee.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Product.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/Common700.css</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showMenu.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Product.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Services/Action.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/CommonAll.css</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainwidth1410.css</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainwidth700.css</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Mood.php</file>
@@ -24,6 +31,7 @@
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/Common1410.css</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Layout/User.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Main/MainController.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Services/SearchDrugs.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/ajax/sumAverage.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/Common1810.css</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSearchwidth700.css</file>
@@ -32,6 +40,7 @@
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/Common1210.css</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainwidth1210.css</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/ajax/showTypyPortion.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/winter/css/CommonColor.css</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Main.php</file>
         </group>
     </open-files>

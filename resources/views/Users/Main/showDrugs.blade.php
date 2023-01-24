@@ -45,22 +45,38 @@
                                 @else
                                     <option value="{{$listDrugsEdit->id}}" class="form-control">{{$listDrugsEdit->name}}</option>
                                 @endif
+                                
                             @endforeach
                         </div>
                     </td>
                     <td class=" drugsShow drugsTd showdrugs" id="substanceDrugs{{$list->id}}" >
                        
                         @foreach (\App\Models\Substances_product::showSubstance($list->products_id) as $list2)
+                        
                             @if (count(\App\Models\Substances_product::showSubstance($list->products_id)) == 1)
                                 [{{$list2->name}} = {{$list->portion}} {{\App\Http\Services\Common::showDoseProduct($list->type)}}] <br>
+                                
+                                  @if (\App\Models\Substance::checkEquivalent($list2->id,Auth::User()->id) != "" )
+                                  <span class="equivalent"> Równowaznik diazepamu 10 mg =    {{\App\Models\Product::showEquivalent($list->products_id,Auth::User()->id,$list->portion)->equivalent}} {{\App\Http\Services\Common::showDoseProduct($list->type)}} </span>
 
+                                  @endif
                             @else
                             @php
                                 $tmp = \App\Models\Usee::showDosePruduct($list->id,$list2->id,Auth::User()->id);
                             @endphp
                             [{{$list2->name}} = {{$tmp->doseProduct}}  {{\App\Http\Services\Common::showDoseProduct($tmp->type)}}] <br>
-                              
+                            
+                                   @if (\App\Models\Substance::checkEquivalent($list2->id,Auth::User()->id) != "" )
+                                  <span class="equivalent"> Równowaznik diazepamu 10 mg =    {{\App\Models\Product::showEquivalent($list2->id,Auth::User()->id,$tmp->doseProduct)->equivalent}} {{\App\Http\Services\Common::showDoseProduct($tmp->type)}} </span>
+                                  <br>
+                                  <br>
+                                  @endif                           
+                            
+                            
                             @endif
+                              
+                              
+                            
                         @endforeach
                         
                         @if (count(\App\Models\Substances_product::showSubstance($list->products_id)) == 0)

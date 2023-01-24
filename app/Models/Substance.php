@@ -36,4 +36,12 @@ class Substance extends Model
             ->selectRaw("products.id as id")
             ->where("substances.name","like","%".$name."%")->get();
     }
+ 
+    public static function checkEquivalent(int $idSubstance,int $idUsers) {
+        return self::where("id_users",$idUsers)
+                ->where("id",$idSubstance)
+                ->where("equivalent",">",0)
+                ->first();
+    }    
+    
 }
