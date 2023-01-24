@@ -57,7 +57,7 @@
                                 [{{$list2->name}} = {{$list->portion}} {{\App\Http\Services\Common::showDoseProduct($list->type)}}] <br>
                                 
                                   @if (\App\Models\Substance::checkEquivalent($list2->id,Auth::User()->id) != "" )
-                                  <span class="equivalent"> Równowaznik diazepamu 10 mg =    {{\App\Models\Product::showEquivalent($list->products_id,Auth::User()->id,$list->portion)->equivalent}} {{\App\Http\Services\Common::showDoseProduct($list->type)}} </span>
+                                  <span class="equivalent"> Równowaznik diazepamu 10 mg =    {{\App\Models\Product::showEquivalent($list2->id,Auth::User()->id,$list->portion)->equivalent}} {{\App\Http\Services\Common::showDoseProduct($list->type)}} </span>
 
                                   @endif
                             @else
