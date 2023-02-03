@@ -1012,5 +1012,72 @@ class Mood extends Model
     public static function ifIdUsersExist(int $idMood, int $idUsers) {
         return self::where("id",$idMood)->where("id_users",$idUsers)->first();
     }
+     /*
+      * 
+      * Created januar 2023 
+      */
+    public function searchActionGroupDay( $action, $actionFrom, $actionTo) {
 
+     
+        
+        
+             if ($action != ""  and  ($actionFrom!= "" and $actionTo != "")) {
+                 $this->questions->whereRaw("("
+                         . "actions.name like '%" . $action  . "%'  and  (" .
+                         "(CASE "
+                        . " WHEN moods_actions.percent_executing is NULL && moods_actions.minute_exe is  NULL THEN (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) ) "
+                        . " WHEN moods_actions.minute_exe is NOT NULL  THEN (moods_actions.minute_exe)    "
+                        . " WHEN moods_actions.percent_executing is NOT NULL THEN     (  moods_actions.percent_executing / 100) * (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) )  "
+                        . " "
+                        . " END)  >='" . $actionFrom.  "')"
+                         . "and ("
+                         . "(CASE "
+                        . " WHEN moods_actions.percent_executing is NULL && moods_actions.minute_exe is  NULL THEN (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) ) "
+                        . " WHEN moods_actions.minute_exe is NOT NULL  THEN (moods_actions.minute_exe)    "
+                        . " WHEN moods_actions.percent_executing is NOT NULL THEN     (  moods_actions.percent_executing / 100) * (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) )  "
+                        . " "
+                        . " END)  <='" . $actionTo .  "')"
+                         . ""
+                         . ")"
+
+                          );
+
+             }
+              else if ($action != ""   and  ($actionTo != "")) {
+                 $this->questions->whereRaw("("
+                         . "actions.name like '%" . $action  . "%'  and  (("
+                         .      " CASE "
+                        . " WHEN moods_actions.percent_executing is NULL && moods_actions.minute_exe is  NULL THEN (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) ) "
+                        . " WHEN moods_actions.minute_exe is NOT NULL  THEN (moods_actions.minute_exe)    "
+                        . " WHEN moods_actions.percent_executing is NOT NULL THEN     (  moods_actions.percent_executing / 100) * (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) )  "
+                        . ""
+                        . " END)"
+                         . ")  <= '" . $actionTo .  "')"
+                         . " " );
+             }
+              else if ($action != ""   and  ($actionFrom != "")) {
+                 $this->questions->whereRaw("("
+                         . "actions.name like '%" . $action  . "%'  and  (("
+                         .      " CASE "
+                        . " WHEN moods_actions.percent_executing is NULL && moods_actions.minute_exe is  NULL THEN (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) ) "
+                        . " WHEN moods_actions.minute_exe is NOT NULL  THEN (moods_actions.minute_exe)    "
+                        . " WHEN moods_actions.percent_executing is NOT NULL THEN     (  moods_actions.percent_executing / 100) * (TIMESTAMPDIFF(minute,moods.date_start,moods.date_end) )  "
+                        . " "
+                        . " END)"
+                         . ")  >= '" . $actionFrom .  "')"
+                         . " " );
+             }
+             else if ($action != "" ) {
+
+                 $this->questions->whereRaw("actions.name like '%" . $action  . "%'");
+             }
+
+
+
+
+
+         
+
+       
+    }
 }

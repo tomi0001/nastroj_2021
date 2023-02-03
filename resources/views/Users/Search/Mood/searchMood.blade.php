@@ -238,6 +238,15 @@
                 </td>
 
             </tr>
+            <tr>
+                <td style='padding-top: 10px; width: 37%;'>
+                    Pogrupuj według akcji
+                </td>
+                <td>
+                    <input type='checkbox' name='groupAction' class='form-check-input'>
+                </td>
+
+            </tr>
 
             <tr>
                 <td style='padding-top: 10px; width: 37%;'>

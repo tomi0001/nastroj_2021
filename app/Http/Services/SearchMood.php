@@ -27,6 +27,9 @@ class SearchMood {
      public $listAction = [];
      public $listWeek = [];
      public $countWeek;
+     public $countGruopAction = [];
+     public $listgroupActionDay = [];
+     public $listgroupActionDayName = [];
      //private $dateFro
      
      function __construct($bool = 0) {
@@ -583,7 +586,56 @@ class SearchMood {
 
 
      }
+     /*
+      * 
+      * Created januar 2023 
+      */
+     public function createQuestionGroupAction(Request $request) {
+         $startDay = $this->startDay;
 
+         for ($i=0;$i < count($request->get("action"))-1;$i++) {
+            if ($request->get("action")[$i] == "") {
+                continue;
+            }
+            array_push($this->listgroupActionDayName,$request->get("action")[$i]);
+            $moodModel = new  MoodModel;
+            $moodModel->createQuestions($this->startDay);
 
+            $moodModel->setDate($request->get("dateFrom"),$request->get("dateTo"),$this->startDay);
+            $moodModel->setMood($request);
+            $moodModel->setLongMood($request);
+            $this->setHour($moodModel,$request);
+            if (!empty($request->get("whatWork")) ) {
+                $moodModel->searchWhatWork($request->get("whatWork"));
+            }
+            if (($request->get("action")[$i] != "")  ) {
+
+                $moodModel->searchActionGroupDay($request->get("action")[$i] ,$request->get("actionFrom")[$i] ,$request->get("actionTo")[$i]);
+            }
+            if (($request->get("ifAction")) == "on" ) {
+                $moodModel->actionOn();
+            }
+            if (($request->get("ifWhatWork")) == "on" ) {
+                $moodModel->whatWorkOn();
+            }
+            $moodModel->idUsers($this->idUsers);
+            $moodModel->moodsSelect();
+            $moodModel->groupByAction();
+
+            if ($request->get("sort2") == "asc") {
+                $moodModel->orderBy("asc",$request->get("sort"));
+            }
+            else {
+                $moodModel->orderBy("desc",$request->get("sort"));
+            }
+            $tmpCount = $moodModel->questions->get()->count();
+            array_push($this->countGruopAction,$tmpCount);
+            $tmp =  $moodModel->questions->get();
+            array_push($this->listgroupActionDay,$tmp);
+                
+            
+         }
+         return;
+     }
 
 }

@@ -92,13 +92,50 @@ class SearchMoodController {
             
             }
             else if ($request->get("sumDay") == "on") {
+                $error = false;
                 $result = $SearchMood->createQuestion($request,true);
                 $newArray = $SearchMood->groupActionDay($result);
+                if ($SearchMood->countDays == 0) {
+                    $error = true;
+                    goto error;
+                }
                 $sumDays = $SearchMood->sumDays($newArray);
+                error:
+                if ($error == true) {
+                    return View("Users.Search.Mood.error")->with("errors",["nie na żadnych wyników"]);
+                }
                 $SearchMood->setDate($request->get("dateFrom"),$request->get("dateTo"));
                 $sumAction = Mood::sumActionAll($SearchMood->dateFrom,$SearchMood->dateTo,Auth::User()->id, Auth::User()->start_day);
                 return View("Users.Search.Mood.searchResultMoodSumDay")
                     ->with("arrayList", $sumDays)->with("dateFrom",$request->get("dateFrom"))->with("dateTo",$request->get("dateTo"))
+                    ->with("timeFrom",$request->get("timeFrom"))->with("timeTo",$request->get("timeTo"))
+                    ->with("moodFrom",$request->get("moodFrom"))->with("moodTo",$request->get("moodTo"))
+                    ->with("anxientyFrom",$request->get("anxientyFrom"))->with("anxientyTo",$request->get("anxientyTo"))
+                    ->with("voltageFrom",$request->get("voltageFrom"))->with("voltageTo",$request->get("voltageTo"))
+                    ->with("stimulationFrom",$request->get("stimulationFrom"))->with("stimulationTo",$request->get("stimulationTo"))
+                    ->with("longMoodFrom",$request->get("longMoodHourFrom") . ":" . $request->get("longMoodMinuteFrom"))
+                    ->with("longMoodTo",$request->get("longMoodHourTo") . ":" . $request->get("longMoodMinuteTo"))
+                    ->with("actionSum",$sumAction);
+            }
+            else if ($request->get("groupAction") == "on") {
+                $error = false;
+                $result = $SearchMood->createQuestionGroupAction($request);
+                for ($i=0;$i < count($SearchMood->listgroupActionDay);$i++) {
+                    $newArray[$i] = $SearchMood->groupActionDay($SearchMood->listgroupActionDay[$i]);
+                    if ($SearchMood->countDays == 0) {
+                        $error = true;
+                        break;
+                    }
+                    $sumDays[$i] = $SearchMood->sumDays($newArray[$i]);
+                }
+                if ($error == true) {
+                    return View("Users.Search.Mood.error")->with("errors",["nie na żadnych wyników"]);
+                }
+                $SearchMood->setDate($request->get("dateFrom"),$request->get("dateTo"));
+                $sumAction = Mood::sumActionAll($SearchMood->dateFrom,$SearchMood->dateTo,Auth::User()->id, Auth::User()->start_day);
+                return View("Users.Search.Mood.searchResultMoodSumAction")
+                    ->with("arrayList", $sumDays)->with("dateFrom",$request->get("dateFrom"))->with("dateTo",$request->get("dateTo"))
+                    ->with("listgroupActionDayName",$SearchMood->listgroupActionDayName)
                     ->with("timeFrom",$request->get("timeFrom"))->with("timeTo",$request->get("timeTo"))
                     ->with("moodFrom",$request->get("moodFrom"))->with("moodTo",$request->get("moodTo"))
                     ->with("anxientyFrom",$request->get("anxientyFrom"))->with("anxientyTo",$request->get("anxientyTo"))
