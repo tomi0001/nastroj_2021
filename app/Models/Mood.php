@@ -427,7 +427,8 @@ class Mood extends Model
         }
         
     }
-    public function createQuestionsSleep(int $startDay) {
+    public function createQuestionsSleep(int $startDay = 0) {
+        //$hourSlepp = config('app.sleepHour');
         $this->questions =  self::query();
         $this->questions->selectRaw("moods.date_start as date_start")
                         ->selectRaw("moods.id as id")

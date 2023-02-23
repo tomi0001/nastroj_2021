@@ -272,7 +272,7 @@ class SearchMood {
      public function createQuestionSleep(Request $request) {
          $startDay = $this->startDay;
          $moodModel = new  MoodModel;
-         $moodModel->createQuestionsSleep($this->startDay);
+         $moodModel->createQuestionsSleep();
          $moodModel->setDate($request->get("dateFrom"),$request->get("dateTo"),$this->startDay);
          $moodModel->setLongSleep($request);
          $this->setHour($moodModel,$request,"sleep");
