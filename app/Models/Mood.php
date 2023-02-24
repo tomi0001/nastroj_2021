@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use DB;
 use Auth;
 use Illuminate\Http\Request;
+//use AgliPanci\LaravelCase\Query\CaseBuilder;
 class Mood extends Model
 {
     use HasFactory;
@@ -903,10 +904,31 @@ class Mood extends Model
                 ->selectRaw("((unix_timestamp(date_end)  - unix_timestamp(date_start)) * level_stimulation) as average_stimulation")
                 ->selectRaw("moods.what_work  as what_work ")
                 ->where("moods.id_users",$IdUsers)
-                ->where(function ($query) use ($date,$startDay) {
-                    $query->whereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) = '" . $date . "'" ))
-                    ->orWhereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) = '" . $date . "'" ));
-                })
+                ->whereRaw("(CASE
+
+                         WHEN   moods.type = 'mood' THEN 
+                            (
+                            DATE(
+                                IF(
+                                   HOUR(    moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) "
+                           . "    ) "
+                           . "  ) = '" . $date . "'"
+                           . ")  or ((DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) = '" . $date . "'" 
+
+                          
+                        . ")"
+                        . " ELSE "
+                        . "("
+                        . "   DATE( "
+                        . "         IF("
+                        . "             HOUR(    moods.date_start) >= '" . 0 . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY)"
+                        . "           )"
+                        . "        ) = '" . $date . "'"
+                        . ")  "
+                        . "    or ((DATE(IF(HOUR(    moods.date_end) >= '" . 0 . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) = '" . $date . "'"   
+                        . ")"
+                        . " END)")
+                
                 ->orderBy("moods.date_start")
                 ->get();
     }
