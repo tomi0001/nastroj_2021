@@ -1,4 +1,21 @@
-        <div class="titleMoodSettings">
+
+<script src="{{ asset('./jquery/jquery-ui.js') }}"></script> 
+<script src="{{ asset('./jquery/jquery-ui.min.js') }}"></script> 
+<script>
+$( function() {
+    var nameAction = [
+    @foreach ($listAction as $list)
+        "{{$list->name}}",
+    @endforeach
+    ];
+    $( "#tags" ).autocomplete({
+      source: nameAction,
+      minLength: 3
+    });
+  } );
+</script>
+
+<div class="titleMoodSettings">
                         DODAJ NOWĄ AKCJE
         </div>
 <div class="bodyPage">
@@ -9,7 +26,9 @@
                     Nazwa akcji
                 </td>
                 <td>
-                    <input type="text" name="nameAction" class="form-control">
+                    
+                     <input id="tags" type="text" name="nameAction"  class="form-control">
+                     
                 </td>
             </tr>
             <tr>

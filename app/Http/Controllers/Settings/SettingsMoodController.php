@@ -27,7 +27,8 @@ use App\Http\Services\Action as serviceAction;
 use Auth;
 class SettingsMoodController {
     public function addNewAction() {
-        return view("Users.Settings.Mood.addNewAction");
+        $listAction = Action::downloadListAction(Auth::User()->id);
+        return view("Users.Settings.Mood.addNewAction")->with("listAction",$listAction);
     }
     public function addNewActionSubmit(Request $request) {
         

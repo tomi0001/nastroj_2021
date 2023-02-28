@@ -234,3 +234,33 @@ div.plusButton {
 div.minusButton {
     background-color: #F76868;
 }
+
+.ui-autocomplete {
+
+    background-color: #ffffff;
+    border-color: #ccc;
+    border-color: rgba(0, 0, 0, 0.2);
+
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding;
+    background-clip: padding-box;
+
+}
+
+.ui-menu-item > a.ui-corner-all {
+
+    color: #555555;
+
+}
+
+.ui-state-hover, .ui-state-active {
+    color: #ffffff;
+
+    background-color: #0088cc;
+
+    background-image: none;
+}
+

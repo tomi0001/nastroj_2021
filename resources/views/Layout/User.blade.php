@@ -14,8 +14,7 @@
         <link rel="stylesheet"  href="{{asset('./bootstrap-5.1.3-dist/css/bootstrap.css')}}"  >
 <script src="{{asset('./bootstrap-5.1.3-dist/js/bootstrap.js')}}" ></script>
 
-        <link href='http://fonts.googleapis.com/css?family=Amita&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script> 
+<script src="{{ asset('./jquery-3.6.3.js') }}"></script>     
         
         
         <link rel="shortcut icon" href="{{ asset('./image/icon.png')}}">
