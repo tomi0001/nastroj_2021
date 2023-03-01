@@ -8,7 +8,7 @@ $( function() {
         "{{$list->name}}",
     @endforeach
     ];
-    $( "#tags" ).autocomplete({
+    $( "#tagsAction" ).autocomplete({
       source: nameAction,
       minLength: 3
     });
@@ -27,7 +27,7 @@ $( function() {
                 </td>
                 <td>
                     
-                     <input id="tags" type="text" name="nameAction"  class="form-control">
+                     <input id="tagsAction" type="text" name="nameAction"  class="form-control">
                      
                 </td>
             </tr>

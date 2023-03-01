@@ -237,10 +237,10 @@ div.minusButton {
 
 .ui-autocomplete {
 
-    background-color: #ffffff;
-    border-color: #ccc;
+    background-color: rgba(175, 191, 182, 0.9);
+    border-color: #071278;
     border-color: rgba(0, 0, 0, 0.2);
-
+    color: #444a46;
     -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
@@ -259,7 +259,7 @@ div.minusButton {
 .ui-state-hover, .ui-state-active {
     color: #ffffff;
 
-    background-color: #0088cc;
+    background-color: #6d8684;
 
     background-image: none;
 }

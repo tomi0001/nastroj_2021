@@ -20,6 +20,22 @@
 });
 
 </script>
+
+<script src="{{ asset('./jquery/jquery-ui.js') }}"></script> 
+<script src="{{ asset('./jquery/jquery-ui.min.js') }}"></script> 
+<script>
+$( function() {
+    var nameAction = [
+    @foreach ($listProduct as $list)
+        "{{$list->name}}",
+    @endforeach
+    ];
+    $( "#tagsProduct" ).autocomplete({
+      source: nameAction,
+      minLength: 3
+    });
+  } );
+</script>
 <div class="titleDrugsSettings">
                         DODAJ NOWĄ PRODUKT
         </div>
@@ -31,7 +47,7 @@
                     Nazwa produktu
                 </td>
                 <td>
-                    <input type="text" name="nameProduct" class="form-control">
+                    <input id="tagsProduct" type="text" name="nameProduct" class="form-control">
                 </td>
             </tr>
             <tr>

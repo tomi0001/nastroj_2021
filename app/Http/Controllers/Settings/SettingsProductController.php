@@ -26,15 +26,18 @@ use App\Http\Services\Action as serviceAction;
 use Auth;
 class SettingsProductController {
     public function addNewGroup() {
-        return view("Users.Settings.Product.addNewGroup");
+        $listGroup = Group::selectListGroup(Auth::User()->id);
+        return view("Users.Settings.Product.addNewGroup")->with("listGroup",$listGroup);
     }
     public function addNewSubstance() {
+        $listSubstance = Substance::selectListSubstance(Auth::User()->id);
         $listGroup = Group::selectListGroup(Auth::User()->id);
-        return view("Users.Settings.Product.addNewSubstance")->with("listGroup",$listGroup);
+        return view("Users.Settings.Product.addNewSubstance")->with("listGroup",$listGroup)->with("listSubstance",$listSubstance);
     }
     public function addNewProduct() {
         $listSubstance = Substance::selectListSubstance(Auth::User()->id);
-        return view("Users.Settings.Product.addNewProduct")->with("listSubstance",$listSubstance);
+        $listProduct = ModelProduct::selectListProduct(Auth::User()->id);
+        return view("Users.Settings.Product.addNewProduct")->with("listSubstance",$listSubstance)->with("listProduct",$listProduct);
     }
     public function editGroup() {
         $listGroup = Group::selectListGroup(Auth::User()->id);

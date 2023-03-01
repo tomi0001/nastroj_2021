@@ -20,6 +20,22 @@
 });
 
 </script>
+
+<script src="{{ asset('./jquery/jquery-ui.js') }}"></script> 
+<script src="{{ asset('./jquery/jquery-ui.min.js') }}"></script> 
+<script>
+$( function() {
+    var nameAction = [
+    @foreach ($listSubstance as $list)
+        "{{$list->name}}",
+    @endforeach
+    ];
+    $( "#tagsSubstance" ).autocomplete({
+      source: nameAction,
+      minLength: 3
+    });
+  } );
+</script>
 <div class="titleDrugsSettings">
                         DODAJ NOWĄ SUBSTANCĘ
         </div>
@@ -31,7 +47,7 @@
                     Nazwa substancji
                 </td>
                 <td>
-                    <input type="text" name="nameSubstance" class="form-control">
+                    <input id="tagsSubstance" type="text" name="nameSubstance" class="form-control">
                 </td>
             </tr>
             <tr>
