@@ -274,4 +274,20 @@ class Common {
 
         return $sumHour . ":" .  $hour[1] . ":00";
     }
+    public static function showColorTypeHow(int $how) {
+        switch($how) {
+            case 1:
+                return "how-color-one";
+                break;
+            case 2:
+                return "how-color-two";
+                break;
+            case 3:
+                return "how-color-three";
+                break;
+            default:
+                return "how-color-long";
+                break;
+        }
+    }
 }

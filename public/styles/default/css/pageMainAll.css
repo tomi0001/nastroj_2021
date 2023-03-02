@@ -309,7 +309,7 @@ table.tableCenter {
         
         div.lineAverage {
             width: 55%;
-            height: 6px;
+            height: 23px;
             border-radius: 10px;
             margin-left: auto;
             margin-right: auto;
@@ -324,4 +324,14 @@ table.tableCenter {
         div.hourOneAverage {
             width: 45%;
             float: left;
+        }
+        
+        
+        div.how-type {
+            max-height: 30px;
+            
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 25px;
         }

@@ -7,7 +7,7 @@
         <div class="averageDiv">
             {{$listAverage[$i]["dateStart"]}} - {{$listAverage[$i]["dateEnd"]}} <br>
             Dawka = {{$listAverage[$i]["portion"]}} {{\App\Http\Services\Common::showDoseProduct($listAverage[$i]["type"])}}<br>
-            ilośc wzięć = {{$listAverage[$i]["how"]}} <br>
+            <div class="how-type {{\App\Http\Services\Common::showColorTypeHow($listAverage[$i]["how"])}}"> ilośc wzięć = {{($listAverage[$i]["how"])}} </div> 
             @php
                 $diff = \App\Http\Services\Common::calculateHourAverage(date("Y-m-d",strtotime($listAverage[$i]["dateStart"]) - 8400),$listAverage[$i]["dateEnd"]);
             @endphp
@@ -26,9 +26,19 @@
         @if (($i !=(count($listAverage) - 1  ) )    and ( strtotime($listAverage[$i]["dateStart"])  - strtotime($listAverage[$i+1]["dateEnd"]) ) >   ( 86400)  and \App\Http\Services\Common::ifChangeTimeWinterOne($listAverage[$i]["dateStart"]) == false )
         
           
-        <div class="lineAverage">
+       
+            @php
+                $daySub = \App\Http\Services\Common::calculateHourAverage(($listAverage[$i]["dateStart"]), ($listAverage[$i+1]["dateEnd"]))
+            @endphp
+            @if  ($daySub < 3)
+                 <div class="lineAverage lineAverageNr1">przerwa  dni {{$daySub}}</div>
+            @elseif ($daySub > 2 and $daySub < 20)
+                <div class="lineAverage lineAverageNr2 ">przerwa dni {{$daySub}}</div>
+            @else
+                <div class="lineAverage lineAverageNr3 ">przerwa dni {{$daySub}}</div>
             
-        </div>
+            @endif
+        
           
         @endif
     @endfor
