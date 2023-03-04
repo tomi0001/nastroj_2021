@@ -470,7 +470,16 @@ div.hiddenMood {
         }
         
         
-
+               div.lineAverage {
+            width: 65%;
+            height: 26px;
+            border-radius: 10px;
+            margin-left: auto;
+            margin-right: auto;
+              margin-bottom: 12px;
+              font-size: 17px;
+            
+        }
         
         
 }

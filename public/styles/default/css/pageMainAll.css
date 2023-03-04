@@ -307,15 +307,7 @@ table.tableCenter {
             
         }
         
-        div.lineAverage {
-            width: 55%;
-            height: 23px;
-            border-radius: 10px;
-            margin-left: auto;
-            margin-right: auto;
-              margin-bottom: 12px;
-            
-        }
+
         
         div.hourAverage {
             width: 100%;
