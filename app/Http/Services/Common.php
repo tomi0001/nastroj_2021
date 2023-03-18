@@ -167,6 +167,19 @@ class Common {
         }
         return substr($string,0,-2);
     }
+   
+    public static function subMonth($dateOne,$dateTwo) :int {
+
+        $dateStart = new \DateTime($dateOne);
+        $dateEnd = new \DateTime($dateTwo);
+        $diff = $dateEnd->diff($dateStart);
+
+        
+        
+        
+        return (12 * $diff->y) + $diff->m;
+    }
+    
     public static function calculateHourAverage($dateOne,$dateTwo) {
         $dateStart = new \DateTime($dateOne);
         $dateEnd = new \DateTime($dateTwo);

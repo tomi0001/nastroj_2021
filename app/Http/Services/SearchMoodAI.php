@@ -202,7 +202,42 @@ class SearchMoodAI
         }
         return $arrayWeek;
     }
-    
+    public function createMonth(string $dateFrom,string $dateTo) {
+        //$week = 1;
+        $arrayWeek = [];
+        //$j = 0;
+        $year = date("Y",strtotime($dateFrom));
+        $month = date("m",strtotime($dateFrom));
+        //$month = date("m",strtotime($dateFrom));
+        $arrayWeek["dateStart"][0] = date("Y-m-d",strtotime($year  . "-" . $month . "-01"));
+            $howMonth = Common::subMonth($dateFrom,$dateTo);
+                   print $howMonth; 
+            for ($i = 0;$i <= $howMonth;$i++)  {
+                
+               if ($i < $howMonth and $i != 0) {
+                   $arrayWeek["dateStart"][$i] = date("Y-m-d",strtotime($year  . "-" . $month . "-01"));
+               }
+                
+                if ($i == $howMonth) {
+                    $arrayWeek["dateEnd"][$i] = date("Y-m-d",strtotime($year  . "-" . $month . "-" .   calendar::checkMonth($month,$year)) );
+                    break;
+                }
+                $arrayWeek["dateEnd"][$i] = date("Y-m-d",strtotime($year  . "-" . $month  . "-" .   calendar::checkMonth($month,$year) ) );
+                if ($month == 12) {
+                    $month = 1;
+                    $year++;
+                }
+                else {
+                    $month++;
+                }
+                
+                
+      
+            }
+
+            
+     return $arrayWeek;
+    }
 
     public function sortSumDayMinute($list,$hourArrayFrom,$hourArrayTo) {
         $arrayNew = [];
@@ -326,6 +361,69 @@ class SearchMoodAI
             }
             
         }
+        return $arrayNew;
+        
+    }
+   
+    
+    public function sortMonth($list,$arrayWeek) {
+        $j = 0;
+        $day = 0;
+        $arrayNew = [];
+        $y = 0;
+        $sumMood = 0;
+        $sumAnxienty = 0;
+        $sumVoltage = 0;
+        $sumStimulation = 0;
+        $count = 0;
+        for ($i=0;$i < count($list);$i++) {
+            if ($i == count($list)-1) {
+                $sumMood += $list[$i]->mood;
+                $sumAnxienty += $list[$i]->anxienty;
+                $sumVoltage += $list[$i]->voltage;
+                $sumStimulation += $list[$i]->stimulation;
+                $count += $list[$i]->count;
+                $day++;
+                goto END;
+            }
+           
+            if (strtotime($arrayWeek["dateStart"][$j]) <= strtotime($list[$i]->dat_end) and strtotime($arrayWeek["dateEnd"][$j]) >= strtotime($list[$i]->dat_end) ) {
+                
+                $sumMood += $list[$i]->mood;
+                $sumAnxienty += $list[$i]->anxienty;
+                $sumVoltage += $list[$i]->voltage;
+                $sumStimulation += $list[$i]->stimulation;
+                $count += $list[$i]->count;
+                
+                
+                $day++;
+            }
+            else {
+                END:
+                $arrayNew["dateStart"][$y] = $arrayWeek["dateStart"][$y];
+                $arrayNew["dateEnd"][$y] = $arrayWeek["dateEnd"][$y];
+                $arrayNew["mood"][$y] = $sumMood /$day;
+                $arrayNew["anxienty"][$y] = $sumAnxienty / $day;
+                $arrayNew["voltage"][$y] =  $sumVoltage / $day;
+                $arrayNew["stimulation"][$y] = $sumStimulation /  $day;
+                $arrayNew["count"][$y] = $count;
+                $sumMood = 0;
+                $sumAnxienty = 0;
+                $sumVoltage = 0;
+                $sumStimulation = 0;
+                $count = 0;
+                $sumMood += $list[$i]->mood;
+                $sumAnxienty += $list[$i]->anxienty;
+                $sumVoltage += $list[$i]->voltage;
+                $sumStimulation += $list[$i]->stimulation;
+                $count += $list[$i]->count;
+                $y++;
+                $j++;
+                $day = 1;
+            }
+            
+        }
+        
         return $arrayNew;
         
     }

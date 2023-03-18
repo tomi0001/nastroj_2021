@@ -234,6 +234,16 @@ class SearchMoodController {
            
 
                 if (count($minMax) > 0) {
+                    if ( ($request->get("groupMonth") == "on") ) {
+                         $arrayWeek = $SearchMoodAI->createMonth($SearchMoodAI->dateFrom,$SearchMoodAI->dateTo);
+                         
+                    $sort = $SearchMoodAI->sortMonth($minMax,$arrayWeek);
+
+                        return View("Users.Search.Mood.AverageMoodGroupWMonth")->with("minMax", $sort)
+                            ->with("timeFrom", $request->get("timeFrom"))->with("timeTo", $request->get("timeTo"))
+                            ->with("dateFrom", $request->get("dateFrom"))->with("dateTo", $request->get("dateTo"))
+                            ->with("week", $SearchMoodAI->dayWeek);
+                    }
                     if ( ($request->get("groupWeek") == "on") ) {
                          $arrayWeek = $SearchMoodAI->createWeek($SearchMoodAI->dateFrom,$SearchMoodAI->dateTo);
                          //var_dump($arrayWeek);
