@@ -30,12 +30,15 @@
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Mood.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/Common1410.css</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Layout/User.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/AverageMoodGroupWeek.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Layout/SelectSearch.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Layout/Settings.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Main/MainController.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainAll.css</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/SearchDrugs.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/AverageMoodGroupWMonth.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/ajax/sumAverage.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Services/SearchMoodAI.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/searchResultMoodSumDay.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSearchwidth700.css</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/editProduct.blade.php</file>
@@ -53,6 +56,7 @@
             <file>file:/var/www/html/nastroj_2021/public/styles/winter/css/pageSearchColor.css</file>
             <file>file:/var/www/html/nastroj_2021/config/database.php</file>
             <file>file:/var/www/html/nastroj_2021/config/view.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/spring/css/pageSearchColor.css</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Substances_product.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Mood.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showDrugs.blade.php</file>
@@ -64,10 +68,12 @@
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/Common700.css</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showMenu.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Settings/SettingsMoodController.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/spring/css/pageSettingColor.css</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/searchResultMoodGroupDay.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainwidth700.css</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/SearchMood.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/spring/css/pageMainColor.css</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Services/Calendar.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/error.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/addNewProduct.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/Common1810.css</file>

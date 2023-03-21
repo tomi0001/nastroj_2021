@@ -12,7 +12,7 @@ return [
     | the usual Laravel view path has already been registered for you.
     |
     */
-    'styles_color' => 'winter',
+    'styles_color' => 'spring',
     'styles' => 'default',
     'paths' => [
         resource_path('views'),

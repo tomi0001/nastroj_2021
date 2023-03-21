@@ -24,7 +24,16 @@ div.actionMainselected {
 }
 
 
-
+div.descriptionAction {
+                background-color: #C6DFD1;
+            border: solid 2px transparent;
+            border-color: #90a398;
+            -webkit-box-shadow: inset 0px 0px 10px 1px #99ADA2;
+-moz-box-shadow: inset 0px 0px 10px 1px #99ADA2;
+box-shadow: inset 0px 0px 10px 1px #99ADA2;
+            color: #505E4F;
+           
+}
 
     div.borderDrugs {
          border: 2px solid  rgba(132, 167, 154, 0.84);
@@ -90,8 +99,13 @@ div.actionMainselected {
 
         }
         div.cell_selected {
+            background-color: #aef760;
+            border: solid 1px transparent;
+            border-color: #7FB546;
+            -webkit-box-shadow: inset 0px 0px 10px 1px rgba(66, 68, 90, 1);
+-moz-box-shadow: inset 0px 0px 10px 1px rgba(66, 68, 90, 1);
+box-shadow: inset 0px 0px 20px 1px #8FB75B;
 
-            background-color: #cbff7d;
            
         }
 

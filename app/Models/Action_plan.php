@@ -17,6 +17,7 @@ class Action_plan extends Model
                 ->selectRaw("actions_plans.date as date")
                 ->selectRaw("actions_plans.long as longer")
                 ->selectRaw("actions_plans.id as id")
+                ->selectRaw("actions_plans.what_work as what_work")
                 ->where("actions_plans.id_users",$idUsers)
                 ->whereRaw(DB::Raw("(DATE(IF(HOUR(    actions_plans.date ) >= '" . $startDay . "', actions_plans.date ,Date_add(actions_plans.date , INTERVAL - 1 DAY) )) ) = '" . $date . "'" ))
                 ->orderBy("actions_plans.date")->get();        

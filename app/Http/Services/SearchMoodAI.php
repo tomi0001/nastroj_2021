@@ -202,6 +202,27 @@ class SearchMoodAI
         }
         return $arrayWeek;
     }
+    
+    public function subCreateMonth( $date) {
+        
+        $arrayWeek = [];
+        $j = 0;
+        
+        for ($i = 0;$i < count($date["dateStart"]);$i++) {
+           
+            if (MoodModel::ifExistDAteMood($date["dateStart"][$i], $date["dateEnd"][$i], $this->idUsers,$this->startDay) > 0 ) {
+                    
+                    $arrayWeek["dateStart"][$j] = $date["dateStart"][$i];
+                    $arrayWeek["dateEnd"][$j] = $date["dateEnd"][$i];
+
+                    $j++;
+            }
+            
+        }
+        return $arrayWeek;
+    
+    }
+    
     public function createMonth(string $dateFrom,string $dateTo) {
         //$week = 1;
         $arrayWeek = [];
@@ -211,10 +232,10 @@ class SearchMoodAI
         //$month = date("m",strtotime($dateFrom));
         $arrayWeek["dateStart"][0] = date("Y-m-d",strtotime($year  . "-" . $month . "-01"));
             $howMonth = Common::subMonth($dateFrom,$dateTo);
-                   print $howMonth; 
+                
             for ($i = 0;$i <= $howMonth;$i++)  {
                 
-               if ($i < $howMonth and $i != 0) {
+               if ($i < $howMonth+1and $i != 0) {
                    $arrayWeek["dateStart"][$i] = date("Y-m-d",strtotime($year  . "-" . $month . "-01"));
                }
                 
@@ -387,7 +408,7 @@ class SearchMoodAI
                 goto END;
             }
            
-            if (strtotime($arrayWeek["dateStart"][$j]) <= strtotime($list[$i]->dat_end) and strtotime($arrayWeek["dateEnd"][$j]) >= strtotime($list[$i]->dat_end) ) {
+            if  ( (strtotime($arrayWeek["dateStart"][$j]) <= strtotime($list[$i]->dat_end) and strtotime($arrayWeek["dateEnd"][$j]) >= strtotime($list[$i]->dat_end)  )    ) {
                 
                 $sumMood += $list[$i]->mood;
                 $sumAnxienty += $list[$i]->anxienty;
@@ -395,11 +416,13 @@ class SearchMoodAI
                 $sumStimulation += $list[$i]->stimulation;
                 $count += $list[$i]->count;
                 
-                
+               
                 $day++;
             }
             else {
                 END:
+                
+                
                 $arrayNew["dateStart"][$y] = $arrayWeek["dateStart"][$y];
                 $arrayNew["dateEnd"][$y] = $arrayWeek["dateEnd"][$y];
                 $arrayNew["mood"][$y] = $sumMood /$day;
@@ -420,6 +443,16 @@ class SearchMoodAI
                 $y++;
                 $j++;
                 $day = 1;
+//                END2:
+//                   if  (   (strtotime($arrayWeek["dateEnd"][$j]) <= strtotime($list[$i]->dat_end))  )      {
+//                    if ($j >= count($arrayWeek["dateEnd"]))  {
+//                        return $arrayNew;
+//                    }
+//                    $j++;
+//                    print "dos";
+//                    goto END2;
+//                }
+             
             }
             
         }

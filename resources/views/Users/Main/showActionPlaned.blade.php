@@ -33,6 +33,11 @@
                     <tr >
                         <td  class=" showAction tdAction center">
                             <div class='positionAction leveAction{{\App\Http\Services\Common::setColorPleasure($list->level_pleasure)}}'>{{$list->name}}</div>
+                            @if ($list->what_work != "")
+                                 <div class="descriptionAction">{{$list->what_work}}</div>
+                            @endif
+                            
+                            
                         </td>
                         <td  class=" showAction center tdAction ">
                             <a onclick="atHourActonPlan('{{ route('ajax.atHourActonPlan')}}',{{$list->id}})" style='cursor:pointer;'>{{substr($list->date,11,-3)}}</a>
@@ -49,6 +54,7 @@
                             {{$list->level_pleasure}}
                         </td>
                     </tr>
+            
                     
                     
                 @endforeach
