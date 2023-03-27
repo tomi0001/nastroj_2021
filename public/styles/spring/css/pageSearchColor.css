@@ -270,3 +270,10 @@ div.dateSumDayMoodAverageDayWeek {
     -moz-box-shadow: inset 0px 0px 24px -8px rgba(158, 200, 31, 1);
     box-shadow: inset 0px 0px 24px -8px rgba(158, 200, 31, 1);
 }
+div.titleWeek {
+color: #87eb7c;
+background-color: rgba(0, 85, 160, 1);
+background-image: radial-gradient(circle, rgb(36 129 19) 50%, rgb(69 222 51) 92%);
+
+
+}
