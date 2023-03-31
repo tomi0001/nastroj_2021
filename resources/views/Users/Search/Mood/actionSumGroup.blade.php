@@ -1,4 +1,4 @@
-<div class="actionSum">
+
         <table class="actionShow showAction">
             <thead >
                 <tr>
@@ -27,7 +27,7 @@
                 </thead>
                 
                
-                @foreach ($actionSum[$i] as $list)
+                @foreach ($actionSum as $list)
                     <tr >
                         <td  class=" showAction tdAction center">
                             <div class='positionAction leveAction{{\App\Http\Services\Common::setColorPleasure($list->level_pleasure)}}'>{{$list->name}}</div>
@@ -48,4 +48,4 @@
                 @endforeach
                 
         </table>
-</div>
+    

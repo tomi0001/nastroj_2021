@@ -31,11 +31,11 @@
                 $daySub = \App\Http\Services\Common::calculateHourAverage(($listAverage[$i]["dateStart"]), ($listAverage[$i+1]["dateEnd"]))
             @endphp
             @if  ($daySub < 3)
-                 <div class="lineAverage lineAverageNr1">przerwa  dni {{$daySub}}</div>
+                 <div class="lineAverage lineAverageNr1">przerwa  dni {{$daySub-1}}</div>
             @elseif ($daySub > 2 and $daySub < 20)
-                <div class="lineAverage lineAverageNr2 ">przerwa dni {{$daySub}}</div>
+                <div class="lineAverage lineAverageNr2 ">przerwa dni {{$daySub-1}}</div>
             @else
-                <div class="lineAverage lineAverageNr3 ">przerwa dni {{$daySub}}</div>
+                <div class="lineAverage lineAverageNr3 ">przerwa dni {{$daySub-1}}</div>
             
             @endif
         

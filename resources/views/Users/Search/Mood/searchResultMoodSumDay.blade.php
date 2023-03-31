@@ -30,7 +30,7 @@
 
                 <div class="moodSearchResult">
                     <div class="moodSearchResult">
-                        <div class="dayMood" style="min-height: 200px; padding: 10px; ">
+                        <div class="dayMood" >
 
                             <div style="margin-left: auto;margin-right: auto; ">
 
@@ -153,7 +153,7 @@
                         
                         
                         
-                        @include ('Users.Main.showActionSum')
+                        @include ('Users.Search.Mood.actionSumGroup')
                         
                         
                     <table>

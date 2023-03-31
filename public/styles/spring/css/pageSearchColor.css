@@ -277,3 +277,27 @@ background-image: radial-gradient(circle, rgb(36 129 19) 50%, rgb(69 222 51) 92%
 
 
 }
+
+.actionSum::-webkit-scrollbar-thumb {
+
+  box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: #57a75e;
+  border: 1px solid #000;
+}
+.actionSum::-webkit-scrollbar-track {
+  border: 1px solid #000;
+
+  background-color: #83d764;
+}
+
+div.recordMoodGroupWeek { 
+    border-radius: 0px 0px 25px 25px;
+
+background-color: rgba(65, 212, 48, 1);
+background-image: linear-gradient(90deg, rgba(65, 212, 48, 1) 0%, rgba(36, 129, 19, 1) 18%, rgba(36, 129, 19, 1) 50%, rgba(36, 129, 19, 1) 86%, rgba(65, 212, 48, 1) 100%);
+
+}
+
+table.tableColorSearchMoodSum {
+    background-color: #A4D799;
+}

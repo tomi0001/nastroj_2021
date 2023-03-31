@@ -30,7 +30,7 @@
 
                 <div class="moodSearchResult">
                     <div class="moodSearchResult">
-                        <div class="dayMood" style="min-height: 250px; padding: 10px; ">
+                        <div class="dayMood">
 
                             <div style="margin-left: auto;margin-right: auto; ">
 
@@ -153,107 +153,110 @@
                         
                       @for ($i = 0;$i < count($arrayList);$i++)
                       <br><br>
-                      <div class="titleWeek">
-                        {{$arrayWeek["dateStart"][$i]}} - {{$arrayWeek["dateEnd"][$i]}}
+                      
+                       <div class="titleWeek">
+                          {{$arrayWeek["dateStart"][$i]}} - {{$arrayWeek["dateEnd"][$i]}}
+                       </div>
+                      <div class="recordMoodGroupWeek">
+                              @include ('Users.Search.Mood.actionSum')
+
+
+                          <table class="tableColorSearchMoodSum">
+
+                              <thead >
+                              <tr class="bold">
+                                  <td style="width: 3%;"></td>
+                                  <td style="width: 2%;">
+
+                                  </td>
+                                  <td class="start showMood titleTheadMood" style=" border-right-style: hidden; width: 25%;" >
+                                      Start
+                                  </td>
+                                  <td class="end showMood titleTheadMood" style="width: 25%;">
+                                      Koniec
+                                  </td>
+                                  <td class="sizeTableMood showMood titleTheadMood" style="width: 6%;">
+                                      Nastrój
+                                  </td>
+                                  <td class="sizeTableMood showMood titleTheadMood" style="width: 6%;">
+                                      Lęk
+                                  </td>
+                                  <td class="sizeTableMood showMood titleTheadMood" style="width: 6%;">
+                                      napięcie /<br>rozdrażnienie
+                                  </td>
+                                  <td class="sizeTableMood showMood titleTheadMood" style="width: 5%;">
+                                      Pobudzenie
+                                  </td>
+                                  <td class="sizeTableMood showMood titleTheadMood" style="width: 5%;">
+                                      Ilość nastroji
+                                  </td>
+                                  <td class="center showMood titleTheadMood" style="width: 11%;">
+                                      Epizodów psychotycznych
+                                  </td>
+                                  <td >
+
+                                  </td>
+                                  <td style="width: 3%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                              </tr>
+                              </thead>
+
+
+
+
+
+                              <tr>
+                                  <td></td>
+                                  <td ></td>
+                                  <td class="showMood start" colspan="2" ">
+
+                                  <br>
+                                  <div class="cell{{\App\Http\Services\Common::setColor($arrayList[$i]["mood"])}} level" style="width: 100%">&nbsp;</div>
+                                  <div style="text-align: center; width: 70%;">
+
+                                  </div>
+                                  </td>
+                                  <td class="sizeTableMood showMood ">
+
+                                      <span class="fontMood" >{{round($arrayList[$i]["mood"],3)}}</span>
+
+                                  </td>
+                                  <td class="sizeTableMood showMood ">
+                                      <span class="fontMood"  >{{round($arrayList[$i]["anxienty"],3)}}</span>
+
+                                  </td>
+                                  <td class="sizeTableMood showMood ">
+
+                                      <span class="fontMood"  >{{round($arrayList[$i]["voltage"],3)}}</span>
+
+                                  </td>
+                                  <td class="sizeTableMood showMood ">
+
+                                      <span class="fontMood"  >{{round($arrayList[$i]["stimulation"],3)}}</span>
+
+                                  </td>
+                                  <td class="sizeTableMood showMood ">
+
+                                      <span class="fontMood"  >{{$arrayList[$i]["count"]}}</span>
+
+                                  </td>
+                                  <td class="sizeTableMood showMood ">
+
+                                      @if ($arrayList[$i]["epizodes_psychotik"] != 0)
+                                          <span class="MessageError" >{{$arrayList[$i]["epizodes_psychotik"]}} epizodów psychotycznych</span>
+                                      @else
+                                          <span  > Brak </span>
+                                      @endif
+
+                                  </td>
+                                  <td  ></td>
+                                  <td></td>
+                              </tr>
+
+
+
+
+                          </table>
                       </div>
-                        @include ('Users.Search.Mood.actionSum')
-                        
-                        
-                    <table>
-
-                        <thead >
-                        <tr class="bold">
-                            <td style="width: 3%;"></td>
-                            <td style="width: 2%;">
-
-                            </td>
-                            <td class="start showMood titleTheadMood" style=" border-right-style: hidden; width: 25%;" >
-                                Start
-                            </td>
-                            <td class="end showMood titleTheadMood" style="width: 25%;">
-                                Koniec
-                            </td>
-                            <td class="sizeTableMood showMood titleTheadMood" style="width: 6%;">
-                                Nastrój
-                            </td>
-                            <td class="sizeTableMood showMood titleTheadMood" style="width: 6%;">
-                                Lęk
-                            </td>
-                            <td class="sizeTableMood showMood titleTheadMood" style="width: 6%;">
-                                napięcie /<br>rozdrażnienie
-                            </td>
-                            <td class="sizeTableMood showMood titleTheadMood" style="width: 5%;">
-                                Pobudzenie
-                            </td>
-                            <td class="sizeTableMood showMood titleTheadMood" style="width: 5%;">
-                                Ilość nastroji
-                            </td>
-                            <td class="center showMood titleTheadMood" style="width: 11%;">
-                                Epizodów psychotycznych
-                            </td>
-                            <td >
-
-                            </td>
-                            <td style="width: 3%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                        </tr>
-                        </thead>
-
-                       
-
-
-
-                        <tr>
-                            <td></td>
-                            <td ></td>
-                            <td class="showMood start" colspan="2" ">
-                            
-                            <br>
-                            <div class="cell{{\App\Http\Services\Common::setColor($arrayList[$i]["mood"])}} level" style="width: 100%">&nbsp;</div>
-                            <div style="text-align: center; width: 70%;">
-                                
-                            </div>
-                            </td>
-                            <td class="sizeTableMood showMood ">
-
-                                <span class="fontMood" >{{round($arrayList[$i]["mood"],3)}}</span>
-
-                            </td>
-                            <td class="sizeTableMood showMood ">
-                                <span class="fontMood"  >{{round($arrayList[$i]["anxienty"],3)}}</span>
-
-                            </td>
-                            <td class="sizeTableMood showMood ">
-
-                                <span class="fontMood"  >{{round($arrayList[$i]["voltage"],3)}}</span>
-
-                            </td>
-                            <td class="sizeTableMood showMood ">
-
-                                <span class="fontMood"  >{{round($arrayList[$i]["stimulation"],3)}}</span>
-
-                            </td>
-                            <td class="sizeTableMood showMood ">
-
-                                <span class="fontMood"  >{{$arrayList[$i]["count"]}}</span>
-
-                            </td>
-                            <td class="sizeTableMood showMood ">
-
-                                @if ($arrayList[$i]["epizodes_psychotik"] != 0)
-                                    <span class="MessageError" >{{$arrayList[$i]["epizodes_psychotik"]}} epizodów psychotycznych</span>
-                                @else
-                                    <span  > Brak </span>
-                                @endif
-
-                            </td>
-                            <td  ></td>
-                            <td></td>
-                        </tr>
-
-
-                       
-
-                    </table>
                         @endfor
                     <div class="dayMoodEnd"></div>
                 </div>
