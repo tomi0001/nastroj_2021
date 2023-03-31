@@ -150,7 +150,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+                        <div class="line">&nbsp;</div>
                       @for ($i = 0;$i < count($arrayList);$i++)
                       <br><br>
                       
