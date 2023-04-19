@@ -446,6 +446,18 @@ class Mood extends Model
                         
                         
     }
+    public function createQuestionsSleepSumDay(int $startDay = 0) {
+        $this->questions =  self::query();
+        $this->questions->selectRaw("moods.date_start as date_start")
+                        ->selectRaw("moods.id as id")
+                        ->selectRaw("moods.date_end as date_end")
+                        ->selectRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) as datStart " ))
+                        ->selectRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) as datEnd" ))
+                        ->selectRaw(DB::Raw("WEEKDAY((DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) )) as dayweek" ))
+                        ->selectRaw("(sum(TIMESTAMPDIFF (second, date_start , date_end)) / count(*)  ) as average")
+                        ->selectRaw("moods.epizodes_psychotik as epizodes_psychotik")
+                        ->selectRaw("moods.what_work as what_work");        
+    }
     public function createQuestions(int $startDay) {
         $this->questions =  self::query();
         $this->questions->leftjoin("moods_actions","moods_actions.id_moods","moods.id")

@@ -291,7 +291,29 @@ class SearchMood {
          $this->count = $moodModel->questions->get()->count();
          return $moodModel->questions->paginate(15);
      }
-     
+ 
+     public function createQuestionSleepSumDay(Request $request) {
+         $startDay = $this->startDay;
+         $moodModel = new  MoodModel;
+         $moodModel->createQuestionsSleepSumDay();
+         $moodModel->setDate($request->get("dateFrom"),$request->get("dateTo"),$this->startDay);
+         $moodModel->setLongSleep($request);
+         $this->setHour($moodModel,$request,"sleep");
+         if (($request->get("ifSleep")) == "on" ) {
+             $moodModel->whatWorkOn();
+         }
+         $moodModel->idUsers($this->idUsers);
+         $moodModel->sleepSelect();
+         $moodModel->whereEpizodes($request->get("workingFrom"),$request->get("workingTo"));
+         if ($request->get("sort2") == "asc") {
+             $moodModel->orderBy("asc",$request->get("sort"));
+         }
+         else {
+             $moodModel->orderBy("desc",$request->get("sort"));
+         }
+         //$this->count = $moodModel->questions->get()->count();
+         return $moodModel->questions->first();
+     }
      
      public function createQuestion(Request $request,$bool = false) {
          $startDay = $this->startDay;

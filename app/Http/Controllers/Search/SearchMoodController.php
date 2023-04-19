@@ -32,7 +32,7 @@ class SearchMoodController {
     public function searchActionDay(Request $request) {
         $SearchMood = new SearchMood;
          $SearchMood->setDayWeek($request);
-        $result = $SearchMood->createQuestionActionDay($request);
+         $result = $SearchMood->createQuestionActionDay($request);
        
          return View("Users.Search.Mood.searchResultActionDay")->with("arrayList",$result)->with("count",$SearchMood->count);
         
@@ -44,14 +44,28 @@ class SearchMoodController {
             return View("Users.Search.Mood.error")->with("errors",$SearchMood->errors);
         }
         else {
-            $result = $SearchMood->createQuestionSleep($request);
-            if ($SearchMood->count > 0) {
-                 $arrayPercent = $SearchMood->sortMoods($result);
-            } else {
-                 $arrayPercent = [];
-            }
-            return View("Users.Search.Mood.searchResultSleep")->with("arrayList", $result)->with("count", $SearchMood->count)->with("percent", $arrayPercent);
+            if ($request->get("sumDay") == "on") {
+                 $result = $SearchMood->createQuestionSleepSumDay($request);
+                 $resultCount = $SearchMood->createQuestionSleep($request);
+                 return View("Users.Search.Mood.searchResultSleepSumDay")->with("arrayList", $result)->with("count",$SearchMood->count)->with("dateFrom",$request->get("dateFrom"))->with("dateTo",$request->get("dateTo"))
+                    ->with("timeFrom",$request->get("timeFrom"))->with("timeTo",$request->get("timeTo"))
+                    ->with("moodFrom",$request->get("moodFrom"))->with("moodTo",$request->get("moodTo"))
+                    ->with("anxientyFrom",$request->get("anxientyFrom"))->with("anxientyTo",$request->get("anxientyTo"))
+                    ->with("voltageFrom",$request->get("voltageFrom"))->with("voltageTo",$request->get("voltageTo"))
+                    ->with("stimulationFrom",$request->get("stimulationFrom"))->with("stimulationTo",$request->get("stimulationTo"))
+                    ->with("longMoodFrom",$request->get("longMoodHourFrom") . ":" . $request->get("longMoodMinuteFrom"))
+                    ->with("longMoodTo",$request->get("longMoodHourTo") . ":" . $request->get("longMoodMinuteTo"));
             
+            }
+            else {
+                $result = $SearchMood->createQuestionSleep($request);
+                if ($SearchMood->count > 0) {
+                     $arrayPercent = $SearchMood->sortMoods($result);
+                } else {
+                     $arrayPercent = [];
+                }
+                return View("Users.Search.Mood.searchResultSleep")->with("arrayList", $result)->with("count", $SearchMood->count)->with("percent", $arrayPercent);
+            }
         }
     }
     public function searchMoodSubmit(Request $request) {
