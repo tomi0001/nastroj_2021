@@ -11,6 +11,7 @@ use Hash;
 use App\Http\Services\SearchMood;
 use App\Http\Services\SearchMoodAI;
 use App\Models\Mood;
+use App\Models\Action;
 use Auth;
 use \Illuminate\Pagination\Paginator;
 use IlluminatePaginationPaginator;
@@ -132,8 +133,15 @@ class SearchMoodController {
                     ->with("actionSum",$sumAction);
             }
             else if ($request->get("groupAction") == "on") {
+                
                 $error = false;
+           
                 $result = $SearchMood->createQuestionGroupAction($request);
+                
+                if (count($SearchMood->listgroupActionDay) == 0 ) {
+                    $error = true;
+                    goto END;
+                }
                 for ($i=0;$i < count($SearchMood->listgroupActionDay);$i++) {
                     $newArray[$i] = $SearchMood->groupActionDay($SearchMood->listgroupActionDay[$i]);
                     if ($SearchMood->countDays == 0) {
@@ -142,6 +150,7 @@ class SearchMoodController {
                     }
                     $sumDays[$i] = $SearchMood->sumDays($newArray[$i]);
                 }
+                END:
                 if ($error == true) {
                     return View("Users.Search.Mood.error")->with("errors",["nie na żadnych wyników"]);
                 }

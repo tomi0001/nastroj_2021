@@ -153,7 +153,7 @@
                         
                         
                         
-                        @include ('Users.Search.Mood.actionSum')
+                        @include ('Users.Search.Mood.actionSumGroup')
  
                         
                     <table>
