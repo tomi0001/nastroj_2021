@@ -7,6 +7,8 @@
 namespace App\Http\Services;
 use Storage;
 use DateTime;
+use App\Models\User;
+use Auth;
 /**
  * Description of Common
  *
@@ -74,6 +76,10 @@ class Common {
 
         }
     }
+    
+    
+ 
+    /*
     public static function setColor( $mood) :string {
         if (empty($mood) and $mood != 0) {
             return '10000';
@@ -143,6 +149,8 @@ class Common {
         }
 
     }
+     * 
+     */
     public static function calculateHour($dateOne,$dateTwo) {
 
         $dateStart = new \DateTime($dateOne);
@@ -302,5 +310,19 @@ class Common {
                 return "how-color-long";
                 break;
         }
+    }
+    /*
+     * Update year 2023 April
+     */
+    public static function setColor($mood) :string {
+        
+        if (empty($mood) and $mood != 0) {
+            return '10000';
+        }
+        else {
+            $arrayList = User::readLevelMoodColor(Auth::User()->id,$mood);
+            return (string) $arrayList->color;
+        }
+        
     }
 }
