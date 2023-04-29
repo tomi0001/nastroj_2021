@@ -115,7 +115,13 @@ class Usee extends Model
                 break;
             case 'product' : $this->questions->orderBy("usees.id_products",$asc);
                 break;
-            case 'dose' : $this->questions->orderBy("portion",$asc);
+            case 'dose' : $this->questions->orderByRaw(""
+                    . "case "
+                    . " when products.type_of_portion = 4 THEN sum(usees.portion) / count(*)"
+                    . " when products.type_of_portion = 5 THEN sum(usees.portion) / count(*)"
+                    . "ELSE sum(usees.portion) "
+                    . " END "
+                    . "$asc");
                 break;
 
 
@@ -135,6 +141,14 @@ class Usee extends Model
         }
         if ($doseTo != "") {
             $this->questions->where("usees.portion","<=",$doseTo);
+        }
+    }
+    public function setDoseGroupDay($doseFrom,$doseTo) {
+        if ($doseFrom != "") {
+            $this->questions->havingRaw("sum(usees.portion) >= '$doseFrom'");
+        }
+        if ($doseTo != "") {
+            $this->questions->havingRaw("sum(usees.portion) <= '$doseTo'");
         }
     }
     public function setProduct(array $idProduct) {

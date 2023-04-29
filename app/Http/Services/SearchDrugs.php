@@ -79,7 +79,7 @@ class SearchDrugs {
          $Usee->setIdUsers($this->idUsers);
          $Usee->setDate($request->get("dateFrom"),$request->get("dateTo"),$this->startDay);
          $this->setHour($Usee,$request);
-         $Usee->setDose($request->get("doseFrom"),$request->get("doseTo"));
+         
          $Usee->setProduct($this->idProduct);
 //         if ($request->get("whatWork") != "") {
 //             $Usee->setWhatWork($request->get("whatWork"));
@@ -92,6 +92,7 @@ class SearchDrugs {
          $Usee->setGroupDay(Auth::User()->start_day);
 
          $Usee->setGroupIdProduct();
+         $Usee->setDoseGroupDay($request->get("doseFrom"),$request->get("doseTo"));
          //$Usee->setGroupDescription();
          if ($request->get("sort2") == "asc") {
              $Usee->orderByGroupDay("asc",$request->get("sort"));
