@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\User as MUser;
 use Hash;
 use App\Http\Services\SearchDrugs;
+use App\Http\Services\SearchDrugsMood;
 use App\Models\Mood;
 use Auth;
 use App\Models\Usee;
@@ -45,6 +46,34 @@ class SearchDrugsController {
                 return View("Users.Search.Product.searchResultDrugs")->with("arrayList",$result)->with("count",$SearchDrugs->count);
             }
 
+        }
+    }
+    /*
+     * update may 2023
+     */
+    public function searchDrugsMoodSubmit(Request $request) {
+        $SearchDrugs = new SearchDrugsMood($request);
+        $SearchDrugs->checkError($request);
+        if (count($SearchDrugs->errors) > 0) {
+            return View("Users.Search.Product.error")->with("errors",$SearchDrugs->errors);
+        }
+        else {
+            $array = $SearchDrugs->search($request);
+            $SearchDrugs->searchMoodDrugs($array);
+            
+            if (count($SearchDrugs->listMood) == 0 or $array == false) {
+                    return View("Users.Search.Mood.error")->with("errors",["nie na żadnych wyników"]);
+            }
+            $result = $SearchDrugs->AverageMood();
+            if ($result == false) {
+                return View("Users.Search.Mood.error")->with("errors",["nie na żadnych wyników"]);
+            }
+            return View("Users.Search.Mood.searchResultMoodDrugsDay")
+                    ->with("arrayList", $result)->with("dateFrom",$SearchDrugs->dateFrom)->with("dateTo",$SearchDrugs->dateTo)
+                    ->with("timeFrom",$SearchDrugs->timeFrom)->with("timeTo",$SearchDrugs->timeTo);
+          
+           
+            
         }
     }
 }

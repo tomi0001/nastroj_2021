@@ -49,6 +49,7 @@
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/actionSumGroup.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Mood/addNewAction.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/Common700.css</file>
+            <file>file:/var/www/html/nastroj_2021/app/Models/User.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/spring/css/pageSettingColor.css</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/searchResultMoodGroupDay.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Action.php</file>
@@ -57,6 +58,7 @@
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Calendar.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/addNewProduct.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/RegisterController.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Models/Users_description.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageMainwidth1210.css</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Settings/SettingsProductController.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Common.php</file>

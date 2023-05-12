@@ -24,6 +24,7 @@ class SearchDrugs {
      public $question;
      public $count;
      private $idProduct = [];
+   
 
 
      function __construct($request,$bool = 0) {
@@ -39,6 +40,7 @@ class SearchDrugs {
         $this->setIdSubstance($request->get("nameSubstance"));
         $this->setIdGroup($request->get("nameGroup"));
      }
+
      public function checkError(Request $request) {
          if (($request->get("doseFrom") != "") and (  $request->get("doseFrom") < 0   or  ( (string)(float) $request->get("doseFrom") !== $request->get("doseFrom")  ) )  ) {
              array_push($this->errors,"dawka od musi byc dodatnią liczbą zmnienno przecinkową");

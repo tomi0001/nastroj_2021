@@ -45,7 +45,8 @@
     <div  class="MenuPageDrugs pagepagepage pageDrugs" style="display: none;">
             <div id="searchDrugs" class="hrefDrugs hrefSettingCursor" onmouseover="selectMenuMood('searchDrugs')" onmouseout="unSelectMenuMood('searchDrugs')"  onclick="searchDrugs()">
               WYSZUKAJ PRODUKT            </div>
-
+              <div id="searchDrugsMood" class="hrefDrugs hrefSettingCursor" onmouseover="selectMenuMood('searchDrugsMood')" onmouseout="unSelectMenuMood('searchDrugsMood')"  onclick="searchDrugsMood()">
+              WYSZUKAJ NASTRÓJ WG PRODUKTU           </div>
 
     </div>
     <div id="MenuPageUser" style="display: none;">
@@ -73,6 +74,9 @@
 
     <div class="pagePageDrugs pagepage bodyDrugsPage" id="searchDrugsDiv" style="display: none;">
         @include ('Users.Search.Product.searchDrugs')
+        </div>
+    <div class="pagePageDrugs pagepage bodyDrugsPage" id="searchDrugsMoodDiv" style="display: none;">
+        @include ('Users.Search.Product.searchDrugsMood')
         </div>
 
 </div>

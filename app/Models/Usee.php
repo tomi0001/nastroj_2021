@@ -401,5 +401,44 @@ class Usee extends Model
                 ->where("substances.equivalent",">",0)
                 ->first();
     }
+    /*
+     * update may 2023
+     */
+    public static function selectDateUsee(int $idUsers,  $name,int $startDay, $doseFrom, $doseTo,array $arrayProdduct) {
+        
+        return self::join("products","products.id","usees.id_products")
+                ->join("substances_products","substances_products.id_products","products.id")
+                ->join("substances","substances_products.id_substances","substances.id")
+                ->selectRaw(DB::Raw("(DATE(IF(HOUR(    usees.date) >= '" . $startDay . "', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ) as dat "))
+                ->where("products.id_users",$idUsers)
+                ->whereRaw("products.name like '%" . $name  . "%'")
+                ->where("usees.date",">=",$arrayProdduct["dateFrom"])
+                ->where("usees.date","<",$arrayProdduct["dateTo"])
+                  ->where(function ($query) use ($arrayProdduct,$doseFrom,$doseTo,$startDay) {
+                      if ($doseFrom != "") {
+                          $query->where("usees.portion",">=",$doseFrom);
+                      }
+                      if ($doseTo != "") {
+                          $query->where("usees.portion","<=",$doseTo);
+                      }
+                      if ($arrayProdduct["timeFrom"] != "" and $arrayProdduct["timeTo"] != "") {
+                          $query->whereRaw("(time(date_add(usees.date,INTERVAL - $startDay hour))) <= '" .  $arrayProdduct["timeTo"] . "'");
+                          $query->whereRaw("(time(date_add(usees.date,INTERVAL - $startDay hour))) >= '" . $arrayProdduct["timeFrom"] . "'");
+
+                      }
+                      else if ($arrayProdduct["timeFrom"] != "") {
+                          $query->whereRaw("time(usees.date) >= " . "'" .  $arrayProdduct["timeFrom"] . ":00'");
+                          
+                      }
+                      else if ($arrayProdduct["timeTo"] != "") {
+                          $query->whereRaw("time(usees.date) <= " . "'" .  $arrayProdduct["timeTo"] . ":00'");
+                      }
+                 
+                })
+                ->groupBy(DB::Raw("(DATE(IF(HOUR(    usees.date) >= '" . $startDay . "', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) )  "))
+                 ->get();
+                
+                
+    }
 
 }

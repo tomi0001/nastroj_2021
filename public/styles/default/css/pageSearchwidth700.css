@@ -95,6 +95,11 @@ div.dayOne2 {
         width: 880px;
         margin-top: 15px;
     }
+    #searchDrugsMoodDiv {
+        min-height: 200px;
+        width: 880px;
+        margin-top: 15px;
+    }
     div.pagepagepage {
         padding: 20px;
         padding-left: 45px;

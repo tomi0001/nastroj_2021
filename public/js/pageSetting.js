@@ -33,6 +33,7 @@ function setFunction() {
             break;
         case 'addNewDoctor': addDoctorNew();
             break;
+      
     }
 }
     
