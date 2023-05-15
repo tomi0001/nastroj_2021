@@ -539,3 +539,27 @@ function searchDrugsMood() {
         $("#searchDrugsMoodDiv").css("display","none");
     }
 }
+
+function searchDrugsMoodSubmit(url) {
+
+    $.ajax({
+        url : url,
+        method : "get",
+        data :
+            $("#searchDrugsMoodFrom").serialize()
+        ,
+        dataType : "html",
+    })
+        .done(function(response) {
+            $("#searchDrugsMoodDiv2").css("display","block");
+            //$("#messageactionShow"+id).html(response);
+            $(".ajaxError").empty();
+
+            $("#searchDrugsMoodDiv2").prepend(response);
+
+        })
+        .fail(function() {
+            alert("Wystąpił błąd");
+        })
+
+}

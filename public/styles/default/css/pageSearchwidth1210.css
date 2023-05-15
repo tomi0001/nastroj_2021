@@ -179,4 +179,12 @@ div.dayOne2 {
     button.buttonSearch {
         float: left; margin-right: 10px;
     }
+    
+    div.dateSumMoodDrugs {
+       min-height: 90px;
+    width: 45%;
+    float: left;
+    border-radius: 25px;
+    margin: 11px;
+}
 }

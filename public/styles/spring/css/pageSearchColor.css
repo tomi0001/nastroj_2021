@@ -263,6 +263,13 @@ div.dateSumDayMood {
     -moz-box-shadow: inset 0px 0px 24px -8px rgba(158, 200, 31, 1);
     box-shadow: inset 0px 0px 24px -8px rgba(158, 200, 31, 1);
 }
+div.dateSumMoodDrugs {
+    background-color: #E4F76D;
+    border: 2px solid #02a535;
+    -webkit-box-shadow: inset 0px 0px 24px -8px rgba(158, 200, 31, 1);
+    -moz-box-shadow: inset 0px 0px 24px -8px rgba(158, 200, 31, 1);
+    box-shadow: inset 0px 0px 24px -8px rgba(158, 200, 31, 1);
+}
 div.dateSumDayMoodAverageDayWeek {
     background-color: #E4F76D;
     border: 2px solid #9DC90C;
@@ -300,4 +307,17 @@ background-image: linear-gradient(90deg, rgba(65, 212, 48, 1) 0%, rgba(36, 129, 
 
 table.tableColorSearchMoodSum {
     background-color: #A4D799;
+}
+
+td.tdMoodDrugs {
+    border-radius: 12px;
+-webkit-box-shadow: inset 0px 0px 12px 0px rgba(88, 97, 11, 1);
+-moz-box-shadow: inset 0px 0px 12px 0px rgba(88, 97, 11, 1);
+box-shadow: inset 0px 0px 12px 0px rgba(88, 97, 11, 1);
+}
+td.tdMoodDrugsDose {
+    border-radius: 12px;
+-webkit-box-shadow: inset 0px 0px 12px 0px rgba(88, 97, 11, 1);
+-moz-box-shadow: inset 0px 0px 12px 0px rgba(88, 97, 11, 1);
+box-shadow: inset 0px 0px 12px 0px rgba(88, 97, 11, 1);
 }

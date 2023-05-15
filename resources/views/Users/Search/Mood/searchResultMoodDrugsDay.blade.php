@@ -1,12 +1,4 @@
-@extends('Layout.Search')
 
-@section('content')
-
-
-
-@section ('title')
-    Wyszukiwanie
-@endsection
 
 @if (empty($arrayList)  )
     <div class="countSearch error">
@@ -73,7 +65,40 @@
                     </span>
                                 </div>
 
-
+                                <div class="dateSumMoodDrugs">
+                                    <div class="titleSearchSumDayMood">
+                                        <span class="titleSearchSumDayMood">PRODUKTY</span>
+                                    </div>
+                                    
+                                      <table class="tableMoodDrugs">
+                                        
+                                    @for($i=0;$i < count($request->get("drugsMood"));$i++)  
+                                        @if ($request->get("drugsMood")[$i] == "" )
+                                            @continue
+                                        @endif
+                                        @if ($request->get("drugsMood")[$i] != "" )
+                                            <tr>
+                                              <td class="tdMoodDrugs"> <span class="fontSearchSumDay">  {{$request->get("drugsMood")[$i]}}   </span>  </td>
+                                           
+                                        @endif
+                                        @if ($request->get("drugsMoodFrom")[$i] != "" )
+                                           <td class="tdMoodDrugsDose"> <span class="fontSearchSumDay"> {{$request->get("drugsMoodFrom")[$i]}} </span>  </td>
+                                        @else
+                                            <td class="tdMoodDrugsDose">  </td>
+                                        @endif
+                                        @if ($request->get("drugsMoodTo")[$i] != "" )
+                                           <td class="tdMoodDrugsDose"> <span class="fontSearchSumDay"> {{$request->get("drugsMoodTo")[$i]}} </span>  </td>
+                                        @else
+                                            <td class="tdMoodDrugsDose">  </td>
+                                        @endif
+                                        @if ($request->get("drugsMood")[$i] != "" )
+                                            </tr>
+                                        @endif
+                                       
+                                    @endfor
+                                      </table>
+                   
+                                </div>
 
                             </div>
                         </div>
@@ -91,10 +116,10 @@
                             <td style="width: 2%;">
 
                             </td>
-                            <td class="start showMood titleTheadMood" style=" border-right-style: hidden; width: 25%;" >
+                            <td class="start showMood titleTheadMood" style=" border-right-style: hidden; width: 22%;" >
                                 Start
                             </td>
-                            <td class="end showMood titleTheadMood" style="width: 25%;">
+                            <td class="end showMood titleTheadMood" style="width: 22%;">
                                 Koniec
                             </td>
                             <td class="sizeTableMood showMood titleTheadMood" style="width: 6%;">
@@ -109,8 +134,10 @@
                             <td class="sizeTableMood showMood titleTheadMood" style="width: 5%;">
                                 Pobudzenie
                             </td>
-                            
-                            <td class="center showMood titleTheadMood" style="width: 11%;">
+                            <td class="sizeTableMood showMood titleTheadMood" style="width: 10%;">
+                                ilość dni
+                            </td>
+                            <td class="center showMood titleTheadMood" style="width: 5%;">
                                 Epizodów psychotycznych
                             </td>
                             <td >
@@ -154,7 +181,11 @@
                                 <span class="fontMood"  >{{round($arrayList["stimulation"],3)}}</span>
 
                             </td>
+                            <td class="sizeTableMood showMood ">
 
+                                <span class="fontMood"  >{{$arrayList["count"]}}</span>
+
+                            </td>
                             <td class="sizeTableMood showMood ">
 
                                 @if ($arrayList["epizodes_psychotik"] != 0)
@@ -181,13 +212,6 @@
 
     </div>
 
-
+    </div>
 @endif
 
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
-
-@endsection

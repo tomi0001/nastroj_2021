@@ -96,7 +96,7 @@ class SearchDrugsMood {
          }
          return $arrayProduct;
      }
-     public function searchMoodDrugs($array) {
+     public function searchMoodDrugs($array,$nextDay = "") {
          for ($i =strtotime($this->dateFrom);$i < strtotime($this->dateTo);$i+= 86400) {
              $bool = false;
              for ($j = 0;$j < $this->countProduct;$j++) {
@@ -107,7 +107,12 @@ class SearchDrugsMood {
                  
              }
              if ($bool == false) {
-                     array_push($this->listMood,date("Y-m-d",$i));
+                    if ($nextDay == "on") {
+                        array_push($this->listMood,date("Y-m-d",$i+86400));
+                    }
+                    else {
+                        array_push($this->listMood,date("Y-m-d",$i));
+                    }
              }
          }
      }
@@ -131,12 +136,14 @@ class SearchDrugsMood {
              $stimula += $array[$i]->sum_stimulation;
              $epizodes_psychotik += $array[$i]->epizodes_psychotik;
              
+             
          }
          return ["mood" => $mood / $i,
                  "anxienty" => $anxienty / $i,
                  "voltage" => $voltage / $i,
                  "stimulation" => $stimula / $i,
                  "epizodes_psychotik" => $epizodes_psychotik,
+                 "count" => count($array),
              ];
      }
     private function setHour(Request $request) {

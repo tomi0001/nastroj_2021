@@ -59,18 +59,18 @@ class SearchDrugsController {
         }
         else {
             $array = $SearchDrugs->search($request);
-            $SearchDrugs->searchMoodDrugs($array);
+            $SearchDrugs->searchMoodDrugs($array,$request->get("nextDay"));
             
             if (count($SearchDrugs->listMood) == 0 or $array == false) {
-                    return View("Users.Search.Mood.error")->with("errors",["nie na żadnych wyników"]);
+                    return View("ajax.error")->with("error",["Nic nie wyszukano"]);
             }
             $result = $SearchDrugs->AverageMood();
             if ($result == false) {
-                return View("Users.Search.Mood.error")->with("errors",["nie na żadnych wyników"]);
+                return View("ajax.error")->with("error",["Nic nie wyszukano"]);
             }
             return View("Users.Search.Mood.searchResultMoodDrugsDay")
                     ->with("arrayList", $result)->with("dateFrom",$SearchDrugs->dateFrom)->with("dateTo",$SearchDrugs->dateTo)
-                    ->with("timeFrom",$SearchDrugs->timeFrom)->with("timeTo",$SearchDrugs->timeTo);
+                    ->with("timeFrom",$SearchDrugs->timeFrom)->with("timeTo",$SearchDrugs->timeTo)->with("request",$request);
           
            
             

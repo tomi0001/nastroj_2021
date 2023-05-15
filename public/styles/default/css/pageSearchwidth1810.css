@@ -102,6 +102,13 @@
     border-radius: 25px;
     margin: 11px;
 }
+div.dateSumMoodDrugs {
+       min-height: 90px;
+    width: 45%;
+    float: left;
+    border-radius: 25px;
+    margin: 11px;
+}
 div.dateSumDayMoodAverageDayWeek {
     min-height: 90px;
     width: 31%;

@@ -281,3 +281,35 @@ div.recordMoodGroupWeek {
 div.line {
     min-height: 70px;
 }
+
+div.searchDrugsMoodDiv {
+       width: 96%;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        border-radius: 20px;
+        padding: 12px;
+        display: none;
+}
+table.tableMoodDrugs {
+    width: 90%;
+    height: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: separate;
+           border-spacing: 10px;
+    
+
+    
+}
+td.tdMoodDrugs {
+    width: 45%;
+    text-align: center;
+    
+    
+}
+td.tdMoodDrugsDose {
+    width: 22%;
+    text-align: center;
+}

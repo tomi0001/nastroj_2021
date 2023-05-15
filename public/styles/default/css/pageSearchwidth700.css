@@ -163,5 +163,11 @@ div.dateSumDayMoodAverageDayWeek {
 
 
     }
-
+div.dateSumMoodDrugs {
+       min-height: 90px;
+    width: 45%;
+    float: left;
+    border-radius: 25px;
+    margin: 11px;
+}
 }
