@@ -70,7 +70,7 @@ class SearchDrugsController {
             }
             return View("Users.Search.Mood.searchResultMoodDrugsDay")
                     ->with("arrayList", $result)->with("dateFrom",$SearchDrugs->dateFrom)->with("dateTo",$SearchDrugs->dateTo)
-                    ->with("timeFrom",$SearchDrugs->timeFrom)->with("timeTo",$SearchDrugs->timeTo)->with("request",$request);
+                    ->with("timeFrom",$request->get("timeFrom"))->with("timeTo",$request->get("timeTo"))->with("request",$request);
           
            
             
