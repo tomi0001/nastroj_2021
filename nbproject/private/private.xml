@@ -16,6 +16,7 @@
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSearchwidth1410.css</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Action_plan.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSettingAll.css</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/AverageMoodSumDay.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/routes/web.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/addNewGroup.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Product.php</file>
@@ -28,8 +29,10 @@
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/searchResultMood.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/AverageMoodGroupWMonth.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/searchActionDay.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/seachResultMoodAjax.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/SearchMoodAI.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/auth/login.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSettingwidth1810.css</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/searchResultMoodSumDay.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/editProduct.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/js/pageMain.js</file>
@@ -60,6 +63,7 @@
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/SearchMood.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/spring/css/pageMainColor.css</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/Calendar.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/AverageMood.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/addNewProduct.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/RegisterController.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Users_description.php</file>

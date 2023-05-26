@@ -23,6 +23,9 @@ class SearchDrugsMood {
     public $startDay;
     public $errors = [];
     public $countProduct = 0;
+    public $countProductNot = 0;
+    public $arrayProduct2 = [];
+    public $arrayProductNot = [];
     public $arrayProdduct = [];
     public $dateFrom;
     public $dateTo;
@@ -77,10 +80,24 @@ class SearchDrugsMood {
         
      }
      public function search(Request $request) {
+         $arrayProduct = array();
+         $arrayProductNot  = array();
          for ($i=0;$i < count($request->get("drugsMood"));$i++) {
              if ($request->get("drugsMood")[$i] != "") {
-                 $arrayProduct[$this->countProduct] = Usee::selectDateUsee($this->idUsers, $request->get("drugsMood")[$i],Auth::User()->start_day,$request->get("drugsMoodFrom")[$i],$request->get("drugsMoodTo")[$i],$this->arrayProdduct);
-                 $this->countProduct++;
+                 if (isset($request->get("ifBool")[$i]) and $request->get("ifBool")[$i] == "on") {
+                      
+                      $this->arrayProductNot[$this->countProductNot] = Usee::selectDateUsee($this->idUsers, $request->get("drugsMood")[$i],Auth::User()->start_day,$request->get("drugsMoodFrom")[$i],$request->get("drugsMoodTo")[$i],$this->arrayProdduct);
+                      $this->countProductNot++;
+                     
+                 }
+                 else {
+                      $this->arrayProduct2[$this->countProduct] = Usee::selectDateUsee($this->idUsers, $request->get("drugsMood")[$i],Auth::User()->start_day,$request->get("drugsMoodFrom")[$i],$request->get("drugsMoodTo")[$i],$this->arrayProdduct);
+                      $this->countProduct++;
+                 }
+                 
+                 
+                 
+                 
              }
              
              
@@ -91,16 +108,44 @@ class SearchDrugsMood {
          for ($i=0;$i < count($request->get("nameGroupMood"));$i++) {
              
          }
-         if ($this->countProduct == 0) {
+         if ($this->countProduct == 0 and $this->countProductNot == 0) {
              return false;
          }
-         return $arrayProduct;
+         return true;
+         
+         
      }
-     public function searchMoodDrugs($array,$nextDay = "") {
+     public function searchMoodDrugs($nextDay = "") {
+         if ($this->countProduct == 0) {
+             return;
+         }
          for ($i =strtotime($this->dateFrom);$i < strtotime($this->dateTo);$i+= 86400) {
              $bool = false;
              for ($j = 0;$j < $this->countProduct;$j++) {
-                 if (!array_search(date("Y-m-d",$i),array_column(  $array[$j]->toArray(),"dat") )) {
+                 if (!array_search(date("Y-m-d",$i),array_column(  $this->arrayProduct2[$j]->toArray(),"dat") )) {
+                     $bool = true;
+                     break;
+                 }
+                 
+             }
+             if ($bool == false) {
+                    if ($nextDay == "on") {
+                        array_push($this->listMood,date("Y-m-d",$i+86400));
+                    }
+                    else {
+                        array_push($this->listMood,date("Y-m-d",$i));
+                    }
+             }
+         }
+     }
+     public function searchMoodDrugsNot($nextDay = "") {
+         if ($this->countProductNot == 0) {
+             return;
+         }
+         for ($i =strtotime($this->dateFrom);$i < strtotime($this->dateTo);$i+= 86400) {
+             $bool = false;
+             for ($j = 0;$j < $this->countProductNot;$j++) {
+                 if (array_search(date("Y-m-d",$i),array_column(  $this->arrayProductNot[$j]->toArray(),"dat") )) {
                      $bool = true;
                      break;
                  }

@@ -14,7 +14,7 @@
                     <td colspan="3" >
                     <div style='clear: both;'>
                         <div id="idProductMood">
-                            <div style='float: left; width:40%;'>
+                            <div style='float: left; width:35%;'>
                                 <input type='text' name='drugsMood[]' class='form-control' placeholder="nazwa">
                             </div>
                             <div style='float: left; width:20%; margin-left: 10px;'>
@@ -22,10 +22,15 @@
                             </div>
                             <div style='float: left; width:20%; margin-left: 10px;'>
                                 <input type='text' name='drugsMoodTo[]' class='form-control' placeholder="wartość do">
+                            </div>
+                            <div style='float: left; width:15%; margin-left: 5px;'>
+                                <div class="form-check form-switch">
+                                    <input type='checkbox' name='ifBool[]' class='form-check-input' placeholder="niewystępuje">
+                                </div>
                             </div>
                         </div>
                          <div id="idProductMoodCopy" style="display: none;">
-                            <div style='float: left; width:40%;'>
+                            <div style='float: left; width:35%;'>
                                 <input type='text' name='drugsMood[]' class='form-control' placeholder="nazwa">
                             </div>
                             <div style='float: left; width:20%; margin-left: 10px;'>
@@ -34,7 +39,11 @@
                             <div style='float: left; width:20%; margin-left: 10px;'>
                                 <input type='text' name='drugsMoodTo[]' class='form-control' placeholder="wartość do">
                             </div>
-
+                            <div style='float: left; width:15%; margin-left: 5px;'>
+                                <div class="form-check form-switch">
+                                    <input type='checkbox' name='ifBool[]' class='form-check-input' placeholder="niewystępuje">
+                                </div>
+                            </div>
 
                         </div>
 
@@ -42,7 +51,7 @@
 
 
 
-                        <div style='float: left; margin-left: 20px; '>
+                        <div style='float: left; margin-left: 45px; '>
                         <a onclick="addFieldDrugsMood()" style="cursor: pointer;">
                     <div class="plusButton plusMinusButton" id='addFieldWhatWork'> <img width="40" class="minus" id="boolxxxx" src="{{asset('/image/icon_plus.png')}}"></div>
                 </a>

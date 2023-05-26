@@ -59,7 +59,8 @@ class SearchDrugsController {
         }
         else {
             $array = $SearchDrugs->search($request);
-            $SearchDrugs->searchMoodDrugs($array,$request->get("nextDay"));
+            $SearchDrugs->searchMoodDrugs($request->get("nextDay"));
+            $SearchDrugs->searchMoodDrugsNot($request->get("nextDay"));
             
             if (count($SearchDrugs->listMood) == 0 or $array == false) {
                     return View("ajax.error")->with("error",["Nic nie wyszukano"]);
