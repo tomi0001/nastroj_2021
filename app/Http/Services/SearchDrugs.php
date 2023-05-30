@@ -126,10 +126,10 @@ class SearchDrugs {
 
          $Usee->setGroupDescription();
          if ($request->get("sort2") == "asc") {
-             $Usee->orderBy("asc",$request->get("sort"));
+             $Usee->orderBy("asc",$request->get("sort"),$this->startDay);
          }
          else {
-             $Usee->orderBy("desc",$request->get("sort"));
+             $Usee->orderBy("desc",$request->get("sort"),$this->startDay);
          }
          $this->count = $Usee->questions->get()->count();
          return $Usee->questions->paginate(15);

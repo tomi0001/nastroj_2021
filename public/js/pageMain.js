@@ -1133,12 +1133,13 @@ function cancelActionDay(url,id) {
              
 }
 function updateActionDay(url,id) {
+
          $.ajax({
            url : url,
                method : "get",
                data : 
-                 "id=" +   id + "&idAction=" + $("[name='formActionEditDay" + id + "'").val() 
-                 
+                 "id=" +   id + "&idAction=" + $("[name='formActionEditDay" + id + "']").val() 
+                
                ,
                dataType : "html",
        })

@@ -43,7 +43,7 @@ class Actions_day extends Model
                 
         }
         if ($dateTo != "" ) {
-            $this->questions->whereRaw(DB::raw("(DATE(IF(HOUR(    actions_days.date) >= '" . $startDay . "', actions_days.date,Date_add(actions_days.date, INTERVAL - 1 DAY) )) ) >= '$dateTo'" )  );
+            $this->questions->whereRaw(DB::raw("(DATE(IF(HOUR(    actions_days.date) >= '" . $startDay . "', actions_days.date,Date_add(actions_days.date, INTERVAL - 1 DAY) )) ) <= '$dateTo'" )  );
         }
     }
    public function searchAction(array $action) {

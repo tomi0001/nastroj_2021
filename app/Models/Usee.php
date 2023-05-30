@@ -88,13 +88,13 @@ class Usee extends Model
     public function setGroupDescription() {
         $this->questions->groupBy("usees.id");
     }
-    public function orderBy(string $asc,string $type) {
+    public function orderBy(string $asc,string $type,$startDay) {
 
         switch ($type) {
 
             case 'date': $this->questions->orderBy("usees.date",$asc);
                 break;
-            case 'hour' : $this->questions->orderByRaw("time(usees.date) $asc");
+            case 'hour' : $this->questions->orderByRaw("   time(  Date_add(usees.date,INTERVAL - '$startDay' HOUR)) $asc");
                 break;
             case 'product' : $this->questions->orderBy("usees.id_products",$asc);
                 break;

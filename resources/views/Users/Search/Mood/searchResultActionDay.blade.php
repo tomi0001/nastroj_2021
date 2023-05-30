@@ -102,13 +102,13 @@
                     <td style="width: 2%;">
                         
                     </td>
-                    <td class="start showMood titleTheadMood center" style="width: 25%;" >
+                    <td class="start showMood titleTheadMood center nameAction"  >
                         Nazwa akcji
                     </td>
-                    <td class="start showMood titleTheadMood center" style="width: 25%;">
+                    <td class="start showMood titleTheadMood center hourAction" >
                         Godzina
                     </td>
-                    <td class="start showMood titleTheadMood center" style="width: 25%;">
+                    <td class="start showMood titleTheadMood center pleasureAction">
                        Poziom przyjemności
                     </td>
                     <td >
