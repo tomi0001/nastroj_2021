@@ -214,6 +214,8 @@ Route::get('/search/allSubstanceDay', [App\Http\Controllers\Search\SearchDrugsCo
                     ->middleware('auth')->middleware('can:users');
 Route::get('/search/allActionDay', [App\Http\Controllers\Search\SearchMoodController::class, 'allActionDay'])->name('search.allActionDay')
                     ->middleware('auth')->middleware('can:users');
+Route::get('/search/differenceDrugsSleepSubmit', [App\Http\Controllers\Search\SearchMoodController::class, 'differenceDrugsSleepSubmit'])->name('search.differenceDrugsSleepSubmit')
+                    ->middleware('auth')->middleware('can:users');
 Route::get('/search/searchDrugsSubmit', [App\Http\Controllers\Search\SearchDrugsController::class, 'searchDrugsSubmit'])->name("search.searchDrugsSubmit")
         ->middleware('auth')->middleware('can:users');
 Route::get('/search/averageMoodSumSubmit', [App\Http\Controllers\Search\SearchMoodController::class, 'averageMoodSumSubmit'])->name("search.averageMoodSumSubmit")
@@ -223,6 +225,10 @@ Route::get('/search/searchSleepSubmit', [App\Http\Controllers\Search\SearchMoodC
 
 Route::get('/search/searchDrugsMoodSubmit', [App\Http\Controllers\Search\SearchDrugsController::class, 'searchDrugsMoodSubmit'])->name('search.searchDrugsMoodSubmit')
                     ->middleware('auth')->middleware('can:users');   
+
+
+
+
 
 
 Route::get('/search/back', [App\Http\Controllers\Search\SearchController::class, 'back'])->name('search.back')

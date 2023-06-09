@@ -10,6 +10,7 @@ use App\Models\Mood as MoodModel;
 use App\Models\Actions_day;
 use App\Models\Moods_action as MoodAction;
 use App\Http\Services\Calendar;
+use App\Http\Services\Common;
 use Hash;
 use Auth;
 use DB;
@@ -660,5 +661,72 @@ class SearchMood {
          return;
      }
  
+     /*
+      * update June 2023
+      */
+     
+     public function setData(Request $request) {
+         $data = [];
+         if ($request->get("dateFrom") != "") {
+             $data["dateFrom"] =  $request->get("dateFrom") ;
+         }
+         if ($request->get("dateTo") != "") {
+             $data["dateTo"] = $request->get("dateTo") ;
+         }
+
+         
+         if ($request->get("longSleepHourFrom") != "") {
+             $data["longSleepHourFrom"] = $request->get("longSleepHourFrom") ;
+         }
+         if ($request->get("longSleepMinuteFrom") != "") {
+             $data["longSleepMinuteFrom"] = $request->get("longSleepMinuteFrom") ;
+         }
+         if ($request->get("longSleepHourTo") != "") {
+             $data["longSleepHourTo"] =  $request->get("longSleepHourTo") ;
+         }
+         if ($request->get("longSleepMinuteTo") != "") {
+             $data["longSleepMinuteTo"] =  $request->get("longSleepMinuteTo") ;
+         }
+         
+         if ($request->get("workingFrom") != "") {
+             $data["workingFrom"] =  $request->get("workingFrom") ;
+         }
+         if ($request->get("workingTo") != "") {
+             $data["workingTo"] =  $request->get("workingTo");
+         }
+         
+         if ($request->get("ifSleep") != "") {
+             $data["ifSleep"] = $request->get("ifSleep") ;
+         }
+         
+         if ($request->get("sort") != "") {
+             $data["sort"] =   $request->get("sort") ;
+         }
+         if ($request->get("sort2") != "") {
+             $data["sort2"] =  $request->get("sort2") ;
+         }
+         return $data;
+     }
+     
+     public function diffDrugsSleep($sleppsArray, $drugsArray) {
+         $newArray = [];
+         $j = 0;
+         for($i=0;$i < count($sleppsArray);$i++)  {
+             //print $sleppsArray[$i]["dat"];
+             if (!isset($sleppsArray[$i]["dat"]) or !isset($drugsArray[$i]["dat"])) {
+                 break;
+             }
+             if ($sleppsArray[$i]["dat"] == $drugsArray[$i]["dat"]) {
+                 
+                 $result = strtotime($drugsArray[$i]["date"]) - strtotime($sleppsArray[$i]["date_end"]);
+                 $newArray[$j]["dat"] = $drugsArray[$i]["dat"];
+                 $newArray[$j]["minutes"] = $result;
+                 $j++;
+                 
+             }
+             $i++;
+         }
+         return $newArray;
+     }
 
 }

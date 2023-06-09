@@ -440,5 +440,16 @@ class Usee extends Model
                 
                 
     }
+    
+    public static function selectFirstDrugs($array,int $startDay, int $idUsers) {
+        return self::selectRaw(DB::Raw("(DATE(IF(HOUR(    usees.date) >= '" . $startDay . "', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ) as dat "))
+                ->selectRaw("min(date) as date")
+                ->where("id_users",$idUsers)
+                ->whereRaw("(DATE(IF(HOUR(    usees.date) >= '" . $startDay . "', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ) IN " . $array)
+                ->groupBy(DB::Raw("(DATE(IF(HOUR(    usees.date) >= '" . $startDay . "', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) )"))
+                ->orderBy("date","ASC")  
+                ->get();
+                
+    }
 
 }

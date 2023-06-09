@@ -1116,7 +1116,7 @@ class Mood extends Model
        
     }
     /*
-     * ipdate may 2023
+     * update may 2023
      */
     public static function sumAllDrugsMood(string $date,  $startDay,int $idUsers) {
         return self::selectRaw(DB::Raw("(DATE(IF(HOUR(moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) as dat"))
@@ -1137,6 +1137,41 @@ class Mood extends Model
                 ->groupBy("dat")
                 //->groupBy("dat2")
                 ->get();
+    }
+    /*
+     * update june 2023
+     */
+    public static function selectLastSleep(array $data, $startDay,int $idUsers) {
+        return self::selectRaw("left(date_end,10) as dat")
+                    ->selectRaw("date_end as date_end")
+                ->where("type","sleep")
+                ->where("id_users",$idUsers)
+                ->whereRaw("time(moods.date_end) <  '12:20:20' ")
+                ->whereRaw("time(moods.date_end) >  '05:00:20' ")
+                ->where(function ($query) use ($data) {
+                    
+                    if (isset($data["dateFrom"])) {
+                        $query->where("moods.date_start",">=",$data["dateFrom"] );
+                    }
+                    if (isset($data["dateTo"])) {
+                        $query->where("moods.date_end","<",$data["dateTo"]);
+                    }
+                    
+                    if (isset($data["longSleepHourFrom"])) {
+                        $query->whereRaw("(  ( unix_timestamp(date_end) - unix_timestamp(date_start) ) / 3600 ) >= " . $data["longSleepHourFrom"]);
+                    }
+                    if (isset($data["longSleepHourTo"])) {
+                        $query->whereRaw("(  ( unix_timestamp(date_end) - unix_timestamp(date_start) ) / 3600 ) < " . $data["longSleepHourTo"]);
+                    }
+                    
+                    if (isset($data["longSleepMinuteFrom"])) {
+                        $query->whereRaw("(  ( unix_timestamp(date_end) - unix_timestamp(date_start) ) / 60 ) >= " . $data["longSleepMinuteFrom"]);
+                    }
+                    if (isset($data["longSleepMinuteTo"])) {
+                        $query->whereRaw("(  ( unix_timestamp(date_end) - unix_timestamp(date_start) ) / 60 ) < " . $data["longSleepMinuteTo"]);
+                    }
+                    })
+                    ->get();
     }
     
 

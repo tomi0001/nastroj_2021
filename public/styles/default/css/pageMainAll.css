@@ -337,3 +337,6 @@ table.tableCenter {
             padding: 9px;
             font-size: 15px;
         }
+        td.wakeUp {
+            width: 20%;
+        }

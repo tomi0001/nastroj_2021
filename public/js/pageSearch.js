@@ -261,6 +261,7 @@ function searchMood() {
         $("#averageMoodSumDiv").css("display","none");
         $("#sumActionDayDiv").css("display","none");
         $("#searchSleepDiv").css("display","none");
+        $("#differenceDrugsSleepDiv").css("display","none");
     }
     else {
 
@@ -275,6 +276,7 @@ function searchSleep() {
         $("#sumActionDayDiv").css("display","none");
         $("#searchMoodDiv").css("display","none");
         $("#sumMoodDayDiv").css("display","none");
+        $("#differenceDrugsSleepDiv").css("display","none");
     }
     else {
 
@@ -288,6 +290,7 @@ function averageMoodSum() {
         $("#searchMoodDiv").css("display","none");
         $("#sumActionDayDiv").css("display","none");
         $("#searchSleepDiv").css("display","none");
+        $("#differenceDrugsSleepDiv").css("display","none");
         //$("#changeNameActionChange").css("display","none");
         //$("#changeDateActionChange").css("display","none");
 
@@ -306,6 +309,7 @@ function sumActionDay() {
         $("#searchMoodDiv").css("display","none");
         $("#averageMoodSumDiv").css("display","none");
         $("#searchSleepDiv").css("display","none");
+        $("#differenceDrugsSleepDiv").css("display","none");
         //$("#changeNameActionChange").css("display","none");
         //$("#changeDateActionChange").css("display","none");
 
@@ -385,6 +389,8 @@ function setFunction() {
             break;
         case 'searchDrugsMood': searchDrugsMood();
             break;
+        case 'differenceDrugsSleep': differenceDrugsSleep();
+            break;
     }
 }
 
@@ -400,7 +406,7 @@ function resetSession() {
     sessionStorage.removeItem('searchType');
 }
 function selectMenu() {
-    if (sessionStorage.getItem('searchType') == 'searchMood' || sessionStorage.getItem('searchType') == 'averageMoodSum'  || sessionStorage.getItem('searchType') == 'sumActionDay' || sessionStorage.getItem('searchType') == 'searchSleep' ) {
+    if (sessionStorage.getItem('searchType') == 'searchMood' || sessionStorage.getItem('searchType') == 'averageMoodSum'  || sessionStorage.getItem('searchType') == 'sumActionDay' || sessionStorage.getItem('searchType') == 'searchSleep'  || sessionStorage.getItem('searchType') == 'differenceDrugsSleep') {
         loadPageMood();
     }
     else if (sessionStorage.getItem('searchType') == 'searchDrugs' || sessionStorage.getItem('searchType') == 'searchDrugsMood') {
@@ -562,4 +568,25 @@ function searchDrugsMoodSubmit(url) {
             alert("Wystąpił błąd");
         })
 
+}
+
+/*
+ * update june 2023 
+ */
+function differenceDrugsSleep() {
+    sessionStorage.setItem('searchType', "differenceDrugsSleep");
+    if ($("#differenceDrugsSleepDiv").css("display") == "none" ) {
+        $("#differenceDrugsSleepDiv").css("display","block");
+        $("#searchMoodDiv").css("display","none");
+        $("#averageMoodSumDiv").css("display","none");
+        $("#searchSleepDiv").css("display","none");
+        $("#sumActionDayDiv").css("display","none");
+        //$("#changeNameActionChange").css("display","none");
+        //$("#changeDateActionChange").css("display","none");
+
+    }
+    else {
+
+        $("#differenceDrugsSleepDiv").css("display","none");
+    } 
 }

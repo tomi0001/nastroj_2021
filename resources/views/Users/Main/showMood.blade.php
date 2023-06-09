@@ -26,7 +26,7 @@
                     <td class="sizeTableMood showMood titleTheadMood">
                         Pobudzenie
                     </td>
-                    <td class="center showMood titleTheadMood">
+                    <td class="center showMood titleTheadMood wakeUp">
                         Ilośc wybudzeń /<br> Epizodów psychotycznych
                     </td>
 

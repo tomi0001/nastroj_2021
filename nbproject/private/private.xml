@@ -19,6 +19,7 @@
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/AverageMoodSumDay.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/routes/web.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/Product/addNewGroup.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/differenceDrugsSleep.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Product.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Product/searchDrugsMood.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/CommonAll.css</file>
@@ -59,6 +60,7 @@
             <file>file:/var/www/html/nastroj_2021/app/Models/User.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/spring/css/pageSettingColor.css</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/searchResultMoodGroupDay.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/Mood/searchSleep.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Action.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Services/SearchMood.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/spring/css/pageMainColor.css</file>
@@ -104,6 +106,7 @@
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showDrugs.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/winter/css/pageSettingColor.css</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Search/main.blade.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showMood.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/autumn/css/pageMainColor.css</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/pageSearchwidth1210.css</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Main/showMenu.blade.php</file>

@@ -129,6 +129,20 @@ div.dayOne2 {
     border-radius: 25px;
     margin: 11px;
 }
+    #differenceDrugsSleepDiv {
+       min-height: 200px;
+        width: 900px;
+        margin-top: 15px;
+
+
+    }
+        #searchSleepDiv {
+       min-height: 200px;
+        width: 900px;
+        margin-top: 15px;
+
+
+    }
 div.dateSumDayMoodAverageDayWeek {
     min-height: 90px;
     width: 29%;

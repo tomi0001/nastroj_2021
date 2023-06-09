@@ -11,6 +11,7 @@ use Hash;
 use App\Http\Services\SearchMood;
 use App\Http\Services\SearchMoodAI;
 use App\Models\Mood;
+use App\Models\Usee;
 use App\Models\Action;
 use Auth;
 use \Illuminate\Pagination\Paginator;
@@ -340,20 +341,35 @@ class SearchMoodController {
             }
 
     }
-//    public function searchMoodAjaxSubmit(Request $request) {
-//        $SearchMood = new SearchMood;
-//
-//
-//
-//            $result = $SearchMood->createQuestion($request);
-//            if ($SearchMood->count > 0) {
-//                $arrayPercent = $SearchMood->sortMoods($result);
-//            }
-//            else {
-//                $arrayPercent = [];
-//            }
-//            return View("Users.Search.Mood.seachResultMoodAjax")->with("arrayList",$result)->with("count",$SearchMood->count)->with("percent",$arrayPercent)->render();
-//
-//
-//    }
+    
+    
+    /*
+     * update june 2023
+     */
+    public function differenceDrugsSleepSubmit(Request $request) {
+        $SearchMood = new SearchMood;
+        $SearchMood->checkErrorSleep($request);
+        if (count($SearchMood->errors) > 0) {
+            ERROR:
+            return View("Users.Search.Mood.error")->with("errors",$SearchMood->errors);
+        }
+        else {
+            $data = $SearchMood->setData($request);
+            $array = Mood::selectLastSleep($data, Auth::User()->start_day, Auth::User()->id);
+            $array2 = $array->pluck("dat")->all();
+            if (count($array2) == 0) {
+                array_push($SearchMood->errors,"Nic nie znalazło");
+                goto ERROR;
+            }
+            $text =  implode("','",($array2));
+            $text = "('" . $text . "')";
+            $drugs = Usee::selectFirstDrugs($text,Auth::User()->start_day, Auth::User()->id);
+            $diff = $SearchMood->diffDrugsSleep($array,$drugs);
+            return View("Users.Search.Mood.searchResultSleepDrugs")->with("arrayList", $diff)->with("count", count($diff));
+        
+        }
+        
+        
+        
+    }
 }

@@ -37,7 +37,9 @@
             <div id="sumActionDay"  class="hrefMood hrefSettingCursor" onmouseover="selectMenuMood('sumActionDay')" onmouseout="unSelectMenuMood('sumActionDay')" onclick="sumActionDay()">
                 WYSZUKAJ AKCJE CAŁODNIOWĄ
             </div>
-
+            <div id="differenceDrugsSleep"  class="hrefMood hrefSettingCursor" onmouseover="selectMenuMood('differenceDrugsSleep')" onmouseout="unSelectMenuMood('differenceDrugsSleep')" onclick="differenceDrugsSleep()">
+                OBLICZ RÓŻNICE MIĘDZY KOŃCEM SNU A PORANNYMI LEKAMI
+            </div>
 
 
 
@@ -60,6 +62,9 @@
         </div>
     <div class="pagePageMood pagepage bodyMoodPage" id="averageMoodSumDiv" style="display: none;">
         @include ('Users.Search.Mood.averageMoodSum')
+        </div>
+    <div class="pagePageMood pagepage bodyMoodPage" id="differenceDrugsSleepDiv" style="display: none;">
+        @include ('Users.Search.Mood.differenceDrugsSleep')
         </div>
     <div class="pagePageMood pagepage bodyMoodPage" id="sumHowHMoodDiv" style="display: none;">
 
