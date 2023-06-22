@@ -86,13 +86,13 @@
                     dawka
                 </td>
                 <td colspan="1">
-                    <input type="number" name="doseFrom" class="form-control" >
+                    <input type="number" name="doseFrom" class="form-control" step="0.01">
                 </td>
                 <td>
                     do
                 </td>
                 <td>
-                    <input type="number" name="doseTo" class="form-control" >
+                    <input type="number" name="doseTo" class="form-control" step="0.01">
                 </td>
             </tr>
 

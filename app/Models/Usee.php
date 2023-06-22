@@ -145,10 +145,25 @@ class Usee extends Model
     }
     public function setDoseGroupDay($doseFrom,$doseTo) {
         if ($doseFrom != "") {
-            $this->questions->havingRaw("sum(usees.portion) >= '$doseFrom'");
+            $this->questions->havingRaw(""
+                       . "case "
+                    . " when products.type_of_portion = 4 THEN sum(usees.portion) / count(*) >= '$doseFrom'"
+                    . " when products.type_of_portion = 5 THEN sum(usees.portion) / count(*) >= '$doseFrom'"
+                    . "ELSE sum(usees.portion) >= '$doseFrom'"
+                    . " END "
+                    
+                    . "");
         }
         if ($doseTo != "") {
-            $this->questions->havingRaw("sum(usees.portion) <= '$doseTo'");
+             $this->questions->havingRaw(""
+                       . "case "
+                    . " when products.type_of_portion = 4 THEN sum(usees.portion) / count(*) <= '$doseTo'"
+                    . " when products.type_of_portion = 5 THEN sum(usees.portion) / count(*) <= '$doseTo'"
+                    . "ELSE sum(usees.portion) <= '$doseTo'"
+                    . " END "
+                    
+                    . "");
+            
         }
     }
     public function setProduct(array $idProduct) {
