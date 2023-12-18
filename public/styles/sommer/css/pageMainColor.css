@@ -442,3 +442,46 @@ box-shadow: 0px 0px 17px -5px rgba(3, 70, 22, 1);
             background-color: #ACD67A;
           
         }
+        
+                       
+        div.how-color-one {
+            background-color: #60c387;
+                             -webkit-box-shadow: 0px 0px 17px -5px rgba(3, 70, 22, 1);
+-moz-box-shadow: 0px 0px 17px -5px rgba(3, 70, 22, 1);
+box-shadow: 0px 0px 17px -5px rgba(3, 70, 22, 1);
+        }
+        div.how-color-two {
+            background-color: #a0e5bc;
+                             -webkit-box-shadow: 0px 0px 17px -5px rgba(3, 70, 22, 1);
+-moz-box-shadow: 0px 0px 17px -5px rgba(3, 70, 22, 1);
+box-shadow: 0px 0px 17px -5px rgba(3, 70, 22, 1);
+        }
+        div.how-color-three {
+            background-color: #b9e3ca;
+                             -webkit-box-shadow: 0px 0px 17px -5px rgba(3, 70, 22, 1);
+-moz-box-shadow: 0px 0px 17px -5px rgba(3, 70, 22, 1);
+box-shadow: 0px 0px 17px -5px rgba(3, 70, 22, 1);
+        }
+                div.how-color-long {
+            background-color: #f2f7f4;
+                             -webkit-box-shadow: 0px 0px 17px -5px rgba(3, 70, 22, 1);
+-moz-box-shadow: 0px 0px 17px -5px rgba(3, 70, 22, 1);
+box-shadow: 0px 0px 17px -5px rgba(3, 70, 22, 1);
+        }
+        
+        
+        div.lineAverageNr1 {
+           background-color: #bf6440;
+            color: white;
+        }
+            div.lineAverageNr2 {
+           background-color: #a45637;
+            color: white;
+        }
+            div.lineAverageNr3 {
+           background-color: #7e422a;
+            color: white;
+        }
+        div.lineAverage {
+    box-shadow: 0 0 4px 1px #466a43;
+        }

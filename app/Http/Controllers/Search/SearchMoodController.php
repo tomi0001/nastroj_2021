@@ -356,7 +356,9 @@ class SearchMoodController {
         else {
             $data = $SearchMood->setData($request);
             $array = Mood::selectLastSleep($data, Auth::User()->start_day, Auth::User()->id);
+            //print count($array);
             $array2 = $array->pluck("dat")->all();
+            
             if (count($array2) == 0) {
                 array_push($SearchMood->errors,"Nic nie znalazło");
                 goto ERROR;
@@ -364,7 +366,9 @@ class SearchMoodController {
             $text =  implode("','",($array2));
             $text = "('" . $text . "')";
             $drugs = Usee::selectFirstDrugs($text,Auth::User()->start_day, Auth::User()->id);
+            
             $diff = $SearchMood->diffDrugsSleep($array,$drugs);
+            print count($array);
             return View("Users.Search.Mood.searchResultSleepDrugs")->with("arrayList", $diff)->with("count", count($diff));
         
         }

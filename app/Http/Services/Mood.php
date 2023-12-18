@@ -196,7 +196,7 @@ class Mood {
         else {
             $this->moodsVariable["stimulation"] = 0;
         }
-        if ($request->get("epizodesPsychotic") != "") {
+        if ($request->get("epizodesPsychotic") != "" ) {
             $this->moodsVariable["epizodesPsychotic"] = $request->get("epizodesPsychotic");
         }
         else {
@@ -229,23 +229,23 @@ class Mood {
        
     }
     public function checkAddMood(array $mood) {
-        if (( $mood["mood"] < -20 or $mood["mood"] > 20) or ( (string)(float) $mood["mood"] !== $mood["mood"]  and ($mood["mood"] != "") ) ) {
+        if (( $mood["mood"] < -20 or $mood["mood"] > 20) or ( (string)(float) $mood["mood"] != $mood["mood"]  and ($mood["mood"] != "") ) ) {
             array_push($this->errors,"Nastroj musi mieścić się w zakresie od -20 do +20");
         }
         
-        if ($mood["anxiety"] < -20 or $mood["anxiety"] > 20  or  ( (string)(float) $mood["anxiety"] !== $mood["anxiety"]  and ($mood["anxiety"] != "") ) )   {
+        if ($mood["anxiety"] < -20 or $mood["anxiety"] > 20  or  ( (string)(float) $mood["anxiety"] != $mood["anxiety"]  and ($mood["anxiety"] != "") ) )   {
             array_push($this->errors,"Lęk musi mieścić się w zakresie od -20 do +20");
         }
         
-        if ($mood["voltage"] < -20 or $mood["voltage"] > 20  or  ( (string)(float) $mood["voltage"] !== $mood["voltage"] ) and ($mood["voltage"] != "") ) {
+        if ($mood["voltage"] < -20 or $mood["voltage"] > 20  or  ( (string)(float) $mood["voltage"] != $mood["voltage"] ) and ($mood["voltage"] != "") ) {
             array_push($this->errors,"Napięcie musi mieścić się w zakresie od -20 do +20");
         }
         
-        if (($mood["stimulation"] < -20 or $mood["stimulation"] > 20) or  ( (string)(float) $mood["stimulation"] !== $mood["stimulation"]  and ($mood["stimulation"] != "") ) ) {
+        if (($mood["stimulation"] < -20 or $mood["stimulation"] > 20) or  ( (string)(float) $mood["stimulation"] !==$mood["stimulation"]  and ($mood["stimulation"] != "") ) ) {
             array_push($this->errors,"Pobudzenie musi mieścić się w zakresie od -20 do +20");
         }
         
-        if (( $mood["epizodesPsychotic"] < 0)  or ( (string)(int) $mood["epizodesPsychotic"] !== $mood["epizodesPsychotic"] ) and ($mood["epizodesPsychotic"] != "")) {
+        if (( $mood["epizodesPsychotic"] < 0)  or ( (string)(int) $mood["epizodesPsychotic"] != $mood["epizodesPsychotic"] ) and ($mood["epizodesPsychotic"] != "")) {
             array_push($this->errors,"Liczba Epizodów psychotycznych musi być wieksza lub równa 0");
         }
 

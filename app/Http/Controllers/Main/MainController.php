@@ -165,6 +165,7 @@ class MainController {
             $Mood->setVariableMood($request);
             $Mood->checkError($timeStart,$timeEnd);
             $Mood->checkAddMood($Mood->moodsVariable);
+            
             if (!empty($request->get("idActions")) ) {
                 $Mood->checkErrorAction($request,round(((StrToTime($timeEnd) - StrToTime($timeStart)) /60 ),2) );
             }

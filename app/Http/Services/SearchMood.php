@@ -711,20 +711,28 @@ class SearchMood {
      public function diffDrugsSleep($sleppsArray, $drugsArray) {
          $newArray = [];
          $j = 0;
+         $z = 0;
          for($i=0;$i < count($sleppsArray);$i++)  {
              //print $sleppsArray[$i]["dat"];
-             if (!isset($sleppsArray[$i]["dat"]) or !isset($drugsArray[$i]["dat"])) {
-                 break;
+             SEARCH:
+             if (!isset($sleppsArray[$i]["dat"]) or !isset($drugsArray[$z]["dat"])) {
+                 continue;
              }
-             if ($sleppsArray[$i]["dat"] == $drugsArray[$i]["dat"]) {
+             
+             else if ($sleppsArray[$i]["dat"] == $drugsArray[$z]["dat"]) {
                  
-                 $result = strtotime($drugsArray[$i]["date"]) - strtotime($sleppsArray[$i]["date_end"]);
-                 $newArray[$j]["dat"] = $drugsArray[$i]["dat"];
+                 $result = strtotime($drugsArray[$z]["date"]) - strtotime($sleppsArray[$i]["date_end"]);
+                 $newArray[$j]["dat"] = $drugsArray[$z]["dat"];
                  $newArray[$j]["minutes"] = $result;
                  $j++;
                  
              }
-             $i++;
+             else {
+                 $z++;
+                 goto SEARCH;
+             }
+             //$z++;
+             //$i++;
          }
          return $newArray;
      }
