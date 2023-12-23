@@ -469,7 +469,7 @@ class Product {
             }
         
 
-            else if ((((strtotime($arrayList[$i-1]->dat) - strtotime($arrayList[$i]->dat)  > 146400 )   or ( ($arrayList[$i]->portions) != $arrayList[$i-1]->portion) ) or ( ($arrayList[$i]->how) != $arrayList[$i-1]->how) )      ) {
+            else if ((((strtotime($arrayList[$i-1]->dat) - strtotime($arrayList[$i]->dat)  > 146400 )   or ( ($arrayList[$i]->portions) != $arrayList[$i-1]->portions) ) or ( ($arrayList[$i]->how) != $arrayList[$i-1]->how) )      ) {
                    $newArray[$j]["dateStart"] = $arrayList[$i-1]->dat;
                    $j++;
                    $newArray[$j]["dateEnd"] = $arrayList[$i]->dat;
@@ -502,7 +502,7 @@ class Product {
             }
         
 
-            else if ((((strtotime($arrayList[$i-1]->dat) - strtotime($arrayList[$i]->dat)  > 146400 )   or ( ($arrayList[$i]->portions) != $arrayList[$i-1]->portion) ) or ( ($arrayList[$i]->how) != $arrayList[$i-1]->how) )      ) {
+            else if ((((strtotime($arrayList[$i-1]->dat) - strtotime($arrayList[$i]->dat)  > 146400 )   or ( ($arrayList[$i]->portions) != $arrayList[$i-1]->portions) ) or ( ($arrayList[$i]->how) != $arrayList[$i-1]->how) )      ) {
                    $newArray[$j]["dateStart"] = $arrayList[$i-1]->dat;
                    $j++;
                    $newArray[$j]["dateEnd"] = $arrayList[$i]->dat;
