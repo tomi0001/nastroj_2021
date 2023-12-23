@@ -131,7 +131,7 @@
                             </td>
                             <td class="sizeTableMood showDrugs ">
 
-                                <span class="fontMood" >{{$arrayList[$i]->portion}} {{\App\Http\Services\Common::showDoseProduct($arrayList[$i]->type)}}</span>
+                                <span class="fontMood" >{{$arrayList[$i]->portions}} {{\App\Http\Services\Common::showDoseProduct($arrayList[$i]->type)}}</span>
 
                             </td>
                             <td class="sizeTableMood showDrugs ">

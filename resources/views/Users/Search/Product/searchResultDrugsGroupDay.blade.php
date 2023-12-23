@@ -132,9 +132,9 @@
                             </td>
                             <td class="sizeTableMood showDrugs ">
                                 @if ($arrayList[$i]->type == 4 or $arrayList[$i]->type == 5)
-                                    <span class="fontMood" >{{round($arrayList[$i]->portion / $arrayList[$i]->count,2)}} {{\App\Http\Services\Common::showDoseProduct($arrayList[$i]->type)}}</span>
+                                    <span class="fontMood" >{{round($arrayList[$i]->portions / $arrayList[$i]->count,2)}} {{\App\Http\Services\Common::showDoseProduct($arrayList[$i]->type)}}</span>
                                 @else
-                                    <span class="fontMood" >{{$arrayList[$i]->portion}} {{\App\Http\Services\Common::showDoseProduct($arrayList[$i]->type)}}</span>
+                                    <span class="fontMood" >{{$arrayList[$i]->portions}} {{\App\Http\Services\Common::showDoseProduct($arrayList[$i]->type)}}</span>
                                 @endif
 
                             </td>
