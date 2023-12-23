@@ -54,10 +54,10 @@
                         @foreach (\App\Models\Substances_product::showSubstance($list->products_id) as $list2)
                         
                             @if (count(\App\Models\Substances_product::showSubstance($list->products_id)) == 1)
-                                [{{$list2->name}} = {{$list->portionss}} {{\App\Http\Services\Common::showDoseProduct($list->type)}}] <br>
+                                [{{$list2->name}} = {{$list->portions}} {{\App\Http\Services\Common::showDoseProduct($list->type)}}] <br>
                                 
                                   @if (\App\Models\Substance::checkEquivalent($list2->id,Auth::User()->id) != "" )
-                                  <span class="equivalent"> Równowaznik diazepamu 10 mg =    {{\App\Models\Product::showEquivalent($list2->id,Auth::User()->id,$list->portionss)->equivalent}} {{\App\Http\Services\Common::showDoseProduct($list->type)}} </span>
+                                  <span class="equivalent"> Równowaznik diazepamu 10 mg =    {{\App\Models\Product::showEquivalent($list2->id,Auth::User()->id,$list->portions)->equivalent}} {{\App\Http\Services\Common::showDoseProduct($list->type)}} </span>
 
                                   @endif
                             @else
@@ -88,7 +88,7 @@
                     
                     <td class=" drugsShow drugsTd showdrugs">
                         <div  class="showMenuDrugs{{$list->id}}"  id="doseDrugs{{$list->id}}">
-                        {{$list->portionss}} {{\App\Http\Services\Common::showDoseProduct($list->type)}}
+                        {{$list->portions}} {{\App\Http\Services\Common::showDoseProduct($list->type)}}
                         </div>
                         <div class="showMenuEditDrugs{{$list->id}}" style="display: none; width: 70%; margin-left: auto; margin-right: auto; ">
                             <input type="text" id='doseEdit{{$list->id}}' class="form-control" size="2" value="{{$list->portions}}">
