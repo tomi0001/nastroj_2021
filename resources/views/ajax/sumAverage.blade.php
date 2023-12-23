@@ -6,7 +6,7 @@
     @for ($i=0;$i < count($listAverage);$i++)
         <div class="averageDiv">
             {{$listAverage[$i]["dateStart"]}} - {{$listAverage[$i]["dateEnd"]}} <br>
-            Dawka = {{$listAverage[$i]["portion"]}} {{\App\Http\Services\Common::showDoseProduct($listAverage[$i]["type"])}}<br>
+            Dawka = {{$listAverage[$i]["portions"]}} {{\App\Http\Services\Common::showDoseProduct($listAverage[$i]["type"])}}<br>
             <div class="how-type {{\App\Http\Services\Common::showColorTypeHow($listAverage[$i]["how"])}}"> ilośc wzięć = {{($listAverage[$i]["how"])}} </div> 
             @php
                 $diff = \App\Http\Services\Common::calculateHourAverage(date("Y-m-d",strtotime($listAverage[$i]["dateStart"]) - 8400),$listAverage[$i]["dateEnd"]);

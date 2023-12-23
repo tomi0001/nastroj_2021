@@ -462,7 +462,7 @@ class Product {
         for ($i=0;$i < count($arrayList);$i++)  { 
             if ($i == 0) {
                 $newArray[$j]["dateStart"] = $arrayList[$i]->dat;
-                $newArray[$j]["portion"] = round(($arrayList[$i]->portion / $arrayList[$i]->how),2);
+                $newArray[$j]["portions"] = round(($arrayList[$i]->portions / $arrayList[$i]->how),2);
                 $newArray[$j]["how"] = $arrayList[$i]->how;
                 $newArray[$j]["type"] = $arrayList[$i]->type;
                 $newArray[$j]["dateEnd"] = $arrayList[$i]->dat;
@@ -474,7 +474,7 @@ class Product {
                    $j++;
                    $newArray[$j]["dateEnd"] = $arrayList[$i]->dat;
 
-                   $newArray[$j]["portion"] = round(($arrayList[$i]->portion / $arrayList[$i]->how),2);
+                   $newArray[$j]["portions"] = round(($arrayList[$i]->portions / $arrayList[$i]->how),2);
                    $newArray[$j]["how"] =  $arrayList[$i]->how;
                    $newArray[$j]["type"] = $arrayList[$i]->type;
 
@@ -495,7 +495,7 @@ class Product {
         for ($i=0;$i < count($arrayList);$i++)  { 
             if ($i == 0) {
                 $newArray[$j]["dateStart"] = $arrayList[$i]->dat;
-                $newArray[$j]["portion"] = $arrayList[$i]->portion;
+                $newArray[$j]["portions"] = $arrayList[$i]->portions;
                 $newArray[$j]["how"] = $arrayList[$i]->how;
                 $newArray[$j]["type"] = $arrayList[$i]->type;
                 $newArray[$j]["dateEnd"] = $arrayList[$i]->dat;
@@ -507,7 +507,7 @@ class Product {
                    $j++;
                    $newArray[$j]["dateEnd"] = $arrayList[$i]->dat;
 
-                   $newArray[$j]["portion"] = $arrayList[$i]->portion;
+                   $newArray[$j]["portions"] = $arrayList[$i]->portions;
                    $newArray[$j]["how"] = $arrayList[$i]->how;
                    $newArray[$j]["type"] = $arrayList[$i]->type;
 
