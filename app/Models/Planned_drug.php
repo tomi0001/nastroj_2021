@@ -30,7 +30,7 @@ class Planned_drug extends Model
         return self::selectRaw("id_products")->where("id_users",Auth::User()->id)->where("name",$name)->first();
     }
     public static function showPlanedOneSettings(string $name) {
-        return self::selectRaw("id_products as id_product")->selectRaw("usees.portion as portions")->where("id_users",Auth::User()->id)->where("name",$name)->get();
+        return self::selectRaw("id_products as id_product")->selectRaw("planned_drugs.portion as portions")->where("id_users",Auth::User()->id)->where("name",$name)->get();
     }
     public static function showName(string $id) {
         return self::selectRaw("name as name")->where("id_users",Auth::User()->id)->where("id",$id)->first();
