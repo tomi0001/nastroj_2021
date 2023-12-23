@@ -339,7 +339,7 @@ class Usee extends Model
     public static function selectOldUseeSubstances(int $idSubstances,string $dateEnd,int $idUsers,int $startDay,$hour) {
         return self::join("products","products.id","usees.id_products")
                 ->join("substances_products","substances_products.id_products","products.id")
-                ->selectRaw("count(portion) as how")
+                ->selectRaw("count(usees.portion) as how")
                 //->selectRaw("'1' as type")
                 ->selectRaw(" "
                         . "( CASE "
