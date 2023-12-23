@@ -35,7 +35,7 @@
                                     @if ($list->type == 4 or $list->type ==5 )
                                         <div class='positionDrugsDose'>{{round($list->portions / $list->count,2)}}  {{\App\Http\Services\Common::showDoseProductSubstance($list->type)}}</div>
                                     @else
-                                        <div class='positionDrugsDose'>{{$list->portion}} {{\App\Http\Services\Common::showDoseProductSubstance($list->type)}}</div>
+                                        <div class='positionDrugsDose'>{{$list->portions}} {{\App\Http\Services\Common::showDoseProductSubstance($list->type)}}</div>
                                     @endif
                                 
                             @endforeach
