@@ -190,7 +190,7 @@ class Usee extends Model
         $this->questions->whereRaw("time(usees.date) >= " . "'" .  $hourFrom . ":00'");
     }
     public static function selectLastDrugs(int $idProduct,string $date,float $dose) {
-        return self::selectRaw("date")->where("id_users",Auth::User()->id)->where("id_products",$idProduct)->where("portion",$dose)
+        return self::selectRaw("date")->where("id_users",Auth::User()->id)->where("id_products",$idProduct)->where("usees.portion",$dose)
                 ->where("date",">=",date("Y-m-d H:i:s", strtotime($date )- 80))->where("date","<=",$date)->first();
     }
     public static function selectLastDescription(int $idUsee,string $date, $description) {
@@ -378,7 +378,7 @@ class Usee extends Model
         return self::join("products","products.id","usees.id_products")
                 ->join("substances_products","substances_products.id_products","products.id")
                 ->join("substances","substances.id","substances_products.id_substances")
-                ->selectRaw("count(portion) as how")
+                ->selectRaw("count(usees.portion) as how")
                 //->selectRaw("'1' as type")
                 ->selectRaw(" "
                         . "( CASE "
