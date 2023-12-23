@@ -18,7 +18,7 @@ class Usee extends Model
 
             ->select( DB::Raw("(DATE(IF(HOUR(usees.date) >= '$startDay', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ) as dat  "));
 
-            $this->questions->selectRaw("(sum(usees.portion)   )  as portion")
+            $this->questions->selectRaw("(sum(usees.portion)   )  as portions")
                 ->selectRaw("((count(*) ) )  as count");
 
         $this->questions->selectRaw("usees.id_products as id")
@@ -35,7 +35,7 @@ class Usee extends Model
 
             ->select( DB::Raw("(DATE(IF(HOUR(usees.date) >= '$startDay', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ) as dat  "));
 
-            $this->questions->selectRaw("(sum(usees.portion)   )  as portion")
+            $this->questions->selectRaw("(sum(usees.portion)   )  as portions")
                 ->selectRaw("((count(*) ) )  as count");
 
         $this->questions->selectRaw("usees.id_products as id")
