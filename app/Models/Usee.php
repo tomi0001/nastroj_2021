@@ -54,7 +54,7 @@ class Usee extends Model
             ->select( DB::Raw("(DATE(IF(HOUR(usees.date) >= '$startDay', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ) as dat  "))
             ->selectRaw("hour(usees.date) as hour");
 
-            $this->questions->selectRaw("usees.portion as portion");
+            $this->questions->selectRaw("usees.portion as portions");
 
         $this->questions
             ->selectRaw("day(usees.date) as day")
@@ -213,7 +213,7 @@ class Usee extends Model
                 ->selectRaw("usees.date as date")
                 ->selectRaw("usees.price as price")
                 ->selectRaw("usees.id as id")
-                ->selectRaw("usees.portion as portion")
+                ->selectRaw("usees.portion as portions")
                 ->selectRaw("products.name as name")
                 ->where("usees.id_users",$idUsers)
                 ->whereRaw(DB::Raw("(DATE(IF(HOUR(    usees.date) >= '" . $startDay . "', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ) = '" . $date . "' "))
@@ -228,7 +228,7 @@ class Usee extends Model
                 ->selectRaw("usees.date as date")
                 ->selectRaw("usees.id as id")
                 ->selectRaw("usees.price as price")
-                ->selectRaw("usees.portion as portion")
+                ->selectRaw("usees.portion as portions")
                 ->selectRaw("products.name as name")
                 ->where("usees.id_users",$idUsers)
                 ->where("usees.date",">=",$dateOne)
@@ -249,7 +249,7 @@ class Usee extends Model
                         
                         . "ELSE (substances_products.doseProduct * usees.portion) "
                         . " END),2)"
-                        . "  as portion ")
+                        . "  as portions ")
                 ->selectRaw("substances.name as name")
                 ->selectRaw("products.type_of_portion as type")
                 ->where("usees.id_users",$idUsers)
@@ -269,7 +269,7 @@ class Usee extends Model
         return self::join("products","products.id","usees.id_products")
                 ->selectRaw("products.name  as name")
                 ->selectRaw("products.type_of_portion as type")
-                ->selectRaw("usees.portion as portion")
+                ->selectRaw("usees.portion as portions")
                 ->selectRaw("SUBSTRING((usees.date),11,6) as date")
                 ->selectRaw("usees.price as price")
                 ->selectRaw("products.type_of_portion as type")
@@ -322,7 +322,7 @@ class Usee extends Model
     }
     public static function selectOldUsee(int $idProduct,string $dateEnd,int $idUsers,int $startDay,$hour) {
         return self::join("products","products.id","usees.id_products")
-                ->selectRaw("sum(usees.portion) as portion")
+                ->selectRaw("sum(usees.portion) as portions")
                 ->selectRaw("products.type_of_portion as type")
                 ->selectRaw("count(usees.portion) as how")
                 ->selectRaw(DB::Raw("(DATE(IF(HOUR(    usees.date) >= '" . $startDay . "', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ) as dat "))
@@ -357,7 +357,7 @@ class Usee extends Model
                         . " WHEN substances_products.doseProduct is NULL  THEN (usees.portion ) "
                         . "ELSE (substances_products.doseProduct * usees.portion) "
                         . " END),2)"
-                        . "  as portion ")
+                        . "  as portions ")
                 ->selectRaw(DB::Raw("(DATE(IF(HOUR(    usees.date) >= '" . $startDay . "', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ) as dat "))
                 ->where("usees.date","<=",$dateEnd)
                 ->where("substances_products.id_substances",$idSubstances)
@@ -395,7 +395,7 @@ class Usee extends Model
                         . "WHEN products.type_of_portion = 1 THEN  ( usees.portion / ( substances.equivalent / 10) ) "
                         . "ELSE ( (usees.portion *  substances_products.doseProduct) / ( substances.equivalent / 10) ) "
                         . " END"
-                        . ") as portion")
+                        . ") as portions")
                 ->selectRaw(DB::Raw("(DATE(IF(HOUR(    usees.date) >= '" . $startDay . "', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ) as dat "))
                 ->where("usees.date","<=",$dateEnd)
                 ->where("usees.id_users",$idUsers)
