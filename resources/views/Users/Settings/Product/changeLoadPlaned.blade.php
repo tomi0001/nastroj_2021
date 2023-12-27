@@ -41,7 +41,7 @@
             
         </script>
         <td class="tdColorDrugs ">
-               <input type="text" name="portion[]" class="form-control" value="{{$list->portion}}" id="trPlanedInput{{$loop->index+1}}">
+               <input type="text" name="portion[]" class="form-control" value="{{$list->portions}}" id="trPlanedInput{{$loop->index+1}}">
         </td>
         <td  class="tdColorDrugs">
             <a onclick="changeStatusPlaned({{$loop->index+1}},'{{asset('/image/icon_minus.png')}}','{{asset('/image/icon_plus.png')}}')" style="cursor: pointer;">

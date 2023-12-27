@@ -14,6 +14,7 @@
             <file>file:/var/www/html/nastroj_2021/resources/views/Users/Settings/main.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Usee.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Moods_action.php</file>
+            <file>file:/var/www/html/nastroj_2021/app/Http/Services/Product.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Models/Action_plan.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/ajax/showAverage.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/Common700.css</file>
@@ -34,6 +35,7 @@
             <file>file:/var/www/html/nastroj_2021/resources/views/ajax/showDrugs.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/Layout/SelectSearch.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/app/Http/Controllers/Main/MainController.php</file>
+            <file>file:/var/www/html/nastroj_2021/resources/views/ajax/sumAverage.blade.php</file>
             <file>file:/var/www/html/nastroj_2021/public/styles/default/css/Common1810.css</file>
             <file>file:/var/www/html/nastroj_2021/public/js/pageMain.js</file>
             <file>file:/var/www/html/nastroj_2021/resources/views/ajax/showTypyPortion.blade.php</file>
