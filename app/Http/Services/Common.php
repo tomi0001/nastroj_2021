@@ -79,8 +79,8 @@ class Common {
     
     
  
-    /*
-    public static function setColor( $mood) :string {
+    
+    public static function setColorStatic( $mood) :string {
         if (empty($mood) and $mood != 0) {
             return '10000';
         }
@@ -149,8 +149,7 @@ class Common {
         }
 
     }
-     * 
-     */
+    
     public static function calculateHour($dateOne,$dateTwo) {
 
         $dateStart = new \DateTime($dateOne);
@@ -320,8 +319,14 @@ class Common {
             return '10000';
         }
         else {
-            $arrayList = User::readLevelMoodColor(Auth::User()->id,$mood);
-            return (string) $arrayList->color;
+            if (User::ifNullMoodColor(Auth::User()->id) == null) {
+                return (string) self::setColorStatic($mood);
+            }
+            else {
+                $arrayList = User::readLevelMoodColor(Auth::User()->id,$mood);
+           
+                return (string) $arrayList->color;
+            }
         }
         
     }
