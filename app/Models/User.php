@@ -111,4 +111,11 @@ class User extends Authenticatable
                 ->where("id",$idUsers)->first();
     }
     
+    /*
+     * Created januar 2024
+     */
+    public static function ifNullMoodColor(int $idUsers) {
+        return self::selectRaw("level_mood1")->where("id",$idUsers)->first()->level_mood1;
+    }
+    
 }
