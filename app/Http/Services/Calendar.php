@@ -9,6 +9,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Auth;
 
 class calendar
 {
@@ -112,7 +113,8 @@ class calendar
                 $this->month = $month;
             }
             if (empty($day)) {
-                $this->day = date("d");
+                
+                $this->calculateStartDay(date("d"));
                 
             }
             else {
@@ -185,7 +187,16 @@ class calendar
     {
          return (($year%4 == 0 && $year%100 != 0) || $year%400 == 0);
     }
-  
-  
+  /*
+   * Update february 2024
+   */
+  private function calculateStartDay($day) {
+      if (Auth::User()->start_day > date("H")) {
+          $this->day = date("d",(time() - (3600 * 24)));
+      }
+      else {
+          $this->day = date("d");
+      }
+  }
     
 }

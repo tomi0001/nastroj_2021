@@ -486,14 +486,20 @@ function loadChangeAction(url) {
             })
             .done(function(response) {
                 var regex = /<br\s*[\/]?>/gi;
-        
-                var str = response["actionPlan"]["what_work"];
+                if (response["actionPlan"]["what_work"] != null) {
+                    var str = response["actionPlan"]["what_work"];
+                    $("textarea[name='description']").html(str.replace(regex, "\n"));
+                }
+                else {
+                    $("textarea[name='description']").html("");
+                }
                var string =  createListAction(response["actionPlan"]["id_actions"],response);
                 $("select[name='changeAction']").html(string);
-                $("textarea[name='description']").html(str.replace(regex, "\n"));
+                
                 $("input[name='long']").val(response["actionPlan"]["longer"]);
                 $("input[name='date']").val(response["actionPlan"]["date"]);
                 $("input[name='time']").val(response["actionPlan"]["time"]);
+                //alert(response["actionPlan"]["date"]);
 
                 
                 if (response["bool"] == true) {
