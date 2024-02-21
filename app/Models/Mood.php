@@ -1173,6 +1173,13 @@ class Mood extends Model
                     })
                     ->get();
     }
-    
-
+    /*
+     * update february 2024
+     */
+    public  function createQuestionSumHowMood(int $startDay) {
+        $this->questions =  self::query();
+        $this->questions->selectRaw(DB::Raw("(DATE(IF(HOUR(moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) as dat"))
+                ->selectRaw("sum(TIMESTAMPDIFF (minute, moods.date_start , moods.date_end)) as longMood");
+                
+    }
 }

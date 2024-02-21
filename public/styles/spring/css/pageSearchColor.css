@@ -183,6 +183,12 @@ div.averageSumDiv {
     -moz-box-shadow: inset 0px 0px 33px -10px rgb(44, 100, 25);
     box-shadow: inset 0px 0px 33px -10px rgb(44, 100, 25);
 }
+div.sumHowMoodResultDiv {
+    background-color: #94ff31;
+    -webkit-box-shadow: inset 0px 0px 33px -10px rgb(44, 100, 25);
+    -moz-box-shadow: inset 0px 0px 33px -10px rgb(44, 100, 25);
+    box-shadow: inset 0px 0px 33px -10px rgb(44, 100, 25);
+}
 div.titleSearchSumDay {
     background-color: #1F6C13;
     border: 2px solid #319701;
@@ -320,4 +326,12 @@ td.tdMoodDrugsDose {
 -webkit-box-shadow: inset 0px 0px 12px 0px rgba(88, 97, 11, 1);
 -moz-box-shadow: inset 0px 0px 12px 0px rgba(88, 97, 11, 1);
 box-shadow: inset 0px 0px 12px 0px rgba(88, 97, 11, 1);
+}
+
+div.minutesMood {
+    color: white;
+}
+
+span.error {
+    color: red;
 }

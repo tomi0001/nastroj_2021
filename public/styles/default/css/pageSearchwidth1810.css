@@ -158,6 +158,11 @@ div.dayOne2 {
         width: 1000px;
         margin-top: 15px;
     }
+    #sumHowHMoodDiv {
+        min-height: 200px;
+        width: 1300px;
+        margin-top: 15px;
+    }
     .titleMoodSettings {
 
         border-radius: 20px 20px 0px 0px;

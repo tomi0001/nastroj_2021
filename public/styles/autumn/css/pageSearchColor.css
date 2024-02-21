@@ -194,6 +194,12 @@ div.averageSumDiv {
     -moz-box-shadow: inset 0px 0px 33px -10px #6c623a;
     box-shadow: inset 0px 0px 33px -10px #6c623a;
 }
+div.sumHowMoodResultDiv {
+    background-color: #d5c99b;
+    -webkit-box-shadow: inset 0px 0px 33px -10px #6c623a;
+    -moz-box-shadow: inset 0px 0px 33px -10px #6c623a;
+    box-shadow: inset 0px 0px 33px -10px #6c623a;
+}
 div.titleSearchSumDay {
     background-color: #1F6C13;
     border: 2px solid #319701;
@@ -280,4 +286,11 @@ div.dateSumDayMoodAverageDayWeek {
     -webkit-box-shadow: inset 0px 0px 24px -8px rgba(158, 200, 31, 1);
     -moz-box-shadow: inset 0px 0px 24px -8px rgba(158, 200, 31, 1);
     box-shadow: inset 0px 0px 24px -8px rgba(158, 200, 31, 1);
+}
+div.minutesMood {
+    color: white;
+}
+
+span.error {
+    color: red;
 }

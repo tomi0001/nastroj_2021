@@ -376,4 +376,26 @@ class SearchMoodController {
         
         
     }
+    /*
+     * update february 2024
+     */
+    public function sumHowMoodSubmit(Request $request) {
+        $SearchMood = new SearchMood;
+        $SearchMood->checkError($request);
+        if (count($SearchMood->errors) > 0) {
+            return View("ajax.error")->with("error",$SearchMood->errors);
+        }
+        else {
+            $SearchMood->setDayWeek($request);
+            $sum = $SearchMood->searchSumHowMood($request);
+            return View("Users.Search.Mood.sumHowMoodSubmit")->with("sum", $sum)
+                    ->with("timeFrom", $request->get("timeFrom"))->with("timeTo", $request->get("timeTo"))
+                            ->with("dateFrom", $request->get("dateFrom"))->with("dateTo", $request->get("dateTo"))
+                    ->with("moodFrom", $request->get("moodFrom"))->with("moodTo", $request->get("moodTo"))
+                            ->with("anxientyFrom", $request->get("anxientyFrom"))->with("anxientyTo", $request->get("anxientyTo"))
+                    ->with("voltageFrom", $request->get("voltageFrom"))->with("voltageTo", $request->get("voltageTo"))
+                            ->with("stimulationFrom", $request->get("stimulationFrom"))->with("stimulationTo", $request->get("stimulationTo"))
+                            ->with("week", $SearchMood->dayWeek);;
+        }
+    }
 }

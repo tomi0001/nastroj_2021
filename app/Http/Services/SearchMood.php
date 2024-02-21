@@ -736,5 +736,77 @@ class SearchMood {
          }
          return $newArray;
      }
+      /*
+      * update february 2024
+      */
+     public function searchSumHowMood(Request $request) {
+         $moodModel = new  MoodModel;
+         //$data = $this->setDataSumHowMood($request);
+         $result = $moodModel->createQuestionSumHowMood($this->startDay);
+         $moodModel->setDate($request->get("dateFrom"),$request->get("dateTo"),$this->startDay);
+         $moodModel->setMood($request);
+         $moodModel->setLongMood($request);
+         $moodModel->setWeekDay($this->dayWeek,$this->startDay);
+         $this->setHour($moodModel,$request);
+//         if (!empty($request->get("whatWork")) ) {
+//             $moodModel->searchWhatWork($request->get("whatWork"));
+//         }
+//         if (!empty($request->get("action")) and ($request->get("action") != "undefined") ) {
+//
+//             $moodModel->searchAction($request->get("action"),(array)$request->get("actionFrom"),(array)$request->get("actionTo"));
+//         }
+//         if (($request->get("ifAction")) == "on" ) {
+//             $moodModel->actionOn();
+//         }
+//         if (($request->get("ifWhatWork")) == "on" ) {
+//             $moodModel->whatWorkOn();
+//         }
+         $moodModel->idUsers($this->idUsers);
+         $moodModel->moodsSelect();
 
+
+ 
+         return $moodModel->questions->first();
+     }
+//     public function setDataSumHowMood(Request $request) {
+//         $data = [];
+//         if ($request->get("dateFrom") != "") {
+//             $data["dateFrom"] =  $request->get("dateFrom") ;
+//         }
+//         if ($request->get("dateTo") != "") {
+//             $data["dateTo"] = $request->get("dateTo") ;
+//         }
+//         if ($request->get("timeFrom") != "") {
+//             $data["timeFrom"] =  $request->get("timeFrom") ;
+//         }
+//         if ($request->get("timeTo") != "") {
+//             $data["timeTo"] = $request->get("timeTo") ;
+//         }
+//         
+//         if ($request->get("moodFrom") != "") {
+//             $data["moodFrom"] =  $request->get("moodFrom") ;
+//         }
+//         if ($request->get("moodTo") != "") {
+//             $data["moodTo"] = $request->get("moodTo") ;
+//         }
+//         if ($request->get("anxientyFrom") != "") {
+//             $data["anxientyFrom"] =  $request->get("anxientyFrom") ;
+//         }
+//         if ($request->get("anxientyTo") != "") {
+//             $data["anxientyTo"] = $request->get("anxientyTo") ;
+//         }
+//         if ($request->get("voltageFrom") != "") {
+//             $data["voltageFrom"] =  $request->get("voltageFrom") ;
+//         }
+//         if ($request->get("voltageTo") != "") {
+//             $data["voltageTo"] = $request->get("voltageTo") ;
+//         }
+//         if ($request->get("stimulationFrom") != "") {
+//             $data["stimulationFrom"] =  $request->get("stimulationFrom") ;
+//         }
+//         if ($request->get("stimulationTo") != "") {
+//             $data["stimulationTo"] = $request->get("stimulationTo") ;
+//         }
+//         return $data;
+//     }
 }

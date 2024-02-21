@@ -28,7 +28,7 @@
             <div id="averageMoodSum"  class="hrefMood hrefSettingCursor" onmouseover="selectMenuMood('averageMoodSum')" onmouseout="unSelectMenuMood('averageMoodSum')" onclick="averageMoodSum()">
                 OBLICZ ŚREDNIĄ TRWANIA NASTROJU
             </div>
-            <div id="sumHowHMood"  class="hrefMood hrefSettingCursor" onmouseover="selectMenuMood('sumHowHMood')" onmouseout="unSelectMenuMood('sumHowHMood')" onclick="changeDateAction()">
+            <div id="sumHowHMood"  class="hrefMood hrefSettingCursor" onmouseover="selectMenuMood('sumHowHMood')" onmouseout="unSelectMenuMood('sumHowHMood')" onclick="sumHowHMood()">
                 OBLICZ ILE H TRWAŁY NASTROJE
             </div>
             <div id="generatePdfMood"  class="hrefMood hrefSettingCursor" onmouseover="selectMenuMood('generatePdfMood')" onmouseout="unSelectMenuMood('generatePdfMood')" onclick="changeDateAction()">
@@ -67,7 +67,7 @@
         @include ('Users.Search.Mood.differenceDrugsSleep')
         </div>
     <div class="pagePageMood pagepage bodyMoodPage" id="sumHowHMoodDiv" style="display: none;">
-
+        @include ('Users.Search.Mood.sumHowHMood')
         </div>
     <div class="pagePageMood pagepage bodyMoodPage" id="generatePdfMoodDiv" style="display: none;">
 

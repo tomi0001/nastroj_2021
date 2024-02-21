@@ -226,7 +226,8 @@ Route::get('/search/searchSleepSubmit', [App\Http\Controllers\Search\SearchMoodC
 Route::get('/search/searchDrugsMoodSubmit', [App\Http\Controllers\Search\SearchDrugsController::class, 'searchDrugsMoodSubmit'])->name('search.searchDrugsMoodSubmit')
                     ->middleware('auth')->middleware('can:users');   
 
-
+Route::get('/search/sumHowMoodSubmit', [App\Http\Controllers\Search\SearchMoodController::class, 'sumHowMoodSubmit'])->name('search.sumHowMoodSubmit')
+                    ->middleware('auth')->middleware('can:users');   
 
 
 

@@ -194,4 +194,9 @@ div.dayOne2 {
     border-radius: 25px;
     margin: 11px;
 }
+#sumHowHMoodDiv {
+        min-height: 200px;
+        width: 1000px;
+        margin-top: 15px;
+    }
 }

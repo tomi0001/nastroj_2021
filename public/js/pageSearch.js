@@ -258,6 +258,7 @@ function searchMood() {
     sessionStorage.setItem('searchType', "searchMood");
     if ($("#searchMoodDiv").css("display") == "none" ) {
         $("#searchMoodDiv").css("display","block");
+        $("#sumHowHMoodDiv").css("display","none");
         $("#averageMoodSumDiv").css("display","none");
         $("#sumActionDayDiv").css("display","none");
         $("#searchSleepDiv").css("display","none");
@@ -272,6 +273,7 @@ function searchSleep() {
     sessionStorage.setItem('searchType', "searchSleep");
     if ($("#searchSleepDiv").css("display") == "none" ) {
         $("#searchSleepDiv").css("display","block");
+        $("#sumHowHMoodDiv").css("display","none");
         $("#averageMoodSumDiv").css("display","none");
         $("#sumActionDayDiv").css("display","none");
         $("#searchMoodDiv").css("display","none");
@@ -287,6 +289,7 @@ function averageMoodSum() {
     sessionStorage.setItem('searchType', "averageMoodSum");
     if ($("#averageMoodSumDiv").css("display") == "none" ) {
         $("#averageMoodSumDiv").css("display","block");
+        $("#sumHowHMoodDiv").css("display","none");
         $("#searchMoodDiv").css("display","none");
         $("#sumActionDayDiv").css("display","none");
         $("#searchSleepDiv").css("display","none");
@@ -307,6 +310,7 @@ function sumActionDay() {
     if ($("#sumActionDayDiv").css("display") == "none" ) {
         $("#sumActionDayDiv").css("display","block");
         $("#searchMoodDiv").css("display","none");
+        $("#sumHowHMoodDiv").css("display","none");
         $("#averageMoodSumDiv").css("display","none");
         $("#searchSleepDiv").css("display","none");
         $("#differenceDrugsSleepDiv").css("display","none");
@@ -387,6 +391,8 @@ function setFunction() {
             break;
         case 'searchSleep': searchSleep();
             break;
+        case 'sumHowHMood': sumHowHMood();
+            break;
         case 'searchDrugsMood': searchDrugsMood();
             break;
         case 'differenceDrugsSleep': differenceDrugsSleep();
@@ -406,7 +412,7 @@ function resetSession() {
     sessionStorage.removeItem('searchType');
 }
 function selectMenu() {
-    if (sessionStorage.getItem('searchType') == 'searchMood' || sessionStorage.getItem('searchType') == 'averageMoodSum'  || sessionStorage.getItem('searchType') == 'sumActionDay' || sessionStorage.getItem('searchType') == 'searchSleep'  || sessionStorage.getItem('searchType') == 'differenceDrugsSleep') {
+    if (sessionStorage.getItem('searchType') == 'searchMood' || sessionStorage.getItem('searchType') == 'averageMoodSum'  || sessionStorage.getItem('searchType') == 'sumActionDay' || sessionStorage.getItem('searchType') == 'searchSleep'  || sessionStorage.getItem('searchType') == 'differenceDrugsSleep' || sessionStorage.getItem('searchType') == 'sumHowHMood') {
         loadPageMood();
     }
     else if (sessionStorage.getItem('searchType') == 'searchDrugs' || sessionStorage.getItem('searchType') == 'searchDrugsMood') {
@@ -589,4 +595,48 @@ function differenceDrugsSleep() {
 
         $("#differenceDrugsSleepDiv").css("display","none");
     } 
+}
+
+
+/*
+ * update february 2024
+ */
+function sumHowHMood() {
+    
+    sessionStorage.setItem('searchType', "sumHowHMood");
+    if ($("#sumHowHMoodDiv").css("display") == "none" ) {
+        $("#sumHowHMoodDiv").css("display","block");
+        $("#searchSleepDiv").css("display","none");
+        $("#averageMoodSumDiv").css("display","none");
+        $("#sumActionDayDiv").css("display","none");
+        $("#searchMoodDiv").css("display","none");
+        $("#sumMoodDayDiv").css("display","none");
+        $("#differenceDrugsSleepDiv").css("display","none");
+    }
+    else {
+
+        $("#sumHowHMoodDiv").css("display","none");
+    }
+}
+
+function sumHowMoodSubmit(url) {
+     $.ajax({
+        url : url,
+        method : "get",
+        data :
+            $("#sumHowMoodForm").serialize()
+        ,
+        dataType : "html",
+    })
+        .done(function(response) {
+            $("#sumHowMoodResultDiv").css("display","block");
+            //$("#messageactionShow"+id).html(response);
+            $(".ajaxError").empty();
+
+            $("#sumHowMoodResultDiv").prepend(response);
+
+        })
+        .fail(function() {
+            alert("Wystąpił błąd");
+        })
 }

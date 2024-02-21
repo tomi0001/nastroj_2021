@@ -49,6 +49,16 @@ div.actionDay {
 
 
     }
+    div.sumHowMoodResultDiv {
+        width: 96%;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        border-radius: 20px;
+        padding: 12px;
+        display: none;
+    }
     tr.borderTrAverageTitle {
         border-width: 2px;
         border-style: solid;
@@ -312,4 +322,9 @@ td.tdMoodDrugs {
 td.tdMoodDrugsDose {
     width: 22%;
     text-align: center;
+}
+
+div.minutesMood {
+    clear: both;
+    text-align: left;
 }
