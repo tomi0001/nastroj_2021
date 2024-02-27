@@ -10,6 +10,7 @@ use Hash;
 use Auth;
 class User {
     public $errors = [];
+    public $updatePassword = false;
     public function saveUser(Request $request) {
         $User = new MUser;
         $User->name = $request->get("name");
@@ -29,6 +30,22 @@ class User {
             array_push($this->errors,"Już jest podany użytkwomnik wybierz inna nazwę");
         }
         
+    }
+    
+    public function checkErrorChangeSettings(Request $request) {
+        
+        if ($request->get("passwordOld") != "" or $request->get("passwordNew") != "" or $request->get("passwordNewConfirm") != "") {
+            $this->updatePassword = true;
+        }
+        if ($this->updatePassword == true) {
+            if (!Hash::check($request->get("passwordOld"),Auth::User()->password)) {
+                array_push($this->errors,"Stare hasło jest błędne");
+            }
+            if ($request->get("passwordNew") != $request->get("passwordNewConfirm")) {
+                array_push($this->errors,"podane hasła różnią się");
+            }
+        }
+      
     }
     public function updateUserDoctor(Request $request) {
         if (MUser::checkIfCountDoctorId(Auth::User()->id) == 0) {
@@ -62,5 +79,14 @@ class User {
         }
         $MUser->save();
         
+    }
+    /*
+     * update february 2024
+     */
+    public function updateUserPassword(string|null $password) {
+        MUser::updatePassword($password);
+    }
+    public function updateUserStartDay(int|null $startDay) {
+        MUser::updateStartDay($startDay);
     }
 }

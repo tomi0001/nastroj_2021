@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Hash;
 
 class User extends Authenticatable
 {
@@ -116,6 +117,20 @@ class User extends Authenticatable
      */
     public static function ifNullMoodColor(int $idUsers) {
         return self::selectRaw("level_mood1")->where("id",$idUsers)->first()->level_mood1;
+    }
+    
+     /*
+     * update february 2024
+     */
+    public static function updatePassword(string|null $password) {
+        return self::whereId(auth()->user()->id)->update([
+            'password' => Hash::make($password)
+        ]);
+    }
+    public static function updateStartDay(int|null $startDay) {
+        return self::whereId(auth()->user()->id)->update([
+            'start_day' => $startDay
+        ]);
     }
     
 }

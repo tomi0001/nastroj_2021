@@ -33,6 +33,8 @@ function setFunction() {
             break;
         case 'addNewDoctor': addDoctorNew();
             break;
+        case 'settingsUserSet': settingsUser();
+            break;
       
     }
 }
@@ -55,7 +57,7 @@ function selectMenu() {
     if (sessionStorage.getItem('settingType') == 'addNewGroup' ||  sessionStorage.getItem('settingType') == 'addNewSubstance' || sessionStorage.getItem('settingType') == 'addNewProduct' || sessionStorage.getItem('settingType') == 'editGroupSet' || sessionStorage.getItem('settingType') == 'editSubstanceSet' || sessionStorage.getItem('settingType') == 'editProductSet' || sessionStorage.getItem('settingType') == 'planedDose' ) {
         loadPageDrugs();
     }
-     if (sessionStorage.getItem('settingType') == 'addNewDoctor' ) {
+     if (sessionStorage.getItem('settingType') == 'addNewDoctor' || sessionStorage.getItem('settingType') == 'settingsUserSet') {
         loadPageUser();
     }
 }
@@ -972,7 +974,7 @@ function addDoctorNew() {
             .fail(function() {
                 alert("Wystąpił błąd");
             })    
-
+            $("#settingsUserSet").css("display","none");
             
     }
     else {
@@ -1498,4 +1500,63 @@ function addGroupNewSubmit() {
                 alert("Wystąpił błąd");
             })    
     }
+}
+
+/*
+ * 
+ * Update february 2024
+ */
+
+function settingsUser() {
+        sessionStorage.setItem('settingType', "settingsUserSet");
+    
+    if ($("#settingsUserSet").css("display") == "none" ) {
+        
+        $.ajax({
+                url : urlArray[12],
+                    method : "get",
+
+                    dataType : "html",
+            })
+            .done(function(response) {
+
+
+
+
+                  $("#settingsUserSet").css("display","block");
+                  $("#settingsUserSet").html(response);
+
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })    
+
+            
+            $("#addNewDoctor").css("display","none");
+    }
+    else {
+        
+        $("#settingsUserSet").css("display","none");
+    }  
+}
+
+function settingsUserSubmit() {
+                 $.ajax({
+                url : urlArraySubmit[12],
+                    method : "get",
+                    data : 
+              $("#formUserSettings").serialize(),
+                    dataType : "html",
+            })
+            .done(function(response) {
+
+
+          
+                $("#formUserSettingsSubmit").html(response);
+
+            })
+            .fail(function() {
+                alert("Wystąpił błąd");
+            })  
 }

@@ -66,7 +66,9 @@
             <div id="addDoctor" class="hrefUsers hrefSettingCursor" onmouseover="selectMenuUsers('addDoctor')" onmouseout="unSelectMenuUsers('addDoctor')" onclick="addDoctorNew()">
                LOGOWANIE DOCTORA
             </div>
-           
+           <div id="settingsUser" class="hrefUsers hrefSettingCursor" onmouseover="selectMenuUsers('settingsUser')" onmouseout="unSelectMenuUsers('settingsUser')" onclick="settingsUser()">
+               USTAWIENIA UŻYTKOWNIKA
+            </div>
 
         
         
@@ -78,6 +80,9 @@
     
     
     <div class="pagePageUser pagepage bodyUserPage" id="addNewDoctor" style="display: none;">
+
+        </div>
+    <div class="pagePageUser pagepage bodyUserPage" id="settingsUserSet" style="display: none;">
 
         </div>
     
@@ -138,7 +143,8 @@
         '{{route('settings.editSubstance')}}',
         '{{route('settings.editProduct')}}',
         '{{route('settings.planedDose')}}',
-        '{{route('settings.addDoctorNew')}}'
+        '{{route('settings.addDoctorNew')}}',
+        '{{route('settings.settingsUserSet')}}'
     ];
     var urlArraySubmit = [
         '{{route('settings.addNewActionSubmit')}}',
@@ -152,7 +158,8 @@
         '{{route('settings.editSubstanceSubmit')}}',
         '{{route('settings.editProductSubmit')}}',
         '{{route('settings.planedDoseSubmit')}}',
-        '{{route('settings.addDoctorNewSubmit')}}'
+        '{{route('settings.addDoctorNewSubmit')}}',
+        '{{route('settings.settingsUserSetSubmit')}}'
     ];
     
 

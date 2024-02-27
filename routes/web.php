@@ -193,7 +193,10 @@ Route::get("/settings/deletePlaned",[App\Http\Controllers\Settings\SettingsProdu
 Route::get("/settings/editPlanedsubmit",[App\Http\Controllers\Settings\SettingsProductController::class, 'editPlanedsubmit'])
         ->name("setting.editPlanedsubmit")->middleware('auth')->middleware('can:users');
 
-
+Route::get("/settings/settingsUserSet",[App\Http\Controllers\Settings\SettingsUserController::class, 'settingsUserSet'])
+        ->name("settings.settingsUserSet")->middleware('auth')->middleware('can:users');
+Route::get("/settings/settingsUserSetSubmit",[App\Http\Controllers\Settings\SettingsUserController::class, 'settingsUserSetSubmit'])
+        ->name("settings.settingsUserSetSubmit")->middleware('auth')->middleware('can:users');
 Route::get("/settings/addDoctorNew",[App\Http\Controllers\Settings\SettingsUserController::class, 'addDoctorNew'])
         ->name("settings.addDoctorNew")->middleware('auth')->middleware('can:users');
 Route::get("/settings/addDoctorNewSubmit",[App\Http\Controllers\Settings\SettingsUserController::class, 'addDoctorNewSubmit'])

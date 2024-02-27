@@ -51,4 +51,26 @@ class SettingsUserController {
         }
     }
     
+    /*
+     * Update february 2024
+     */
+    public function settingsUserSet() {
+        return view("Users.Settings.Users.settingsUserSet")->with("startDay",Auth::User()->start_day);
+    }
+    
+    public function settingsUserSetSubmit(Request $request) {
+        $User = new User;
+        $User->checkErrorChangeSettings($request);
+        if (count($User->errors) > 0) {
+            return View("ajax.error")->with("error",$User->errors);
+        }
+        else {
+            if ($User->updatePassword == true) {
+                $User->updateUserPassword($request->get("passwordNew"));
+            }
+            $User->updateUserStartDay($request->get("startDay"));
+            return View("ajax.succes")->with("succes","pomyslnie zmodyfikwano ustawienia");
+        }
+    }
+    
 }

@@ -59,6 +59,12 @@
         margin-top: 15px;
         
     }
+        #settingsUserSet {
+         min-height: 200px;
+        width: 900px;
+        margin-top: 15px;
+        
+    }
     #levelMoodAdd {
         min-height: 200px;
         width: 1100px;
