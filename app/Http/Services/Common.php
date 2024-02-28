@@ -330,5 +330,13 @@ class Common {
         }
         
     }
+    /*
+     * update february 2024
+     */
+    public static function subOneMinutes(int $hour) {
+        $time = strtotime("2024-02-02 $hour:00:00");
+        $time -= 60;
+        return date("h:i",$time);
+    }
     
 }

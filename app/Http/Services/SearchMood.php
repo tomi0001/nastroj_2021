@@ -595,15 +595,19 @@ class SearchMood {
 
         }
         else if ($request->get("timeTo") != "" and $request->get("timeTo") != "undefined") {
+            $timeFrom = explode(":",$hour . ":00:00");
             $timeTo = explode(":",$request->get("timeTo"));
+            $hourFrom = $this->sumHour($timeFrom,$hour);
             $hourTo = $this->sumHour($timeTo,$hour);
-            $moodModel->setHourTo($hourTo);
+            $moodModel->setHourTwo($hourFrom,$hourTo,$hour);
 
         }
         else if ($request->get("timeFrom") != "" and $request->get("timeTo") != "undefined") {
             $timeFrom = explode(":",$request->get("timeFrom"));
+            $timeTo = explode(":",Common::subOneMinutes($hour));
             $hourFrom = $this->sumHour($timeFrom,$hour);
-            $moodModel->setHourFrom($hourFrom);
+            $hourTo = $this->sumHour($timeTo,$hour);
+            $moodModel->setHourTwo($hourFrom,$hourTo,$hour);
 
         }
 
