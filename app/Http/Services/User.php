@@ -11,6 +11,8 @@ use Auth;
 class User {
     public $errors = [];
     public $updatePassword = false;
+    public $colorCss = [];
+    public $css = [];
     public function saveUser(Request $request) {
         $User = new MUser;
         $User->name = $request->get("name");
@@ -86,7 +88,21 @@ class User {
     public function updateUserPassword(string|null $password) {
         MUser::updatePassword($password);
     }
-    public function updateUserStartDay(int|null $startDay) {
-        MUser::updateStartDay($startDay);
+    public function updateUserStartDay(Request $request) {
+        MUser::updateStartDay($request->get("startDay"));
+        MUser::updateStyle($request->get("css"),$request->get("css-color"));
+    }
+    public function downloadDirectoryCss() {
+        $path = public_path('styles');
+        $files = scandir($path);
+        foreach ($files as $file) {
+            
+            if (strstr($file,"css")) {
+                array_push($this->css,$file);
+            }
+            else if (strstr($file,"color")) {
+                array_push($this->colorCss,$file);
+            }
+        }
     }
 }

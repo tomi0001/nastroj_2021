@@ -132,5 +132,10 @@ class User extends Authenticatable
             'start_day' => $startDay
         ]);
     }
+    public static function updateStyle(string|null $css,string|null $color) {
+        return self::whereId(auth()->user()->id)->update([
+            'css' => $css, 'css_color' => $color
+        ]);
+    }
     
 }

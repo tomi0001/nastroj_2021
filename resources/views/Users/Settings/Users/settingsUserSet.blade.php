@@ -37,6 +37,38 @@
                 </td>
             </tr>
             <tr>
+                <td class="tdColorUser">
+                    Style color
+                </td>
+                <td>
+                    <select name="css-color" class="form-control">
+                        @foreach ($colorCss as $color)
+                            @if ($setColorCss == $color)
+                                <option value="{{$color}}" selected>{{$color}}</option>
+                            @else
+                                <option value="{{$color}}" >{{$color}}</option>
+                            @endif
+                        @endforeach
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="tdColorUser">
+                    Style szkielet
+                </td>
+                <td>
+                    <select name="css" class="form-control">
+                        @foreach ($css as $cssArray)
+                            @if ($setCss == $cssArray)
+                                <option value="{{$cssArray}}" selected>{{$cssArray}}</option>
+                            @else
+                                <option value="{{$cssArray}}" >{{$cssArray}}</option>
+                            @endif
+                        @endforeach
+                    </select>
+                </td>
+            </tr>
+            <tr>
                 <td colspan="2"  class="center">
                     <input type="button" class="btn-user  user" onclick="settingsUserSubmit()" value='ZMIEŃ'>
                 </td>

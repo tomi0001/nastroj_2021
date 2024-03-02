@@ -51,6 +51,8 @@ class CreateUsersTable extends Migration
             $table->float('level_mood8',6,2)->nullable();
             $table->float('level_mood9',6,2)->nullable();
             $table->float('level_mood10',6,2)->nullable();
+            $table->string('css',500)->default("default_css");
+            $table->string('css_color',500)->default("sommer_color");
 
             $table->rememberToken();
             $table->timestamps();

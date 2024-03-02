@@ -3,19 +3,19 @@
         <title>Dzienniczek nastrojów - @yield('title')</title>
         
 
-        <link href="{{ asset('./styles/' . config('view.styles') . '/css/pageSearchwidth1810.css') }}" rel="stylesheet">
-        <link href="{{ asset('./styles/' . config('view.styles') . '/css/pageSearchwidth1410.css') }}" rel="stylesheet">
-        <link href="{{ asset('./styles/' . config('view.styles') . '/css/pageSearchwidth1210.css') }}" rel="stylesheet">
-        <link href="{{ asset('./styles/' . config('view.styles') . '/css/pageSearchwidth700.css') }}" rel="stylesheet">
-        <link href="{{ asset('./styles/' . config('view.styles') . '/css/pageSearchAll.css') }}" rel="stylesheet">
-        <link href="{{ asset('./styles/' . config('view.styles_color') . '/css/pageSearchColor.css') }}" rel="stylesheet">
+        <link href="{{ asset('./styles/' . Auth::User()->css . '/css/pageSearchwidth1810.css') }}" rel="stylesheet">
+        <link href="{{ asset('./styles/' . Auth::User()->css . '/css/pageSearchwidth1410.css') }}" rel="stylesheet">
+        <link href="{{ asset('./styles/' . Auth::User()->css . '/css/pageSearchwidth1210.css') }}" rel="stylesheet">
+        <link href="{{ asset('./styles/' . Auth::User()->css . '/css/pageSearchwidth700.css') }}" rel="stylesheet">
+        <link href="{{ asset('./styles/' . Auth::User()->css . '/css/pageSearchAll.css') }}" rel="stylesheet">
+        <link href="{{ asset('./styles/' . Auth::User()->css_color  . '/css/pageSearchColor.css') }}" rel="stylesheet">
         
-        <link href="{{ asset('./styles/' . config('view.styles') . '/css/Common1810.css') }}" rel="stylesheet">
-        <link href="{{ asset('./styles/' . config('view.styles') . '/css/Common1410.css') }}" rel="stylesheet">
-        <link href="{{ asset('./styles/' . config('view.styles') . '/css/Common1210.css') }}" rel="stylesheet">
-        <link href="{{ asset('./styles/' . config('view.styles') . '/css/Common700.css') }}" rel="stylesheet">
-        <link href="{{ asset('./styles/' . config('view.styles') . '/css/CommonAll.css') }}" rel="stylesheet">
-        <link href="{{ asset('./styles/' . config('view.styles_color') . '/css/CommonColor.css') }}" rel="stylesheet">
+        <link href="{{ asset('./styles/' . Auth::User()->css . '/css/Common1810.css') }}" rel="stylesheet">
+        <link href="{{ asset('./styles/' . Auth::User()->css . '/css/Common1410.css') }}" rel="stylesheet">
+        <link href="{{ asset('./styles/' . Auth::User()->css . '/css/Common1210.css') }}" rel="stylesheet">
+        <link href="{{ asset('./styles/' . Auth::User()->css . '/css/Common700.css') }}" rel="stylesheet">
+        <link href="{{ asset('./styles/' . Auth::User()->css . '/css/CommonAll.css') }}" rel="stylesheet">
+        <link href="{{ asset('./styles/' . Auth::User()->css_color  . '/css/CommonColor.css') }}" rel="stylesheet">
 
       
         <link rel="stylesheet"  href="{{asset('./bootstrap-5.1.3-dist/css/bootstrap.css')}}"  >

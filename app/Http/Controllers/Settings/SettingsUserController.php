@@ -26,6 +26,7 @@ use App\Http\Services\Common;
 use App\Http\Services\Action as serviceAction;
 use App\Http\Services\User;
 use Auth;
+use Storage;
 class SettingsUserController {
     public function addDoctorNew() {
         //$User = new User;
@@ -55,7 +56,11 @@ class SettingsUserController {
      * Update february 2024
      */
     public function settingsUserSet() {
-        return view("Users.Settings.Users.settingsUserSet")->with("startDay",Auth::User()->start_day);
+        $User = new User;
+        $User->downloadDirectoryCss();   
+        return view("Users.Settings.Users.settingsUserSet")->with("startDay",Auth::User()->start_day)
+                ->with("colorCss",$User->colorCss)->with("css",$User->css)
+                ->with("setColorCss",Auth::User()->css_color)->with("setCss",Auth::User()->css);
     }
     
     public function settingsUserSetSubmit(Request $request) {
@@ -68,7 +73,7 @@ class SettingsUserController {
             if ($User->updatePassword == true) {
                 $User->updateUserPassword($request->get("passwordNew"));
             }
-            $User->updateUserStartDay($request->get("startDay"));
+            $User->updateUserStartDay($request);
             return View("ajax.succes")->with("succes","pomyslnie zmodyfikwano ustawienia");
         }
     }
