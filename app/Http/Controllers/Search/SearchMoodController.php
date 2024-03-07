@@ -293,7 +293,7 @@ class SearchMoodController {
                     }
                     if ( ($request->get("groupWeek") == "on") ) {
                          $arrayWeek = $SearchMoodAI->createWeek($SearchMoodAI->dateFrom,$SearchMoodAI->dateTo);
-                         //var_dump($arrayWeek);
+                        // var_dump($arrayWeek);
                     $sort = $SearchMoodAI->sortWeek($minMax,$arrayWeek);
 //                                 print("<pre>");
 //                print_r($sort);

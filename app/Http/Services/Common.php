@@ -35,7 +35,8 @@ class Common {
         
         
         
-         if ( (  (  strtotime($yearFrom[0] . "-" . "11-" . "01") - strtotime($dateStart)  )  < 86400 * 7)  and (  (  strtotime($yearFrom[0] . "-" . "10-" . "31") - strtotime($dateStart)  )  >= 0) ) {
+         if ( (  (  strtotime($yearFrom[0] . "-" . "11-" . "01") - strtotime($dateStart)  )  < 86400 * 7) 
+                 and (  (  strtotime($yearFrom[0] . "-" . "10-" . "31") - strtotime($dateStart)  )  > 0) ) {
             return true;
         }  
         else {
@@ -46,14 +47,15 @@ class Common {
     
     public static function ifChangeTimeWinterTwo(string $dateStart) :bool {
         $yearFrom = explode("-",$dateStart);
-        if  (  (  (   strtotime($dateStart)  )  < 86400 * 7  ) -  strtotime($yearFrom[0] . "-" . "11-" . "01")  and (  (  strtotime($yearFrom[0] . "-" . "10-" . "31") - strtotime($dateStart)  )  < 0)    ) {
+        if  (  (  (   strtotime($dateStart)  )  < 86400 * 7  ) -  strtotime($yearFrom[0] . "-" . "11-" . "01") 
+                and (  (  strtotime($yearFrom[0] . "-" . "10-" . "31") - strtotime($dateStart)  )  < 0)    ) {
             return true;
         }
         else {
             return false;
         }
     }
-    
+
     
     public static function returnDayWeek($data) {
         $week = date('N', strtotime($data));
@@ -338,5 +340,17 @@ class Common {
         $time -= 60;
         return date("h:i",$time);
     }
-    
+    /*
+     * update marz 2024
+     */
+    public static function ifChangeTimeNextYear(string $dateStart) :bool {
+        $yearFrom = explode("-",$dateStart);
+        if  ( (  (  strtotime($yearFrom[0] . "-" . "01-" . "01") - strtotime($dateStart)  )  < 86400 * 7) 
+                 and (  (  strtotime($yearFrom[0] . "-" . "12-" . "31") - strtotime($dateStart)  )  > 0) )    {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }

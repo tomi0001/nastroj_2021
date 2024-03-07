@@ -175,22 +175,28 @@ class SearchMoodAI
         $week = 1;
         $arrayWeek = [];
         $j = 0;
+        $bool = false;
         for ($i = strtotime($dateFrom);$i <= strtotime($dateTo);$i+= 86400 * 7) {
             $dateIFrom = date("Y-m-d",$i);
             $dateITo = date("Y-m-d",$i+ (86400 * 6) );
             if (MoodModel::ifExistDAteMood($dateIFrom, $dateITo, $this->idUsers,$this->startDay) > 0 ) {
-//                if (Common::ifChangeTimeWinterOne(date("Y-m-d",$i))) {
-//                    $arrayWeek["dateStart"][$j] = date("Y-m-d",$i+ (86400) );
-//                    $arrayWeek["dateEnd"][$j] = date("Y-m-d",$i+ (86400 * 7) );
-//                }
-//                else if (Common::ifChangeTimeWinterTwo(date("Y-m-d",$i))) {
-//                     $arrayWeek["dateStart"][$j] = date("Y-m-d",$i+ (86400) );
-//                     $arrayWeek["dateEnd"][$j] = date("Y-m-d",$i+ (86400 * 7) );
-//                }
-//                else {
+                if (Common::ifChangeTimeWinterOne(date("Y-m-d",$i))) {
+                    $arrayWeek["dateStart"][$j] = date("Y-m-d",$i+ (86400) );
+                    $arrayWeek["dateEnd"][$j] = date("Y-m-d",$i+ (86400 * 7) );
+                    $bool = true;
+                }
+                else if (Common::ifChangeTimeWinterTwo(date("Y-m-d",$i)) and $bool == true) {
+                     $arrayWeek["dateStart"][$j] = date("Y-m-d",$i+ (86400) );
+                     $arrayWeek["dateEnd"][$j] = date("Y-m-d",$i+ (86400 * 7) );
+                }
+                else if (Common::ifChangeTimeNextYear(date("Y-m-d",$i))  and $bool == true) {
+                     $arrayWeek["dateStart"][$j] = date("Y-m-d",$i+ (86400) );
+                     $arrayWeek["dateEnd"][$j] = date("Y-m-d",$i+ (86400 * 7) );
+                }
+                else {
                     $arrayWeek["dateStart"][$j] = date("Y-m-d",$i);
                     $arrayWeek["dateEnd"][$j] = date("Y-m-d",$i+ (86400 * 6) );
-                //}
+                }
                 
      
                
