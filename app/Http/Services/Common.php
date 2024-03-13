@@ -341,7 +341,7 @@ class Common {
         return date("h:i",$time);
     }
     /*
-     * update marz 2024
+     * update marc 2024
      */
     public static function ifChangeTimeNextYear(string $dateStart) :bool {
         $yearFrom = explode("-",$dateStart);
