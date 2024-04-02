@@ -131,10 +131,11 @@ div.typeOfPortion {
 }
 
 table.drugsShow {
-    margin: 10px;
+    
  
 
-    width: 97%;
+    width: 100%;
+    margin-bottom: 40px;
 }
 
 
@@ -215,6 +216,7 @@ table.tableCenter {
     div.borderMood {
 
         border-radius: 20px 20px 20px 20px;
+        
     }
 
     div.borderSleep {

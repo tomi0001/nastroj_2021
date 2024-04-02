@@ -46,7 +46,7 @@ background-image: radial-gradient(circle, rgb(93, 112, 106) 0%, rgba(143, 173, 1
 -webkit-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
 -moz-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
 box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
-background-color: rgba(100, 163, 51, 1);
+background-color: rgb(194, 241, 158);
 
     }
             .titleDrugsSettings {
@@ -60,7 +60,7 @@ background-image: linear-gradient(180deg, rgb(67 82 68) 0%, #ccedc8 100%);
 -webkit-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
 -moz-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
 box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
-background-color: #bcddb8;
+background-color: rgba(188, 205, 184, 0.6);
     }
         div.hrefDrugs {
              color: #c0e9c0;
@@ -93,7 +93,7 @@ background-image: linear-gradient(90deg, rgba(175, 53, 38, 1) 14%, rgba(171, 120
 -webkit-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
 -moz-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
 box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
-background-color: rgba(100, 163, 51, 0.6);
+background-color: rgba(206, 249, 207,0.6);
     }
             .titleMoodSettings {
             color: #3e5c31;
@@ -103,7 +103,7 @@ background-image: linear-gradient(180deg, #62ff62 0%, rgba(100, 163, 51, 1) 100%
     }
 
     table.searchTableMood {
-        color: #bffdd1;
+        color: #1e3524;
     }
     table.searchTableDrugs {
         color: #424242;
@@ -141,7 +141,7 @@ box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
         color: #9B0707;
     }
     div.tableSearchMood {
-        background-color: #69ff18;
+        background-color: #cbffb0;
             border: 2px solid rgba(89, 154, 69, 0.85);
     box-shadow: 0 30px 30px 15px rgba(86, 134, 76, 0.7);
     }
@@ -171,14 +171,14 @@ tr.borderTrAverageTitle {
     border-color: #204c05;
 }
 tr.borderTrAverage {
-    background-color: #a4f372;
+    
     border-color: #338300;
 }
 .rightBorder {
     border-color: #204c05;
 }
 div.averageSumDiv {
-    background-color: #94ff31;
+    background-color: #c4f795;
     -webkit-box-shadow: inset 0px 0px 33px -10px rgb(44, 100, 25);
     -moz-box-shadow: inset 0px 0px 33px -10px rgb(44, 100, 25);
     box-shadow: inset 0px 0px 33px -10px rgb(44, 100, 25);

@@ -5,7 +5,7 @@ body {
 
             #MainPage {
 
-                background-color: rgba(103, 170, 16, 0.6);
+                background-color: rgba(168, 235, 81, 0.3);
 
 
             }
@@ -18,10 +18,11 @@ body {
         }
         table.actionShow {
 
-    background-color: #99ada2;
+   
     color: #034053;
 
     border: 2px solid #0E5970;
+    background-color: rgba(193, 204, 184, 0.5);
 }
 td.boldTitle {
 
@@ -640,8 +641,9 @@ table.actionShowIdMood {
 }
 table.moodShow {
 
-    background-color: rgba(141, 211, 107, 0.8);
+    
     color: #2f5512;
+    background-color: rgba(193, 204, 184, 0.5);
 
 }
 td.showMood {
@@ -671,7 +673,7 @@ td.titleTheadDrugs {
 }
 
                             .user {
-            background-color:  rgba(7, 73, 76, 1);
+            background-color:  rgb(47, 68, 59);
             color: white;
 
 

@@ -77,7 +77,7 @@ box-shadow: inset 0px 0px 10px 1px #99ADA2;
         }
         div.formAddMood {
      
-           background-color: rgba(200, 209, 214, 0.56);
+           
         }
         
     
@@ -111,7 +111,7 @@ box-shadow: inset 0px 0px 20px 1px #8FB75B;
 
         div.cell10000 {
           
-            background-color: #b8e58d;
+            background-color: rgba(172, 238, 201, 0.7)
            
 
 
@@ -211,17 +211,17 @@ box-shadow: inset 0px 0px 20px 1px #8FB75B;
    
         #showmood {
             
-            background-color: rgba(122, 183, 52, 0.61);
+            
        
         }
         #showdrugs {
            
-            background-color: rgba(186, 214, 216, 0.61);
+           
       
         }
         #showaction {
            
-            background-color: rgba(148, 234, 243 , 0.61);
+            
 
         }
        
@@ -360,8 +360,9 @@ div.typeOfPortion {
 
 table.drugsShow {
 
-    background-color: rgba(145, 200, 192, 0.4);
+    
     color: #775807;
+    background-color: rgba(193, 204, 184, 0.5);
 
 }
 

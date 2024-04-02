@@ -115,10 +115,11 @@ div.sumDrugsAt {
             border-radius: 30px;
         }
         table.actionShow {
-    margin: 10px;
 
 
-    width: 97%;
+}
+table.moodShow {
+margin-bottom: 40px;
 
 }
 table.moodShow, td.showMood, td.moodButton, td.showDrugs{
@@ -126,11 +127,7 @@ table.moodShow, td.showMood, td.moodButton, td.showDrugs{
    border-collapse: collapse;
 
 }
-table.moodShow {
-    margin: 10px;
 
-    max-width: 99%;
-}
 td.titleTheadMood {
     position: -webkit-sticky;
     position: sticky;
