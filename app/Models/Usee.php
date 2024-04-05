@@ -18,13 +18,13 @@ class Usee extends Model
 
             ->select( DB::Raw("(DATE(IF(HOUR(usees.date) >= '$startDay', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ) as dat  "));
 
-            $this->questions->selectRaw("(sum(usees.portion)   )  as portions")
+            $this->questions->selectRaw("(round(sum(usees.portion),2)   )  as portions")
                 ->selectRaw("((count(*) ) )  as count");
 
         $this->questions->selectRaw("usees.id_products as id")
             ->selectRaw("usees.id as id_usees")
             ->selectRaw("products.name as name")
-            ->selectRaw("sum(usees.price) as price")
+            ->selectRaw("round(sum(usees.price),2) as price")
             ->selectRaw("products.type_of_portion as type");
 
             $this->questions->join("products","products.id","usees.id_products");

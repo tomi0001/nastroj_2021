@@ -24,14 +24,16 @@ td.boldAction {
     font-weight: bold;
 }
 div.titleWeek {
-    width: 100%;
+    width: 90%;
     height: 70px;
     padding-left: 20px;
     padding-top: 20px;
     text-align: center;
     font-size: 25px;
-    margin: 0px;
-    float: left;
+    margin-left: auto;
+    margin-right: auto;
+   
+    border-radius: 25px;
 }
 div.actionDay {
     min-height: 70px;
@@ -259,26 +261,10 @@ div.actionSum {
     margin-right: auto;
 }
 
-.actionSum::-webkit-scrollbar-track {
 
-  padding: 2px 0;
-  margin-right: 30px;
-
-}
-
-.actionSum::-webkit-scrollbar {
-  width: 10px;
-    padding-right: 30px;
-}
-
-.actionSum::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-    padding-right: 30px;
-
-}
 
 div.recordMoodGroupWeek {
-    width: 88%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
 
@@ -327,4 +313,10 @@ td.tdMoodDrugsDose {
 div.minutesMood {
     clear: both;
     text-align: left;
+}
+
+table.tableColorSearchMoodSum {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }

@@ -28,7 +28,7 @@
       
 
 
-                <div class="moodSearchResult">
+         
                     <div class="moodSearchResult">
                         <div class="dayMood" style="min-height: 200px; padding: 10px; ">
 
@@ -277,7 +277,7 @@
  
 
 
-    </div>
+   
 
 
 @endif

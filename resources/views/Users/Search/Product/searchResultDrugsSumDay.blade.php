@@ -88,29 +88,12 @@
                 </div>
                 </div>
             </div>
-        @for ($i=0;$i < count($arrayList);$i++)
+       
 
 
 
-                    <div style="margin-left: 5%; margin-right: 5%; margin-top: 2%; margin-bottom: 1%;">
-
-                        <div style="clear: both;"></div>
-
-
-                        <div class='showAjaxDay'>
-                            <div id="dayMood{{$arrayList[$i]->dat}}" style="display: none; float: left; margin-right: 10px;">
-
-                            </div>
-                            <div  id="daySubstance{{$arrayList[$i]->dat}}" style="float: left; display: none; margin-right: 10px;">
-
-                            </div>
-                            <div style="clear: both;"></div>
-                            <div  id="dayAction{{$arrayList[$i]->dat}}" class='divActionSum' style="float: left; display: none; margin-right: 10px; ">
-
-                            </div>
-                        </div>
-                    </div>
-                    <table>
+           
+                    <table style="width: 100%;">
 
                         <thead >
                         <tr class="bold">
@@ -142,7 +125,7 @@
                         </thead>
 
 
-
+                        @for ($i=0;$i < count($arrayList);$i++)
 
 
                         <tr>
@@ -192,14 +175,14 @@
                             <td></td>
                         </tr>
 
-
+                        @endfor
 
                     </table>
 
 
 
 
-        @endfor
+       
         <div class="d-flex justify-content-center">
             @php
                 $arrayList->appends(['sort'=>Request::get('sort')])

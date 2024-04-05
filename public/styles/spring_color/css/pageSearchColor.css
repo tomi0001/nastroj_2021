@@ -151,7 +151,7 @@ box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
     }
 
     .dayMood {
-        background-color: #0dd300;
+        background-color: #74df6d;
 
 color: #195600;
 
@@ -184,7 +184,7 @@ div.averageSumDiv {
     box-shadow: inset 0px 0px 33px -10px rgb(44, 100, 25);
 }
 div.sumHowMoodResultDiv {
-    background-color: #94ff31;
+    background-color: #b9e78e;
     -webkit-box-shadow: inset 0px 0px 33px -10px rgb(44, 100, 25);
     -moz-box-shadow: inset 0px 0px 33px -10px rgb(44, 100, 25);
     box-shadow: inset 0px 0px 33px -10px rgb(44, 100, 25);
@@ -208,7 +208,7 @@ span.titleSearchSumDayMood {
     color: #EBFABC;
 }
     .dayMoodEnd {
-                background-color: #0dd300;
+                background-color: #74df6d;
 
 
 color: #4F9805;
@@ -242,7 +242,7 @@ background-color: rgb(171 221 173 / 84%);
     }
 div.moodSearchResult {
     background-color: rgba(203, 245, 182, 0.6);
-    border: 2px solid #0dd300;
+    border: 2px solid #74df6d;
     -webkit-box-shadow: 0px 0px 30px 0px rgba(63, 76, 8, 1);
 -moz-box-shadow: 0px 0px 30px 0px rgba(63, 76, 8, 1);
 box-shadow: 0px 0px 30px 0px rgba(63, 76, 8, 1);
@@ -284,9 +284,9 @@ div.dateSumDayMoodAverageDayWeek {
     box-shadow: inset 0px 0px 24px -8px rgba(158, 200, 31, 1);
 }
 div.titleWeek {
-color: #87eb7c;
-background-color: rgba(0, 85, 160, 1);
-background-image: radial-gradient(circle, rgb(36 129 19) 50%, rgb(69 222 51) 92%);
+color: #163813;
+background-color: #40853b
+
 
 
 }
@@ -306,14 +306,11 @@ background-image: radial-gradient(circle, rgb(36 129 19) 50%, rgb(69 222 51) 92%
 div.recordMoodGroupWeek { 
     border-radius: 0px 0px 25px 25px;
 
-background-color: rgba(65, 212, 48, 1);
-background-image: linear-gradient(90deg, rgba(65, 212, 48, 1) 0%, rgba(36, 129, 19, 1) 18%, rgba(36, 129, 19, 1) 50%, rgba(36, 129, 19, 1) 86%, rgba(65, 212, 48, 1) 100%);
+
+
 
 }
 
-table.tableColorSearchMoodSum {
-    background-color: #A4D799;
-}
 
 td.tdMoodDrugs {
     border-radius: 12px;

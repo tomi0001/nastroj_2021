@@ -111,7 +111,7 @@
 }
 div.dateSumMoodDrugs {
        min-height: 90px;
-    width: 45%;
+    width: 32%;
     float: left;
     border-radius: 25px;
     margin: 11px;
@@ -155,7 +155,7 @@ div.dayOne2 {
     }
     #searchDrugsMoodDiv {
         min-height: 200px;
-        width: 1000px;
+        width: 1400px;
         margin-top: 15px;
     }
     #sumHowHMoodDiv {
@@ -186,7 +186,7 @@ div.dayOne2 {
         font-size: 20px;
     }
     div.tableSearchMood {
-        width: 93%;
+        width: 98%;
     min-height: 350px;
     border-radius: 25px;
     margin-left: auto;
