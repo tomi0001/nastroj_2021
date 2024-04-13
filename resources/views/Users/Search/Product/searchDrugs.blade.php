@@ -10,11 +10,28 @@
                 </td>
                 <td colspan="3">
                 <div style='clear: both;'>
-                    <div style='float: left; width:75%;' id="idNameProduct">
-                        <input type='text' name='nameProduct[]' class='form-control' placeholder="słowa kluczowe">
+                    <div style='float: left; width:80%;' id="idNameProduct">
+                        <div style='float: left; width:45%;'>
+                            <input type='text' name='nameProduct[]' class='form-control' placeholder="nazwa">
+                        </div>
+                        <div style='float: left; width:20%; margin-left: 10px;'>
+                            <input type='text' name='doseFromProduct[]' class='form-control' placeholder="dawka od">
+                        </div>
+                        <div style='float: left; width:20%; margin-left: 10px;'>
+                            <input type='text' name='doseToProduct[]' class='form-control' placeholder="dawka do">
+                        </div>
+                        
                     </div>
-                    <div style='float: left; width:75%; display: none;' id="idNameProductCopy" >
-                        <input type='text' name='nameProduct[]' class='form-control' placeholder="słowa kluczowe">
+                    <div style='float: left; width:80%; display: none;' id="idNameProductCopy" >
+                        <div style='float: left; width:45%;'>
+                            <input type='text' name='nameProduct[]' class='form-control' placeholder="nazwa">
+                        </div>
+                        <div style='float: left; width:20%; margin-left: 10px;'>
+                            <input type='text' name='doseFromProduct[]' class='form-control' placeholder="dawka od">
+                        </div>
+                        <div style='float: left; width:20%; margin-left: 10px;'>
+                            <input type='text' name='doseToProduct[]' class='form-control' placeholder="dawka do">
+                        </div>
                     </div>
                     <div style='float: left; margin-left: 66px;' >
                     <a onclick="addFieldnameProduct()" style="cursor: pointer;">
@@ -33,11 +50,27 @@
                 </td>
                 <td colspan="3">
                 <div style='clear: both;'>
-                    <div style='float: left; width:75%;' id="idNameSubstance">
-                        <input type='text' name='nameSubstance[]' class='form-control' placeholder="słowa kluczowe">
+                    <div style='float: left; width:80%;' id="idNameSubstance">
+                        <div style='float: left; width:45%;'>
+                            <input type='text' name='nameSubstance[]' class='form-control' placeholder="nazwa">
+                        </div>
+                        <div style='float: left; width:20%; margin-left: 10px;'>
+                            <input type='text' name='doseFromSubstance[]' class='form-control' placeholder="dawka od">
+                        </div>
+                        <div style='float: left; width:20%; margin-left: 10px;'>
+                            <input type='text' name='doseToSubstance[]' class='form-control' placeholder="dawka do">
+                        </div>
                     </div>
-                    <div style='float: left; width:75%; display: none;' id="idNameSubstanceCopy" >
-                        <input type='text' name='nameSubstance[]' class='form-control' placeholder="słowa kluczowe">
+                    <div style='float: left; width:80%; display: none;' id="idNameSubstanceCopy" >
+                        <div style='float: left; width:45%;'>
+                            <input type='text' name='nameSubstance[]' class='form-control' placeholder="nazwa">
+                        </div>
+                        <div style='float: left; width:20%; margin-left: 10px;'>
+                            <input type='text' name='doseFromSubstance[]' class='form-control' placeholder="dawka od">
+                        </div>
+                        <div style='float: left; width:20%; margin-left: 10px;'>
+                            <input type='text' name='doseToSubstance[]' class='form-control' placeholder="dawka do">
+                        </div>
                     </div>
                     <div style='float: left; margin-left: 66px;' >
                     <a onclick="addFieldnameSubstance()" style="cursor: pointer;">
@@ -56,11 +89,28 @@
                 </td>
                 <td colspan="3">
                 <div style='clear: both;'>
-                    <div style='float: left; width:75%;' id="idNameGroup">
-                        <input type='text' name='nameGroup[]' class='form-control' placeholder="słowa kluczowe">
+                    <div style='float: left; width:80%;' id="idNameGroup">
+                        <div style='float: left; width:45%;'>
+                            <input type='text' name='nameGroup[]' class='form-control' placeholder="nazwa">
+                        </div>
+                        <div style='float: left; width:20%; margin-left: 10px;'>
+                            <input type='text' name='doseFromGroup[]' class='form-control' placeholder="dawka od">
+                        </div>
+                        <div style='float: left; width:20%; margin-left: 10px;'>
+                            <input type='text' name='doseToGroup[]' class='form-control' placeholder="dawka do">
+                        </div>
+                        
                     </div>
                     <div style='float: left; width:75%; display: none;' id="idNameGroupCopy" >
-                        <input type='text' name='nameGroup[]' class='form-control' placeholder="słowa kluczowe">
+                        <div style='float: left; width:45%;'>
+                            <input type='text' name='nameGroup[]' class='form-control' placeholder="nazwa">
+                        </div>
+                        <div style='float: left; width:20%; margin-left: 10px;'>
+                            <input type='text' name='doseFromGroup[]' class='form-control' placeholder="dawka od">
+                        </div>
+                        <div style='float: left; width:20%; margin-left: 10px;'>
+                            <input type='text' name='doseToGroup[]' class='form-control' placeholder="dawka do">
+                        </div>
                     </div>
                     <div style='float: left; margin-left: 66px;' >
                     <a onclick="addFieldnameGroup()" style="cursor: pointer;">
@@ -81,20 +131,7 @@
                     <input type="text" name="whatWork" class="form-control" placeholder="fraza">
                 </td>
             </tr>
-            <tr>
-                <td style='padding-top: 10px; width: 37%;'>
-                    dawka
-                </td>
-                <td colspan="1">
-                    <input type="number" name="doseFrom" class="form-control" step="0.01">
-                </td>
-                <td>
-                    do
-                </td>
-                <td>
-                    <input type="number" name="doseTo" class="form-control" step="0.01">
-                </td>
-            </tr>
+
 
             <tr>
                 <td style='padding-top: 10px; width: 37%;'>

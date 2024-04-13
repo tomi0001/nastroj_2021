@@ -24,6 +24,7 @@ class SearchDrugs {
      public $question;
      public $count;
      private $idProduct = [];
+
    
 
 
@@ -36,9 +37,9 @@ class SearchDrugs {
             $this->idUsers  = Auth::User()->id_users;
         }
         $this->startDay  = Auth::User()->start_day;
-        $this->setIdProduct($request->get("nameProduct"));
-        $this->setIdSubstance($request->get("nameSubstance"));
-        $this->setIdGroup($request->get("nameGroup"));
+        $this->setIdProduct($request->get("nameProduct"),$request->get("doseFromProduct"),$request->get("doseToProduct"));
+        $this->setIdSubstance($request->get("nameSubstance"),$request->get("doseFromSubstance"),$request->get("doseToSubstance"));
+        $this->setIdGroup($request->get("nameGroup"),$request->get("doseFromGroup"),$request->get("doseToGroup"));
      }
 
      public function checkError(Request $request) {
@@ -57,6 +58,7 @@ class SearchDrugs {
          $Usee->setDate($request->get("dateFrom"),$request->get("dateTo"),$this->startDay);
          $this->setHour($Usee,$request);
          $Usee->setDose($request->get("doseFrom"),$request->get("doseTo"));
+         
          $Usee->setProduct($this->idProduct);
 //         if ($request->get("whatWork") != "") {
 //             $Usee->setWhatWork($request->get("whatWork"));
@@ -81,7 +83,7 @@ class SearchDrugs {
          $Usee->setIdUsers($this->idUsers);
          $Usee->setDate($request->get("dateFrom"),$request->get("dateTo"),$this->startDay);
          $this->setHour($Usee,$request);
-         
+         //var_dump($this->idProduct);
          $Usee->setProduct($this->idProduct);
 //         if ($request->get("whatWork") != "") {
 //             $Usee->setWhatWork($request->get("whatWork"));
@@ -115,7 +117,9 @@ class SearchDrugs {
          $Usee->setDate($request->get("dateFrom"),$request->get("dateTo"),$this->startDay);
          $this->setHour($Usee,$request);
          $Usee->setDose($request->get("doseFrom"),$request->get("doseTo"));
-         $Usee->setProduct($this->idProduct);
+         //if (count($this->idProduct) > 0) {
+             $Usee->setProduct($this->idProduct);
+         //}
          $Usee->setIdUsers($this->idUsers);
          if ($request->get("whatWork") != "") {
              $Usee->setWhatWork($request->get("whatWork"));
@@ -135,7 +139,7 @@ class SearchDrugs {
          return $Usee->questions->paginate(15);
 
      }
-     private function setIdProduct( $nameProduct) {
+     private function setIdProduct( $nameProduct,$doseFrom,$doseTo) {
          if (empty($nameProduct)) {
              return;
          }
@@ -144,7 +148,22 @@ class SearchDrugs {
 
                  $array = Product::selectIdNameProduct($nameProduct[$i]);
                  foreach ($array as $list) {
-                     array_push($this->idProduct, $list->id);
+                    
+
+                     //update april 2024
+                     $this->idProduct["name"][] = $list->id;
+                     if (!empty($doseFrom[$i])) {
+                        $this->idProduct["doseFrom"][] = $doseFrom[$i];
+                     }
+                     else {
+                        $this->idProduct["doseFrom"][] = null;
+                     }
+                     if (!empty($doseTo[$i])) {
+                        $this->idProduct["doseTo"][] = $doseTo[$i];
+                     }
+                     else {
+                        $this->idProduct["doseTo"][] = null;
+                     }
                  }
              }
          }
@@ -185,7 +204,7 @@ class SearchDrugs {
 
         return $sumHour . ":" .  $hour[1] . ":00";
     }
-    private function setIdSubstance( $nameSubstance) {
+    private function setIdSubstance( $nameSubstance,$doseFrom,$doseTo) {
         if (empty($nameSubstance)) {
             return;
         }
@@ -193,12 +212,25 @@ class SearchDrugs {
             if ($nameSubstance[$i] != null) {
                 $array = Substance::selectIdNameSubstanceIdProduct($nameSubstance[$i]);
                 foreach ($array as $list) {
-                    array_push($this->idProduct, $list->id);
+                  //update april 2024
+                 $this->idProduct["name"][] = $list->id;
+                 if (!empty($doseFrom[$i])) {
+                    $this->idProduct["doseFrom"][] = $doseFrom[$i];
+                 }
+                 else {
+                    $this->idProduct["doseFrom"][] = null;
+                 }
+                 if (!empty($doseTo[$i])) {
+                    $this->idProduct["doseTo"][] = $doseTo[$i];
+                 }
+                 else {
+                    $this->idProduct["doseTo"][] = null;
+                 }
                 }
             }
         }
     }
-    private function setIdGroup( $nameGroup) {
+    private function setIdGroup( $nameGroup,$doseFrom,$doseTo) {
         if (empty($nameGroup)) {
             return;
         }
@@ -206,7 +238,20 @@ class SearchDrugs {
             if ($nameGroup[$i] != null) {
                 $array = Group::selectIdNameGroupIdProduct($nameGroup[$i]);
                 foreach ($array as $list) {
-                    array_push($this->idProduct, $list->id);
+                     //update april 2024
+                     $this->idProduct["name"][] = $list->id;
+                     if (!empty($doseFrom[$i])) {
+                        $this->idProduct["doseFrom"][] = $doseFrom[$i];
+                     }
+                     else {
+                        $this->idProduct["doseFrom"][] = null;
+                     }
+                     if (!empty($doseTo[$i])) {
+                        $this->idProduct["doseTo"][] = $doseTo[$i];
+                     }
+                     else {
+                        $this->idProduct["doseTo"][] = null;
+                     }
                 }
             }
         }

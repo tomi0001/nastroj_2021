@@ -136,38 +136,51 @@ class Usee extends Model
         }
     }
     public function setDose($doseFrom,$doseTo) {
-        if ($doseFrom != "") {
-            $this->questions->where("usees.portion",">=",$doseFrom);
-        }
-        if ($doseTo != "") {
-            $this->questions->where("usees.portion","<=",$doseTo);
-        }
+        // if ($doseFrom != "") {
+        //     $this->questions->where("usees.portion",">=",$doseFrom);
+        // }
+        // if ($doseTo != "") {
+        //     $this->questions->where("usees.portion","<=",$doseTo);
+        // }
     }
     public function setDoseGroupDay($doseFrom,$doseTo) {
-        if ($doseFrom != "") {
-            $this->questions->havingRaw(""
-                       . "case "
-                    . " when products.type_of_portion = 4 THEN sum(usees.portion) / count(*) >= '$doseFrom'"
-                    . " when products.type_of_portion = 5 THEN sum(usees.portion) / count(*) >= '$doseFrom'"
-                    . "ELSE sum(usees.portion) >= '$doseFrom'"
-                    . " END "
+        // if ($doseFrom != "") {
+        //     $this->questions->havingRaw(""
+        //                . "case "
+        //             . " when products.type_of_portion = 4 THEN sum(usees.portion) / count(*) >= '$doseFrom'"
+        //             . " when products.type_of_portion = 5 THEN sum(usees.portion) / count(*) >= '$doseFrom'"
+        //             . "ELSE sum(usees.portion) >= '$doseFrom'"
+        //             . " END "
                     
-                    . "");
-        }
-        if ($doseTo != "") {
-             $this->questions->havingRaw(""
-                       . "case "
-                    . " when products.type_of_portion = 4 THEN sum(usees.portion) / count(*) <= '$doseTo'"
-                    . " when products.type_of_portion = 5 THEN sum(usees.portion) / count(*) <= '$doseTo'"
-                    . "ELSE sum(usees.portion) <= '$doseTo'"
-                    . " END "
+        //             . "");
+        // }
+        // if ($doseTo != "") {
+        //      $this->questions->havingRaw(""
+        //                . "case "
+        //             . " when products.type_of_portion = 4 THEN sum(usees.portion) / count(*) <= '$doseTo'"
+        //             . " when products.type_of_portion = 5 THEN sum(usees.portion) / count(*) <= '$doseTo'"
+        //             . "ELSE sum(usees.portion) <= '$doseTo'"
+        //             . " END "
                     
-                    . "");
+        //             . "");
             
-        }
+        // }
     }
     public function setProduct(array $idProduct) {
-        $this->questions->whereIn("usees.id_products",$idProduct);
+        
+        $this->questions->where(function ($query) use ($idProduct) {
+            for ($i = 0;$i < count($idProduct["name"]);$i++) {
+             $query->orwhere("usees.id_products",$idProduct["name"][$i]);
+             if (!empty($idProduct["doseFrom"][$i])) {
+                $query->where("usees.portion",">=",$idProduct["doseFrom"][$i]);
+             }
+             if (!empty($idProduct["doseTo"][$i])) {
+                $query->where("usees.portion","<",$idProduct["doseTo"][$i]);
+             }
+
+            }
+  
+        });
     }
 
     public function setIdUsers(int $idUsers) {

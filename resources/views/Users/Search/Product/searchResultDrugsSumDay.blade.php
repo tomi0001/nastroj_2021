@@ -185,11 +185,16 @@
        
         <div class="d-flex justify-content-center">
             @php
-                $arrayList->appends(['sort'=>Request::get('sort')])
+                 $arrayList->appends(['sort'=>Request::get('sort')])
                         ->appends(['nameSubstance'=>Request::get('nameSubstance')])
                         ->appends(['nameProduct'=>Request::get('nameProduct')])
+                        ->appends(['doseFromProduct'=>Request::get('doseFromProduct')])
+                        ->appends(['doseToProduct'=>Request::get('doseToProduct')])
+                        ->appends(['doseFromSubstance'=>Request::get('doseFromSubstance')])
+                        ->appends(['doseToSubstance'=>Request::get('doseToSubstance')])
                         ->appends(['nameGroup'=>Request::get('nameGroup')])
-                        ->appends(["sumDay" => Request::get('sumDay')])
+                        ->appends(['doseFromGroup'=>Request::get('doseFromGroup')])
+                        ->appends(['doseToGroup'=>Request::get('doseToGroup')])
 
                 ->appends(['dateFrom'=>Request::get("dateFrom")])
                 ->appends(['dateTo'=>Request::get("dateTo")])
