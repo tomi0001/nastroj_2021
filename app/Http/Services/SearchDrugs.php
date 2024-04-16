@@ -273,51 +273,51 @@ class SearchDrugs {
 
     private  function type1($doseFrom,$doseTo,$list) {
         
-        if (!empty($doseFrom)) {
+       // if (!empty($doseFrom)) {
            $this->idProduct["doseFrom"][] = $doseFrom;
-        }
-        else {
-           $this->idProduct["doseFrom"][] = null;
-        }
-        if (!empty($doseTo)) {
+      //  }
+        // else {
+        //    $this->idProduct["doseFrom"][] = null;
+        // }
+       // if (!empty($doseTo)) {
            $this->idProduct["doseTo"][] = $doseTo;
-        }
-        else {
-           $this->idProduct["doseTo"][] = null;
-        }
+       // }
+        // else {
+        //    $this->idProduct["doseTo"][] = null;
+        // }
 
     }
     private  function type2($doseFrom,$doseTo,$list) {
         $this->idProduct["name"][] = $list->id;
-        if (!empty($doseFrom[$i])) {
+        //if (!empty($doseFrom[$i])) {
            $this->idProduct["doseFrom"][] = $doseFrom[$i];
-        }
-        else {
-           $this->idProduct["doseFrom"][] = null;
-        }
-        if (!empty($doseTo[$i])) {
+       // }
+        // else {
+        //    $this->idProduct["doseFrom"][] = null;
+        // }
+       // if (!empty($doseTo[$i])) {
            $this->idProduct["doseTo"][] = $doseTo[$i];
-        }
-        else {
-           $this->idProduct["doseTo"][] = null;
-        }
+        //}
+        // else {
+        //    $this->idProduct["doseTo"][] = null;
+        // }
 
     }
     private  function type3($doseFrom,$doseTo,$list) {
         
         $dose = Substances_product::selectIdProduct($list);
-        if (!empty($doseFrom)) {
+        //if (!empty($doseFrom)) {
            $this->idProduct["doseFrom"][] = $dose->doseProduct * $doseFrom;
-        }
-        else {
-           $this->idProduct["doseFrom"][] = null;
-        }
-        if (!empty($doseTo)) {
+        //}
+        //else {
+          // $this->idProduct["doseFrom"][] = null;
+        //}
+        //if (!empty($doseTo)) {
            $this->idProduct["doseTo"][] = $dose->doseProduct *  $doseTo;
-        }
-        else {
-           $this->idProduct["doseTo"][] = null;
-        }
+        //}
+        //else {
+          // $this->idProduct["doseTo"][] = null;
+        //}
     }
     private  function type3Substance($doseFrom,$doseTo,$listSubstance,$listProduct) {
         
@@ -328,20 +328,20 @@ class SearchDrugs {
                 $dose->doseProduct = 1;
                 //continue;
             }
-            if (!empty($doseFrom)) {
+            ///if (!empty($doseFrom)) {
             $this->idProduct["doseFrom"][] =(1 / $dose->doseProduct) * $doseFrom;
-            }
-            else {
-            $this->idProduct["doseFrom"][] = null;
-            }
-            if (!empty($doseTo)) {
+            //}
+            //else {
+            //$this->idProduct["doseFrom"][] = null;
+            //}
+            //if (!empty($doseTo)) {
             $this->idProduct["doseTo"][] = (1 / $dose->doseProduct) *  $doseTo;
             //var_dump($this->idProduct);
             
-            }
-            else {
-            $this->idProduct["doseTo"][] = null;
-            }
+            //}
+            //else {
+            //$this->idProduct["doseTo"][] = null;
+            //}
             //d:
         }
 
