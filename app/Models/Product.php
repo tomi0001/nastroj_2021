@@ -16,7 +16,7 @@ class Product extends Model
                 ->where("id_users", Auth::User()->id)->orderBy("name")->get();
     }
     public static function selectIdNameProduct(string $name) {
-        return self::selectRaw("id as id ")->where("name","like","%".$name."%")->get();
+        return self::selectRaw("id as id ")->selectRaw("type_of_portion as type")->where("name","like","%".$name."%")->get();
     }
     public static function selectIdProduct(int $id) {
         return self::join("substances_products","substances_products.id_products","products.id")

@@ -21,4 +21,15 @@ class Substances_product extends Model
                 ->where("substances_products.id_substances",$idSubstances)
                 ->first();
     }
+    public static function selectIdProduct(int $idProduct) {
+        return self::selectRaw("substances_products.doseProduct as doseProduct")
+            ->where("substances_products.id_products",$idProduct)
+            ->first();
+    }
+    public static function selectIdSubstance(int $idSubstance,int $idProduct) {
+        return self::selectRaw("substances_products.doseProduct as doseProduct")
+            ->where("substances_products.id_substances",$idSubstance)
+            ->where("substances_products.id_products",$idProduct)
+            ->first();
+        }
 }

@@ -34,6 +34,7 @@ class Substance extends Model
         return self::join("substances_products","substances_products.id_substances","substances.id")
                     ->join("products","substances_products.id_products","products.id")
             ->selectRaw("products.id as id")
+            ->selectRaw("substances.id as id_substance")
             ->where("substances.name","like","%".$name."%")->get();
     }
  

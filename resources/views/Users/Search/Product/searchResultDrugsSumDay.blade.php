@@ -202,6 +202,7 @@
                 ->appends(['timeTo'=>Request::get("timeTo")])
                 ->appends(["whatWork" => Request::get("whatWork")])
                 ->appends(['ifWhatWork'=>Request::get("ifWhatWork")])
+                ->appends(['sumDay'=>'on'])
                 ->appends(['sort2'=>Request::get("sort2")])
                 ->links();
             @endphp
