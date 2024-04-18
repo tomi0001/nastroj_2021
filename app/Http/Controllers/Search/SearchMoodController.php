@@ -88,23 +88,17 @@ class SearchMoodController {
                 return View("Users.Search.Mood.searchResultMoodGroupDay")->with("arrayList", $result)->with("count", $SearchMood->count)->with("percent", $arrayPercent);
             }
             else if ($request->get("groupDay") == "on" and  (!empty($request->get("action"))  ) ) {
-                
-                $result = $SearchMood->createQuestion($request,true);
-                $newArray = $SearchMood->groupActionDay($result);
-                
-                //$paginator = new LengthAwarePaginator($newArray, count($newArray), 15, 1);
-             
-                //$myCollectionObj = collect($newArray);
-                //print ("<pre>");
-                //print_r($newArray);
-                $data = $this->paginate($newArray,15);
-                $data->withPath(route('search.searchMoodSubmit'));
+               
+                $result = $SearchMood->createQuestionGroupDay($request);
+                //$newArray = $SearchMood->groupActionDay($result);
+                //$data = $this->paginate($newArray,15);
+                //$data->withPath(route('search.searchMoodSubmit'));
                 if ($SearchMood->count > 0) {
-                    $arrayPercent = $SearchMood->sortMoodsGroupAction($newArray);
+                    $arrayPercent = $SearchMood->sortMoods($result);
                 } else {
                     $arrayPercent = [];
                 }
-                return View("Users.Search.Mood.searchResultMoodGroupAction")->with("arrayList", $data)->with("count", $SearchMood->count)->with("percent", $arrayPercent);
+                return View("Users.Search.Mood.searchResultMoodGroupDay")->with("arrayList", $result)->with("count", $SearchMood->count)->with("percent", $arrayPercent);
             
             }
             else if ($request->get("sumDay") == "on") {
@@ -172,13 +166,9 @@ class SearchMoodController {
             else if ( ($request->get("groupWeek") == "on") ) {
                 $SearchMoodAI = new SearchMoodAI(Auth::User()->id,Auth::User()->start_day);
                 $SearchMood->setDate($request->get("dateFrom"),$request->get("dateTo"));
-                         $arrayWeek = $SearchMoodAI->createWeek($SearchMood->dateFrom,$SearchMood->dateTo);
-                         //var_dump($arrayWeek);
-                  $SearchMood->createQuestionForWeekList($request,$arrayWeek,true);
-                  //print ("<pre>");
-                  //print_r ($SearchMood->listWeek);
-//                                 print("<pre>");
-//                print_r($sort);
+                $arrayWeek = $SearchMoodAI->createWeek($SearchMood->dateFrom,$SearchMood->dateTo);
+                $SearchMood->createQuestionForWeekList($request,$arrayWeek,true);
+
                  return View("Users.Search.Mood.searchResultMoodGroupWeek")
                     ->with("arrayList", $SearchMood->listWeek)->with("dateFrom",$request->get("dateFrom"))->with("dateTo",$request->get("dateTo"))
                     ->with("timeFrom",$request->get("timeFrom"))->with("timeTo",$request->get("timeTo"))
@@ -193,13 +183,8 @@ class SearchMoodController {
             else if (($request->get("groupMonth") == "on")) {
                 $SearchMoodAI = new SearchMoodAI(Auth::User()->id,Auth::User()->start_day);
                 $SearchMood->setDate($request->get("dateFrom"),$request->get("dateTo"));
-                         $arrayMonth = $SearchMoodAI->createMonth($SearchMood->dateFrom,$SearchMood->dateTo);
-                         //var_dump($arrayWeek);
-                  $SearchMood->createQuestionForWeekList($request,$arrayMonth,true);
-                  //print ("<pre>");
-                  //print_r ($SearchMood->listWeek);
-//                                 print("<pre>");
-//                print_r($sort);
+                $arrayMonth = $SearchMoodAI->createMonth($SearchMood->dateFrom,$SearchMood->dateTo);
+                $SearchMood->createQuestionForWeekList($request,$arrayMonth,true);
                  return View("Users.Search.Mood.searchResultMoodGroupWeek")
                     ->with("arrayList", $SearchMood->listWeek)->with("dateFrom",$request->get("dateFrom"))->with("dateTo",$request->get("dateTo"))
                     ->with("timeFrom",$request->get("timeFrom"))->with("timeTo",$request->get("timeTo"))
@@ -239,25 +224,15 @@ class SearchMoodController {
                 return View("ajax.error")->with("error",$SearchMoodAI->errors);
             }
             else {
-                //print $request->get("dateFrom");
+
                 $SearchMoodAI->setVariable($request);
                 $SearchMoodAI->setDayWeek($request);
                 $SearchMoodAI->setHour($request);
-//                $SearchMoodAI->setHourAI($request);
-//                if ($request->get("sumDay") == "on" and $request->get("divMinute") > 0) {
-//                    $SearchMoodAI->setHourSumDay($request);
-//                }
-//                else {
-                    //$SearchMoodAI->se
-                 
-                    //return;
                 if ($request->get("sumDay") == "on" and $request->get("divMinute") > 0) {
                     $j = 0;
                     for ($i=0;$i < count($SearchMoodAI->hourSum)-1;$i++) {
-                        //$minMax = $SearchMoodAI->createQuestions($request);
                         $minMax[$i] = $SearchMoodAI->createQuestionsMinuteSumDay($request,$SearchMoodAI->hourSum[$i],$SearchMoodAI->hourSum[$i+1]);
                         if (count($minMax[$i]) > 0) {
-                            //print "dd";
                             $sum[$j] = $SearchMoodAI->sortSumDayMinute($minMax[$i],$SearchMoodAI->hourSum[$i],$SearchMoodAI->hourSum[$i+1]);
                             $j++;
                         }
@@ -267,24 +242,18 @@ class SearchMoodController {
                         goto END;
                     }
                      
-                    //$list = $SearchMoodAI->createQuestionsMinuteSumDay($request);
-                    //$minMax = $SearchMoodAI->createQuestions($request);
                 }
                 else {
                     
                     $minMax = $SearchMoodAI->createQuestions($request);
                 }
-                //$list = $SearchMoodAI->createQuestionsMinMax($request);
-//                print("<pre>");
-//                print_r($minMax);
            
 
                 if (count($minMax) > 0) {
                     if ( ($request->get("groupMonth") == "on") ) {
                          $arrayWeek = $SearchMoodAI->createMonth($SearchMoodAI->dateFrom,$SearchMoodAI->dateTo);
                          $arrayWeek2 = $SearchMoodAI->subCreateMonth($arrayWeek);
-                         //var_dump($arrayWeek2);
-                    $sort = $SearchMoodAI->sortMonth($minMax,$arrayWeek2);
+                         $sort = $SearchMoodAI->sortMonth($minMax,$arrayWeek2);
 
                         return View("Users.Search.Mood.AverageMoodGroupWMonth")->with("minMax", $sort)
                             ->with("timeFrom", $request->get("timeFrom"))->with("timeTo", $request->get("timeTo"))
@@ -293,10 +262,8 @@ class SearchMoodController {
                     }
                     if ( ($request->get("groupWeek") == "on") ) {
                          $arrayWeek = $SearchMoodAI->createWeek($SearchMoodAI->dateFrom,$SearchMoodAI->dateTo);
-                        // var_dump($arrayWeek);
-                    $sort = $SearchMoodAI->sortWeek($minMax,$arrayWeek);
-//                                 print("<pre>");
-//                print_r($sort);
+                         $sort = $SearchMoodAI->sortWeek($minMax,$arrayWeek);
+
                         return View("Users.Search.Mood.AverageMoodGroupWeek")->with("minMax", $sort)
                             ->with("timeFrom", $request->get("timeFrom"))->with("timeTo", $request->get("timeTo"))
                             ->with("dateFrom", $request->get("dateFrom"))->with("dateTo", $request->get("dateTo"))
@@ -327,16 +294,7 @@ class SearchMoodController {
                     END:
                     return View("ajax.error")->with("error",["Nic nie wyszukano"]);
                 }
-//                for ($i=0;$i < count($minMax["mood"]);$i++) {
-//                    print "<br>" .  $minMax["mood"][$i] . "/" . $minMax["dat_end"][$i];
-//                }
-//                print "<br><br>";
-//                for ($i=0;$i < count($list);$i++) {
-//                    print "<br>" . "///" . $list[$i]->dat_end;
-//                }
-//                print "<br><br><br><br>";
 
-                //print count($minMax["mood"]) . "/" . count($list) . "<br>";
 
             }
 
@@ -356,7 +314,6 @@ class SearchMoodController {
         else {
             $data = $SearchMood->setData($request);
             $array = Mood::selectLastSleep($data, Auth::User()->start_day, Auth::User()->id);
-            //print count($array);
             $array2 = $array->pluck("dat")->all();
             
             if (count($array2) == 0) {

@@ -61,12 +61,6 @@ class SearchDrugs {
          $Usee->setDose($request->get("doseFrom"),$request->get("doseTo"));
          
          $Usee->setProduct($this->idProduct);
-//         if ($request->get("whatWork") != "") {
-//             $Usee->setWhatWork($request->get("whatWork"));
-//         }
-//         if ($request->get("ifWhatWork") == "on") {
-//             $Usee->setWhatWorkOn();
-//         }
          $Usee->setGroupIdProduct();
          if ($request->get("sort2") == "asc") {
              $Usee->orderByGroupDay("asc",$request->get("sort"));
@@ -74,7 +68,6 @@ class SearchDrugs {
          else {
              $Usee->orderByGroupDay("desc",$request->get("sort"));
          }
-         //$Usee->setGroupDescription();
          $this->count = $Usee->questions->get()->count();
          return $Usee->questions->paginate(15);
      }
@@ -84,21 +77,11 @@ class SearchDrugs {
          $Usee->setIdUsers($this->idUsers);
          $Usee->setDate($request->get("dateFrom"),$request->get("dateTo"),$this->startDay);
          $this->setHour($Usee,$request);
-         //var_dump($this->idProduct);
          $Usee->setProduct($this->idProduct);
-//         if ($request->get("whatWork") != "") {
-//             $Usee->setWhatWork($request->get("whatWork"));
-//         }
-//         if ($request->get("ifWhatWork") == "on") {
-//             $Usee->setWhatWorkOn();
-//         }
-         //$Usee->setCount();
-
          $Usee->setGroupDay(Auth::User()->start_day);
 
          $Usee->setGroupIdProduct();
          $Usee->setDoseGroupDay($request->get("doseFrom"),$request->get("doseTo"));
-         //$Usee->setGroupDescription();
          if ($request->get("sort2") == "asc") {
              $Usee->orderByGroupDay("asc",$request->get("sort"));
              
@@ -118,9 +101,7 @@ class SearchDrugs {
          $Usee->setDate($request->get("dateFrom"),$request->get("dateTo"),$this->startDay);
          $this->setHour($Usee,$request);
          $Usee->setDose($request->get("doseFrom"),$request->get("doseTo"));
-         //if (count($this->idProduct) > 0) {
-             $Usee->setProduct($this->idProduct);
-         //}
+         $Usee->setProduct($this->idProduct);
          $Usee->setIdUsers($this->idUsers);
          if ($request->get("whatWork") != "") {
              $Usee->setWhatWork($request->get("whatWork"));
@@ -273,79 +254,33 @@ class SearchDrugs {
 
     private  function type1($doseFrom,$doseTo,$list) {
         
-       // if (!empty($doseFrom)) {
            $this->idProduct["doseFrom"][] = $doseFrom;
-      //  }
-        // else {
-        //    $this->idProduct["doseFrom"][] = null;
-        // }
-       // if (!empty($doseTo)) {
            $this->idProduct["doseTo"][] = $doseTo;
-       // }
-        // else {
-        //    $this->idProduct["doseTo"][] = null;
-        // }
-
     }
     private  function type2($doseFrom,$doseTo,$list) {
         $this->idProduct["name"][] = $list->id;
-        //if (!empty($doseFrom[$i])) {
            $this->idProduct["doseFrom"][] = $doseFrom[$i];
-       // }
-        // else {
-        //    $this->idProduct["doseFrom"][] = null;
-        // }
-       // if (!empty($doseTo[$i])) {
            $this->idProduct["doseTo"][] = $doseTo[$i];
-        //}
-        // else {
-        //    $this->idProduct["doseTo"][] = null;
-        // }
 
     }
     private  function type3($doseFrom,$doseTo,$list) {
         
         $dose = Substances_product::selectIdProduct($list);
-        //if (!empty($doseFrom)) {
-           $this->idProduct["doseFrom"][] = $dose->doseProduct * $doseFrom;
-        //}
-        //else {
-          // $this->idProduct["doseFrom"][] = null;
-        //}
-        //if (!empty($doseTo)) {
-           $this->idProduct["doseTo"][] = $dose->doseProduct *  $doseTo;
-        //}
-        //else {
-          // $this->idProduct["doseTo"][] = null;
-        //}
+        $this->idProduct["doseFrom"][] = $dose->doseProduct * $doseFrom;
+        $this->idProduct["doseTo"][] = $dose->doseProduct *  $doseTo;
     }
     private  function type3Substance($doseFrom,$doseTo,$listSubstance,$listProduct) {
         
         $dose = Substances_product::selectIdSubstance($listSubstance,$listProduct);
-        //foreach ($dose as $doseArray) {
             
             if ($dose->doseProduct == null) {
                 $dose->doseProduct = 1;
-                //continue;
             }
-            ///if (!empty($doseFrom)) {
             $this->idProduct["doseFrom"][] =(1 / $dose->doseProduct) * $doseFrom;
-            //}
-            //else {
-            //$this->idProduct["doseFrom"][] = null;
-            //}
-            //if (!empty($doseTo)) {
             $this->idProduct["doseTo"][] = (1 / $dose->doseProduct) *  $doseTo;
-            //var_dump($this->idProduct);
-            
-            //}
-            //else {
-            //$this->idProduct["doseTo"][] = null;
-            //}
-            //d:
+
         }
 
-    //}
     
     
 }

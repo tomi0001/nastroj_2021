@@ -59,8 +59,6 @@ class SettingsProductController {
     public function loadChangePlaned(Request $request) {
         $namePlaned = Planned_drug::showNameName($request->get("id"));
         $listPlaned = Planned_drug::showPlanedOneSettings($namePlaned->name);
-        //print_r("<pre>");
-        //print_r($listPlaned);
         $listProduct = ModelProduct::selectListProduct(Auth::User()->id);
         return View("Users.Settings.Product.changeLoadPlaned")->with("listPlaned",$listPlaned)->with("listProduct",$listProduct)
                 ->with("id",$namePlaned->name);
@@ -127,7 +125,6 @@ class SettingsProductController {
         $ifExist = Group::checkIfNameAction($request->get("newNameGroup"),Auth::User()->id,$request->get("newNameGroupHidden"));
         if (!empty($ifExist) ) {
             return View("ajax.error")->with("error",["Już jest taka Grupa"]);
-            //print json_encode(["error"=>"Już jest taka Grupa"]);
         }
         else {
             $Group = new Product;
@@ -192,13 +189,9 @@ class SettingsProductController {
         $Product = new Product;
         $Product->checkErrorAddProduct($request);
         if (count($Product->error) > 0) {
-            return View("ajax.error")->with("error",$Product->error);
-            
+            return View("ajax.error")->with("error",$Product->error);    
         }
-
-        
-        else {
-            
+        else {            
             $Product->addNewProduct($request);
             return View("ajax.succes")->with("succes","Pomyślnie dodano produkt");
         }

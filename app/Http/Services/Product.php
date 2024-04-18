@@ -319,7 +319,6 @@ class Product {
         $Product->price  = $request->get("price");
         $Product->how_much  = $request->get("how");
         $Product->save();
-        //var_dump($request->get("typeMgUg2"));
         if (!empty($request->get("idSubstance2"))  ) {
             $this->addProductSubstance($request,$Product->id);
         }
@@ -388,14 +387,6 @@ class Product {
         $listArray = Usee::selectOldUseeSubstances($idSubstances,$dateEnd->date,$idUsers,Auth::User()->start_day,$hour);
         $idProduct = appProduct::selectIdProduct($idSubstances);
         $type = appProduct::selectTypeProduct($idProduct->id,$idUsers);
-        //$bool = false;
-//        if  ($type->type_of_portion == 3)  {
-//            
-//            $type2 = Substances_product::selectMgUg($idProduct->id,$idSubstances);
-//            if ($type2->Mg_Ug == 2) {
-//                $bool = true;
-//            }
-//        }
         if ($type->type_of_portion == 4 or $type->type_of_portion == 5) {
             return $this->sortAverageType4_5($listArray);
         }
@@ -411,19 +402,14 @@ class Product {
             $timeTo = explode(":",$hourTo);
             $hourFrom = $this->sumHour($timeFrom,Auth::User()->start_day);
             $hourTo = $this->sumHour($timeTo,Auth::User()->start_day);
-            //$drugsModel->setHourTwo($hourFrom,$hourTo,Auth::User()->start_day);
-
-
         }
         else if ($hourTo != "" ) {
-            //$drugsModel->setHourTo($hourTo);
             $timeTo = explode(":",$hourTo);
             $hourTo = $this->sumHour($timeTo,Auth::User()->start_day);
             $timeFrom = explode(":", Auth::User()->start_day . ":00:00");
             $hourFrom = $this->sumHour($timeFrom,Auth::User()->start_day);
         }
         else if ($hourFrom != "") {
-            //$drugsModel->setHourFrom($hourFrom);
             $timeFrom = explode(":",$hourFrom);
             $hourFrom = $this->sumHour($timeFrom,Auth::User()->start_day);
             $hourTmp = date(" H:i:s", strtotime("2020-02-10" . Auth::User()->start_day . ":00:00") - 1);
@@ -546,21 +532,6 @@ class Product {
         $dateEnd = Usee::selectDateIdUsee($id,$idUsers);
         $hour = $this->setHour($hourFrom,$hourTo);
         $listArray = Usee::selectOldUseeEquivalent($dateEnd->date,$idUsers,Auth::User()->start_day,$hour);
-//        $idProduct = appProduct::selectIdProduct($id);
-//        $type = appProduct::selectTypeProduct($idProduct->id,$idUsers);
-        //$bool = false;
-//        if  ($type->type_of_portion == 3)  {
-//            
-//            $type2 = Substances_product::selectMgUg($idProduct->id,$idSubstances);
-//            if ($type2->Mg_Ug == 2) {
-//                $bool = true;
-//            }
-//        }
-//        if ($type->type_of_portion == 4 or $type->type_of_portion == 5) {
-//            return $this->sortAverageType4_5($listArray);
-//        }
-//        else {
-            return $this->sortAverage($listArray);
-        //}
+        return $this->sortAverage($listArray);
   }
 }

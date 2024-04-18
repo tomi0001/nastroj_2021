@@ -65,8 +65,7 @@ class Usee extends Model
             ->selectRaw("usees.id_products as id")
             ->selectRaw("usees.id as id_usees")
             ->selectRaw(  DB::Raw("TIME(Date_add(usees.date, INTERVAL - '$startDay' HOUR) ) as hour2"))
-            //->selectRaw("descriptions.description as description")
-            //->selectRaw("descriptions.date as date_description")
+
             ->selectRaw("usees.id_products as product")
             ->selectRaw("usees.price as price")
             ->selectRaw("products.name as name")
@@ -136,35 +135,10 @@ class Usee extends Model
         }
     }
     public function setDose($doseFrom,$doseTo) {
-        // if ($doseFrom != "") {
-        //     $this->questions->where("usees.portion",">=",$doseFrom);
-        // }
-        // if ($doseTo != "") {
-        //     $this->questions->where("usees.portion","<=",$doseTo);
-        // }
+
     }
     public function setDoseGroupDay($doseFrom,$doseTo) {
-        // if ($doseFrom != "") {
-        //     $this->questions->havingRaw(""
-        //                . "case "
-        //             . " when products.type_of_portion = 4 THEN sum(usees.portion) / count(*) >= '$doseFrom'"
-        //             . " when products.type_of_portion = 5 THEN sum(usees.portion) / count(*) >= '$doseFrom'"
-        //             . "ELSE sum(usees.portion) >= '$doseFrom'"
-        //             . " END "
-                    
-        //             . "");
-        // }
-        // if ($doseTo != "") {
-        //      $this->questions->havingRaw(""
-        //                . "case "
-        //             . " when products.type_of_portion = 4 THEN sum(usees.portion) / count(*) <= '$doseTo'"
-        //             . " when products.type_of_portion = 5 THEN sum(usees.portion) / count(*) <= '$doseTo'"
-        //             . "ELSE sum(usees.portion) <= '$doseTo'"
-        //             . " END "
-                    
-        //             . "");
-            
-        // }
+
     }
     public function setProduct(array $idProduct) {
         
@@ -191,7 +165,7 @@ class Usee extends Model
         $this->questions->whereRaw("(time(date_add(usees.date,INTERVAL - $startDay hour))) >= '$hourFrom'");
     }
     public function setWhatWork(string $whatWork) {
-        $this->questions->whereRaw("descriptions.description like '%" . $whatWork  . "%'");
+        $this->questions->whereRaw("descriptions.description like '%" . str_replace("'","",$whatWork)  . "%'");
     }
     public function setWhatWorkOn() {
         $this->questions->where("descriptions.description","!=","");
@@ -303,7 +277,14 @@ class Usee extends Model
     public static function showDosePruduct(int $idUsee,int $idSubstance,int $idUsers) {
         return self::join("products","products.id","usees.id_products")
                 ->join("substances_products","substances_products.id_products","products.id")
-                ->selectRaw("(usees.portion * substances_products.doseProduct)  as doseProduct")
+                ->selectRaw(" "
+                . "( CASE "
+                . " WHEN products.type_of_portion = 1  THEN (usees.portion  ) "
+                . " WHEN products.type_of_portion = 4  THEN (usees.portion  ) "
+                . " WHEN products.type_of_portion = 5  THEN (usees.portion  ) "
+                . " WHEN products.type_of_portion = 6  THEN (usees.portion  ) "
+                . " ELSE 
+                (usees.portion * substances_products.doseProduct) END )  as doseProduct")
                 
                 ->selectRaw(" "
                       . "( CASE "
@@ -353,7 +334,6 @@ class Usee extends Model
         return self::join("products","products.id","usees.id_products")
                 ->join("substances_products","substances_products.id_products","products.id")
                 ->selectRaw("count(usees.portion) as how")
-                //->selectRaw("'1' as type")
                 ->selectRaw(" "
                         . "( CASE "
                         . " WHEN products.type_of_portion = 2  THEN ('2' ) "
@@ -392,7 +372,6 @@ class Usee extends Model
                 ->join("substances_products","substances_products.id_products","products.id")
                 ->join("substances","substances.id","substances_products.id_substances")
                 ->selectRaw("count(usees.portion) as how")
-                //->selectRaw("'1' as type")
                 ->selectRaw(" "
                         . "( CASE "
                         . " WHEN products.type_of_portion = 2  THEN ('2' ) "

@@ -27,13 +27,7 @@ class Common {
     ];
     public static function ifChangeTimeWinterOne(string $dateStart) :bool {
         $yearFrom = explode("-",$dateStart);
-        //$yearFrom2 = explode("-",$yearFrom[0]);
-        
-//        $yearTo = explode(" ",$dateTo);
-//        $yearTo2 = explode("-",$yearTo[0]);
-        
-        
-        
+
         
          if ( (  (  strtotime($yearFrom[0] . "-" . "11-" . "01") - strtotime($dateStart)  )  < 86400 * 7) 
                  and (  (  strtotime($yearFrom[0] . "-" . "10-" . "31") - strtotime($dateStart)  )  > 0) ) {
@@ -193,9 +187,6 @@ class Common {
         $dateStart = new \DateTime($dateOne);
         $dateEnd = new \DateTime($dateTwo);
         $diff = $dateEnd->diff($dateStart);
-
-        //$sum =  $diff->y * $diff->m * $diff->d;
-
         return $diff->days;
     }
     public static function calculateHourOne(int $time) {

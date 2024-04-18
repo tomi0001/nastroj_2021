@@ -199,19 +199,14 @@ class SearchDrugsMood {
             $this->timeFrom = $this->sumHour($timeFrom,$this->startDay);
             $this->timeTo  = $this->sumHour($timeTo,$this->startDay);
             
-            //return array($hourFrom,$hourTo);
-            //$drugsModel->setHourTwo($hourFrom,$hourTo,$this->startDay);
-            
 
         }
         else if ($request->get("timeTo") != "" ) {
             $this->timeTo = $request->get("timeTo");
-            //$drugsModel->setHourTo($request->get("timeTo"));
 
         }
         else if ($request->get("timeFrom") != "") {
             $this->timeFrom = ($request->get("timeFrom"));
-            //$drugsModel->setHourFrom($request->get("timeFrom"));
 
         }
 

@@ -18,11 +18,9 @@ class Actions_day extends Model
                         ->selectRaw("actions.level_pleasure as level_pleasure")
                         ->selectRaw(DB::Raw("(DATE(IF(HOUR(    actions_days.date) >= '" . $startDay . "', actions_days.date,Date_add(actions_days.date, INTERVAL - 1 DAY) )) ) as dateDay " ))
                         ->selectRaw(DB::Raw("WEEKDAY(DATE(IF(HOUR(    actions_days.date) >= '" . $startDay . "', actions_days.date,Date_add(actions_days.date, INTERVAL - 1 DAY) )) ) as dayweek " ));
-                        //->selectRaw(DB::Raw("WEEKDAY((DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) )) as dayweek" ));
-                        
+                          
     }
     public function setWeekDay(array $week,int $startDay) {
-        //$this->questions->whereRaw("DAYOFWEEK(moods.date_end)",$week);
         $this->questions->whereRaw(DB::raw("DAYOFWEEK((DATE(IF(HOUR(    actions_days.date) >= '" . $startDay . "', actions_days.date,Date_add(actions_days.date, INTERVAL - 1 DAY) )) ))  in (" . implode(",", $week) . ")")  );
     }
     public function orderBy(string $asc,string $type) {
@@ -72,7 +70,6 @@ class Actions_day extends Model
         $this->questions->where("actions_days.id_users",$idUsers);
     }
     public function setHourTwo($hourFrom,$hourTo,$startDay) {
-        //print $hourTo;
         $this->questions->whereRaw("(time(date_add(actions_days.date,INTERVAL - $startDay hour))) < '$hourTo'");
         $this->questions->whereRaw("(time(date_add(actions_days.date,INTERVAL - $startDay hour))) > '$hourFrom'");
     }
@@ -110,7 +107,6 @@ class Actions_day extends Model
                 ->where("created_at",">=",date("Y-m-d H:i:s", strtotime(date("Y-m-d H:i:s") )- 80))->first();
     }
     public static function selectLastActionDate(int $idAction,string $date) {
-        //print $date;
         return self::selectRaw("date")->where("id_users",Auth::User()->id)->where("id_actions",$idAction)->where("date",$date . ":00")
                 ->where("created_at",">=",date("Y-m-d H:i:s", strtotime(date("Y-m-d H:i:s") )- 80))->first();
     }

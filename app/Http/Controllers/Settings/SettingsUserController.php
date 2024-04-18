@@ -29,7 +29,6 @@ use Auth;
 use Storage;
 class SettingsUserController {
     public function addDoctorNew() {
-        //$User = new User;
         $doctorId = MUser::selectIdDoctor(Auth::User()->id);
         if (empty($doctorId)) {
             return view("Users.Settings.Users.addNewDoctor")->with("nameDoctor",null);

@@ -131,11 +131,6 @@ function loadPageDrugs() {
     $(".MenuPageUser").css("display","none");
 }
 
-//function loadPageUser() {
-//    $(".titleSettingsMood").removeClass("selectedMenu");
-//    $(".titleSettingsDrugs").removeClass("selectedMenu");
-//    $(".titleSettingsUser").addClass("selectedMenu");    
-//}
 
 function selectMenuUsers(menu) {
      $("#" + menu).addClass("selectedMenuUsersHref");
@@ -501,8 +496,6 @@ function loadChangeAction(url) {
                 $("input[name='long']").val(response["actionPlan"]["longer"]);
                 $("input[name='date']").val(response["actionPlan"]["date"]);
                 $("input[name='time']").val(response["actionPlan"]["time"]);
-                //alert(response["actionPlan"]["date"]);
-
                 
                 if (response["bool"] == true) {
                     bool = true;
@@ -829,7 +822,6 @@ function deletePlanedSubmit(url) {
 
 
 function loadChangePlaned(url) {
-    //alert($("select[name='namePlaned']").val());
     if ( $("select[name='namePlaned']").val() != "") {
             $.ajax({
                 url : url,
@@ -1079,8 +1071,7 @@ alert('dddd');
           $("#formaddProductNew").append("<input type=\'hidden\' name=\'idSubstance2[]\' value='" +  $('input[name^="idSubstance"]').eq(i).val()  + "' class=\'form-control typeMood\'>");
           $("#formaddProductNew").append("<input type=\'hidden\' name=\'howMg2[]\' value='" + $('input[name^="howMg"]').eq(i).val() + "' class=\'form-control typeMood\'>");
           $("#formaddProductNew").append("<input type=\'hidden\' name=\'typeMgUg2[]\' value='" + $('select[name^="typeMgUg"]').eq(i).val() + "' class=\'form-control typeMood\'>");
-//          alert($('select[name^="typeMgUg"]').eq(i).val());
-          
+
         }
             }
 
@@ -1094,7 +1085,7 @@ function changeArrayFormEditProduct() {
     for (var i=0;i < array.length;i++) {
         var id = $('input[name^="idSubstance"]').eq(i).val();
         if (arraySubstanceProductChange.find(element => element == id )) {
-           alert('dddd'); 
+     
           $("#formUpdateProduct2").append("<input type=\'hidden\' name=\'idSubstance2[]\' value='" +  $('input[name^="idSubstance"]').eq(i).val()  + "' class=\'form-control typeMood\'>");
           $("#formUpdateProduct2").append("<input type=\'hidden\' name=\'howMg2[]\' value='" + $('input[name^="howMg"]').eq(i).val() + "' class=\'form-control typeMood\'>");
           $("#formUpdateProduct2").append("<input type=\'hidden\' name=\'typeMgUg2[]\' value='" + $('select[name^="typeMgUg"]').eq(i).val() + "' class=\'form-control typeMood\'>");
@@ -1221,7 +1212,6 @@ function addSubstanceNewSubmit() {
           
         $("#addNewSubstanceSubmit").html(response);
        
-                //arrayGroupSubstance.length = 0;
             $("#formaddSubstanceNew").find(":hidden").filter(".typeMood").remove();
 
 

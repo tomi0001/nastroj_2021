@@ -24,7 +24,7 @@
 <tr>
     <td> {{$list->name}} </td>
     <td> 
-        {{$list->portion}} {{\App\Http\Services\Common::showDoseProduct($list->type)}}
+        {{$list->portions}} {{\App\Http\Services\Common::showDoseProduct($list->type)}}
     </td>
     <td> 
         {{substr($list->date,11,-3)}}

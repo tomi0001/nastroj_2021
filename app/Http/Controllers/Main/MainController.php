@@ -281,7 +281,6 @@ class MainController {
     }
     public function updateAction(Request $request) {
         $Mood =  new MoodServices;
-        //var_dump($request->get("idAction"));
         if (Mood::ifIdUsersExist($request->get("idMood"),Auth::User()->id) != NULL ) {
             $datemood = Mood::selectDateMood($request->get("idMood"));
             $Mood->checkErrorAction($request,round(((StrToTime($datemood->dateEnd) - StrToTime($datemood->dateStart)) /60 ),2) );

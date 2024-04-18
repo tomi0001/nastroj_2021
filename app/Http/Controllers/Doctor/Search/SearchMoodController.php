@@ -77,10 +77,6 @@ class SearchMoodController {
                 
                 $result = $SearchMood->createQuestion($request,true);
                 $newArray = $SearchMood->groupActionDay($result);
-                
-                //$paginator = new LengthAwarePaginator($newArray, count($newArray), 15, 1);
-             
-                //$myCollectionObj = collect($newArray);
 
                 $data = $this->paginate($newArray,15);
                 $data->withPath(route('search.searchMoodSubmit'));
@@ -112,13 +108,9 @@ class SearchMoodController {
             else if ( ($request->get("groupWeek") == "on") ) {
                 $SearchMoodAI = new SearchMoodAI(Auth::User()->id_users,Auth::User()->start_day);
                 $SearchMood->setDate($request->get("dateFrom"),$request->get("dateTo"));
-                         $arrayWeek = $SearchMoodAI->createWeek($SearchMood->dateFrom,$SearchMood->dateTo);
-                         //var_dump($arrayWeek);
-                  $SearchMood->createQuestionForWeekList($request,$arrayWeek,true);
-                  //print ("<pre>");
-                  //print_r ($SearchMood->listWeek);
-//                                 print("<pre>");
-//                print_r($sort);
+                $arrayWeek = $SearchMoodAI->createWeek($SearchMood->dateFrom,$SearchMood->dateTo);
+                $SearchMood->createQuestionForWeekList($request,$arrayWeek,true);
+
                  return View("Doctor.Search.Mood.searchResultMoodGroupWeek")
                     ->with("arrayList", $SearchMood->listWeek)->with("dateFrom",$request->get("dateFrom"))->with("dateTo",$request->get("dateTo"))
                     ->with("timeFrom",$request->get("timeFrom"))->with("timeTo",$request->get("timeTo"))
@@ -157,25 +149,14 @@ class SearchMoodController {
                 return View("ajax.error")->with("error",$SearchMoodAI->errors);
             }
             else {
-                //print $request->get("dateFrom");
                 $SearchMoodAI->setVariable($request);
                 $SearchMoodAI->setDayWeek($request);
                 $SearchMoodAI->setHour($request);
-//                $SearchMoodAI->setHourAI($request);
-//                if ($request->get("sumDay") == "on" and $request->get("divMinute") > 0) {
-//                    $SearchMoodAI->setHourSumDay($request);
-//                }
-//                else {
-                    //$SearchMoodAI->se
-                 
-                    //return;
                 if ($request->get("sumDay") == "on" and $request->get("divMinute") > 0) {
                     $j = 0;
                     for ($i=0;$i < count($SearchMoodAI->hourSum)-1;$i++) {
-                        //$minMax = $SearchMoodAI->createQuestions($request);
                         $minMax[$i] = $SearchMoodAI->createQuestionsMinuteSumDay($request,$SearchMoodAI->hourSum[$i],$SearchMoodAI->hourSum[$i+1]);
                         if (count($minMax[$i]) > 0) {
-                            //print "dd";
                             $sum[$j] = $SearchMoodAI->sortSumDayMinute($minMax[$i],$SearchMoodAI->hourSum[$i],$SearchMoodAI->hourSum[$i+1]);
                             $j++;
                         }
@@ -184,26 +165,15 @@ class SearchMoodController {
                     if (empty($sum)) {
                         goto END;
                     }
-                     
-                    //$list = $SearchMoodAI->createQuestionsMinuteSumDay($request);
-                    //$minMax = $SearchMoodAI->createQuestions($request);
                 }
                 else {
                     
                     $minMax = $SearchMoodAI->createQuestions($request);
                 }
-                //$list = $SearchMoodAI->createQuestionsMinMax($request);
-//                print("<pre>");
-//                print_r($minMax);
-           
-
                 if (count($minMax) > 0) {
                     if ( ($request->get("groupWeek") == "on") ) {
                          $arrayWeek = $SearchMoodAI->createWeek($SearchMoodAI->dateFrom,$SearchMoodAI->dateTo);
-                    
                     $sort = $SearchMoodAI->sortWeek($minMax,$arrayWeek);
-//                                 print("<pre>");
-//                print_r($sort);
                         return View("Doctor.Search.Mood.AverageMoodGroupWeek")->with("minMax", $sort)
                             ->with("timeFrom", $request->get("timeFrom"))->with("timeTo", $request->get("timeTo"))
                             ->with("dateFrom", $request->get("dateFrom"))->with("dateTo", $request->get("dateTo"))
@@ -234,34 +204,9 @@ class SearchMoodController {
                     END:
                     return View("ajax.error")->with("error",["Nic nie wyszukano"]);
                 }
-//                for ($i=0;$i < count($minMax["mood"]);$i++) {
-//                    print "<br>" .  $minMax["mood"][$i] . "/" . $minMax["dat_end"][$i];
-//                }
-//                print "<br><br>";
-//                for ($i=0;$i < count($list);$i++) {
-//                    print "<br>" . "///" . $list[$i]->dat_end;
-//                }
-//                print "<br><br><br><br>";
 
-                //print count($minMax["mood"]) . "/" . count($list) . "<br>";
 
             }
 
     }
-//    public function searchMoodAjaxSubmit(Request $request) {
-//        $SearchMood = new SearchMood;
-//
-//
-//
-//            $result = $SearchMood->createQuestion($request);
-//            if ($SearchMood->count > 0) {
-//                $arrayPercent = $SearchMood->sortMoods($result);
-//            }
-//            else {
-//                $arrayPercent = [];
-//            }
-//            return View("Users.Search.Mood.seachResultMoodAjax")->with("arrayList",$result)->with("count",$SearchMood->count)->with("percent",$arrayPercent)->render();
-//
-//
-//    }
 }

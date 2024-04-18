@@ -89,7 +89,6 @@ function selectedActionMainValue(id,index,idMood) {
         var i = arrayActionMulti.indexOf(id+ ',' + idMood);
 
         arrayActionMulti.splice(i,1);
-        //$("#idAction").eq(index).val('NULL');
         $("#divActionPercent_" + id + "_" + idMood).addClass("hiddenPercentExecuting").removeClass('active');
         $("#divAction_" + id + "_" + idMood).removeClass("actionMainselected").addClass("actionMain"+ idMood);
 
@@ -316,7 +315,6 @@ function changeArrayAtHiddenAddMood() {
 
 
 function changeArrayAtHiddenAddMoodId(id) {
-    //$("#formUpdateAction" + id).empty();
     let array = document.querySelectorAll("input[name^='percentExe" + id +  "']");
     
     for (var i=0;i < array.length;i++) {
@@ -361,7 +359,7 @@ function addActionDay(url) {
 
 
 function addMood(url) {
-//alert(url);
+
 
     changeArrayAtHiddenAddMood();
     $.ajax({
@@ -788,7 +786,6 @@ function showDescritionMood(url,id) {
                     dataType : "html",
             })
             .done(function(response) {
-                //alert(response);
                 $(".descriptionShowMood" + id).css("display","block");
                 $("#messageDescriptionshowMood"+id).html(response);
 
@@ -818,7 +815,6 @@ function showDescritionSleep(url,id) {
                     dataType : "html",
             })
             .done(function(response) {
-                //alert(response);
                 $(".descriptionShowSleep" + id).css("display","block");
                 $("#messageDescriptionshowSleep"+id).html(response);
 
@@ -873,7 +869,6 @@ function cancelDrugs(id) {
 }
 function reload() {
     location.reload();
-    //deleteArray();
 }
 
 

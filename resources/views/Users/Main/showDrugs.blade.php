@@ -53,14 +53,7 @@
                        
                         @foreach (\App\Models\Substances_product::showSubstance($list->products_id) as $list2)
                         
-                            @if (count(\App\Models\Substances_product::showSubstance($list->products_id)) == 1)
-                                [{{$list2->name}} = {{$list->portions}} {{\App\Http\Services\Common::showDoseProduct($list->type)}}] <br>
-                                
-                                  @if (\App\Models\Substance::checkEquivalent($list2->id,Auth::User()->id) != "" )
-                                  <span class="equivalent"> Równowaznik diazepamu 10 mg =    {{\App\Models\Product::showEquivalent($list2->id,Auth::User()->id,$list->portions)->equivalent}} {{\App\Http\Services\Common::showDoseProduct($list->type)}} </span>
-
-                                  @endif
-                            @else
+                            
                             @php
                                 $tmp = \App\Models\Usee::showDosePruduct($list->id,$list2->id,Auth::User()->id);
                             @endphp
@@ -73,7 +66,7 @@
                                   @endif                           
                             
                             
-                            @endif
+                            
                               
                               
                             

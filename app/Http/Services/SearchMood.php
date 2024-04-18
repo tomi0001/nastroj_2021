@@ -31,7 +31,6 @@ class SearchMood {
      public $countGruopAction = [];
      public $listgroupActionDay = [];
      public $listgroupActionDayName = [];
-     //private $dateFro
      
      function __construct($bool = 0) {
         if ($bool == 0) {
@@ -43,26 +42,6 @@ class SearchMood {
             
         }
         $this->startDay  = Auth::User()->start_day;
-        /*
-        if ($dateStart == "") {
-            $dateStart = explode(" ",User::firstMood($id)->date_start);
-            $this->dateStart = $dateStart[0];
-        }
-        else {
-            $this->dateStart = $dateStart;
-        }
-        if ($dateTo == "") {
-            $this->dateTo = date("Y-m-d",time() + 86400);
-        }
-        else {
-            $this->dateTo = $dateTo;
-        }
-        /*
-        if ($request->get("sumMoods") == "on" or $request->get("sumDays") == "on") {
-            $this->bool = true;
-        }
-         *
-         */
      }
      public function setDate($dateFrom,$dateTo) {
          if ($dateFrom != "") {
@@ -140,31 +119,15 @@ class SearchMood {
          $moodModel->setMood($request);
          $moodModel->setLongMood($request);
          $this->setHour($moodModel,$request);
-//         if (!empty($request->get("whatWork")) ) {
-//             $moodModel->searchWhatWork($request->get("whatWork"));
-//         }
-//         if (!empty($request->get("action")) and ($request->get("action") != "undefined") ) {
-//
-//             $moodModel->searchAction($request->get("action"),(array)$request->get("actionFrom"),(array)$request->get("actionTo"));
-//         }
-//         if (($request->get("ifAction")) == "on" ) {
-//             $moodModel->actionOn();
-//         }
-//         if (($request->get("ifWhatWork")) == "on" ) {
-//             $moodModel->whatWorkOn();
-//         }
          $moodModel->idUsers($this->idUsers);
          $moodModel->moodsSelect();
 
-
-         //$moodModel->setGroupDay(Auth::User()->start_day);
          if ($request->get("sort2") == "asc") {
              $moodModel->orderBy("asc",$request->get("sort"));
          }
          else {
              $moodModel->orderBy("desc",$request->get("sort"));
          }
-         //$this->count = $moodModel->questions->get()->count();
          return $moodModel->questions->get();
      }
      private function searchAction( $action) :bool {
@@ -178,7 +141,6 @@ class SearchMood {
      public function createQuestionGroupDay(Request $request) {
          $startDay = $this->startDay;
          $moodModel = new  MoodModel;
-         //$bool = $this->searchAction($request->get("action"));
          $moodModel->createQuestionGroupDay($this->startDay);
          $moodModel->setDate($request->get("dateFrom"),$request->get("dateTo"),$this->startDay);
          $moodModel->setMood($request);
@@ -189,34 +151,14 @@ class SearchMood {
          }
          if (!empty($request->get("action"))  ) {
 
-             //$moodModel->searchAction($request->get("action"),(array)$request->get("actionFrom"),(array)$request->get("actionTo"));
+             $moodModel->searchAction($request->get("action"),(array)$request->get("actionFrom"),(array)$request->get("actionTo"));
          }
-         if (($request->get("ifAction")) == "on" ) {
-             //$moodModel->actionOn();
-         }
-//         if (!empty($request->get("whatWork")) ) {
-//             $moodModel->searchWhatWork($request->get("whatWork"));
-//         }
-//         if (!empty($request->get("action")) and ($request->get("action") != "undefined") ) {
-//
-//             $moodModel->searchAction($request->get("action"),(array)$request->get("actionFrom"),(array)$request->get("actionTo"));
-//         }
-//         if (($request->get("ifAction")) == "on" ) {
-//             $moodModel->actionOn();
-//         }
-//         if (($request->get("ifWhatWork")) == "on" ) {
-//             $moodModel->whatWorkOn();
-//         }
+
+
          $moodModel->idUsers($this->idUsers);
          $moodModel->moodsSelect();
-         //if (empty($request->get("action"))  ) {
          $moodModel->setGroupDay(Auth::User()->start_day);
-         //}
-
          $moodModel->havingActionOn();
-         //$moodModel->groupMoodAction();
-         //$moodModel->groupByAction();
-
          if ($request->get("sort2") == "asc") {
              $moodModel->orderBy("asc",$request->get("sort"));
          }
@@ -265,7 +207,6 @@ class SearchMood {
          $Actions_day->orderBy("desc","date");
          $this->count = $Actions_day->questions->get()->count();
          return $Actions_day->questions->paginate(15);
-         //$moodModel->setDate($request->get("dateFrom"),$request->get("dateTo"),$this->startDay);
      }
      
      
@@ -312,7 +253,6 @@ class SearchMood {
          else {
              $moodModel->orderBy("desc",$request->get("sort"));
          }
-         //$this->count = $moodModel->questions->get()->count();
          return $moodModel->questions->first();
      }
      
@@ -367,7 +307,6 @@ class SearchMood {
          $startDay = $this->startDay;
          $moodModel = new  MoodModel;
          $moodModel->createQuestions($this->startDay);      
-         //$moodModel->countMoods();
          $moodModel->setDate($dateFrom,$dateTo,$this->startDay);
          $moodModel->setMood($request);
          $moodModel->setLongMood($request);
@@ -388,19 +327,12 @@ class SearchMood {
          $moodModel->idUsers($this->idUsers);
          $moodModel->moodsSelect();
          $moodModel->groupByAction();
-         //$moodModel->setGroupDay(Auth::User()->start_day);
-
          if ($request->get("sort2") == "asc") {
              $moodModel->orderBy("asc",$request->get("sort"));
          }
          else {
              $moodModel->orderBy("desc",$request->get("sort"));
          }
-         
-         //$this->countWeek = $moodModel->questions->get()->count();
-         
-           
-      
              return $moodModel->questions->get();
          
      }
@@ -409,7 +341,6 @@ class SearchMood {
      public function createQuestionForWeekList(Request $request,$listDate) {
          
          for ($i=0;$i < count($listDate["dateStart"]);$i++) {
-             //print "x";
              $tmp = $this->createQuestionForWeek($request,$listDate["dateStart"][$i],date("Y-m-d",strtotime($listDate["dateEnd"][$i]) + 86400) );
              $newArray = $this->groupActionDay($tmp);
              $sumDays = $this->sumDays($newArray);
@@ -445,7 +376,7 @@ class SearchMood {
          return $newArray;
      }
      
-     
+     /*
      public function groupActionDay($list) {
              $i = 0;
              $j = 0;
@@ -516,6 +447,7 @@ class SearchMood {
      private function searchWhatWork(array $arrayWork) {
 
      }
+     */
      private function sumHour($hour,$startDay) {
         $sumHour = $hour[0] - $startDay;
         if ($sumHour < 0) {
@@ -541,7 +473,6 @@ class SearchMood {
          $array = $this->changeArrayGroupAction($list);
 
          array_multisort($array,SORT_DESC);
-         //$array = $this->setPercent($array);
          return $array;
      }
      private function setPercent(array $list) {
@@ -717,7 +648,6 @@ class SearchMood {
          $j = 0;
          $z = 0;
          for($i=0;$i < count($sleppsArray);$i++)  {
-             //print $sleppsArray[$i]["dat"];
              SEARCH:
              if (!isset($sleppsArray[$i]["dat"]) or !isset($drugsArray[$z]["dat"])) {
                  continue;
@@ -735,8 +665,6 @@ class SearchMood {
                  $z++;
                  goto SEARCH;
              }
-             //$z++;
-             //$i++;
          }
          return $newArray;
      }
@@ -745,26 +673,12 @@ class SearchMood {
       */
      public function searchSumHowMood(Request $request) {
          $moodModel = new  MoodModel;
-         //$data = $this->setDataSumHowMood($request);
          $result = $moodModel->createQuestionSumHowMood($this->startDay);
          $moodModel->setDate($request->get("dateFrom"),$request->get("dateTo"),$this->startDay);
          $moodModel->setMood($request);
          $moodModel->setLongMood($request);
          $moodModel->setWeekDay($this->dayWeek,$this->startDay);
          $this->setHour($moodModel,$request);
-//         if (!empty($request->get("whatWork")) ) {
-//             $moodModel->searchWhatWork($request->get("whatWork"));
-//         }
-//         if (!empty($request->get("action")) and ($request->get("action") != "undefined") ) {
-//
-//             $moodModel->searchAction($request->get("action"),(array)$request->get("actionFrom"),(array)$request->get("actionTo"));
-//         }
-//         if (($request->get("ifAction")) == "on" ) {
-//             $moodModel->actionOn();
-//         }
-//         if (($request->get("ifWhatWork")) == "on" ) {
-//             $moodModel->whatWorkOn();
-//         }
          $moodModel->idUsers($this->idUsers);
          $moodModel->moodsSelect();
 
@@ -772,45 +686,5 @@ class SearchMood {
  
          return $moodModel->questions->first();
      }
-//     public function setDataSumHowMood(Request $request) {
-//         $data = [];
-//         if ($request->get("dateFrom") != "") {
-//             $data["dateFrom"] =  $request->get("dateFrom") ;
-//         }
-//         if ($request->get("dateTo") != "") {
-//             $data["dateTo"] = $request->get("dateTo") ;
-//         }
-//         if ($request->get("timeFrom") != "") {
-//             $data["timeFrom"] =  $request->get("timeFrom") ;
-//         }
-//         if ($request->get("timeTo") != "") {
-//             $data["timeTo"] = $request->get("timeTo") ;
-//         }
-//         
-//         if ($request->get("moodFrom") != "") {
-//             $data["moodFrom"] =  $request->get("moodFrom") ;
-//         }
-//         if ($request->get("moodTo") != "") {
-//             $data["moodTo"] = $request->get("moodTo") ;
-//         }
-//         if ($request->get("anxientyFrom") != "") {
-//             $data["anxientyFrom"] =  $request->get("anxientyFrom") ;
-//         }
-//         if ($request->get("anxientyTo") != "") {
-//             $data["anxientyTo"] = $request->get("anxientyTo") ;
-//         }
-//         if ($request->get("voltageFrom") != "") {
-//             $data["voltageFrom"] =  $request->get("voltageFrom") ;
-//         }
-//         if ($request->get("voltageTo") != "") {
-//             $data["voltageTo"] = $request->get("voltageTo") ;
-//         }
-//         if ($request->get("stimulationFrom") != "") {
-//             $data["stimulationFrom"] =  $request->get("stimulationFrom") ;
-//         }
-//         if ($request->get("stimulationTo") != "") {
-//             $data["stimulationTo"] = $request->get("stimulationTo") ;
-//         }
-//         return $data;
-//     }
+
 }
