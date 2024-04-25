@@ -10,7 +10,7 @@
                 </td>
                 <td colspan="3">
                 <div style='clear: both;'>
-                    <div style='float: left; width:80%;' id="idNameProduct">
+                    <div style='float: left; width:70%;' id="idNameProduct">
                         <div style='float: left; width:45%;'>
                             <input type='text' name='nameProduct[]' class='form-control' placeholder="nazwa">
                         </div>
@@ -22,7 +22,7 @@
                         </div>
                         
                     </div>
-                    <div style='float: left; width:80%; display: none;' id="idNameProductCopy" >
+                    <div style='float: left; width:70%; display: none;' id="idNameProductCopy" >
                         <div style='float: left; width:45%;'>
                             <input type='text' name='nameProduct[]' class='form-control' placeholder="nazwa">
                         </div>
@@ -50,7 +50,7 @@
                 </td>
                 <td colspan="3">
                 <div style='clear: both;'>
-                    <div style='float: left; width:80%;' id="idNameSubstance">
+                    <div style='float: left; width:70%;' id="idNameSubstance">
                         <div style='float: left; width:45%;'>
                             <input type='text' name='nameSubstance[]' class='form-control' placeholder="nazwa">
                         </div>
@@ -61,7 +61,7 @@
                             <input type='text' name='doseToSubstance[]' class='form-control' placeholder="dawka do">
                         </div>
                     </div>
-                    <div style='float: left; width:80%; display: none;' id="idNameSubstanceCopy" >
+                    <div style='float: left; width:70%; display: none;' id="idNameSubstanceCopy" >
                         <div style='float: left; width:45%;'>
                             <input type='text' name='nameSubstance[]' class='form-control' placeholder="nazwa">
                         </div>
@@ -89,7 +89,7 @@
                 </td>
                 <td colspan="3">
                 <div style='clear: both;'>
-                    <div style='float: left; width:80%;' id="idNameGroup">
+                    <div style='float: left; width:70%;' id="idNameGroup">
                         <div style='float: left; width:45%;'>
                             <input type='text' name='nameGroup[]' class='form-control' placeholder="nazwa">
                         </div>
@@ -101,7 +101,7 @@
                         </div>
                         
                     </div>
-                    <div style='float: left; width:75%; display: none;' id="idNameGroupCopy" >
+                    <div style='float: left; width:65%; display: none;' id="idNameGroupCopy" >
                         <div style='float: left; width:45%;'>
                             <input type='text' name='nameGroup[]' class='form-control' placeholder="nazwa">
                         </div>
@@ -161,7 +161,76 @@
                     <input type='time' name='timeTo' class='form-control'>
                 </td>
             </tr>
+            <tr>
+                <td style='padding-top: 10px; width: 37%;'>
+                    Dni
+                </td>
+                <td colspan="6">
+                    <div style="clear:both;">
+                    <div class="dayWeekDiv" >
+                        <div class="dayOne" >
+                            Poniedziałek
+                        </div>
+                        <div class="dayOne2">
+                            <input type='checkbox' name='day2' class='form-check-input' checked>
+                        </div>
+                    </div>
+                   <div class="dayWeekDiv">
+                        <div class="dayOne" >
+                        Wtorek
+                        </div>
+                        <div class="dayOne2" >
+                            <input type='checkbox' name='day3' class='form-check-input' checked>
+                        </div>
+                    </div>
+                    <div class="dayWeekDiv">
+                        <div class="dayOne" >
+                             Środa
+                        </div>
+                        <div class="dayOne2">
+                            <input type='checkbox' name='day4' class='form-check-input' checked>
+                        </div>
+                    </div>
+                         <div class="dayWeekDiv" >
+                        <div class="dayOne" >
+                         Czwartek
+                        </div>
+                        <div class="dayOne2" >
+                            <input type='checkbox' name='day5' class='form-check-input' checked>
+                        </div>
+                    </div>
+                    <div class="dayWeekDiv">
+                        <div class="dayOne" >
+                            Piątek
+                        </div>
+                        <div class="dayOne2">
+                            <input type='checkbox' name='day6' class='form-check-input' checked>
+                        </div>
+                    </div>
+                             
+                    <div class="dayWeekDiv" >
+                        <div class="dayOne" >
+                            Sobota
+                        </div>
+                        <div class="dayOne2">
+                            <input type='checkbox' name='day7' class='form-check-input' checked>
+                        </div>
+                    </div>
+                    <div class="dayWeekDiv">
+                        <div class="dayOne" >
+                             Niedziela
+                        </div>
+                        <div class="dayOne2" >
+                            <input type='checkbox' name='day1' class='form-check-input' checked>
+                        </div>
+                    </div>
+     
+              
+                    </div>
 
+                </td>
+
+            </tr>
             <tr>
                 <td style='padding-top: 10px; width: 37%;'>
                     Wyszukja tylko produkty, które mają jakiś opis

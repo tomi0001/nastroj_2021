@@ -22,6 +22,7 @@ class SearchDrugsController {
     public function searchDrugsSubmit(Request $request) {
         $SearchDrugs = new SearchDrugs($request);
         $SearchDrugs->checkError($request);
+        $SearchDrugs->setDayWeek($request);
         if (count($SearchDrugs->errors) > 0) {
             return View("Users.Search.Product.error")->with("errors",$SearchDrugs->errors);
         }
@@ -54,6 +55,7 @@ class SearchDrugsController {
     public function searchDrugsMoodSubmit(Request $request) {
         $SearchDrugs = new SearchDrugsMood($request);
         $SearchDrugs->checkError($request);
+        $SearchDrugs->setDayWeek($request);
         if (count($SearchDrugs->errors) > 0) {
             return View("Users.Search.Product.error")->with("errors",$SearchDrugs->errors);
         }
@@ -71,7 +73,8 @@ class SearchDrugsController {
             }
             return View("Users.Search.Mood.searchResultMoodDrugsDay")
                     ->with("arrayList", $result)->with("dateFrom",$SearchDrugs->dateFrom)->with("dateTo",$SearchDrugs->dateTo)
-                    ->with("timeFrom",$request->get("timeFrom"))->with("timeTo",$request->get("timeTo"))->with("request",$request);
+                    ->with("timeFrom",$request->get("timeFrom"))->with("timeTo",$request->get("timeTo"))->with("request",$request)
+                    ->with('week',$SearchDrugs->dayWeek);
           
            
             

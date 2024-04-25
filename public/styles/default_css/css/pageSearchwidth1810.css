@@ -78,28 +78,28 @@
     }
     #searchMoodDiv {
         min-height: 200px;
-        width: 1000px;
+        width: 1200px;
         margin-top: 15px;
 
 
     }
     #searchSleepDiv {
         min-height: 200px;
-        width: 1000px;
+        width: 1200px;
         margin-top: 15px;
 
 
     }
     #differenceDrugsSleepDiv {
         min-height: 200px;
-        width: 1000px;
+        width: 1200px;
         margin-top: 15px;
 
 
     }
     #sumActionDayDiv {
         min-height: 200px;
-        width: 1000px;
+        width: 1200px;
         margin-top: 15px;
     }
         div.dateSumDayMood {
@@ -150,7 +150,7 @@ div.dayOne2 {
     }
     #searchDrugsDiv {
         min-height: 200px;
-        width: 1000px;
+        width: 1200px;
         margin-top: 15px;
     }
     #searchDrugsMoodDiv {

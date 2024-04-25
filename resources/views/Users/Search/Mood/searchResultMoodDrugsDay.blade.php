@@ -101,6 +101,49 @@
                                 </div>
 
                             </div>
+                            <div class="dateSumDayMoodAverageDayWeek " >
+                                <div class="titleSearchSumDayMood">
+                                    <span class="titleSearchSumDayMood">DNI TYGODNIA</span>
+                                </div>
+                                <span class="fontSearchSumDay">
+                                    @if (count($week) == 7)
+                                        <div class="dayWeekDivAverage">Wszystkie dni</div>
+                                    @else
+                                    @foreach ($week as $week2)
+            
+                                            @if ($week2 == 2)
+                                                <div class="dayWeekDivAverageOne"> Poniedziałek </div>
+                                            @endif
+            
+                                            @if ($week2 == 3)
+                                                        <div class="dayWeekDivAverageOne"> Wtorek </div>
+                                            @endif
+            
+                                            @if ($week2 == 4)
+                                                                <div class="dayWeekDivAverageOne"> Środa </div>
+                                            @endif
+            
+                                            @if ($week2 == 5)
+                                                                        <div class="dayWeekDivAverageOne"> Czwartek </div>
+                                            @endif
+            
+                                            @if ($week2 == 6)
+                                                                                <div class="dayWeekDivAverageOne">  Piątek </div>
+                                            @endif
+            
+                                            @if ($week2 == 7)
+                                                                                        <div class="dayWeekDivAverageOne">  Sobota </div>
+                                            @endif
+            
+                                            @if ($week2 == 1)
+                                                                                                <div class="dayWeekDivAverageOne">  Niedziela </div>
+                                            @endif
+            
+            
+                                    @endforeach
+                                    @endif
+                                </span>
+                            </div>
                         </div>
                         
                         

@@ -204,28 +204,28 @@
                             <td class="showMood start" colspan="2" ">
                             
                             <br>
-                            <div class="cell{{\App\Http\Services\Common::setColor($arrayList["mood"])}} level" style="width: 100%">&nbsp;</div>
+                            <div class="cell{{\App\Http\Services\Common::setColor($arrayList->level_mood)}} level" style="width: 100%">&nbsp;</div>
                             <div style="text-align: center; width: 70%;">
                                 
                             </div>
                             </td>
                             <td class="sizeTableMood showMood ">
 
-                                <span class="fontMood" >{{round($arrayList["mood"],3)}}</span>
+                                <span class="fontMood" >{{round($arrayList->level_mood,3)}}</span>
 
                             </td>
                             <td class="sizeTableMood showMood ">
-                                <span class="fontMood"  >{{round($arrayList["anxienty"],3)}}</span>
-
-                            </td>
-                            <td class="sizeTableMood showMood ">
-
-                                <span class="fontMood"  >{{round($arrayList["voltage"],3)}}</span>
+                                <span class="fontMood"  >{{round($arrayList->level_anxiety,3)}}</span>
 
                             </td>
                             <td class="sizeTableMood showMood ">
 
-                                <span class="fontMood"  >{{round($arrayList["stimulation"],3)}}</span>
+                                <span class="fontMood"  >{{round($arrayList->level_nervousness,3)}}</span>
+
+                            </td>
+                            <td class="sizeTableMood showMood ">
+
+                                <span class="fontMood"  >{{round($arrayList->level_stimulation,3)}}</span>
 
                             </td>
                             <td class="sizeTableMood showMood ">

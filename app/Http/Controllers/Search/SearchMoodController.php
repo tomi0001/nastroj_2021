@@ -42,6 +42,7 @@ class SearchMoodController {
     public function searchSleepSubmit(Request $request) {
         $SearchMood = new SearchMood;
         $SearchMood->checkErrorSleep($request);
+        $SearchMood->setDayWeek($request);
         if (count($SearchMood->errors) > 0) {
             return View("Users.Search.Mood.error")->with("errors",$SearchMood->errors);
         }
@@ -73,6 +74,7 @@ class SearchMoodController {
     public function searchMoodSubmit(Request $request) {
         $SearchMood = new SearchMood;
         $SearchMood->checkError($request);
+        $SearchMood->setDayWeek($request);
         if (count($SearchMood->errors) > 0) {
             return View("Users.Search.Mood.error")->with("errors",$SearchMood->errors);
         }
@@ -103,21 +105,21 @@ class SearchMoodController {
             }
             else if ($request->get("sumDay") == "on") {
                 $error = false;
-                $result = $SearchMood->createQuestion($request,true);
-                $newArray = $SearchMood->groupActionDay($result);
-                if ($SearchMood->countDays == 0) {
+                $result = $SearchMood->createQuestionSumDay($request,true);
+                //$newArray = $SearchMood->groupActionDay($result);
+                if (empty($result)) {
                     $error = true;
                     goto error;
                 }
-                $sumDays = $SearchMood->sumDays($newArray);
+                //$sumDays = $SearchMood->sumDays($newArray);
                 error:
                 if ($error == true) {
                     return View("Users.Search.Mood.error")->with("errors",["nie na żadnych wyników"]);
                 }
                 $SearchMood->setDate($request->get("dateFrom"),$request->get("dateTo"));
-                $sumAction = Mood::sumActionAll($SearchMood->dateFrom,$SearchMood->dateTo,Auth::User()->id, Auth::User()->start_day);
+                $sumAction = Mood::sumActionAll($SearchMood->dateFrom,$SearchMood->dateTo,Auth::User()->id, Auth::User()->start_day,$SearchMood->dayWeek);
                 return View("Users.Search.Mood.searchResultMoodSumDay")
-                    ->with("arrayList", $sumDays)->with("dateFrom",$request->get("dateFrom"))->with("dateTo",$request->get("dateTo"))
+                    ->with("arrayList", $result)->with("dateFrom",$request->get("dateFrom"))->with("dateTo",$request->get("dateTo"))
                     ->with("timeFrom",$request->get("timeFrom"))->with("timeTo",$request->get("timeTo"))
                     ->with("moodFrom",$request->get("moodFrom"))->with("moodTo",$request->get("moodTo"))
                     ->with("anxientyFrom",$request->get("anxientyFrom"))->with("anxientyTo",$request->get("anxientyTo"))
@@ -307,13 +309,14 @@ class SearchMoodController {
     public function differenceDrugsSleepSubmit(Request $request) {
         $SearchMood = new SearchMood;
         $SearchMood->checkErrorSleep($request);
+        $SearchMood->setDayWeek($request);
         if (count($SearchMood->errors) > 0) {
             ERROR:
             return View("Users.Search.Mood.error")->with("errors",$SearchMood->errors);
         }
         else {
             $data = $SearchMood->setData($request);
-            $array = Mood::selectLastSleep($data, Auth::User()->start_day, Auth::User()->id);
+            $array = Mood::selectLastSleep($data, Auth::User()->start_day, Auth::User()->id,$SearchMood->dayWeek);
             $array2 = $array->pluck("dat")->all();
             
             if (count($array2) == 0) {
@@ -325,7 +328,6 @@ class SearchMoodController {
             $drugs = Usee::selectFirstDrugs($text,Auth::User()->start_day, Auth::User()->id);
             
             $diff = $SearchMood->diffDrugsSleep($array,$drugs);
-            print count($array);
             return View("Users.Search.Mood.searchResultSleepDrugs")->with("arrayList", $diff)->with("count", count($diff));
         
         }
@@ -339,6 +341,7 @@ class SearchMoodController {
     public function sumHowMoodSubmit(Request $request) {
         $SearchMood = new SearchMood;
         $SearchMood->checkError($request);
+        
         if (count($SearchMood->errors) > 0) {
             return View("ajax.error")->with("error",$SearchMood->errors);
         }

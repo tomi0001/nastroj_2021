@@ -169,7 +169,7 @@
                     @if ($sum->longMood == null)
                         <span class="error">Nie ma nastroji dla podanych danych</span>
                     @else
-                        Minut nastroju {{$sum->longMood}}
+                        Minut nastroju {{\App\Http\Services\Common::calculateHourOne($sum->longMood * 60)}}
            
                     @endif
         </div>

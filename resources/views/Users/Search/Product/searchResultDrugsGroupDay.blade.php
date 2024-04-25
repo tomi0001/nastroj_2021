@@ -31,7 +31,36 @@
 
             @if ($i == 0 or $arrayList[$i]->dat != $arrayList[$i-1]->dat)
                 <div class="drugsSearchResult">
-                    <div class="dayDrugs">Dzień  {{$arrayList[$i]->dat}}</div>
+                    <div class="dayDrugs">Dzień  {{$arrayList[$i]->dat}}
+                        @switch ($arrayList[$i]->dayWeek)
+                        
+                        
+
+                        @case (0)
+                            Poniedziałek
+                            @break
+                        @case (1)
+                            Wtorek
+                            @break
+                        @case (2)
+                            Środa
+                            @break
+                        @case (3)
+                            Czwartek
+                            @break
+                        @case (4)
+                            Piątek
+                            @break
+                        @case (5)
+                            Sobota
+                            @break
+                        @case (6)
+                            Niedziela
+                            @break
+                        
+                    @endswitch
+                    
+                    </div>
                     <div style="margin-left: 5%; margin-right: 5%; margin-top: 2%; margin-bottom: 1%;">
                         <div class="divAtButtonDay">
                         <div class="firstDiv">

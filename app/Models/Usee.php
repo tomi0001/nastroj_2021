@@ -40,6 +40,7 @@ class Usee extends Model
 
         $this->questions->selectRaw("usees.id_products as id")
             ->selectRaw("usees.id as id_usees")
+            ->selectRaw(DB::Raw("WEEKDAY((DATE(IF(HOUR(    usees.date) >= '" . $startDay . "', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) )) as dayWeek" ))
             ->selectRaw("products.name as name")
             ->selectRaw("sum(usees.price) as price")
             ->selectRaw("products.type_of_portion as type");
@@ -69,6 +70,7 @@ class Usee extends Model
             ->selectRaw("usees.id_products as product")
             ->selectRaw("usees.price as price")
             ->selectRaw("products.name as name")
+            ->selectRaw(DB::Raw("WEEKDAY((DATE(IF(HOUR(    usees.date) >= '" . $startDay . "', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) )) as dayWeek" ))
             ->selectRaw("products.type_of_portion as type")
             ->leftjoin("users_descriptions","usees.id","users_descriptions.id_usees")
             ->leftjoin("descriptions","descriptions.id","users_descriptions.id_descriptions")
@@ -411,7 +413,7 @@ class Usee extends Model
     /*
      * update may 2023
      */
-    public static function selectDateUsee(int $idUsers,  $name,int $startDay, $doseFrom, $doseTo,array $arrayProdduct) {
+    public static function selectDateUsee(int $idUsers,  $name,int $startDay, $doseFrom, $doseTo,array $arrayProdduct,array $week) {
         
         return self::join("products","products.id","usees.id_products")
                 ->join("substances_products","substances_products.id_products","products.id")
@@ -421,6 +423,7 @@ class Usee extends Model
                 ->whereRaw("products.name like '%" . $name  . "%'")
                 ->where("usees.date",">=",$arrayProdduct["dateFrom"])
                 ->where("usees.date","<",$arrayProdduct["dateTo"])
+                ->whereRaw(DB::raw("DAYOFWEEK((DATE(IF(HOUR(    usees.date) >= '" . $startDay . "', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ))  in (" . implode(",", $week) . ")")  )
                   ->where(function ($query) use ($arrayProdduct,$doseFrom,$doseTo,$startDay) {
                       if ($doseFrom != "") {
                           $query->where("usees.portion",">=",$doseFrom);
@@ -457,6 +460,12 @@ class Usee extends Model
                 ->orderBy("date","ASC")  
                 ->get();
                 
+    }
+    /*
+        update april 2024
+    */
+    public function setWeekDay(array $week,int $startDay) {
+        $this->questions->whereRaw(DB::raw("DAYOFWEEK((DATE(IF(HOUR(    usees.date) >= '" . $startDay . "', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ))  in (" . implode(",", $week) . ")")  );
     }
 
 }

@@ -937,7 +937,7 @@ class Mood extends Model
                 ->groupBy("actions.id")
                 ->get();
     }
-    public static function sumActionAll(string $dateFrom, string $dateTo, int $idUsers, int $startDay) {
+    public static function sumActionAll(string $dateFrom, string $dateTo, int $idUsers, int $startDay,array $week) {
         return self::join("moods_actions","moods_actions.id_moods","moods.id")
                 ->join("actions","actions.id","moods_actions.id_actions")
                 ->selectRaw("actions.name as name")
@@ -951,7 +951,7 @@ class Mood extends Model
                         . " END))"
                         . "  as sum ")
                 ->where("moods.id_users",$idUsers)
-
+                ->whereRaw(DB::raw("DAYOFWEEK((DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ))  in (" . implode(",", $week) . ")")  )
                  ->where(function ($query) use ($dateFrom,$startDay) {
                     $query->whereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) >= '" . $dateFrom . "'" ))
                     ->orWhereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) >= '" . $dateFrom . "'" ));
@@ -1107,13 +1107,14 @@ class Mood extends Model
     /*
      * update june 2023
      */
-    public static function selectLastSleep(array $data, $startDay,int $idUsers) {
+    public static function selectLastSleep(array $data, $startDay,int $idUsers,$week) {
         return self::selectRaw("left(date_end,10) as dat")
                     ->selectRaw("date_end as date_end")
                 ->where("type","sleep")
                 ->where("id_users",$idUsers)
                 ->whereRaw("time(moods.date_end) <  '12:20:20' ")
                 ->whereRaw("time(moods.date_end) >  '05:00:20' ")
+                ->whereRaw(DB::raw("DAYOFWEEK((DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ))  in (" . implode(",", $week) . ")")  )
                 ->where(function ($query) use ($data) {
                     
                     if (isset($data["dateFrom"])) {

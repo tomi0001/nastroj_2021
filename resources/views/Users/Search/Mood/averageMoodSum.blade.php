@@ -45,52 +45,7 @@
 
 
             </tr>
-            <tr>
-                <td style='padding-top: 10px; width: 37%;'>
-                    słowa kluczowe akcji
-                </td>
-                <td colspan="3" >
-                    <div style='clear: both;'>
-                        <div id="idAction">
-                            <div style='float: left; width:40%;'>
-                                <input type='text' name='action[]' class='form-control' placeholder="nazwa">
-                            </div>
-                            <div style='float: left; width:20%; margin-left: 10px;'>
-                                <input type='text' name='actionFrom[]' class='form-control' placeholder="wartość od">
-                            </div>
-                            <div style='float: left; width:20%; margin-left: 10px;'>
-                                <input type='text' name='actionTo[]' class='form-control' placeholder="wartość do">
-                            </div>
-                        </div>
-                        <div id="idActionCopy" style="display: none;">
-                            <div style='float: left; width:40%;'>
-                                <input type='text' name='action[]' class='form-control' placeholder="nazwa">
-                            </div>
-                            <div style='float: left; width:20%; margin-left: 10px;'>
-                                <input type='text' name='actionFrom[]' class='form-control' placeholder="wartość od">
-                            </div>
-                            <div style='float: left; width:20%; margin-left: 10px;'>
-                                <input type='text' name='actionTo[]' class='form-control' placeholder="wartość do">
-                            </div>
 
-
-                        </div>
-
-
-
-
-
-                        <div style='float: left; margin-left: 20px; '>
-                            <a onclick="addFieldAction()" style="cursor: pointer;">
-                                <div class="plusButton plusMinusButton" id='addFieldWhatWork'> <img width="40" class="minus" id="boolxxxx" src="{{asset('/image/icon_plus.png')}}"></div>
-                            </a>
-                        </div>
-                    </div>
-                </td>
-
-
-
-            </tr>
             <tr>
                 <td style='padding-top: 10px; width: 37%;'>
                     Dni
@@ -161,15 +116,7 @@
                 </td>
 
             </tr>
-            <tr>
-                <td style='padding-top: 10px; width: 37%;'>
-                    Wyszukja tylko wpisy, które mają jakiąś akcję
-                </td>
-                <td>
-                    <input type='checkbox' name='ifAction' class='form-check-input'>
-                </td>
 
-            </tr>
 
             <tr>
                 <td style='padding-top: 10px; width: 37%;'>

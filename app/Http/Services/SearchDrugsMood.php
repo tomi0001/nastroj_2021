@@ -32,6 +32,7 @@ class SearchDrugsMood {
     public $timeFrom;
     public $timeTo;
     public $listMood = [];
+    public $dayWeek = [];
     function __construct($request,$bool = 0) {
         if ($bool == 0) {
             $this->idUsers = Auth::User()->id;
@@ -86,12 +87,12 @@ class SearchDrugsMood {
              if ($request->get("drugsMood")[$i] != "") {
                  if (isset($request->get("ifBool")[$i]) and $request->get("ifBool")[$i] == "on") {
                       
-                      $this->arrayProductNot[$this->countProductNot] = Usee::selectDateUsee($this->idUsers, $request->get("drugsMood")[$i],Auth::User()->start_day,$request->get("drugsMoodFrom")[$i],$request->get("drugsMoodTo")[$i],$this->arrayProdduct);
+                      $this->arrayProductNot[$this->countProductNot] = Usee::selectDateUsee($this->idUsers, $request->get("drugsMood")[$i],Auth::User()->start_day,$request->get("drugsMoodFrom")[$i],$request->get("drugsMoodTo")[$i],$this->arrayProdduct,$this->dayWeek);
                       $this->countProductNot++;
                      
                  }
                  else {
-                      $this->arrayProduct2[$this->countProduct] = Usee::selectDateUsee($this->idUsers, $request->get("drugsMood")[$i],Auth::User()->start_day,$request->get("drugsMoodFrom")[$i],$request->get("drugsMoodTo")[$i],$this->arrayProdduct);
+                      $this->arrayProduct2[$this->countProduct] = Usee::selectDateUsee($this->idUsers, $request->get("drugsMood")[$i],Auth::User()->start_day,$request->get("drugsMoodFrom")[$i],$request->get("drugsMoodTo")[$i],$this->arrayProdduct,$this->dayWeek);
                       $this->countProduct++;
                  }
                  
@@ -225,5 +226,31 @@ class SearchDrugsMood {
         }
 
         return $sumHour . ":" .  $hour[1] . ":00";
+    }
+    /*
+        update april 2024
+    */
+    public function setDayWeek(Request $request) {
+        if ($request->get("day1") == "on") {
+            array_push($this->dayWeek, 1);
+        }
+        if ($request->get("day2") == "on") {
+            array_push($this->dayWeek, 2);
+        }
+        if ($request->get("day3") == "on") {
+            array_push($this->dayWeek, 3);
+        }
+        if ($request->get("day4") == "on") {
+            array_push($this->dayWeek, 4);
+        }
+        if ($request->get("day5") == "on") {
+            array_push($this->dayWeek, 5);
+        }
+        if ($request->get("day6") == "on") {
+            array_push($this->dayWeek, 6);
+        }
+        if ($request->get("day7") == "on") {
+            array_push($this->dayWeek, 7);
+        }
     }
 }

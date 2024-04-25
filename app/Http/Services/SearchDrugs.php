@@ -25,6 +25,7 @@ class SearchDrugs {
      public $question;
      public $count;
      private $idProduct = [];
+     public $dayWeek = [];
 
    
 
@@ -61,6 +62,7 @@ class SearchDrugs {
          $Usee->setDose($request->get("doseFrom"),$request->get("doseTo"));
          
          $Usee->setProduct($this->idProduct);
+         $Usee->setWeekDay($this->dayWeek,$this->startDay);
          $Usee->setGroupIdProduct();
          if ($request->get("sort2") == "asc") {
              $Usee->orderByGroupDay("asc",$request->get("sort"));
@@ -78,6 +80,7 @@ class SearchDrugs {
          $Usee->setDate($request->get("dateFrom"),$request->get("dateTo"),$this->startDay);
          $this->setHour($Usee,$request);
          $Usee->setProduct($this->idProduct);
+         $Usee->setWeekDay($this->dayWeek,$this->startDay);
          $Usee->setGroupDay(Auth::User()->start_day);
 
          $Usee->setGroupIdProduct();
@@ -103,6 +106,7 @@ class SearchDrugs {
          $Usee->setDose($request->get("doseFrom"),$request->get("doseTo"));
          $Usee->setProduct($this->idProduct);
          $Usee->setIdUsers($this->idUsers);
+         $Usee->setWeekDay($this->dayWeek,$this->startDay);
          if ($request->get("whatWork") != "") {
              $Usee->setWhatWork($request->get("whatWork"));
          }
@@ -281,6 +285,28 @@ class SearchDrugs {
 
         }
 
-    
+    public function setDayWeek(Request $request) {
+        if ($request->get("day1") == "on") {
+            array_push($this->dayWeek, 1);
+        }
+        if ($request->get("day2") == "on") {
+            array_push($this->dayWeek, 2);
+        }
+        if ($request->get("day3") == "on") {
+            array_push($this->dayWeek, 3);
+        }
+        if ($request->get("day4") == "on") {
+            array_push($this->dayWeek, 4);
+        }
+        if ($request->get("day5") == "on") {
+            array_push($this->dayWeek, 5);
+        }
+        if ($request->get("day6") == "on") {
+            array_push($this->dayWeek, 6);
+        }
+        if ($request->get("day7") == "on") {
+            array_push($this->dayWeek, 7);
+        }
+    }
     
 }

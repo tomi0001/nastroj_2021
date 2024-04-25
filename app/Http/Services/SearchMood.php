@@ -120,6 +120,7 @@ class SearchMood {
          $moodModel->setLongMood($request);
          $this->setHour($moodModel,$request);
          $moodModel->idUsers($this->idUsers);
+         $moodModel->setWeekDay($this->dayWeek,$this->startDay);
          $moodModel->moodsSelect();
 
          if ($request->get("sort2") == "asc") {
@@ -128,7 +129,7 @@ class SearchMood {
          else {
              $moodModel->orderBy("desc",$request->get("sort"));
          }
-         return $moodModel->questions->get();
+         return $moodModel->questions->first();
      }
      private function searchAction( $action) :bool {
          for ($i = 0;$i < count($action);$i++) {
@@ -145,6 +146,7 @@ class SearchMood {
          $moodModel->setDate($request->get("dateFrom"),$request->get("dateTo"),$this->startDay);
          $moodModel->setMood($request);
          $moodModel->setLongMood($request);
+         $moodModel->setWeekDay($this->dayWeek,$this->startDay);
          $this->setHour($moodModel,$request);
          if (($request->get("ifAction")) == "on" ) {
              $moodModel->groupMoodAction();
@@ -222,6 +224,7 @@ class SearchMood {
              $moodModel->whatWorkOn();
          }
          $moodModel->idUsers($this->idUsers);
+         $moodModel->setWeekDay($this->dayWeek,$this->startDay);
          $moodModel->sleepSelect();
          $moodModel->whereEpizodes($request->get("workingFrom"),$request->get("workingTo"));
          if ($request->get("sort2") == "asc") {
@@ -245,6 +248,7 @@ class SearchMood {
              $moodModel->whatWorkOn();
          }
          $moodModel->idUsers($this->idUsers);
+         $moodModel->setWeekDay($this->dayWeek,$this->startDay);
          $moodModel->sleepSelect();
          $moodModel->whereEpizodes($request->get("workingFrom"),$request->get("workingTo"));
          if ($request->get("sort2") == "asc") {
@@ -264,6 +268,7 @@ class SearchMood {
          $moodModel->setDate($request->get("dateFrom"),$request->get("dateTo"),$this->startDay);
          $moodModel->setMood($request);
          $moodModel->setLongMood($request);
+         $moodModel->setWeekDay($this->dayWeek,$this->startDay);
          $this->setHour($moodModel,$request);
          if (!empty($request->get("whatWork")) ) {
              $moodModel->searchWhatWork($request->get("whatWork"));
@@ -310,6 +315,7 @@ class SearchMood {
          $moodModel->setDate($dateFrom,$dateTo,$this->startDay);
          $moodModel->setMood($request);
          $moodModel->setLongMood($request);
+         $moodModel->setWeekDay($this->dayWeek,$this->startDay);
          $this->setHour($moodModel,$request);
          if (!empty($request->get("whatWork")) ) {
              $moodModel->searchWhatWork($request->get("whatWork"));
