@@ -15,7 +15,8 @@ class Mood extends Model
     public $questionsMinMax;
     public function createQuestionSumDay(int $startDay) {
         $this->questions =  self::query();
-        $this->questions
+        $this->questions->leftjoin("moods_actions","moods_actions.id_moods","moods.id")
+        ->leftjoin("actions","actions.id","moods_actions.id_actions")
             ->selectRaw("sum(TIMESTAMPDIFF (minute, moods.date_start , moods.date_end)) as longMood")
             ->selectRaw(" round((sum( ( unix_timestamp(moods.date_end) - unix_timestamp(moods.date_start) ) * moods.level_mood)  / sum( unix_timestamp(moods.date_end) - unix_timestamp(moods.date_start) ) ),3  )as level_mood ")
             ->selectRaw(" round(sum( ( unix_timestamp(moods.date_end) - unix_timestamp(moods.date_start) ) * moods.level_anxiety)  / sum( unix_timestamp(moods.date_end) - unix_timestamp(moods.date_start) ),3 ) as level_anxiety ")

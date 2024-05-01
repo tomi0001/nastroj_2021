@@ -105,14 +105,14 @@ class SearchMoodController {
             }
             else if ($request->get("sumDay") == "on") {
                 $error = false;
-                $result = $SearchMood->createQuestionSumDay($request,true);
+                $result = $SearchMood->createQuestionSumDay($request);
                 //$newArray = $SearchMood->groupActionDay($result);
-                if (empty($result)) {
+                if ($result->count == 0) {
                     $error = true;
-                    goto error;
+                    goto ERROR;
                 }
                 //$sumDays = $SearchMood->sumDays($newArray);
-                error:
+                ERROR:
                 if ($error == true) {
                     return View("Users.Search.Mood.error")->with("errors",["nie na żadnych wyników"]);
                 }
@@ -152,7 +152,7 @@ class SearchMoodController {
                     return View("Users.Search.Mood.error")->with("errors",["nie na żadnych wyników"]);
                 }
                 $SearchMood->setDate($request->get("dateFrom"),$request->get("dateTo"));
-                $sumAction = Mood::sumActionAll($SearchMood->dateFrom,$SearchMood->dateTo,Auth::User()->id, Auth::User()->start_day);
+                $sumAction = Mood::sumActionAll($SearchMood->dateFrom,$SearchMood->dateTo,Auth::User()->id, Auth::User()->start_day,$SearchMood->dayWeek);
                 return View("Users.Search.Mood.searchResultMoodSumAction")
                     ->with("arrayList", $sumDays)->with("dateFrom",$request->get("dateFrom"))->with("dateTo",$request->get("dateTo"))
                     ->with("listgroupActionDayName",$SearchMood->listgroupActionDayName)
@@ -169,7 +169,7 @@ class SearchMoodController {
                 $SearchMoodAI = new SearchMoodAI(Auth::User()->id,Auth::User()->start_day);
                 $SearchMood->setDate($request->get("dateFrom"),$request->get("dateTo"));
                 $arrayWeek = $SearchMoodAI->createWeek($SearchMood->dateFrom,$SearchMood->dateTo);
-                $SearchMood->createQuestionForWeekList($request,$arrayWeek,true);
+                $SearchMood->createQuestionForWeekList($request,$arrayWeek);
 
                  return View("Users.Search.Mood.searchResultMoodGroupWeek")
                     ->with("arrayList", $SearchMood->listWeek)->with("dateFrom",$request->get("dateFrom"))->with("dateTo",$request->get("dateTo"))
@@ -180,7 +180,7 @@ class SearchMoodController {
                     ->with("stimulationFrom",$request->get("stimulationFrom"))->with("stimulationTo",$request->get("stimulationTo"))
                     ->with("longMoodFrom",$request->get("longMoodHourFrom") . ":" . $request->get("longMoodMinuteFrom"))
                     ->with("longMoodTo",$request->get("longMoodHourTo") . ":" . $request->get("longMoodMinuteTo"))
-                    ->with("actionSum",$SearchMood->listAction)->with("arrayWeek",$arrayWeek);
+                    ->with("actionSum",$SearchMood->listAction)->with("arrayWeek",$SearchMood->arrayWeek);
             }
             else if (($request->get("groupMonth") == "on")) {
                 $SearchMoodAI = new SearchMoodAI(Auth::User()->id,Auth::User()->start_day);
@@ -196,7 +196,7 @@ class SearchMoodController {
                     ->with("stimulationFrom",$request->get("stimulationFrom"))->with("stimulationTo",$request->get("stimulationTo"))
                     ->with("longMoodFrom",$request->get("longMoodHourFrom") . ":" . $request->get("longMoodMinuteFrom"))
                     ->with("longMoodTo",$request->get("longMoodHourTo") . ":" . $request->get("longMoodMinuteTo"))
-                    ->with("actionSum",$SearchMood->listAction)->with("arrayWeek",$arrayMonth);
+                    ->with("actionSum",$SearchMood->listAction)->with("arrayWeek",$SearchMood->arrayWeek);
             }
                 
             else {
