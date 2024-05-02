@@ -51,6 +51,9 @@ class SearchDrugs {
          if (($request->get("doseTo") != "") and (  $request->get("doseTo") < 0   or  ( (string)(float) $request->get("doseTo") !== $request->get("doseTo")  ) )  ) {
              array_push($this->errors,"dawka do musi byc dodatnią liczbą zmnienno przecinkową");
          }
+         if (count($this->idProduct) == 0) {
+            array_push($this->errors,"nic nie wyszukano");
+         }
      }
 
      public function createQuestionSumDay(Request $request) {
@@ -139,6 +142,7 @@ class SearchDrugs {
                     $doseTo[$i] = null;
                 }
                  $array = Product::selectIdNameProduct($nameProduct[$i]);
+               
                  foreach ($array as $list) {
                     $this->idProduct["name"][] = $list->id;
 

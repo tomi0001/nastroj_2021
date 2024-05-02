@@ -205,6 +205,13 @@
                 ->appends(['ifWhatWork'=>Request::get("ifWhatWork")])
                 ->appends(['sumDay'=>'on'])
                 ->appends(['sort2'=>Request::get("sort2")])
+                ->appends(['day1'=>Request::get("day1")])
+                        ->appends(['day2'=>Request::get("day2")])
+                        ->appends(['day3'=>Request::get("day3")])
+                        ->appends(['day4'=>Request::get("day4")])
+                        ->appends(['day5'=>Request::get("day5")])
+                        ->appends(['day6'=>Request::get("day6")])
+                        ->appends(['day7'=>Request::get("day7")])
                 ->links();
             @endphp
             {{$arrayList}}
