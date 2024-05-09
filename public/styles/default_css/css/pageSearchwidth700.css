@@ -81,6 +81,11 @@ div.dayOne2 {
 
 
     }
+    #differencesMoodDiv {
+        min-height: 200px;
+        width: 900px;
+        margin-top: 15px;
+    }
         table.searchTableDrugs {
         width: 90%;
         margin-left: auto;

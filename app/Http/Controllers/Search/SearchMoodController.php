@@ -10,6 +10,7 @@ use App\Models\User as MUser;
 use Hash;
 use App\Http\Services\SearchMood;
 use App\Http\Services\SearchMoodAI;
+use App\Http\Services\SearchMoodAI2;
 use App\Models\Mood;
 use App\Models\Usee;
 use App\Models\Action;
@@ -75,6 +76,7 @@ class SearchMoodController {
         $SearchMood = new SearchMood;
         $SearchMood->checkError($request);
         $SearchMood->setDayWeek($request);
+
         if (count($SearchMood->errors) > 0) {
             return View("Users.Search.Mood.error")->with("errors",$SearchMood->errors);
         }
@@ -357,5 +359,29 @@ class SearchMoodController {
                             ->with("stimulationFrom", $request->get("stimulationFrom"))->with("stimulationTo", $request->get("stimulationTo"))
                             ->with("week", $SearchMood->dayWeek);;
         }
+    }
+
+
+    /*
+        update may 2024
+    */
+    public function differencesMoodSubmit(Request $request) {
+        $SearchMoodAI2 = new SearchMoodAI2();
+        $SearchMoodAI2->checkError($request);
+        if (count($SearchMoodAI2->errors) > 0) {
+            return View("ajax.error")->with("error",$SearchMoodAI2->errors);
+        }
+        else {
+            $SearchMoodAI2->setDayWeek($request);
+            $SearchMoodAI2->setVariable($request);
+            $SearchMoodAI2->setHour($request);
+            $list = $SearchMoodAI2->createQuestions($request);
+            $array = $SearchMoodAI2->sumDifferencesMoodList($list);
+            return View("Users.Search.Mood.differencesMoodSubmit")->with("array", $array)
+            ->with("timeFrom", $request->get("timeFrom"))->with("timeTo", $request->get("timeTo"))
+            ->with("dateFrom", $request->get("dateFrom"))->with("dateTo", $request->get("dateTo"))
+            ->with("week", $SearchMoodAI2->dayWeek);
+        }
+        
     }
 }

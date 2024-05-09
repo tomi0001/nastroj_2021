@@ -367,7 +367,19 @@ class Mood extends Model
 
     }
     
- 
+    public function createQuestionAI2(int $startDay) {
+       
+        $this->questions =  self::query();
+        $this->questions->selectRaw("moods.date_start as date_start")
+        ->selectRaw("moods.date_end as date_end")
+        ->selectRaw("moods.level_mood as level_mood")
+        ->selectRaw("moods.level_anxiety as level_anxiety")
+        ->selectRaw("moods.level_nervousness as level_nervousness")
+        ->selectRaw("moods.level_stimulation  as level_stimulation")
+        ->selectRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) as datStart " ))
+        ->selectRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) as datEnd" ));
+    }
+    
     public function createQuestionGroupDay(int $startDay) {
         $this->questions =  self::query();
 

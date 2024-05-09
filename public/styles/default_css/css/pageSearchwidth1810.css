@@ -148,6 +148,11 @@ div.dayOne2 {
 
 
     }
+    #differencesMoodDiv {
+        min-height: 200px;
+        width: 1200px;
+        margin-top: 15px;
+    }
     #searchDrugsDiv {
         min-height: 200px;
         width: 1200px;

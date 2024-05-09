@@ -166,6 +166,7 @@ function searchMood() {
         $("#sumActionDayDiv").css("display","none");
         $("#searchSleepDiv").css("display","none");
         $("#differenceDrugsSleepDiv").css("display","none");
+        $("#differencesMoodDiv").css("display","none");
     }
     else {
 
@@ -182,6 +183,7 @@ function searchSleep() {
         $("#searchMoodDiv").css("display","none");
         $("#sumMoodDayDiv").css("display","none");
         $("#differenceDrugsSleepDiv").css("display","none");
+        $("#differencesMoodDiv").css("display","none");
     }
     else {
 
@@ -197,6 +199,7 @@ function averageMoodSum() {
         $("#sumActionDayDiv").css("display","none");
         $("#searchSleepDiv").css("display","none");
         $("#differenceDrugsSleepDiv").css("display","none");
+        $("#differencesMoodDiv").css("display","none");
 
     }
     else {
@@ -215,6 +218,7 @@ function sumActionDay() {
         $("#averageMoodSumDiv").css("display","none");
         $("#searchSleepDiv").css("display","none");
         $("#differenceDrugsSleepDiv").css("display","none");
+        $("#differencesMoodDiv").css("display","none");
 
 
     }
@@ -295,6 +299,8 @@ function setFunction() {
             break;
         case 'differenceDrugsSleep': differenceDrugsSleep();
             break;
+        case 'differencesMood': differencesMood();
+            break;
     }
 }
 
@@ -310,7 +316,7 @@ function resetSession() {
     sessionStorage.removeItem('searchType');
 }
 function selectMenu() {
-    if (sessionStorage.getItem('searchType') == 'searchMood' || sessionStorage.getItem('searchType') == 'averageMoodSum'  || sessionStorage.getItem('searchType') == 'sumActionDay' || sessionStorage.getItem('searchType') == 'searchSleep'  || sessionStorage.getItem('searchType') == 'differenceDrugsSleep' || sessionStorage.getItem('searchType') == 'sumHowHMood') {
+    if (sessionStorage.getItem('searchType') == 'searchMood' || sessionStorage.getItem('searchType') == 'averageMoodSum'  || sessionStorage.getItem('searchType') == 'sumActionDay' || sessionStorage.getItem('searchType') == 'searchSleep'  || sessionStorage.getItem('searchType') == 'differenceDrugsSleep' || sessionStorage.getItem('searchType') == 'sumHowHMood' || sessionStorage.getItem('searchType') == 'differencesMood') {
         loadPageMood();
     }
     else if (sessionStorage.getItem('searchType') == 'searchDrugs' || sessionStorage.getItem('searchType') == 'searchDrugsMood') {
@@ -479,6 +485,7 @@ function differenceDrugsSleep() {
         $("#sumActionDayDiv").css("display","none");
         $("#sumMoodDayDiv").css("display","none");
         $("#sumHowHMoodDiv").css("display","none");
+        $("#differencesMoodDiv").css("display","none");
 
     }
     else {
@@ -502,6 +509,7 @@ function sumHowHMood() {
         $("#searchMoodDiv").css("display","none");
         $("#sumMoodDayDiv").css("display","none");
         $("#differenceDrugsSleepDiv").css("display","none");
+        $("#differencesMoodDiv").css("display","none");
     }
     else {
 
@@ -528,4 +536,51 @@ function sumHowMoodSubmit(url) {
         .fail(function() {
             alert("Wystąpił błąd");
         })
+}
+
+
+/*
+update may 2024
+*/
+
+function differencesMood() {
+
+    sessionStorage.setItem('searchType', "differencesMood");
+    if ($("#differencesMoodDiv").css("display") == "none" ) {
+        $("#differencesMoodDiv").css("display","block");
+        $("#searchSleepDiv").css("display","none");
+        $("#averageMoodSumDiv").css("display","none");
+        $("#sumActionDayDiv").css("display","none");
+        $("#searchMoodDiv").css("display","none");
+        $("#sumMoodDayDiv").css("display","none");
+        $("#differenceDrugsSleepDiv").css("display","none");
+        $("#sumHowHMoodDiv").css("display","none");
+    }
+    else {
+
+        $("#differencesMoodDiv").css("display","none");
+        
+    }
+}
+
+function differencesMoodSubmit(url) {
+    
+    $.ajax({
+       url : url,
+       method : "get",
+       data :
+           $("#differencesMoodForm").serialize()
+       ,
+       dataType : "html",
+   })
+       .done(function(response) {
+           $("#differencesMoodFormResultDiv").css("display","block");
+           $(".ajaxError").empty();
+
+           $("#differencesMoodFormResultDiv").prepend(response);
+
+       })
+       .fail(function() {
+           alert("Wystąpił błąd");
+       })
 }

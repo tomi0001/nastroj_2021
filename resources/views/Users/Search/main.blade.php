@@ -31,8 +31,8 @@
             <div id="sumHowHMood"  class="hrefMood hrefSettingCursor" onmouseover="selectMenuMood('sumHowHMood')" onmouseout="unSelectMenuMood('sumHowHMood')" onclick="sumHowHMood()">
                 OBLICZ ILE H TRWAŁY NASTROJE
             </div>
-            <div id="generatePdfMood"  class="hrefMood hrefSettingCursor" onmouseover="selectMenuMood('generatePdfMood')" onmouseout="unSelectMenuMood('generatePdfMood')" onclick="changeDateAction()">
-                WYGENERUJ PDF DLA NASTROJI
+            <div id="differencesMood"  class="hrefMood hrefSettingCursor" onmouseover="selectMenuMood('differencesMood')" onmouseout="unSelectMenuMood('differencesMood')" onclick="differencesMood()">
+                OBLICZ RÓŻNICE POMIĘDZY NASTROJAMI
             </div>
             <div id="sumActionDay"  class="hrefMood hrefSettingCursor" onmouseover="selectMenuMood('sumActionDay')" onmouseout="unSelectMenuMood('sumActionDay')" onclick="sumActionDay()">
                 WYSZUKAJ AKCJE CAŁODNIOWĄ
@@ -75,7 +75,10 @@
     <div class="pagePageMood pagepage bodyMoodPage" id="sumActionDayDiv" style="display: none;">
         @include ('Users.Search.Mood.searchActionDay')
         </div>
-
+        <div class="pagePageMood pagepage bodyMoodPage" id="differencesMoodDiv" style="display: none;">
+            @include ('Users.Search.Mood.differencesMood')
+            </div>
+        
 
     <div class="pagePageDrugs pagepage bodyDrugsPage" id="searchDrugsDiv" style="display: none;">
         @include ('Users.Search.Product.searchDrugs')

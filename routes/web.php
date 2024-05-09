@@ -229,7 +229,9 @@ Route::get('/search/searchDrugsMoodSubmit', [App\Http\Controllers\Search\SearchD
 
 Route::get('/search/sumHowMoodSubmit', [App\Http\Controllers\Search\SearchMoodController::class, 'sumHowMoodSubmit'])->name('search.sumHowMoodSubmit')
                     ->middleware('auth')->middleware('can:users');   
-
+Route::get('/search/differencesMoodSubmit', [App\Http\Controllers\Search\SearchMoodController::class, 'differencesMoodSubmit'])->name('search.differencesMoodSubmit')
+                    ->middleware('auth')->middleware('can:users');  
+                    
 
 
 
