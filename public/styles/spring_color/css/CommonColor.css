@@ -1,11 +1,11 @@
 body {
-    background-image: url('../tlo.png'); /* from http://subtlepatterns.com */
+    background-color: #ffffff;/* from http://subtlepatterns.com */
 
 }
 
             #MainPage {
 
-                background-color: rgba(168, 235, 81, 0.3);
+                background-color: rgba(168, 235, 81, 0.15);
 
 
             }
@@ -21,40 +21,40 @@ body {
    
     color: #034053;
 
-    border: 2px solid #0E5970;
-    background-color: rgba(193, 204, 184, 0.5);
+    border: 2px solid #4bec66;
+    background-color: rgba(109, 223, 17, 0.5);
 }
 td.boldTitle {
 
     color: white;
 
-    background-color: #3b4444;
+    background-color: #4bec66;
 }
 thead.titleTheadAction {
 
-    background-color: #a6c4cd;
+    background-color: #31ff65;
 }
        td.tdAction {
 
-            border-right: 2px solid #0E5970;
+            border-right: 2px solid #4bec66;
 
 
         }
                 div.sumDrugs {
 
-            background-color: rgba(139, 173, 156, 0.81);
+            background-color: rgba(18, 235, 83, 0.81);
 
 
         }
                 div.positionDrugs {
 
-            background-color: #627968;
+            background-color: #06581c;
 
             color: white;
 
         }
         div.positionDrugsDose {
-            background-color: #728d7a;
+            background-color: #06581c;
 
             color: white;
         }
@@ -72,7 +72,7 @@ thead.titleTheadAction {
 
         }
         .drugs {
-            background-color: rgba(132, 167, 154, 0.84);
+            background-color: rgba(11, 191, 65, 0.84);
             color: white;
 
         }
@@ -81,7 +81,7 @@ thead.titleTheadAction {
             color: white;
         }
         .action {
-            background-color: rgba(16, 200, 213, 0.84);
+            background-color: rgba(46, 223, 2, 0.84);
             color: white;
 
 
@@ -152,7 +152,7 @@ thead.titleTheadAction {
 
 
         .btn-action {
-                background-color: #4293E5;
+                background-color: #0cd126;
 
                 border-color: #6E791A;
 
@@ -161,14 +161,14 @@ thead.titleTheadAction {
                 box-shadow: 2px 2px 2px #8bd680;
         }
         .btn-action:hover  {
-                background-color: #1177DD;
+                background-color: #06dd22;
                 color: white;
                 border-color: #C29713;
 
         }
 
         .btn-drugs {
-                background-color: #84a79a;
+                background-color: #21bf1d;
 
                 border-color: #A7D416;
 
@@ -380,16 +380,16 @@ div.level10 {
 
 }
         div.titleActionShowAjax {
-            background-color: #666868;
+            background-color: #01af2d;
 
 
         }
         div.titleDrugsShowAjax {
-            background-color: #52634c;
+            background-color: #01af2d;
 
         }
         td.titleAction {
-        background-color: #646464;
+        background-color: #307b10;
 
 
 
@@ -434,7 +434,7 @@ div.leveAction10 {
 }
 
 td.titleDrugs {
-        background-color: #C8D1D6;
+        background-color: #307b10;
 
 
 
@@ -442,14 +442,14 @@ td.titleDrugs {
 
 
 .drugssShowModShow {
-        background-color: #84a79a;
+        background-color: #21db75;
 
 -webkit-box-shadow: 0px 0px 18px 1px #515b45;
 -moz-box-shadow: 0px 0px 18px 1px #515b45;
 box-shadow: 0px 0px 18px 1px #515b45;
 }
 .actionShowModShow {
-    background-color: #bbbdbf;
+    background-color: #21db75;
 
 -webkit-box-shadow: 0px 0px 18px 1px rgb(23, 24, 24);
 -moz-box-shadow: 0px 0px 18px 1px rgb(23, 24, 24);
@@ -628,7 +628,7 @@ table.drugsShow, td.drugsShow, td.drugsButton {
 
 }
 table.showAction, td.showAction, td.showAction {
-    border-top: 5px solid #012936;
+    border-top: 5px solid #4bec66;
 
 }
 table.actionShowIdMood {
@@ -643,7 +643,7 @@ table.moodShow {
 
     
     color: #2f5512;
-    background-color: rgba(193, 204, 184, 0.5);
+    background-color: rgba(200, 253, 156, 0.5);
 
 }
 td.showMood {
@@ -655,25 +655,25 @@ td.showDrugs {
 
 }
 td.showAction {
-    border-top: 5px solid #012936;
+    border-top: 5px solid #4bec66;
 
 }
 td.showdrugs {
-    border-top: 5px solid black;
+    border-top: 5px solid rgb(1, 124, 32);
 }
 td.titleTheadMood {
 
-    background-color: #64bb73;
+    background-color: #23e144;
 
 }
 td.titleTheadDrugs {
 
-    background-color: #84ad8b;
+    background-color: #06e92c;
 
 }
 
                             .user {
-            background-color:  rgb(47, 68, 59);
+            background-color:  rgb(0, 226, 30);
             color: white;
 
 

@@ -54,12 +54,12 @@ div.SubstanceMainAllSubstance {
 div.titleSettings {
 
 
-        color: #50E6F0;
+        color: #ffffff;
         -webkit-box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
 -moz-box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
 box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
-background-color: rgba(52, 128, 71, 1);
-background-image: radial-gradient(circle, rgba(52, 128, 71, 1) 20%, rgba(5, 57, 52, 1) 100%);
+background-color: rgb(7, 95, 29);
+
     }
     
         div.titleSettingsMood {
@@ -73,21 +73,20 @@ background-image: radial-gradient(circle, rgba(28, 126, 51, 1) 7%, rgba(89, 154,
     }
     div.titleSettingsDrugs {
 
-        color: #d8eed5;
+        color: #94ff86;
         -webkit-box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
 -moz-box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
 box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
-background-color: rgba(66, 183, 19, 1);
-background-image: radial-gradient(circle, rgb(93, 112, 106) 0%, rgba(143, 173, 163, 1) 58%);
+background-color: rgba(128, 120, 16, 1);
+background-image: radial-gradient(circle, rgba(28, 126, 51, 1) 7%, rgba(89, 154, 69, 1) 52%);
     }   
     div.titleSettingsUser {
-
-       color: #c3eec7;
-        -webkit-box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
--moz-box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
-box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
-background-color: rgba(16, 107, 72, 1);
-background-image: radial-gradient(circle, rgb(87, 104, 98) 8%, rgb(37, 49, 42) 58%);
+        color: #F8FC02;
+        -webkit-box-shadow: 0px 0px 25px -5px #1d5414;
+-moz-box-shadow: 0px 0px 25px -5px #1d5414;
+box-shadow: 0px 0px 25px -5px #1d5414;
+background-color: rgba(128, 120, 16, 1);
+background-image: radial-gradient(circle, rgba(28, 126, 51, 1) 7%, rgba(89, 154, 69, 1) 52%);
     }
     div.selectedMenu {
        color: #FEA043;
@@ -116,17 +115,18 @@ box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
 background-color: rgba(206, 249, 207,0.6);
     }
     .bodyDrugsPage {
--webkit-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
--moz-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
-background-color: rgba(188, 205, 184, 0.6);
+        color: white;
+        -webkit-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
+        -moz-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
+        box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
+        background-color: rgba(206, 249, 207,0.6);
     }
     div.pageDrugs {
-                color: #F8FC02;
--webkit-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
--moz-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
-background-color: rgb(171 221 173 / 84%);
+        color: #F8FC02;
+        -webkit-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
+        -moz-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
+        box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
+        background-color: rgb(194, 241, 158);
     }
 
         div.hrefMood {
@@ -138,12 +138,12 @@ background-color: rgba(136, 136, 13, 1);
 background-image: linear-gradient(180deg, #92e644 14%, #44a33f 80%);
     }
         div.hrefDrugs {
-             color: #c0e9c0;
--webkit-box-shadow: 0px 0px 10px 9px rgb(65 90 45);
--moz-box-shadow: 0px 0px 10px 9px rgb(65 90 45);
-box-shadow: 0px 0px 10px 9px rgb(65 90 45);
-background-color: rgba(53, 136, 10, 1);;
-background-image: linear-gradient(180deg, rgb(78 92 70) 49%, rgb(176 195 141) 86%);
+            color: #b6f5c9;
+            -webkit-box-shadow: 0px 0px 10px 9px rgba(111, 101, 1, 1);
+            -moz-box-shadow: 0px 0px 10px 9px rgba(111, 101, 1, 1);
+            box-shadow: 0px 0px 10px 9px #558627;
+            background-color: rgba(136, 136, 13, 1);
+            background-image: linear-gradient(180deg, #92e644 14%, #44a33f 80%);
     }
     div.selectedMenuMoodHref {
                     color: #E0FD01;
@@ -167,9 +167,9 @@ background-image: linear-gradient(180deg, #62ff62 0%, rgba(100, 163, 51, 1) 100%
 
     }
             .titleDrugsSettings {
-            color: #c9f5d2;
-background-color: rgba(1, 55, 4, 1);
-background-image: linear-gradient(180deg, rgb(67 82 68) 0%, #ccedc8 100%);
+                color: #3e5c31;
+                background-color: rgba(87, 88, 2, 1);
+        background-image: linear-gradient(180deg, #62ff62 0%, rgba(100, 163, 51, 1) 100%);
 
     }
 .errorForm {
@@ -185,36 +185,35 @@ div.minusButton {
 }
 
         .bodyUserPage {
-                        color: #878507;
--webkit-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
--moz-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
-background-color:  #bbcdbf;
+            color: white;
+            -webkit-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
+            -moz-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
+            box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
+            background-color: rgba(206, 249, 207,0.6);
     }
     
             div.pageUser {
                 color: #F8FC02;
--webkit-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
--moz-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
-background-color: #7b806b;
+                -webkit-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
+                -moz-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
+                box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
+                background-color: rgb(194, 241, 158);
 
     }
     
         .titleUserSettings {
-         color: #ffffff;
-        background-color: rgba(0, 49, 74, 1);
-background-image: linear-gradient(180deg, rgb(95, 102, 96) 21%, rgb(209, 212, 210) 100%);
+            color: #3e5c31;
+            background-color: rgba(87, 88, 2, 1);
+    background-image: linear-gradient(180deg, #62ff62 0%, rgba(100, 163, 51, 1) 100%);
     }
     
         div.hrefUsers {
-                    color: #d5ce92;
-
--webkit-box-shadow: 0px 0px 39px -8px rgba(12, 12, 9, 1);
--moz-box-shadow: 0px 0px 39px -8px rgba(12, 12, 9, 1);
-box-shadow: 0px 0px 39px -8px rgba(12, 12, 9, 1);
-background-color: rgba(68, 113, 134, 1);
-background-image: linear-gradient(180deg, rgb(32, 32, 32) 34%, rgb(116, 121, 119)70%);
+            color: #fffbca;
+            -webkit-box-shadow: 0px 0px 10px 9px rgba(111, 101, 1, 1);
+            -moz-box-shadow: 0px 0px 10px 9px rgba(111, 101, 1, 1);
+            box-shadow: 0px 0px 10px 9px #558627;
+            background-color: rgba(136, 136, 13, 1);
+            background-image: linear-gradient(180deg, #92e644 14%, #44a33f 80%);    
     }
     
         div.selectedMenuUsersHref {
