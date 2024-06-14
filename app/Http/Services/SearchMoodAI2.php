@@ -18,6 +18,7 @@ class SearchMoodAI2  {
     public $dateFrom;
     public $dayWeek = [];
 
+
     private $idUsers;
     private $startDay;
     private $hourStart;
@@ -451,6 +452,127 @@ class SearchMoodAI2  {
         }
 
         return $dayArray;
+    }
+    /*
+        update june 2024
+    */
+    public function sortWeek($list,$arrayWeek) {
+        
+        $j = 0;
+        $day = 0;
+        $arrayNew = [];
+        $y = 0;
+        $valueMood = 0;
+        
+        $count = 0;
+        for ($i=0;$i < count($list["valueMood"]);$i++) {
+            if ($i == count($list["valueMood"])-1) {
+                $valueMood += $list["valueMood"][$i];
+               
+                //$count += $list[$i]->count;
+                $day++;
+                goto END;
+            }
+            if (strtotime($arrayWeek["dateStart"][$j]) <= strtotime($list["date"][$i] ) and strtotime($arrayWeek["dateEnd"][$j]) >= strtotime($list["date"][$i] ) ) {
+                
+                $valueMood += $list["valueMood"][$i];
+                
+                //$count += $list[$i]->count;
+                
+                
+                $day++;
+            }
+            else {
+                
+                END:
+   
+                $arrayNew["dateStart"][$y] = $arrayWeek["dateStart"][$y];
+                $arrayNew["dateEnd"][$y] = $arrayWeek["dateEnd"][$y];
+                $arrayNew["valueMood"][$y] = $valueMood /$day;
+
+                //$arrayNew["count"][$y] = $count;
+                $valueMood = 0;
+                $count = 0;
+                $valueMood += $list["valueMood"][$i];
+
+                //$count += $list[$i]->count;
+                $y++;
+                $j++;
+                $day = 1;
+            }
+  
+            
+        }
+        return $arrayNew;
+        
+    }
+    public function sortSumDay($list) {
+        $arrayNew = [];
+        $valueMood = 0;
+        //$sumAnxienty = 0;
+        //$sumVoltage = 0;
+        //$sumStimulation = 0;
+        //$count = 0;
+        for ($i=0;$i < count($list["valueMood"]);$i++) {
+            if ($i == 0) {
+                $arrayNew["dateStart"][0] = $list["date"][$i];
+            }
+            if ($i == count($list["valueMood"])-1) {
+                $arrayNew["dateEnd"][0] = $list["date"][$i];
+            }
+            $valueMood += $list["valueMood"][$i];
+   
+        }
+        $arrayNew["valueMood"][0] = $valueMood /$i;
+
+        return $arrayNew;
+    }
+    public function sortMonth($list,$arrayWeek) {
+        $j = 0;
+        $day = 0;
+        $arrayNew = [];
+        $y = 0;
+        $valueMood = 0;
+
+        $count = 0;
+        for ($i=0;$i < count($list["valueMood"]);$i++) {
+            if ($i == count($list["valueMood"])-1) {
+                $valueMood += $list["valueMood"][$i];
+   
+                $day++;
+                goto END;
+            }
+           
+            if  ( (strtotime($arrayWeek["dateStart"][$j]) <= strtotime($list["date"][$i] ) and strtotime($arrayWeek["dateEnd"][$j]) >= strtotime($list["date"][$i] )  )    ) {
+                
+                $valueMood += $list["valueMood"][$i];
+    
+                
+               
+                $day++;
+            }
+            else {
+                END:
+                
+                
+                $arrayNew["dateStart"][$y] = $arrayWeek["dateStart"][$y];
+                $arrayNew["dateEnd"][$y] = $arrayWeek["dateEnd"][$y];
+                $arrayNew["valueMood"][$y] = $valueMood /$day;
+
+                $valueMood = 0;
+
+                $valueMood += $list["valueMood"][$i];
+       
+                $y++;
+                $j++;
+                $day = 1;
+             
+            }
+            
+        }
+        
+        return $arrayNew;
+        
     }
 }
 

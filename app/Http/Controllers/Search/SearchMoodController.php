@@ -367,6 +367,7 @@ class SearchMoodController {
     */
     public function differencesMoodSubmit(Request $request) {
         $SearchMoodAI2 = new SearchMoodAI2();
+        $SearchMoodAI = new SearchMoodAI(Auth::User()->id,Auth::User()->start_day);
         $SearchMoodAI2->checkError($request);
         if (count($SearchMoodAI2->errors) > 0) {
             return View("ajax.error")->with("error",$SearchMoodAI2->errors);
@@ -377,10 +378,41 @@ class SearchMoodController {
             $SearchMoodAI2->setHour($request);
             $list = $SearchMoodAI2->createQuestions($request);
             $array = $SearchMoodAI2->sumDifferencesMoodList($list);
-            return View("Users.Search.Mood.differencesMoodSubmit")->with("array", $array)
-            ->with("timeFrom", $request->get("timeFrom"))->with("timeTo", $request->get("timeTo"))
-            ->with("dateFrom", $request->get("dateFrom"))->with("dateTo", $request->get("dateTo"))
-            ->with("week", $SearchMoodAI2->dayWeek);
+            if ( ($request->get("groupWeek") == "on") ) {
+                $arrayWeek = $SearchMoodAI->createWeek($SearchMoodAI2->dateFrom,$SearchMoodAI2->dateTo);
+                $sort = $SearchMoodAI2->sortWeek($array,$arrayWeek);
+       
+
+                return View("Users.Search.Mood.differencesMoodSubmitGroupWeek")->with("minMax",$sort)
+                ->with("array", $array)
+                ->with("timeFrom", $request->get("timeFrom"))->with("timeTo", $request->get("timeTo"))
+                ->with("dateFrom", $request->get("dateFrom"))->with("dateTo", $request->get("dateTo"))
+                ->with("week", $SearchMoodAI2->dayWeek);
+
+            }
+            else if ($request->get("sumDay") == "on") {
+                $sum = $SearchMoodAI2->sortSumDay($array);
+                return View("Users.Search.Mood.differencesMoodSubmitSumDay")->with("minMax", $sum)
+                    ->with("timeFrom", $request->get("timeFrom"))->with("timeTo", $request->get("timeTo"))
+                    ->with("dateFrom", $request->get("dateFrom"))->with("dateTo", $request->get("dateTo"))
+                    ->with("week", $SearchMoodAI2->dayWeek);
+            }
+            else if ( ($request->get("groupMonth") == "on") ) {
+                $arrayWeek = $SearchMoodAI->createMonth($SearchMoodAI2->dateFrom,$SearchMoodAI2->dateTo);
+                $arrayWeek2 = $SearchMoodAI->subCreateMonth($arrayWeek);
+                $sort = $SearchMoodAI2->sortMonth($array,$arrayWeek2);
+
+               return View("Users.Search.Mood.differencesMoodSubmitGroupWMonth")->with("minMax", $sort)
+                   ->with("timeFrom", $request->get("timeFrom"))->with("timeTo", $request->get("timeTo"))
+                   ->with("dateFrom", $request->get("dateFrom"))->with("dateTo", $request->get("dateTo"))
+                   ->with("week", $SearchMoodAI->dayWeek);
+           }
+            else {
+                return View("Users.Search.Mood.differencesMoodSubmit")->with("array", $array)
+                ->with("timeFrom", $request->get("timeFrom"))->with("timeTo", $request->get("timeTo"))
+                ->with("dateFrom", $request->get("dateFrom"))->with("dateTo", $request->get("dateTo"))
+                ->with("week", $SearchMoodAI2->dayWeek);
+            }
         }
         
     }
