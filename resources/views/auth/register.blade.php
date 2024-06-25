@@ -4,6 +4,9 @@
     @section ('title') 
      Rejestracja
     @endsection
+    @include('auth.main')
+
+<br><Br>
     <div id="PageRegister">
     <div class="titleRegister">REJESTRACJA UŻYTKOWNIKA</div>
     <div class="tableUser">

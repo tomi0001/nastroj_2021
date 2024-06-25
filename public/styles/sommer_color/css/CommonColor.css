@@ -1,11 +1,11 @@
 body {
-    background-image: url('../tlo.png'); /* from http://subtlepatterns.com */
+    background-color: #ffffff;/* from http://subtlepatterns.com */
 
 }
 
             #MainPage {
 
-                background-color: rgba(210, 197, 13, 0.6);
+                background-color: rgb(247 240 145 / 60%)
 
 
             }
@@ -18,20 +18,20 @@ body {
         }
         table.actionShow {
 
-    background-color: #09B6EB;
+    background-color: #fbffad;
     color: #034053;
 
     border: 2px solid #0E5970;
 }
 td.boldTitle {
 
-    color: #020F3A;
+    color: #531818;
 
-    background-color: #2048C9;
+    background-color: #c4d338;
 }
 thead.titleTheadAction {
 
-    background-color: #7BDBF8;
+    background-color: #f7fba3;
 }
        td.tdAction {
 
@@ -41,21 +41,21 @@ thead.titleTheadAction {
         }
                 div.sumDrugs {
 
-            background-color: rgba(99, 231, 84, 0.81);
+            background-color: rgb(155 134 0 / 81%);;
 
 
         }
                 div.positionDrugs {
 
-            background-color: #1BBC09;
+            background-color: #674100;
 
-            color: #CFF5CA;
+            color: #efffed;
 
         }
         div.positionDrugsDose {
-            background-color: #65950D;
+            background-color: #674100;
 
-            color: #CFF5CA;
+            color: #efffed;
         }
                 div.errorMainMessage {
             color: white;
@@ -71,7 +71,7 @@ thead.titleTheadAction {
 
         }
         .drugs {
-            background-color: rgba(10, 183, 45, 0.84);
+            background-color: rgb(145 129 25 / 84%);
             color: white;
 
         }
@@ -80,7 +80,7 @@ thead.titleTheadAction {
             color: white;
         }
         .action {
-            background-color: rgba(16, 200, 213, 0.84);
+            background-color: rgb(165 98 18 / 84%);
             color: white;
 
 
@@ -151,7 +151,7 @@ thead.titleTheadAction {
 
 
         .btn-action {
-                background-color: #4293E5;
+                background-color: #ad6600;
 
                 border-color: #6E791A;
 
@@ -160,14 +160,14 @@ thead.titleTheadAction {
                 box-shadow: 6px 6px 6px #F4E375;
         }
         .btn-action:hover  {
-                background-color: #1177DD;
+                background-color: #ad6600;
                 color: white;
                 border-color: #C29713;
 
         }
 
         .btn-drugs {
-                background-color: #1FDA28;
+                background-color: #978533;
 
                 border-color: #A7D416;
 
@@ -177,7 +177,7 @@ thead.titleTheadAction {
 
         }
         .btn-drugs:hover  {
-                background-color: #19FF24;
+                background-color: #978533;
                 color: white;
                 border-color: yellow;
 
@@ -379,16 +379,16 @@ div.level10 {
 
 }
         div.titleActionShowAjax {
-            background-color: #294898;
+            background-color: #897517;
 
 
         }
         div.titleDrugsShowAjax {
-            background-color: #3A9900;
+            background-color: #cda901;
 
         }
         td.titleAction {
-        background-color: #084071;
+        background-color: #711f08;
 
 
 
@@ -433,7 +433,7 @@ div.leveAction10 {
 }
 
 td.titleDrugs {
-        background-color: #3A7F0F;
+        background-color: #9f7400;
 
 
 
@@ -441,18 +441,18 @@ td.titleDrugs {
 
 
 .drugssShowModShow {
-        background-color: #54CD08;
+        background-color: #e9e34d;
 
 -webkit-box-shadow: 0px 0px 18px 1px #235902;
 -moz-box-shadow: 0px 0px 18px 1px #235902;
-box-shadow: 0px 0px 18px 1px #235902;
+box-shadow: 0px 0px 18px 1px #a7560b;
 }
 .actionShowModShow {
-    background-color: #308EED;
+    background-color: #c9c965;
 
 -webkit-box-shadow: 0px 0px 18px 1px rgba(10, 44, 105, 1);
 -moz-box-shadow: 0px 0px 18px 1px rgba(10, 44, 105, 1);
-box-shadow: 0px 0px 18px 1px rgba(10, 44, 105, 1);
+box-shadow: 0px 0px 18px 1px rgb(151 81 17);
 }
 div.cellBorder {
 
@@ -612,22 +612,22 @@ div.cell10 {
 }
 
 table.moodShow, td.showMood, td.moodButton {
-   border: 2px solid #A77906;
+   border: 2px solid #2b2202;
 
 
 }
 table.drugsShow, td.showDrugs, td.drugsButton {
-    border: 2px solid #047016;
+    border: 2px solid #2b2202;
 
 
 }
 table.drugsShow, td.drugsShow, td.drugsButton {
-   border: 2px solid #0C5204;
+   border: 2px solid #2b2202;
 
 
 }
 table.showAction, td.showAction, td.showAction {
-    border-top: 5px solid #012936;
+    border-top: 5px solid #87663c;
 
 }
 table.actionShowIdMood {
@@ -640,7 +640,7 @@ table.actionShowIdMood {
 }
 table.moodShow {
 
-    background-color: rgba(255, 235, 56, 0.6);
+    background-color: rgb(249 243 191 / 60%);
     color: #775807;
 
 }
@@ -657,7 +657,7 @@ td.showAction {
 
 }
 td.showdrugs {
-    border-top: 5px solid #0C5204;
+    border-top: 5px solid #2b2202;
 }
 td.titleTheadMood {
 
@@ -666,6 +666,12 @@ td.titleTheadMood {
 }
 td.titleTheadDrugs {
 
-    background-color: #07A021;
+    background-color: #ffdf70;
+
+}
+.user {
+    background-color:  rgb(149 109 1);
+    color: white;
+
 
 }

@@ -7,9 +7,9 @@
     }
 
 div.actionMain {
-    background-color: rgb(17, 118, 206);
+    background-color: rgb(143 93 6);
  
-    color: #CDE1F3;
+    color: #e7ecc6;
  
 }
 
@@ -17,9 +17,9 @@ div.actionMain {
 
 
 div.actionMainselected {
-    background-color: rgb(0, 57, 122);
+    background-color: rgb(209, 38, 32);
   
-    color: #CDE1F3;
+    color: #e3f591;
 
 }
 
@@ -27,14 +27,14 @@ div.actionMainselected {
 
 
     div.borderDrugs {
-         border: 2px solid rgba(10, 183, 45, 0.84);
+         border: 2px solid rgb(145 129 25 / 84%);
          box-shadow: 0 30px  30px 15px rgba(217, 171, 6, 0.72);
 
 
     }
     div.borderMood {
          border: 2px solid rgba(226, 124, 8, 0.85);
-         box-shadow: 0 30px  30px 15px rgba(217, 171, 6, 0.72);
+         box-shadow: 0 30px  30px 15px rgb(69 63 44 / 72%);
 
 
     }
@@ -46,7 +46,7 @@ div.actionMainselected {
 
     }
     div.borderAction {
-         border: 2px solid rgba(16, 200, 213, 0.84);
+         border: 2px solid rgb(165 98 18 / 84%);
          box-shadow: 0 30px  30px 15px rgba(217, 171, 6, 0.72);
 
  
@@ -68,7 +68,7 @@ div.actionMainselected {
         }
         div.formAddMood {
      
-           background-color: rgba(208, 205, 10, 0.73);
+           
         }
         
     
@@ -197,7 +197,7 @@ div.actionMainselected {
    
         #showmood {
             
-            background-color: rgba(210, 210, 44, 0.61);
+            background-color: rgb(199 199 117 / 61%)
        
         }
         #showdrugs {
@@ -220,7 +220,7 @@ div.actionMainselected {
 
         div.sumAction {
      
-            background-color: rgba(64, 190, 215, 0.85);
+            background-color: rgb(215 146 64 / 85%);
      
         }
 
@@ -289,9 +289,9 @@ height: 1.0em; width: 80%; border: 1px solid #942314;
         
         
         button.updateAction {
-            box-shadow: 6px 6px 6px #057EA3;
-            background-color: #34C6F3;
-            color: white;
+            box-shadow: 6px 6px 6px #63520c;
+            background-color: #dbe166;
+            color: #6d620d;
         }
         
                         button.danger:hover {
@@ -302,13 +302,13 @@ height: 1.0em; width: 80%; border: 1px solid #942314;
             
         }
                 button.btn-actionDay {
-            box-shadow: 6px 6px 6px #124F9B;
-            background-color: #1679F2;
+            box-shadow: 6px 6px 6px #59580e;
+            background-color: #c38b13;
             color: white;
         }
                 button.btn-actionDay:hover {
-            box-shadow: 6px 6px 6px #124F9B;
-            background-color: #1679F2;
+            box-shadow: 6px 6px 6px #59580e;
+            background-color: #ac8e09;
             border-color: #103869;
             color: white;
         }
@@ -346,7 +346,7 @@ div.typeOfPortion {
 
 table.drugsShow {
 
-    background-color: rgba(135, 241, 28, 0.4);
+    background-color: rgb(245 234 117 / 40%);
     color: #775807;
 
 }
@@ -356,7 +356,7 @@ table.drugsShow {
 
 
 div.descriptionDrugsShow {
-    background-color: #609300;
+    background-color: #7f6200;
 
     color: white;
 
@@ -380,7 +380,7 @@ span.fontMoodNot {
 
 thead.titleTheadDrugs {
 
-    background-color: #4FD240;
+    background-color: #edba09;
 }
 td.moodButton {
    
@@ -392,7 +392,7 @@ td.moodButton {
 
 
 td.drugsTd {
-    color: #115E02;
+    color:  #595700;
 }
 
 
@@ -409,8 +409,8 @@ td.drugsTd {
         div.sumAverage {
             -webkit-box-shadow: 0px 0px 17px -5px rgba(3, 70, 22, 1);
 -moz-box-shadow: 0px 0px 17px -5px rgba(3, 70, 22, 1);
-box-shadow: 0px 0px 17px -5px rgba(3, 70, 22, 1);
-            background-color: #C3F277;
+box-shadow: 0px 0px 17px -5px rgb(0 0 0);
+            background-color: #ffea8a;
         }
         div.titleAverage {
             background-color: #19B846;
@@ -419,9 +419,9 @@ box-shadow: 0px 0px 17px -5px rgba(3, 70, 22, 1);
         div.averageDiv {
                  -webkit-box-shadow: 0px 0px 17px -5px rgba(3, 70, 22, 1);
 -moz-box-shadow: 0px 0px 17px -5px rgba(3, 70, 22, 1);
-box-shadow: 0px 0px 17px -5px rgba(3, 70, 22, 1);
-            background-color: #6EE55B;
-            color: #676C03;
+box-shadow: 0px 0px 17px -5px rgb(237 65 26);
+            background-color: #eeff50;
+            color: #2b1400;
         }
         
         div.averageNr1 {
