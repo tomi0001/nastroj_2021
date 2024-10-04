@@ -7,9 +7,9 @@
     }
 
 div.actionMain {
-    background-color: rgba(22, 77, 109, 1);
+    background-color: rgb(153 175 24);
  
-    color: #CDE1F3;
+    color: #126e06;
  
 }
 
@@ -17,9 +17,9 @@ div.actionMain {
 
 
 div.actionMainselected {
-    background-color: rgba(14, 81, 177, 1);
+    background-color: rgb(238, 197, 15);
   
-    color: #CDE1F3;
+    color: #126e06;
 
 }
 
@@ -33,7 +33,7 @@ div.actionMainselected {
 
     }
     div.borderMood {
-         border: 2px solid rgba(49, 44, 35, 1);
+         border: 2px solid rgb(163 109 12);
          box-shadow: 0 30px  30px 15px rgba(12, 37, 36, 0.35);
 
 
@@ -47,7 +47,7 @@ div.actionMainselected {
 
     }
     div.borderAction {
-         border: 2px solid rgba(42, 107, 102, 1);
+         border: 2px solid rgb(153 175 24);
          box-shadow: 0 30px  30px 15px rgba(42, 107, 102, 0.3);
 
  
@@ -98,7 +98,7 @@ div.actionMainselected {
 
         div.cell10000 {
           
-            background-color: #b2bfbf;
+            background-color: #ccd16b;
            
 
 
@@ -198,12 +198,12 @@ div.actionMainselected {
    
         #showmood {
             
-            background-color: rgba(49, 44, 35, 1);
+            background-color: rgb(163 109 12);
        
         }
         #showdrugs {
            
-            background-color: rgba(96, 146, 79, 1);
+            background-color: rgb(215 255 201);
       
         }
         #showaction {
@@ -215,13 +215,13 @@ div.actionMainselected {
 
         div.sumMood {
             
-          background-color: rgba(42, 45, 21, 1);
+          background-color: rgb(179 150 72);
          
         }
 
         div.sumAction {
      
-            background-color: rgba(42, 107, 102, 1);
+            background-color: rgb(193 207 68);
      
         }
 
@@ -303,14 +303,14 @@ height: 1.0em; width: 80%; border: 1px solid #942314;
             
         }
                 button.btn-actionDay {
-            box-shadow: 6px 6px 6px #0b668f;
-            background-color: #1482b4;
+            box-shadow: 6px 6px 6px #2f4100;
+            background-color: #757000;
             color: white;
         }
                 button.btn-actionDay:hover {
-            box-shadow: 6px 6px 6px #0b668f;
-            background-color: #1482b4;
-            border-color: #103869;
+            box-shadow: 6px 6px 6px 2f4100;
+            background-color: #c46915;
+            
             color: white;
         }
 span.warning {
@@ -332,7 +332,7 @@ div.descriptionModShowSleep {
 div.moodSelected {
   
 
-           color: #aa6215;
+           color: #dadd4a;
 }
 
 

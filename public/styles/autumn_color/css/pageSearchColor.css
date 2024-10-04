@@ -1,18 +1,18 @@
 div.titleSearch {
 
 
-        color: #C5DBFB;
+        color: #6f3317;
         -webkit-box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
 -moz-box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
 box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
 
-background-color: rgba(89, 131, 252, 1);
-background-image: radial-gradient(circle, rgba(89, 131, 252, 1) 33%, rgba(41, 53, 86, 1) 100%);
+background-color: rgb(180, 165, 26);
+
     }
 
             div.sumMood {
 
-            background-color: rgba(42, 45, 21, 1);
+            background-color: rgb(179 150 72);
 
         }
 div.descriptionDrugsShow {
@@ -27,8 +27,8 @@ div.descriptionDrugsShow {
         -webkit-box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
 -moz-box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
 box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
-background-color: rgba(104, 107, 74, 1);
-background-image: radial-gradient(circle, rgba(104, 107, 74, 1) 5%, rgba(36, 47, 3, 1) 82%);
+background-color: rgb(212, 230, 25);
+
     }
     div.titleSettingsDrugs {
 
@@ -36,8 +36,8 @@ background-image: radial-gradient(circle, rgba(104, 107, 74, 1) 5%, rgba(36, 47,
         -webkit-box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
 -moz-box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
 box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
-background-color: rgba(72, 121, 33, 1);
-background-image: radial-gradient(circle, rgba(72, 121, 33, 1) 26%, rgba(23, 53, 0, 1) 82%);
+background-color: rgb(68, 145, 5);
+
     }
 
 
@@ -46,7 +46,7 @@ background-image: radial-gradient(circle, rgba(72, 121, 33, 1) 26%, rgba(23, 53,
 -webkit-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
 -moz-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
 box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
-background-color: #8c8765;
+background-color: #c2b458;
 
     }
 
@@ -58,7 +58,7 @@ background-color: #8c8765;
 -moz-box-shadow: 0px 0px 39px -8px rgba(12, 12, 9, 1);
 box-shadow: 0px 0px 39px -8px rgba(12, 12, 9, 1);
 background-color: rgba(70, 65, 31, 1);
-background-image: linear-gradient(180deg, rgba(70, 65, 31, 1) 20%, rgba(140, 135, 101, 1) 100%);
+
     }
     div.hrefDrugs {
              color: #c0f469;
@@ -67,7 +67,7 @@ background-image: linear-gradient(180deg, rgba(70, 65, 31, 1) 20%, rgba(140, 135
 box-shadow: 0px 0px 29px 3px rgba(96, 134, 96, 1);
 
 background-color: rgba(32, 70, 0, 1);
-background-image: linear-gradient(180deg, rgba(32, 70, 0, 1) 0%, rgba(99, 200, 101, 1) 67%);
+
     }
 
     div.selectedMenuMoodHref {
@@ -123,8 +123,8 @@ div.minusButton {
         -webkit-box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
 -moz-box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
 box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
-background-color: #5d3405;
-background-image: radial-gradient(circle, rgba(167, 43, 17, 1) 0%, #5d3405 100%);
+background-color: #9c5300;
+
 border: 2px solid #450e02; 
 font-weight: bold;
     }
@@ -145,12 +145,12 @@ box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
         color: #9B0707;
     }
     div.tableSearchMood {
-        background-color: rgba(140, 140, 103, 0.89);
-            border: 2px solid rgba(49, 44, 35, 1);
+        background-color: rgb(255 255 201 / 89%);
+            border: 2px solid rgb(163 109 12);
     box-shadow: 0 30px 30px 15px 0 30px 30px 15px rgb(12 37 36 / 35%);
     }
     div.titleSearchResultMood {
-            background-color: rgba(49, 44, 35, 1);
+            background-color: rgb(163 109 12);
     color: white;
     }
 
@@ -252,7 +252,7 @@ box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
 background-color: #679d64;  
     }
 div.moodSearchResult {
-    background-color: rgba(130, 121, 102, 0.6);
+    background-color: rgb(217 186 119 / 60%);
     border: 2px solid #d5c06a;
     -webkit-box-shadow: 0px 0px 30px 0px rgba(63, 76, 8, 1);
 -moz-box-shadow: 0px 0px 30px 0px rgba(63, 76, 8, 1);

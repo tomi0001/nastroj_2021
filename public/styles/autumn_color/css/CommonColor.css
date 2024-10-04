@@ -1,43 +1,40 @@
-body {
-    background-image: url('../tlo.png'); /* from http://subtlepatterns.com */
 
-}
 
             #MainPage {
 
-                background-color: rgba(59, 68, 3, 0.6);
+                background-color: rgb(177 193 75 / 60%);
 
 
             }
 
                     .mood {
-            background-color: rgba(49, 44, 35, 1);
+            background-color: rgb(163 109 12);
             color: white;
 
 
         }
                             .user {
-            background-color:  rgba(7, 73, 76, 1);
+            background-color:  rgb(17, 128, 72);
             color: white;
 
 
         }
         table.actionShow {
 
-    background-color: #507e88;
-    color: #034053;
+    background-color: #bed757;
+    color: #352f00;
 
     border: 2px solid #0E5970;
 }
 td.boldTitle {
 
-    color: #020F3A;
+    color: #352f00;
 
-    background-color: #0f89df;
+    background-color: #d1e74e;
 }
 thead.titleTheadAction {
 
-    background-color: #00879d;
+    background-color: #9eab25;
 }
        td.tdAction {
 
@@ -86,7 +83,7 @@ thead.titleTheadAction {
             color: white;
         }
         .action {
-            background-color: rgba(42, 107, 102, 1);
+            background-color: rgb(153 175 24);
             color: white;
 
 
@@ -131,7 +128,7 @@ thead.titleTheadAction {
 
         }
         .btn-user:hover  {
-                background-color: #153E80;
+                background-color: #00da5b;
                 color: white;
                 border-color: #C29713;
 
@@ -170,7 +167,7 @@ thead.titleTheadAction {
 
 
         .btn-action {
-                background-color: #15536f;
+                background-color: rgb(153 175 24);
 
                 border-color: #6E791A;
 
@@ -179,7 +176,7 @@ thead.titleTheadAction {
                 box-shadow: 6px 6px 6px rgba(42, 121, 163, 0.3);
         }
         .btn-action:hover  {
-                background-color: #229fd6;
+                background-color: #c7dd63;
                 color: white;
                 border-color: #C29713;
 
@@ -398,7 +395,7 @@ div.level10 {
 
 }
         div.titleActionShowAjax {
-            background-color: #0c3b81;
+            background-color: #a19702;
 
 
         }
@@ -407,7 +404,7 @@ div.level10 {
 
         }
         td.titleAction {
-        background-color: #084071;
+        background-color: #b7c03c;
 
 
 
@@ -467,11 +464,11 @@ td.titleDrugs {
 box-shadow: 0px 0px 18px 1px #235902;
 }
 .actionShowModShow {
-    background-color: #2962b6;
+    background-color: rgb(179 150 72);
 
--webkit-box-shadow: 0px 0px 18px 1px rgba(10, 44, 105, 1);
--moz-box-shadow: 0px 0px 18px 1px rgba(10, 44, 105, 1);
-box-shadow: 0px 0px 18px 1px rgba(10, 44, 105, 1);
+-webkit-box-shadow: 0px 0px 18px 1px rgb(213, 230, 117);
+-moz-box-shadow: 0px 0px 18px 1px rgb(213, 230, 117);
+box-shadow: 0px 0px 18px 1px rgb(213, 230, 117);
 }
 div.cellBorder {
 
@@ -631,8 +628,8 @@ div.cell10 {
 }
 
 table.moodShow, td.showMood, td.moodButton {
-   border: 2px solid #393922;
-   color: #dee5e6;
+   border: 2px solid rgb(163 109 12);
+   color: #633c0a;
 
 
 }
@@ -660,12 +657,12 @@ table.actionShowIdMood {
 }
 table.moodShow {
 
-background-color: rgba(140, 140, 103, 0.89);
+background-color: rgb(225 225 158 / 89%);
     color: #dee5e6;
 
 }
 td.showMood {
-    border-top: 5px solid #393922;
+    border-top: 5px solid rgb(163 109 12);
 
 }
 td.showDrugs {
@@ -681,7 +678,7 @@ td.showdrugs {
 }
 td.titleTheadMood {
 
-  background-color: #515543;
+  background-color: #b9a20d;
 
 }
 td.titleTheadDrugs {
