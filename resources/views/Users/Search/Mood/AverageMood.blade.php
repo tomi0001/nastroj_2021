@@ -112,7 +112,9 @@
             <th style="width:15%; text-align: center; font-weight: bold; font-size: 20px;" class="hrefSettingCursor rightBorder">
                 Poziom nastroju
             </th>
-
+            <th style="width:15%; text-align: center; font-weight: bold; font-size: 20px;" class="hrefSettingCursor rightBorder">
+                odchylenie nastroju
+            </th>
             <th style="width:18%; text-align: center;  font-weight: bold; font-size: 20px;"  class="hrefSettingCursor rightBorder">
                 różnica nastroju (min/max)
 
@@ -148,9 +150,12 @@
                     </td>
 
                 <td style="text-align: center;  font-size: 18px; " class="rightBorder">
-                    {{round($minMax[$i]->mood,3)}}
+                {{round($minMax[$i]->mood,3)}}
+                    
                 </td>
-
+                <td style="text-align: center;  font-size: 18px; " class="rightBorder">
+                {{round($array["valueMood"][$i],3)}}
+                </td>
                 <td style="text-align: center; font-size: 18px; " class="rightBorder">
                     {{$minMax[$i]->minMood}} / {{$minMax[$i]->maxMood}}
 

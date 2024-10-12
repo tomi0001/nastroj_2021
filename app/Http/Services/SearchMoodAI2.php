@@ -377,6 +377,7 @@ class SearchMoodAI2  {
     }
     public function createQuestions(Request $request)
     {
+        //print $this->hourStart;
         $moodModel = new  MoodModel;
         $moodModel->createQuestionAI2($this->startDay);
         $moodModel->setDateAI($this->dateFrom, $this->dateTo, $this->startDay);
@@ -388,8 +389,26 @@ class SearchMoodAI2  {
         $list = $moodModel->questions->get();
         return $list;
     }
+    /*
+        UPDATE OCTOBER 2024
+
+    */
+    public function createQuestionsMinuteSumDay(Request $request,$hourFrom,$hourEnd) {
+        $moodModel = new  MoodModel;
+        $moodModel->createQuestionAI2($this->startDay);
+        $moodModel->setDateAI($this->dateFrom, $this->dateTo, $this->startDay);
+        $moodModel->setWeekDay($this->dayWeek, $this->startDay);
+        $moodModel->setHourTwo($hourFrom, $hourEnd, $this->startDay);
+        $moodModel->moodsSelect();
+        $moodModel->idUsers($this->idUsers);
+        
+        
+
+        $moodModel->orderByAI();
+        $list = $moodModel->questions->get();
+        return $list;
+    }
     private function findValueMood(float $moodOne,float $moodTwo) :void {
-        //print "kosa była<br>";
         for ($i=0;$i < count($this->levelMood["levelMood"])-1;$i++) {
             if ($moodOne >= $this->levelMood["levelMood"][$i] and $moodOne <= $this->levelMood["levelMood"][$i+1]) {
                 $this->moodOne = $this->levelMood["key"][$i];
@@ -469,7 +488,6 @@ class SearchMoodAI2  {
             if ($i == count($list["valueMood"])-1) {
                 $valueMood += $list["valueMood"][$i];
                
-                //$count += $list[$i]->count;
                 $day++;
                 goto END;
             }
@@ -477,7 +495,6 @@ class SearchMoodAI2  {
                 
                 $valueMood += $list["valueMood"][$i];
                 
-                //$count += $list[$i]->count;
                 
                 
                 $day++;
@@ -489,13 +506,9 @@ class SearchMoodAI2  {
                 $arrayNew["dateStart"][$y] = $arrayWeek["dateStart"][$y];
                 $arrayNew["dateEnd"][$y] = $arrayWeek["dateEnd"][$y];
                 $arrayNew["valueMood"][$y] = $valueMood /$day;
-
-                //$arrayNew["count"][$y] = $count;
                 $valueMood = 0;
                 $count = 0;
                 $valueMood += $list["valueMood"][$i];
-
-                //$count += $list[$i]->count;
                 $y++;
                 $j++;
                 $day = 1;
@@ -509,10 +522,7 @@ class SearchMoodAI2  {
     public function sortSumDay($list) {
         $arrayNew = [];
         $valueMood = 0;
-        //$sumAnxienty = 0;
-        //$sumVoltage = 0;
-        //$sumStimulation = 0;
-        //$count = 0;
+
         for ($i=0;$i < count($list["valueMood"]);$i++) {
             if ($i == 0) {
                 $arrayNew["dateStart"][0] = $list["date"][$i];
@@ -527,6 +537,24 @@ class SearchMoodAI2  {
 
         return $arrayNew;
     }
+    public function sortSumDayMinute($list,$hourArrayFrom,$hourArrayTo) {
+        $arrayNew = [];
+        $sumMood = 0;
+        for ($i=0;$i < count($list["valueMood"]);$i++) {
+            if ($i == 0) {
+                $arrayNew["dateStart"] = $list["date"][$i];
+            }
+            if ($i == count($list)-1) {
+                $arrayNew["dateEnd"] = $list["date"][$i];
+            }
+            $arrayNew["hourStart"] = $hourArrayFrom;
+            $arrayNew["hourEnd"] = $hourArrayTo;
+            $sumMood += $list["valueMood"][$i];
+        }
+        $arrayNew["mood"] = $sumMood /$i;
+
+        return $arrayNew;
+    }    
     public function sortMonth($list,$arrayWeek) {
         $j = 0;
         $day = 0;

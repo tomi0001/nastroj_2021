@@ -110,7 +110,9 @@
             <th style="width:15%; text-align: center;  font-weight: bold; font-size: 20px;" class="hrefSettingCursor rightBorder">
                 Poziom nastroju
             </th>
-
+            <th style="width:15%; text-align: center;  font-weight: bold; font-size: 20px;" class="hrefSettingCursor rightBorder">
+                odchylenie nastroju
+            </th>
 
             <th style="width:15%; text-align: center;  font-weight: bold; font-size: 20px;" class="hrefSettingCursor rightBorder">
                 Poziom lęku
@@ -143,7 +145,9 @@
                 <td style="text-align: center;  font-size: 18px; " class="rightBorder">
                     {{round($minMax["mood"][$i],3)}}
                 </td>
-
+                <td style="text-align: center;  font-size: 18px; " class="rightBorder">
+                    {{round($minMax2["valueMood"][$i],3)}}
+                </td>
 
                 <td style="text-align: center;  font-size: 18px; " class="rightBorder">
                     {{round($minMax["anxienty"][$i],3)}}

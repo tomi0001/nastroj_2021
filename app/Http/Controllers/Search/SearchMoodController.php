@@ -221,8 +221,14 @@ class SearchMoodController {
         $sumAction = Mood::sumAction($request->get("date"),Auth::User()->id, Auth::User()->start_day);
         return View("Users.Search.Mood.showAllDayAction")->with("actionSum",$sumAction);
     }
+    /*
+
+        update october 2024
+
+    */
     public function averageMoodSumSubmit(Request $request) {
             $SearchMoodAI = new SearchMoodAI(Auth::User()->id,Auth::User()->start_day);
+            $SearchMoodAI2 = new SearchMoodAI2(Auth::User()->id,Auth::User()->start_day);
             $SearchMoodAI->checkError($request);
             if (count($SearchMoodAI->errors) > 0) {
                 return View("ajax.error")->with("error",$SearchMoodAI->errors);
@@ -232,16 +238,27 @@ class SearchMoodController {
                 $SearchMoodAI->setVariable($request);
                 $SearchMoodAI->setDayWeek($request);
                 $SearchMoodAI->setHour($request);
+                $SearchMoodAI2->setDayWeek($request);
+                $SearchMoodAI2->setVariable($request);
+                $SearchMoodAI2->setHour($request);
+                $list = $SearchMoodAI2->createQuestions($request);
+                $array = $SearchMoodAI2->sumDifferencesMoodList($list);
                 if ($request->get("sumDay") == "on" and $request->get("divMinute") > 0) {
                     $j = 0;
+                    
                     for ($i=0;$i < count($SearchMoodAI->hourSum)-1;$i++) {
                         $minMax[$i] = $SearchMoodAI->createQuestionsMinuteSumDay($request,$SearchMoodAI->hourSum[$i],$SearchMoodAI->hourSum[$i+1]);
+                        $minMax2[$i] = $SearchMoodAI2->createQuestionsMinuteSumDay($request,$SearchMoodAI->hourSum[$i],$SearchMoodAI->hourSum[$i+1]);
+                        
                         if (count($minMax[$i]) > 0) {
                             $sum[$j] = $SearchMoodAI->sortSumDayMinute($minMax[$i],$SearchMoodAI->hourSum[$i],$SearchMoodAI->hourSum[$i+1]);
+                            $array2 = $SearchMoodAI2->sumDifferencesMoodList($minMax2[$i]);
+                            $sum2[$j] = $SearchMoodAI2->sortSumDayMinute($array2,$SearchMoodAI->hourSum[$i],$SearchMoodAI->hourSum[$i+1]);
                             $j++;
                         }
                         
                     }
+  
                     if (empty($sum)) {
                         goto END;
                     }
@@ -258,8 +275,9 @@ class SearchMoodController {
                          $arrayWeek = $SearchMoodAI->createMonth($SearchMoodAI->dateFrom,$SearchMoodAI->dateTo);
                          $arrayWeek2 = $SearchMoodAI->subCreateMonth($arrayWeek);
                          $sort = $SearchMoodAI->sortMonth($minMax,$arrayWeek2);
+                         $sort2 = $SearchMoodAI2->sortMonth($array,$arrayWeek2);
 
-                        return View("Users.Search.Mood.AverageMoodGroupWMonth")->with("minMax", $sort)
+                        return View("Users.Search.Mood.AverageMoodGroupWMonth")->with("minMax", $sort)->with("minMax2", $sort2)
                             ->with("timeFrom", $request->get("timeFrom"))->with("timeTo", $request->get("timeTo"))
                             ->with("dateFrom", $request->get("dateFrom"))->with("dateTo", $request->get("dateTo"))
                             ->with("week", $SearchMoodAI->dayWeek);
@@ -267,28 +285,30 @@ class SearchMoodController {
                     if ( ($request->get("groupWeek") == "on") ) {
                          $arrayWeek = $SearchMoodAI->createWeek($SearchMoodAI->dateFrom,$SearchMoodAI->dateTo);
                          $sort = $SearchMoodAI->sortWeek($minMax,$arrayWeek);
+                         $sort2 = $SearchMoodAI2->sortWeek($array,$arrayWeek);
 
-                        return View("Users.Search.Mood.AverageMoodGroupWeek")->with("minMax", $sort)
+                        return View("Users.Search.Mood.AverageMoodGroupWeek")->with("minMax", $sort)->with("minMax2", $sort2)
                             ->with("timeFrom", $request->get("timeFrom"))->with("timeTo", $request->get("timeTo"))
                             ->with("dateFrom", $request->get("dateFrom"))->with("dateTo", $request->get("dateTo"))
                             ->with("week", $SearchMoodAI->dayWeek);
                     }
                     else if ($request->get("sumDay") == "on" and $request->get("divMinute") == 0) {
                         $sum = $SearchMoodAI->sortSumDay($minMax);
-                        return View("Users.Search.Mood.AverageMoodSumDay")->with("minMax", $sum)
+                        $sum2 = $SearchMoodAI2->sortSumDay($array);
+                        return View("Users.Search.Mood.AverageMoodSumDay")->with("minMax", $sum)->with("minMax2", $sum2)
                             ->with("timeFrom", $request->get("timeFrom"))->with("timeTo", $request->get("timeTo"))
                             ->with("dateFrom", $request->get("dateFrom"))->with("dateTo", $request->get("dateTo"))
                             ->with("week", $SearchMoodAI->dayWeek);
                     }
                     else if ($request->get("sumDay") == "on" and $request->get("divMinute") >  0) {
                         
-                        return View("Users.Search.Mood.AverageMoodSumDayMinute")->with("minMax", $sum)
+                        return View("Users.Search.Mood.AverageMoodSumDayMinute")->with("minMax", $sum)->with("minMax2", $sum2)
                             ->with("timeFrom", $request->get("timeFrom"))->with("timeTo", $request->get("timeTo"))
                             ->with("dateFrom", $request->get("dateFrom"))->with("dateTo", $request->get("dateTo"))
                             ->with("week", $SearchMoodAI->dayWeek)->with("startDay",Auth::User()->start_day);
                     }
                     else {
-                        return View("Users.Search.Mood.AverageMood")->with("minMax", $minMax)
+                        return View("Users.Search.Mood.AverageMood")->with("minMax", $minMax)->with("array", $array)
                             ->with("timeFrom", $request->get("timeFrom"))->with("timeTo", $request->get("timeTo"))
                             ->with("dateFrom", $request->get("dateFrom"))->with("dateTo", $request->get("dateTo"))
                             ->with("week", $SearchMoodAI->dayWeek);

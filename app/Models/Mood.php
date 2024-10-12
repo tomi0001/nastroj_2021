@@ -370,7 +370,7 @@ class Mood extends Model
     public function createQuestionAI2(int $startDay) {
        
         $this->questions =  self::query();
-        $this->questions->selectRaw("moods.date_start as date_start")
+        $this->questions->selectRaw("moods.date_start as datStart")
         ->selectRaw("moods.date_end as date_end")
         ->selectRaw("moods.level_mood as level_mood")
         ->selectRaw("moods.level_anxiety as level_anxiety")
