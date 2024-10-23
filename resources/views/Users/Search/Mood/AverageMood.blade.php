@@ -131,7 +131,7 @@
                 Poziom pobudzenia
             </th>
 
-            <th style="width:15%; text-align: center;" class="hrefSettingCursor">
+            <th style="width:15%; text-align: center;" class="hrefSettingCursor rightBorder">
                 ilośc nastroji
 
             </th>
@@ -174,7 +174,7 @@
                     {{round($minMax[$i]->stimulation,3)}}
                 </td>
 
-                <td style="text-align: center;  font-size: 18px; ">
+                <td style="text-align: center;  font-size: 18px; " class="rightBorder">
                     {{$minMax[$i]->count}}
 
                 </td>
