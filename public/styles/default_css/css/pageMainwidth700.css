@@ -127,7 +127,7 @@ div.actionMainselected {
             button.calendar {
                
                 border: solid 1px transparent;
-                border-color: #6E791A;
+                
                 padding-top: 13px;
                 padding-left: 10px;
                 padding-right: 10px;
@@ -140,11 +140,11 @@ div.actionMainselected {
                 display: inline-block;
                 font-size: 19px;
                 font-weight: bold;
-                box-shadow: 6px 6px 6px #F4E375;
+              
         }
         button.calendar:hover {
               
-                border-color: #C29713;
+                
                 border-radius: 12px;
                 text-align: center;
                 display: inline-block;
