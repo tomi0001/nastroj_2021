@@ -316,26 +316,12 @@ class Usee extends Model
                 ->where("usees.id",$id)
                 ->first();
     }
-    public static function selectOldUsee(int $idProduct,string $dateEnd,int $idUsers,int $startDay,$hour) {
-        return self::join("products","products.id","usees.id_products")
-                ->selectRaw("sum(usees.portion) as portions")
-                ->selectRaw("products.type_of_portion as type")
-                ->selectRaw("count(usees.portion) as how")
-                ->selectRaw(DB::Raw("(DATE(IF(HOUR(    usees.date) >= '" . $startDay . "', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ) as dat "))
-                ->where("usees.date","<=",$dateEnd)
-                ->where("usees.id_products",$idProduct)
-                ->where("usees.id_users",$idUsers)
-                ->whereRaw("(time(date_add(usees.date,INTERVAL - $startDay hour))) <= '$hour[1]'")
-                ->whereRaw("(time(date_add(usees.date,INTERVAL - $startDay hour))) >= '$hour[0]'")
-                ->groupBy(DB::Raw("(DATE(IF(HOUR(    usees.date) >= '" . $startDay . "', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) )  "))
-                ->orderBy("usees.date","DESC")
-                ->get();
-    }
 
-    public static function selectOldUseeSubstances(int $idSubstances,string $dateEnd,int $idUsers,int $startDay,$hour) {
+
+    public static function selectOldUseeSubstances2(int $idSubstances,string $dateEnd,int $idUsers,int $startDay,$hour) {
         return self::join("products","products.id","usees.id_products")
                 ->join("substances_products","substances_products.id_products","products.id")
-                ->selectRaw("count(usees.portion) as how")
+                ->select(DB::Raw("(select sum(czy_liczyc) FROM ( SELECT case when coalesce(TIMESTAMPDIFF(MINUTE,LAG(usees.date) over (order by usees.date),usees.date),10) > 3 then 1 else 0 end czy_liczyc from usees join products  on products.id = usees.id_products  join substances_products  on substances_products.id_products = products.id  where (substances_products.id_substances = '$idSubstances') and usees.date > '2023.10.01' and usees.date < '2023-10-03' )   r  )     as how"))
                 ->selectRaw(" "
                         . "( CASE "
                         . " WHEN products.type_of_portion = 2  THEN ('2' ) "
@@ -467,5 +453,106 @@ class Usee extends Model
     public function setWeekDay(array $week,int $startDay) {
         $this->questions->whereRaw(DB::raw("DAYOFWEEK((DATE(IF(HOUR(    usees.date) >= '" . $startDay . "', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ))  in (" . implode(",", $week) . ")")  );
     }
+    /*
+        update october 2024
+    */
 
+    public static function selectOldUsee(int $idProduct,string $dateEnd,int $idUsers,int $startDay,$hour) {
+        return self::select(DB::Raw("sum(czy_liczyc) as how"))
+        ->selectRaw("type")
+        ->selectRaw("sum(portions) as portions")
+        ->selectRaw("dat as dat")
+        ->fromSub(function ($query) use ($idProduct,$dateEnd,$idUsers,$startDay,$hour) {
+            $query->from('usees')
+            ->join("products","products.id","usees.id_products")
+            ->join("substances_products","substances_products.id_products","products.id")
+
+            ->select(DB::Raw("(  Lag(usees.date)  over (ORDER BY dat ) ) ,
+                           (  timestampdiff(minute,lag(usees.date) over (ORDER BY dat ),usees.date) ) ,
+                             ( CASE
+                                        WHEN coalesce(timestampdiff(minute,lag(usees.date) over (ORDER BY usees.date ),usees.date),10) > 3 THEN 1
+                                        ELSE 0
+                             end ) as czy_liczyc "))
+            ->selectRaw(" "
+                    . "( CASE "
+                    . " WHEN products.type_of_portion = 2  THEN ('2' ) "
+                    . " WHEN products.type_of_portion = 4  THEN ('4' ) "
+                    . " WHEN products.type_of_portion = 5  THEN ('5' ) "
+                    . " WHEN products.type_of_portion = 6  THEN ('6' ) "
+                    . " WHEN substances_products.Mg_Ug = 2  THEN ('7' ) "
+                    . "ELSE '1' "
+                    . " END)"
+                    . "  as type ")
+            ->selectRaw(" round(sum("
+                        . " CASE "
+                        . " WHEN products.type_of_portion = 2  THEN ( (products.how_percent / 100) * usees.portion ) " 
+                        . " WHEN substances_products.doseProduct is NULL  THEN (usees.portion ) "
+                        . "ELSE (substances_products.doseProduct * usees.portion) "
+                        . " END),2)"
+                        . "  as portions ")
+            ->selectRaw(DB::Raw("(DATE(IF(HOUR(    usees.date) >= '" . $startDay . "', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ) as dat "))
+            ->where("usees.date","<=",$dateEnd)
+            ->where("usees.id_products",$idProduct)
+            ->where("usees.id_users",$idUsers)
+            ->whereRaw("(time(date_add(usees.date,INTERVAL - $startDay hour))) <= '$hour[1]'")
+            ->whereRaw("(time(date_add(usees.date,INTERVAL - $startDay hour))) >= '$hour[0]'")
+            ->groupBy(DB::Raw(" 
+				usees.date"));
+            
+
+        }, 'r')->groupBy("dat")
+        ->orderBy("dat","DESC")
+        ->get();
+        
+    }
+    public static function selectOldUseeSubstances(int $idSubstances,string $dateEnd,int $idUsers,int $startDay,$hour) {
+        return self::select(DB::Raw("sum(czy_liczyc) as how"))
+        ->selectRaw("type")
+        ->selectRaw("sum(portions) as portions")
+        ->selectRaw("dat as dat")
+        ->fromSub(function ($query) use ($idSubstances,$dateEnd,$idUsers,$startDay,$hour) {
+            $query->from('usees')
+            ->join("products","products.id","usees.id_products")
+            ->join("substances_products","substances_products.id_products","products.id")
+
+            ->select(DB::Raw("(  Lag(usees.date)  over (ORDER BY dat ) ) ,
+                           (  timestampdiff(minute,lag(usees.date) over (ORDER BY dat ),usees.date) ) ,
+                             ( CASE
+                                        WHEN coalesce(timestampdiff(minute,lag(usees.date) over (ORDER BY usees.date ),usees.date),10) > 3 THEN 1
+                                        ELSE 0
+                             end ) as czy_liczyc "))
+            ->selectRaw(" "
+                    . "( CASE "
+                    . " WHEN products.type_of_portion = 2  THEN ('2' ) "
+                    . " WHEN products.type_of_portion = 4  THEN ('4' ) "
+                    . " WHEN products.type_of_portion = 5  THEN ('5' ) "
+                    . " WHEN products.type_of_portion = 6  THEN ('6' ) "
+                    . " WHEN substances_products.Mg_Ug = 2  THEN ('7' ) "
+                    . "ELSE '1' "
+                    . " END)"
+                    . "  as type ")
+            ->selectRaw(" round(sum("
+                        . " CASE "
+                        . " WHEN products.type_of_portion = 2  THEN ( (products.how_percent / 100) * usees.portion ) " 
+                        . " WHEN substances_products.doseProduct is NULL  THEN (usees.portion ) "
+                        . "ELSE (substances_products.doseProduct * usees.portion) "
+                        . " END),2)"
+                        . "  as portions ")
+            ->selectRaw(DB::Raw("(DATE(IF(HOUR(    usees.date) >= '" . $startDay . "', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ) as dat "))
+            ->where("usees.date","<=",$dateEnd)
+            ->where("substances_products.id_substances",$idSubstances)
+            ->where("usees.id_users",$idUsers)
+            ->whereRaw("(time(date_add(usees.date,INTERVAL - $startDay hour))) <= '$hour[1]'")
+            ->whereRaw("(time(date_add(usees.date,INTERVAL - $startDay hour))) >= '$hour[0]'")
+            ->groupBy(DB::Raw(" 
+				usees.date"));
+            
+
+        }, 'r')->groupBy("dat")
+        ->orderBy("dat","DESC")
+        ->get();
+        
+     
+                
+    }
 }
