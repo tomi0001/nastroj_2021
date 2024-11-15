@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Auth;
 class Substance extends Model
 {
     use HasFactory;
@@ -44,5 +44,22 @@ class Substance extends Model
                 ->where("equivalent",">",0)
                 ->first();
     }    
+    /*
+        update november 2024
+    */
+
+    public function addNewSubstance( $request) {
+        $Substance = new self;
+        $Substance->name  = $request->get("nameSubstance");
+        $Substance->id_users  = Auth::User()->id;
+        $Substance->equivalent  = $request->get("equivalent");
+        $Substance->save();
+        return $Substance->id;
+        
+    }
+    public function updateSubstanceGroupname( $request) {
+        $Substance = new self;
+        $Substance->where("id",$request->get("nameSubstance"))->update(["name"=>$request->get("newName"),"equivalent"=>$request->get("equivalent")]);
+    }
     
 }

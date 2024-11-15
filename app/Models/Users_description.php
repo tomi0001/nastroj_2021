@@ -15,4 +15,13 @@ class Users_description extends Model
                 ->where("users_descriptions.id_usees",$id)
                 ->get();
     }
+    /*
+        update november 2024
+    */
+    public function addUserDescription( $request,$id,$date,$idDesriptions) {
+        $Users_description = new self;
+        $Users_description->id_usees = $id;
+        $Users_description->id_descriptions = $idDesriptions;
+        $Users_description->save();
+    }
 }

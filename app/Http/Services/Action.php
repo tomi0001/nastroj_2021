@@ -34,9 +34,8 @@ class Action {
     }
     public function updateAction(Request $request) {
         $Actions_plan = new Actions_plan;
-        $Actions_plan->where("id",$request->get("nameActionChange"))->update(["id_actions"=>$request->get("changeAction"),
-            "date"=>$request->get("date") . " " . $request->get("time") ,
-            "long"=>$request->get("long"),"what_work"=>$request->get("description")]);
+        $Actions_plan->updateAction($request);
+        
         
     }
     public function checkErrorPlaned(Request $request) {
@@ -61,7 +60,7 @@ class Action {
     }
     public function deleteActionPlan(int $id) {
         $Actions_plan = new Actions_plan;
-        $Actions_plan->where("id",$id)->delete();
+        $Actions_plan->deleteActionPlan($id);
     }
     public function checkErrorChangeName(Request $request) {
         if (($request->get("nameAction") == "") ){
@@ -100,50 +99,35 @@ class Action {
     }
     public function saveAction(Request $request) {
         $ActionDay = new Actions_day;
-        $ActionDay->id_users = Auth::User()->id;
-        $ActionDay->id_actions = $request->get("actionDay");
-        if ($request->get("time") != "") {
-            $ActionDay->date = $request->get("date") . " " . $request->get("time");
-        }
-        else {
-            $ActionDay->date = $request->get("date") . " " . date("H:i:s");
-        }
-        $ActionDay->save();
+        $ActionDay->saveAction($request);
     }
 
     public function removeActionDay(int $id) {
         $ActionsDay = new Actions_day;
-        $ActionsDay->where("id",$id)->where("id_users",Auth::User()->id)->delete();
+        $ActionsDay->removeActionDay($id);
     }
     public function updateActionDay(Request $request)  {
         $ActionDay = new Actions_day;
-        $ActionDay->where("id_users",Auth::User()->id)->where("id",$request->get("id"))->update(["id_actions"=> $request->get("idAction")]);
+        $ActionDay->updateActionDay($request);
         
     }
     public function removeActionMoods(int $id) {
         $MoodAction = new MoodAction;
-        $MoodAction->where("id_moods",$id)->delete();
+        $MoodAction->removeActionMoods($id);
     }
     public function addNewAction(Request $request) {
         $Action = new actionModels;
-        $Action->name  = $request->get("nameAction");
-        $Action->level_pleasure  = $request->get("levelPleasure");
-        $Action->id_users  = Auth::User()->id;
-        $Action->save();
+        $Action->addNewAction($request);
     }
     public function saveActionPlaned(Request $request) {
         for ($i=0;$i < count($request->get("idAction"));$i++) {
             $Action = new Actions_plan;
-            $Action->id_users  = Auth::User()->id;
-            $Action->id_actions  = $request->get("idAction")[$i];
-            $Action->date  = $request->get("dateStart") . " " . $request->get("timeStart");
-            $Action->long  = $request->get("minute");
-            $Action->what_work  = str_replace("\n", "<br>", $request->get("description"));
-            $Action->save();
+            $Action->saveActionPlaned($request,$i);
         }
+        
     }
     public function updateActionName(Request $request) {
         $Action = new actionModels;
-        $Action->where("id",$request->get("nameAction"))->where("id_users",Auth::User()->id)->update(["name"=>$request->get("newName"),"level_pleasure"=>$request->get("pleasure")]);
+        $Action->updateActionName($request);
     }
 }

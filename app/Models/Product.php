@@ -84,4 +84,25 @@ class Product extends Model
                 ->where("substances.equivalent",">",0)
                 ->first();
     }
+
+    /*
+        update november 2024
+    */
+    public function addNewProduct( $request) {
+        $Product = new self;
+        $Product->name  = $request->get("nameProduct");
+        $Product->id_users  = Auth::User()->id;
+        $Product->how_percent  = $request->get("percent");
+        $Product->type_of_portion  = $request->get("type");
+        $Product->price  = $request->get("price");
+        $Product->how_much  = $request->get("how");
+        $Product->save();
+        return $Product->id;
+        
+    }
+    public function updateProductSubstancename( $request) {
+        $Product = new self;
+        $Product->where("id",$request->get("nameProduct"))->update(["name"=>$request->get("newName"),"how_percent"=>$request->get("percent"),
+                "type_of_portion" => $request->get("type"),"price" => $request->get("price"),"how_much" => $request->get("howMuch")]);
+    }
 }

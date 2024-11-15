@@ -32,4 +32,32 @@ class Substances_product extends Model
             ->where("substances_products.id_products",$idProduct)
             ->first();
         }
+    /*
+        update november 2024
+    */
+    
+    public function addProductSubstance( $request, $idProduct,$i) {
+            
+                $Substances_product = new self;
+                $Substances_product->id_products= $idProduct;
+                $Substances_product->id_substances = $request->get("idSubstance2")[$i];
+                $Substances_product->doseProduct = $request->get("howMg2")[$i];
+                $Substances_product->Mg_Ug  =$request->get("typeMgUg2")[$i];
+                $Substances_product->save();
+            
+    }
+    public function resetProduct( $request) {
+        $Substances_product = new self;
+        $Substances_product->where("id_products",$request->get("nameProduct"))->delete();
+    }
+    public function updateProductSubstance( $request,$i) {
+       
+            $Substances_product = new self;
+            $Substances_product->id_products = $request->get("nameProduct");
+            $Substances_product->id_substances  =$request->get("idSubstance2")[$i];
+            $Substances_product->doseProduct  =$request->get("howMg2")[$i];
+            $Substances_product->Mg_Ug  =$request->get("typeMgUg2")[$i];
+            $Substances_product->save();
+        
+    }
 }

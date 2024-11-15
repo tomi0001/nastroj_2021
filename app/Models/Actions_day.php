@@ -110,5 +110,30 @@ class Actions_day extends Model
         return self::selectRaw("date")->where("id_users",Auth::User()->id)->where("id_actions",$idAction)->where("date",$date . ":00")
                 ->where("created_at",">=",date("Y-m-d H:i:s", strtotime(date("Y-m-d H:i:s") )- 80))->first();
     }
+    /*
+        update november 2024
+    */
+    public function saveAction( $request) {
+        $ActionDay = new self;
+        $ActionDay->id_users = Auth::User()->id;
+        $ActionDay->id_actions = $request->get("actionDay");
+        if ($request->get("time") != "") {
+            $ActionDay->date = $request->get("date") . " " . $request->get("time");
+        }
+        else {
+            $ActionDay->date = $request->get("date") . " " . date("H:i:s");
+        }
+        $ActionDay->save();
+    }
+
+    public function removeActionDay( $id) {
+        $ActionsDay = new self;
+        $ActionsDay->where("id",$id)->where("id_users",Auth::User()->id)->delete();
+    }
+    public function updateActionDay( $request)  {
+        $ActionDay = new self;
+        $ActionDay->where("id_users",Auth::User()->id)->where("id",$request->get("id"))->update(["id_actions"=> $request->get("idAction")]);
+        
+    }
 
 }

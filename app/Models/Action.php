@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Auth;
 class Action extends Model
 {
     use HasFactory;
@@ -35,5 +35,19 @@ class Action extends Model
     }
     public static function checkIfNameAction( $name,int $idUsers, $id) {
         return self::where("id_users",$idUsers)->where("name",$name)->where("id","!=",$id)->count();
+    }
+     /*
+        update november 2024
+    */
+    public function addNewAction( $request) {
+        $Action = new self;
+        $Action->name  = $request->get("nameAction");
+        $Action->level_pleasure  = $request->get("levelPleasure");
+        $Action->id_users  = Auth::User()->id;
+        $Action->save();
+    }
+    public function updateActionName( $request) {
+        $Action = new self;
+        $Action->where("id",$request->get("nameAction"))->where("id_users",Auth::User()->id)->update(["name"=>$request->get("newName"),"level_pleasure"=>$request->get("pleasure")]);
     }
 }

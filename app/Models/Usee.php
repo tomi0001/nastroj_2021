@@ -555,4 +555,41 @@ class Usee extends Model
      
                 
     }
+     /*
+        update november 2024
+    */
+
+    public function addDrugsPlaned($name,$dose,$date,$price) {
+        $use = new self;
+        $use->id_users = Auth::User()->id;
+        $use->id_products = $name;
+        $use->date = $date;
+        $use->price = $price;
+        $use->portion = $dose;
+        $use->save();
+
+        
+    }
+    public function deleteDrugs( $id) {
+        $Drugs = new self;
+        $Drugs->where("id",$id)->where("id_users",Auth::User()->id)->delete();
+    }
+    public function addDrugs( $request,$date,$price) {
+        $use = new self;
+        $use->id_users = Auth::User()->id;
+        $use->id_products = $request->get("nameProduct");
+        $use->date = $date;
+        $use->price = $price;
+        $use->portion = $request->get("dose");
+        $use->save();
+        return $use->id;
+       
+        
+    }
+    public function updateProduct( $request,$price) {
+        $Usee = new self;
+        $date = $request->get("date") . " " . $request->get("time") . ":00";
+        $Usee->where("id",$request->get("id"))->where("id_users",Auth::User()->id)
+                ->update(["portion"=> $request->get("doseEdit"),"id_products"=> $request->get("idProduct"),"date" => $date,"price"=> $price]);
+    }
 }

@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Hash;
-
+use Auth;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -138,4 +138,63 @@ class User extends Authenticatable
         ]);
     }
     
+    /*
+        update november 2024
+    */
+
+    public function saveUser( $request) {
+        $User = new self;
+        $User->name = $request->get("name");
+        $User->email = $request->get("email");
+        $User->password = Hash::make($request->get("password"));
+        $User->start_day = $request->get("startDay");
+        $User->save();
+    }
+    public function createDoctor( $request) {
+        $MUser = new self;
+        $MUser->name = $request->get("login");
+        $MUser->password = Hash::make( $request->get("password"));
+        $MUser->id_users = ( Auth::User()->id);
+        $MUser->type = "doctor";
+        if ($request->get("ifTrue") == "on") {
+            $MUser->if_true = 1;
+        }
+        else {
+            $MUser->if_true = 0;
+        }
+        $MUser->save();
+        
+    }
+    public function updateSettingMood( $request) {
+        $User = new self;
+        $User->where("id",Auth::User()->id)->update([
+            "level_mood_10" => $request->get("valueMood-10From"),
+            "level_mood_9" => $request->get("valueMood-9From"),
+            "level_mood_8" => $request->get("valueMood-8From"),
+            "level_mood_7" => $request->get("valueMood-7From"),
+            "level_mood_6" => $request->get("valueMood-6From"),
+            "level_mood_5" => $request->get("valueMood-5From"),
+            "level_mood_4" => $request->get("valueMood-4From"),
+            "level_mood_3" => $request->get("valueMood-3From"),
+            "level_mood_2" => $request->get("valueMood-2From"),
+            "level_mood_1" => $request->get("valueMood-1From"),
+            "level_mood0" => $request->get("valueMood0From"),
+            "level_mood1" => $request->get("valueMood1From"),
+            "level_mood2" => $request->get("valueMood2From"),
+            "level_mood3" => $request->get("valueMood3From"),
+            "level_mood4" => $request->get("valueMood4From"),
+            "level_mood5" => $request->get("valueMood5From"),
+            "level_mood6" => $request->get("valueMood6From"),
+            "level_mood7" => $request->get("valueMood7From"),
+            "level_mood8" => $request->get("valueMood8From"),
+            "level_mood9" => $request->get("valueMood9From"),
+            "level_mood10" => $request->get("valueMood10From"),
+
+            
+            
+            
+        ]);
+ 
+        
+    }
 }

@@ -35,5 +35,50 @@ class Moods_action extends Model
                 ->where("id_moods",$idMood)
                 ->where("id_actions",$idAction)->first();        
     }
+     /*
+        update november 2024
+    */
+    public function removeActionMoods( $id) {
+        $MoodAction = new self;
+        $MoodAction->where("id_moods",$id)->delete();
+    }
+    public function saveAction( $request, $idMood,$i) :void {
+       
+                $Moods_action = new self;
+                $Moods_action->id_moods = $idMood;
+                $Moods_action->id_actions = $request->get("idAction")[$i];
+
+                if ($request->get("idActions")[$i] != NULL ) {
+                    $Moods_action->percent_executing = $request->get("idActions")[$i];
+                }
+                if ($request->get("idActionMinute")[$i] != NULL ) {
+                    $Moods_action->minute_exe = $request->get("idActionMinute")[$i];
+                }
+                $Moods_action->save();
+        
+    }
+
+    public function saveActionUpdate( $request, $idMood,$i) :void {
+        
+        
+           
+                $tmp = explode(",",$request->get("idAction")[$i]);
+                $Moods_action = new self;
+                $Moods_action->id_moods = $idMood;
+                $Moods_action->id_actions = $tmp[0];
+
+                if ($request->get("idActions")[$i] != "" ) {
+                    $Moods_action->percent_executing = (int) $request->get("idActions")[$i];
+                }
+                if ($request->get("idActionMinute")[$i] != NULL ) {
+                    $Moods_action->minute_exe = $request->get("idActionMinute")[$i];
+                }   
+                $Moods_action->save();
+     
+    }
+    public function deleteMoodAction(  $idMood) {
+        $MoodAction = new self;
+        $MoodAction->where("id_moods",$idMood)->delete();
+    }
 
 }

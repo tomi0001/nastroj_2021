@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Auth;
 class Group extends Model
 {
     use HasFactory;
@@ -26,5 +26,18 @@ class Group extends Model
             ->join("products","substances_products.id_products","products.id")
             ->selectRaw("products.id as id")
             ->where("groups.name","like","%".$name."%")->get();
+    }
+     /*
+        update november 2024
+    */
+    public function addNewGroup( $request) {
+        $Group = new self;
+        $Group->name  = $request->get("nameGroup");
+        $Group->id_users  = Auth::User()->id;
+        $Group->save();
+    }
+    public function editNameGroup( $request) {
+        $Group = new self;
+        $Group->where("id",$request->get("newNameGroupHidden"))->update(["name"=>$request->get("newNameGroup")]);
     }
 }

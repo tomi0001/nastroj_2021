@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use DB;
+use Auth;
 class Action_plan extends Model
 {
     use HasFactory;
@@ -69,4 +70,31 @@ class Action_plan extends Model
     public static function ifIdExist(int $id, int $idUsers) {
         return self::where("id",$id)->where("id_users",$idUsers)->count();
     }
+
+    /*
+        update november 2024
+    */
+    public function updateAction( $request) {
+        $Actions_plan = new self;
+        $Actions_plan->where("id",$request->get("nameActionChange"))->update(["id_actions"=>$request->get("changeAction"),
+            "date"=>$request->get("date") . " " . $request->get("time") ,
+            "long"=>$request->get("long"),"what_work"=>$request->get("description")]);
+        
+    }
+    public function deleteActionPlan( $id) {
+        $Actions_plan = new self;
+        $Actions_plan->where("id",$id)->delete();
+    }
+    public function saveActionPlaned( $request,$i) {
+        
+            $Action = new self;
+            $Action->id_users  = Auth::User()->id;
+            $Action->id_actions  = $request->get("idAction")[$i];
+            $Action->date  = $request->get("dateStart") . " " . $request->get("timeStart");
+            $Action->long  = $request->get("minute");
+            $Action->what_work  = str_replace("\n", "<br>", $request->get("description"));
+            $Action->save();
+        
+    }
+
 }

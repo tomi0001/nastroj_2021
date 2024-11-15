@@ -15,11 +15,7 @@ class User {
     public $css = [];
     public function saveUser(Request $request) {
         $User = new MUser;
-        $User->name = $request->get("name");
-        $User->email = $request->get("email");
-        $User->password = Hash::make($request->get("password"));
-        $User->start_day = $request->get("startDay");
-        $User->save();
+        $User->saveUser($request);
     }
     public function checkError(Request $request) {
         if ($request->get("login") == "") {
@@ -69,17 +65,7 @@ class User {
     }
     private function createDoctor(Request $request) {
         $MUser = new MUser;
-        $MUser->name = $request->get("login");
-        $MUser->password = Hash::make( $request->get("password"));
-        $MUser->id_users = ( Auth::User()->id);
-        $MUser->type = "doctor";
-        if ($request->get("ifTrue") == "on") {
-            $MUser->if_true = 1;
-        }
-        else {
-            $MUser->if_true = 0;
-        }
-        $MUser->save();
+        $MUser->createDoctor($request);
         
     }
     /*

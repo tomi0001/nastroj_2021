@@ -29,20 +29,12 @@ class Product {
     public function addNewPlanedArray(Request $request,$name) {
         for ($i=0;$i < count($request->get("idProducts"));$i++) {
             $Planned_drug = new Planned_drug;
-            $Planned_drug->id_products = $request->get("idProducts")[$i];
-            $Planned_drug->id_users  =Auth::User()->id;
-            $Planned_drug->name  =$name;
-            $Planned_drug->portion  =$request->get("portions")[$i];
-            $Planned_drug->save();
+            $Planned_drug->addNewPlanedArray( $request,$name,$i);
         }
     }
     public function addNewPlaned(Request $request) {
             $Planned_drug = new Planned_drug;
-            $Planned_drug->id_products = $request->get("idProduct");
-            $Planned_drug->id_users  =Auth::User()->id;
-            $Planned_drug->name  =$request->get("namePlanedNew");
-            $Planned_drug->portion  =$request->get("portion");
-            $Planned_drug->save();
+            $Planned_drug->addNewPlaned($request);
     }
     public function checkErrorNewPlaned(Request $request) {
         if ($request->get("namePlanedNew") == "") {
@@ -182,37 +174,26 @@ class Product {
     }
     public function addDrugs(Request $request,$date,$price) {
         $use = new Usee;
-        $use->id_users = Auth::User()->id;
-        $use->id_products = $request->get("nameProduct");
-        $use->date = $date;
-        $use->price = $price;
-        $use->portion = $request->get("dose");
-        $use->save();
+        $id = $use->addDrugs( $request,$date,$price);
         if ($request->get("description") != "") {
-            $this->addDescription($request,$use->id,$date);
+            $this->addDescription($request,$id,$date);
         }
         
     }
     public function updateProduct(Request $request,$price) {
         $Usee = new Usee;
         $date = $request->get("date") . " " . $request->get("time") . ":00";
-        $Usee->where("id",$request->get("id"))->where("id_users",Auth::User()->id)
-                ->update(["portion"=> $request->get("doseEdit"),"id_products"=> $request->get("idProduct"),"date" => $date,"price"=> $price]);
+        $Usee->updateProduct( $request,$price);
     }
     public function editNameGroup(Request $request) {
         $Group = new Group;
-        $Group->where("id",$request->get("newNameGroupHidden"))->update(["name"=>$request->get("newNameGroup")]);
+        $Group->editNameGroup($request);
     }
     public function addDescription(Request $request,$id,$date) {
-        $Description = new description;
-        $Description->description = str_replace("\n", "<br>", $request->get("description"));
-        $Description->date = $date;
-        $Description->id_users = Auth::User()->id;
-        $Description->save();
-        $Users_description = new users_description;
-        $Users_description->id_usees = $id;
-        $Users_description->id_descriptions = $Description->id;
-        $Users_description->save();
+        $Description = new Description;
+        $idDescriptions = $Description->addDescription( $request,$date);
+        $Users_description = new Users_description;
+        $Users_description->addUserDescription( $request,$id,$date,$idDescriptions);
     }
     public function setDate(Request $request)  :bool {
         if ($request->get("date") == "" and $request->get("time") == "") {
@@ -249,24 +230,18 @@ class Product {
     }
     public function selectPlaned(string $namePlaned) {
          $Planned_drug = new Planned_drug;
-         $list = $Planned_drug->where("id_users",Auth::User()->id)
-                    ->where("name",$namePlaned)->get();
+         $list = $Planned_drug->selectPlaned($namePlaned);
          return $list;
     }
     private function addDrugsPlaned($name,$dose,$date,$price) {
         $use = new Usee;
-        $use->id_users = Auth::User()->id;
-        $use->id_products = $name;
-        $use->date = $date;
-        $use->price = $price;
-        $use->portion = $dose;
-        $use->save();
+        $use->addDrugsPlaned($name,$dose,$date,$price);
 
         
     }
     public function deleteDrugs(int $id) {
         $Drugs = new Usee;
-        $Drugs->where("id",$id)->where("id_users",Auth::User()->id)->delete();
+        $Drugs->deleteDrugs( $id);
     }
     public function removeDescriptionDrugs(int $id) {
         $Users_descriptionSelect = new Users_description;
@@ -284,53 +259,36 @@ class Product {
     }
     public function addNewGroup(Request $request) {
         $Group = new Group;
-        $Group->name  = $request->get("nameGroup");
-        $Group->id_users  = Auth::User()->id;
-        $Group->save();
+        $Group->addNewGroup($request);
     }
     public function deletePlaned(string $name) {
         $Planned_drug = new Planned_drug;
-        $Planned_drug->where("name",$name)->delete();
+        $Planned_drug->deletePlaned( $name);
     }
     public function addNewSubstance(Request $request) {
         $Substance = new Substance;
-        $Substance->name  = $request->get("nameSubstance");
-        $Substance->id_users  = Auth::User()->id;
-        $Substance->equivalent  = $request->get("equivalent");
-        $Substance->save();
+        $id = $Substance->addNewSubstance($request);
         if (!empty($request->get("idGroup"))  ) {
-            $this->addSubstanceGroup($request->get("idGroup"),$Substance->id);
+            $this->addSubstanceGroup($request->get("idGroup"),$id);
         }
     }
-    private function addSubstanceGroup(array $group,int $idSubstance) {
+    private function addSubstanceGroup( $group, int $idSubstance) {
         for ($i = 0;$i < count($group);$i++)  {
             $Substances_group = new Substances_group;
-            $Substances_group->id_substances = $idSubstance;
-            $Substances_group->id_groups = $group[$i];
-            $Substances_group->save();
+            $Substances_group->addSubstanceGroup( $group, $idSubstance,$i);
         }
     }
     public function addNewProduct(Request $request) {
         $Product = new appProduct;
-        $Product->name  = $request->get("nameProduct");
-        $Product->id_users  = Auth::User()->id;
-        $Product->how_percent  = $request->get("percent");
-        $Product->type_of_portion  = $request->get("type");
-        $Product->price  = $request->get("price");
-        $Product->how_much  = $request->get("how");
-        $Product->save();
+        $id = $Product->addNewProduct($request);
         if (!empty($request->get("idSubstance2"))  ) {
-            $this->addProductSubstance($request,$Product->id);
+            $this->addProductSubstance($request,$id);
         }
     }
     private function addProductSubstance(Request $request,int $idProduct) {
         for ($i = 0;$i < count($request->get("idSubstance2"));$i++)  {
             $Substances_product = new Substances_product;
-            $Substances_product->id_products= $idProduct;
-            $Substances_product->id_substances = $request->get("idSubstance2")[$i];
-            $Substances_product->doseProduct = $request->get("howMg2")[$i];
-            $Substances_product->Mg_Ug  =$request->get("typeMgUg2")[$i];
-            $Substances_product->save();
+            $Substances_product->addProductSubstance( $request, $idProduct,$i);
         }
     }
     public function resetSubstance(Request $request) {
@@ -339,33 +297,26 @@ class Product {
     }
     public function resetProduct(Request $request) {
         $Substances_product = new Substances_product;
-        $Substances_product->where("id_products",$request->get("nameProduct"))->delete();
+        $Substances_product->resetProduct($request);
     }
     public function updateSubstanceGroupname(Request $request) {
         $Substance = new Substance;
-        $Substance->where("id",$request->get("nameSubstance"))->update(["name"=>$request->get("newName"),"equivalent"=>$request->get("equivalent")]);
+        $Substance->updateSubstanceGroupname($request);
     }
     public function updateProductSubstancename(Request $request) {
         $Product = new appProduct;
-        $Product->where("id",$request->get("nameProduct"))->update(["name"=>$request->get("newName"),"how_percent"=>$request->get("percent"),
-                "type_of_portion" => $request->get("type"),"price" => $request->get("price"),"how_much" => $request->get("howMuch")]);
+        $Product->updateProductSubstancename($request);
     }
     public function updateSubstanceGroup(Request $request) {
         for ($i = 0;$i < count($request->get("idGroup"));$i++) {
             $Substances_group = new Substances_group;
-            $Substances_group->id_substances = $request->get("nameSubstance");
-            $Substances_group->id_groups  =$request->get("idGroup")[$i];
-            $Substances_group->save();
+            $Substances_group->updateSubstanceGroup($request,$i);
         }
     }
     public function updateProductSubstance(Request $request) {
         for ($i = 0;$i < count($request->get("idSubstance2"));$i++) {
             $Substances_product = new Substances_product;
-            $Substances_product->id_products = $request->get("nameProduct");
-            $Substances_product->id_substances  =$request->get("idSubstance2")[$i];
-            $Substances_product->doseProduct  =$request->get("howMg2")[$i];
-            $Substances_product->Mg_Ug  =$request->get("typeMgUg2")[$i];
-            $Substances_product->save();
+            $Substances_product->updateProductSubstance($request,$i);
         }
     }
     public function sumAverageProduct(int $idProduct,int $id,$hourFrom,$hourTo,$idUsers) {

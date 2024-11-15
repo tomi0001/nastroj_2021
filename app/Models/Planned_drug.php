@@ -44,5 +44,35 @@ class Planned_drug extends Model
     public static function ifExist(string $name, int $idUsers) {
         return self::selectRaw("name as name")->where("id_users",$idUsers)->where("name",$name)->first();
     }
- 
+    /*
+        update november 2024
+    */
+    public function addNewPlanedArray( $request,$name,$i) {
+        
+            $Planned_drug = new self;
+            $Planned_drug->id_products = $request->get("idProducts")[$i];
+            $Planned_drug->id_users  =Auth::User()->id;
+            $Planned_drug->name  =$name;
+            $Planned_drug->portion  =$request->get("portions")[$i];
+            $Planned_drug->save();
+        
+    }
+    public function addNewPlaned( $request) {
+            $Planned_drug = new self;
+            $Planned_drug->id_products = $request->get("idProduct");
+            $Planned_drug->id_users  =Auth::User()->id;
+            $Planned_drug->name  =$request->get("namePlanedNew");
+            $Planned_drug->portion  =$request->get("portion");
+            $Planned_drug->save();
+    }
+    public function selectPlaned( $namePlaned) {
+        $Planned_drug = new self;
+        $list = $Planned_drug->where("id_users",Auth::User()->id)
+                   ->where("name",$namePlaned)->get();
+        return $list;
+   }
+   public function deletePlaned( $name) {
+    $Planned_drug = new self;
+    $Planned_drug->where("name",$name)->delete();
+}
 }

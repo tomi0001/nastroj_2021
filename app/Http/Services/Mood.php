@@ -81,33 +81,7 @@ class Mood {
     }
     public function updateSettingMood(Request $request) {
         $User = new MUser;
-        $User->where("id",Auth::User()->id)->update([
-            "level_mood_10" => $request->get("valueMood-10From"),
-            "level_mood_9" => $request->get("valueMood-9From"),
-            "level_mood_8" => $request->get("valueMood-8From"),
-            "level_mood_7" => $request->get("valueMood-7From"),
-            "level_mood_6" => $request->get("valueMood-6From"),
-            "level_mood_5" => $request->get("valueMood-5From"),
-            "level_mood_4" => $request->get("valueMood-4From"),
-            "level_mood_3" => $request->get("valueMood-3From"),
-            "level_mood_2" => $request->get("valueMood-2From"),
-            "level_mood_1" => $request->get("valueMood-1From"),
-            "level_mood0" => $request->get("valueMood0From"),
-            "level_mood1" => $request->get("valueMood1From"),
-            "level_mood2" => $request->get("valueMood2From"),
-            "level_mood3" => $request->get("valueMood3From"),
-            "level_mood4" => $request->get("valueMood4From"),
-            "level_mood5" => $request->get("valueMood5From"),
-            "level_mood6" => $request->get("valueMood6From"),
-            "level_mood7" => $request->get("valueMood7From"),
-            "level_mood8" => $request->get("valueMood8From"),
-            "level_mood9" => $request->get("valueMood9From"),
-            "level_mood10" => $request->get("valueMood10From"),
-
-            
-            
-            
-        ]);
+        $User->updateSettingMood($request);
  
         
     }
@@ -149,27 +123,8 @@ class Mood {
     
     public function saveMood(Request $request,string $dateStart,string $dateEnd,array $arrayMood) {
         $Mood = new MoodModel;
-        $Mood->date_start = $dateStart . ":00";
-        $Mood->date_end = $dateEnd . ":00";
-
-            $Mood->level_mood = $arrayMood["mood"];
-
-
-            $Mood->level_anxiety = $arrayMood["anxiety"];
-
-
-            $Mood->level_nervousness = $arrayMood["voltage"];
-
-
-            $Mood->level_stimulation = $arrayMood["stimulation"];
-
-
-            $Mood->epizodes_psychotik = $arrayMood["epizodesPsychotic"];
-
-        $Mood->what_work = str_replace("\n", "<br>", $request->get("whatWork"));
-        $Mood->id_users = Auth::User()->id;
-        $Mood->save();
-        return $Mood->id;
+        $id = $Mood->saveMood( $request, $dateStart, $dateEnd, $arrayMood);
+        return $id;
     }
     public function setVariableMood(Request $request) {
         if ($request->get("moodLevel") != "") {
@@ -252,22 +207,15 @@ class Mood {
     }
 
     
-    public function saveAction(Request $request,int $idMood) :void {
+    public function saveAction(Request $request, $idMood) :void {
         for ($i = 0;$i < count($request->get("idAction"));$i++) {
             if ($request->get("idAction")[$i] != ""  ) {
                 $Moods_action = new MoodAction;
-                $Moods_action->id_moods = $idMood;
-                $Moods_action->id_actions = $request->get("idAction")[$i];
-
-                if ($request->get("idActions")[$i] != NULL ) {
-                    $Moods_action->percent_executing = $request->get("idActions")[$i];
-                }
-                if ($request->get("idActionMinute")[$i] != NULL ) {
-                    $Moods_action->minute_exe = $request->get("idActionMinute")[$i];
-                }
-                $Moods_action->save();
+                $Moods_action->saveAction( $request, $idMood,$i);
             }
+
         }
+        
     }
     public function saveActionUpdate(Request $request,int $idMood) :void {
         if (empty($request->get("idAction")  )) {
@@ -277,16 +225,7 @@ class Mood {
             if ($request->get("idAction")[$i] != ""  ) {
                 $tmp = explode(",",$request->get("idAction")[$i]);
                 $Moods_action = new MoodAction;
-                $Moods_action->id_moods = $idMood;
-                $Moods_action->id_actions = $tmp[0];
-
-                if ($request->get("idActions")[$i] != "" ) {
-                    $Moods_action->percent_executing = (int) $request->get("idActions")[$i];
-                }
-                if ($request->get("idActionMinute")[$i] != NULL ) {
-                    $Moods_action->minute_exe = $request->get("idActionMinute")[$i];
-                }   
-                $Moods_action->save();
+                $Moods_action->saveActionUpdate( $request, $idMood,$i);
             }
         }
     }
@@ -310,26 +249,23 @@ class Mood {
     
     public function updateMood(Request $request) {
         $Mood = new MoodModel;
-        $Mood->where("id",$request->get("id"))->where("id_users",Auth::User()->id)
-                ->update(["level_mood"=> $request->get("levelMood"),"level_anxiety"=> $request->get("levelAnxienty"),"level_nervousness"=> $request->get("levelNervousness"),"level_stimulation"=> $request->get("levelStimulation"),"epizodes_psychotik"=> $request->get("levelEpizodes")]);
+        $Mood->updateMood( $request);
     }
     public function updateSleep(Request $request) {
         $Mood = new MoodModel;
-        $Mood->where("id",$request->get("id"))->where("id_users",Auth::User()->id)
-                ->update(["epizodes_psychotik"=> $request->get("levelEpizodes")]);
+        $Mood->updateSleep( $request);
     
     }
     public function deleteMood(int $id) {
         $Mood = new MoodModel;
-        $Mood->where("id",$id)->where("id_users",Auth::User()->id)->delete();
+        $Mood->deleteMood( $id);
     }
     public function updateDescription(Request $request, int $idUsers) {
         $Mood = new MoodModel;
-        $Mood->where("id",$request->get("id"))->where("id_users",Auth::User()->id)
-                ->update(["what_work"=>  ($request->get("description"))]);
+        $Mood->updateDescription( $request,  $idUsers);
     }
     public function deleteMoodAction(int  $idMood) {
         $MoodAction = new MoodAction;
-        $MoodAction->where("id_moods",$idMood)->delete();
+        $MoodAction->deleteMoodAction(  $idMood);
     }
 }

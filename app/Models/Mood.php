@@ -1162,4 +1162,65 @@ class Mood extends Model
                 ->selectRaw("sum(TIMESTAMPDIFF (minute, moods.date_start , moods.date_end)) as longMood");
                 
     }
+    /*
+        update november 2024
+    */
+    public function saveMood( $request, $dateStart, $dateEnd, $arrayMood) {
+        $Mood = new self;
+        $Mood->date_start = $dateStart . ":00";
+        $Mood->date_end = $dateEnd . ":00";
+
+            $Mood->level_mood = $arrayMood["mood"];
+
+
+            $Mood->level_anxiety = $arrayMood["anxiety"];
+
+
+            $Mood->level_nervousness = $arrayMood["voltage"];
+
+
+            $Mood->level_stimulation = $arrayMood["stimulation"];
+
+
+            $Mood->epizodes_psychotik = $arrayMood["epizodesPsychotic"];
+
+        $Mood->what_work = str_replace("\n", "<br>", $request->get("whatWork"));
+        $Mood->id_users = Auth::User()->id;
+        $Mood->save();
+        return $Mood->id;
+    }
+    public function updateMood( $request) {
+        $Mood = new self;
+        $Mood->where("id",$request->get("id"))->where("id_users",Auth::User()->id)
+                ->update(["level_mood"=> $request->get("levelMood"),"level_anxiety"=> $request->get("levelAnxienty"),"level_nervousness"=> $request->get("levelNervousness"),"level_stimulation"=> $request->get("levelStimulation"),"epizodes_psychotik"=> $request->get("levelEpizodes")]);
+    }
+    public function updateSleep( $request) {
+        $Mood = new self;
+        $Mood->where("id",$request->get("id"))->where("id_users",Auth::User()->id)
+                ->update(["epizodes_psychotik"=> $request->get("levelEpizodes")]);
+    
+    }
+    public function deleteMood( $id) {
+        $Mood = new self;
+        $Mood->where("id",$id)->where("id_users",Auth::User()->id)->delete();
+    }
+    public function updateDescription( $request,  $idUsers) {
+        $Mood = new self;
+        $Mood->where("id",$request->get("id"))->where("id_users",Auth::User()->id)
+                ->update(["what_work"=>  ($request->get("description"))]);
+    }
+    public function addSleep( $request) {
+        $Sleep = new self;
+        $Sleep->date_start = $request->get("dateStart") . " "  . $request->get("timeStart") .   ":00";
+        $Sleep->date_end = $request->get("dateEnd") . " "  . $request->get("timeEnd") .   ":00";
+
+        if ($request->get("howWorking") != "") {
+            $Sleep->epizodes_psychotik = $request->get("howWorking");
+        }
+        $Sleep->what_work = str_replace("\n", "<br>", $request->get("whatSleep"));
+        $Sleep->id_users = Auth::User()->id;
+        $Sleep->type = "sleep";
+        $Sleep->save();
+
+    }
 }
