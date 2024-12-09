@@ -122,5 +122,6 @@ class SettingsMoodController {
             return View("ajax.succes")->with("succes","Pomyślnie zmodyfikowano akcje");
         }
     }
+
     
 }

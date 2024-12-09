@@ -294,3 +294,45 @@ div.minutesMood {
 span.error {
     color: red;
 }
+
+a.dateAverage {
+    color: #A8942F;
+    cursor: pointer;
+
+}
+a.dateAverage:hover {
+
+    color: #F5D544;
+    cursor: pointer;
+}
+
+div.hiddenDateAverage {
+        background-color: rgba(245, 213, 68, 0.9);
+        border: 2px solid #319701;
+        border-radius: 20px;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        -ms-border-radius: 20px;
+        -o-border-radius: 20px;
+}
+span.disabledAverageDate {
+    color: #A41705;
+}
+div.menuAverageDate {
+    
+    
+}
+div.menuDate {
+    
+    
+    
+    text-align: center;
+}
+a.menuAverageDate {
+    color: #575C28;
+    cursor: pointer;
+}
+a.menuAverageDate:hover {
+    color: #E28426;
+    cursor: pointer;
+}

@@ -142,10 +142,14 @@
         @for ($i=0;$i < count($minMax);$i++)
             <tr class="borderTrAverage">
                 <td style="text-align: center;  font-size: 18px; " class="rightBorder">
-                    {{$minMax[$i]->dat_end}}
+                    <a  class="dateAverage" onclick="showDateAverageMood('{{route('ajax.showDateAverageMood')}}','{{ $minMax[$i]->dat_end }}',{{$i}})">{{$minMax[$i]->dat_end}}</a>
                 </td>
 
                     <td style="text-align: center;  font-size: 18px; " class="rightBorder">
+                        <div class="hiddenDateAverage" id="hiddenDateAverage_{{ $i }}">
+                            &nbsp;
+                        </div>
+
                         {{\App\Http\Services\Common::returnDayWeek($minMax[$i]->dat_end)}}
                     </td>
 

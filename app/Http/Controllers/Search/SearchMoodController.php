@@ -14,6 +14,8 @@ use App\Http\Services\SearchMoodAI2;
 use App\Models\Mood;
 use App\Models\Usee;
 use App\Models\Action;
+
+use App\Models\Actions_day;
 use Auth;
 use \Illuminate\Pagination\Paginator;
 use IlluminatePaginationPaginator;
@@ -435,5 +437,16 @@ class SearchMoodController {
             }
         }
         
+    }
+    /*
+        update december 2024
+    */
+    public function showDateAverageMood(Request $request) {
+        $actionForDay = Actions_day::showActionForAllDay($request->get("date"),Auth::User()->id,Auth::User()->start_day);
+        $actionSum = Mood::sumAction($request->get("date"),Auth::User()->id,Auth::User()->start_day);
+        $listSubstance = Usee::listSubstnace($request->get("date"), Auth::User()->id, Auth::User()->start_day);
+        return View("Users.Search.Mood.showDateAverageMood")->with("date",$request->get("date"))
+                                            ->with("actionDay",$actionForDay)->with("actionSum",$actionSum)->with("listSubstance",$listSubstance);
+
     }
 }

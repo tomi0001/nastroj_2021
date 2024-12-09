@@ -268,4 +268,5 @@ class Mood {
         $MoodAction = new MoodAction;
         $MoodAction->deleteMoodAction(  $idMood);
     }
+    
 }

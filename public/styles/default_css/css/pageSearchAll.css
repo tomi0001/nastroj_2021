@@ -320,3 +320,22 @@ table.tableColorSearchMoodSum {
     margin-left: auto;
     margin-right: auto;
 }
+
+div.hiddenDateAverage {
+
+    width: 520px;
+    min-height: 90px;
+    display: none;
+    position: absolute;
+}
+
+div.sumDrugsDateAverage {
+    width: 400px;
+     height: 200px;
+
+     border-radius: 20px;
+     padding: 22px;
+     margin-left: auto;
+     margin-right: auto;    
+    
+ }

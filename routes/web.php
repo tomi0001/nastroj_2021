@@ -110,6 +110,8 @@ Route::get("/ajax/showAverage",[App\Http\Controllers\Main\MainController::class,
         ->name("ajax.showAverage")->middleware('auth')->middleware('can:users');
 Route::get("/ajax/sumAverage",[App\Http\Controllers\Main\MainController::class, 'sumAverage'])
         ->name("ajax.sumAverage")->middleware('auth')->middleware('can:users');
+Route::get("/ajax/showDateAverageMood",[App\Http\Controllers\Search\SearchMoodController::class, 'showDateAverageMood'])
+        ->name("ajax.showDateAverageMood")->middleware('auth')->middleware('can:users');
 
 
 

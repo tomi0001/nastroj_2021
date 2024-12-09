@@ -584,3 +584,69 @@ function differencesMoodSubmit(url) {
            alert("Wystąpił błąd");
        })
 }
+
+/*
+update december 2024
+
+*/
+
+function showDateAverageMood(url,date,i) {
+    if ($("#hiddenDateAverage_" + i).css("display") == "none" ) {
+        $(".hiddenDateAverage").css("display","none");
+        $("#hiddenDateAverage_" + i).css("display","block");
+        $.ajax({
+            url : url,
+                method : "get",
+                data :
+                  "date=" + date
+                ,
+                dataType : "html",
+        })
+        .done(function(response) {
+            
+            $("#hiddenDateAverage_" + i).html(response);
+    
+    
+    
+    
+    
+        })
+        .fail(function() {
+            alert("Wystąpił błąd");
+        })
+    }
+    else {
+        
+        
+        $("#hiddenDateAverage_" + i).css("display","none");
+
+    }
+
+}
+
+
+
+
+function showActionForAllDay() {
+    
+        $(".showAverageDateActionDay").css("display","block");
+        $(".showAverageDateSumAction").css("display","none");
+        $(".showAverageDateListSubstance").css("display","none");
+    
+
+
+}
+
+function showActionForSum() {
+    $(".showAverageDateSumAction").css("display","block");
+    $(".showAverageDateActionDay").css("display","none");
+    $(".showAverageDateListSubstance").css("display","none");
+
+}
+
+function showSubstance() {
+    $(".showAverageDateListSubstance").css("display","block");
+    $(".showAverageDateActionDay").css("display","none");
+    $(".showAverageDateSumAction").css("display","none");
+
+}
