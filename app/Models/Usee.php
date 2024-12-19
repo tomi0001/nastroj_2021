@@ -483,11 +483,11 @@ class Usee extends Model
                     . "ELSE '1' "
                     . " END)"
                     . "  as type ")
-            ->selectRaw(" round(sum("
+            ->selectRaw(" round(("
                         . " CASE "
                         . " WHEN products.type_of_portion = 2  THEN ( (products.how_percent / 100) * usees.portion ) " 
                         . " WHEN substances_products.doseProduct is NULL  THEN (usees.portion ) "
-                        . "ELSE (substances_products.doseProduct * usees.portion) "
+                        . "ELSE ( usees.portion ) "
                         . " END),2)"
                         . "  as portions ")
             ->selectRaw(DB::Raw("(DATE(IF(HOUR(    usees.date) >= '" . $startDay . "', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ) as dat "))
@@ -535,7 +535,7 @@ class Usee extends Model
                         . " CASE "
                         . " WHEN products.type_of_portion = 2  THEN ( (products.how_percent / 100) * usees.portion ) " 
                         . " WHEN substances_products.doseProduct is NULL  THEN (usees.portion ) "
-                        . "ELSE (substances_products.doseProduct * usees.portion) "
+                        . "ELSE (substances_products.doseProduct * usees.portion ) "
                         . " END),2)"
                         . "  as portions ")
             ->selectRaw(DB::Raw("(DATE(IF(HOUR(    usees.date) >= '" . $startDay . "', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ) as dat "))
