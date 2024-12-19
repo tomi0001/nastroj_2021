@@ -476,6 +476,7 @@ class Usee extends Model
             ->selectRaw(" "
                     . "( CASE "
                     . " WHEN products.type_of_portion = 2  THEN ('2' ) "
+                    . " WHEN products.type_of_portion = 3  THEN ('3' ) "
                     . " WHEN products.type_of_portion = 4  THEN ('4' ) "
                     . " WHEN products.type_of_portion = 5  THEN ('5' ) "
                     . " WHEN products.type_of_portion = 6  THEN ('6' ) "
