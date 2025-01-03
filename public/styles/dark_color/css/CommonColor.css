@@ -237,6 +237,30 @@ div.levelSleep {
 
     color: black;
 }
+div.levelSleepFlat {
+    background-color: #B9A1F7;
+
+
+color: black;
+}
+div.levelSleepDeep {
+    background-color: #615583;
+
+
+color: black;
+}
+div.levelSleepRem {
+    background-color: #412357;
+
+
+color: black;
+}
+div.levelSleepWorking {
+    background-color: #584A5D;
+
+
+color: black;
+}
 div.level-9 {
 
     background-color: #242423;
@@ -627,7 +651,9 @@ div.cell10 {
     background-color: #39F400;
 
 }
-
+span.fontSleepPercent {
+    color: white;
+}
 table.moodShow, td.showMood, td.moodButton {
    border: 2px solid rgb(255, 255, 255);
    color: white;

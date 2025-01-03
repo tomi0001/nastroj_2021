@@ -41,7 +41,40 @@
                                         <input type='time' name='timeEnd' class='form-control' >
                                     </td>
                                 </tr>
+
                                 
+                                <tr>
+                                    <td class='moodadd'>
+                                        Procent snu płytkiego
+                                    </td>
+                                    <td>
+                                        <input type='number'  name='percentFlat' class='form-control'  min='0' max='100'  onkeypress="return submitEnter(event,'{{ route('users.sleepAdd')}}','addSleep')">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class='moodadd'>
+                                        Procent snu głebokiego
+                                    </td>
+                                    <td>
+                                        <input type='number'  name='percentDeep' class='form-control'  min='0' max='100'  onkeypress="return submitEnter(event,'{{ route('users.sleepAdd')}}','addSleep')">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class='moodadd'>
+                                        Procent snu REM
+                                    </td>
+                                    <td>
+                                        <input type='number'  name='percentRem' class='form-control'  min='0' max='100'  onkeypress="return submitEnter(event,'{{ route('users.sleepAdd')}}','addSleep')">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class='moodadd'>
+                                        Procent snu Wybudzonego
+                                    </td>
+                                    <td>
+                                        <input type='number'  name='percentWorking' class='form-control'  min='0' max='100'  onkeypress="return submitEnter(event,'{{ route('users.sleepAdd')}}','addSleep')">
+                                    </td>
+                                </tr>                                                                                                                                
                                 <tr>
                                     <td class='moodadd'>
                                         Ilośc wybudzeń

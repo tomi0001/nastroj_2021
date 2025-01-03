@@ -48,7 +48,102 @@
                         <br>
 
                         @if ($list->type == "sleep")
-                            <div class='levelSleep level' style='width: {{$percent[(array_search($list->id,array_column($percent, 'id')))]["percent"]}}%'>&nbsp;</div>
+                       
+                            <div class='levelSleep level' style='width: {{$percent[(array_search($list->id,array_column($percent, 'id')))]["percent"]}}%'>&nbsp;</div><br>
+                            @php
+                                $listSleepPercent = \App\Models\Sleep_type::showSleepType($list->id)
+                                
+                            @endphp
+                            @if (!empty($listSleepPercent ) )
+
+                                 <table style="width: 100%; height: 10px;"><tr>
+                            @endif
+
+                            @if (!empty($listSleepPercent ) and $listSleepPercent->sleep_flat != null)
+                            
+                                <td class="center" >
+                                
+                               
+                                <span class="fontSleepPercent">sen płytki = {{$listSleepPercent->sleep_flat}}  %</span>
+                                    
+                                </td>
+                           
+                            @endif
+                            @if (!empty($listSleepPercent ) and $listSleepPercent->sleep_deep != null)
+                            
+                                <td  class="center">
+                                
+                                <span class="fontSleepPercent">sen głęboki  = {{$listSleepPercent->sleep_deep}}  %</span>
+                                    
+                                </td>
+                                
+                            @endif
+                            @if (!empty($listSleepPercent ) and $listSleepPercent->sleep_rem != null)
+                            
+                                <td  class="center">
+                                <span class="fontSleepPercent">sen REM  = {{$listSleepPercent->sleep_rem}}  %</span>
+                                    
+                                </td>
+                          
+                            @endif
+                            @if (!empty($listSleepPercent ) and $listSleepPercent->sleep_working != null)
+                           
+                                <td class="center" >
+                                <span class="fontSleepPercent">sen Wybudzony  = {{$listSleepPercent->sleep_working}}  %</span>
+                                    
+                                </td>
+                            
+                            @endif
+
+                            @if (!empty($listSleepPercent ) )
+                                </tr><tr>
+                            @endif
+
+                            @if (!empty($listSleepPercent ) and $listSleepPercent->sleep_flat != null)
+                            
+                                <td  class="center"  style='height: 10%; width: {{($listSleepPercent->sleep_flat / 100) *  $percent[(array_search($list->id,array_column($percent, 'id')))]["percent"]}}%'>
+                                
+                               
+                                
+                                    <div class='levelSleepFlat level'>&nbsp;</div>
+                                </td>
+                           
+                            @endif
+                            @if (!empty($listSleepPercent ) and $listSleepPercent->sleep_deep != null)
+                            
+                                <td  class="center" style='width: {{($listSleepPercent->sleep_deep / 100) *  $percent[(array_search($list->id,array_column($percent, 'id')))]["percent"]}}%'>
+                                
+                                
+                               
+                                    <div class='levelSleepDeep level' >&nbsp;</div>
+                                </td>
+                                
+                            @endif
+                            @if (!empty($listSleepPercent ) and $listSleepPercent->sleep_rem != null)
+                            
+                                <td  class="center"  style='width: {{($listSleepPercent->sleep_rem / 100) *  $percent[(array_search($list->id,array_column($percent, 'id')))]["percent"]}}%'>
+                               
+                               
+                                    <div class='levelSleepRem level' >&nbsp;</div>
+                                </td>
+                          
+                            @endif
+                            @if (!empty($listSleepPercent ) and $listSleepPercent->sleep_working != null)
+                           
+                                <td  class="center"  style='width: {{($listSleepPercent->sleep_working / 100) *  $percent[(array_search($list->id,array_column($percent, 'id')))]["percent"]}}%'>
+                               
+                               
+                                    <div class='levelSleepWorking level' >&nbsp;</div>
+                                </td>
+                            
+                            @endif
+
+
+
+
+                            @if (!empty($listSleepPercent ) )
+                                </tr></table>
+                            @endif
                         @else
                             <div class='cell{{\App\Http\Services\Common::setColor($list->level_mood)}} level' style='width: {{$percent[(array_search($list->id,array_column($percent, 'id')))]["percent"]}}%'>&nbsp;</div>
                         @endif

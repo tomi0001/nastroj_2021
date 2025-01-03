@@ -1221,6 +1221,7 @@ class Mood extends Model
         $Sleep->id_users = Auth::User()->id;
         $Sleep->type = "sleep";
         $Sleep->save();
+        return $Sleep->id;
 
     }
 }

@@ -9,6 +9,7 @@ use App\Models\User as MUser;
 use App\Models\Mood as MoodModel;
 use App\Models\Moods_action as MoodAction;
 use App\Http\Services\Calendar;
+use App\Models\Sleep_type;
 use Hash;
 use Auth;
 use DB;
@@ -257,8 +258,16 @@ class Mood {
     
     }
     public function deleteMood(int $id) {
+        /*
+            Update januar 2025 
+
+        */
+        $SleepType = new Sleep_type;
+        $SleepType->deleteSleep($id);
         $Mood = new MoodModel;
         $Mood->deleteMood( $id);
+        
+
     }
     public function updateDescription(Request $request, int $idUsers) {
         $Mood = new MoodModel;

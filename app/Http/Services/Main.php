@@ -57,6 +57,8 @@ class Main {
     public function downloadMood($year,$month,$day) {
 
         $listMood = MoodModel::downloadMood($year . "-" . $month . "-" . $day, Auth::User()->start_day, $this->IdUsers);
+      
+        
         return $listMood;
    
     }
