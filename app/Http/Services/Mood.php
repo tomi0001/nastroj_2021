@@ -255,6 +255,12 @@ class Mood {
     public function updateSleep(Request $request) {
         $Mood = new MoodModel;
         $Mood->updateSleep( $request);
+        /*
+            Update januar 2025 
+
+        */
+        $SleepType = new Sleep_type;
+        $SleepType->updateSleep( $request);
     
     }
     public function deleteMood(int $id) {

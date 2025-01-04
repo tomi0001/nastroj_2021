@@ -48,7 +48,7 @@
                         <br>
 
                         @if ($list->type == "sleep")
-                       
+                        <div  class="showMenuMood{{$list->id}}">
                             <div class='levelSleep level' style='width: {{$percent[(array_search($list->id,array_column($percent, 'id')))]["percent"]}}%'>&nbsp;</div><br>
                             @php
                                 $listSleepPercent = \App\Models\Sleep_type::showSleepType($list->id)
@@ -144,6 +144,44 @@
                             @if (!empty($listSleepPercent ) )
                                 </tr></table>
                             @endif
+                          </div>
+                          <div  class="showMenuEditMood{{$list->id}}"  style="display: none;">
+                                <table>
+                                    <tr>
+                                        <td>
+                                             <span class="fontSleepPercent">sen płytki = </span>
+                                        </td>
+                                        <td>
+                                        <input class="form-control" type="text" id="sleepFlatEdit{{$list->id}}" value="{{$listSleepPercent->sleep_flat}}" style="width:85%;">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                             <span class="fontSleepPercent">sen głęboki = </span>
+                                        </td>
+                                        <td>
+                                        <input class="form-control" type="text" id="sleepDeepEdit{{$list->id}}" value="{{$listSleepPercent->sleep_deep}}" style="width:85%;">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                             <span class="fontSleepPercent">sen REM = </span>
+                                        </td>
+                                        <td>
+                                        <input class="form-control" type="text" id="sleepRemEdit{{$list->id}}" value="{{$listSleepPercent->sleep_rem}}" style="width:85%;">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                             <span class="fontSleepPercent">sen wybudzony = </span>
+                                        </td>
+                                        <td>
+                                        <input class="form-control" type="text" id="sleepWorkingEdit{{$list->id}}" value="{{$listSleepPercent->sleep_working}}" style="width:85%;">
+                                        </td>
+                                    </tr>
+                                </table>
+
+                          </div>
                         @else
                             <div class='cell{{\App\Http\Services\Common::setColor($list->level_mood)}} level' style='width: {{$percent[(array_search($list->id,array_column($percent, 'id')))]["percent"]}}%'>&nbsp;</div>
                         @endif

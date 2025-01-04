@@ -983,12 +983,34 @@ function updateSleep(url,id) {
             alert("Liczba epizodów psychotycznych musi być dodatnią liczbą całkowitą");
             return;
         }
+        /*
+            update januar 2025
+
+        */
+        if (  ($("#sleepFlatEdit"+id).val()) != "" && (!isInt($("#sleepFlatEdit"+id).val())  || ($("#sleepFlatEdit"+id).val()) < 0  ||  ($("#sleepFlatEdit"+id).val()) > 100 )) {
+            alert("Liczba płytkich snów musi być dodatnią liczbą całkowitą od 0 do 100");
+            return;
+        }
+        if ( ($("#sleepDeepEdit"+id).val()) != "" &&   ( !isInt($("#sleepDeepEdit"+id).val())  || ($("#sleepDeepEdit"+id).val()) < 0  ||  ($("#sleepDeepEdit"+id).val()) > 100 )) {
+            alert("Liczba głębokich snów musi być dodatnią liczbą całkowitą od 0 do 100");
+            return;
+        }
+        if (  ($("#sleepRemEdit"+id).val()) != "" &&  ( !isInt($("#sleepRemEdit"+id).val())  || ($("#sleepRemEdit"+id).val()) < 0  ||  ($("#sleepRemEdit"+id).val()) > 100 ) ) {
+            alert("Liczba REM snów musi być dodatnią liczbą całkowitą od 0 do 100");
+            return;
+        }
+        if  (  ($("#sleepWorkingEdit"+id).val()) != "" &&   ( !isInt($("#sleepWorkingEdit"+id).val())  || ($("#sleepWorkingEdit"+id).val()) < 0  ||  ($("#sleepWorkingEdit"+id).val()) > 100 )) {
+            alert("Liczba wybudzeń snów musi być dodatnią liczbą całkowitą od 0 do 100");
+            return;
+        }
 
             $.ajax({
            url : url,
                method : "get",
                data : 
-                 "id=" + id +  "&levelEpizodes="  + $("#levelEpizodesEdit"+id).val()
+                 "id=" + id +  "&levelEpizodes="  + $("#levelEpizodesEdit"+id).val() +  "&sleepFlatEdit="  + $("#sleepFlatEdit"+id).val()
+                 +  "&sleepDeepEdit="  + $("#sleepDeepEdit"+id).val() +  "&sleepRemEdit="  + $("#sleepRemEdit"+id).val()
+                 +  "&sleepWorkingEdit="  + $("#sleepWorkingEdit"+id).val()
                ,
                dataType : "json",
        })
