@@ -152,7 +152,7 @@
                                              <span class="fontSleepPercent">sen płytki = </span>
                                         </td>
                                         <td>
-                                        <input class="form-control" type="text" id="sleepFlatEdit{{$list->id}}" value="{{$listSleepPercent->sleep_flat}}" style="width:85%;">
+                                        <input class="form-control" type="text" id="sleepFlatEdit{{$list->id}}" value="{{ (!empty( $listSleepPercent)) ?  $listSleepPercent->sleep_flat: '' }}" style="width:85%;">
                                         </td>
                                     </tr>
                                     <tr>
@@ -160,7 +160,7 @@
                                              <span class="fontSleepPercent">sen głęboki = </span>
                                         </td>
                                         <td>
-                                        <input class="form-control" type="text" id="sleepDeepEdit{{$list->id}}" value="{{$listSleepPercent->sleep_deep}}" style="width:85%;">
+                                        <input class="form-control" type="text" id="sleepDeepEdit{{$list->id}}" value="{{ (!empty( $listSleepPercent)) ?  $listSleepPercent->sleep_deep: '' }}" style="width:85%;">
                                         </td>
                                     </tr>
                                     <tr>
@@ -168,7 +168,7 @@
                                              <span class="fontSleepPercent">sen REM = </span>
                                         </td>
                                         <td>
-                                        <input class="form-control" type="text" id="sleepRemEdit{{$list->id}}" value="{{$listSleepPercent->sleep_rem}}" style="width:85%;">
+                                        <input class="form-control" type="text" id="sleepRemEdit{{$list->id}}" value="{{ (!empty( $listSleepPercent)) ?  $listSleepPercent->sleep_rem: '' }}" style="width:85%;">
                                         </td>
                                     </tr>
                                     <tr>
@@ -176,7 +176,7 @@
                                              <span class="fontSleepPercent">sen wybudzony = </span>
                                         </td>
                                         <td>
-                                        <input class="form-control" type="text" id="sleepWorkingEdit{{$list->id}}" value="{{$listSleepPercent->sleep_working}}" style="width:85%;">
+                                        <input class="form-control" type="text" id="sleepWorkingEdit{{$list->id}}" value="{{ (!empty( $listSleepPercent)) ?  $listSleepPercent->sleep_working: '' }}" style="width:85%;">
                                         </td>
                                     </tr>
                                 </table>

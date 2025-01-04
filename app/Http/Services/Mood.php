@@ -260,6 +260,10 @@ class Mood {
 
         */
         $SleepType = new Sleep_type;
+        if (!isset(Sleep_type::showSleepType($request->get("id"))->sleep_flat  )) {
+            $SleepType->addSleepPercent($request, $request->get("id"));
+        }
+        
         $SleepType->updateSleep( $request);
     
     }
