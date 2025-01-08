@@ -10,12 +10,12 @@
       
             
             <td width="48%">
-                
-                                        <div class='scroll' >
-                                            <div id="parentsSubstance">
-                                                <div >
+                                                 <div >
                                                     <input type="text" id="hideActions" class='form-control'  >
                                                 </div>
+                                        <div class='scroll' >
+                                            <div id="parentsSubstance">
+
                                                 @php
                                                            $arrayJson = []; 
                                                            $j = 0;

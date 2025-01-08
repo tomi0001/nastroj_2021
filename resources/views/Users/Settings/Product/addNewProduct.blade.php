@@ -55,11 +55,12 @@ $( function() {
                     Substance producktu
                 </td>
                 <td>
+                <div >
+                        <input type="text" id="hideSubstanceSubstance" class='form-control'  >
+               </div>
                     <div class='scroll' >
                      <div id="parentsGroupGroup">
-                                                <div >
-                                                    <input type="text" id="hideSubstanceSubstance" class='form-control'  >
-                                                </div>
+                                                
                                             
                                                  @foreach ($listSubstance as $list)
                                                  <div class="rowPercent">

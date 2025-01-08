@@ -55,11 +55,12 @@ $( function() {
                     Grupy substancji
                 </td>
                 <td>
+                <div >
+                           <input type="text" id="hideGroupGroup" class='form-control'  >
+               </div>
                     <div class='scroll' >
                      <div id="parentsGroupGroup">
-                                                <div >
-                                                    <input type="text" id="hideGroupGroup" class='form-control'  >
-                                                </div>
+
                                             
                                                  @foreach ($listGroup as $list)
                                                  <div class="rowPercent">

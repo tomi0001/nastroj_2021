@@ -85,6 +85,7 @@ class Product {
             $bool = false;
             $i++;
         }
+        array_multisort($arrayNew,SORT_DESC);
         return $arrayNew;
     }
     public function sortWhereProduct($listSubstance,$listProduct) {
@@ -116,6 +117,7 @@ class Product {
             $bool = false;
             $i++;
         }
+        array_multisort($arrayNew,SORT_DESC);
         return $arrayNew;        
     }
     public function checkErrorAddProduct(Request $request) { 

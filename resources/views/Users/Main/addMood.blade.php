@@ -94,11 +94,12 @@
                                         Akcje
                                     </td>
                                     <td>
+                                        <div >
+                                             <input type="text" id="hideActions" class='form-control'  >
+                                       </div>
                                         <div class='scroll' >
                                             <div id="parentsAction">
-                                                <div >
-                                                    <input type="text" id="hideActions" class='form-control'  >
-                                                </div>
+                                                
                                             
                                                  @foreach (\App\Models\Action::selectAction(Auth::User()->id)  as $list)
                                                  <div class="rowPercent">

@@ -266,9 +266,8 @@ class SearchDrugs {
            $this->idProduct["doseTo"][] = $doseTo;
     }
     private  function type2($doseFrom,$doseTo,$list) {
-        $this->idProduct["name"][] = $list->id;
-           $this->idProduct["doseFrom"][] = $doseFrom[$i];
-           $this->idProduct["doseTo"][] = $doseTo[$i];
+           $this->idProduct["doseFrom"][] = $doseFrom;
+           $this->idProduct["doseTo"][] = $doseTo;
 
     }
     private  function type3($doseFrom,$doseTo,$list) {

@@ -10,12 +10,12 @@
       
             
             <td width="48%">
-                
-                                        <div class='scroll' >
-                                            <div id="parentsSubstance">
                                                 <div >
                                                     <input type="text" id="hideActions" class='form-control'  >
                                                 </div>
+                                        <div class='scroll' >
+                                            <div id="parentsSubstance">
+
                                                 @php
                                                            $arrayJson = []; 
                                                            $j = 0;
@@ -107,7 +107,7 @@
         if (myDataLenght > 0) {
             const myData = JSON.parse(document.getElementById("jsonSub").innerText);
         
-        //alert(myDataLenght);
+
             
         
             selectedSubstanceChangeMainSetValue(myData,myDataLenght);

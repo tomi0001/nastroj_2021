@@ -1,11 +1,13 @@
 <form id="formUpdateAction2{{$idMood}}"></form>
 <form id="formUpdateAction{{$idMood}}">
                                           
-                                        <div class='scroll' >
-                                            <div id="parentsAction{{$idMood}}">
+                                        
                                                 <div >
                                                     <input type="text" id="hideActions{{$idMood}}" class='form-control'  >
                                                 </div>
+                                        <div class='scroll' >
+                                            <div id="parentsAction{{$idMood}}">
+                                               
                                                 @php
                                                            $arrayJson = []; 
                                                            $i = 0;

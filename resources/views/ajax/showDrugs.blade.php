@@ -9,13 +9,13 @@
     <table class="actionShowIdMood">
     <thead>
         <tr>
-            <td class="titleDrugs" style="opacity: 0.5;">
+            <td class="titleDrugs" style="opacity: 0.5; width: 55%;">
                 Nazwa produktu
             </td>
-            <td class="titleDrugs" style="opacity: 0.5;">
+            <td class="titleDrugs" style="opacity: 0.5; width: 25%;">
                 dawka
             </td>
-            <td class="titleDrugs" style="opacity: 0.5;">
+            <td class="titleDrugs" style="opacity: 0.5; width: 20%%;">
                 Godzina wzięcia
             </td>
         </tr>
@@ -40,13 +40,13 @@
 <table class="actionShowIdMood">
     <thead>
         <tr>
-            <td class="titleDrugs" >
+            <td class="titleDrugs" style="width: 55%;" >
                 Nazwa produktu
             </td>
-            <td class="titleDrugs">
+            <td class="titleDrugs" style="width: 25%;" >
                 dawka
             </td>
-            <td class="titleDrugs">
+            <td class="titleDrugs" style=" width: 20%;" >
                 Godzina wzięcia
             </td>
         </tr>
