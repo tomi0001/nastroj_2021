@@ -63,6 +63,66 @@
             </tr>
             <tr>
                 <td style='padding-top: 10px; width: 37%;'>
+                    procent płytkiego snu od
+                </td>
+                <td>
+                    <input type='text' name='percentSleepFlatFrom' class='form-control' placeholder="od">
+                </td>
+                <td style='padding-top: 10px;'>
+                do
+                </td>
+                <td>
+                    <input type='text' name='percentSleepFlatTo' class='form-control' placeholder="do">
+                </td>
+            </tr>
+
+            <tr>
+                <td style='padding-top: 10px; width: 37%;'>
+                procent głębokiego snu od
+                </td>
+                <td>
+                    <input type='text' name='percentSleepDeepFrom' class='form-control' placeholder="od">
+                </td>
+                <td style='padding-top: 10px;'>
+                do
+                </td>
+                <td>
+                    <input type='text' name='percentSleepDeepTo' class='form-control' placeholder="do">
+                </td>
+            </tr>
+
+            <tr>
+                <td style='padding-top: 10px; width: 37%;'>
+                    procent  snu REM od
+                </td>
+                <td>
+                    <input type='text' name='percentSleepRemFrom' class='form-control' placeholder="od">
+                </td>
+                <td style='padding-top: 10px;'>
+                do
+                </td>
+                <td>
+                    <input type='text' name='percentSleepRemTo' class='form-control' placeholder="do">
+                </td>
+            </tr>
+
+            <tr>
+                <td style='padding-top: 10px; width: 37%;'>
+                procent wybudzeń snu od
+                </td>
+                <td>
+                    <input type='text' name='percentSleepWorkingFrom' class='form-control' placeholder="od">
+                </td>
+                <td style='padding-top: 10px;'>
+                do
+                </td>
+                <td>
+                    <input type='text' name='percentSleepWorkingTo' class='form-control' placeholder="do">
+                </td>
+            </tr>
+
+            <tr>
+                <td style='padding-top: 10px; width: 37%;'>
                     Dni
                 </td>
                 <td colspan="6">

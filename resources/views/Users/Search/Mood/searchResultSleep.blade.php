@@ -132,9 +132,141 @@
                         <span class="left">{{date("H:i",strtotime($arrayList[$i]->date_start) )}}</span>
                         <span class="right">{{date("H:i",strtotime($arrayList[$i]->date_end) )}}</span>
                         <br>
-                        <div class="levelSleep level " style="width: {{$percent[array_search($arrayList[$i]->id,array_column($percent, 'id'))]["percent"]}}%">&nbsp;</div>
-                        <div style="text-align: center; width: 70%;">
-                        <span class="HourMood">{{\App\Http\Services\Common::calculateHour($arrayList[$i]->date_start,$arrayList[$i]->date_end)}}</span>
+                        
+                        <div class="levelSleep level " style="width: {{$percent[array_search($arrayList[$i]->id,array_column($percent, 'id'))]["percent"]}}%">&nbsp;</div><br>
+                            @php
+                                $listSleepPercent = \App\Models\Sleep_type::showSleepType($arrayList[$i]->id)
+                                
+                            @endphp
+                            @if (!empty($listSleepPercent ) )
+
+                                 <table style="width: 100%; height: 10px;"><tr>
+                            @endif
+
+                            @if (!empty($listSleepPercent ) and $listSleepPercent->sleep_flat != null)
+                            
+                                <td class="center" >
+                                
+                               
+                                <span class="fontSleepPercent">sen płytki = {{$listSleepPercent->sleep_flat}}  %</span>
+                                    
+                                </td>
+                           
+                            @endif
+                            @if (!empty($listSleepPercent ) and $listSleepPercent->sleep_deep != null)
+                            
+                                <td  class="center">
+                                
+                                <span class="fontSleepPercent">sen głęboki  = {{$listSleepPercent->sleep_deep}}  %</span>
+                                    
+                                </td>
+                                
+                            @endif
+                            @if (!empty($listSleepPercent ) and $listSleepPercent->sleep_rem != null)
+                            
+                                <td  class="center">
+                                <span class="fontSleepPercent">sen REM  = {{$listSleepPercent->sleep_rem}}  %</span>
+                                    
+                                </td>
+                          
+                            @endif
+                            @if (!empty($listSleepPercent ) and $listSleepPercent->sleep_working != null)
+                           
+                                <td class="center" >
+                                <span class="fontSleepPercent">sen Wybudzony  = {{$listSleepPercent->sleep_working}}  %</span>
+                                    
+                                </td>
+                            
+                            @endif
+
+                            @if (!empty($listSleepPercent ) )
+                                </tr><tr>
+                            @endif
+
+                            @if (!empty($listSleepPercent ) and $listSleepPercent->sleep_flat != null)
+                            
+                                <td  class="center"  style='height: 10%; width: {{($listSleepPercent->sleep_flat / 100) *  $percent[(array_search($arrayList[$i]->id,array_column($percent, 'id')))]["percent"]}}%'>
+                                
+                               
+                                
+                                    <div class='levelSleepFlat level'>&nbsp;</div>
+                                </td>
+                           
+                            @endif
+                            @if (!empty($listSleepPercent ) and $listSleepPercent->sleep_deep != null)
+                            
+                                <td  class="center" style='width: {{($listSleepPercent->sleep_deep / 100) *  $percent[(array_search($arrayList[$i]->id,array_column($percent, 'id')))]["percent"]}}%'>
+                                
+                                
+                               
+                                    <div class='levelSleepDeep level' >&nbsp;</div>
+                                </td>
+                                
+                            @endif
+                            @if (!empty($listSleepPercent ) and $listSleepPercent->sleep_rem != null)
+                            
+                                <td  class="center"  style='width: {{($listSleepPercent->sleep_rem / 100) *  $percent[(array_search($arrayList[$i]->id,array_column($percent, 'id')))]["percent"]}}%'>
+                               
+                               
+                                    <div class='levelSleepRem level' >&nbsp;</div>
+                                </td>
+                          
+                            @endif
+                            @if (!empty($listSleepPercent ) and $listSleepPercent->sleep_working != null)
+                           
+                                <td  class="center"  style='width: {{($listSleepPercent->sleep_working / 100) *  $percent[(array_search($arrayList[$i]->id,array_column($percent, 'id')))]["percent"]}}%'>
+                               
+                               
+                                    <div class='levelSleepWorking level' >&nbsp;</div>
+                                </td>
+                            
+                            @endif
+
+
+
+
+                            @if (!empty($listSleepPercent ) )
+                                </tr></table>
+                            @endif
+                            <span class="HourMood">{{\App\Http\Services\Common::calculateHour($arrayList[$i]->date_start,$arrayList[$i]->date_end)}}</span>
+                          </div>
+                          <div  class="showMenuEditMood{{$arrayList[$i]->id}}"  style="display: none;">
+                                <table>
+                                    <tr>
+                                        <td>
+                                             <span class="fontSleepPercent">sen płytki = </span>
+                                        </td>
+                                        <td>
+                                        <input class="form-control" type="text" id="sleepFlatEdit{{$arrayList[$i]->id}}" value="{{ (!empty( $listSleepPercent)) ?  $listSleepPercent->sleep_flat: '' }}" style="width:85%;">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                             <span class="fontSleepPercent">sen głęboki = </span>
+                                        </td>
+                                        <td>
+                                        <input class="form-control" type="text" id="sleepDeepEdit{{$arrayList[$i]->id}}" value="{{ (!empty( $listSleepPercent)) ?  $listSleepPercent->sleep_deep: '' }}" style="width:85%;">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                             <span class="fontSleepPercent">sen REM = </span>
+                                        </td>
+                                        <td>
+                                        <input class="form-control" type="text" id="sleepRemEdit{{$arrayList[$i]->id}}" value="{{ (!empty( $listSleepPercent)) ?  $listSleepPercent->sleep_rem: '' }}" style="width:85%;">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                             <span class="fontSleepPercent">sen wybudzony = </span>
+                                        </td>
+                                        <td>
+                                        <input class="form-control" type="text" id="sleepWorkingEdit{{$arrayList[$i]->id}}" value="{{ (!empty( $listSleepPercent)) ?  $listSleepPercent->sleep_working: '' }}" style="width:85%;">
+                                        </td>
+                                    </tr>
+                                </table>
+
+                          </div>
                         </div>
                     </td>
 

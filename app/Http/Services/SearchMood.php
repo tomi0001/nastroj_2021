@@ -241,6 +241,7 @@ class SearchMood {
          $moodModel->setWeekDay($this->dayWeek,$this->startDay);
          $moodModel->sleepSelect();
          $moodModel->whereEpizodes($request->get("workingFrom"),$request->get("workingTo"));
+         $moodModel->whereTypeSleeps($request);
          if ($request->get("sort2") == "asc") {
              $moodModel->orderBy("asc",$request->get("sort"));
          }

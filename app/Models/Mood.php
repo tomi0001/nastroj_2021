@@ -420,7 +420,8 @@ class Mood extends Model
     }
     public function createQuestionsSleep(int $startDay = 0) {
         $this->questions =  self::query();
-        $this->questions->selectRaw("moods.date_start as date_start")
+        $this->questions->leftjoin("sleep_types","sleep_types.id_moods","moods.id")
+                        ->selectRaw("moods.date_start as date_start")
                         ->selectRaw("moods.id as id")
                         ->selectRaw("moods.date_end as date_end")
                         ->selectRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) as datStart " ))
@@ -1222,6 +1223,36 @@ class Mood extends Model
         $Sleep->type = "sleep";
         $Sleep->save();
         return $Sleep->id;
+
+    }
+    /*
+      update januar 2025
+    */
+    public function whereTypeSleeps($request) {
+      if ($request->get("percentSleepFlatFrom") != "") {
+            $this->questions->where("sleep_types.sleep_flat",">=",$request->get("percentSleepFlatFrom"));
+      }
+      if ($request->get("percentSleepFlatTo") != "") {
+            $this->questions->where("sleep_types.sleep_flat","<=",$request->get("percentSleepFlatTo"));
+      }
+      if ($request->get("percentSleepDeepFrom") != "") {
+            $this->questions->where("sleep_types.sleep_deep",">=",$request->get("percentSleepDeepFrom"));
+      }
+      if ($request->get("percentSleepDeepTo") != "") {
+            $this->questions->where("sleep_types.sleep_deep","<=",$request->get("percentSleepDeepTo"));
+      }
+      if ($request->get("percentSleepRemFrom") != "") {
+            $this->questions->where("sleep_types.sleep_rem",">=",$request->get("percentSleepRemFrom"));
+      }
+      if ($request->get("percentSleepRemTo") != "") {
+            $this->questions->where("sleep_types.sleep_rem","<=",$request->get("percentSleepRemTo"));
+      }
+      if ($request->get("percentSleepWorkingFrom") != "") {
+            $this->questions->where("sleep_types.sleep_working",">=",$request->get("percentSleepWorkingFrom"));
+      }
+      if ($request->get("percentSleepWorkingTo") != "") {
+            $this->questions->where("sleep_types.sleep_working","<=",$request->get("percentSleepWorkingTo"));
+      }
 
     }
 }
