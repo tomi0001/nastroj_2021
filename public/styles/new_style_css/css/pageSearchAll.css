@@ -50,3 +50,6 @@ td.search-mood-center {
 a.search-mood-average-date-menu-2  {
     cursor: pointer;
 }
+div.main-mood-show-single-left {
+    padding: 10px;
+}

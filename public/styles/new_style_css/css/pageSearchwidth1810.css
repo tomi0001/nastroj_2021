@@ -63,6 +63,7 @@
     div.main-mood-show-single-left {
         width: 25%;
         float: left;
+        height: 600px;
     }
     div.main-mood-show-single-center {
         float: left;

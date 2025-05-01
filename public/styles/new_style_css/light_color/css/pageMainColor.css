@@ -69,16 +69,14 @@ div.main-sum-error {
     color: white;
 }
 div.main-mood-show-single {
-    border: 1px solid #000000;
+   
     border-radius: 25px;
     -webkit-border-radius: 25px;
     -moz-border-radius: 25px;
     -ms-border-radius: 25px;
     -o-border-radius: 25px;
 }
-div.main-mood-show-single-left {
-    
-}
+
 div.main-mood-show-single-br {
     height: 50px;
 }
@@ -86,7 +84,7 @@ div.main-mood-show-single-right {
     
 }
 div.main-sleep-show-single {
-    border: 1px solid #000000;
+    
     border-radius: 25px;
     -webkit-border-radius: 25px;
     -moz-border-radius: 25px;
@@ -154,7 +152,7 @@ div.main-action-edit-main-selected {
 
 }
 div.main-drugs-show-single {
-    border: 1px solid #000000;
+    
     border-radius: 25px;
     -webkit-border-radius: 25px;
     -moz-border-radius: 25px;
@@ -254,4 +252,12 @@ div.main-mood-add-action-selected {
   
     color: #e3f591;
 
+}
+ div.main-mood-show-single-left { 
+    background-color: rgb(66, 70, 57);
+    color: rgb(244, 255, 223);
+}
+div.main-drugs-show-single-left {
+    background-color: rgb(66, 70, 57);
+    color: rgb(244, 255, 223);
 }

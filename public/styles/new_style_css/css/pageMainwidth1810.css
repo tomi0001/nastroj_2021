@@ -203,6 +203,8 @@
     div.main-mood-show-single-left {
         width: 25%;
         float: left;
+        height: 600px;
+        
     }
     div.main-mood-show-single-center {
         float: left;
@@ -218,7 +220,7 @@
     }
     div.main-mood-show-single-right {
         width: 45%;
-        height: 100%;
+        
         
         float: left;
         
@@ -228,7 +230,6 @@
         
     }
     div.main-mood-show-single {
-        height: 600px;
         padding: 10px;
         
     }
@@ -236,10 +237,11 @@
         height: 350px;
         padding: 10px;
         
+        
     }
     div.main-mood-show-hidden {
         width: 75%;
-        height: 100%;
+        
         margin-left: auto;
         margin-right: auto;
         
@@ -407,7 +409,7 @@
    }
    div.main-mood-action-edit {
     width: 90%;
-    height: 300px;
+    
     margin-left: auto;
     margin-right: auto;
     margin-top: 45px;
@@ -428,7 +430,7 @@
 
 div.main-drugs-show-single-right {
     width: 45%;
-    height: 100%;
+    
     
     float: left;
     
@@ -438,7 +440,7 @@ div.main-drugs-show-single-right {
     
 }
 div.main-drugs-show-single {
-    height: 600px;
+    
     padding: 10px;
     
 }
@@ -454,6 +456,7 @@ div.main-drugs-show-single-br {
 div.main-drugs-show-single-left {
     width: 25%;
     float: left;
+    height: 600px;
 }
 
 

@@ -30,3 +30,9 @@ td.main-mood-add-table {
 td.main-mood-table-center {
     text-align: center;
 }
+div.main-mood-show-single-left {
+    padding: 10px;
+}
+div.main-drugs-show-single-left {
+    padding: 10px;
+}
