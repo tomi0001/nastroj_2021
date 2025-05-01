@@ -380,13 +380,13 @@ class Mood extends Model
         ->selectRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) as datEnd" ));
     }
     
-    public function createQuestionGroupDay(int $startDay) {
+    public function createQuestionGroupDay(int $startDay,$request) {
         $this->questions =  self::query();
-
-
-            $this->questions->leftjoin("moods_actions","moods_actions.id_moods","moods.id")
-            ->leftjoin("actions","actions.id","moods_actions.id_actions")
-                ->selectRaw("sum(TIMESTAMPDIFF (minute, moods.date_start , moods.date_end)) as longMood")
+            if ((($request->get("action")[0] != "") > 0 or $request->get("ifAction")) == "on" ) {
+                $this->questions->leftjoin("moods_actions","moods_actions.id_moods","moods.id")
+                ->leftjoin("actions","actions.id","moods_actions.id_actions");
+            }
+            $this->questions->selectRaw("sum(TIMESTAMPDIFF (minute, moods.date_start , moods.date_end)) as longMood")
                 ->selectRaw(" round(sum( ( unix_timestamp(moods.date_end) - unix_timestamp(moods.date_start) ) * moods.level_mood)  / sum( unix_timestamp(moods.date_end) - unix_timestamp(moods.date_start) ),3 ) as level_mood ")
                 ->selectRaw(" round(sum( ( unix_timestamp(moods.date_end) - unix_timestamp(moods.date_start) ) * moods.level_anxiety)  / sum( unix_timestamp(moods.date_end) - unix_timestamp(moods.date_start) ),3 ) as level_anxiety ")
                 ->selectRaw(" round(sum( ( unix_timestamp(moods.date_end) - unix_timestamp(moods.date_start) ) * moods.level_nervousness )  / sum( unix_timestamp(moods.date_end) - unix_timestamp(moods.date_start) ),3 ) as level_nervousness ")
@@ -850,7 +850,7 @@ class Mood extends Model
         return Mood::selectRaw("SUBSTRING((date_start),1,16) as date_start")->where("id_users",Auth::User()->id)->orderBy("date_start")->first();
     }
     public static function checkTimeExist($dateStart,$dateEnd) {
-        return self::where("date_start","<=",$dateEnd)->where("date_end",">",$dateStart)->where("id_users",Auth::User()->id)->first();
+        return self::where("date_start","<",$dateEnd)->where("date_end",">",$dateStart)->where("id_users",Auth::User()->id)->first();
     }
     public static function sortMood(string $date, $startDay,int $idUsers) {
         return self::selectRaw(DB::Raw("(DATE(IF(HOUR(moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) as dat"))
@@ -1253,6 +1253,15 @@ class Mood extends Model
       if ($request->get("percentSleepWorkingTo") != "") {
             $this->questions->where("sleep_types.sleep_working","<=",$request->get("percentSleepWorkingTo"));
       }
+
+    }
+    /*
+       update april 2025
+    */
+    public static function ifExistDateMoodSingle(string $date,int $idUsers ,int $startDay) {
+        return self::whereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_start) >= '" . $startDay . "', moods.date_start,Date_add(moods.date_start, INTERVAL - 1 DAY) )) ) = '" . $date . "'" ))
+        ->orWhereRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) = '" . $date . "'" ))
+        ->where("moods.id_users",$idUsers)->count();
 
     }
 }

@@ -27,6 +27,6 @@ use App\Http\Services\Action as serviceAction;
 use Auth;
 class SettingsController {
     public function index() {
-        return View('Users.Settings.main');
+        return View(str_replace("css","html",Auth::User()->css) . '.Users.Settings.main');
     }
 }

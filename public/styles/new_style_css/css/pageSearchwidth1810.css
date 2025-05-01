@@ -1,0 +1,319 @@
+@media (min-width: 1810px) {
+       
+    div.settings-body-page {
+       
+        padding-left: 40px;
+        padding-right: 40px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 70%;
+    }
+    div.settings-title {
+        padding-top: 10px;
+       margin-top: 100px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+        text-align: center;
+        height: 60px;
+        font-size: 26px;
+    }
+    div.Search-day-week-div {
+        float: left;
+        padding-left: 30px;
+        text-align: center;
+    }
+    div.search-mood-day {
+        width: 60%;
+        height: 60px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        padding-top: 10px;
+
+    }
+    div.settings-body-page-result {
+        padding-left: 40px;
+        padding-right: 40px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 92%;
+    }
+    div.search-result {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        font-size: 21px;
+
+    }
+
+    div.main-mood-show {
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+        clear: both;
+    }
+    div.main-mood-show-single-br {
+        clear: both;
+    }
+    div.main-mood-show-single {
+        height: 600px;
+        padding: 10px;
+    }
+    div.main-mood-show-single-left {
+        width: 25%;
+        float: left;
+    }
+    div.main-mood-show-single-center {
+        float: left;
+        width: 20%;
+        margin-left: 10px;
+    }
+    div.main-mood-show-single-right {
+        width: 45%;
+        height: 100%;
+        float: left;
+    }
+    div.main-mood-show-single-button {
+        margin-top: 10px;
+        
+    }
+    div.main-mood-show-single-button-all-day {
+        margin-top: 10px;
+        float: left;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 5px;
+        padding-right: 5px;
+
+    }
+    div.main-mood-show-description {
+        width: 90%;
+        height: 400px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 45px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow-y: auto;
+        
+        
+        
+        
+    }
+    div.main-sleep-show-description {
+        width: 90%;
+        height: 270px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 45px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow-y: auto;
+        
+        
+        
+        
+    }
+    div.main-mood-show-action {
+        width: 90%;
+        height: 400px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 45px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow-y: auto;
+
+        
+    }
+    div.main-mood-show-drugs {
+        width: 90%;
+        
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 45px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow-y: auto;
+        
+    }
+    td.main-action-positionActionTitle1 {
+        text-align: center;
+        font-size: 23px;
+        font-weight: bold;
+
+    }
+    td.main-action-positionActionTitle2 {
+        text-align: center;
+        font-size: 23px;
+        font-weight: bold;
+
+
+    }
+        div.main-mood-show-hidden {
+        width: 75%;
+        height: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        
+        
+        
+
+    }
+    div.main-action-edit-scroll {
+        overflow-y: scroll; 
+        height:300px; 
+
+    }
+    div.main-mood-add-scroll {
+
+        overflow-y: scroll; 
+        height:380; 
+
+    
+    }
+    div.main-drugs-ajax {
+        width: 100%;
+        float: left;
+        height: 430px;
+        
+    }
+    div.search-mood-day-2 {
+        width: 60%;
+        height: 60px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        
+
+    }
+    div.search-mood-day-all {
+        
+        height: 300px;
+    }
+    div.main-mood-sum {
+        width: 400px;
+        
+        
+        margin: 5px;
+        
+    }
+    div.main-drugs-sum-over {
+        overflow-y: auto;
+        height: 100%;
+    }
+    div.main-drugs-sum {
+        width: 400px;
+        
+        height: 230px;
+        
+        
+    }
+    div.search-day-action-all {
+        width: 400px;
+    }
+    div.main-drugs-sum-over {
+        overflow-y: auto;
+        height: 100%;
+    }
+    div.main-action-sum {
+        width: 400px;
+       
+        height: 230px;
+        float: left;
+        
+    }
+    div.search-all-day {
+        
+        display: flex;
+flex-direction: row;
+        
+width: 80%;
+margin-left: auto;
+margin-right: auto;
+    }
+    div.search-mood-show-single-sum {
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    div.search-mood-average {
+        width: 85%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    div.search-mmod-average-title-date {
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+    hr.search-mood-average-hr {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        height: 9px;
+
+    }
+    div.search-mood-average-table {
+        width: 87%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .search-mood-average-td-1 {
+        width: 12%;
+    }
+    div.search-mood-action-sum {
+        overflow-y: scroll; 
+        height:390; 
+        
+    }
+    div.main-search-show-single-week {
+        height: 850px;
+        padding: 10px;
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    div.search-mood-sum-action {
+        overflow-y: scroll; 
+        height:400px; 
+    }
+    div.search-mood-day-3 {
+        width: 67%;
+        height: 60px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        
+
+    }
+    div.search-mood-how-minutes {
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+    div.search-mood-average-date-actionday {
+        overflow-y: auto;
+        height: 200px;
+    }
+    div.search-mood-average-date-actionsum {
+        overflow-y: auto;
+        height: 200px;
+    }
+    div.search-mood-average-date-substance {
+        overflow-y: auto;
+        height: 200px;
+    }
+    
+}

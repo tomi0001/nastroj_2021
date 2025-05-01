@@ -1550,3 +1550,25 @@ function settingsUserSubmit() {
                 alert("Wystąpił błąd");
             })  
 }
+function LoadCssColor(url) {
+    $.ajax({
+        url : url,
+            method : "get",
+            data :  "css=" +  $('select[name="css"]').val(),
+            dataType : "html",
+    })
+    .done(function(response) {
+
+
+
+            //alert(response);
+          
+         $('select[name="css-color"]').html(response);
+
+
+
+    })
+    .fail(function() {
+        alert("Wystąpił błąd");
+    });   
+}

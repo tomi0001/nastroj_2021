@@ -1,0 +1,43 @@
+@media (min-width: 700px) and (max-width: 1210px) { 
+   
+
+
+    div.settings-body-page {
+       
+        padding-left: 40px;
+        padding-right: 40px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 95%;
+    }
+    div.settings-title {
+        padding-top: 10px;
+       margin-top: 100px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+        text-align: center;
+        height: 60px;
+        font-size: 26px;
+    }
+    div.main-mood-add-scroll {
+
+        overflow-y: scroll; 
+        height:380; 
+
+    
+}
+div.settings-group-add {
+    
+
+    margin: 10px;
+    padding: 7px;
+
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor:pointer;
+
+}
+}

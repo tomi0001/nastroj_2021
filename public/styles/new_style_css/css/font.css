@@ -1,0 +1,26 @@
+
+
+  .font2 {
+    font-family: "Architects Daughter", serif;
+    font-weight: 40;
+    font-style: bold;
+    font-size: 29px;
+  }
+
+  .font-menu {
+    font-family: "Architects Daughter", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .font-menu-span {
+    font-family: "Architects Daughter", serif;
+    font-weight: 400;
+    font-style: bold;
+  }
+  .font-mood-span {
+    font-family: "Architects Daughter", serif;
+    font-weight: 500;
+    font-style: bold;
+    font-size: 20px;
+    
+  }

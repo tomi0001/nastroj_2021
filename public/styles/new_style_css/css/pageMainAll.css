@@ -1,0 +1,32 @@
+body {
+     height: 100%;
+}
+
+
+
+#calendar {
+    
+
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 25px;
+}
+
+span.main-calendar-month {
+    font-size: 22px;
+}
+td.main-mood-edit {
+    text-align: center;
+}
+tr.main-action-tr-bold {
+    font-weight: bold;
+}
+div.main-mood-add-action-hidden-percent {
+    display: none;
+}
+td.main-mood-add-table {
+    width: 40%;
+}
+td.main-mood-table-center {
+    text-align: center;
+}

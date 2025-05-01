@@ -1,0 +1,558 @@
+@media (min-width: 1210px) and (max-width: 1410px) { 
+    table.main-calendar  {
+
+        
+        border-spacing: 1px;
+        border-collapse: separate;
+        width: 850px;
+        height: 620px;
+
+
+
+    }
+    span.main-calendar-span {
+        font-size: 20px;
+
+    }
+    .main-calendar-tr {
+        height: 100px;
+
+    }
+    .main-calendar-td {
+        height: 100px;
+        width: 12%;
+        
+    }
+    div.main-calendar-cell-active {
+
+        border-radius: 15px;
+        height: 100%;
+    
+        padding-top: 25%;
+
+    }
+    div.main-calendar-cell-border {
+
+       
+        border-radius: 20px;
+        height: 100%;
+        padding-top: 25%;
+        cursor: pointer;
+    }
+
+    div.main-calendar-cell-10000 {
+      
+     
+        border-radius: 0 !important;
+        box-shadow: 0 0 0 0 !important;
+
+
+    }
+    #calendar {
+        width: 70%;
+    }
+    div.main-menu-month {
+        width: 70%;
+        clear: both;
+        
+        margin-left: auto;
+        margin-right: auto;
+    }
+    div.main-menu-month-one {
+        width: 25%;
+        float: left;
+        text-align: center;
+        
+    }
+    button.main-button-month {
+        width: 80%;
+        height: 9%;
+        font-size: 20px;
+    }
+    #allMoodDrugsAction {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        
+        clear: both;
+        
+    }
+    div.main-mood-sum {
+        width: 32%;
+        
+        float: left;
+        margin: 5px;
+    }
+    div.main-drugs-sum {
+        width: 32%;
+        float: left;
+        height: 230px;
+        
+        
+    }
+    div.main-action-sum {
+        width: 32%;
+        float: left;
+        height: 230px;
+        
+    }
+    div.main-empty {
+        width: 1%;
+        float: left;
+        
+    }
+    div.main-sum-error {
+        font-size: 18px;
+        font-weight: bold;
+        width: 100%;
+        height: 100px;
+        padding-top: 30px;
+        text-align: center;
+        border-radius: 20px;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        -ms-border-radius: 20px;
+        -o-border-radius: 20px;
+    }
+    div.showLink {
+        width: 550px;
+        height: 250px;
+        margin-left: auto;
+        margin-right: auto;
+        clear: both;
+        
+        
+    }
+    div.main-drugs-sum-over {
+        overflow-y: auto;
+        height: 100%;
+    }
+    div.main-link-menu {
+        width: 900px;
+        height: 250px;
+        margin-left: auto;
+        margin-right: auto;
+        clear: both;
+
+        
+        
+    }
+    .main-link-show {
+        float: left;
+        width: 200px;
+        height: 60px;
+        border-radius: 40px;
+        font-size: 22px;
+        -webkit-border-radius: 40px;
+        -moz-border-radius: 40px;
+        -ms-border-radius: 40px;
+        -o-border-radius: 40px;
+    }
+
+    .main-link-drugs {
+        margin-left: 16%;
+    }
+    .main-link-action {
+        
+        float: right;
+    }
+    div.main-mood-show {
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+        clear: both;
+        height: 900px;
+    }
+  
+    div.main-mood-show-single-left {
+        width: 25%;
+        float: left;
+    }
+    div.main-mood-show-single-center {
+        float: left;
+        width: 25%;
+        margin-left: 3px;
+        
+    }
+    div.main-mood-show-single-br {
+        clear: both;
+    }
+    div.main-mood-show-single-button {
+        margin-top: 10px;
+    }
+    div.main-mood-show-single-right {
+        width: 45%;
+        height: 100%;
+        float: left;
+        
+    }
+    div.main-mood-show-single {
+        height: 700px;
+        padding: 10px;
+    }
+    div.main-sleep-show-single {
+        height: 900px;
+        padding: 10px;
+    }
+    div.main-mood-show-hidden {
+        width: 100%;
+        height: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        
+        
+        
+
+    }
+    div.main-mood-show-description {
+        width: 90%;
+        height: 400px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 45px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow-y: auto;
+        
+        
+        
+        
+    }
+    div.main-sleep-show-description {
+        width: 90%;
+        height: 270px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 45px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow-y: auto;
+        
+        
+        
+        
+    }
+    div.main-mood-show-description-edit {
+        width: 90%;
+        height: 400px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 45px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow-y: auto;
+        
+    }
+    div.main-sleep-show-description-edit {
+        width: 90%;
+        height: 270px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 45px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow-y: auto;
+
+    }
+    div.main-mood-show-action {
+        width: 90%;
+        height: 400px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 45px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow-y: auto;
+
+        
+    }
+    div.main-mood-show-drugs {
+        width: 90%;
+        height: 400px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 45px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow-y: auto;
+        
+    }
+    td.main-action-positionActionTitle1 {
+        text-align: center;
+        font-size: 23px;
+        font-weight: bold;
+
+    }
+    td.main-action-positionActionTitle2 {
+        text-align: center;
+        font-size: 23px;
+        font-weight: bold;
+
+
+    }
+    .main-mood-show-description-edit-form {
+        width: 80%;
+        height: 70%;
+        margin-top: 8px;
+    }
+    input.main-form-mood-edit {
+        width: 90px;
+    }
+    td.main-mood-edit-td {
+        width: 70%;
+    }
+
+
+        
+    div.main-action-edit-center {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        float: center;
+        padding-bottom: 10px;
+    
+    
+    
+    
+    }
+
+   div.main-action-edit-main {
+
+    margin: 10px;
+    padding: 7px;
+
+    text-align: center;
+    font-size: 19px;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor:pointer;
+    }
+    div.main-action-edit-main-selected {
+
+        margin: 10px;
+        padding: 7px;
+    
+        text-align: center;
+        font-size: 19px;
+        font-weight: bold;
+        border-radius: 20px;
+        cursor:pointer;
+        }
+    div.main-action-edit-scroll {
+        overflow-y: scroll; 
+        height:300px; 
+
+    }
+    div.main-action-edit-hidden {
+        display: none;
+   
+   
+   
+   }
+   div.main-mood-action-edit {
+    width: 90%;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 45px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+   }
+   div.main-drugs-show {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    clear: both;
+}
+   
+
+
+div.main-drugs-show-single-right {
+    width: 35%;
+    height: 100%;
+    
+    float: left;
+    
+    
+    
+    
+    
+}
+div.main-drugs-show-single {
+    height: 600px;
+    padding: 10px;
+    
+}
+div.main-drugs-show-single-center {
+    float: left;
+    width: 30%;
+    margin-left: 10px;
+    
+}
+div.main-drugs-show-single-br {
+    clear: both;
+}
+div.main-drugs-show-single-left {
+    width: 25%;
+    float: left;
+}
+
+
+td.main-drugs-edit-td {
+    width: 30%;
+}
+div.main-drugs-average {
+     
+ 
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 25px;
+        max-height: 400px;
+        margin-top: 20px;
+        margin-bottom: 15px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        overflow-y: scroll; 
+
+   
+}
+div.main-drugs-average-div {
+
+        width: 70%;
+        height: 120px;
+        font-size: 17px;
+        
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 15px;
+        padding: 8px;
+        text-align: center;
+        
+
+}
+div.main-drugs-average-how {
+
+        max-height: 30px;
+        
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 25px;
+        text-align: center;
+    
+}
+div.main-drugs-average-line {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        width: 60%;
+}
+       
+div.main-action-show {
+    margin-left: auto;
+    margin-right: auto;
+    width: 66%;
+    clear: both;
+
+}
+div.main-action-show-title {
+    margin-left: auto;
+    margin-right: auto;
+    height: 45px;
+    width: 60%;
+    text-align: center;
+    font-size: 30px;
+
+}
+table.main-action-table {
+   
+}
+div.main-action-position {
+    min-height: 50px;
+    padding-top: 10px;
+    
+}
+div.main-action-show-not  {
+    margin-left: auto;
+    margin-right: auto;
+    height: 45px;
+    width: 60%;
+    text-align: center;
+    font-size: 30px;
+}
+
+div.main-menu-add {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    clear: both;
+
+
+}
+div.main-menu-add-single {
+    width: 19%;
+    float: left;
+    height: 62px;
+    text-align: center;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding-top: 16px;
+    font-size: 15px;
+}
+div.main-mood-form-add {
+    clear: both;
+}
+div.main-mood-add-scroll {
+
+        overflow-y: scroll; 
+        height:380; 
+
+    
+}
+div.main-mood-add-action {
+    
+
+        margin: 10px;
+        padding: 7px;
+    
+        text-align: center;
+        font-size: 25px;
+        font-weight: bold;
+        border-radius: 20px;
+        cursor:pointer;
+    
+}
+div.main-mood-add-action-hidden-center {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    float: center;
+    padding-bottom: 10px;
+
+     
+    
+    
+}
+
+
+
+}

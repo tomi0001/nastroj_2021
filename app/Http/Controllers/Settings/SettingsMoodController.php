@@ -28,7 +28,7 @@ use Auth;
 class SettingsMoodController {
     public function addNewAction() {
         $listAction = Action::downloadListAction(Auth::User()->id);
-        return view("Users.Settings.Mood.addNewAction")->with("listAction",$listAction);
+        return view(str_replace("css","html",Auth::User()->css) . ".Users.Settings.Mood.addNewAction")->with("listAction",$listAction);
     }
     public function addNewActionSubmit(Request $request) {
         
@@ -47,23 +47,23 @@ class SettingsMoodController {
         $Mood = new MoodServices;
         $bool = $Mood->setLevelMood(Auth::User()->id);
 
-        return view("Users.Settings.Mood.levelMood")->with("arrayLevel",$Mood->levelMood)->with("i",1);
+        return view(str_replace("css","html",Auth::User()->css) . ".Users.Settings.Mood.levelMood")->with("arrayLevel",$Mood->levelMood)->with("i",1);
 
     }
     public function levelMoodSubmit(Request $request) {
         $Mood = new MoodServices;
         $Mood->checkErrorLevelMood($request);
         if (count($Mood->errors) > 0) {
-            return View("ajax.error")->with("error",$Mood->errors);
+            return View(str_replace("css","html",Auth::User()->css) . ".ajax.error")->with("error",$Mood->errors);
         }
         else {
             $Mood->updateSettingMood($request);
-            return View("ajax.succes")->with("succes","Pomyslnie zmodyfikowano dane");
+            return View(str_replace("css","html",Auth::User()->css) . ".ajax.succes")->with("succes","Pomyslnie zmodyfikowano dane");
         }
     }
     public function changeNameAction() {
         $listAction = Action::downloadListAction(Auth::User()->id);
-        return view("Users.Settings.Mood.changeNameAction")->with("listAction",$listAction);
+        return view(str_replace("css","html",Auth::User()->css) . ".Users.Settings.Mood.changeNameAction")->with("listAction",$listAction);
     }
     public function loadValuePlasure(Request $request) {
         $pleasure = Action::showPleasure(Auth::User()->id,$request->get("id"));
@@ -73,18 +73,18 @@ class SettingsMoodController {
         $Action = new ActionServices;
         $Action->checkErrorChangeName($request);
         if (count($Action->error) > 0 ) {
-            return View("ajax.error")->with("error",$Action->error);
+            return View(str_replace("css","html",Auth::User()->css) . ".ajax.error")->with("error",$Action->error);
         }
         else {
             $Action->updateActionName($request);
-            return View("ajax.succes")->with("succes","Pomyslnie zmodyfikowano");
+            return View(str_replace("css","html",Auth::User()->css) . ".ajax.succes")->with("succes","Pomyslnie zmodyfikowano");
         }
         
     }
     
     public function changeDateAction() {
         $listAction = Action_plan::downloadListAction(Auth::User()->id);
-        return view("Users.Settings.Mood.changeDateAction")->with("listAction",$listAction);
+        return view(str_replace("css","html",Auth::User()->css) . ".Users.Settings.Mood.changeDateAction")->with("listAction",$listAction);
     }
     
     
@@ -115,11 +115,11 @@ class SettingsMoodController {
         $ActionServices = new ActionServices;
         $ActionServices->checkErrorPlanedUpdate($request);
         if (count($ActionServices->error) > 0 ) {
-            return View("ajax.error")->with("error",$ActionServices->error);
+            return View(str_replace("css","html",Auth::User()->css) . ".ajax.error")->with("error",$ActionServices->error);
         }
         else {
             $ActionServices->updateAction($request);
-            return View("ajax.succes")->with("succes","Pomyślnie zmodyfikowano akcje");
+            return View(str_replace("css","html",Auth::User()->css) . ".ajax.succes")->with("succes","Pomyślnie zmodyfikowano akcje");
         }
     }
 

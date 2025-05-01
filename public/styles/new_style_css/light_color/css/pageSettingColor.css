@@ -1,0 +1,59 @@
+  
+div.settings-group-add-selected  {
+    background-color: #173006;
+ 
+    color: #CDE1F3;
+ 
+}
+div.settings-title {
+    background-color: rgb(161, 190, 190);
+    color:#203611;
+    border-radius: 27px;
+    -webkit-border-radius: 27px;
+    -moz-border-radius: 27px;
+    -ms-border-radius: 27px;
+    -o-border-radius: 27px;
+}
+
+
+div.plusButton {
+    background-color: #60CEF0;
+}
+div.minusButton {
+    background-color: #F76868;
+}
+
+
+
+
+div.main-menu-add-action  {
+    background-color: rgb(92, 219, 192);
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+    border: 1px solid #b2b33c;
+}
+div.main-menu-add-selected {
+    border: 1px solid #404106;
+    box-shadow: 0px 0px 41px 14px rgba(145,142,88,0.75);
+-webkit-box-shadow: 0px 0px 41px 14px rgba(145,142,88,0.75);
+-moz-box-shadow: 0px 0px 41px 14px rgba(145,142,88,0.75);
+}
+div.settings-group-add {
+    background-color: rgb(19, 134, 54);
+ 
+    color: #e7ecc6;
+ 
+}
+
+
+
+
+div.settings-group-add-selected {
+    background-color: rgb(230, 27, 20);
+  
+    color: #e3f591;
+
+}

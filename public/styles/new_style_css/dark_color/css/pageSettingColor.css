@@ -1,0 +1,231 @@
+        button.danger:hover {
+             box-shadow: 6px 6px 6px #32370f;
+            background-color: red;
+            color: white;
+            border-color: #7E0705;
+          
+             
+        }  
+                input.danger,button.danger {
+           box-shadow: 6px 6px 6px #32370f;
+            background-color: red;
+            color: white;
+        }
+                input,button.main {
+                
+          
+                color: white;
+           
+           
+        }
+        div.groupMainselected {
+    background-color: #6ddf21;
+  
+    color: #CDE1F3;
+
+}
+div.groupMainAllGroup {
+    background-color: #173006;
+ 
+    color: #CDE1F3;
+ 
+}
+
+
+
+        div.substanceMainselected {
+    background-color: #6ddf21;
+  
+    color: #CDE1F3;
+
+}
+div.SubstanceMainAllSubstance {
+    background-color: #173006;
+ 
+    color: #CDE1F3;
+ 
+}
+
+        button.main:hover {
+                
+                color: white;
+                border-color: #C29713;
+        
+        }
+div.titleSettings {
+
+
+    color: #6f3317;
+    -webkit-box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
+-moz-box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
+box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
+
+background-color: rgb(180, 165, 26);
+
+    }
+    
+        div.titleSettingsMood {
+
+            color: white;
+            -webkit-box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
+    -moz-box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
+    box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
+    background-color: rgb(212, 230, 25);
+
+    }
+    div.titleSettingsDrugs {
+
+        color: white;
+        -webkit-box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
+-moz-box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
+box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
+background-color: rgb(68, 145, 5);
+    }   
+    div.titleSettingsUser {
+
+       color: white;
+        -webkit-box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
+-moz-box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
+box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
+background-color: rgba(16, 107, 72, 1);
+
+    }
+    div.selectedMenu {
+       color: #FEA043;
+        -webkit-box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
+-moz-box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
+box-shadow: 0px 0px 25px -5px rgba(47, 88, 28, 1);
+background-color: #9c5300;
+
+border: 2px solid #450e02; 
+font-weight: bold;
+    }
+    
+    div.pageMood {
+        color: #F8FC02;
+        -webkit-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
+        -moz-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
+        box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
+        background-color: #2d2b21;
+
+    }
+    
+        div.pageUser {
+            color: #F8FC02;
+            -webkit-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
+            -moz-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
+            box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
+            background-color: #2d2b21;
+
+    }
+    .bodyMoodPage {
+        color: #878507;
+        -webkit-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
+        -moz-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
+        box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
+        background-color:  #000000;
+    }
+    
+    
+        .bodyUserPage {
+            -webkit-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
+            -moz-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
+            box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
+            background-color: #000000;     
+    }
+    
+    .bodyDrugsPage {
+                        
+        -webkit-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
+        -moz-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
+        box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
+        background-color: #000000;      
+    }
+    div.pageDrugs {
+        color: #F8FC02;
+        -webkit-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
+        -moz-box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
+        box-shadow: 0px 0px 22px -9px rgba(66, 68, 90, 1);
+        background-color: #2d2b21;
+    }
+
+    div.hrefMood {
+        color: #d5ce92;
+
+-webkit-box-shadow: 0px 0px 39px -8px rgba(12, 12, 9, 1);
+-moz-box-shadow: 0px 0px 39px -8px rgba(12, 12, 9, 1);
+box-shadow: 0px 0px 39px -8px rgba(12, 12, 9, 1);
+background-color: rgba(70, 65, 31, 1);
+
+}
+div.hrefDrugs {
+    color: #c0f469;
+
+
+    background-color: rgb(44, 92, 4);
+
+}
+    
+    div.hrefUsers {
+                    color: #d5ce92;
+
+-webkit-box-shadow: 0px 0px 39px -8px rgba(12, 12, 9, 1);
+-moz-box-shadow: 0px 0px 39px -8px rgba(12, 12, 9, 1);
+box-shadow: 0px 0px 39px -8px rgba(12, 12, 9, 1);
+background-color: rgb(39, 70, 48);
+
+    }
+
+    div.selectedMenuUsersHref {
+                    color: #fff1bf;
+-webkit-box-shadow: 0px 0px 27px 0px rgba(15, 17, 47, 1);
+-moz-box-shadow: 0px 0px 27px 0px rgba(15, 17, 47, 1);
+box-shadow: 0px 0px 27px 0px rgba(15, 17, 47, 1);
+background-color: rgb(21, 248, 0);
+
+    }
+        div.selectedMenuMoodHref {
+                    color: #fff1bf;
+-webkit-box-shadow: inset 0px 0px 16px 0px rgba(101, 54, 1, 1);
+-moz-box-shadow: inset 0px 0px 16px 0px rgba(101, 54, 1, 1);
+box-shadow: inset 0px 0px 16px 0px rgba(101, 54, 1, 1);
+background-color: rgba(148, 110, 43, 1);
+background-image: linear-gradient(90deg, rgba(148, 110, 43, 1) 36%, rgba(80, 71, 12, 1) 100%);
+    }
+    td.tdColorMood {
+        color: #ebe3ad;
+    }
+    td.tdColorDrugs {
+        color: #a4f86c;
+    }
+    td.tdColorUser {
+        color: #a4f86c;
+    }
+        .titleMoodSettings {
+            color: #ffffff;
+background-color: rgba(70, 65, 31, 1);
+background-image: linear-gradient(180deg, rgb(238, 215, 70) 28%, rgb(0, 0, 0) 88%);
+
+    }
+    .titleUserSettings {
+        color: #ffffff;
+        background-color: rgba(6, 8, 3, 1);
+        background-image: linear-gradient(180deg, rgb(119, 194, 8) 19%, rgb(0, 0, 0) 87%);
+    }
+        .titleDrugsSettings {
+            color: #ffffff;
+background-color: rgba(6, 8, 3, 1);
+background-image: linear-gradient(180deg, rgb(119, 194, 8) 19%, rgb(0, 0, 0) 87%);
+
+    }    
+.errorForm {
+  border-color: red;
+  box-shadow: inset 0 1px 1px rgb(200, 54, 54), 0 0 8px rgb(200, 54, 54);
+}
+
+div.plusButton {
+    background-color: #60CEF0;
+}
+div.minusButton {
+    background-color: #F76868;
+}

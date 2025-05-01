@@ -43,7 +43,7 @@ class MainController {
         $actionPlan = Action_plan::showActionPlan($Calendar->year . "-" . $Calendar->month . "-" .  $Calendar->day,Auth::User()->id,Auth::User()->start_day);
         $actionSum = Mood::sumAction($Calendar->year . "-" . $Calendar->month . "-" .  $Calendar->day,Auth::User()->id,Auth::User()->start_day);
         
-        return View("Users.Main.main")->with("text_month",$Calendar->text_month)
+        return View(str_replace("css","html",Auth::User()->css) . ".Users.Main.main")->with("text_month",$Calendar->text_month)
                                 ->with("year",$Calendar->year)
                                 ->with("day2",1)
                                 ->with("day1",1)
@@ -72,7 +72,7 @@ class MainController {
         $Action = new serviceAction;
         $Action->checkError($request);
         if (count($Action->error) > 0 ) {
-            return View("ajax.error")->with("error",$Action->error);
+            return View(str_replace("css","html",Auth::User()->css) . ".ajax.error")->with("error",$Action->error);
         }
         else {
             $Action->saveAction($request);
@@ -82,7 +82,7 @@ class MainController {
         $Sleep = new Sleep;
         $Sleep->checkError($request);
         if (count($Sleep->errors) != 0) {
-                return View("ajax.error")->with("error",$Sleep->errors);
+                return View(str_replace("css","html",Auth::User()->css) . ".ajax.error")->with("error",$Sleep->errors);
         }
         else {
             $Sleep->addSleep($request);
@@ -123,7 +123,7 @@ class MainController {
                 }
             }
             if (count($this->error) != 0) {
-                return View("ajax.error")->with("error",$this->error);
+                return View(str_replace("css","html",Auth::User()->css) . ".ajax.error")->with("error",$this->error);
             }
            
             else {
@@ -146,7 +146,7 @@ class MainController {
             if ($request->get("timeStart") == ""  ) {
                 $timeStart = Mood::selectLastMoods();
                 if (empty($timeStart)) {
-                   return View("ajax.error")->with("error",["uzupełnij czas zaczęcia"]);
+                   return View(str_replace("css","html",Auth::User()->css) . ".ajax.error")->with("error",["uzupełnij czas zaczęcia"]);
                 }
                 else {
                     $timeStart = $timeStart->date_end;
@@ -170,7 +170,7 @@ class MainController {
                 $Mood->checkErrorAction($request,round(((StrToTime($timeEnd) - StrToTime($timeStart)) /60 ),2) );
             }
             if (count($Mood->errors) != 0) {
-                return View("ajax.error")->with("error",$Mood->errors);
+                return View(str_replace("css","html",Auth::User()->css) . ".ajax.error")->with("error",$Mood->errors);
             }
             else {
                 $id = $Mood->saveMood($request,$timeStart,$timeEnd,$Mood->moodsVariable);
@@ -185,7 +185,7 @@ class MainController {
         $Action = new ActionServices;
         $Action->checkErrorPlaned($request);
         if ( count($Action->error) > 0  ) {
-            return View("ajax.error")->with("error",$Action->error);
+            return View(str_replace("css","html",Auth::User()->css) . ".ajax.error")->with("error",$Action->error);
         }
         else {
             $Action->saveActionPlaned($request);
@@ -266,17 +266,17 @@ class MainController {
     
     public function showAction(Request $request) {
         $listAction = Moods_action::selectlistAction($request->get("id"),Auth::User()->id);
-        return View("ajax.showAction")->with("listAction",$listAction);
+        return View(str_replace("css","html",Auth::User()->css) . ".ajax.showAction")->with("listAction",$listAction);
         
     }
     public function showDrugs(Request $request) {
         $listDate = Mood::selectDateMoods($request->get("id"),Auth::User()->id);
         $listDrugsAt = Usee::selectlistDrugs(date("Y-m-d H:i:s", strtotime($listDate->date_start) - 3600),date("Y-m-d H:i:s", strtotime($listDate->date_start)-1),Auth::User()->id);
         $listDrugs = Usee::selectlistDrugs($listDate->date_start,$listDate->date_end,Auth::User()->id);
-        return View("ajax.showDrugs")->with("listDrugs",$listDrugs)->with("listDrugsAt",$listDrugsAt);
+        return View(str_replace("css","html",Auth::User()->css) . ".ajax.showDrugs")->with("listDrugs",$listDrugs)->with("listDrugsAt",$listDrugsAt);
     }
     public function editActionMood(Request $request) {
-        return View("ajax.editActionMood")->with("idMood",$request->get("id"));
+        return View(str_replace("css","html",Auth::User()->css) . ".ajax.editActionMood")->with("idMood",$request->get("id"));
         
     }
     public function updateAction(Request $request) {
@@ -290,7 +290,7 @@ class MainController {
                 $MoodServices->saveActionUpdate($request,$request->get("idMood"));
             }
             else {
-                return View("ajax.error")->with("error",$Mood->errors);
+                return View(str_replace("css","html",Auth::User()->css) . ".ajax.error")->with("error",$Mood->errors);
             }
         }
     }
@@ -304,20 +304,20 @@ class MainController {
         if (Usee::ifIdUsersExist($request->get("id"),Auth::User()->id) > 0 ) {
             $description = new Product;
             $desctptionList = $description->showDescriptions($request->get("id"));
-            return View("ajax.showDescriptionDrugs")->with("list",$desctptionList);
+            return View(str_replace("css","html",Auth::User()->css) . ".ajax.showDescriptionDrugs")->with("list",$desctptionList);
         }
     }
     public function addDescriptionDrugs(Request $request) {
         if ($request->get("description") == "") {
-            return View("ajax.error")->with("error",["Uzupełnij nazwe, nazwa nie może być pusta."]);
+            return View(str_replace("css","html",Auth::User()->css) . ".ajax.error")->with("error",["Uzupełnij nazwe, nazwa nie może być pusta."]);
         }
         else if (!empty(Usee::selectLastDescription($request->get("id"),date("Y-m-d H:i:s"),str_replace("\n", "<br>", $request->get("description"))))) {
-            return View("ajax.error")->with("error",["Już wpisałeś ten opis."]);
+            return View(str_replace("css","html",Auth::User()->css) . ".ajax.error")->with("error",["Już wpisałeś ten opis."]);
         }
         else {
             $description = new Product;
             $description->addDescription($request, $request->get("id"), date("Y-m-d H:i:s"));
-            return View("ajax.succes")->with("succes","Pomyślnie dodano");
+            return View(str_replace("css","html",Auth::User()->css) . ".ajax.succes")->with("succes","Pomyślnie dodano");
         }
     }
     public function updateDrugs(Request $request) {
@@ -340,7 +340,7 @@ class MainController {
     public function loadTypePortion(Request $request) {
         $type = ModelProduct::selectTypeProduct($request->get("nameProduct"),Auth::User()->id);
         $typeText = Common::showDoseProduct($type->type_of_portion);
-        return View("ajax.showTypyPortion")->with("type",$typeText);
+        return View(str_replace("css","html",Auth::User()->css) . ".ajax.showTypyPortion")->with("type",$typeText);
     }
     
     public function showAverage(Request $request) {
@@ -350,7 +350,7 @@ class MainController {
         if (Usee::checkEquivalent($request->get("id"),Auth::User()->id) != null) {
             $Equivalent = $request->get("id");
         }
-        return View("ajax.showAverage")->with("allSubstance",$allSubstance)->with("productName",$productName)
+        return View(str_replace("css","html",Auth::User()->css) . ".ajax.showAverage")->with("allSubstance",$allSubstance)->with("productName",$productName)
                 ->with("id",$request->get("id"))->with("Equivalent",$Equivalent);
     }
     public function sumAverage(Request $request) {
@@ -359,7 +359,7 @@ class MainController {
         $type = explode("_",$request->get("averageType"));
         $Product->checkErrorAverage($request->get("hourFrom"),$request->get("hourTo"));
         if (count($Product->error) > 0) {
-            return View("ajax.error")->with("error",$Product->error);
+            return View(str_replace("css","html",Auth::User()->css) . ".ajax.error")->with("error",$Product->error);
         }
         else {
             switch($type[0]) {
@@ -374,7 +374,7 @@ class MainController {
                
             }
             if ($type[0] == 1 or $type[0] == 2 or $type[0] == 3) {
-                return View("ajax.sumAverage")->with("listAverage",$result);
+                return View(str_replace("css","html",Auth::User()->css) . ".ajax.sumAverage")->with("listAverage",$result);
             }
         }
     }

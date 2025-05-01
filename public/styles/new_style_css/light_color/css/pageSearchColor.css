@@ -1,0 +1,90 @@
+
+    div.plusButton {
+    background-color: #60CEF0;
+}
+div.minusButton {
+    background-color: #F76868;
+}
+div.settings-title {
+    background-color: rgb(161, 190, 190);
+    color:#203611;
+    border-radius: 27px;
+    -webkit-border-radius: 27px;
+    -moz-border-radius: 27px;
+    -ms-border-radius: 27px;
+    -o-border-radius: 27px;
+}
+div.search-mood-day {
+    background-color: #a2bb16;
+    border-radius: 23px;
+    -webkit-border-radius: 23px;
+    -moz-border-radius: 23px;
+    -ms-border-radius: 23px;
+    -o-border-radius: 23px;
+    font-size: 25px;
+    color: rgb(82, 44, 14);
+}
+div.main-mood-show-single {
+    border: 1px solid #000000;
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+}
+div.main-mood-show-single-br {
+    height: 50px;
+}
+div.main-sleep-show-single {
+    border: 1px solid #000000;
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+}
+div.main-mood-show-description {
+    -webkit-box-shadow: 0px 0px 16px -1px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 0px 0px 16px -1px rgba(66, 68, 90, 1);
+    box-shadow: 0px 0px 16px -1px rgba(66, 68, 90, 1);
+    border-radius: 20px 20px 20px 20px;
+    background-color: #ffffa5;
+    border: 1px solid #000000;
+    font-family: "Architects Daughter", serif;
+    color:rgb(50, 61, 1);
+    font-size: 22px;
+}
+div.main-sleep-show-description {
+    -webkit-box-shadow: 0px 0px 16px -1px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 0px 0px 16px -1px rgba(66, 68, 90, 1);
+    box-shadow: 0px 0px 16px -1px rgba(66, 68, 90, 1);
+    border-radius: 20px 20px 20px 20px;
+    background-color: #92f8ff;
+    border: 1px solid #000000;
+    font-family: "Architects Daughter", serif;
+    color:rgb(50, 61, 1);
+    font-size: 22px;
+}
+div.main-search-show-single-week {
+    border: 1px solid #000000;
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+}
+a.search-mood-average-date {
+    color: #C0A566;
+}
+a.search-mood-average-date-menu-2 {
+    color: #C0A566;
+}
+div.search-mood-average-date-hidden  {
+    
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+    background-color: rgba(230, 235, 212, 0.9);
+}

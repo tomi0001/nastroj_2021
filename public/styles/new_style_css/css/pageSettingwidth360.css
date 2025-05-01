@@ -1,0 +1,56 @@
+@media   (width < 700px) { 
+div.settings-body-page {
+       
+   
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+div.settings-title {
+    padding-top: 15px;
+   margin-top: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    text-align: center;
+    height: 60px;
+    font-size: 20px;
+}
+div.main-mood-add-scroll {
+
+    overflow-y: scroll; 
+    height:380; 
+
+
+}
+div.settings-group-add {
+
+
+margin: 10px;
+padding: 7px;
+
+text-align: center;
+font-size: 25px;
+font-weight: bold;
+border-radius: 20px;
+cursor:pointer;
+
+}
+
+td.settings-td-1 {
+    width: 1px;
+}
+td.settings-td-2 {
+    width: 30px;
+}
+td.settings-td-3 {
+    width: 70px;
+    
+}
+td.settings-td-4 {
+    width: 10px;
+}
+td.settings-td-5 {
+    width: 70px;
+}
+}

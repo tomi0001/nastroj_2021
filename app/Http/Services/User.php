@@ -86,9 +86,33 @@ class User {
             if (strstr($file,"css")) {
                 array_push($this->css,$file);
             }
-            else if (strstr($file,"color")) {
-                array_push($this->colorCss,$file);
+           
+        }
+        $path2 = public_path('styles' . "/" . Auth::User()->css);
+        $files2 = scandir($path2);
+        foreach ($files2 as $file2) {
+            if (strstr($file2,"color")) {
+                array_push($this->colorCss,$file2);
             }
         }
+    }
+    public function downloadDirectoryCssNr($css) {
+
+        $path2 = public_path('styles' . "/" .$css);
+        $files2 = scandir($path2);
+        foreach ($files2 as $file2) {
+            if (strstr($file2,"color")) {
+                array_push($this->colorCss,$file2);
+            }
+        }
+    }
+    //update marc 2025
+    public function changeCssColorAtJson() {
+        $text = "<select name='css-color'>";
+        foreach ($this->colorCss as $color) {
+            $text .= "<option value='$color'>$color</option>";
+        }
+        $text .= "</select>";
+        return $text;
     }
 }

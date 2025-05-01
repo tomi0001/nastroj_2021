@@ -1,0 +1,52 @@
+span.search-mood-average-span {
+    font-size: 20px;
+    
+}
+
+div.dataTables_wrapper {
+    text-align: center;
+    
+
+}
+th.search-mood-th {
+    padding-top: 5px;
+}
+.search-mood-average-center {
+    text-align: center;
+}
+div.search-mood-week-date {
+    padding-top:45px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+div.main-search-show-week {
+    margin: 10px;
+}
+td.search-mood-title {
+    text-align: center;
+    font-size: 22px;
+}
+span.search-mood-week-span {
+    font-size: 26px;
+}
+td.search-table-center {
+    text-align: center;
+}
+a.search-mood-average-date {
+    cursor: pointer;
+}
+div.search-mood-average-date-hidden {
+
+    width: 520px;
+    text-align: center;
+    min-height: 90px;
+    display: none;
+    position: absolute;
+}
+td.search-mood-center {
+    text-align: center;
+}
+a.search-mood-average-date-menu-2  {
+    cursor: pointer;
+}

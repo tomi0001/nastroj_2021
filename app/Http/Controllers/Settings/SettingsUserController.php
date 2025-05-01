@@ -31,10 +31,10 @@ class SettingsUserController {
     public function addDoctorNew() {
         $doctorId = MUser::selectIdDoctor(Auth::User()->id);
         if (empty($doctorId)) {
-            return view("Users.Settings.Users.addNewDoctor")->with("nameDoctor",null);
+            return view(str_replace("css","html",Auth::User()->css) . ".Users.Settings.Users.addNewDoctor")->with("nameDoctor",null);
         }
         else {
-            return view("Users.Settings.Users.addNewDoctor")->with("nameDoctor",$doctorId->name);
+            return view(str_replace("css","html",Auth::User()->css) . ".Users.Settings.Users.addNewDoctor")->with("nameDoctor",$doctorId->name);
         }
     }
     
@@ -43,11 +43,11 @@ class SettingsUserController {
         $User = new User;
         $User->checkError($request);
         if (count($User->errors) > 0) {
-            return View("ajax.error")->with("error",$User->errors);
+            return View(str_replace("css","html",Auth::User()->css) . ".ajax.error")->with("error",$User->errors);
         }
         else {
             $User->updateUserDoctor($request);
-            return View("ajax.succes")->with("succes","pomyslnie zmodyfikwano ustawienia");
+            return View(str_replace("css","html",Auth::User()->css) . ".ajax.succes")->with("succes","pomyslnie zmodyfikwano ustawienia");
         }
     }
     
@@ -57,7 +57,7 @@ class SettingsUserController {
     public function settingsUserSet() {
         $User = new User;
         $User->downloadDirectoryCss();   
-        return view("Users.Settings.Users.settingsUserSet")->with("startDay",Auth::User()->start_day)
+        return view(str_replace("css","html",Auth::User()->css) . ".Users.Settings.Users.settingsUserSet")->with("startDay",Auth::User()->start_day)
                 ->with("colorCss",$User->colorCss)->with("css",$User->css)
                 ->with("setColorCss",Auth::User()->css_color)->with("setCss",Auth::User()->css);
     }
@@ -66,15 +66,25 @@ class SettingsUserController {
         $User = new User;
         $User->checkErrorChangeSettings($request);
         if (count($User->errors) > 0) {
-            return View("ajax.error")->with("error",$User->errors);
+            return View(str_replace("css","html",Auth::User()->css) . ".ajax.error")->with("error",$User->errors);
         }
         else {
             if ($User->updatePassword == true) {
                 $User->updateUserPassword($request->get("passwordNew"));
             }
             $User->updateUserStartDay($request);
-            return View("ajax.succes")->with("succes","pomyslnie zmodyfikwano ustawienia");
+            return View(str_replace("css","html",Auth::User()->css) . ".ajax.succes")->with("succes","pomyslnie zmodyfikwano ustawienia");
         }
+    }
+
+    //update marc 2025
+    public function settingsUserLoadCssColor(Request $request) {
+        $User = new User;
+        $User->downloadDirectoryCssNr($request->get("css"));  
+        $color = $User->changeCssColorAtJson();
+        print ($color);
+
+
     }
     
 }

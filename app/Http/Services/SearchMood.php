@@ -156,7 +156,7 @@ class SearchMood {
      public function createQuestionGroupDay(Request $request) {
          $startDay = $this->startDay;
          $moodModel = new  MoodModel;
-         $moodModel->createQuestionGroupDay($this->startDay);
+         $moodModel->createQuestionGroupDay($this->startDay,$request);
          $moodModel->setDate($request->get("dateFrom"),$request->get("dateTo"),$this->startDay);
          $moodModel->setMood($request);
          $moodModel->setLongMood($request);

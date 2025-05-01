@@ -1,0 +1,102 @@
+@media   (width < 700px) { 
+
+
+    div.main-menu {
+
+        width: 100%;
+        
+        position: fixed;
+        top: 0;
+        
+        
+        
+        
+    }
+    div.main-menu-position {
+                
+        height: 40px;
+        
+       
+        padding-left: 50px;
+        
+        
+
+    }
+    div.main-menu-search {
+        display: none;
+        position: fixed;
+        
+        
+        height: 700px;
+        top: 160px;
+        
+        flex-direction: column; 
+        flex-wrap: wrap;
+        
+        
+    }
+    div.main-menu-search-title {
+    
+        padding-right: 60px;
+        text-align: center;
+        width: 360px;
+        
+
+    }
+    div.main-menu-search-position {
+        width: 360px;
+       
+
+    }
+    div.main-menu-search-position-static {
+        width: 360px;
+    }
+    div.main-menu-settings {
+        display: none;
+        position: fixed;
+        
+        height: 700px;
+        top: 160px;
+        
+        flex-direction: column; 
+        flex-wrap: wrap;
+        
+    }
+    div.main-menu-search-br {
+        clear: both;
+        
+    }
+    span.main-menu-search-title {
+        font-size: 22px;
+    }
+    a.main-menu-search-position {
+        margin: 15px;
+        font-size: 20px;
+    }
+    a.main-menu-search-position:hover {
+        font-size: 20px;
+    }
+    div.main-menu-position {
+       
+        font-size: 20px;
+        
+    }
+    a.main-menu-menu {
+        
+        font-size: 18px;
+        
+    }
+    a.main-menu-menu:hover {
+        
+        font-size: 20px;
+        
+    }
+    div.main-calendar-cell-border {
+        border-radius: 9px;
+        -webkit-border-radius: 9px;
+        -moz-border-radius: 9px;
+        -ms-border-radius: 9px;
+        -o-border-radius: 9px;
+}
+
+}
