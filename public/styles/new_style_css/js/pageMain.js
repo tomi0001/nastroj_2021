@@ -1337,3 +1337,22 @@ function selectedActionMainSetValue(data,lenght) {
     }
  
 }
+function translateFunction(string,url) {
+    switch (string) {
+        case 'addMood': addMood(url);
+            break;
+        case 'addDrugs': addDrugs(url);
+            break;
+        case 'addActionDay': addActionDay(url);
+            break;
+        case 'addSleep': addSleep(url);
+            break;
+    }
+    return;
+}
+function sessionSet(type) {
+    
+    
+    
+    sessionStorage.setItem('main', type);
+}
