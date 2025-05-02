@@ -70,7 +70,7 @@
                   </div>  
                  
                
-                <div class="search-mood-day-2" style="margin-left: auto; margin-right:auto;">
+                <div class="search-mood-day-2">
                                      <div class="main-mood-show-single-button-all-day">
                                         @if (count(\App\Models\Usee::listSubstnace($arrayList[$i]->dateDay, Auth::User()->id,Auth::User()->start_day)) > 0)
                                         <button  class="btn btn-lg btn-success" onclick="showDaySubstance('{{route('search.allSubstanceDay')}}','{{$arrayList[$i]->dateDay}}')">Substancje dla danego dnia</button>

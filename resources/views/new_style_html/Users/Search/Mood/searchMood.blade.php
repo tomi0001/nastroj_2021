@@ -206,7 +206,7 @@
                     <div style='float: left; width:75%; display: none;' id="idWhatWorkCopy" >
                         <input type='text' name='whatWork[]' class='form-control' placeholder="słowa kluczowe">
                     </div>
-                    <div style='float: left; margin-left: 66px;' >
+                    <div style='float: left; ' >
                     <a onclick="addFieldWhatWork()" style="cursor: pointer;">
                 <div class="plusButton plusMinusButton" id='addFieldWhatWork'> <img width="40" class="minus" id="boolxxxx" src="{{asset('/image/icon_plus.png')}}"></div>
             </a>
@@ -252,7 +252,7 @@
 
 
 
-                    <div style='float: left; margin-left: 20px; '>
+                    <div style='float: left;  '>
                     <a onclick="addFieldAction()" style="cursor: pointer;">
                 <div class="plusButton plusMinusButton" id='addFieldWhatWork'> <img width="40" class="minus" id="boolxxxx" src="{{asset('/image/icon_plus.png')}}"></div>
             </a>

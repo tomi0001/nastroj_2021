@@ -30,8 +30,8 @@
     div.search-mood-day {
         width: 60%;
         height: 60px;
-        margin-left: auto;
-        margin-right: auto;
+        margin-top: 75px;
+        margin-left: 220px;
         text-align: center;
         padding-top: 10px;
 
@@ -192,10 +192,9 @@
         
     }
     div.search-mood-day-2 {
-        width: 85%;
+        width: 95%;
         height: 60px;
-        margin-left: auto;
-        margin-right: auto;
+        margin-left: 60px;
         text-align: center;
         
 
@@ -280,7 +279,7 @@ flex-direction: row;
         
     }
     div.main-search-show-single-week {
-        height: 850px;
+       
         padding: 10px;
         width: 50%;
         margin-left: auto;
