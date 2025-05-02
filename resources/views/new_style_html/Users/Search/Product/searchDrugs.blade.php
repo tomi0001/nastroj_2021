@@ -42,7 +42,7 @@
                             <input type='text' name='doseToProduct[]' class='form-control' placeholder="dawka do">
                         </div>
                     </div>
-                    <div style='float: left; margin-left: 66px;' >
+                    <div style='float: left; ' >
                     <a onclick="addFieldnameProduct()" style="cursor: pointer;">
                 <div class="plusButton plusMinusButton" id='addFieldWhatWork'> <img width="40" class="minus" id="boolxxxx" src="{{asset('/image/icon_plus.png')}}"></div>
             </a>
@@ -81,7 +81,7 @@
                             <input type='text' name='doseToSubstance[]' class='form-control' placeholder="dawka do">
                         </div>
                     </div>
-                    <div style='float: left; margin-left: 66px;' >
+                    <div style='float: left; ' >
                     <a onclick="addFieldnameSubstance()" style="cursor: pointer;">
                 <div class="plusButton plusMinusButton" id='addFieldWhatWork'> <img width="40" class="minus" id="boolxxxx" src="{{asset('/image/icon_plus.png')}}"></div>
             </a>
