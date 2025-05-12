@@ -1,12 +1,14 @@
-<div class="hourAverage">
-    <div class="hourOneAverage">
-        <input type="time" id="hourFrom{{$id}}" placeholder="Od początku" class="form-control">
+<div class="main-drugs-average-hour">
+    <div class="main-drugs-average-hour-one">
+        Godz od <input type="time" id="hourFrom{{$id}}" placeholder="Od początku" class="form-control">
     </div>
-    <div style="width: 10%; float: left;">&nbsp;</div>
-    <div class="hourOneAverage">
-        <input type="time" id="hourTo{{$id}}" placeholder="do końca" class="form-control">
+    
+    <div class="main-drugs-average-hour-one">
+        Godz do <input type="time" id="hourTo{{$id}}" placeholder="do końca" class="form-control">
     </div>
+    wybierz substancje 
 </div>
+
 <select id='averageType{{$id}}' class='form-control' onchange="loadAverage('{{ route('ajax.sumAverage')}}',{{$id}})">
     <option value="" selected></option>
     <optgroup label="Produkty">

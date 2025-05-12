@@ -11,13 +11,13 @@
     @endsection
 
     @if (empty($arrayList)  )
-    <div class="countSearch error">
-        nic nie znaleziono
-    </div>
-    <br>
-    <div class='center'>
-        <a href="javascript:history.back()"><button class="btn-mood mood" >WSTECZ</button></a>
-    </div>
+             <div class="search-error">
+            Ilość wyników  {{$count}}
+       
+        <br>
+        
+        <a href="javascript:history.back()"><button class="btn btn-lg btn-danger" >WSTECZ</button></a>
+        </div>   
 @else
         
 

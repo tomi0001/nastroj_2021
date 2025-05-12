@@ -189,8 +189,9 @@
     div.main-mood-show {
         margin-left: auto;
         margin-right: auto;
-        width: 80%;
+        width: 60%;
         clear: both;
+        
     }
     div.main-mood-edit-2 {
         width: 90%;
@@ -208,8 +209,8 @@
     }
     div.main-mood-show-single-center {
         float: left;
-        width: 20%;
-        margin-left: 10px;
+        width: 18%;
+        margin-left: 7px;
         
     }
     div.main-mood-show-single-br {
@@ -219,7 +220,7 @@
         margin-top: 10px;
     }
     div.main-mood-show-single-right {
-        width: 45%;
+        width: 50%;
         
         
         float: left;
@@ -422,14 +423,14 @@
    div.main-drugs-show {
     margin-left: auto;
     margin-right: auto;
-    width: 80%;
+    width: 60%;
     clear: both;
 }
    
 
 
 div.main-drugs-show-single-right {
-    width: 45%;
+    width: 55%;
     
     
     float: left;
@@ -446,8 +447,8 @@ div.main-drugs-show-single {
 }
 div.main-drugs-show-single-center {
     float: left;
-    width: 20%;
-    margin-left: 10px;
+    width: 18%;
+    margin-left: 7px;
     
 }
 div.main-drugs-show-single-br {
@@ -482,7 +483,7 @@ div.main-drugs-average {
 div.main-drugs-average-div {
 
         width: 70%;
-        height: 120px;
+        
         font-size: 17px;
         
         margin-left: auto;
@@ -598,4 +599,13 @@ div.main-mood-add-action-hidden-center {
     
     
 }
+    div.main-drugs-average-hour-one {
+        width: 50%;
+        float: left;
+        
+    } div.main-drugs-average-hour {
+        text-align: center;
+          
+        clear: both;
+    }
 }

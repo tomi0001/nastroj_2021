@@ -11,12 +11,12 @@
     @endsection
 
     @if ($count == 0 )
-        <div class="countSearch error">
+                  <div class="search-error">
             Ilość wyników  {{$count}}
-        </div>
+       
         <br>
-        <div class='center'>
-        <a href="javascript:history.back()"><button class="btn-mood mood" >WSTECZ</button></a>
+        
+        <a href="javascript:history.back()"><button class="btn btn-lg btn-danger" >WSTECZ</button></a>
         </div>   
     @else
         
