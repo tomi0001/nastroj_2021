@@ -510,16 +510,28 @@ div.main-menu-add {
 
 }
 div.main-menu-add-single {
-    width: 135%;
+    width: 350px;
     
     height: 62px;
     text-align: center;
     cursor: pointer;
     margin-left: 5px;
+    margin-bottom: 6px;
     margin-right: 5px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    padding-top: 16px;
+    padding-top: 18px;
+    font-size: 15px;
+}
+div.main-menu-add-single-2 {
+    width: 350px;
+   
+    height: 62px;
+    text-align: center;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding-top: 12px;
+    margin-bottom: 6px;
+    font-size: 13px;
 }
 div.main-mood-form-add {
     clear: both;

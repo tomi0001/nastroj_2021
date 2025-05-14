@@ -58,7 +58,7 @@
         <div class="main-menu-add-single main-menu-add-drugs" id='drugsSelected' onclick="SwitchMenuMoodAdd('drugs')">
             DODAJ LEK
         </div>
-       <div class="main-menu-add-single main-menu-add-action" id='actionSelected' onclick="SwitchMenuMoodAdd('action')">
+       <div class="main-menu-add-single-2 main-menu-add-action" id='actionSelected' onclick="SwitchMenuMoodAdd('action')">
             DODAJ AKCJE CAŁODNIOWĄ
         </div>
         <div class="main-menu-add-single main-menu-add-action" id='actionPlanedSelected' onclick="SwitchMenuMoodAdd('actionPlaned')" ">

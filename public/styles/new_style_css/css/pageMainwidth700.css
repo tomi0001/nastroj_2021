@@ -510,13 +510,24 @@ div.main-menu-add {
 div.main-menu-add-single {
     width: 18%;
     float: left;
-    height: 50px;
+    height: 62px;
     text-align: center;
     cursor: pointer;
     margin-left: 5px;
     margin-right: 5px;
-    padding-top: 16px;
-    font-size: 12px;
+    padding-top: 18px;
+    font-size: 15px;
+}
+div.main-menu-add-single-2 {
+    width: 18%;
+    float: left;
+    height: 62px;
+    text-align: center;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding-top: 12px;
+    font-size: 13px;
 }
 div.main-mood-form-add {
     clear: both;

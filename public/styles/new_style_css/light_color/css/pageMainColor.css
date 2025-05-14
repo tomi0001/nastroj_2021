@@ -195,48 +195,71 @@ div.main-action-show-not {
     -o-border-radius: 12px;
 }
 div.main-menu-add-mood  {
-    background-color: yellow;
-    border-radius: 25px;
-    -webkit-border-radius: 25px;
-    -moz-border-radius: 25px;
-    -ms-border-radius: 25px;
-    -o-border-radius: 25px;
-    border: 1px solid #b2b33c;
+    background-color: #a2bd29;
+                color: aliceblue;
+                
+             
+                text-decoration: none;
+                transition-duration: 0.4s;
+                border: 1px solid #a2bd29;
+                text-transform: uppercase;
 }
 div.main-menu-add-sleep  {
-    background-color: rgb(124, 32, 93);
-    border-radius: 25px;
-    -webkit-border-radius: 25px;
-    -moz-border-radius: 25px;
-    -ms-border-radius: 25px;
-    -o-border-radius: 25px;
-    border: 1px solid #b2b33c;
-    color: white;
+    background-color: #c40d87;
+                color: aliceblue;
+                
+       
+                text-decoration: none;
+                transition-duration: 0.4s;
+                border: 1px solid #c40d87;
+                text-transform: uppercase;
 }
 div.main-menu-add-drugs  {
-    background-color: rgb(51, 199, 21);
-    border-radius: 25px;
-    -webkit-border-radius: 25px;
-    -moz-border-radius: 25px;
-    -ms-border-radius: 25px;
-    -o-border-radius: 25px;
-    border: 1px solid #b2b33c;
+    background-color: #27b814;
+                color: aliceblue;
+                
+                
+                text-decoration: none;
+                transition-duration: 0.4s;
+                border: 1px solid #27b814;
+                text-transform: uppercase;
 }
 div.main-menu-add-action  {
-    background-color: rgb(92, 219, 192);
-    border-radius: 25px;
-    -webkit-border-radius: 25px;
-    -moz-border-radius: 25px;
-    -ms-border-radius: 25px;
-    -o-border-radius: 25px;
-    border: 1px solid #b2b33c;
+    background-color: #49aaff;
+                color: aliceblue;
+                
+                
+                text-decoration: none;
+                transition-duration: 0.4s;
+                border: 1px solid #49aaff;
+                text-transform: uppercase;
 }
-div.main-menu-add-selected {
-    border: 1px solid #404106;
-    box-shadow: 0px 0px 41px 14px rgba(145,142,88,0.75);
--webkit-box-shadow: 0px 0px 41px 14px rgba(145,142,88,0.75);
--moz-box-shadow: 0px 0px 41px 14px rgba(145,142,88,0.75);
+div.main-menu-add-selected-mood {
+ background-color: aliceblue;
+                color: #a2bd29;
+                border: 1px solid #a2bd29;
 }
+div.main-menu-add-selected-drugs {
+ background-color: aliceblue;
+                color: #27b814;
+                border: 1px solid #27b814;
+}
+div.main-menu-add-selected-sleep {
+ background-color: aliceblue;
+                color: #c40d87;
+                border: 1px solid #c40d87;
+}
+div.main-menu-add-selected-action {
+ background-color: aliceblue;
+                color: #49aaff;
+                border: 1px solid #49aaff;
+}
+div.main-menu-add-selected-actionPlaned {
+ background-color: aliceblue;
+                color: #49aaff;
+                border: 1px solid #49aaff;
+}
+
 div.main-mood-add-action {
     background-color: rgb(143 93 6);
  

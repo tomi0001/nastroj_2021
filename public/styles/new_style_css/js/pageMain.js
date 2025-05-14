@@ -204,27 +204,27 @@ function loadMenuSession() {
         case 'mood': 
             
             $("#mood").css("display","block");
-            $("#moodSelected").addClass("moodSelected");
+            $("#moodSelected").addClass("main-menu-add-selected-mood");
             schitchMenuMoodDezactived(['drugs',"action","sleep","actionPlaned"]);
             break;
         case 'drugs':
             $("#drugs").css("display","block");
-            $("#drugsSelected").addClass("moodSelected");
+            $("#drugsSelected").addClass("main-menu-add-selected-drugs");
             schitchMenuMoodDezactived(['mood',"action","sleep","actionPlaned"]);
             break;
         case 'sleep':
             $("#sleep").css("display","block");
-            $("#sleepSelected").addClass("moodSelected");
+            $("#sleepSelected").addClass("main-menu-add-selected-sleep");
             schitchMenuMoodDezactived(['mood',"action","drugs","actionPlaned"]);
             break;
         case 'action':
             $("#action").css("display","block");
-            $("#actionSelected").addClass("moodSelected");
+            $("#actionSelected").addClass("main-menu-add-selected-action");
             schitchMenuMoodDezactived(['mood',"drugs","sleep","actionPlaned"]);
             break;
         case 'actionPlaned':
             $("#actionPlaned").css("display","block");
-            $("#actionPlanedSelected").addClass("moodSelected");
+            $("#actionPlanedSelected").addClass("main-menu-add-selected-actionPlaned");
             schitchMenuMoodDezactived(['mood',"drugs","sleep","action"]);
             break;
         
@@ -1035,40 +1035,41 @@ function SwitchMenuMoodAdd(type) {
     switch(type) {
         case 'mood': 
             $("#mood").css("display","block");
-            $("#moodSelected").addClass("main-menu-add-selected");
+            $("#moodSelected").addClass("main-menu-add-selected-mood");
             schitchMenuMoodDezactived(['drugs',"action","sleep","actionPlaned"]);
             sessionSet("mood");
             break;
         case 'drugs':
             $("#drugs").css("display","block");
-            $("#drugsSelected").addClass("main-menu-add-selected");
+            $("#drugsSelected").addClass("main-menu-add-selected-drugs");
             schitchMenuMoodDezactived(['mood',"action","sleep","actionPlaned"]);
             sessionSet("drugs");
             break;
         case 'sleep':
             $("#sleep").css("display","block");
-            $("#sleepSelected").addClass("main-menu-add-selected");
+            $("#sleepSelected").addClass("main-menu-add-selected-sleep");
             schitchMenuMoodDezactived(['mood',"action","drugs","actionPlaned"]);
             sessionSet("sleep");
             break;
         case 'action':
             $("#action").css("display","block");
-            $("#actionSelected").addClass("main-menu-add-selected");
+            $("#actionSelected").addClass("main-menu-add-selected-action");
             schitchMenuMoodDezactived(['mood',"drugs","sleep","actionPlaned"]);
             sessionSet("action");
             break;
         case 'actionPlaned':
             $("#actionPlaned").css("display","block");
-            $("#actionPlanedSelected").addClass("main-menu-add-selected");
+            $("#actionPlanedSelected").addClass("main-menu-add-selected-actionPlaned");
             schitchMenuMoodDezactived(['mood',"drugs","sleep","action"]);
             sessionSet("actionPlaned");
             break;
     }
 }
 function schitchMenuMoodDezactived(type) {
+    
     for (var i = 0;i < type.length;i++) {
         $("#" + type[i]).css("display","none");
-        $("#" + type[i] + "Selected").removeClass("main-menu-add-selected");
+        $("#" + type[i] + "Selected").removeClass("main-menu-add-selected-" + type[i]);
     }
 }
 
