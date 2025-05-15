@@ -930,11 +930,15 @@ function editActionDay(url,id,idAction) {
          
        }
          arrayFormEnd = "</select>";
+         $("#button1"+id).css("display","none");
+         $("#button2"+id).css("display","block");
          $("#cancelActionDayButton"+id).css("display","block");
          $("#updateActionDayButton"+id).css("display","block");
          $("#editActionDayButton"+id).css("display","none");
          $("#deleteActionDayButton"+id).css("display","none");
+        
          
+        
         $("#editActionDay" + id).html(arrayFormStart + arrayForm + arrayFormEnd);
        
 
@@ -959,7 +963,8 @@ function cancelActionDay(url,id) {
       .done(function(response) {
 
             $("#editActionDay"+id).addClass("main-action-position");
-
+            $("#button2"+id).css("display","none");
+            $("#button1"+id).css("display","block");
             $("#cancelActionDayButton"+id).css("display","none");
             $("#updateActionDayButton"+id).css("display","none");
             $("#editActionDayButton"+id).css("display","block");
@@ -993,6 +998,8 @@ function updateActionDay(url,id) {
 
 
         $("#editActionDay"+id).addClass("main-action-position");
+        $("#button2"+id).css("display","none");
+        $("#button1"+id).css("display","block");
         $("#cancelActionDayButton"+id).css("display","none");
         $("#updateActionDayButton"+id).css("display","none");
         $("#editActionDayButton"+id).css("display","block");

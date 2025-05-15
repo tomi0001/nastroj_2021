@@ -620,4 +620,10 @@ div.main-mood-add-action-hidden-center {
           
         clear: both;
     }
+    div.main-action-day-button {
+  display: flex;
+}
+div.main-action-day-button-2 {
+    
+}
 }

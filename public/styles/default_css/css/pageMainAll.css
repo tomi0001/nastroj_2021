@@ -342,3 +342,6 @@ table.tableCenter {
         td.wakeUp {
             width: 20%;
         }
+        #select-state {
+            width: 10px;
+        }
