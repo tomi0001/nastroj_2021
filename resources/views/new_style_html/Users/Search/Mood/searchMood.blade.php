@@ -12,9 +12,9 @@
         </div>
 <div class="settings-body-page">
     <form action='{{route("search.searchMoodSubmit")}}' method='get'>
-        <table class='table'>
+        <table class='table search-mood-table'>
             <tr>
-                <td >
+                <td class="Search-mood-td-1">
                     poziom nastroju
                 </td>
                 <td class="Search-mood-td-2">
@@ -73,13 +73,13 @@
                     długośc nastroju od
                 </td>
                 <td>
-                    <input type='text' name='longMoodHourFrom' class='form-control' placeholder="Godziny">
+                    <input type='text' name='longMoodHourFrom' class='form-control Search-mood-form' placeholder="Godziny">
                 </td>
                 <td >
 
                 </td>
                 <td>
-                    <input type='text' name='longMoodMinuteFrom' class='form-control' placeholder="Minuty">
+                    <input type='text' name='longMoodMinuteFrom' class='form-control Search-mood-form' placeholder="Minuty">
                 </td>
             </tr>
             <tr>
@@ -87,13 +87,13 @@
                     długośc nastroju do
                 </td>
                 <td>
-                    <input type='text' name='longMoodHourTo' class='form-control' placeholder="Godziny">
+                    <input type='text' name='longMoodHourTo' class='form-control Search-mood-form' placeholder="Godziny">
                 </td>
                 <td >
 
                 </td>
                 <td>
-                    <input type='text' name='longMoodMinuteTo' class='form-control' placeholder="Minuty">
+                    <input type='text' name='longMoodMinuteTo' class='form-control Search-mood-form' placeholder="Minuty">
                 </td>
             </tr>
             <tr>
@@ -101,13 +101,13 @@
                     data od
                 </td>
                 <td>
-                    <input type='date' name='dateFrom' class='form-control'>
+                    <input type='date' name='dateFrom' class='form-control Search-mood-form'>
                 </td>
                 <td >
                     do
                 </td>
                 <td>
-                    <input type='date' name='dateTo' class='form-control'>
+                    <input type='date' name='dateTo' class='form-control Search-mood-form'>
                 </td>
             </tr>
             <tr>
@@ -115,13 +115,13 @@
                     Godzina od
                 </td>
                 <td>
-                    <input type='time' name='timeFrom' class='form-control'>
+                    <input type='time' name='timeFrom' class='form-control Search-mood-form'>
                 </td>
                 <td >
                     do
                 </td>
                 <td>
-                    <input type='time' name='timeTo' class='form-control'>
+                    <input type='time' name='timeTo' class='form-control Search-mood-form'>
                 </td>
             </tr>
             <tr>
@@ -201,10 +201,10 @@
                 <td colspan="3">
                 <div style='clear: both;'>
                     <div style='float: left; width:75%;' id="idWhatWork">
-                        <input type='text' name='whatWork[]' class='form-control' placeholder="słowa kluczowe">
+                        <input type='text' name='whatWork[]' class='form-control Search-mood-form-2' placeholder="słowa kluczowe">
                     </div>
                     <div style='float: left; width:75%; display: none;' id="idWhatWorkCopy" >
-                        <input type='text' name='whatWork[]' class='form-control' placeholder="słowa kluczowe">
+                        <input type='text' name='whatWork[]' class='form-control Search-mood-form-2' placeholder="słowa kluczowe">
                     </div>
                     <div style='float: left; ' >
                     <a onclick="addFieldWhatWork()" style="cursor: pointer;">
@@ -225,24 +225,24 @@
                 <div style='clear: both;'>
                     <div id="idAction">
                         <div style='float: left; width:40%;'>
-                            <input type='text' name='action[]' class='form-control' placeholder="nazwa">
+                            <input type='text' name='action[]' class='form-control Search-mood-form' placeholder="nazwa">
                         </div>
                         <div style='float: left; width:20%; margin-left: 10px;'>
-                            <input type='text' name='actionFrom[]' class='form-control' placeholder="wartość od">
+                            <input type='text' name='actionFrom[]' class='form-control Search-mood-form-3' placeholder="wartość od">
                         </div>
                         <div style='float: left; width:20%; margin-left: 10px;'>
-                            <input type='text' name='actionTo[]' class='form-control' placeholder="wartość do">
+                            <input type='text' name='actionTo[]' class='form-control Search-mood-form-3' placeholder="wartość do">
                         </div>
                     </div>
                      <div id="idActionCopy" style="display: none;">
                         <div style='float: left; width:40%;'>
-                            <input type='text' name='action[]' class='form-control' placeholder="nazwa">
+                            <input type='text' name='action[]' class='form-control Search-mood-form' placeholder="nazwa">
                         </div>
                         <div style='float: left; width:20%; margin-left: 10px;'>
-                            <input type='text' name='actionFrom[]' class='form-control' placeholder="wartość od">
+                            <input type='text' name='actionFrom[]' class='form-control Search-mood-form-3' placeholder="wartość od">
                         </div>
                         <div style='float: left; width:20%; margin-left: 10px;'>
-                            <input type='text' name='actionTo[]' class='form-control' placeholder="wartość do">
+                            <input type='text' name='actionTo[]' class='form-control Search-mood-form-3' placeholder="wartość do">
                         </div>
 
 

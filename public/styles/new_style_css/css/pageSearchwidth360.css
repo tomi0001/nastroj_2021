@@ -4,14 +4,14 @@
        
           margin-left: auto;
         margin-right: auto;
-        width: 170%;
+        width: 360px;
     }
     div.settings-title {
         padding-top: 15px;
         margin-top: 200px;
          margin-left: auto;
          margin-right: auto;
-         width: 210%;
+         width: 360px;
          text-align: center;
          height: 60px;
          font-size: 20px;
@@ -23,10 +23,22 @@
         text-align: center;
     }
     input.Search-mood-form {
-        width: 90px;
+        width: 70px;
+    }
+     input.Search-mood-form-2 {
+        width: 200px;
+    }
+      input.Search-mood-form-3 {
+        width: 40px;
+    }
+     td.Search-mood-td-1 {
+        width: 110px;
     }
     td.Search-mood-td-2 {
-        width: 10%;
+        width: 100px;
+    }
+    td.Search-mood-td-3 {
+        width: 50px;
     }
     div.search-mood-day {
         
@@ -325,5 +337,9 @@
     div.search-mood-average-date-substance {
         overflow-y: auto;
         height: 200px;
+    }
+    table.search-mood-table {
+        max-width: 360px;
+        table-layout: fixed;
     }
 }
