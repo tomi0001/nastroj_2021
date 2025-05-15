@@ -128,7 +128,7 @@
                 <td >
                     Dni
                 </td>
-                <td colspan="6">
+                <td colspan="3">
                     <div style="clear:both;">
                     <div class="Search-day-week-div" >
                         <div class="Search-day" >
@@ -198,19 +198,19 @@
                 <td >
                     słowa kluczowe co robiłem
                 </td>
-                <td colspan="3">
+                <td collspan="3">
                 <div style='clear: both;'>
-                    <div style='float: left; width:75%;' id="idWhatWork">
+                    <div style='float: left; ' id="idWhatWork">
                         <input type='text' name='whatWork[]' class='form-control Search-mood-form-2' placeholder="słowa kluczowe">
                     </div>
-                    <div style='float: left; width:75%; display: none;' id="idWhatWorkCopy" >
+                    <div style='float: left; display: none;' id="idWhatWorkCopy" >
                         <input type='text' name='whatWork[]' class='form-control Search-mood-form-2' placeholder="słowa kluczowe">
                     </div>
                     <div style='float: left; ' >
                     <a onclick="addFieldWhatWork()" style="cursor: pointer;">
-                <div class="plusButton plusMinusButton" id='addFieldWhatWork'> <img width="40" class="minus" id="boolxxxx" src="{{asset('/image/icon_plus.png')}}"></div>
-            </a>
-                    </div>
+                         <div class="plusButton plusMinusButton" id='addFieldWhatWork'> <img width="40" class="minus" id="boolxxxx" src="{{asset('/image/icon_plus.png')}}"></div>
+                     </a>
+                        </div>
                 </div>
                 </td>
 

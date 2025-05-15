@@ -4,8 +4,8 @@
         
     </div>
     <div class='col-md-12 col-lg-8 col-sm-12 col-xs-12 '>
-        <div class='bodyDiv'>
-            <div class='formAddMood borderSleep'>
+        <div>
+            <div >
                 
                 <div class='row'>
                     <div class='col-lg-1 col-md-1 col-xs-0 col-sm-0'>

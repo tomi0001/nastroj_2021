@@ -4,14 +4,14 @@
        
           margin-left: auto;
         margin-right: auto;
-        width: 360px;
+        width: 440px;
     }
     div.settings-title {
         padding-top: 15px;
         margin-top: 200px;
          margin-left: auto;
          margin-right: auto;
-         width: 360px;
+         width: 440px;
          text-align: center;
          height: 60px;
          font-size: 20px;
@@ -23,7 +23,7 @@
         text-align: center;
     }
     input.Search-mood-form {
-        width: 70px;
+        width: 80px;
     }
      input.Search-mood-form-2 {
         width: 200px;
@@ -32,13 +32,13 @@
         width: 40px;
     }
      td.Search-mood-td-1 {
-        width: 110px;
+        width: 120px;
     }
     td.Search-mood-td-2 {
-        width: 100px;
+        width: 130px;
     }
     td.Search-mood-td-3 {
-        width: 50px;
+        width: 60px;
     }
     div.search-mood-day {
         

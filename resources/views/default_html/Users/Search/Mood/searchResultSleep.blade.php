@@ -354,6 +354,14 @@
                         ->appends(['day5'=>Request::get("day5")])
                         ->appends(['day6'=>Request::get("day6")])
                         ->appends(['day7'=>Request::get("day7")])
+                        ->appends(['percentSleepFlatFrom'=>Request::get("percentSleepFlatFrom")])
+                        ->appends(['percentSleepFlatTo'=>Request::get("percentSleepFlatTo")])
+                        ->appends(['percentSleepDeepFrom'=>Request::get("percentSleepDeepFrom")])
+                        ->appends(['percentSleepDeepTo'=>Request::get("percentSleepDeepTo")])
+                        ->appends(['percentSleepRemFrom'=>Request::get("percentSleepRemFrom")])
+                        ->appends(['percentSleepRemTo'=>Request::get("longMoodMinuteTo")])
+                        ->appends(['percentSleepWorkingFrom'=>Request::get("percentSleepWorkingFrom")])
+                        ->appends(['percentSleepWorkingTo'=>Request::get("percentSleepWorkingTo")])
                         ->links();
                         @endphp
                         {{$arrayList}}

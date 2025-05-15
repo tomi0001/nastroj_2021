@@ -53,7 +53,7 @@
         -o-border-radius: 0 !important;
 }
     #calendar {
-        width: 550px;
+        width: 440px;
         margin-top: 80px;
         
     }
@@ -65,7 +65,7 @@
         margin-right: auto;
     }
     div.main-menu-month-one {
-        width: 25%;
+        width: 20%;
         float: left;
         text-align: center;
         
@@ -84,21 +84,22 @@
         
     }
     div.main-mood-sum {
-        width: 100%;
+        
         
         float: left;
         margin: 5px;
     }
     div.main-drugs-sum {
-        width: 100%;
+        margin: 5px;
         float: left;
         
         
     }
     div.main-action-sum {
-        width: 100%;
+        
         float: left;
         height: 230px;
+        margin: 5px;
         
     }
     div.main-empty {
@@ -109,7 +110,7 @@
     div.main-sum-error {
         font-size: 18px;
         font-weight: bold;
-        width: 100%;
+        width: 440px;
         height: 100px;
         
         margin: 0 auto;
@@ -135,7 +136,7 @@
         height: 230px;
     }
     div.main-link-menu {
-        width: 500px;
+        width: 440px;
         height: 250px;
         margin-left: auto;
         margin-right: auto;
@@ -147,7 +148,7 @@
     }
     .main-link-show {
         
-        width: 550px;
+        width: 440px;
         height: 60px;
         margin-top: 8px;
         border-radius: 40px;
@@ -535,7 +536,7 @@ div.main-menu-add-single-2 {
 }
 div.main-mood-form-add {
     clear: both;
-    width:140%;
+    width:440px;
 }
 div.main-mood-add-scroll {
 
