@@ -87,7 +87,7 @@
 </div></div>
 
 <div class="search-mood-average-table">
-    <table class="table" id="tblSort">
+    <table class="table table-striped search-mood-table-average" id="tblSort">
 
 
         <thead>
@@ -134,11 +134,11 @@
         <tbody>
 
         @for ($i=0;$i < count($minMax);$i++)
-                    @if ($i% 2 == 0)
-                           <tr class="main-drugs-sum-table-1">
-                    @else
-                           <tr  class="main-drugs-sum-table-0">
-                    @endif
+                   
+                           <tr>
+                   
+                           
+                    
                 <td  class="search-mood-average-center">
                     <a  class="search-mood-average-date" onclick="showDateAverageMood('{{route('ajax.showDateAverageMood')}}','{{ $minMax[$i]->dat_end }}',{{$i}})">{{$minMax[$i]->dat_end}}</a>
                 </td>

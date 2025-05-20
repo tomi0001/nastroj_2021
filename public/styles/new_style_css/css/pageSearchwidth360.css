@@ -11,7 +11,7 @@
         margin-top: 200px;
          margin-left: auto;
          margin-right: auto;
-         width: 440px;
+         width: 500px;
          text-align: center;
          height: 60px;
          font-size: 20px;
@@ -48,8 +48,8 @@
         text-align: center;
         padding-top: 10px;
         margin-top: 45px;
-        margin-left: 80px;
-        width: 600px;
+        margin-left: 40px;
+        width: 440px;
 
     }
     div.settings-body-page-result {
@@ -70,7 +70,7 @@
     div.main-mood-show {
         margin-left: auto;
         margin-right: auto;
-        width: 135%;
+        width: 440px;
         clear: both;
     }
     div.main-mood-show-single-br {
@@ -215,7 +215,7 @@
         height: 60px;
         
         text-align: center;
-        margin-left: 195px;
+        margin-left: 90px;
         
 
     }
@@ -257,7 +257,7 @@
     }
     div.search-all-day {
             clear: both;
-            margin-left: 200px;
+            margin-left: 50px;
 
         
     }
@@ -269,12 +269,12 @@
     }
 
     div.search-mood-average {
-        width: 85%;
+        width: 440px;
         margin-left: auto;
         margin-right: auto;
     }
     div.search-mmod-average-title-date {
-        width: 200%;
+        width: 440px;
         margin-left: auto;
         margin-right: auto;
         text-align: center;
@@ -287,12 +287,12 @@
 
     }
     div.search-mood-average-table {
-        width: 140%;
+      
         margin-left: auto;
         margin-right: auto;
     }
     .search-mood-average-td-1 {
-        width: 12%;
+        width: 12% !important;
     }
 
     div.search-mood-action-sum {
@@ -303,7 +303,7 @@
     div.main-search-show-single-week {
         
         padding: 10px;
-        width: 740px;
+        width: 440px;
         margin-left: auto;
         margin-right: auto;
     }
@@ -321,7 +321,7 @@
 
     }
     div.search-mood-how-minutes {
-        width: 160%;
+        width: 440px;
         margin-left: auto;
         margin-right: auto;
         text-align: center;
@@ -341,5 +341,12 @@
     table.search-mood-table {
         max-width: 360px;
         table-layout: fixed;
+    }
+    table.search-mood-table-average {
+        width: 440px !important;
+    }
+    .search-mood-average-center {
+        width: 20px !important;
+        font-size: 9px;
     }
 }
