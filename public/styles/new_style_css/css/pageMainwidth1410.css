@@ -384,7 +384,7 @@
 
 div.main-drugs-show-single-right {
     width: 45%;
-    height: 100%;
+   
     
     float: left;
     
@@ -493,6 +493,7 @@ div.main-action-show-not  {
     height: 45px;
     width: 60%;
     text-align: center;
+    margin-top: 20px;
     font-size: 30px;
 }
 

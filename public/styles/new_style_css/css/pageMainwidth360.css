@@ -390,7 +390,7 @@
 
 div.main-drugs-show-single-right {
     width: 90%;
-    height: 100%;
+   
     
     float: left;
     
@@ -400,7 +400,7 @@ div.main-drugs-show-single-right {
     
 }
 div.main-drugs-show-single {
-    height: 1000px;
+   
     padding: 10px;
     
 }
@@ -499,9 +499,10 @@ div.main-action-show-not  {
     margin-left: auto;
     margin-right: auto;
     height: 45px;
-    width: 140%;
+    margin-top: 20px;
+    width: 100%;
     text-align: center;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 div.main-menu-add {
