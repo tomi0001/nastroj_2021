@@ -8,37 +8,37 @@
 
 <br><Br>
 <div id="PageLogin">
-    <div class="titleUser">LOGOWANIE UŻYTKOWNIKA</div>
-    <div class="tableUser">
+    
+    <div >
         <form action="{{route('login')}}" method="post">
-            <table class="table">
+            <table class="table login-table">
                 <tr>
-                    <td class="tableRegister">
+                    <td >
                         Twój email
                     </td>
-                    <td class="input_lg">
+                    <td >
                         <input type="text" name="email" class="form-control form-control-lg" placeholder="email" value="{{Request::old("email")}}">
 
                     </td>
                 </tr>
                 
                 <tr>
-                    <td class="tableRegister">
+                    <td >
                         Twoje hasło
                     </td>
-                    <td class="input_lg">
+                    <td >
                         <input type="password" name="password" class="form-control form-control-lg" placeholder="hasło">
 
                     </td>
                 </tr>
                 <tr>
-                <td class="tableRegister">
+                <td >
                          <label class="form-check-label" for="remember">
                                                 {{ __('Zapamiętaj mnie') }}
                                             </label>
 
                 </td>
-                <td align='left'>
+                <td >
                                            <input class="form-control-lg form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                 </td>
                 </tr>
@@ -46,8 +46,8 @@
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <tr>
 
-                    <td class="buttonUser" colspan="2">
-                        <button  class="btn-login  btn-yellow " >ZALOGUJ SIĘ</button>
+                    <td colspan="2" class="login-td-center">
+                        <button  class="btn btn-lg btn-warning " >ZALOGUJ SIĘ</button>
                     </td>
                 </tr>
 

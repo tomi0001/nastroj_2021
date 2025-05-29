@@ -8,25 +8,25 @@
 
 <br><Br>
 <div id="PageLogin">
-    <div class="titleDoctor">LOGOWANIE DOKTORA</div>
-    <div class="tableUser">
+   
+    <div >
         <form action="{{route('doctorlogin')}}" method="post">
-            <table class="table">
+            <table class="table login-table">
                 <tr>
-                    <td class="tableRegister">
+                    <td >
                         Twój login
                     </td>
-                    <td class="input_lg">
+                    <td >
                         <input type="text" name="login" class="form-control form-control-lg" placeholder="login" value="{{Request::old("email")}}">
 
                     </td>
                 </tr>
                 
                 <tr>
-                    <td class="tableRegister">
+                    <td >
                         Twoje hasło
                     </td>
-                    <td class="input_lg">
+                    <td >
                         <input type="password" name="password" class="form-control form-control-lg" placeholder="hasło">
 
                     </td>
@@ -36,8 +36,8 @@
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <tr>
 
-                    <td class="buttonUser" colspan="2">
-                        <button  class="btn-login btn-blue" >ZALOGUJ SIĘ</button>
+                    <td class="login-td-center" colspan="2">
+                        <button  class="btn btn-lg btn-info" >ZALOGUJ SIĘ</button>
                     </td>
                 </tr>
 
