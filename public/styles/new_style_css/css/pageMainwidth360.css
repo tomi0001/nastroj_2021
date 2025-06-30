@@ -426,10 +426,10 @@ td.main-drugs-edit-td {
 div.main-drugs-average {
      
  
-        width: 70%;
+        width: 85%;
         margin-left: auto;
         margin-right: auto;
-        border-radius: 25px;
+        
         max-height: 400px;
         margin-top: 20px;
         margin-bottom: 15px;
@@ -441,7 +441,7 @@ div.main-drugs-average {
 }
 div.main-drugs-average-div {
 
-        width: 70%;
+        width: 100%;
         
         font-size: 17px;
         
@@ -455,7 +455,7 @@ div.main-drugs-average-div {
 }
 div.main-drugs-average-how {
 
-        max-height: 30px;
+        
         
         width: 60%;
         margin-left: auto;
