@@ -169,22 +169,22 @@
                                 <div class="main-mood-edit-2">
                                     <table class="table">
                                         <tr>
-                                            <td class="main-mood-edit-td"><span class="font-mood-span">nastrój: </span> </td><td> <input type="number" id="levelMoodEdit{{$list->id}}" step="0.01" value="{{$list->level_mood}}" class="form-control"> </td>
+                                            <td class="main-mood-edit-td"><span class="font-mood-span">nastrój: </span> </td><td> <input type="text" id="levelMoodEdit{{$list->id}}" step="0.01" value="{{$list->level_mood}}" class="form-control"> </td>
                                         </tr>
                                         <tr>
-                                            <td class="main-mood-edit-td"><span class="font-mood-span">lęk: </span>  </td><td> <input type="number" id="levelAnxietyEdit{{$list->id}}" step="0.01" value="{{$list->level_anxiety}}" class="form-control"> </td>
+                                            <td class="main-mood-edit-td"><span class="font-mood-span">lęk: </span>  </td><td> <input type="text" id="levelAnxietyEdit{{$list->id}}" step="0.01" value="{{$list->level_anxiety}}" class="form-control"> </td>
                                         </tr>                                            
                                         <tr>
                                             <td class="main-mood-edit-td">
-                                            <span class="font-mood-span">napięcie/rozdraznienie: </span>  </td><td> <input type="number" id="levelNervousnessEdit{{$list->id}}" step="0.01" value="{{$list->level_nervousness}}" class="form-control"> </td>
+                                            <span class="font-mood-span">napięcie/rozdraznienie: </span>  </td><td> <input type="text" id="levelNervousnessEdit{{$list->id}}" step="0.01" value="{{$list->level_nervousness}}" class="form-control"> </td>
                                         </tr>
                                         <tr>
                                             <td class="main-mood-edit-td">
-                                            <span class="font-mood-span">pobudzenie: </span>  </td><td>  <input type="number" id="levelStimulationEdit{{$list->id}}" step="0.01" value="{{$list->level_stimulation}}" class="form-control"></td>
+                                            <span class="font-mood-span">pobudzenie: </span>  </td><td>  <input type="text" id="levelStimulationEdit{{$list->id}}" step="0.01" value="{{$list->level_stimulation}}" class="form-control"></td>
                                         </tr>
                                         <tr>
                                             <td class="main-mood-edit-td">
-                                            <span class="font-mood-span">Ilośc epizodów psychotycznych: </span>  </td><td>  <input type="number" id="levelEpizodesEdit{{$list->id}}" step="1" value="{{$list->epizodes_psychotik}}" class="form-control"> </td>
+                                            <span class="font-mood-span">Ilośc epizodów psychotycznych: </span>  </td><td>  <input type="text" id="levelEpizodesEdit{{$list->id}}" step="1" value="{{$list->epizodes_psychotik}}" class="form-control"> </td>
                                         </tr>
                                         <tr>
                                             <td colspan="2"  class="main-mood-edit">
