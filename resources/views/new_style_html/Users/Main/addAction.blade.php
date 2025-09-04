@@ -23,7 +23,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td   >
+                                    <td    class="main-mood-add-table">
                                         czas
                                     </td>
                                     <td >
@@ -31,7 +31,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td   >
+                                    <td    class="main-mood-add-table">
                                         Nazwa akcji
                                     </td>
                                     <td >

@@ -18,7 +18,7 @@
                         <form method='get' id="formAddDrugs">
                             <table class='table '>
                                 <tr>
-                                    <td >
+                                    <td  class="main-mood-add-table">
                                         Nazwa produktu
                                     </td>
                                     <td >
@@ -31,7 +31,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td  >
+                                    <td   class="main-mood-add-table">
                                         Nazwa zaplanowanej dawki
                                     </td>
                                     <td >
@@ -44,7 +44,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td rowspan='2' style='padding-top: 35px; ' >
+                                    <td rowspan='2' style='padding-top: 35px; '  class="main-mood-add-table">
                                         Godzina wzięcia
                                     </td>
                                     <td >
@@ -59,7 +59,7 @@
                                 
                                 
                                 <tr>
-                                    <td >
+                                    <td  class="main-mood-add-table">
                                         Dawka
                                     </td>
                                     <td>
@@ -70,7 +70,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td  style='padding-top: 9%; ' >
+                                    <td  style='padding-top: 9%; '  class="main-mood-add-table">
                                         opis spożycia
                                     </td>
                                     <td>

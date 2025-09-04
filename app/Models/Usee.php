@@ -282,6 +282,7 @@ class Usee extends Model
                 ->selectRaw(" "
                 . "( CASE "
                 . " WHEN products.type_of_portion = 1  THEN (usees.portion  ) "
+                . " WHEN products.type_of_portion = 2  THEN (products.how_percent / 100)  *  usees.portion  "
                 . " WHEN products.type_of_portion = 4  THEN (usees.portion  ) "
                 . " WHEN products.type_of_portion = 5  THEN (usees.portion  ) "
                 . " WHEN products.type_of_portion = 6  THEN (usees.portion  ) "
@@ -486,7 +487,7 @@ class Usee extends Model
                     . "  as type ")
             ->selectRaw(" round(("
                         . " CASE "
-                        . " WHEN products.type_of_portion = 2  THEN ( (products.how_percent / 100) * usees.portion ) " 
+                        . " WHEN products.type_of_portion = 2  THEN  (usees.portion ) " 
                         . " WHEN substances_products.doseProduct is NULL  THEN (usees.portion ) "
                         . "ELSE ( usees.portion ) "
                         . " END),2)"

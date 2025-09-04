@@ -1,439 +1,303 @@
+div.main-calendar-cell-active {
 
-     td.moodadd {
-                   
-        color: #383824;
+    background-color: #E97705;
+ 
+    color: #524504;
+  
+
+}
+
+span.main-calendar-span {
+    color: white;
+}
+span.main-calendar-month {
+    color: white;
+}
+div.cell10000 {
+    background-color: #f3f7c6;
+    border-radius:0px !important;
+    -moz-border-radius:0px !important;
+    -ms-border-radius:0px !important;
+    -o-border-radius:0px !important;
+    -webkit-border-radius:0px !important;
+}
+
+a.main-calendar-span-active {
+    color: rgb(105, 95, 4);
+}
+#calendar {
     
-      
-    }
+    -webkit-box-shadow: 0px 0px 13px -8px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 0px 0px 13px -8px rgba(66, 68, 90, 1);
+    box-shadow: 0px 0px 13px -8px rgba(66, 68, 90, 1);
+    background: rgb(77, 75, 75);
+    background:  rgb(19, 51, 4);
 
-div.actionMain {
+}
+div.main-calendar-cell-selected {
+    background-color: rgb(145, 255, 0);
+}
+div.main-sum-error {
+    background-color: rgb(209, 10, 10);
+    color: rgb(255, 255, 255);
+  
+}
+.main-link-show {
+    background-color: #ffffff;
+    border: 1px outset #000000;
+    -webkit-box-shadow: 0px 0px 16px -1px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 0px 0px 16px -1px rgba(66, 68, 90, 1);
+    box-shadow: 0px 0px 16px -1px rgba(66, 68, 90, 1);
+    color: rgb(50, 61, 1);
+}
+.main-link-mood:hover {
+    border: 1px outset #616807;
+    -webkit-box-shadow: 0px 0px 16px -1px #d9e62d;
+    -moz-box-shadow: 0px 0px 16px -1px #d9e62d;
+    box-shadow: 0px 0px 16px -1px #d9e62d;
+}
+.main-link-drugs:hover {
+    border: 1px outset #009e6f;
+    -webkit-box-shadow: 0px 0px 16px -1px #44a580;
+    -moz-box-shadow: 0px 0px 16px -1px #44a580;
+    box-shadow: 0px 0px 16px -1px #44a580;
+}
+.main-link-action:hover {
+    
+    border: 1px outset #090772;
+    -webkit-box-shadow: 0px 0px 16px -1px #244386;
+    -moz-box-shadow: 0px 0px 16px -1px #244386;
+    box-shadow: 0px 0px 16px -1px #244386;
+}
+.main-link-selected {
+    background-color: rgb(107, 106, 27);
+    color: white;
+}
+div.main-mood-show-single {
+   
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+}
+
+div.main-mood-show-single-br {
+    height: 50px;
+}
+div.main-mood-show-single-right {
+    
+}
+div.main-sleep-show-single {
+    
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+}
+div.main-mood-show-description {
+    -webkit-box-shadow: 0px 0px 16px -1px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 0px 0px 16px -1px rgba(66, 68, 90, 1);
+    box-shadow: 0px 0px 16px -1px rgba(66, 68, 90, 1);
+    border-radius: 20px 20px 20px 20px;
+    background-color: #ffffa5;
+    border: 1px solid #000000;
+    font-family: "Architects Daughter", serif;
+    color:rgb(50, 61, 1);
+    font-size: 22px;
+}
+div.main-sleep-show-description {
+    -webkit-box-shadow: 0px 0px 16px -1px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 0px 0px 16px -1px rgba(66, 68, 90, 1);
+    box-shadow: 0px 0px 16px -1px rgba(66, 68, 90, 1);
+    border-radius: 20px 20px 20px 20px;
+    background-color: #92f8ff;
+    border: 1px solid #000000;
+    font-family: "Architects Daughter", serif;
+    color:rgb(50, 61, 1);
+    font-size: 22px;
+}
+div.main-mood-show-description-edit {
+    -webkit-box-shadow: 0px 0px 16px -1px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 0px 0px 16px -1px rgba(66, 68, 90, 1);
+    box-shadow: 0px 0px 16px -1px rgba(66, 68, 90, 1);
+    border-radius: 20px 20px 20px 20px;
+    background-color: #ffffa5;
+    border: 1px solid #000000;
+    font-family: "Architects Daughter", serif;
+    color:rgb(50, 61, 1);
+    font-size: 22px;
+}
+div.main-sleep-show-description-edit {
+    -webkit-box-shadow: 0px 0px 16px -1px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 0px 0px 16px -1px rgba(66, 68, 90, 1);
+    box-shadow: 0px 0px 16px -1px rgba(66, 68, 90, 1);
+    border-radius: 20px 20px 20px 20px;
+    background-color: #92f8ff;
+    border: 1px solid #000000;
+    font-family: "Architects Daughter", serif;
+    color:rgb(50, 61, 1);
+    font-size: 22px;
+}
+.main-mood-show-description-edit-form {
+    background-color: white;
+}
+
+div.main-action-edit-main {
     background-color: rgb(153 175 24);
  
     color: #126e06;
  
 }
-
-
-
-
-div.actionMainselected {
-    background-color: rgb(238, 197, 15);
+div.main-action-edit-main-selected {
+    background-color: rgb(209, 38, 32);
   
-    color: #126e06;
+    color: #e3f591;
 
 }
-
-
-
-
-    div.borderDrugs {
-         border: 2px solid  rgba(14, 74, 3, 1);
-         
-
-
-    }
-    div.borderMood {
-         border: 2px solid rgb(163 109 12);
-         box-shadow: 0 30px  30px 15px rgba(12, 37, 36, 0.35);
-
-
-    }
-
-    div.borderSleep {
-         border: 2px solid #2a053d;
-         box-shadow: 0 30px  30px 15px rgba(47, 40, 86, 0.35);
-
-
-
-    }
-    div.borderAction {
-         border: 2px solid rgb(153 175 24);
-
-
- 
-    }
-
-
-
-        
-
-
-
-
- 
-        div.NotShow {
-         
-            box-shadow: 5px 5px 4px 1px #5B7235;
-            color: white;
-            background-color: #FB2A17;
-        }
-        div.formAddMood {
-     
-           background-color: rgba(158, 158, 131, 0.73);
-        }
-        
+div.main-drugs-show-single {
     
-        span.kalendar {
-           
-            color: #eff0e6;
-        }
-        span.kalendarBig {
-            
-            color: #f8ffc5;
-        }
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+}
+div.main-drugs-show-single-br {
+    height: 50px;
+}
 
-        div.cell_active {
-
-            background-color: #2bd0b8;
-         
-            color: #524504;
-          
-
-        }
-        div.cell_selected {
-
-            background-color: yellow;
-           
-        }
-
-        div.cell10000 {
-          
-            background-color: #f0f1cf;
-           
-
-
-        }
-        div.howAction {
-        
-            color: #0B3693;
-        }
-        a.no_active {
-            color: #6A720C;
-        }
-
-
-            div.menu {
-          
-            color: white;
-         
-
-        }
-
-
-        button.calendar {
-                background-color: #241410; 
-               
-                border-color: #952908;
-            
-                color: white;
-         
+div.main-drugs-average-div  {
+    background-color: rgb(175, 236, 188);
+}
+div.main-drugs-average-line {
+    background-color: #314940;
+    color: white;
+}
+div.main-action-show-title {
+    background-color: #849695;
+    color: white;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
+}
+div.main-action-position {
+    font-size: 19px;
+}
+span.main-action-warning {
+    color: red;
+}
+div.main-action-show-not {
+    background-color: red;
+    color: white;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
+}
+div.main-menu-add-mood  {
+    background-color: #a2bd29;
+                color: aliceblue;
                 
-        }
-        button.calendar:hover {
-                background-color: rgb(236, 236, 214); 
-                color: rgb(0, 0, 0);
-                border-color: #C29713;
-            
-        }
-        button.main {
-                
-          
-                color: white;
-           
-                box-shadow: 6px 6px 6px #32370f;
-        }
-        button.MainEdit {
-         
-                color: white;
-     
-                box-shadow: 6px 6px 6px #F4E375;
-        }
-        button.MainEdit:hover {
-         
-                color: white;
-          
-                box-shadow: 6px 6px 6px #F4E375;
-        }
-        button.main:hover {
-                
-                color: white;
-                border-color: #C29713;
-        
-        }
-        button.main-long {
-         
-                color: white;
-        
-                box-shadow: 6px 6px 6px #32370f;
-        }
-        button.main-long:hover {
-                
-                color: white;
-               
-       
-        }
- 
-
-        button.small:hover {
-                
-                color: white;
-                
-         
-        }
-
-        button.danger:hover {
-                background-color: #F92900;
-                color: white;
-                border-color: #C29713;
-          
              
-        }
-
-     
-        
-        
-        
-     
-   
-   
-        #showmood {
-            
-            background-color: rgb(163 109 12);
+                text-decoration: none;
+                transition-duration: 0.4s;
+                border: 1px solid #a2bd29;
+                text-transform: uppercase;
+}
+div.main-menu-add-sleep  {
+    background-color: #c40d87;
+                color: aliceblue;
+                
        
-        }
-        #showdrugs {
-           
-            background-color: rgba(14, 74, 3, 1);
-      
-        }
-        #showaction {
-           
-            background-color: rgba(210, 210, 44, 0.61);
-
-        }
-       
-
-        div.sumMood {
-            
-          background-color: rgb(179 150 72);
-         
-        }
-
-        div.sumAction {
-     
-            background-color: rgb(193 207 68);
-     
-        }
-
-
-
-
-
-
-        div.linkShow {
-           
-
-            color: white;
-     
-        }
-
-
-
-        hr.drugs {
-height: 1.0em; width: 80%; border: 1px solid #942314;
-
-        }
- 
-        div.hourPlan {
-            
-            background-color: #6C54E2;
-          
-            color: #D4EC1C;
-            box-shadow: 1px 6px 8px 2px rgba(28,33,77,0.76);
-           
-        }
-
-                div.errorMainMessagesmall {
-            color: white;
-     
-            background-color: red;
-      
-            box-shadow: 6px 0  20px 8px rgba(127, 15, 15, 0.8);
-            
-        }
-                div.disable {
-            background-color: #D92A2A;
-        
-        }
-
-#calendar {
-    
-    
-
+                text-decoration: none;
+                transition-duration: 0.4s;
+                border: 1px solid #c40d87;
+                text-transform: uppercase;
+}
+div.main-menu-add-drugs  {
+    background-color: #27b814;
+                color: aliceblue;
+                
+                
+                text-decoration: none;
+                transition-duration: 0.4s;
+                border: 1px solid #27b814;
+                text-transform: uppercase;
+}
+div.main-menu-add-action  {
+    background-color: #49aaff;
+                color: aliceblue;
+                
+                
+                text-decoration: none;
+                transition-duration: 0.4s;
+                border: 1px solid #49aaff;
+                text-transform: uppercase;
+}
+div.main-menu-add-selected-mood {
+ background-color: aliceblue;
+                color: #a2bd29;
+                border: 1px solid #a2bd29;
+}
+div.main-menu-add-selected-drugs {
+ background-color: aliceblue;
+                color: #27b814;
+                border: 1px solid #27b814;
+}
+div.main-menu-add-selected-sleep {
+ background-color: aliceblue;
+                color: #c40d87;
+                border: 1px solid #c40d87;
+}
+div.main-menu-add-selected-action {
+ background-color: aliceblue;
+                color: #49aaff;
+                border: 1px solid #49aaff;
+}
+div.main-menu-add-selected-actionPlaned {
+ background-color: aliceblue;
+                color: #49aaff;
+                border: 1px solid #49aaff;
 }
 
-
-
-    div.bodyDiv {
-        
-        background-image: url('../tlo.png'); /* from http://subtlepatterns.com */
-    }
-
-
-
-        button.danger {
-            box-shadow: 6px 6px 6px #32370f;
-            background-color: red;
-            color: white;
-        }
-        
-        
-        
-        button.updateAction {
-            box-shadow: 6px 6px 6px #0b668f;
-            background-color: #1482b4;
-            color: white;
-        }
-        
-                        button.danger:hover {
-     box-shadow: 6px 6px 6px #32370f;
-            background-color: red;
-            color: white;
-            border-color: #7E0705;
-            
-        }
-                button.btn-actionDay {
-            box-shadow: 6px 6px 6px #2f4100;
-            background-color: #757000;
-            color: white;
-        }
-                button.btn-actionDay:hover {
-            box-shadow: 6px 6px 6px 2f4100;
-            background-color: #c46915;
-            
-            color: white;
-        }
-span.warning {
-    color: #CA0606;
+div.main-mood-add-action {
+    background-color: rgb(143 93 6);
+ 
+    color: #e7ecc6;
  
 }
 
 
-div.descriptionModShowSleep {
-    background-color: #7A26C9;
-
-    color: white;
-
-}
 
 
-
-
-div.moodSelected {
+div.main-mood-add-action-selected {
+    background-color: rgb(209, 38, 32);
   
+    color: #e3f591;
 
-           color: #dadd4a;
 }
-
-
-
-div.typeOfPortion {
-    background-color: #56B392;
+ div.main-mood-show-single-left { 
+    background-color: rgb(231, 238, 215);
+    color: rgb(20, 20, 18);
+}
+div.main-drugs-show-single-left {
+    background-color: rgb(231, 238, 215);
+    color: rgb(43, 44, 40);
+}
+.disable {
+    background-color: white !important;
+}
+td.main-center {
+    color: rgb(255, 255, 255);
+}
+div.main-action-position {
+    color: black;
+}
+td.main-mood-add-table {
     color: white;
 }
-
-
-table.drugsShow {
-
-    background-color: rgb(62, 68, 49);
-    color: #775807;
-
-}
-
-
-
-
-
-div.descriptionDrugsShow {
-    background-color: #000000;
-
-    color: white;
-
-}
-        div.linkSelected {
-           color: #d0c57a;
-           border:  2px solid #c7c8b8;
-          
-        }
-
-
-
-
-
-span.fontMoodNot {
-  
-    color: #2a053d;
-}
-
-
-
-thead.titleTheadDrugs {
-
-    background-color: #297c1a;
-}
-td.moodButton {
-   
-     border-left: 2px solid #0C5204;
-   border-right: 2px solid #0C5204;
-   border-bottom: 2px solid #0C5204;
-    
-}
-
-
-td.drugsTd {
-    color: #ffffff;
-}
-
-
-
-
-
-
-
-
-        
-   
-        
-        
-        div.sumAverage {
-
-            background-color: #000000;
-        }
-        div.titleAverage {
-            background-color: #19B846;
-        }
-        
-        div.averageDiv {
-
-            background-color: #14631c;
-            color: #ffffff;
-        }
-        
-        div.averageNr1 {
-            background-color: rgba(164, 53, 19, 0.84);
-            color: white;
-        }
-        div.averageNr2 {
-            background-color: rgba(164, 53, 19, 0.57);
-            color: white;
-        }
-        div.averageNrEnd {
-            background-color: rgba(164, 53, 19, 0.42);
-            color: white;
-        }
-        
-        div.lineAverage {
-    box-shadow: 0 0 4px 1px #5c5b04;
-            background-color: #ACD67A;
-          
-        }

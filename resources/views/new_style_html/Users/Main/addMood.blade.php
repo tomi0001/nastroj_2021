@@ -27,7 +27,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td rowspan='2' style='padding-top: 35px; ' >
+                                    <td rowspan='2' style='padding-top: 35px; '  class="main-mood-add-table">
                                         Godzina zakończenia
                                     </td>
                                     <td>
@@ -40,7 +40,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td >
+                                    <td  class="main-mood-add-table">
                                         Poziom nastroju
                                     </td>
                                     <td>
@@ -48,7 +48,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td >
+                                    <td  class="main-mood-add-table">
                                         Poziom lęku
                                     </td>
                                     <td>
@@ -56,7 +56,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td >
+                                    <td  class="main-mood-add-table">
                                         Poziom napięcia
                                     </td>
                                     <td>
@@ -64,7 +64,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td >
+                                    <td  class="main-mood-add-table">
                                         Poziom pobudzenia
                                     </td>
                                     <td>
@@ -72,7 +72,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td >
+                                    <td  class="main-mood-add-table">
                                         Ilośc epizodów psychotycznych
                                     </td>
                                     <td>
@@ -80,7 +80,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td  style='padding-top: 13%; ' >
+                                    <td  style='padding-top: 13%; '  class="main-mood-add-table">
                                         Co robiłem
                                     </td>
                                     <td>
@@ -88,7 +88,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td   style='padding-top: 18%; ' >
+                                    <td   style='padding-top: 18%; '  class="main-mood-add-table">
                                         Akcje
                                     </td>
                                     <td>

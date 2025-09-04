@@ -28,7 +28,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td   >
+                                    <td   class="main-mood-add-table" >
                                         czas trwanie w minutach
                                     </td>
                                     <td >
@@ -36,7 +36,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td  style='padding-top: 5%; '>
+                                    <td  style='padding-top: 5%; '  class="main-mood-add-table">
                                         Opis
                                     </td>
                                     <td >
@@ -44,7 +44,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td  style='padding-top: 18%; ' >
+                                    <td  style='padding-top: 18%; '  class="main-mood-add-table" >
                                         Akcje
                                     </td>
                                     <td>

@@ -14,7 +14,7 @@
                         <form method='get' id="formAddSleep">
                             <table class='table '>
                                 <tr>
-                                    <td rowspan='2' style='padding-top: 35px; ' >
+                                    <td rowspan='2' style='padding-top: 35px; '  class="main-mood-add-table">
                                         Godzina zaczęcia
                                     </td>
                                     <td >
@@ -27,7 +27,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td rowspan='2' style='padding-top: 35px; ' >
+                                    <td rowspan='2' style='padding-top: 35px; '  class="main-mood-add-table">
                                         Godzina zakończenia
                                     </td>
                                     <td>
@@ -42,7 +42,7 @@
 
                                 
                                 <tr>
-                                    <td >
+                                    <td  class="main-mood-add-table">
                                         Procent snu płytkiego
                                     </td>
                                     <td>
@@ -50,7 +50,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td >
+                                    <td  class="main-mood-add-table">
                                         Procent snu głebokiego
                                     </td>
                                     <td>
@@ -58,7 +58,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td >
+                                    <td  class="main-mood-add-table">
                                         Procent snu REM
                                     </td>
                                     <td>
@@ -66,7 +66,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td >
+                                    <td  class="main-mood-add-table">
                                         Procent snu Wybudzonego
                                     </td>
                                     <td>
@@ -74,7 +74,7 @@
                                     </td>
                                 </tr>                                                                                                                                
                                 <tr>
-                                    <td >
+                                    <td  class="main-mood-add-table">
                                         Ilośc wybudzeń
                                     </td>
                                     <td>
@@ -82,7 +82,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td  style='padding-top: 9%; ' >
+                                    <td  style='padding-top: 9%; '  class="main-mood-add-table">
                                         Co się śniło
                                     </td>
                                     <td>
