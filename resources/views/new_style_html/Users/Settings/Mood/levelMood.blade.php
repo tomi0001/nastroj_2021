@@ -12,7 +12,7 @@
         </div>
 <div class="settings-body-page">
     <form method="get" id='formlevelMoodSubmit'>
-        <table class="table">
+        <table class="table setting-table">
             <tr>
                 <td  class="settings-td-1">
                     {{$i++}}

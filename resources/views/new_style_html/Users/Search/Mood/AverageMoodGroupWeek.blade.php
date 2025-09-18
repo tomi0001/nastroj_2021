@@ -87,7 +87,7 @@
 </div></div>
 
 <div class="search-mood-average-table">
-    <table class="table" id="tblSort">
+    <table class="table table-striped" id="tblSort">
 
 
 
@@ -129,11 +129,7 @@
         <tbody>
 
         @for ($i=0;$i < count($minMax["mood"]);$i++)
-                    @if ($i% 2 == 0)
-                           <tr class="main-drugs-sum-table-1">
-                    @else
-                           <tr  class="main-drugs-sum-table-0">
-                    @endif
+               <tr>
                 <td class="search-mood-average-center" >
                     {{$minMax["dateStart"][$i]}} - {{$minMax["dateEnd"][$i]}}
                 </td>

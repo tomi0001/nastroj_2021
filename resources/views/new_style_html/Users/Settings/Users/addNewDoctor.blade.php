@@ -13,7 +13,7 @@
         </div>
 <div class="settings-body-page">
     <form method="get" id='formaddNewDoctor'>
-        <table class="table">
+        <table class="table setting-table">
             <tr>
                 <td style="width: 50%;">
                     Login doktora

@@ -27,11 +27,9 @@ a.main-calendar-span-active {
 }
 #calendar {
     
-    -webkit-box-shadow: 0px 0px 13px -8px rgba(66, 68, 90, 1);
-    -moz-box-shadow: 0px 0px 13px -8px rgba(66, 68, 90, 1);
-    box-shadow: 0px 0px 13px -8px rgba(66, 68, 90, 1);
-    background: rgb(77, 75, 75);
-    background:  rgb(19, 51, 4);
+    
+    background: rgb(44, 70, 46);
+    
 
 }
 div.main-calendar-cell-selected {
@@ -282,12 +280,12 @@ div.main-mood-add-action-selected {
 
 }
  div.main-mood-show-single-left { 
-    background-color: rgb(231, 238, 215);
+    background-color: rgb(234 255 220);
     color: rgb(20, 20, 18);
 }
 div.main-drugs-show-single-left {
-    background-color: rgb(231, 238, 215);
-    color: rgb(43, 44, 40);
+    background-color: rgb(234 255 220);
+    color: rgb(20, 20, 18);
 }
 .disable {
     background-color: white !important;
@@ -299,5 +297,26 @@ div.main-action-position {
     color: black;
 }
 td.main-mood-add-table {
+    color: white;
+}
+td.main-mood-edit-td {
+    color: white;
+}
+td.main-action-positionActionTitle1 {
+    color: white;
+}
+td.main-action-positionActionTitle2 {
+    color: white;
+}
+td.titleDrugs {
+    color: white;
+}
+div.main-drugs-average-hour-one {
+    color: white;
+}
+div.main-drugs-average-hour {
+    color: white;
+}
+td.main-drugs-edit-td {
     color: white;
 }

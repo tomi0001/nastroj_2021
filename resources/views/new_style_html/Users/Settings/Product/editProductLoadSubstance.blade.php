@@ -2,7 +2,7 @@
 
 <form id="formUpdateProduct">
     
-    <table width="100%">
+    <table width="100%" class="setting-table">
         <tr>
             <td width="50%" >
                 grupy należące do tej substancji

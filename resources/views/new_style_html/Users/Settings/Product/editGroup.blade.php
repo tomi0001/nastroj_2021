@@ -31,7 +31,7 @@
         </div>
 <div class="settings-body-page">
     <form method="get" id='formeditGroup'>
-        <table class="table">
+        <table class="table setting-table">
             <tr>
                 <td >
                     Nazwa grupy
@@ -48,7 +48,7 @@
             <tr>
                 <td colspan="2">
                     <div   style="display: none;" id="newName">
-                        <table width="100%">
+                        <table width="100%" class="setting-table">
                             <tr>
                                 <td >
                                     Nowa nazwa grupy

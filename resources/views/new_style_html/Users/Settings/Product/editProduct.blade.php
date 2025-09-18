@@ -26,7 +26,7 @@
         </div>
 <div class="settings-body-page">
     <form method="get" id='formUpdateProduct2'>
-        <table class="table">
+        <table class="table setting-table">
             <tr>
                 <td >
                     Nazwa produktu

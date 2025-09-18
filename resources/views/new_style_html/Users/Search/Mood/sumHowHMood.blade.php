@@ -16,7 +16,7 @@
         </div>
 <div class="settings-body-page">
     <form id="sumHowMoodForm" method='get'>
-        <table class='table'>
+        <table class='table search-mood-table'>
 
 
             <tr>

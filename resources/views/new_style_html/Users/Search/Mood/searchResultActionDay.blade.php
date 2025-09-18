@@ -132,10 +132,10 @@
                     
                 
             <div class="search-mood-action-sum">
-        <table class="table">
+        <table class="table table-striped">
             <thead >
                 <tr>
-                    <td colspan="3" class="search-mood-title">
+                    <th colspan="3" class="search-mood-title">
                         AKCJE 
                     </td>
                 </tr>
@@ -144,7 +144,7 @@
                 
             </thead>
             
-                            <thead >
+                            
                 <tr >
                     <td style="width: 50%; border-right-style: hidden;" >
                         nazwa akcji
@@ -158,16 +158,12 @@
 
                     
                 </tr>
-                </thead>
+               
                 @endif
                 
                
                 
-                                    @if ($i% 2 == 0)
-                                        <tr class="main-drugs-sum-table-1">
-                                    @else
-                                        <tr  class="main-drugs-sum-table-0">
-                                    @endif
+                                    <tr>
                         
                         <td  >
                             {{$arrayList[$i]->name}}

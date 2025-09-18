@@ -12,7 +12,7 @@
         </div>
 <div class="settings-body-page">
     <form id="searchActionDayForm" method='get' action='{{route("search.searchActionDay")}}'>
-        <table class='table'>
+        <table class='table search-mood-table'>
 
 
             <tr>

@@ -31,7 +31,7 @@
         </div>
 <div class="settings-body-page">
     <form method="get" id='formaddNewPlaned'>
-        <table class="table">
+        <table class="table setting-table">
             <tr>
                 <td >
                     dodaj nowy plan

@@ -26,7 +26,7 @@
         </div>
 <div class="settings-body-page">
     <form method="get" id='formUpdateSubstance2'>
-        <table class="table">
+        <table class="table setting-table">
             <tr>
                 <td>
                     Nazwa substancji

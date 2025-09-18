@@ -15,7 +15,7 @@
         </div>
 <div class="settings-body-page">
     <form id="averageSumForm" method='get'>
-        <table class='table'>
+        <table class='table search-mood-table'>
 
 
             <tr>

@@ -6,7 +6,7 @@
 <div class="bodyPage">
     
         <form  method='get' id='searchDrugsMoodFrom'>
-            <table class='table searchTableDrugs'>
+            <table class='table search-mood-table'>
                 <tr>
                     <td style='padding-top: 10px; width: 37%;'>
                         nazwy produktów

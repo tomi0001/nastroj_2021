@@ -12,7 +12,7 @@
         </div>
 <div class="settings-body-page">
     <form action='{{route("search.searchDrugsSubmit")}}' method='get'>
-        <table class='table'>
+        <table class='table search-mood-table'>
             <tr>
                 <td>
                     nazwy produktów

@@ -23,7 +23,7 @@
         </div>
 <div class="settings-body-page">
     <form method="get" id='formchangeNameAction'>
-        <table class="table">
+        <table class="table setting-table">
             <tr>
                 <td >
                     Nazwa akcji

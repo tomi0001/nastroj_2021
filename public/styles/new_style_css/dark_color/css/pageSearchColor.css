@@ -89,10 +89,59 @@ div.search-mood-average-date-hidden  {
     background-color: rgba(230, 235, 212, 0.9);
 }
 div.main-mood-show-single-left { 
-    background-color: rgb(66, 70, 57);
-    color: rgb(244, 255, 223);
+    background-color: rgb(234 255 220);
+    color: rgb(20, 20, 18);
 }
 div.main-drugs-show-single-left {
-    background-color: rgb(66, 70, 57);
-    color: rgb(244, 255, 223);
+    background-color: rgb(234 255 220);
+    color: rgb(20, 20, 18);
+}
+table.search-mood-table {
+    color: white;
+}
+
+.disable {
+    background-color: white !important;
+}
+div.search-result {
+    color: white;
+}
+td.main-center {
+    color: white;
+}
+div.main-action-position {
+    color: black;
+}
+td.main-action-positionActionTitle1 {
+    color: white;
+}
+td.main-action-positionActionTitle2 {
+    color: white;
+}
+td.titleDrugs {
+    color: white;
+}
+div.search-mmod-average-title-date {
+    color: white;
+}
+tr.even {
+    background-color: rgb(255, 255, 255);
+}
+tr.odd {
+    background-color: rgb(210, 218, 105);
+}
+th.search-mood-average-center {
+    color: white;
+}
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+   background-color: rgb(255, 255, 255);
+}
+.table-striped > tbody > tr:nth-child(2n+2) > td, .table-striped > tbody > tr:nth-child(2n+2) > th {
+   background-color: rgb(210, 218, 105);
+}
+th.search-mood-title {
+    color: white;
+}
+span.search-mood-average-span {
+    color: white;
 }

@@ -16,7 +16,7 @@
 <form id="formupdatePlaned">
     
 </form>
-<table class="table" id="tablePlaned">
+<table class="table setting-table" id="tablePlaned">
     @foreach ($listPlaned as $list)
 
     <tr>
