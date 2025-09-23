@@ -15,10 +15,10 @@
         <table class='table search-mood-table'>
             
             <tr>
-                <td  class="Search-mood-td-2">
+                <td  class="Search-mood-td-1">
                     długośc snu od
                 </td>
-                <td>
+                <td class="Search-mood-td-2">
                     <input type='text' name='longSleepHourFrom' class='form-control' placeholder="Godziny">
                 </td>
                 <td  class="Search-mood-td-3">

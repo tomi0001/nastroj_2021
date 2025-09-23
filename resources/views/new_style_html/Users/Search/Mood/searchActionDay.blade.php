@@ -16,16 +16,16 @@
 
 
             <tr>
-                <td class="Search-mood-td-2">
+                <td class="Search-mood-td-1">
                     data od
                 </td>
-                <td>
+                <td class="Search-mood-td-2">
                     <input type='date' name='dateFrom' class='form-control'>
                 </td>
                 <td  class="Search-mood-td-3">
                     do
                 </td>
-                <td>
+                <td class="Search-mood-td-4">
                     <input type='date' name='dateTo' class='form-control'>
                 </td>
             </tr>

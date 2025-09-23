@@ -87,7 +87,7 @@
 </div></div>
 
 <div class="search-mood-average-table">
-    <table class="table table-striped search-mood-table-average" id="tblSort">
+    <table class=" table-striped search-mood-table-average" id="tblSort">
 
 
         <thead>

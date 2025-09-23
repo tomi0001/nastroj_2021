@@ -14,10 +14,10 @@
     <form action='{{route("search.searchDrugsSubmit")}}' method='get'>
         <table class='table search-mood-table'>
             <tr>
-                <td>
+                <td class="Search-mood-td-1">
                     nazwy produktów
                 </td>
-                <td colspan="3" class="Search-mood-td-2">
+                <td colspan="3" class="Search-mood-td-5">
                 <div style='clear: both;'>
                     <div style='float: left; width:70%;' id="idNameProduct">
                         <div style='float: left; width:45%;'>

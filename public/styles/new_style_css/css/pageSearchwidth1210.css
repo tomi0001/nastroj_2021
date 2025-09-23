@@ -316,4 +316,7 @@ flex-direction: row;
         overflow-y: auto;
         height: 200px;
     }
+    td.search-mood-average-center {
+        padding: 12px;
+    }
 }

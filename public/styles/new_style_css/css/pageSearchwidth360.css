@@ -4,17 +4,17 @@
        
           margin-left: auto;
         margin-right: auto;
-        width: 440px;
+        width: 100%;
     }
     div.settings-title {
         padding-top: 15px;
         margin-top: 200px;
          margin-left: auto;
          margin-right: auto;
-         width: 500px;
+         
          text-align: center;
          height: 60px;
-         font-size: 20px;
+         font-size: 19px;
     }
     div.Search-day-week-div {
         
@@ -32,13 +32,19 @@
         width: 40px;
     }
      td.Search-mood-td-1 {
-        width: 120px;
+        width: 90px;
     }
     td.Search-mood-td-2 {
-        width: 130px;
+        width: 110px;
     }
     td.Search-mood-td-3 {
-        width: 60px;
+        width: 30px;
+    }
+    td.Search-mood-td-4 {
+        width: 110px;
+    }
+    td.Search-mood-td-5 {
+        width: 260px;
     }
     div.search-mood-day {
         
@@ -48,8 +54,9 @@
         text-align: center;
         padding-top: 10px;
         margin-top: 45px;
-        margin-left: 40px;
-        width: 440px;
+        margin-left: 10px;
+        font-size: 20px;
+        
 
     }
     div.settings-body-page-result {
@@ -70,7 +77,7 @@
     div.main-mood-show {
         margin-left: auto;
         margin-right: auto;
-        width: 440px;
+        
         clear: both;
     }
     div.main-mood-show-single-br {
@@ -79,9 +86,10 @@
     div.main-mood-show-single {
         height: 600px;
         padding: 10px;
+        width: 100%;
     }
     div.main-mood-show-single-left {
-        width: 55%;
+        width: 50%;
         float: left;
         height: 600px;
     }
@@ -93,9 +101,12 @@
     }
 
     div.main-mood-show-single-right {
-        width: 90%;
+        width: 100%;
         float: left;
         
+    }
+    span.font-mood-span {
+        font-size: 13px;
     }
     div.main-mood-show-single-button {
         margin-top: 10px;
@@ -112,7 +123,7 @@
     }
     div.main-mood-show-description {
         width: 90%;
-        height: 400px;
+        height: 100px;
         margin-left: auto;
         margin-right: auto;
         margin-top: 45px;
@@ -157,7 +168,7 @@
         
     }
     div.main-mood-show-drugs {
-        width: 90%;
+       
         
         margin-left: auto;
         margin-right: auto;
@@ -211,11 +222,11 @@
         
     }
     div.search-mood-day-2 {
-        width: 70%;
+        
         height: 60px;
         
         text-align: center;
-        margin-left: 90px;
+        margin-left: 30px;
         
 
     }
@@ -224,7 +235,7 @@
         height: 300px;
     }
     div.main-mood-sum {
-        width: 400px;
+        
         
         
         margin: 5px;
@@ -249,7 +260,7 @@
         height: 100%;
     }
     div.main-action-sum {
-        width: 400px;
+        
        
         height: 230px;
         float: left;
@@ -257,7 +268,7 @@
     }
     div.search-all-day {
             clear: both;
-            margin-left: 50px;
+           
 
         
     }
@@ -269,18 +280,18 @@
     }
 
     div.search-mood-average {
-        width: 440px;
+        
         margin-left: auto;
         margin-right: auto;
     }
     div.search-mmod-average-title-date {
-        width: 440px;
+        
         margin-left: auto;
         margin-right: auto;
         text-align: center;
     }
     hr.search-mood-average-hr {
-        width: 90%;
+        
         margin-left: auto;
         margin-right: auto;
         height: 9px;
@@ -303,7 +314,7 @@
     div.main-search-show-single-week {
         
         padding: 10px;
-        width: 440px;
+        
         margin-left: auto;
         margin-right: auto;
     }
@@ -321,7 +332,7 @@
 
     }
     div.search-mood-how-minutes {
-        width: 440px;
+        
         margin-left: auto;
         margin-right: auto;
         text-align: center;
@@ -343,10 +354,11 @@
         table-layout: fixed;
     }
     table.search-mood-table-average {
-        width: 440px !important;
+        
     }
     .search-mood-average-center {
-        width: 20px !important;
-        font-size: 9px;
+        width: 5px !important;
+        font-size: 7px;
     }
+ 
 }

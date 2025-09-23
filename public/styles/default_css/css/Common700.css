@@ -1,15 +1,16 @@
 @media (min-width: 700px) and (max-width: 1210px) { 
                 #MainPage {
                 width: 100%;
-                
                 border: 20px;
                 border-radius: 25px 25px 25px 25px;
                 margin-left: auto;
                 margin-right: auto;
-
                 min-height: 100%;
-
-            }
+                -webkit-border-radius: 25px 25px 25px 25px;
+                -moz-border-radius: 25px 25px 25px 25px;
+                -ms-border-radius: 25px 25px 25px 25px;
+                -o-border-radius: 25px 25px 25px 25px;
+}
                             div.divButton {
             float: left;
             padding: 10px;

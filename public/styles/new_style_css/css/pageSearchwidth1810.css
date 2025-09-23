@@ -273,9 +273,10 @@ margin-right: auto;
 
     }
     div.search-mood-average-table {
-        width: 87%;
+        width: 80%;
         margin-left: auto;
         margin-right: auto;
+        
     }
     .search-mood-average-td-1 {
         width: 12%;
@@ -330,6 +331,9 @@ margin-right: auto;
         width: 30%;
         font-size: 22px;
         text-align: center;
+    }
+    td.search-mood-average-center {
+        padding: 12px;
     }
     
 }

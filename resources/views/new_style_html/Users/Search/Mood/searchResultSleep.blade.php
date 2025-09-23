@@ -156,11 +156,11 @@
                 
                 <div class="main-mood-show-single-left">
                         
-                        <span class="font-mood-span">Ilośc wybudzeń: </span>  @if ($arrayList[$i]->epizodes_psychotik > 0) <span class="font-mood-error">{{$arrayList[$i]->epizodes_psychotik}}</span> @else brak @endif <br>
+                        <span class="font-mood-span">Ilośc wybudzeń:   @if ($arrayList[$i]->epizodes_psychotik > 0) <span class="font-mood-error">{{$arrayList[$i]->epizodes_psychotik}}</span> @else brak @endif <br>
                         <br>
-                        <span class="font-mood-span">godzina startu: </span>  {{date("H:i",strtotime($arrayList[$i]->date_start) )}} <br>
-                        <span class="font-mood-span">godzina końca: </span>  {{date("H:i",strtotime($arrayList[$i]->date_end) )}} <br>
-                        <span class="font-mood-span">długość: </span>  {{\App\Http\Services\Common::calculateHour($arrayList[$i]->date_start,$arrayList[$i]->date_end)}} <br>
+                        <span class="font-mood-span">godzina startu:  {{date("H:i",strtotime($arrayList[$i]->date_start) )}} </span> <br>
+                        <span class="font-mood-span">godzina końca:  {{date("H:i",strtotime($arrayList[$i]->date_end) )}}  </span> <br>
+                        <span class="font-mood-span">długość:  {{\App\Http\Services\Common::calculateHour($arrayList[$i]->date_start,$arrayList[$i]->date_end)}} </span> <br>
                         <div class='levelSleep level' style="width: {{$percent[array_search($arrayList[$i]->id,array_column($percent, 'id'))]["percent"]}}%">&nbsp;</div>
                         <br><Br>
                 </div>

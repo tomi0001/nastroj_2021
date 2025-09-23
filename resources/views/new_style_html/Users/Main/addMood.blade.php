@@ -17,7 +17,7 @@
                                     <td rowspan='2' style='padding-top: 35px; ' class="main-mood-add-table">
                                         Godzina zaczęcia
                                     </td>
-                                    <td >
+                                    <td class="main-mood-add-table-1">
                                         <input type='date' name='dateStart' class='form-control' value='{{ date("Y-m-d")}}'>
                                     </td>
                                 </tr>

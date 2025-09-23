@@ -266,7 +266,7 @@ flex-direction: row;
         margin-right: auto;
     }
     .search-mood-average-td-1 {
-        width: 12%;
+        width: 8%;
     }
     div.search-mood-action-sum {
         overflow-y: scroll; 
@@ -310,5 +310,8 @@ flex-direction: row;
     div.search-mood-average-date-substance {
         overflow-y: auto;
         height: 200px;
+    }
+    td.search-mood-average-center {
+        padding: 12px;
     }
 }

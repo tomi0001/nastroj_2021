@@ -20,16 +20,16 @@
 
 
             <tr>
-                <td style='padding-top: 10px; width: 37%;'>
+                <td class="Search-mood-td-1">
                     data od
                 </td>
-                <td>
+                <td class="Search-mood-td-2">
                     <input type='date' name='dateFrom' class='form-control'>
                 </td>
-                <td style='padding-top: 10px;'>
+                <td class="Search-mood-td-3">
                     do
                 </td>
-                <td>
+                <td class="Search-mood-td-4">
                     <input type='date' name='dateTo' class='form-control'>
                 </td>
             </tr>
