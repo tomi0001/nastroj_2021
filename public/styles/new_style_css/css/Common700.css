@@ -1,4 +1,7 @@
 @media (700px <= width <= 1210px)  { 
+     body {
+            padding-top: 60px;
+        }
         
         div.main-menu {
 

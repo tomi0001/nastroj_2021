@@ -70,7 +70,7 @@ class Usee extends Model
             ->selectRaw("usees.id_products as product")
             ->selectRaw("usees.price as price")
             ->selectRaw("products.name as name")
-            ->selectRaw(DB::Raw("WEEKDAY((DATE(IF(HOUR(    usees.date) >= '" . $startDay . "', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) )) as dayWeek" ))
+            ->selectRaw(DB::Raw("WEEKDAY((DATE(IF(HOUR(    usees.date) >= '" . $startDay . "', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) )) as dayweek" ))
             ->selectRaw("products.type_of_portion as type")
             ->leftjoin("users_descriptions","usees.id","users_descriptions.id_usees")
             ->leftjoin("descriptions","descriptions.id","users_descriptions.id_descriptions")

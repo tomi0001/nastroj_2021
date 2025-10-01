@@ -2,11 +2,15 @@
 body {
      height: 100%;
      
+      
+     
 }
 html, body {
     overflow-x: hidden;
     max-width: 100vw;
+    
 }
+
 
 #MainPage {
     overflow-x: hidden;

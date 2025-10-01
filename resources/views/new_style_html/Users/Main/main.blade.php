@@ -8,7 +8,7 @@
  Strona Główna
 @endsection
 
-<br><br><br><br>
+<br>
     
 
     @include(str_replace("css","html",Auth::User()->css) . '.Users.Main.calendar')<br><br><br>

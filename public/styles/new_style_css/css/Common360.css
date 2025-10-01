@@ -1,5 +1,7 @@
 @media   (width < 700px) { 
-
+ body {
+            padding-top: 160px;
+        }
 
     div.main-menu {
 

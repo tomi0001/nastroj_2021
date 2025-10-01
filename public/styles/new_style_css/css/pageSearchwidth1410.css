@@ -9,7 +9,7 @@
     }
     div.settings-title {
         padding-top: 10px;
-       margin-top: 100px;
+       margin-top: 50px;
         margin-left: auto;
         margin-right: auto;
         width: 50%;
@@ -29,6 +29,7 @@
         text-align: center;
         padding-top: 10px;
         margin-top: 75px;
+        font-size: 22px;
 
     }
     div.settings-body-page-result {

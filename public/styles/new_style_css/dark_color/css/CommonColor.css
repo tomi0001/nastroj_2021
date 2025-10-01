@@ -487,6 +487,7 @@ tr.main-drugs-sum-table-1 {
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: #d69f06; 
+    
   }
 
   div.ajax-succes {

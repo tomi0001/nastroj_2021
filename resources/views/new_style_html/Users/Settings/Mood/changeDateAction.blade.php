@@ -40,7 +40,7 @@
             <tr class="changeActionHidden" >
                 <td colspan="2">
                 <div id="changeActionHidden" style="display: none;">
-                    <table class="table">
+                    <table class="table setting-table">
                         <tr>
                             <td   style="width: 50%;">
 

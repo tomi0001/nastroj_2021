@@ -9,7 +9,7 @@
 @endsection 
 <div class="settings-title">
                         WYSZUKAJ SEN
-        </div>
+</div>
 <div class="settings-body-page">
     <form action='{{route("search.searchSleepSubmit")}}' method='get'>
         <table class='table search-mood-table'>
@@ -160,7 +160,7 @@
                             <input type='checkbox' name='day4' class='form-check-input' checked>
                         </div>
                     </div>
-                         <div class="Search-day-week-div" >
+                    <div class="Search-day-week-div" >
                         <div class="Search-day" >
                          Czwartek
                         </div>
@@ -195,7 +195,7 @@
                     </div>
      
               
-                    </div>
+                </div>
 
 
                 </td>
@@ -273,3 +273,4 @@
     </form>
 
 </div>
+@endsection

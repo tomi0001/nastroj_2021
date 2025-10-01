@@ -1,4 +1,7 @@
 @media only screen and  (min-width: 1810px) {
+        body {
+            padding-top: 60px;
+        }
         div.main-menu {
 
                 width: 100%;
@@ -7,6 +10,8 @@
                 clear: both;
                 padding: 10px;
                 top: 0;
+                
+                
                
                 
             }
