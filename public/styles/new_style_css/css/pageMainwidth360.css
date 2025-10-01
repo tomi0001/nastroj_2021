@@ -54,7 +54,7 @@
 }
     #calendar {
         
-        margin-top: 80px;
+        margin-top: 10px;
         
     }
     div.main-menu-month {
@@ -72,7 +72,7 @@
     }
     button.main-button-month {
         width: 90%;
-        height: 9%;
+        
         font-size: 17px;
     }
     #allMoodDrugsAction {
@@ -514,7 +514,7 @@ div.main-menu-add {
 
 }
 div.main-menu-add-single {
-    width: 400px;
+    
     
     height: 62px;
     text-align: center;
@@ -526,7 +526,7 @@ div.main-menu-add-single {
     font-size: 15px;
 }
 div.main-menu-add-single-2 {
-    width: 400px;
+    
    
     height: 62px;
     text-align: center;
