@@ -32,7 +32,7 @@
         <div class="main-mood-show">
                 
                 @for ($i = 0;$i < count($arrayList);$i++)
-                @if ($i == 0 or $arrayList[$i]->dateDay != $arrayList[$i-1]->dateDay)
+                
               
               <div class="search-mood-day">Dzień  {{$arrayList[$i]->dateDay}}
                       
@@ -67,7 +67,7 @@
                    
                   
                   
-                  </div>  
+            </div>  
                  
                
                 <div class="search-mood-day-2">
@@ -121,28 +121,8 @@
                     
                
                         <div style="clear: both;"></div>
-                    
-               
-            <div  class="main-search-show-single-week">
-
-                   
-                 
-                        
-                  
-                    
-                
-            <div class="search-mood-action-sum">
-        <table class="table table-striped">
-            <thead >
-                <tr>
-                    <th colspan="3" class="search-mood-title">
-                        AKCJE 
-                    </td>
-                </tr>
-                
-                
-                
-            </thead>
+       <table class="table table-striped">
+         
             
                             
                 <tr >
@@ -156,36 +136,44 @@
                         poziom przyjemności
                     </td>
 
-                    
-                </tr>
-               
-                @endif
+                @php
                 
+                    $SearchMood = new \App\Http\Services\SearchMood();
+                    $list = $SearchMood->searchActionDayForDay($request,$arrayList[$i]->dateDay );
+
+                @endphp
+                @foreach($list as $list2) 
                
-                
-                                    <tr>
+                          <tr >
                         
-                        <td  >
-                            {{$arrayList[$i]->name}}
+                        <td  style="width: 50%; border-right-style: hidden;" >
+                            {{$list2->name}}
                         </td>
-                        <td  >
-                        {{$arrayList[$i]->date}}
+                        <td  style="width: 40%;">
+                        {{$list2->date}}
                         </td>
-                        <td >
-                        {{$arrayList[$i]->level_pleasure}}
+                        <td style="width: 40%;">
+                        {{$list2->level_pleasure}}
                         </td>
                     </tr>
-                    @if ($i == count($arrayList)-1 or $arrayList[$i]->dateDay != $arrayList[$i+1]->dateDay)
-                  
-                  </table>
-</div>
-              </div>
-              @endif
-              
+
+                @endforeach
+        </table>
+
+
+
+                    
+
+
+                        
+
+       
+
+             
               @endfor
               
                 
-        </table>
+        
 </div>
             
               
@@ -201,7 +189,7 @@
           
                      
       
-    </div>
+    
 
 
            

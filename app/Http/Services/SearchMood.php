@@ -219,10 +219,11 @@ class SearchMood {
 
              $Actions_day->searchAction($request->get("action"));
          }
+         $Actions_day->setGroupDay($this->startDay);
          $Actions_day->idUsers($this->idUsers);
          $Actions_day->orderBy("desc","date");
          $this->count = $Actions_day->questions->get()->count();
-         return $Actions_day->questions->paginate(15);
+         return $Actions_day->questions->paginate(10);
      }
      
      
@@ -714,6 +715,25 @@ class SearchMood {
 
  
          return $moodModel->questions->first();
+     }
+     /*
+       update october 2025
+     */
+     public function searchActionDayForDay(Request $request,$day) {
+         $startDay = $this->startDay;
+         $Actions_day = new  Actions_day;
+         $Actions_day->createQuestionActionDay($this->startDay);
+         
+         
+         $this->setHour($Actions_day,$request);
+         if (!empty($request->get("action"))  ) {
+
+             $Actions_day->searchAction($request->get("action"));
+         }
+         $Actions_day->setWhereDay($day,$startDay);
+         $Actions_day->idUsers($this->idUsers);
+         $Actions_day->orderBy("desc","date");
+         return $Actions_day->questions->get();
      }
 
 }

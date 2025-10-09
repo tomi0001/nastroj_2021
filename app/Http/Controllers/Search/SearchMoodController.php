@@ -39,7 +39,8 @@ class SearchMoodController {
          $SearchMood->setDayWeek($request);
          $result = $SearchMood->createQuestionActionDay($request);
        
-         return View(str_replace("css","html",Auth::User()->css) . ".Users.Search.Mood.searchResultActionDay")->with("arrayList",$result)->with("count",$SearchMood->count);
+         return View(str_replace("css","html",Auth::User()->css) . ".Users.Search.Mood.searchResultActionDay")
+         ->with("arrayList",$result)->with("count",$SearchMood->count)->with("request",$request);
         
     }
     public function searchSleepSubmit(Request $request) {

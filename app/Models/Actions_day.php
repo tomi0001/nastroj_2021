@@ -10,6 +10,7 @@ class Actions_day extends Model
 {
     use HasFactory;
     public $questions;
+    public $questions2;
     public function createQuestionActionDay(int $startDay) {
          $this->questions =  self::query();
          $this->questions->leftjoin("actions","actions_days.id_actions","actions.id")
@@ -135,5 +136,89 @@ class Actions_day extends Model
         $ActionDay->where("id_users",Auth::User()->id)->where("id",$request->get("id"))->update(["id_actions"=> $request->get("idAction")]);
         
     }
+    /*
+        updated October 2025
+    */
+    public function setWhereDay($day,int $startDay) {
+        $this->questions->whereRaw(DB::Raw("(DATE(IF(HOUR(    actions_days.date) >= '" . $startDay . "', actions_days.date,Date_add(actions_days.date, INTERVAL - 1 DAY) ))) = '$day' "));
+    }
+    public function setGroupDay(int $startDay) {
+        $this->questions->groupBy(DB::Raw("(DATE(IF(HOUR(    actions_days.date) >= '" . $startDay . "', actions_days.date,Date_add(actions_days.date, INTERVAL - 1 DAY) )) ) " ));
+    }
+    /*
+    public  function searchActionDayForDay(int $idUsers) {
+        $this->questions =  self::query();
+                $this->questions->leftjoin("actions","actions_days.id_actions","actions.id")
+                ->selectRaw("actions_days.date as date")
+                        ->selectRaw("actions.name as name")
+                        ->selectRaw("actions.level_pleasure as level_pleasure")
+                ->where("usees.id_users",$idUsers);
+            $this->searchAction( $action);
+
+                
+
+
+
+
+                
+
+                ->whereRaw(DB::Raw("(DATE(IF(HOUR(    usees.date) >= '" . $startDay . "', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ) = '" . $date . "' "))
+                
+                ->get();
+    }
+         private function setHour($moodModel,Request $request,$hour = "mood") {
+         if ($hour == "mood") {
+            $hour  = $this->startDay;
+         }
+         else {
+             $hour = config('app.sleepHour');
+         }
+        if (($request->get("timeFrom") != "" and $request->get("timeTo") != "") and ($request->get("timeFrom") != "undefined" and $request->get("timeTo") != "undefined")) {
+            $timeFrom = explode(":",$request->get("timeFrom"));
+            $timeTo = explode(":",$request->get("timeTo"));
+            $hourFrom = $this->sumHour($timeFrom,$hour);
+            $hourTo = $this->sumHour($timeTo,$hour);
+            $moodModel->setHourTwo($hourFrom,$hourTo,$hour);
+
+
+        }
+        else if ($request->get("timeTo") != "" and $request->get("timeTo") != "undefined") {
+            $timeFrom = explode(":",$hour . ":00:00");
+            $timeTo = explode(":",$request->get("timeTo"));
+            $hourFrom = $this->sumHour($timeFrom,$hour);
+            $hourTo = $this->sumHour($timeTo,$hour);
+            $moodModel->setHourTwo($hourFrom,$hourTo,$hour);
+
+        }
+        else if ($request->get("timeFrom") != "" and $request->get("timeTo") != "undefined") {
+            $timeFrom = explode(":",$request->get("timeFrom"));
+            $timeTo = explode(":",Common::subOneMinutes($hour));
+            $hourFrom = $this->sumHour($timeFrom,$hour);
+            $hourTo = $this->sumHour($timeTo,$hour);
+            $moodModel->setHourTwo($hourFrom,$hourTo,$hour);
+
+        }
+
+
+     }
+      public function setHourTwo($hourFrom,$hourTo,$startDay) {
+        $this->questions->whereRaw("(time(date_add(moods.date_start,INTERVAL - $startDay hour))) < '$hourTo'");
+        $this->questions->whereRaw("(time(date_add(moods.date_end,INTERVAL - $startDay hour))) > '$hourFrom'");
+    }
+         private function sumHour($hour,$startDay) {
+        $sumHour = $hour[0] - $startDay;
+        if ($sumHour < 0) {
+            $sumHour = 24 + $sumHour;
+        }
+        if (strlen($sumHour) == 1) {
+            $sumHour = "0" .$sumHour;
+        }
+        if (strlen($hour[1]) == 1) {
+            $hour[1] = "0" . $hour[1];
+        }
+
+        return $sumHour . ":" .  $hour[1] . ":00";
+     }
+        */
 
 }

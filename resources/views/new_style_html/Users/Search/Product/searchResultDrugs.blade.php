@@ -174,6 +174,10 @@
                     <button type="button" class="disable btn btn-lg btn-outline-dark"  disabled>nie było opisu</button>
                 @endif
             </div>
+             <div class="main-mood-show-single-button">
+                                        <button class="btn btn-success btn-lg" onclick="showSubstanceProduct({{$arrayList[$i]->id_usees}})">pokaż substancje</button>
+                                            
+            </div>
                 
             
 </div>                    
@@ -181,46 +185,68 @@
 <div  class="main-mood-show-hidden descriptionShowMood{{$arrayList[$i]->id}}">
 
     <div id="messageDescriptionshowMood{{$arrayList[$i]->id_usees}}" class="main-mood-show-description" style="display: none;"></div>
-    <div id="messageactionShow{{$arrayList[$i]->id}}" class="main-mood-show-action"  style="display: none;"></div>
-    <div id="messagedrugsShow{{$arrayList[$i]->id}}" class="main-mood-show-drugs"  style="display: none;"></div>
-    <div id="descriptionEdit{{$arrayList[$i]->id}}" class="main-mood-show-description-edit" style="display: none;">
-        <textarea id="descriptionEditForm{{$arrayList[$i]->id}}" class="main-mood-show-description-edit-form"></textarea>
-        <button class="btn btn-warning btn-lg" onclick="updateDescription('{{route('ajax.updateDescription')}}',{{$arrayList[$i]->id}})">modyfikuj</button>
-        <div id="messageDescription{{$arrayList[$i]->id}}"></div>
-    </div>
-    <div id="editMood{{$arrayList[$i]->id}}" class="main-mood-edit" style="display: none;">
-        <div class="main-mood-edit-2">
-            <table class="table">
-                <tr>
-                    <td class="main-mood-edit-td"><span class="font-mood-span">nastrój: </span> </td><td> <input type="number" id="levelMoodEdit{{$arrayList[$i]->id}}" step="0.01" value="{{$arrayList[$i]->level_mood}}" class="form-control"> </td>
-                </tr>
-                <tr>
-                    <td class="main-mood-edit-td"><span class="font-mood-span">lęk: </span>  </td><td> <input type="number" id="levelAnxietyEdit{{$arrayList[$i]->id}}" step="0.01" value="{{$arrayList[$i]->level_anxiety}}" class="form-control"> </td>
-                </tr>                                            
-                <tr>
-                    <td class="main-mood-edit-td">
-                    <span class="font-mood-span">napięcie/rozdraznienie: </span>  </td><td> <input type="number" id="levelNervousnessEdit{{$arrayList[$i]->id}}" step="0.01" value="{{$arrayList[$i]->level_nervousness}}" class="form-control"> </td>
-                </tr>
-                <tr>
-                    <td class="main-mood-edit-td">
-                    <span class="font-mood-span">pobudzenie: </span>  </td><td>  <input type="number" id="levelStimulationEdit{{$arrayList[$i]->id}}" step="0.01" value="{{$arrayList[$i]->level_stimulation}}" class="form-control"></td>
-                </tr>
-                <tr>
-                    <td class="main-mood-edit-td">
-                    <span class="font-mood-span">Ilośc epizodów psychotycznych: </span>  </td><td>  <input type="number" id="levelEpizodesEdit{{$arrayList[$i]->id}}" step="1" value="{{$arrayList[$i]->epizodes_psychotik}}" class="form-control"> </td>
-                </tr>
-                <tr>
-                    <td colspan="2"  class="main-mood-edit">
-                    <button class="btn btn-warning btn-lg" onclick="updateMood('{{route('ajax.updateMood')}}',{{$arrayList[$i]->id}})">modyfikuj</button>
-                    <div id="messageUpdateMood{{$arrayList[$i]->id}}"></div></td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    <div id="editActionMood{{$arrayList[$i]->id}}" class="main-mood-action-edit" style="display: none;">
-         
 
-    </div>
+                    <div id="substanceDrugsShow{{$arrayList[$i]->id_usees}}" class="main-mood-show-drugs" style="display: none;">
+
+                                           <div class="main-drugs-ajax">
+                    
+                                 <div class='main-drugs-ajax-over'>
+
+                                        <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <td class="titleDrugs" style=" width: 45%;">
+                                                    Nazwa produktu
+                                                </td>
+                                                <td class="titleDrugs" style=" width: 35%;">
+                                                    dawka
+                                                </td>
+
+                                            </tr>
+                                        </thead>
+
+                                                                    @foreach (\App\Models\Substances_product::showSubstance($arrayList[$i]->id) as $list2)
+                                                                    @if ($loop->index % 2 == 0)
+                                                            <tr class="main-drugs-sum-table-1">
+                                                @else
+                                                            <tr  class="main-drugs-sum-table-0">
+                                                @endif
+                                                @php
+                                                                            $tmp = \App\Models\Usee::showDosePruduct($arrayList[$i]->id_usees,$list2->id,Auth::User()->id);
+                                                                        @endphp
+                                                <td> {{$list2->name}} </td>
+                                            <td> 
+                                            {{$tmp->doseProduct}}  =  {{\App\Http\Services\Common::showDoseProduct($tmp->type)}}
+                                            </td>
+                                        
+                                        </tr>
+                                                                    
+                                        @if (\App\Models\Substance::checkEquivalent($list2->id,Auth::User()->id) != "" )
+                                                                            <span class="equivalent"> Równowaznik diazepamu 10 mg =    {{\App\Models\Product::showEquivalent($list2->id,Auth::User()->id,$tmp->doseProduct)->equivalent}} {{\App\Http\Services\Common::showDoseProduct($tmp->type)}} </span>
+                                                                            <br>
+                                                                            <br>
+                                                                            @endif       
+                                                                        
+                                                                                                
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                    @endforeach
+                                                                    
+                                                                    @if (count(\App\Models\Substances_product::showSubstance($arrayList[$i]->id)) == 0)
+                                                                        <span class="warning">Nie było żadnych substancji</span>
+                                                                    @endif
+                                        </table>
+                                                                    </div>
+                                                                </div>
+
+
+
+                     </div>
+
 </div>
 
 </div>

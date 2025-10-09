@@ -33,7 +33,7 @@ function showDescriptionDrugs(url,id) {
         $("#descriptionEdit" + id).css("display","none");
         $("#editActionMood" + id).css("display","none");
         $("#editMood" + id).css("display","none");
-        $("#messagedrugsShow" + id).css("display","none");
+        $("#substanceDrugsShow" + id).css("display","none");
         
         
 }
@@ -776,5 +776,25 @@ $(".search-mood-average-date-substance").css("display","block");
 $(".search-mood-average-date-actionday").css("display","none");
 $(".search-mood-average-date-actionsum").css("display","none");
 
+}
+
+function showSubstanceProduct(id) {
+    if ($("#substanceDrugsShow" + id).css("display") == "none" ) {
+        $("#substanceDrugsShow" + id).css("display","block");
+        $(".showMenuMood" + id).css("display","none");
+
+        $("#messageDescriptionshowDrugs" + id).css("display","none");  
+        $("#showAverage" + id).css("display","none");
+        $("#messagedrugsShow" + id).css("display","none");
+        $("#descriptionAdd" + id).css("display","none");
+        $("#editDrugs" + id).css("display","none");
+        $("#messageDescriptionshowMood" + id).css("display","none");
+    }
+    else {
+        
+        $("#substanceDrugsShow" + id).css("display","none");
+    }
+    
+    
 }
 
