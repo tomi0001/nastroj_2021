@@ -428,6 +428,10 @@ class Mood extends Model
                         ->selectRaw(DB::Raw("(DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) ) as datEnd" ))
                         ->selectRaw(DB::Raw("WEEKDAY((DATE(IF(HOUR(    moods.date_end) >= '" . $startDay . "', moods.date_end,Date_add(moods.date_end, INTERVAL - 1 DAY) )) )) as dayweek" ))
                         ->selectRaw("(TIMESTAMPDIFF (minute, date_start , date_end)) as longMood")
+                        ->selectRaw("sleep_types.sleep_flat as sleep_flat")
+                        ->selectRaw("sleep_types.sleep_deep as sleep_deep")
+                        ->selectRaw("sleep_types.sleep_rem as sleep_rem")
+                        ->selectRaw("sleep_types.sleep_working as sleep_working")
                         ->selectRaw("moods.epizodes_psychotik as epizodes_psychotik")
                         ->selectRaw("moods.what_work as what_work");
                         
@@ -553,6 +557,17 @@ class Mood extends Model
                 break;
             case 'longMood' : $this->questions->orderBy("longMood",$asc);
                 break;
+            case 'sleep_deep' : $this->questions->orderBy("sleep_deep",$asc);
+                break;
+            case 'sleep_rem' : $this->questions->orderBy("sleep_rem",$asc);
+                break;
+            case 'sleep_flat' : $this->questions->orderBy("sleep_flat",$asc);
+                break;
+            case 'sleep_working' : $this->questions->orderBy("sleep_working",$asc);
+                break;
+            case 'epizodes_psychotik' : $this->questions->orderBy("epizodes_psychotik",$asc);
+                break;
+           
 
         }
     }

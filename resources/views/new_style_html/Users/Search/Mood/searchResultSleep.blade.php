@@ -157,6 +157,10 @@
                 <div class="main-mood-show-single-left">
                         
                         <span class="font-mood-span">Ilośc wybudzeń:   @if ($arrayList[$i]->epizodes_psychotik > 0) <span class="font-mood-error">{{$arrayList[$i]->epizodes_psychotik}}</span> @else brak @endif <br>
+                        <span class="font-mood-span">sen płytki : </span> {!! (!empty( $arrayList[$i]->sleep_flat)) ?  $arrayList[$i]->sleep_flat . "%": '<span class="font-mood-error">BRAK</span>' !!} <br>
+                        <span class="font-mood-span">sen głęboki : </span> {!! (!empty( $arrayList[$i]->sleep_deep)) ?  $arrayList[$i]->sleep_deep. "%": '<span class="font-mood-error">BRAK</span>' !!} <br>
+                        <span class="font-mood-span">sen REM : </span> {!! (!empty( $arrayList[$i]->sleep_rem)) ?  $arrayList[$i]->sleep_rem. "%": '<span class="font-mood-error">BRAK</span>' !!} <br>
+                        <span class="font-mood-span">sen wybudzony : </span> {!! (!empty( $arrayList[$i]->sleep_working)) ?  $arrayList[$i]->sleep_working. "%": '<span class="font-mood-error">BRAK</span>' !!} <br>
                         <br>
                         <span class="font-mood-span">godzina startu:  {{date("H:i",strtotime($arrayList[$i]->date_start) )}} </span> <br>
                         <span class="font-mood-span">godzina końca:  {{date("H:i",strtotime($arrayList[$i]->date_end) )}}  </span> <br>
@@ -231,7 +235,7 @@
             </div>  
             <div class="main-mood-show-single-br"></div>
                 @endfor
-                <div class="d-flex justify-content-center">
+                <div class="d-flex justify-content-center ">
                         @php 
                         $arrayList->appends(['sort'=>Request::get('sort')])
                         ->appends(['moodFrom'=>Request::get("moodFrom")])

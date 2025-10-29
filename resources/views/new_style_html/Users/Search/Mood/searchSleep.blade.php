@@ -245,6 +245,12 @@
                         <option value='date'>Daty</option>
                         <option value='hour'>Godziny</option>
                         <option value='longMood'>Długości trwania snu</option>
+                        <option value='sleep_flat'>Długości snu płytkiego</option>
+                        <option value='sleep_deep'>Długości snu głęgokiego</option>
+                        <option value='sleep_rem'>Długości snu REM</option>
+                        <option value='sleep_working'>Długości snu wybudzeń</option>
+                        <option value='epizodes_psychotik'>Długości wybudzeń</option>
+                       
                     </select>
 
                 </td>
