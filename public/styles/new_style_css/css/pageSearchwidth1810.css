@@ -336,5 +336,19 @@ margin-right: auto;
     td.search-mood-average-center {
         padding: 12px;
     }
+    div.positionAction {
+        height: 50px;
+        text-align: center;
+        padding-top: 14px;
+    }
+  
+    div.position-action-td {
+        text-align: center;
+        padding-top: 14px;
+    }
+    div.search-mood-average-date-hidden {
+        width: 520px;
+
+    }
     
 }

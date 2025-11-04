@@ -145,3 +145,21 @@ th.search-mood-title {
 span.search-mood-average-span {
     color: white;
 }
+td.search-mood-title {
+    color: white;
+}
+td.font-color-action-td {
+    color: white;
+}
+  span.search-mood-week-span {
+    color: white;
+  }
+  div.main-search-show-week {
+    color: white;
+  }
+  div.search-mood-show-single-sum {
+    color: white;
+  }
+  .font-mmod-span-2 {
+    color: white;
+  }

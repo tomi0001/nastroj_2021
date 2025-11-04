@@ -78,19 +78,19 @@
                         <thead >
                                 <tr >
                                     
-                                    <td class="search-table-center">
+                                    <td class="search-table-center font-mmod-span-2">
                                         Nazwa produktu
                                     </td>
-                                    <td class="search-table-center">
+                                    <td class="search-table-center font-mmod-span-2">
                                         Substancje produktu
                                     </td>
-                                    <td class="search-table-center">
+                                    <td class="search-table-center font-mmod-span-2">
                                         dawka
                                     </td>
-                                    <td class="search-table-center">
+                                    <td class="search-table-center font-mmod-span-2">
                                         Ilość wzięć
                                     </td>
-                                    <td class="search-table-center">
+                                    <td class="search-table-center font-mmod-span-2">
                                         ile kosztowało
                                     </td>
 

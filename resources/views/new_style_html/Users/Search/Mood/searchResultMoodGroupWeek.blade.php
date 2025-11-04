@@ -105,11 +105,11 @@
        
                 
                 <div class="main-search-show-week">
-                        <span class="font-mood-span">nastrój: </span>  {{round($arrayList[$i]["mood"],3)}} <br>
-                        <span class="font-mood-span">lęk: </span> {{round($arrayList[$i]["anxienty"],3)}} <br>
-                        <span class="font-mood-span">napięcie/rozdraznienie: </span> {{round($arrayList[$i]["voltage"],3)}} <br>
-                        <span class="font-mood-span">pobudzenie: </span>  {{round($arrayList[$i]["stimulation"],3)}} <br>
-                        <span class="font-mood-span">Ilośc epizodów psychotycznych: </span>  @if ($arrayList[$i]["epizodes_psychotik"] > 0) <span class="font-mood-error">{{$arrayList[$i]->epizodes_psychotik}}</span> @else brak @endif <br>
+                        <span class="font-mood-span">nastrój:  {{round($arrayList[$i]["mood"],3)}} </span> <br>
+                        <span class="font-mood-span">lęk:  {{round($arrayList[$i]["anxienty"],3)}} </span><br>
+                        <span class="font-mood-span">napięcie/rozdraznienie: {{round($arrayList[$i]["voltage"],3)}} </span> <br>
+                        <span class="font-mood-span">pobudzenie:  {{round($arrayList[$i]["stimulation"],3)}} </span> <br>
+                        <span class="font-mood-span">Ilośc epizodów psychotycznych:   @if ($arrayList[$i]["epizodes_psychotik"] > 0) </span> <span class="font-mood-error">{{$arrayList[$i]->epizodes_psychotik}}</span> @else brak @endif <br>
                         <br>
                         <br><Br>
                 </div>

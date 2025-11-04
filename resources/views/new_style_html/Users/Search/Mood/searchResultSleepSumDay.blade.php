@@ -51,7 +51,7 @@
                 <span class="font-mood-span">Ilośc: {{$count}}</span>   <br>
                 <span class="font-mood-span">średni czas snu:  {{\App\Http\Services\Common::calculateHourOne($arrayList["average"])}} </span>   <br> 
                 <br>
-                <span class="font-mood-span">data: </span>                Od
+                <span class="font-mood-span">data:               Od
                                     @if ($dateFrom == "")
                                                             początku
                                                         @else
@@ -64,7 +64,7 @@
                                                             {{$dateTo}}
                                                         @endif
                 <br>
-                <span class="font-mood-span">godzina: </span>  
+                
                 Od
                                     @if ($timeFrom == "")
                                                             najmniejszej
@@ -79,7 +79,7 @@
                                                         @endif
                 <br>
 
-                <span class="font-mood-span">długośc snu : </span>                      Od
+                                    Od
                                     @if ($longMoodFrom == ":")
                                                             najmniejszej
                                                         @else
@@ -91,6 +91,7 @@
                                                         @else
                                                             {{$longMoodTo}}
                                                         @endif
+                </span>  
                 <br>
 
 

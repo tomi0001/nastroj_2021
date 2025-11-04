@@ -435,7 +435,9 @@ tr.main-drugs-sum-table-0 {
 tr.main-drugs-sum-table-1 {
     background-color: rgb(255, 255, 255);
 }
-
+.leveAction0 {
+    background-color: #686868 !important;
+}
 .leveAction1 {
     background-color: #BBBCA9 !important;
 }
@@ -496,3 +498,5 @@ tr.main-drugs-sum-table-1 {
   div.ajax-error {
     color: red;
   }
+
+

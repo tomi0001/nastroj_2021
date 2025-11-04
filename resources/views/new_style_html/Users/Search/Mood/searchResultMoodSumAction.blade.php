@@ -81,25 +81,25 @@
                 <table class="table">
                     <tr>
                         <td class="search-table-center">
-                            <span class="font-mood-span">nazwa akcji: </span> 
+                            <span class="font-mood-span font-mmod-span-2">nazwa akcji: </span> 
                         </td>
                         <td class="search-table-center">
-                            <span class="font-mood-span">nastrój: </span> 
+                            <span class="font-mood-span font-mmod-span-2">nastrój: </span> 
                         </td>
                         <td class="search-table-center">
-                            <span class="font-mood-span">lęk: </span> 
+                            <span class="font-mood-span font-mmod-span-2" >lęk: </span> 
                         </td>
                         <td class="search-table-center">
-                            <span class="font-mood-span">napięcie/rozdraznienie: </span> 
+                            <span class="font-mood-span font-mmod-span-2">napięcie/rozdraznienie: </span> 
                         </td>
                         <td class="search-table-center">
-                            <span class="font-mood-span">pobudzenie: </span> 
+                            <span class="font-mood-span font-mmod-span-2">pobudzenie: </span> 
                         </td>
                         <td class="search-table-center">
-                            <span class="font-mood-span">ilośc nastroji: </span> 
+                            <span class="font-mood-span font-mmod-span-2">ilośc nastroji: </span> 
                         </td>
                         <td class="search-table-center">
-                            <span class="font-mood-span">Ilośc epizodów psychotycznych:: </span> 
+                            <span class="font-mood-span font-mmod-span-2">Ilośc epizodów psychotycznych:: </span> 
                         </td>
                     </tr>
                     @for ($i = 0;$i < count($arrayList);$i++)
@@ -109,7 +109,7 @@
                                   <tr  class="main-drugs-sum-table-0">
                            @endif
                         <td class="search-table-center">
-                            <span class="font-mood-span">{{$listgroupActionDayName[$i]}} </span> 
+                            <span class="font-mood-span ">{{$listgroupActionDayName[$i]}} </span> 
                         </td>
                         <td class="search-table-center">
                             <span class="font-mood-span">{{round($arrayList[$i]["mood"],3)}}</span> 

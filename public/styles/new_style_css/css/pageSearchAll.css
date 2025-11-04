@@ -38,7 +38,7 @@ a.search-mood-average-date {
 }
 div.search-mood-average-date-hidden {
 
-    width: 520px;
+    
     text-align: center;
     min-height: 90px;
     display: none;
@@ -59,4 +59,7 @@ div.main-mood-show-single-left {
 }
 div.search-mood-average-table {
     position: relative;
+}
+td.font-color-action-td {
+    text-align: center;
 }
