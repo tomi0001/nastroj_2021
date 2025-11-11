@@ -594,4 +594,39 @@ class Usee extends Model
         $Usee->where("id",$request->get("id"))->where("id_users",Auth::User()->id)
                 ->update(["portion"=> $request->get("doseEdit"),"id_products"=> $request->get("idProduct"),"date" => $date,"price"=> $price]);
     }
+    /*
+        updated 11.2025
+    */
+    public function setGroupIdSubstance() {
+        $this->questions->groupBy("substances_products.id_substances");
+    }
+    public function createQuestionsSumDaySubstance(int $startDay) {
+        $this->questions = self::query();
+                    $this->questions->join("products","products.id","usees.id_products")
+                ->join("substances_products","substances_products.id_products","products.id")
+                ->join("substances","substances_products.id_substances","substances.id");
+        $this->questions
+
+            ->select( DB::Raw("(DATE(IF(HOUR(usees.date) >= '$startDay', usees.date,Date_add(usees.date, INTERVAL - 1 DAY) )) ) as dat  "));
+
+            $this->questions->selectRaw("(usees.portion)    as portionsddd")
+
+            
+                ->selectRaw("((count(*) ) )  as count");
+      $this->questions->selectRaw(" round(sum("
+                        . " CASE "
+                        . " WHEN products.type_of_portion = 3  THEN ( substances_products.doseProduct * usees.portion) " 
+                        . " WHEN products.type_of_portion  = 2 THEN ((products.how_percent / 100) * usees.portion ) "
+                        . "ELSE (usees.portion) "
+                        . " END),2)"
+                        . "  as portions ");
+        $this->questions->selectRaw("substances.id as id")
+            ->selectRaw("usees.id as id_usees")
+            ->selectRaw("substances.name as name")
+            ->selectRaw("round(sum(usees.price),2) as price")
+            ->selectRaw("products.type_of_portion as type");
+
+
+      
+    }
 }

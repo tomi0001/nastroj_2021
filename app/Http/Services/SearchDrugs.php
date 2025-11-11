@@ -311,5 +311,28 @@ class SearchDrugs {
             array_push($this->dayWeek, 7);
         }
     }
+    /*
+        updated 11.2025 
+    */
+    public function createQuestionSumDaySubstance(Request $request) {
+         $Usee = new Usee;
+         $Usee->createQuestionsSumDaySubstance($this->startDay);
+         $Usee->setIdUsers($this->idUsers);
+         $Usee->setDate($request->get("dateFrom"),$request->get("dateTo"),$this->startDay);
+         $this->setHour($Usee,$request);
+         $Usee->setDose($request->get("doseFrom"),$request->get("doseTo"));
+         
+         $Usee->setProduct($this->idProduct);
+         $Usee->setWeekDay($this->dayWeek,$this->startDay);
+         $Usee->setGroupIdSubstance();
+         if ($request->get("sort2") == "asc") {
+             $Usee->orderByGroupDay("asc",$request->get("sort"));
+         }
+         else {
+             $Usee->orderByGroupDay("desc",$request->get("sort"));
+         }
+         $this->count = $Usee->questions->get()->count();
+         return $Usee->questions->paginate(15);
+     }
     
 }

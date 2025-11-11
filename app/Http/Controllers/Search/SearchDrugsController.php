@@ -42,6 +42,21 @@ class SearchDrugsController {
                     ->with("doseFrom",$request->get("doseFrom"))
                     ->with("doseTo",$request->get("doseTo"));
             }
+            /*
+                update 11.2025
+            */
+            else if ($request->get("sumDaySubstance") == "on") {
+                $result = $SearchDrugs->createQuestionSumDaySubstance($request);
+                return View(str_replace("css","html",Auth::User()->css) . ".Users.Search.Product.searchResultDrugsSumDaySubstance")
+                    ->with("arrayList",$result)->with("count",$SearchDrugs->count)
+                    ->with("dateFrom",$request->get("dateFrom"))
+                    ->with("dateTo",$request->get("dateTo"))
+                    ->with("timeFrom",$request->get("timeFrom"))
+                    ->with("timeTo",$request->get("timeTo"))
+                    ->with("doseFrom",$request->get("doseFrom"))
+                    ->with("doseTo",$request->get("doseTo"));
+            }
+            
             else {
                 $result = $SearchDrugs->createQuestion($request);
                 return View(str_replace("css","html",Auth::User()->css) . ".Users.Search.Product.searchResultDrugs")->with("arrayList",$result)->with("count",$SearchDrugs->count);

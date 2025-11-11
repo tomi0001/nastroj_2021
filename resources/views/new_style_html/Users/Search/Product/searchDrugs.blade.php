@@ -260,10 +260,19 @@
             </tr>
             <tr>
                 <td style='padding-top: 10px; width: 37%;'>
-                    sumuj dni
+                    pogrupuj według nazwy produktu
                 </td>
                 <td colspan="3">
                     <input type='checkbox' name='sumDay' class='form-check-input'>
+                </td>
+
+            </tr>
+            <tr>
+                <td style='padding-top: 10px; width: 37%;'>
+                    pogrupuj według nazwy substancji
+                </td>
+                <td colspan="3">
+                    <input type='checkbox' name='sumDaySubstance' class='form-check-input'>
                 </td>
 
             </tr>
