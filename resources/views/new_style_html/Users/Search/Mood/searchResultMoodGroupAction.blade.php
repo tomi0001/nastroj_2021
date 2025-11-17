@@ -196,11 +196,27 @@
 
         @endfor
         <div class="d-flex justify-content-center">
-       @php
-                $arrayList->appends(Request::except(['_tooken']))
-                ->links();
-            @endphp
-            {{$arrayList}}
+               <form method="GET" action="{{ url()->current() }}">
+
+                            @foreach(request()->except('page') as $key => $value)
+                                @if(is_array($value))
+                                    @foreach($value as $v)
+                                        <input type="hidden" name="{{ $key }}[]" value="{{ $v }}">
+                                    @endforeach
+                                @else
+                                    <input type="hidden" name="{{ $key }}" value="{{ $value }}">
+                                @endif
+                            @endforeach
+
+                            <select name="page" onchange="this.form.submit()" class="form-select w-auto d-inline-block">
+                                @for($i = 1; $i <= $arrayList->lastPage(); $i++)
+                                    <option value="{{ $i }}" {{ $i == $arrayList->currentPage() ? 'selected' : '' }}>
+                                        Strona {{ $i }}
+                                    </option>
+                                @endfor
+                            </select>
+
+                        </form>
         </div>
 
     </div>

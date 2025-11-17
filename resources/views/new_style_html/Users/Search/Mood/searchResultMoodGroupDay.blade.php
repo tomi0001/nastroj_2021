@@ -219,43 +219,27 @@
             <div class="main-mood-show-single-br"></div>
                 @endfor
                 <div class="d-flex justify-content-center">
-                        @php 
-                        $arrayList->appends(['sort'=>Request::get('sort')])
-                        ->appends(['moodFrom'=>Request::get("moodFrom")])
-                        ->appends(['moodTo'=>Request::get("moodTo")])
-                        ->appends(['anxientyFrom'=>Request::get("anxientyFrom")])
-                        ->appends(['anxientyTo'=>Request::get("anxientyTo")])
-                        ->appends(['voltageFrom'=>Request::get("voltageFrom")])
-                        ->appends(['voltageTo'=>Request::get("voltageTo")])
-                        ->appends(['stimulationFrom'=>Request::get("stimulationFrom")])
-                        ->appends(['stimulationTo'=>Request::get("stimulationTo")])
-                        ->appends(['dateFrom'=>Request::get("dateFrom")])
-                        ->appends(['dateTo'=>Request::get("dateTo")])
-                        ->appends(['timeFrom'=>Request::get("timeFrom")])
-                        ->appends(['timeTo'=>Request::get("timeTo")])
-                        ->appends(['longMoodHourFrom'=>Request::get("longMoodHourFrom")])
-                        ->appends(['longMoodMinuteFrom'=>Request::get("longMoodMinuteFrom")])
-                        ->appends(['longMoodHourTo'=>Request::get("longMoodHourTo")])
-                        ->appends(['longMoodMinuteTo'=>Request::get("longMoodMinuteTo")])
-                        ->appends(["action" => Request::get("action")])
-                        ->appends(["actionFrom" => Request::get("actionFrom")])
-                        ->appends(["actionTo" => Request::get("actionTo")])
-                        ->appends(["whatWork" => Request::get("whatWork")])
-                        ->appends(['epizodesFrom'=>Request::get("epizodesFrom")])
-                        ->appends(['epizodesTo'=>Request::get("epizodesTo")])
-                        ->appends(['ifWhatWork'=>Request::get("ifWhatWork")])
-                        ->appends(['ifAction'=>Request::get("ifAction")])
-                        ->appends(['sort2'=>Request::get("sort2")])
-                        ->appends(['day1'=>Request::get("day1")])
-                        ->appends(['day2'=>Request::get("day2")])
-                        ->appends(['day3'=>Request::get("day3")])
-                        ->appends(['day4'=>Request::get("day4")])
-                        ->appends(['day5'=>Request::get("day5")])
-                        ->appends(['day6'=>Request::get("day6")])
-                        ->appends(['day7'=>Request::get("day7")])
-                        ->links();
-                        @endphp
-                        {{$arrayList}}
+                         <form method="GET" action="{{ url()->current() }}">
+
+                            @foreach(request()->except('page') as $key => $value)
+                                @if(is_array($value))
+                                    @foreach($value as $v)
+                                        <input type="hidden" name="{{ $key }}[]" value="{{ $v }}">
+                                    @endforeach
+                                @else
+                                    <input type="hidden" name="{{ $key }}" value="{{ $value }}">
+                                @endif
+                            @endforeach
+
+                            <select name="page" onchange="this.form.submit()" class="form-select w-auto d-inline-block">
+                                @for($i = 1; $i <= $arrayList->lastPage(); $i++)
+                                    <option value="{{ $i }}" {{ $i == $arrayList->currentPage() ? 'selected' : '' }}>
+                                        Strona {{ $i }}
+                                    </option>
+                                @endfor
+                            </select>
+
+                        </form>
                 </div>
          
         

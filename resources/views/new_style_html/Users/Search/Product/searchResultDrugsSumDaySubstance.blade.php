@@ -137,36 +137,27 @@
 </div>
        
         <div class="d-flex justify-content-center">
-            @php
-                 $arrayList->appends(['sort'=>Request::get('sort')])
-                        ->appends(['nameSubstance'=>Request::get('nameSubstance')])
-                        ->appends(['nameProduct'=>Request::get('nameProduct')])
-                        ->appends(['doseFromProduct'=>Request::get('doseFromProduct')])
-                        ->appends(['doseToProduct'=>Request::get('doseToProduct')])
-                        ->appends(['doseFromSubstance'=>Request::get('doseFromSubstance')])
-                        ->appends(['doseToSubstance'=>Request::get('doseToSubstance')])
-                        ->appends(['nameGroup'=>Request::get('nameGroup')])
-                        ->appends(['doseFromGroup'=>Request::get('doseFromGroup')])
-                        ->appends(['doseToGroup'=>Request::get('doseToGroup')])
+             <form method="GET" action="{{ url()->current() }}">
 
-                ->appends(['dateFrom'=>Request::get("dateFrom")])
-                ->appends(['dateTo'=>Request::get("dateTo")])
-                ->appends(['timeFrom'=>Request::get("timeFrom")])
-                ->appends(['timeTo'=>Request::get("timeTo")])
-                ->appends(["whatWork" => Request::get("whatWork")])
-                ->appends(['ifWhatWork'=>Request::get("ifWhatWork")])
-                ->appends(['sumDaySubstance'=>'on'])
-                ->appends(['sort2'=>Request::get("sort2")])
-                ->appends(['day1'=>Request::get("day1")])
-                        ->appends(['day2'=>Request::get("day2")])
-                        ->appends(['day3'=>Request::get("day3")])
-                        ->appends(['day4'=>Request::get("day4")])
-                        ->appends(['day5'=>Request::get("day5")])
-                        ->appends(['day6'=>Request::get("day6")])
-                        ->appends(['day7'=>Request::get("day7")])
-                ->links();
-            @endphp
-            {{$arrayList}}
+                            @foreach(request()->except('page') as $key => $value)
+                                @if(is_array($value))
+                                    @foreach($value as $v)
+                                        <input type="hidden" name="{{ $key }}[]" value="{{ $v }}">
+                                    @endforeach
+                                @else
+                                    <input type="hidden" name="{{ $key }}" value="{{ $value }}">
+                                @endif
+                            @endforeach
+
+                            <select name="page" onchange="this.form.submit()" class="form-select w-auto d-inline-block">
+                                @for($i = 1; $i <= $arrayList->lastPage(); $i++)
+                                    <option value="{{ $i }}" {{ $i == $arrayList->currentPage() ? 'selected' : '' }}>
+                                        Strona {{ $i }}
+                                    </option>
+                                @endfor
+                            </select>
+
+                        </form>
         </div>
 
     </div>

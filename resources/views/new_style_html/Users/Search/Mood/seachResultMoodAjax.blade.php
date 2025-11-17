@@ -82,36 +82,27 @@
                 @endforeach
                 <tr>
                     <td colspan="7" class=" ">
-                        @php 
-                        $arrayList->appends(['sort'=>Request::get('sort')])
-                        ->appends(['moodFrom'=>Request::get("moodFrom")])
-                        ->appends(['moodTo'=>Request::get("moodTo")])
-                        ->appends(['anxietyFrom'=>Request::get("anxietyFrom")])
-                        ->appends(['anxietyTo'=>Request::get("anxietyTo")])
-                        ->appends(['voltageFrom'=>Request::get("voltageFrom")])
-                        ->appends(['voltageTo'=>Request::get("voltageTo")])
-                        ->appends(['stimulationFrom'=>Request::get("stimulationFrom")])
-                        ->appends(['stimulationTo'=>Request::get("stimulationTo")])
-                        ->appends(['dateFrom'=>Request::get("dateFrom")])
-                        ->appends(['dateTo'=>Request::get("dateTo")])
-                        ->appends(['timeFrom'=>Request::get("timeFrom")])
-                        ->appends(['timeTo'=>Request::get("timeTo")])
-                        ->appends(['longMoodFromHour'=>Request::get("longMoodFromHour")])
-                        ->appends(['longMoodFromMinutes'=>Request::get("longMoodFromMinutes")])
-                        ->appends(['longMoodHourTo'=>Request::get("longMoodHourTo")])
-                        ->appends(['longMoodToMinutes'=>Request::get("longMoodToMinutes")])
-                        ->appends(["action" => Request::get("action")])
-                        ->appends(["actionsNumberFrom" => Request::get("actionsNumberFrom")])
-                        ->appends(["actionsNumberTo" => Request::get("actionsNumberTo")])
-                        ->appends(["descriptions" => Request::get("descriptions")])
-                        ->appends(['epizodesFrom'=>Request::get("epizodesFrom")])
-                        ->appends(['epizodesTo'=>Request::get("epizodesTo")])
-                        ->appends(['ifDescriptions'=>Request::get("ifDescriptions")])
-                        ->appends(['ifactions'=>Request::get("ifactions")])
-                        ->appends(['sort2'=>Request::get("sort2")])
-                        ->links();
-                        @endphp
-                        {{$arrayList}}
+                         <form method="GET" action="{{ url()->current() }}">
+
+                            @foreach(request()->except('page') as $key => $value)
+                                @if(is_array($value))
+                                    @foreach($value as $v)
+                                        <input type="hidden" name="{{ $key }}[]" value="{{ $v }}">
+                                    @endforeach
+                                @else
+                                    <input type="hidden" name="{{ $key }}" value="{{ $value }}">
+                                @endif
+                            @endforeach
+
+                            <select name="page" onchange="this.form.submit()" class="form-select w-auto d-inline-block">
+                                @for($i = 1; $i <= $arrayList->lastPage(); $i++)
+                                    <option value="{{ $i }}" {{ $i == $arrayList->currentPage() ? 'selected' : '' }}>
+                                        Strona {{ $i }}
+                                    </option>
+                                @endfor
+                            </select>
+
+                        </form>
 
                     </td>
             </tr>
