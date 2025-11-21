@@ -159,10 +159,10 @@
 
 
 <div class="main-mood-show-single-left">
-<span class="font-mood-span">nazwa: </span>  {{$arrayList[$i]->name}} <br>
-                        <span class="font-mood-span">dawka: </span> {{$arrayList[$i]->portions}} {{\App\Http\Services\Common::showDoseProduct($arrayList[$i]->type)}} <br>
-                        <span class="font-mood-span">godzina wzięcia: </span> {{substr($arrayList[$i]->date,11,-3)}} <br>
-                        <span class="font-mood-span">ile kosztowało: </span>  {{$arrayList[$i]->price}} zł <br>
+<span class="font-mood-span">nazwa:  {{$arrayList[$i]->name}} </span> <br>
+                        <span class="font-mood-span">dawka: {{$arrayList[$i]->portions}} {{\App\Http\Services\Common::showDoseProduct($arrayList[$i]->type)}} </span>  <br>
+                        <span class="font-mood-span">godzina wzięcia:  {{substr($arrayList[$i]->date,11,-3)}} </span><br>
+                        <span class="font-mood-span">ile kosztowało:  {{$arrayList[$i]->price}} zł </span> <br>
 </div>
 <div class="main-mood-show-single-center">
     
