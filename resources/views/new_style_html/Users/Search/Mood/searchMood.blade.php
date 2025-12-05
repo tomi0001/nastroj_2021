@@ -8,7 +8,7 @@
     Wyszukaj nastrój
 @endsection 
 <div class="settings-title">
-                        WYSZKUJA NASTRÓJ
+                        WYSZUKAJ NASTRÓJ
         </div>
 <div class="settings-body-page">
     <form action='{{route("search.searchMoodSubmit")}}' method='get'>
@@ -198,13 +198,13 @@
                 <td >
                     słowa kluczowe co robiłem
                 </td>
-                <td collspan="3">
+                <td colspan="3">
                 <div style='clear: both;'>
-                    <div style='float: left; ' id="idWhatWork">
-                        <input type='text' name='whatWork[]' class='form-control Search-mood-form-2' placeholder="słowa kluczowe">
+                    <div style='float: left; ' id="idWhatWork" class="Search-mood-form-4">
+                        <textarea  name='whatWork[]' class='form-control Search-mood-form-2' placeholder="słowa kluczowe"></textarea>
                     </div>
-                    <div style='float: left; display: none;' id="idWhatWorkCopy" >
-                        <input type='text' name='whatWork[]' class='form-control Search-mood-form-2' placeholder="słowa kluczowe">
+                    <div style='float: left; display: none;' id="idWhatWorkCopy" class="Search-mood-form-4">
+                        <textarea  name='whatWork[]' class='form-control Search-mood-form-2' placeholder="słowa kluczowe"></textarea>
                     </div>
                     <div style='float: left; ' >
                     <a onclick="addFieldWhatWork()" style="cursor: pointer;">
@@ -267,7 +267,7 @@
                 <td >
                     Wyszukja tylko wpisy, które mają jakiąś akcję
                 </td>
-                <td>
+                <td colspan="3">
                     <input type='checkbox' name='ifAction' class='form-check-input'>
                 </td>
 
@@ -276,7 +276,7 @@
                 <td >
                     Wyszukja tylko wpisy, które mają jakiś opis
                 </td>
-                <td>
+                <td colspan="3">
                     <input type='checkbox' name='ifWhatWork' class='form-check-input'>
                 </td>
 
@@ -285,7 +285,7 @@
                 <td >
                     Pogrupuj wg. dnia
                 </td>
-                <td>
+                <td colspan="3">
                     <input type='checkbox' name='groupDay' class='form-check-input'>
                 </td>
 
@@ -294,7 +294,7 @@
                 <td >
                     Sumuj wszystkie dni
                 </td>
-                <td>
+                <td colspan="3">
                     <input type='checkbox' name='sumDay' class='form-check-input'>
                 </td>
 
@@ -304,7 +304,7 @@
                 <td >
                     Pogrupuj według tygodnia
                 </td>
-                <td>
+                <td colspan="3">
                     <input type='checkbox' name='groupWeek' class='form-check-input'>
                 </td>
 
@@ -313,7 +313,7 @@
                 <td >
                     Pogrupuj według miesiąca
                 </td>
-                <td>
+                <td colspan="3">
                     <input type='checkbox' name='groupMonth' class='form-check-input'>
                 </td>
 
@@ -322,7 +322,7 @@
                 <td >
                     Pogrupuj według akcji
                 </td>
-                <td>
+                <td colspan="3">
                     <input type='checkbox' name='groupAction' class='form-check-input'>
                 </td>
 

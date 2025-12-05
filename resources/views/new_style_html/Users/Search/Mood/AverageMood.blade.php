@@ -140,10 +140,10 @@
                            
                     
                 <td  class="search-mood-average-center">
-                    <a  class="search-mood-average-date" onclick="showDateAverageMood('{{route('ajax.showDateAverageMood')}}','{{ $minMax[$i]->dat_end }}',{{$i}})">{{$minMax[$i]->dat_end}}</a>
+                    <a  class="search-mood-average-date" onclick="showDateAverageMood('{{route('ajax.showDateAverageMood')}}','{{ $minMax[$i]->dat_end }}','{{time() . '_' . $i}}')">{{$minMax[$i]->dat_end}}</a>
                 </td>
                 <td  class="search-mood-average-center">
-                        <div class="search-mood-average-date-hidden" id="hiddenDateAverage_{{ $i }}">
+                        <div class="search-mood-average-date-hidden" id="hiddenDateAverage_{{time() . '_' .  $i }}">
                             &nbsp;
                         </div>
 

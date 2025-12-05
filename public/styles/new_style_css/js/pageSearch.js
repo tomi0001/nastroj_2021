@@ -576,6 +576,7 @@ update december 2024
 */
 
 function showDateAverageMood(url,date,i) {
+  
     if ($("#hiddenDateAverage_" + i).css("display") == "none" ) {
         $(".search-mood-average-date-hidden").css("display","none");
         $("#hiddenDateAverage_" + i).css("display","block");

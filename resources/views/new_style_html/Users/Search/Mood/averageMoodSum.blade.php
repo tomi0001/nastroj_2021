@@ -133,7 +133,7 @@
                 <td style='padding-top: 10px; width: 37%;'>
                     Pogrupuj wg. tygodnia
                 </td>
-                <td>
+                <td colspan="6">
                     <input type='checkbox' name='groupWeek' class='form-check-input'>
                 </td>
 
@@ -142,7 +142,7 @@
                 <td style='padding-top: 10px; width: 37%;'>
                     Pogrupuj wg. miesiąca
                 </td>
-                <td>
+                <td colspan="6">
                     <input type='checkbox' name='groupMonth' class='form-check-input'>
                 </td>
 
@@ -151,7 +151,7 @@
                 <td style='padding-top: 10px; width: 37%;'>
                     Sumuj wszystkie nastroje
                 </td>
-                <td>
+                <td colspan="6"> 
                     <input type='checkbox' name='sumDay' class='form-check-input'>
                 </td>
 

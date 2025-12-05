@@ -179,7 +179,7 @@
                 <td style='padding-top: 10px; width: 37%;'>
                     Wyszukja tylko wpisy, które mają jakiąś akcję
                 </td>
-                <td>
+                <td colspan="6">
                     <input type='checkbox' name='ifAction' class='form-check-input'>
                 </td>
 

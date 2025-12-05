@@ -1,6 +1,7 @@
 {{$date}}
 
 <div class="search-mood-average-date-div">
+    <a target="_blank" href="{{route("users.main")}}/{{str_replace("-","/",$date)}}" class="search-mood-average-date-menu-2" >Idź do dnia </a>
     <div class="search-mood-average-date-menu">
         @if (count($actionDay) == 0)
             <span class="search-mood-average-date-span">Nie było żadnych akcji całodniowych</span>

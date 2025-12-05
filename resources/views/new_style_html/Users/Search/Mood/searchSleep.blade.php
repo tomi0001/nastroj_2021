@@ -205,7 +205,7 @@
                 <td >
                     Wyszukja tylko wpisy, które mają jakis opis
                 </td>
-                <td>
+                <td  colspan="6">
                     <input type='checkbox' name='ifSleep' class='form-check-input'>
                 </td>
 
@@ -216,7 +216,7 @@
                 <td >
                     Sumuj wszystkie dni
                 </td>
-                <td>
+                <td  colspan="6">
                     <input type='checkbox' name='sumDay' class='form-check-input'>
                 </td>
 
