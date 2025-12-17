@@ -75,32 +75,34 @@
                     <div class="search-mood-day-2">
                     <div class="main-mood-show-single-button-all-day">
                                         @if (count(\App\Models\Usee::listSubstnace($arrayList[$i]->datEnd, Auth::User()->id,Auth::User()->start_day)) > 0)
-                                            <button class="btn btn-success btn-lg" onclick="showDaySubstance('{{ route('search.allSubstanceDay')}}','{{$arrayList[$i]->datEnd}}')">Substancje dla danego dnia</button>
+                                            <button class="btn btn-success btn-lg main-mmod-show-day-all-button" onclick="showDaySubstance('{{ route('search.allSubstanceDay')}}','{{$arrayList[$i]->datEnd}}')">Substancje dla danego dnia</button>
                                         @else
-                                            <button type="button" class="disable btn btn-lg btn-outline-dark"  disabled>nie było substancji</button>
+                                            <button type="button" class="disable btn btn-lg btn-outline-dark main-mmod-show-day-all-button"  disabled>nie było substancji</button>
                                         @endif
                                     </div>
                                         
                                     <div class="main-mood-show-single-button-all-day">
                                         @if ((\App\Models\Mood::ifActionForDayMood($arrayList[$i]->datEnd, Auth::User()->id,Auth::User()->start_day)) > 0)
-                                            <button class="btn btn-primary btn-lg" onclick="showDayAction('{{ route('search.allActionDay')}}','{{$arrayList[$i]->datEnd}}')">pokaż akcje</button>
+                                            <button class="btn btn-primary btn-lg main-mmod-show-day-all-button" onclick="showDayAction('{{ route('search.allActionDay')}}','{{$arrayList[$i]->datEnd}}')">pokaż akcje</button>
                                         @else
-                                            <button type="button" class="disable btn btn-lg btn-outline-dark"  disabled>nie było akcji</button>
+                                            <button type="button" class="disable btn btn-lg btn-outline-dark main-mmod-show-day-all-button"  disabled>nie było akcji</button>
                                         @endif
                                     </div>
                                         
                                     <div class="main-mood-show-single-button-all-day">
                                         @if ((\App\Models\Mood::showDescription($arrayList[$i]->id)->what_work != "dsd" ))
-                                            <button class="btn btn-warning btn-lg" onclick="showDayMood('{{route('search.allDayMood')}}','{{$arrayList[$i]->datEnd}}')">nastrój dla całego dnia</button>
+                                            <button class="btn btn-warning btn-lg main-mmod-show-day-all-button" onclick="showDayMood('{{route('search.allDayMood')}}','{{$arrayList[$i]->datEnd}}')">nastrój dla całego dnia</button>
                                         @else
-                                            <button type="button" class="disable btn btn-lg btn-outline-dark"  disabled>nie było nastroji</button>
+                                            <button type="button" class="disable btn btn-lg btn-outline-dark main-mmod-show-day-all-button"  disabled>nie było nastroji</button>
                                         @endif
                                     
                                     </div>
                                     <div class="main-mood-show-single-button-all-day">
                                         
-                                        <a target="_blank" href="{{route("users.main")}}/{{str_replace("-","/",$arrayList[$i]->datEnd)}}"><button class="btn btn-warning btn-lg" >idź do dnia</button></a>
+                                        <a onclick="showDay('day_{{ $arrayList[$i]->datEnd}}' )"><button class="btn btn-warning btn-lg main-mmod-show-day-all-button" >idź do dnia</button></a>
                                         
+
+                                  
                                     
                                     </div>
 
@@ -116,6 +118,19 @@
 
 
                     </div>
+                                        <div class="main-mmod-show-day"  id="day_{{ $arrayList[$i]->datEnd}}" style="display: none;">
+                                            <div class="main-mmod-show-day-one">
+                                                <a target="_blank" href="{{route("users.main")}}/{{str_replace("-","/",date("Y-m-d",strtotime($arrayList[$i]->datEnd) - 86400))}}"><button class="btn btn-warning btn-lg main-mmod-show-day-one" >idź do dnia poprzedniego</button></a>
+                                            </div>
+                                            <div class="main-mmod-show-day-one">
+                                                <a target="_blank" href="{{route("users.main")}}/{{str_replace("-","/",date("Y-m-d",strtotime($arrayList[$i]->datEnd)))}}"><button class="btn btn-warning btn-lg main-mmod-show-day-one" >idź do dnia</button></a>
+                                            </div>
+                                            <div class="main-mmod-show-day-one">
+                                                <a target="_blank" href="{{route("users.main")}}/{{str_replace("-","/",date("Y-m-d",strtotime($arrayList[$i]->datEnd) + 86400))}}"><button class="btn btn-warning btn-lg main-mmod-show-day-one" >idź do dnia następnego</button></a>
+                                            </div>
+                                        
+                                                
+                                        </div>
                         <div class="search-all-day">
                             <div id="dayMood{{$arrayList[$i]->datEnd}}" style="display: none;" class="search-mood-day-all">
 
@@ -135,19 +150,7 @@
                    
                  
                         
-                        <div class='showAjaxDay'>
-                            <div id="dayMood{{$arrayList[$i]->datEnd}}" style="display: none; float: left; margin-right: 10px;">
-
-                            </div>
-                            <div  id="daySubstance{{$arrayList[$i]->datEnd}}" style="float: left; display: none; margin-right: 10px;">
-                                
-                            </div>
-                            <div style="clear: both;"></div>
-                            <div  id="dayAction{{$arrayList[$i]->datEnd}}" class='divActionSum' style="float: left; display: none; margin-right: 10px; ">
-                                
-                            </div>
-                        </div>
-                    
+                
                 
                
             

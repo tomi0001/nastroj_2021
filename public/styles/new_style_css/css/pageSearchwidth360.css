@@ -57,6 +57,7 @@
         margin-left: 10px;
         font-size: 20px;
         
+        
 
     }
     div.settings-body-page-result {
@@ -78,6 +79,7 @@
         margin-left: auto;
         margin-right: auto;
         
+        width: 100%;
         clear: both;
     }
     div.main-mood-show-single-br {
@@ -114,7 +116,7 @@
     }
     div.main-mood-show-single-button-all-day {
         margin-top: 10px;
-        float: left;
+         clear: both;
         margin-left: auto;
         margin-right: auto;
         padding-left: 5px;
@@ -223,16 +225,17 @@
     }
     div.search-mood-day-2 {
         
-        height: 60px;
+        
         
         text-align: center;
         margin-left: 30px;
+        
         
 
     }
     div.search-mood-day-all {
         
-        height: 300px;
+        
     }
     div.main-mood-sum {
         
@@ -267,7 +270,11 @@
         
     }
     div.search-all-day {
-            clear: both;
+      
+             margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+
            
 
         
@@ -377,6 +384,25 @@
     div.Search-mood-form-4 {
         width: 200px;
         
+    }
+        div.main-mmod-show-day {
+            margin-left: 27px;
+        
+        width: 300px;
+        
+       
+        
+    }
+    div.main-mmod-show-day-one {
+        clear: both;
+        width: 100%;
+    }
+    button.main-mmod-show-day-one {
+        width: 100%;
+        margin: 3px;
+    }
+       button.main-mmod-show-day-all-button {
+        width: 100%;
     }
  
 }

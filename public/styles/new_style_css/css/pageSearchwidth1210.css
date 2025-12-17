@@ -338,4 +338,18 @@ flex-direction: row;
         width: 400px;
         
     }
+        div.main-mmod-show-day {
+        
+        width: 400px;
+        
+        float: right;
+    }
+    div.main-mmod-show-day-one {
+        clear: both;
+        width: 100%;
+    }
+    button.main-mmod-show-day-one {
+        width: 100%;
+        margin: 3px;
+    }
 }
